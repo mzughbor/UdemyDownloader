@@ -1,6 +1,3 @@
-from tkinter import *
-import tkinter
-
 import argparse
 import glob
 import json
@@ -9,7 +6,6 @@ import re
 import subprocess
 import sys
 import time
-from tkinter import StringVar
 import cloudscraper
 import m3u8
 import requests
@@ -28,91 +24,32 @@ from _version import __version__
 from bs4 import BeautifulSoup
 from pathvalidate import sanitize_filename
 
-root = Tk()
-root.title('Udemy Downloader 0.1 V')
-root.resizable(False, False)
-# status_list = ['Ready to Start', 'Downloading now...', 'Success', 'Failed']
-
 retry = 3
 cookies = ""
 downloader = None
 logger = None
-dl_assets = True #
-skip_lectures = False #
-dl_captions = True  #
+dl_assets = True ###
+skip_lectures = False ###
+dl_captions = True  ###
 caption_locale = "en"
-quality = 720  #
+quality = 720  ###
 bearer_token = None
 portal_name = None
 course_name = None
-keep_vtt = True #
+keep_vtt = True ###
 skip_hls = False
 concurrent_downloads = 10
 disable_ipv6 = False
 save_to_file = None
 load_from_file = None
-course_url = None
+course_url = 'https://www.udemy.com/course/wordpress-development-create-wordpress-themes-and-plugins/'
 info = None
 keys = {}
 
-Gui_url = tkinter.StringVar(root)
-access_token = tkinter.StringVar(root)
 
-
-def main_func(name):
-    """
-    @author mZughbor
-    """
-    global Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
-    # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
-    root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
-    frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
-    frame_zero.grid(row=0, column=0, padx=5, pady=15)
-    frame = LabelFrame(root, padx=20, pady=25)  # for inner  text='Just 2 Steps to Start !',
-    frame.grid(row=1, column=0, padx=10, pady=5)
-    # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
-    # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
-    # Label(root, text='Hello Heroz !').grid(row=0, column=0)
-    Label(frame_zero, text='You can download non Drm videos from Udemy.com').grid(row=0, column=0, pady=0)
-    Label(frame_zero, text='website from this little program!').grid(row=1, column=0, pady=0)
-    Label(frame, text='Please Enter Your URl Course !').grid(row=3, column=0, pady=2)
-    Entry(frame, textvariable=Gui_url, width=45, border=3, borderwidth=4, fg='red').grid(row=4, column=0, pady=1)
-    Label(frame, text='Please Enter Your Access Token !').grid(row=5, column=0, pady=2)
-    Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
-    Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
-    Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
-    Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10)
-    root.attributes('-topmost', 1)
-    root.update()
-    root.attributes('-topmost', 0)
-    root.mainloop()
-
-    print(f'mZughbor, {name}')
-
-
-def my_program():
-    """
-    @author mZughbor
-    """
-    global Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
-    # status = Label(root, text='Status bar : ' + status_list[1], bd=1, relief=SUNKEN, anchor=W)
-    # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
-    print("your URL Course is ...", Gui_url.get())
-    print("your access token is : ", access_token.get())
-    course_url = Gui_url.get()
-    bearer_token = access_token.get()
-    # pre run parses arguments, sets up logging, and creates directories
-    pre_run()
-    Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
-    Label(root, fg='blue', text=access_token.get()).grid(row=12, column=0, pady=5)
-    # run main program
-    main()
-
-
-
-#   this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
+# this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
 def pre_run():
-    global dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, bearer_token, course_url, info, logger, keys
 
     # make sure the directory exists
     if not os.path.exists(DOWNLOAD_DIR):
@@ -1629,12 +1566,11 @@ def main():
         logger.warniing(
             "> Keyfile not found! You won't be able to decrypt videos!")
 
-    # load_dotenv()
-    # if bearer_token:
-    #    bearer_token = bearer_token
-    # else:
-    #    bearer_token
-        # bearer_token = os.getenv("UDEMY_BEARER")
+    load_dotenv()
+    if bearer_token:
+        bearer_token = bearer_token
+    else:
+        bearer_token = os.getenv("UDEMY_BEARER")
 
     udemy = Udemy(bearer_token)
 
@@ -1732,7 +1668,6 @@ def main():
                     if lecture_id:
                         logger.info(
                             f"Processing {course.index(entry)} of {len(course)}"
-                            # hint mahmoud for status bar print these staff
                         )
                         retVal = []
 
@@ -1920,4 +1855,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main_func('Done, the End')
+    # pre run parses arguments, sets up logging, and creates directories
+    pre_run()
+    # run main program
+    main()
