@@ -95,7 +95,7 @@ def alerts_showerror(massage):
     """
     @author mZughbor
     """
-    messagebox.showerror("This is warning massage!", massage)
+    messagebox.showerror("This is Error massage!", massage)
     return
 
 
@@ -929,23 +929,33 @@ class Session(object):
             "Cookie"] = cookies
 
     def _get(self, url):
-        alert_nar_trager = 0
+        # mzughbor
+        alert_nan_trager = 0
         for i in range(3):
             # number of god_damn try's
             session = self._session.get(url, headers=self._headers)
             if session.ok or session.status_code in [502, 503]:
                 return session
-            alert_nar_trager = alert_nar_trager + 1
+            # mzughbor
+            alert_nan_trager = alert_nan_trager + 1
+            # print(alert_nan_trager, 'FF')
             if not session.ok:
                 logger.error('Failed request '+url)
                 logger.error(
                     f"{session.status_code} {session.reason}, retrying (attempt {i} )...")
+                # global ii
+                # ii= i
+                # print(ii)
             time.sleep(0.8)
-        if alert_nar_trager > 0:
-            alerts_showerror("Please Fill the URL of your selected course correctly!  "
-                    "You probably need to check it again!  We tried " + str(alert_nar_trager) + " times to fitch"
-                    " your course and it's failed cause wrong URL given !!"
-                    "\n\nYou can define number of retrying attempts from starter screen")
+        # mzughbor
+        # print(alert_nan_trager, 'SS')
+        if alert_nan_trager > 0:
+            if str(session.status_code) == "404":
+                alerts_showerror("Please Fill The URL of Your Selected Course Correctly! You Probably Need to Check it Again!  We tried " + str(alert_nan_trager) + " Times to Fitch Your Course And It's Failed Cause Wrong URL Given !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
+            elif str(session.status_code) == "403":
+                alerts_showerror("Please Fill Your Access Token Field Right !!\nYou Probably Need to Check it Again!  We Tried " + str(alert_nan_trager) + " Times and it's Failed Cause Wrong Access Token Given !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
+        # else:
+        #    alerts_showerror("Please Fill The URL && The Access Token Field Correctly! You Probably Need to Check them Again!  We tried " + str(alert_nan_trager) + " Times And It's Failed Cause Wrong URL Given & Access Token Field !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
 
     def _post(self, url, data, redirect=True):
         session = self._session.post(url,
