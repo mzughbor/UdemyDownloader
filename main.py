@@ -41,8 +41,8 @@ logger = None
 dl_assets = True #1
 skip_lectures = False #2
 dl_captions = True  #3
-caption_locale = "en" #4
-quality = 720  #5
+caption_locale = "en" #4 ---
+quality = 720  #5  ---
 bearer_token = None
 portal_name = None
 course_name = None
@@ -71,6 +71,8 @@ def main_func(name):
     frame_zero.grid(row=0, column=0, padx=5, pady=15)
     frame = LabelFrame(root, padx=20, pady=25)  # for inner  text='Just 2 Steps to Start !',
     frame.grid(row=1, column=0, padx=10, pady=5)
+    frame_cheakBoxs = LabelFrame(root, text='Advanced Usage !', padx=0, pady=15)  # for inner  text='Just 2 Steps to Start !',
+    frame_cheakBoxs.grid(row=2, column=0, padx=10, pady=15)
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     # Label(root, text='Hello Heroz !').grid(row=0, column=0)
@@ -83,6 +85,32 @@ def main_func(name):
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
     Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10)
+    skip_lectures = IntVar()
+    dl_assets = IntVar()
+    dl_captions = IntVar()
+    keep_vtt = IntVar()
+    skip_hls = IntVar()
+    concurrent_downloads = IntVar()
+    disable_ipv6 = IntVar()
+    #save_to_file = IntVar()
+    sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures)
+    dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets)
+    dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions)
+    kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt)
+    skhls = Checkbutton(frame_cheakBoxs, text="HLS  streams will be  skipped", variable=skip_hls)
+    conds = Checkbutton(frame_cheakBoxs, text=" --  CONCURRENT_DOWNLOADS", variable=concurrent_downloads)
+    disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6)
+    # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
+
+    sk.grid(row=11, column=0, padx=0)
+    dla.grid(row=11, column=1, padx=0)
+    dlc.grid(row=12, column=0, padx=0)
+    kvt.grid(row=12, column=1, padx=0)
+    skhls.grid(row=13, column=0, padx=0)
+    conds.grid(row=13, column=1, padx=0)
+    disipv6.grid(row=14, column=0, padx=0)
+    # savfile.grid(row=12, column=1, padx=0)
+
     root.attributes('-topmost', 1)
     root.update()
     root.attributes('-topmost', 0)
