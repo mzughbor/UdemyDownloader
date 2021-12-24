@@ -84,8 +84,13 @@ def main_func(name):
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
-    Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10)
-    skip_lectures = IntVar()
+
+    def testcheakboxs():
+        Label(root, fg='red', text=skip_lectures.get()).grid(row=15, column=0, pady=5)
+        Label(root, fg='red', text=skip_lectures.get()).grid(row=15, column=0, pady=5)
+
+    Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=testcheakboxs, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=root.quit,
+    #skip_lectures = StringVar()
     dl_assets = IntVar()
     dl_captions = IntVar()
     keep_vtt = IntVar()
@@ -93,7 +98,7 @@ def main_func(name):
     concurrent_downloads = IntVar()
     disable_ipv6 = IntVar()
     #save_to_file = IntVar()
-    sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures)
+    #sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures, onvalue=True, offvalue=False)
     dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets)
     dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions)
     kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt)
@@ -102,7 +107,7 @@ def main_func(name):
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6)
     # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
 
-    sk.grid(row=11, column=0, padx=0)
+    #sk.grid(row=11, column=0, padx=0)
     dla.grid(row=11, column=1, padx=0)
     dlc.grid(row=12, column=0, padx=0)
     kvt.grid(row=12, column=1, padx=0)
@@ -110,6 +115,8 @@ def main_func(name):
     conds.grid(row=13, column=1, padx=0)
     disipv6.grid(row=14, column=0, padx=0)
     # savfile.grid(row=12, column=1, padx=0)
+
+
 
     root.attributes('-topmost', 1)
     root.update()
