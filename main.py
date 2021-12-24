@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter
+from tkinter import messagebox
 
 import argparse
 import glob
@@ -37,18 +38,18 @@ retry = 3
 cookies = ""
 downloader = None
 logger = None
-dl_assets = True #
-skip_lectures = False #
-dl_captions = True  #
-caption_locale = "en"
-quality = 720  #
+dl_assets = True #1
+skip_lectures = False #2
+dl_captions = True  #3
+caption_locale = "en" #4
+quality = 720  #5
 bearer_token = None
 portal_name = None
 course_name = None
-keep_vtt = True #
-skip_hls = False
-concurrent_downloads = 10
-disable_ipv6 = False
+keep_vtt = True #6
+skip_hls = False #7
+concurrent_downloads = 10 #8
+disable_ipv6 = False #9
 save_to_file = None
 load_from_file = None
 course_url = None
@@ -88,6 +89,22 @@ def main_func(name):
     root.mainloop()
 
     print(f'mZughbor, {name}')
+
+
+def alerts_showerror(massage):
+    """
+    @author mZughbor
+    """
+    messagebox.showerror("This is warning massage!", massage)
+    return
+
+
+def alerts_showinfo(massage):
+    """
+    @author mZughbor
+    """
+    messagebox.showinfo("This is show info popup!", massage)
+    return
 
 
 def my_program():
@@ -332,6 +349,8 @@ class Udemy:
         else:
             logger.fatal(
                 "Login Failure! You are probably missing an access token!")
+            alerts_showerror("Please Fill Your access token! You are probably missing an access token! ")
+
             sys.exit(1)
 
     def _extract_supplementary_assets(self, supp_assets, lecture_counter):
@@ -910,15 +929,23 @@ class Session(object):
             "Cookie"] = cookies
 
     def _get(self, url):
-        for i in range(10):
+        alert_nar_trager = 0
+        for i in range(3):
+            # number of god_damn try's
             session = self._session.get(url, headers=self._headers)
             if session.ok or session.status_code in [502, 503]:
                 return session
+            alert_nar_trager = alert_nar_trager + 1
             if not session.ok:
                 logger.error('Failed request '+url)
                 logger.error(
                     f"{session.status_code} {session.reason}, retrying (attempt {i} )...")
-                time.sleep(0.8)
+            time.sleep(0.8)
+        if alert_nar_trager > 0:
+            alerts_showerror("Please Fill the URL of your selected course correctly!  "
+                    "You probably need to check it again!  We tried " + str(alert_nar_trager) + " times to fitch"
+                    " your course and it's failed cause wrong URL given !!"
+                    "\n\nYou can define number of retrying attempts from starter screen")
 
     def _post(self, url, data, redirect=True):
         session = self._session.post(url,
@@ -1136,6 +1163,7 @@ def decrypt(kid, in_filepath, out_filepath):
         logger.info("> Decryption complete")
     except KeyError:
         raise KeyError("Key not found")
+        # alerts_showerror()
 
 
 def handle_segments(url, format_id, video_title,
@@ -1411,6 +1439,7 @@ def parse_new(_udemy):
         )
 
         for lecture in chapter.get("lectures"):
+            print("MSMz", chapter.get("lectures")[0]['lecture_index'])
             lecture_title = lecture.get("lecture_title")
             lecture_index = lecture.get("lecture_index")
             lecture_extension = lecture.get("extension")
@@ -1423,9 +1452,14 @@ def parse_new(_udemy):
             lecture_path = os.path.join(
                 chapter_dir,
                 lecture_file_name)
-
+            # m_zughbor
+            trigger_last_lec = 0
             logger.info(
                 f"  > Processing lecture {lecture_index} of {total_lectures}")
+            # m_zughbor
+            if lecture_index == total_lectures:
+                trigger_last_lec = 1
+
             if not skip_lectures:
                 # Check if the lecture is already downloaded
                 if os.path.isfile(lecture_path):
@@ -1527,6 +1561,9 @@ def parse_new(_udemy):
                     lang = subtitle.get("language")
                     if lang == caption_locale or caption_locale == "all":
                         process_caption(subtitle, lecture_title, chapter_dir)
+        # m_zughbor
+        if trigger_last_lec == 1:
+            alerts_showinfo('Your Downloading Course is Done!')
 
 
 def _print_course_info(course_data):
