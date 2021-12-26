@@ -74,7 +74,7 @@ disable_ipv6_chbox = StringVar()
 caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
 dropdown_clicked = StringVar()
-dropdown_clicked.set('1080')
+dropdown_clicked.set('720')
 tryVar = 2
 # before Slider typo ...
 Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)
@@ -153,7 +153,8 @@ def main_func(name):
     # DropDown menu for quality video downloads
     drop = OptionMenu(frame_cheakBoxs, dropdown_clicked, "1080", "720", "480", "360", "144")
     drop.grid(row=14, column=1, padx=0, sticky=E)
-    Label(frame_cheakBoxs, text='  - Choose Video quality !').grid(row=14, column=1, pady=0, sticky=W)
+    Label(frame_cheakBoxs, text='   - Choose Video quality !').grid(row=14, column=1, pady=0, sticky=W)
+
 
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
@@ -200,7 +201,9 @@ def my_program():
     print('This option for Skipping parsing HLS Streams: ',  skip_hls_chbox.get())
     print('This option for Specifying max number of concurrent downloads: ',  concurrent_downloads_chbox.get())
     print('This option for disabling ipv6 in aria2:',  disable_ipv6_chbox.get())
-
+    print(type(dropdown_clicked.get()))
+    print('This is new quality selection : '+str(quality))
+    quality = int(dropdown_clicked.get())
     # Label(root, fg='red', text=skip_lectures.get()).grid(row=17, column=0, pady=5)
     course_url = Gui_url.get()
     bearer_token = access_token.get()
