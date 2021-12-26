@@ -123,7 +123,6 @@ def main_func(name):
     Radiobutton(frame_cheakBoxs, text='Polish ', fg='blue', variable=caption_locale_radio_Buttons, value=4, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=14, column=2, padx=0)
     Radiobutton(frame_cheakBoxs, text='all', fg='blue', variable=caption_locale_radio_Buttons, value=5, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
     myLable0 = Label(frame_cheakBoxs, text=caption_locale_radio_Buttons.get())
-    myLable0.grid(row=16, column=0, padx=0)
 
     # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
     sk.grid(row=11, column=0, padx=0)
