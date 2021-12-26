@@ -30,7 +30,7 @@ from bs4 import BeautifulSoup
 from pathvalidate import sanitize_filename
 
 root = Tk()
-root.title('Udemy Downloader 0.1 V')
+root.title('Udemy Downloader app 2022')
 root.resizable(False, False)
 # status_list = ['Ready to Start', 'Downloading now...', 'Success', 'Failed']
 frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
@@ -40,7 +40,6 @@ frame.grid(row=1, column=0, padx=10, pady=5)
 frame_cheakBoxs = LabelFrame(root, text='Advanced Usage !', padx=0, pady=15)  # for inner  text='Just 2 Steps to Start !',
 frame_cheakBoxs.grid(row=2, column=0, padx=10, pady=15)
 
-
 retry = 3
 cookies = ""
 downloader = None
@@ -49,14 +48,13 @@ dl_assets = False
 skip_lectures = False
 dl_captions = False
 caption_locale = "en"
-print("caption_locale value :"+caption_locale)
-quality = None #720  #5  --- dropdown menu
+quality = None
 bearer_token = None
 portal_name = None
 course_name = None
 keep_vtt = False
 skip_hls = False
-concurrent_downloads = 10
+concurrent_downloads = 10 # here ...
 disable_ipv6 = False
 save_to_file = None
 load_from_file = None
@@ -75,9 +73,11 @@ concurrent_downloads_chbox = StringVar()
 disable_ipv6_chbox = StringVar()
 caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
+dropdown_clicked = StringVar()
+dropdown_clicked.set('1080')
 tryVar = 2
-
-slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)
+# before Slider typo ...
+Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)
 Label(frame_cheakBoxs, text='Default Values is 2 to change it use slider below ').grid(row=16, column=0, padx=0, pady=0, columnspan=2, sticky=W)
 
 
@@ -150,6 +150,11 @@ def main_func(name):
     # slider
     horizontal = Scale(frame_cheakBoxs, from_=0, to=10, orient=HORIZONTAL, command=slide)
     horizontal.grid(row=17, column=0, padx=0, pady=0, sticky=W+E, columnspan=2)
+    # DropDown menu for quality video downloads
+    drop = OptionMenu(frame_cheakBoxs, dropdown_clicked, "1080", "720", "480", "360", "144")
+    drop.grid(row=14, column=1, padx=0, sticky=E)
+    Label(frame_cheakBoxs, text='  - Choose Video quality !').grid(row=14, column=1, pady=0, sticky=W)
+
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
     Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=testcheakboxs,
