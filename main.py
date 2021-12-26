@@ -75,26 +75,34 @@ concurrent_downloads_chbox = StringVar()
 disable_ipv6_chbox = StringVar()
 caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
+tryVar = 2
 
+slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts 2 ').grid(row=15, column=0, pady=10, columnspan=3, sticky=W) #
+
+def slide(var):
+    global tryVar, slider_tryVar
+    slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts '+str(horizontal.get())).grid(row=15, column=0, pady=10, columnspan=3, sticky=W) #
+    tryVar = int(horizontal.get())
+    print(tryVar)
 
 def caption_locale_clicked(value):
     global caption_locale
     lug_list = ['en', 'es', 'it', 'pl', 'all']
-    myLable0 = Label(frame_cheakBoxs, text=value)
+    #myLable0 = Label(frame_cheakBoxs, text=value)
     print(lug_list[value])
     caption_locale = lug_list[value]
-    myLable0.grid(row=16, column=0, padx=0)
+    #myLable0.grid(row=16, column=0, padx=0)
 
 
 Radiobutton(frame_cheakBoxs, text='english', fg='blue', variable=caption_locale_radio_Buttons, value=0,
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=11, column=2, padx=0)
-Radiobutton(frame_cheakBoxs, text='española', fg='blue', variable=caption_locale_radio_Buttons, value=1,
+Radiobutton(frame_cheakBoxs, text='español', fg='blue', variable=caption_locale_radio_Buttons, value=1,
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=12, column=2, padx=0)
 Radiobutton(frame_cheakBoxs, text='italiano', fg='blue', variable=caption_locale_radio_Buttons, value=2,
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=13, column=2, padx=0)
 Radiobutton(frame_cheakBoxs, text='polish ', fg='blue', variable=caption_locale_radio_Buttons, value=3,
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=14, column=2, padx=0)
-Radiobutton(frame_cheakBoxs, text='all languages', fg='blue', variable=caption_locale_radio_Buttons, value=4,
+Radiobutton(frame_cheakBoxs, text='all ', fg='blue', variable=caption_locale_radio_Buttons, value=4,
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
 
 
@@ -104,7 +112,7 @@ def main_func(name):
     """
     @author mZughbor
     """
-    global disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global horizontal, slider_tryVar, disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
@@ -147,6 +155,9 @@ def main_func(name):
     disipv6.grid(row=14, column=0, padx=0)
     # savfile.grid(row=12, column=1, padx=0)
 
+    horizontal = Scale(frame_cheakBoxs, from_=0, to=10, orient=HORIZONTAL, command=slide)
+    horizontal.grid(row=16, column=0, padx=0, pady=0, sticky=W) #  columnspan=3,
+    # slider_tryVar = Label(frame_cheakBoxs, text=horizontal.get()).grid(row=18, column=0, padx=0)
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
     Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=testcheakboxs,
@@ -207,8 +218,8 @@ def my_program():
 
     # pre run parses arguments, sets up logging, and creates directories
     pre_run()
-    Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
-    Label(root, fg='blue', text=access_token.get()).grid(row=12, column=0, pady=5)
+    # Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
+    # Label(root, fg='blue', text=access_token.get()).grid(row=12, column=0, pady=5)
     # run main program
     main()
 
@@ -1003,6 +1014,8 @@ class Udemy:
 
 
 class Session(object):
+    # mZughbor
+    global tryVar
     def __init__(self):
         self._headers = HEADERS
         self._session = requests.sessions.Session()
@@ -1018,7 +1031,7 @@ class Session(object):
         # mzughbor
         # num of retrying
         alert_nan_trager = 0
-        for i in range(5):
+        for i in range(tryVar):
             # number of god_damn try's
             session = self._session.get(url, headers=self._headers)
             if session.ok or session.status_code in [502, 503]:
