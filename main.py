@@ -38,8 +38,8 @@ retry = 3
 cookies = ""
 downloader = None
 logger = None
-dl_assets = True #1
-skip_lectures = False #2
+dl_assets = True
+skip_lectures = False
 dl_captions = True  #3
 caption_locale = "en" #4 ---
 quality = 720  #5  ---
@@ -58,13 +58,13 @@ keys = {}
 
 Gui_url = tkinter.StringVar(root)
 access_token = tkinter.StringVar(root)
-
+skip_lectures_chbox = StringVar()
 
 def main_func(name):
     """
     @author mZughbor
     """
-    global Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global skip_lectures_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
     frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
@@ -83,14 +83,7 @@ def main_func(name):
     Label(frame, text='Please Enter Your Access Token !').grid(row=5, column=0, pady=2)
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
-    Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
 
-    def testcheakboxs():
-        Label(root, fg='red', text=skip_lectures.get()).grid(row=15, column=0, pady=5)
-        Label(root, fg='red', text=skip_lectures.get()).grid(row=15, column=0, pady=5)
-
-    Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=testcheakboxs, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=root.quit,
-    #skip_lectures = StringVar()
     dl_assets = IntVar()
     dl_captions = IntVar()
     keep_vtt = IntVar()
@@ -98,7 +91,13 @@ def main_func(name):
     concurrent_downloads = IntVar()
     disable_ipv6 = IntVar()
     #save_to_file = IntVar()
-    #sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures, onvalue=True, offvalue=False)
+
+    # def testcheakboxs():
+    #    print('MM1', skip_lectures)
+    #Button(frame, text=' Test CheakBoxs... ', border=3, padx=30, pady=5, command=testcheakboxs, bg='blue', fg='red').grid(row=22, column=0, pady=10) # command=testcheakboxs,
+
+    sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
+    sk.deselect()
     dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets)
     dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions)
     kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt)
@@ -107,7 +106,7 @@ def main_func(name):
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6)
     # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
 
-    #sk.grid(row=11, column=0, padx=0)
+    sk.grid(row=11, column=0, padx=0)
     dla.grid(row=11, column=1, padx=0)
     dlc.grid(row=12, column=0, padx=0)
     kvt.grid(row=12, column=1, padx=0)
@@ -117,6 +116,8 @@ def main_func(name):
     # savfile.grid(row=12, column=1, padx=0)
 
 
+    Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
+    Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=testcheakboxs,
 
     root.attributes('-topmost', 1)
     root.update()
@@ -146,13 +147,17 @@ def my_program():
     """
     @author mZughbor
     """
-    global Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global skip_lectures_chbox, Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # status = Label(root, text='Status bar : ' + status_list[1], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     print("your URL Course is ...", Gui_url.get())
     print("your access token is : ", access_token.get())
+    print('MM2', skip_lectures_chbox.get())
+
+    # Label(root, fg='red', text=skip_lectures.get()).grid(row=17, column=0, pady=5)
     course_url = Gui_url.get()
     bearer_token = access_token.get()
+    skip_lectures = int(skip_lectures_chbox.get())
     # pre run parses arguments, sets up logging, and creates directories
     pre_run()
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
@@ -161,8 +166,7 @@ def my_program():
     main()
 
 
-
-#   this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
+# this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
 def pre_run():
     global dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
 
