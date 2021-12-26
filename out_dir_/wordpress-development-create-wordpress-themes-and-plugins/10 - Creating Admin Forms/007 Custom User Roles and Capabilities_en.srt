@@ -1,0 +1,244 @@
+1
+00:00:07,939 --> 00:00:13,520
+A problem has appeared that really isn't visible at first glance, if you take a look at the ED, you'll
+
+2
+00:00:13,520 --> 00:00:16,010
+see this button called ad media right above it.
+
+3
+00:00:16,430 --> 00:00:19,990
+This allows you to use the media uploader inside the text editor.
+
+4
+00:00:20,210 --> 00:00:23,490
+It's really useful, but not completely usable for everyone.
+
+5
+00:00:24,110 --> 00:00:28,790
+I want you to log out and then sign in as the test user we created earlier.
+
+6
+00:00:29,090 --> 00:00:34,490
+If you don't remember those credentials, then just create another account and try submitting a recipe.
+
+7
+00:00:37,990 --> 00:00:43,420
+You'll notice that the button we had previously is gone long out and logged back in as an admin.
+
+8
+00:00:44,720 --> 00:00:46,520
+So what exactly is going on?
+
+9
+00:00:47,090 --> 00:00:51,410
+Well, first, let's check out that capability's versus rules table.
+
+10
+00:00:51,410 --> 00:00:56,480
+First in the resource section of this lecture, I provide a link to this page and table.
+
+11
+00:00:56,750 --> 00:00:58,460
+I've shown you this table before.
+
+12
+00:00:58,730 --> 00:01:01,460
+It lists all the roles and their capabilities.
+
+13
+00:01:01,670 --> 00:01:05,510
+By default, all new users are assigned to the subscriber role.
+
+14
+00:01:05,510 --> 00:01:11,160
+Unless you manually set it, scroll to the very bottom of the table and you'll see that the subscriber
+
+15
+00:01:11,160 --> 00:01:13,850
+roll only has one capability which is read.
+
+16
+00:01:14,420 --> 00:01:19,270
+In order to see the ad media button, you need the capability upload files.
+
+17
+00:01:19,520 --> 00:01:22,280
+This is a very important concept to understand.
+
+18
+00:01:22,580 --> 00:01:26,360
+WordPress doesn't care very much about what role a user is in.
+
+19
+00:01:26,660 --> 00:01:28,910
+It cares more about their capabilities.
+
+20
+00:01:29,150 --> 00:01:33,440
+WordPress, plug ins and themes will check your capability over your role.
+
+21
+00:01:33,830 --> 00:01:36,820
+All the old does is group your capabilities together.
+
+22
+00:01:37,310 --> 00:01:42,680
+If you scroll down this page even further, you'll find the default capabilities described in detail
+
+23
+00:01:42,680 --> 00:01:44,170
+and what you can do with each one.
+
+24
+00:01:44,510 --> 00:01:50,270
+With that being said, we have to decide on a way where the user can have the capability upload files.
+
+25
+00:01:50,750 --> 00:01:56,930
+The first solution that comes to mind is just to make it so all users who register are assigned to the
+
+26
+00:01:56,930 --> 00:01:57,600
+author role.
+
+27
+00:01:58,070 --> 00:02:03,260
+However, this would also assign them other capabilities we may not want users to have.
+
+28
+00:02:03,500 --> 00:02:09,100
+Another solution is to modify the subscriber role and just add the upload files capability.
+
+29
+00:02:09,470 --> 00:02:13,720
+The problem with this is that we shouldn't try to modify default WordPress roles.
+
+30
+00:02:14,330 --> 00:02:18,990
+The last solution is to just create our own custom role with custom capabilities.
+
+31
+00:02:19,310 --> 00:02:24,830
+This is the best solution and it's quite simple to implement open the plug in activation file.
+
+32
+00:02:27,030 --> 00:02:33,450
+At the very end of the function, I'm going to grab the WP Rolls Global Variable, this variable contains
+
+33
+00:02:33,450 --> 00:02:36,030
+information about the current roles and WordPress.
+
+34
+00:02:36,390 --> 00:02:37,140
+We need this.
+
+35
+00:02:37,140 --> 00:02:43,140
+If we're going to add our very own role with capabilities to add a role, we need to call the function
+
+36
+00:02:43,140 --> 00:02:43,830
+add role.
+
+37
+00:02:44,040 --> 00:02:45,990
+This function has three parameters.
+
+38
+00:02:46,200 --> 00:02:48,140
+The first parameter is the role name.
+
+39
+00:02:48,390 --> 00:02:51,260
+This can be thought of as an ID for the role.
+
+40
+00:02:51,570 --> 00:02:53,970
+I'm going to set this to recipe author.
+
+41
+00:02:56,370 --> 00:03:02,190
+The second parameter is a readable name of the role, I'm going to make this translatable and set this
+
+42
+00:03:02,190 --> 00:03:03,480
+to recipe author.
+
+43
+00:03:06,100 --> 00:03:11,560
+The last parameter is a list of capabilities this role will have, there are three roles they want to
+
+44
+00:03:11,560 --> 00:03:12,060
+assign.
+
+45
+00:03:12,310 --> 00:03:17,380
+I want to set the read and it posts and upload files capabilities to true.
+
+46
+00:03:22,580 --> 00:03:25,920
+All these capabilities will now be grouped together with this role.
+
+47
+00:03:26,210 --> 00:03:27,560
+That's all you need to do.
+
+48
+00:03:27,830 --> 00:03:30,940
+I want you to deactivate and reactivate this plugin.
+
+49
+00:03:31,130 --> 00:03:32,810
+You shouldn't receive any errors.
+
+50
+00:03:36,650 --> 00:03:42,090
+Now, all we have to do is tell WordPress that all new registered users should be assigned this role.
+
+51
+00:03:42,500 --> 00:03:46,560
+Luckily, you don't have to write a single line of code to accomplish this.
+
+52
+00:03:46,910 --> 00:03:48,710
+Go to settings, General.
+
+53
+00:03:48,980 --> 00:03:55,250
+If you look at the new user default rule setting, you'll notice that the recipe author appearing as
+
+54
+00:03:55,250 --> 00:03:55,780
+an option.
+
+55
+00:03:56,090 --> 00:03:59,210
+I want you to select this role and then save your changes.
+
+56
+00:04:01,790 --> 00:04:08,570
+To save some time, I'm not going to create a new user, I'm just going to modify the test user and
+
+57
+00:04:08,570 --> 00:04:11,690
+change their role to the newly created role and save.
+
+58
+00:04:15,670 --> 00:04:20,980
+Then I'm going to log out and log in as the test user again, try submitting a recipe.
+
+59
+00:04:27,170 --> 00:04:30,410
+You should see the ad media button up here for the user.
+
+60
+00:04:30,620 --> 00:04:32,370
+This is exactly what we wanted.
+
+61
+00:04:32,540 --> 00:04:34,310
+We can now proceed as normal.
+

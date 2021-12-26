@@ -1,0 +1,180 @@
+1
+00:00:07,370 --> 00:00:13,770
+Creating a plugin is very similar to creating a theme, all plug ins can be found inside the WP dash
+
+2
+00:00:13,790 --> 00:00:15,500
+content slash plugins folder.
+
+3
+00:00:15,890 --> 00:00:21,530
+By default, WordPress will provide us with two plug ins, which are the Hello Dolly and a Kismet plug
+
+4
+00:00:21,530 --> 00:00:21,820
+ins.
+
+5
+00:00:22,190 --> 00:00:24,400
+We also see the plug ins we installed earlier.
+
+6
+00:00:25,040 --> 00:00:26,540
+Let's create our own plug in.
+
+7
+00:00:26,720 --> 00:00:32,860
+Unlike themes, plug ins can be created directly inside the plugins folder or in a subfolder.
+
+8
+00:00:33,170 --> 00:00:39,440
+However, it's best practice to just create a subfolder with any plugging the plug and I want to create
+
+9
+00:00:39,440 --> 00:00:41,090
+is going to be called recipe.
+
+10
+00:00:41,510 --> 00:00:44,420
+I'm going to create a new folder named Recipe.
+
+11
+00:00:44,840 --> 00:00:48,800
+Inside this folder, I'm going to create a new file named Indexed.
+
+12
+00:00:51,980 --> 00:00:57,140
+Just like theme's, you need to provide a file header to tell WordPress that this plugin exists.
+
+13
+00:00:57,410 --> 00:01:02,650
+Unlike Theme's, though, WordPress doesn't require a certain naming structure for plugins.
+
+14
+00:01:03,050 --> 00:01:09,350
+Actually, if we take a look at the figure press plugin, then you'll see that all code is in the Fakher
+
+15
+00:01:09,350 --> 00:01:13,220
+Press file and not the indexed file.
+
+16
+00:01:13,910 --> 00:01:16,540
+You can name the main plug and file whatever you want.
+
+17
+00:01:16,880 --> 00:01:21,080
+Some developers name it after they're plugins, others just use indexed.
+
+18
+00:01:22,280 --> 00:01:23,300
+Either one is fine.
+
+19
+00:01:23,600 --> 00:01:26,980
+I just wanted you to be aware of the two common possibilities.
+
+20
+00:01:27,110 --> 00:01:29,690
+It's all preference for this course.
+
+21
+00:01:29,690 --> 00:01:33,580
+We're going to just keep everything inside the index top file.
+
+22
+00:01:33,920 --> 00:01:37,820
+There's only one requirement to make this an official WordPress plugin.
+
+23
+00:01:38,270 --> 00:01:41,540
+We must create a file header and find one property.
+
+24
+00:01:42,110 --> 00:01:44,390
+So let's create a blog comment.
+
+25
+00:01:44,390 --> 00:01:49,280
+And inside this blog comments add the following plugin name Colen Recipe.
+
+26
+00:01:51,530 --> 00:01:55,550
+That's it, go to your plug ins page and you should now see your plug in appear.
+
+27
+00:01:55,910 --> 00:01:59,810
+It doesn't have the rest of the information like the other plug ins, but it works.
+
+28
+00:02:00,110 --> 00:02:04,480
+This is the absolute minimum requirement for WordPress to recognize your plug.
+
+29
+00:02:04,790 --> 00:02:05,630
+Nothing else.
+
+30
+00:02:06,080 --> 00:02:10,639
+In the resources section, I provide a link to the file header Codex page.
+
+31
+00:02:10,970 --> 00:02:14,770
+WordPress provides a full list of optional headers we can define.
+
+32
+00:02:15,140 --> 00:02:16,720
+We're going to use a few of these.
+
+33
+00:02:16,850 --> 00:02:17,770
+Let's get started.
+
+34
+00:02:18,470 --> 00:02:21,770
+The second header we want to define is the description.
+
+35
+00:02:22,100 --> 00:02:28,580
+I'm going to put a simple WordPress plugin that allows users to create recipes and rate those recipes.
+
+36
+00:02:33,010 --> 00:02:37,480
+Up next is the version we'll keep it simple by sending it to 1.0.
+
+37
+00:02:40,070 --> 00:02:44,600
+Next is the name of the author, put your name down or the name of your organization.
+
+38
+00:02:44,840 --> 00:02:51,500
+I'm going to put down Udemy, the author, Urai is a link to your personal site or organization site.
+
+39
+00:02:51,680 --> 00:02:53,960
+I'm going to drop a link to the Udemy site.
+
+40
+00:02:56,500 --> 00:03:03,070
+Lastly, we want to define the text domain, I know we haven't gone over translations yet, but this
+
+41
+00:03:03,070 --> 00:03:05,580
+should always be set to the name of your plugin folder.
+
+42
+00:03:05,800 --> 00:03:07,570
+So set this to recipe.
+
+43
+00:03:09,890 --> 00:03:15,020
+Let's refresh the plugin page and see if everything works, you should see something similar to what
+
+44
+00:03:15,020 --> 00:03:15,420
+I see.
+
+45
+00:03:15,860 --> 00:03:19,690
+Feel free to look at the other headers and define whatever suits your needs.
+

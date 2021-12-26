@@ -1,0 +1,176 @@
+1
+00:00:07,400 --> 00:00:14,450
+I have the filter content file opened, if you don't remember, this function will filter the recipe
+
+2
+00:00:14,450 --> 00:00:20,900
+content and display the recipe information along with the rating inside the function we use, the global
+
+3
+00:00:20,900 --> 00:00:23,750
+WP DB object to make a raw query.
+
+4
+00:00:24,230 --> 00:00:27,670
+This query simply gets the number of readings a recipe has.
+
+5
+00:00:27,950 --> 00:00:33,140
+I'm going to add some line breaks before and after this query so that you can see it more clearly,
+
+6
+00:00:33,830 --> 00:00:35,310
+just like any other query.
+
+7
+00:00:35,420 --> 00:00:38,870
+It's important to sanitize any data we add to it.
+
+8
+00:00:39,170 --> 00:00:45,140
+We should always take the steps necessary to secure our plugins and theme's WordPress has a method for
+
+9
+00:00:45,140 --> 00:00:47,900
+securing queries by providing the proper method.
+
+10
+00:00:48,350 --> 00:00:52,670
+This method works similarly to paedos prepared statements.
+
+11
+00:00:53,150 --> 00:00:55,640
+They aren't hard to understand or use.
+
+12
+00:00:55,910 --> 00:00:59,520
+This method will simply sanitize a query before it's executed.
+
+13
+00:00:59,960 --> 00:01:05,480
+This method requires two things the query itself and the data that should be sanitized.
+
+14
+00:01:06,020 --> 00:01:07,390
+Let's prepare this query.
+
+15
+00:01:07,520 --> 00:01:08,470
+It's very simple.
+
+16
+00:01:08,690 --> 00:01:14,750
+First, we're going to wrap this query around the method from the WP DB object called Prepare.
+
+17
+00:01:16,920 --> 00:01:20,430
+I'm going to format this a bit by putting the query on its own line.
+
+18
+00:01:20,940 --> 00:01:22,920
+This method has two parameters.
+
+19
+00:01:23,100 --> 00:01:28,610
+It accepts a query as the first parameter, and then the second parameter is the data to sanitize.
+
+20
+00:01:28,950 --> 00:01:34,590
+If we have more than one piece of data like in our query, then we can keep passing in more data.
+
+21
+00:01:35,340 --> 00:01:39,690
+This function is pretty flexible and can grow to as many parameters as we need it to.
+
+22
+00:01:40,140 --> 00:01:46,140
+There are two pieces of variables I want to sanitize, which is the post ID and the IP.
+
+23
+00:01:46,620 --> 00:01:48,030
+Pass these in like so.
+
+24
+00:01:52,800 --> 00:01:58,750
+This won't work just yet, this method has our query and the data, but they're not tied together.
+
+25
+00:01:59,070 --> 00:02:01,890
+How does it know where to place the sanitized data?
+
+26
+00:02:02,190 --> 00:02:06,180
+Well, we'll need to use the special placeholders created by WordPress.
+
+27
+00:02:06,480 --> 00:02:14,220
+There are the usual placeholders, percent X, percent D and percent F, where percent s is for string's
+
+28
+00:02:14,220 --> 00:02:18,260
+percent D is for integers and percent F is for floating numbers.
+
+29
+00:02:18,930 --> 00:02:21,660
+Replace these values with the correct placeholders.
+
+30
+00:02:21,900 --> 00:02:27,030
+The post ID should be percent D and the IP should be percent s.
+
+31
+00:02:29,540 --> 00:02:30,200
+That's it.
+
+32
+00:02:30,470 --> 00:02:36,320
+This method will take in all this information and then return a sanitized query for the actual method
+
+33
+00:02:36,320 --> 00:02:37,500
+that will run this query.
+
+34
+00:02:38,240 --> 00:02:39,950
+Let's try checking out a recipe.
+
+35
+00:02:39,950 --> 00:02:42,380
+Now, here's a recipe we made earlier.
+
+36
+00:02:42,560 --> 00:02:44,740
+So far, we have no errors.
+
+37
+00:02:44,960 --> 00:02:48,020
+Let's try reading this recipe and refreshing the page.
+
+38
+00:02:50,340 --> 00:02:56,700
+Still no heirs and orating was saved using prepared statements is one of the best ways to protect yourself
+
+39
+00:02:56,700 --> 00:02:58,200
+against SQL injections.
+
+40
+00:02:58,530 --> 00:03:04,490
+Prepared statements should be used for sequel queries for methods like the insert or delete method.
+
+41
+00:03:04,680 --> 00:03:09,270
+The WP DB object will already create a sanitized query for you.
+
+42
+00:03:09,930 --> 00:03:11,510
+Here's what I want you to do now.
+
+43
+00:03:11,700 --> 00:03:16,890
+I want you to go through our plugin and look for more raw queries and prepare them like we did with
+
+44
+00:03:16,890 --> 00:03:17,550
+this query.
+

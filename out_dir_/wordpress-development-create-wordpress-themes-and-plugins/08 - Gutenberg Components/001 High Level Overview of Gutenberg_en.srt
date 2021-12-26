@@ -1,0 +1,388 @@
+1
+00:00:07,580 --> 00:00:13,940
+Welcome in this section, we're going to be exploring other blocks provided by WordPress at this point,
+
+2
+00:00:14,030 --> 00:00:18,930
+he should be comfortable with the basic concepts of Gutenberg development in this lecture.
+
+3
+00:00:18,980 --> 00:00:22,180
+I'm going to give you a high level overview of Gutenberg.
+
+4
+00:00:22,760 --> 00:00:23,480
+Right now.
+
+5
+00:00:23,490 --> 00:00:26,120
+I'm on the Gutenberg GitHub repository.
+
+6
+00:00:26,480 --> 00:00:29,600
+Gutenberg split's itself up into multiple modules.
+
+7
+00:00:29,840 --> 00:00:33,340
+All these modules can be found inside the packages directory.
+
+8
+00:00:33,680 --> 00:00:37,430
+It splits itself up to make things easier to manage and categorize.
+
+9
+00:00:37,970 --> 00:00:43,380
+There are a couple of directories here we've skipped over or haven't gone over yet to start things off.
+
+10
+00:00:43,430 --> 00:00:47,210
+I'll briefly go over the blocks and components folder again.
+
+11
+00:00:47,900 --> 00:00:49,120
+The Blocks folder.
+
+12
+00:00:49,120 --> 00:00:52,670
+It contains components related to the Gutenberg Ed itself.
+
+13
+00:00:53,040 --> 00:00:58,580
+A lot of the components here are only meant for the Gutenberg editor, but there isn't anything stopping
+
+14
+00:00:58,580 --> 00:01:00,320
+you from using them in other areas.
+
+15
+00:01:00,890 --> 00:01:06,500
+The components folder contains another set of components, but these are very generic components.
+
+16
+00:01:06,890 --> 00:01:11,320
+Currently they're used for the Gutenberg editor, but they can be used outside of it.
+
+17
+00:01:11,660 --> 00:01:17,330
+There's a possibility that the whole WordPress admin dashboard will be turned into a single page app
+
+18
+00:01:17,600 --> 00:01:18,740
+to prepare for that.
+
+19
+00:01:18,830 --> 00:01:23,060
+Certain components have been made into a generic one so that they can be reused.
+
+20
+00:01:23,240 --> 00:01:24,680
+You'll find most of them here.
+
+21
+00:01:27,000 --> 00:01:32,450
+The data folder contains the functionality for creating, managing and storing data.
+
+22
+00:01:32,730 --> 00:01:38,640
+If you're familiar with react, then you should feel right at home as WordPress uses a redux like management
+
+23
+00:01:38,640 --> 00:01:39,120
+system.
+
+24
+00:01:39,480 --> 00:01:43,680
+If you were to read through this, a worm that'll come up often is state.
+
+25
+00:01:46,180 --> 00:01:52,330
+A state is simply an object that contains the current settings of the application, the state will determine
+
+26
+00:01:52,330 --> 00:01:54,500
+how an application behaves and renders.
+
+27
+00:01:54,790 --> 00:01:56,530
+Let me explain with an analogy.
+
+28
+00:01:57,160 --> 00:01:59,490
+Take a moment to think about water and ice.
+
+29
+00:01:59,650 --> 00:02:01,280
+What's the difference between the two?
+
+30
+00:02:01,600 --> 00:02:05,330
+The difference would be their temperature just by changing the temperature.
+
+31
+00:02:05,410 --> 00:02:07,900
+You can change how these two appear and behave.
+
+32
+00:02:08,110 --> 00:02:12,100
+If you were to place water inside a freezer, then it would turn into ice.
+
+33
+00:02:12,370 --> 00:02:16,610
+If we were to place it on a hot stove, then it would evaporate and turn into gas.
+
+34
+00:02:17,200 --> 00:02:21,060
+The state changes just by changing one value the temperature.
+
+35
+00:02:21,430 --> 00:02:24,760
+This idea of changing state applies to programs.
+
+36
+00:02:26,480 --> 00:02:32,390
+Let's say you had a traditional site, if the user is viewing the homepage, then they're on the home
+
+37
+00:02:32,390 --> 00:02:32,780
+state.
+
+38
+00:02:33,080 --> 00:02:36,830
+If they're viewing the about page, then they're on the about state.
+
+39
+00:02:37,160 --> 00:02:41,410
+If they're viewing the my account page, then the state would be my account.
+
+40
+00:02:41,720 --> 00:02:45,920
+You get the idea the state can trickle down to other components.
+
+41
+00:02:46,160 --> 00:02:49,040
+For example, you may have a menu component.
+
+42
+00:02:49,340 --> 00:02:53,090
+If the user is logged in, then the state would contain that information.
+
+43
+00:02:53,390 --> 00:02:57,260
+If they are, then you can have the menu display links to their account.
+
+44
+00:02:57,530 --> 00:03:01,180
+If they weren't, then you would display log in and register links.
+
+45
+00:03:01,730 --> 00:03:06,800
+The code inside the data directory contains how the state is managed and controlled.
+
+46
+00:03:07,250 --> 00:03:12,230
+If attributes aren't cutting it for you and you need more control over the state, then you should read
+
+47
+00:03:12,230 --> 00:03:15,440
+up on the information here to understand how the state works.
+
+48
+00:03:17,710 --> 00:03:20,440
+The next directory is the date directory.
+
+49
+00:03:20,830 --> 00:03:24,430
+One of the most frustrating things about programming is using dates.
+
+50
+00:03:24,670 --> 00:03:30,220
+If you've been programming for a while, then you may know how hard it can be to use dates in any programming
+
+51
+00:03:30,220 --> 00:03:30,800
+language.
+
+52
+00:03:31,180 --> 00:03:36,480
+You have to account for things like formatting, time zones, daylight savings time, et cetera.
+
+53
+00:03:37,030 --> 00:03:38,470
+Gutenberg has you covered.
+
+54
+00:03:38,710 --> 00:03:43,930
+The date code is built on top of the most popular JavaScript time library moments.
+
+55
+00:03:43,940 --> 00:03:49,780
+James, for the most part, you probably won't have to worry about this, but knowing it's around can
+
+56
+00:03:49,780 --> 00:03:51,490
+be helpful in future projects.
+
+57
+00:03:53,720 --> 00:04:00,510
+Up next is the editor directory, this directory will contain code specifically to the editor itself.
+
+58
+00:04:00,920 --> 00:04:04,380
+This will take care of setting up the editor and putting everything together.
+
+59
+00:04:04,730 --> 00:04:09,730
+If you scroll down, then you'll find this diagram here that explains how Gutenberg works.
+
+60
+00:04:10,310 --> 00:04:11,600
+Let's review it together.
+
+61
+00:04:11,990 --> 00:04:17,720
+Things usually start at the saved post point, which is the post content saved in the database.
+
+62
+00:04:18,050 --> 00:04:22,460
+When the editor is initialized, Gutenberg will grab the data and process.
+
+63
+00:04:22,460 --> 00:04:27,620
+The Block attributes its parsing the comments, attributes and elements for the data.
+
+64
+00:04:28,280 --> 00:04:32,990
+This gets fed into the post state we just discussed state earlier.
+
+65
+00:04:33,260 --> 00:04:39,410
+The way state is used here is to determine what data gets displayed on the ED and also determines what
+
+66
+00:04:39,410 --> 00:04:40,640
+settings get displayed.
+
+67
+00:04:41,000 --> 00:04:45,920
+If a user clicks on a paragraph block, then the settings for that block will be displayed.
+
+68
+00:04:46,520 --> 00:04:50,810
+All this data gets turned into blocks and is then rendered on the visual editor.
+
+69
+00:04:51,200 --> 00:04:55,100
+Whenever you make changes, the changes get fed into the state again.
+
+70
+00:04:55,490 --> 00:04:59,390
+The state is constantly changing with every keystroke and mouse click.
+
+71
+00:04:59,720 --> 00:05:01,310
+The cycle is always running.
+
+72
+00:05:01,310 --> 00:05:07,820
+Whenever you edit your post, the minute you press, update or publish the state data gets serialized
+
+73
+00:05:07,820 --> 00:05:09,530
+and saved into the database.
+
+74
+00:05:09,860 --> 00:05:13,340
+This flow of data is common for most JavaScript applications.
+
+75
+00:05:13,610 --> 00:05:17,330
+If you're a JavaScript developer, then this isn't anything new.
+
+76
+00:05:19,610 --> 00:05:25,250
+All right, let's keep moving forward, the last directory we'll explore is the Element directory.
+
+77
+00:05:25,550 --> 00:05:29,830
+The Element Directory contains code for creating HTML elements.
+
+78
+00:05:30,170 --> 00:05:33,800
+That's really strange to hear because REACT already handles that.
+
+79
+00:05:34,400 --> 00:05:40,610
+If you can recall a few sections ago I showed you how to create elements with plain JavaScript using
+
+80
+00:05:40,610 --> 00:05:42,140
+the create element function.
+
+81
+00:05:42,570 --> 00:05:45,470
+There's no need for WordPress to implement this itself.
+
+82
+00:05:46,040 --> 00:05:49,670
+However, WordPress isn't trying to write this from scratch.
+
+83
+00:05:49,850 --> 00:05:51,970
+Instead, it's building on top of it.
+
+84
+00:05:52,460 --> 00:05:58,820
+The reason it does this is so that if react was ever to change its API, then WordPress can make sure
+
+85
+00:05:58,820 --> 00:06:01,030
+that the code you write is backwards compatible.
+
+86
+00:06:01,700 --> 00:06:06,590
+Let's check out the code, open the react JS file immediately.
+
+87
+00:06:06,620 --> 00:06:12,470
+You'll see WordPress is importing a lot of the functions from react like create element, clone element,
+
+88
+00:06:12,470 --> 00:06:18,020
+render, etc. Then if you scroll down you'll see that it's exporting those functions.
+
+89
+00:06:18,620 --> 00:06:25,630
+By doing that, you can call these functions by typing WP elements, create element instead of react
+
+90
+00:06:25,760 --> 00:06:26,600
+create element.
+
+91
+00:06:27,060 --> 00:06:31,120
+This allows for the code to be backwards compatible if we act ever changes.
+
+92
+00:06:31,730 --> 00:06:34,550
+This is the case for most functions being exported.
+
+93
+00:06:34,880 --> 00:06:40,790
+For the most part, you won't have to worry much if we act ever changes by having this code, you can
+
+94
+00:06:40,790 --> 00:06:43,620
+continue to use the same functions for years to come.
+
+95
+00:06:44,030 --> 00:06:46,640
+Being a master of react isn't necessary.
+
+96
+00:06:47,120 --> 00:06:50,660
+In the next lecture, I'll be showing you how to use these functions.
+
+97
+00:06:50,870 --> 00:06:51,800
+I'll see you there.
+

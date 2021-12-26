@@ -1,0 +1,90 @@
+
+001 Template-Hierarchy
+https://developer.wordpress.org/themes/basics/template-hierarchy/
+
+001 WP-Hierarchy
+https://wphierarchy.com/
+
+001 Theme-Development
+https://codex.wordpress.org/Theme_Development
+
+002 comment-form-Function
+https://developer.wordpress.org/reference/functions/comment_form/
+
+003 the-author-meta-Function
+https://codex.wordpress.org/Function_Reference/the_author_meta
+
+003 get-avatar-Function
+https://codex.wordpress.org/Function_Reference/get_avatar
+
+004 WP-Query-Class
+https://codex.wordpress.org/Class_Reference/WP_Query
+
+004 Global-post
+https://codex.wordpress.org/Function_Reference/$post
+
+004 wp-reset-postdata-Function
+https://codex.wordpress.org/Function_Reference/wp_reset_postdata
+
+004 WP-Query-Class-Developer
+https://developer.wordpress.org/reference/classes/wp_query/
+
+004 the-post-Function
+https://developer.wordpress.org/reference/functions/the_post/
+
+005 Theme-Development
+https://codex.wordpress.org/Theme_Development
+
+005 rewind-posts-Function
+https://codex.wordpress.org/Function_Reference/rewind_posts
+
+005 WP-Subtitle-Plugin
+https://wordpress.org/plugins/wp-subtitle/
+
+006 the-archive-title-Function
+https://developer.wordpress.org/reference/functions/the_archive_title/
+
+006 get-template-part-Function
+https://developer.wordpress.org/reference/functions/get_template_part/
+
+008 get-allowed-mime-types-Function
+https://codex.wordpress.org/Function_Reference/get_allowed_mime_types
+
+009 Page-Templates
+https://developer.wordpress.org/themes/template-files-section/page-template-files/
+
+010 bloginfo-Function
+https://developer.wordpress.org/reference/functions/bloginfo/
+
+010 WP-Quads-Plugin
+https://wordpress.org/plugins/quick-adsense-reloaded/
+
+010 Placeholder
+https://placeholder.com/
+
+011 WP-Customize-Manager-Class
+https://codex.wordpress.org/Class_Reference/WP_Customize_Manager
+
+011 add-setting-Method
+https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_setting
+
+011 add-control-Method
+https://codex.wordpress.org/Class_Reference/WP_Customize_Manager/add_control
+
+015 add-theme-support-Function
+https://developer.wordpress.org/reference/functions/add_theme_support/
+
+015 Starter-Content
+https://make.wordpress.org/core/2016/11/30/starter-content-for-themes-in-4-7/
+
+016 ThemeForest
+https://themeforest.net/
+
+016 Conditional-Tags
+https://developer.wordpress.org/themes/basics/conditional-tags/
+
+017 Language-Attributes
+https://www.w3.org/International/questions/qa-lang-why
+
+017 bloginfo-Function
+https://developer.wordpress.org/reference/functions/bloginfo/

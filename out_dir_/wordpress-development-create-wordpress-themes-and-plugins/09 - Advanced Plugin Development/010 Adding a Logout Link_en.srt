@@ -1,0 +1,264 @@
+1
+00:00:07,360 --> 00:00:10,400
+The last thing I want to do is create a logout link.
+
+2
+00:00:10,660 --> 00:00:16,390
+There was already a logout link inside the admin WordPress bar, but I prefer to create one inside the
+
+3
+00:00:16,390 --> 00:00:16,790
+theme.
+
+4
+00:00:17,140 --> 00:00:19,140
+There are two ways we can go about this.
+
+5
+00:00:19,330 --> 00:00:22,750
+We could edit the theme and add the link, or we can use hooks.
+
+6
+00:00:23,200 --> 00:00:27,430
+In our case, either solution is valid since we're the creator of the theme.
+
+7
+00:00:27,730 --> 00:00:30,430
+But Hooke's work universally and we'll scale better.
+
+8
+00:00:30,670 --> 00:00:34,410
+We'll go with the hooks root inside the main plug and file.
+
+9
+00:00:34,450 --> 00:00:38,740
+I'm going to add a new filter hook called WP NAV Menu Items.
+
+10
+00:00:42,640 --> 00:00:47,790
+This hook is triggered when WordPress begins to load in the menu items for a theme navigation menu,
+
+11
+00:00:48,100 --> 00:00:55,270
+it'll be passed in the raw HTML menu items for us to manipulate the name of the function I want to call
+
+12
+00:00:55,270 --> 00:01:00,670
+will be called Jiyu new NAV menu items with a priority of nine nine nine.
+
+13
+00:01:03,020 --> 00:01:08,800
+I set the priority to a high number, as I want the logout link to be placed at the end of the menu,
+
+14
+00:01:09,350 --> 00:01:11,270
+I'm going to create a new file.
+
+15
+00:01:11,270 --> 00:01:17,670
+Inside the includes a front folder called Logout Dash linked up and define the function here.
+
+16
+00:01:18,140 --> 00:01:20,000
+Lastly, make sure to include it.
+
+17
+00:01:25,600 --> 00:01:31,180
+Since this is a filter, function will be passed in a value and be expected to return it, the value
+
+18
+00:01:31,180 --> 00:01:35,310
+that's passed in is items, which is the raw HTML menu items.
+
+19
+00:01:35,650 --> 00:01:38,920
+The first thing I'm going to do is create a conditional statement.
+
+20
+00:01:39,200 --> 00:01:41,590
+I'm going to check if the user is logged in.
+
+21
+00:01:41,950 --> 00:01:46,180
+I'll be using the IS user logged in function to accomplish this.
+
+22
+00:01:48,450 --> 00:01:54,390
+I want to check if they're not logged in, if they aren't, then I'm just going to return the items
+
+23
+00:01:54,390 --> 00:01:55,110
+as it is.
+
+24
+00:01:55,470 --> 00:01:57,690
+There's no point in displaying the logout link.
+
+25
+00:01:57,690 --> 00:01:59,730
+If they're not logged in in the first place.
+
+26
+00:02:00,360 --> 00:02:06,180
+If they are logged in, then I'm going to generate the link to the log out page, create a variable
+
+27
+00:02:06,180 --> 00:02:07,250
+named New Link.
+
+28
+00:02:07,500 --> 00:02:11,820
+I'm going to set its value to a pair of opening and closing line tags.
+
+29
+00:02:14,090 --> 00:02:20,990
+In between these tags, I'm going to call the function WP log in out this function will generate a link
+
+30
+00:02:20,990 --> 00:02:23,720
+to the login and log out pages of WordPress.
+
+31
+00:02:24,050 --> 00:02:29,210
+However, since we're only displaying this link, if the user is logged in, it will always show the
+
+32
+00:02:29,210 --> 00:02:29,810
+log out.
+
+33
+00:02:30,590 --> 00:02:31,820
+This is fine by us.
+
+34
+00:02:32,060 --> 00:02:35,600
+This function has two parameters which will want to take advantage of.
+
+35
+00:02:36,230 --> 00:02:39,470
+The first parameter is the URL to redirect the user to.
+
+36
+00:02:39,470 --> 00:02:44,180
+If they successfully log out, I'm going to set this to the home URL function.
+
+37
+00:02:44,570 --> 00:02:50,510
+I'll pass in a forward slash to indicate I want the Eurail to be the root URL and that should set up
+
+38
+00:02:50,510 --> 00:02:51,340
+the redirection.
+
+39
+00:02:52,010 --> 00:02:55,640
+The second parameter is whether this link should be echoed out or not.
+
+40
+00:02:56,030 --> 00:03:02,170
+Since this is a filter function and I'm returning data, then I want this link to be returned by default.
+
+41
+00:03:02,270 --> 00:03:05,570
+This will be set to true, which will echo out the link.
+
+42
+00:03:06,020 --> 00:03:12,170
+I'm going to change this to false to return the link now that the link is generated properly.
+
+43
+00:03:12,290 --> 00:03:18,470
+All we have to do is return the items and append the new link variable along with these links.
+
+44
+00:03:20,890 --> 00:03:26,890
+After doing so, let's refresh the page and see what we get, the logout link should appear if you're
+
+45
+00:03:26,890 --> 00:03:27,470
+logged in.
+
+46
+00:03:27,820 --> 00:03:29,860
+There is one noticeable problem, though.
+
+47
+00:03:30,100 --> 00:03:34,780
+The logout link appears in both the primary and secondary navigation menus.
+
+48
+00:03:35,080 --> 00:03:36,390
+This is a bit redundant.
+
+49
+00:03:36,640 --> 00:03:42,070
+The filter hook we're using will apply our changes to all menu items, regardless of their status or
+
+50
+00:03:42,070 --> 00:03:42,660
+location.
+
+51
+00:03:43,300 --> 00:03:48,970
+Something I do want to know is that this filter hook will only apply to user generated menu items.
+
+52
+00:03:49,240 --> 00:03:55,220
+As you may know, WordPress will automatically generate a menu item if a user doesn't have one set up.
+
+53
+00:03:55,690 --> 00:03:59,290
+This is usually the case on Fresh Insulation's of WordPress.
+
+54
+00:03:59,590 --> 00:04:05,740
+Anyway, let's assume the user created a menu and we want the logout link to appear on the secondary
+
+55
+00:04:05,740 --> 00:04:10,980
+menu item only to force the link to appear in only the secondary menu.
+
+56
+00:04:10,990 --> 00:04:15,530
+We only have to make one small change back inside the main plugin file.
+
+57
+00:04:15,550 --> 00:04:17,560
+We'll have to update the filter hook.
+
+58
+00:04:17,890 --> 00:04:19,630
+This filter hook is dynamic.
+
+59
+00:04:19,930 --> 00:04:22,870
+This is optional though, to use the dynamic version.
+
+60
+00:04:22,870 --> 00:04:28,060
+All you have to do is add the menu log right after the WP nav menu phrase.
+
+61
+00:04:28,330 --> 00:04:30,460
+In this case it would be secondary.
+
+62
+00:04:33,110 --> 00:04:38,900
+Just like that, the links should appear only on the secondary menu, refresh the page to see the final
+
+63
+00:04:38,900 --> 00:04:40,600
+results that should do it.
+
+64
+00:04:40,790 --> 00:04:46,310
+If you want to learn more about the log in our function, then check out the resource section of this
+
+65
+00:04:46,310 --> 00:04:46,820
+lecture.
+
+66
+00:04:48,110 --> 00:04:48,660
+Oh.
+

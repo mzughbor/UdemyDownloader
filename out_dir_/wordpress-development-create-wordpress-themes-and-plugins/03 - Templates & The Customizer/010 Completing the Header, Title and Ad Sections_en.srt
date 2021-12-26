@@ -1,0 +1,560 @@
+1
+00:00:07,340 --> 00:00:09,210
+We're almost done right now.
+
+2
+00:00:09,260 --> 00:00:10,470
+I'm in the header file.
+
+3
+00:00:10,730 --> 00:00:13,590
+We still have some static sections inside the template.
+
+4
+00:00:14,150 --> 00:00:15,860
+First, let's tackle the title.
+
+5
+00:00:16,129 --> 00:00:19,670
+WordPress provides two solutions for adding titles to your head.
+
+6
+00:00:20,110 --> 00:00:24,970
+The first solution is a bit outdated, and that is by using the WP title function.
+
+7
+00:00:25,430 --> 00:00:29,920
+This function is to be deprecated, but it is still available for backwards compatibility.
+
+8
+00:00:30,290 --> 00:00:31,820
+I do not suggest using it.
+
+9
+00:00:32,030 --> 00:00:35,050
+The recommended solution is to add theme support for it.
+
+10
+00:00:35,420 --> 00:00:40,520
+I'm going to delete the title tags from the head tag and then open the setup file.
+
+11
+00:00:40,970 --> 00:00:45,260
+I'm going to call the function, add theme support and pass entitled hash tag.
+
+12
+00:00:47,510 --> 00:00:54,020
+Just like that, WordPress will always generate the title tag for you, any SEO plugins will also be
+
+13
+00:00:54,020 --> 00:00:56,060
+able to make modifications if they wish.
+
+14
+00:00:56,630 --> 00:00:58,700
+Next up is the logo itself.
+
+15
+00:00:59,000 --> 00:01:01,790
+The logo can either be text or an image.
+
+16
+00:01:02,120 --> 00:01:03,980
+Currently, we only have text.
+
+17
+00:01:04,190 --> 00:01:06,320
+We are also willing to accept images.
+
+18
+00:01:06,560 --> 00:01:11,570
+I'm going to call the function app theme support again and pass in custom dash logo.
+
+19
+00:01:13,840 --> 00:01:17,480
+WordPress comes with a feature for users to upload their own logos.
+
+20
+00:01:17,890 --> 00:01:20,720
+We don't have to make a form or handle the upload.
+
+21
+00:01:21,070 --> 00:01:23,180
+You'll see how this works in just a moment.
+
+22
+00:01:23,800 --> 00:01:28,780
+Go back to the header template and look for the div tag with the idea of logo.
+
+23
+00:01:29,140 --> 00:01:31,660
+Inside this tag, add a conditional statement.
+
+24
+00:01:33,920 --> 00:01:39,200
+To check if the user has uploaded a logo, you have to use the function, has a custom logo.
+
+25
+00:01:41,530 --> 00:01:47,130
+This function will return true if the user uploaded a logo, otherwise it'll return false.
+
+26
+00:01:47,710 --> 00:01:51,700
+If there is a logo, then we can call a function called the custom logo.
+
+27
+00:01:52,120 --> 00:01:55,720
+This function will output the image along with a link to the homepage.
+
+28
+00:01:56,050 --> 00:02:00,720
+In some situations, the user might not have a logo ready when they set up the theme.
+
+29
+00:02:01,150 --> 00:02:03,600
+Whatever their reason, maybe you should have a backup.
+
+30
+00:02:04,210 --> 00:02:07,690
+Let's add the else block and manually create a link.
+
+31
+00:02:08,030 --> 00:02:10,810
+I'm going to use the static version as a template.
+
+32
+00:02:16,780 --> 00:02:22,300
+I'm going to replace the link and echo out the value returned by the function home yourself.
+
+33
+00:02:22,780 --> 00:02:28,090
+I'm going to pass in a forward slash so we can specify that we only want the root you out.
+
+34
+00:02:30,640 --> 00:02:34,210
+Inside the tanks, I'm going to call the blog info function.
+
+35
+00:02:36,350 --> 00:02:41,810
+This function takes in a string, which is what pieces of information about the blog we want in the
+
+36
+00:02:41,810 --> 00:02:46,980
+resource section of this lecture, I provide a link to more info about this function here.
+
+37
+00:02:47,030 --> 00:02:53,630
+You'll find a list of values you can pass in the very first one is name, which returns the name of
+
+38
+00:02:53,630 --> 00:02:54,060
+the site.
+
+39
+00:02:54,440 --> 00:02:55,820
+So let's pass that in.
+
+40
+00:02:58,020 --> 00:03:03,990
+This function will automatically output the value, if you ever want the value returned, then you just
+
+41
+00:03:03,990 --> 00:03:06,210
+use the get block info function.
+
+42
+00:03:06,390 --> 00:03:09,800
+Let's refresh the page and check if everything is working so far.
+
+43
+00:03:10,080 --> 00:03:13,280
+If you look at the title, you'll notice it updates accordingly.
+
+44
+00:03:13,650 --> 00:03:19,980
+The logo is also showing our text to change the logo to an image you need to click this button called
+
+45
+00:03:19,980 --> 00:03:20,850
+Customize.
+
+46
+00:03:21,330 --> 00:03:26,850
+This will take you to the customizer, which is a way to edit your site while also viewing the changes
+
+47
+00:03:26,850 --> 00:03:29,610
+in real time under site identity.
+
+48
+00:03:29,640 --> 00:03:31,900
+You will find the form for updating the logo.
+
+49
+00:03:32,520 --> 00:03:35,470
+I don't have a logo image, so I will leave this alone.
+
+50
+00:03:35,820 --> 00:03:39,930
+The next two things I want to do is update the menu and fix this advertising spot.
+
+51
+00:03:40,620 --> 00:03:43,770
+Before I do that, I want to talk about this customizer.
+
+52
+00:03:43,980 --> 00:03:49,170
+In the past, the WordPress customizer was really hard to work with and did not have as much features.
+
+53
+00:03:49,500 --> 00:03:54,330
+This may developers make their own settings and options page to change how the theme functions.
+
+54
+00:03:54,870 --> 00:04:00,630
+However, in recent updates, the customizer is starting to become the main way to modify a theme.
+
+55
+00:04:01,080 --> 00:04:04,350
+A lot of theme developers are opting to use the customizer.
+
+56
+00:04:04,710 --> 00:04:07,610
+We will definitely be working with the customizer soon.
+
+57
+00:04:08,540 --> 00:04:15,680
+For now, let's focus on this secondary menu on the top, we've already created a menu before, so try
+
+58
+00:04:15,680 --> 00:04:17,269
+creating another one yourself.
+
+59
+00:04:18,800 --> 00:04:21,750
+If you aren't able to do it, then let's try it together.
+
+60
+00:04:22,070 --> 00:04:26,030
+I'm not going to go over every detail so will fly by this quickly.
+
+61
+00:04:26,690 --> 00:04:31,310
+First in the setup function, use the registered NAV menu function.
+
+62
+00:04:33,570 --> 00:04:38,820
+I'm going to reuse the previous code and replace these values with the word secondary like so.
+
+63
+00:04:40,990 --> 00:04:43,310
+With the menu registered, we can now display it.
+
+64
+00:04:43,600 --> 00:04:49,420
+I'm going to go into the admin dashboard and create a new menu and assign it to the secondary location.
+
+65
+00:04:54,760 --> 00:05:00,280
+Inside the header template, I'm going to copy and paste the last menu into the other menu spot.
+
+66
+00:05:08,280 --> 00:05:14,340
+I'm going to replace these two values with the secondary menu and then set the depth to one, since
+
+67
+00:05:14,340 --> 00:05:16,910
+I don't want drop downs for the secondary menu.
+
+68
+00:05:19,280 --> 00:05:25,760
+Refresh the page and you should now see the secondary menu being displayed so far, everything is really
+
+69
+00:05:25,760 --> 00:05:26,430
+coming together.
+
+70
+00:05:27,230 --> 00:05:30,770
+This ad spot has been broken for some time, so let's fix that.
+
+71
+00:05:31,160 --> 00:05:36,680
+Previously, we used the plug in WP subtitle to add subtitles to our posts.
+
+72
+00:05:36,980 --> 00:05:40,700
+We will be doing something similar to this and the resource section.
+
+73
+00:05:40,700 --> 00:05:47,410
+I provide a link to the WP Quad's plug this plug and handles advertisement for WordPress sites.
+
+74
+00:05:47,630 --> 00:05:50,300
+It's a really great plug in that is updated constantly.
+
+75
+00:05:50,660 --> 00:05:53,000
+The best part is that it's developer friendly.
+
+76
+00:05:53,330 --> 00:05:57,680
+We can create our own custom ad spots and have it managed by this plug in.
+
+77
+00:05:58,100 --> 00:06:01,150
+This frees us from having to handle all the logic ourselves.
+
+78
+00:06:01,730 --> 00:06:05,930
+I want you to install and activate this plug in through the admin dashboard.
+
+79
+00:06:11,710 --> 00:06:16,460
+After doing so, look inside the WP dash contents plugins folder.
+
+80
+00:06:16,780 --> 00:06:19,140
+This is where all your plug ins are installed.
+
+81
+00:06:19,480 --> 00:06:23,050
+The quick dash ad sense Dash Reloaded plug in is the plug.
+
+82
+00:06:23,050 --> 00:06:28,180
+And we just installed open the includes API file.
+
+83
+00:06:28,870 --> 00:06:33,850
+You'll notice in these comments, the developer left notes on how to integrate this plug in into your
+
+84
+00:06:33,850 --> 00:06:34,180
+theme.
+
+85
+00:06:34,660 --> 00:06:36,490
+There are two steps you need to do.
+
+86
+00:06:36,820 --> 00:06:41,700
+The first step is to tell WP Quad's that you have a custom ad spot and your theme.
+
+87
+00:06:42,280 --> 00:06:45,850
+The second step would be to instruct it where to display the ad spot.
+
+88
+00:06:46,600 --> 00:06:51,080
+I'm going to register this ad spot in the setup function instead of the functions file.
+
+89
+00:06:51,610 --> 00:06:56,720
+The reason I'm doing this is because the setup function is called right after our theme has been loaded.
+
+90
+00:06:57,280 --> 00:07:02,620
+Therefore, I know nothing has been officially processed unless it was put in the function file.
+
+91
+00:07:02,920 --> 00:07:04,840
+So it's technically the same thing.
+
+92
+00:07:05,590 --> 00:07:08,110
+The only difference is that it's in separate files.
+
+93
+00:07:08,380 --> 00:07:10,890
+This makes our code look a whole lot cleaner.
+
+94
+00:07:11,200 --> 00:07:15,160
+I'm going to copy and paste the commented code into this function like so.
+
+95
+00:07:17,430 --> 00:07:21,860
+I'm only going to have one spot, you'll see that this code does two things.
+
+96
+00:07:22,500 --> 00:07:29,180
+First, we use a conditional statement to check if the Function Quad's Register ad exists this way.
+
+97
+00:07:29,220 --> 00:07:32,310
+We know that the WP Quad's plug in is activated.
+
+98
+00:07:32,910 --> 00:07:37,550
+Then we call the Function Quad's Register ad, which has two parameters.
+
+99
+00:07:37,860 --> 00:07:40,530
+The first is the idea of the location.
+
+100
+00:07:40,920 --> 00:07:45,840
+I'm going to call this Udemy header and for the description it will be Udemy header position.
+
+101
+00:07:48,020 --> 00:07:54,710
+With this in place, questions will now know we have an ad spot inside the admin dashboard, you'll
+
+102
+00:07:54,710 --> 00:07:59,280
+find the WP Quad's menu under the ad code section.
+
+103
+00:07:59,300 --> 00:08:01,310
+I'm going to paste in an image tag.
+
+104
+00:08:07,070 --> 00:08:13,340
+The image that I'm using is from a site called Placeholder It, I'll provide a link to this image.
+
+105
+00:08:13,610 --> 00:08:18,740
+This site allows you to modify the size of the image and create a temporary placeholder.
+
+106
+00:08:19,130 --> 00:08:20,900
+This is really great for web development.
+
+107
+00:08:23,190 --> 00:08:26,230
+Save the changes and then switch to the position tab.
+
+108
+00:08:26,550 --> 00:08:29,870
+You'll notice that our new position is showing up at the very bottom.
+
+109
+00:08:30,480 --> 00:08:33,820
+Activate this position and assign it to the first ad we created.
+
+110
+00:08:34,230 --> 00:08:35,850
+Make sure to save your changes.
+
+111
+00:08:38,080 --> 00:08:44,290
+Our ad is ready, and now all we have to do is display it inside the header template, look for the
+
+112
+00:08:44,290 --> 00:08:50,770
+div tag with the class top dash advert, add a conditional statement that checks for the function Quad's
+
+113
+00:08:50,770 --> 00:08:51,130
+at.
+
+114
+00:08:56,260 --> 00:09:02,470
+Then I'm going to call this function and pass an array with the key location, the name of the location
+
+115
+00:09:02,470 --> 00:09:06,070
+will be the location you passed into the Quad's Register ad function.
+
+116
+00:09:08,190 --> 00:09:13,620
+This function will return the HTML we passed in previously, so we have to echo it out.
+
+117
+00:09:15,850 --> 00:09:16,400
+That's it.
+
+118
+00:09:16,690 --> 00:09:22,570
+Let's check if our ad appears appropriately, just like that, we now have ads on our site with custom
+
+119
+00:09:22,570 --> 00:09:23,350
+locations.
+
+120
+00:09:23,650 --> 00:09:26,960
+This plug in is amazing and it takes care of managing ads.
+
+121
+00:09:27,280 --> 00:09:29,760
+This is the second plugin we've used in our theme.
+
+122
+00:09:30,460 --> 00:09:34,300
+It's extremely common for theme developers to bundle their themes with plug ins.
+
+123
+00:09:34,600 --> 00:09:38,280
+This increases the value of your theme in a future lecture.
+
+124
+00:09:38,320 --> 00:09:41,660
+I will go over how you can bundle plug ins with your theme properly.
+
+125
+00:09:42,340 --> 00:09:47,650
+The reason I'm not showing you now is because I don't want to have to constantly update multiple files
+
+126
+00:09:47,650 --> 00:09:48,850
+whenever we add a plug in.
+
+127
+00:09:49,240 --> 00:09:52,980
+I would rather knock it out all at once when our theme is nearly finished.
+
+128
+00:09:53,560 --> 00:09:58,910
+For now, we will continue working on the header and eventually move to the footer on the header.
+
+129
+00:09:58,960 --> 00:10:02,250
+We have these social icons for these icons.
+
+130
+00:10:02,260 --> 00:10:04,630
+We will be using the word press customizer.
+
+131
+00:10:04,930 --> 00:10:08,870
+This will introduce us to how the customizer works and how to extend it.
+
+132
+00:10:09,580 --> 00:10:11,320
+I do want to give you a warning.
+
+133
+00:10:11,560 --> 00:10:17,290
+So far we've really just been calling functions and using WordPress as templating system to handle a
+
+134
+00:10:17,290 --> 00:10:18,550
+lot of the logic for us.
+
+135
+00:10:19,210 --> 00:10:24,910
+WordPress will still help us with extending the customizer, but we will be writing a lot more code
+
+136
+00:10:24,910 --> 00:10:28,750
+and be focusing more on the code rather than the visual aspect.
+
+137
+00:10:29,020 --> 00:10:35,080
+The customizer can seem overwhelming, but I promise you we will be using it constantly so you will
+
+138
+00:10:35,080 --> 00:10:36,280
+get used to it eventually.
+
+139
+00:10:36,850 --> 00:10:40,310
+I highly recommend you take a break before moving on to the next lecture.
+
+140
+00:10:40,600 --> 00:10:41,230
+See you there.
+

@@ -1,0 +1,416 @@
+1
+00:00:08,230 --> 00:00:13,660
+Let's keep adding on to the block controls component, there's another component WordPress provides
+
+2
+00:00:13,660 --> 00:00:15,760
+called the block alignment component.
+
+3
+00:00:16,360 --> 00:00:18,310
+This is different from the text alignment.
+
+4
+00:00:18,520 --> 00:00:23,030
+The text alignment will align the text while the block alignment will move the block itself.
+
+5
+00:00:23,560 --> 00:00:26,770
+You can have multiple pieces of content inside a block.
+
+6
+00:00:27,070 --> 00:00:30,850
+The block alignment will move everything to the left, center or right.
+
+7
+00:00:31,180 --> 00:00:34,920
+It can even allow four columns in your design to get started.
+
+8
+00:00:34,930 --> 00:00:42,550
+Let's open the index file for the recipe block D structure the WP editor and grab the block alignment
+
+9
+00:00:42,550 --> 00:00:43,570
+toolbar component.
+
+10
+00:00:45,840 --> 00:00:52,650
+Next, let's add the attribute, the name will be block alignment with a type of string and default
+
+11
+00:00:52,650 --> 00:00:53,340
+of wide.
+
+12
+00:00:58,250 --> 00:01:02,790
+Unlike text, moving an entire block will require some six properties.
+
+13
+00:01:03,170 --> 00:01:07,410
+Luckily, WordPress will generate some classes for you to handle moving the block.
+
+14
+00:01:07,760 --> 00:01:09,900
+You'll see what those looked like in just a moment.
+
+15
+00:01:10,250 --> 00:01:13,690
+The wide class is the default class for most blocks.
+
+16
+00:01:14,150 --> 00:01:17,030
+We have the component and we have the attribute ready.
+
+17
+00:01:17,300 --> 00:01:19,880
+Now it's time to add the toolbar to the block.
+
+18
+00:01:20,090 --> 00:01:22,570
+Scroll down to the block controls component.
+
+19
+00:01:22,940 --> 00:01:26,420
+You have the freedom to order your toolbars in any order you like.
+
+20
+00:01:26,660 --> 00:01:31,490
+You can place the block alignment toolbar before or after the text alignment toolbar.
+
+21
+00:01:32,120 --> 00:01:34,940
+I'm going to place it before the text alignment toolbar.
+
+22
+00:01:35,240 --> 00:01:37,850
+Add the component block alignment toolbar.
+
+23
+00:01:40,330 --> 00:01:45,790
+Just like the previous toolbar will need to add the value and on change attributes.
+
+24
+00:01:48,290 --> 00:01:54,320
+Let me show you how to find the values for these attributes, go to the Gutenberg repository, navigate
+
+25
+00:01:54,320 --> 00:01:56,790
+to the Packages Editor's Directorate.
+
+26
+00:01:57,140 --> 00:02:03,710
+This is where code strictly related to the editor is placed inside the source components directory.
+
+27
+00:02:03,830 --> 00:02:06,670
+You will find all the components used within the editor.
+
+28
+00:02:06,950 --> 00:02:10,020
+You'll find the block alignment toolbar component here.
+
+29
+00:02:10,729 --> 00:02:12,710
+There may or may not be a read me file.
+
+30
+00:02:12,860 --> 00:02:16,550
+Not everything in Gutenberg is documented in these cases.
+
+31
+00:02:16,550 --> 00:02:18,600
+You should dig into the index code.
+
+32
+00:02:19,190 --> 00:02:24,140
+There are a couple of things going on here, but the first place you want to look into is the function
+
+33
+00:02:24,140 --> 00:02:24,700
+itself.
+
+34
+00:02:24,980 --> 00:02:30,010
+Remember, the components are just JavaScript functions, even though they're written like HTML.
+
+35
+00:02:30,620 --> 00:02:34,880
+There are some parameters with default values you can safely ignore those.
+
+36
+00:02:35,120 --> 00:02:39,620
+The ones we're required to set are the value and on change parameters.
+
+37
+00:02:39,890 --> 00:02:44,900
+Back inside the script set the value to props on attributes top block alignment.
+
+38
+00:02:47,260 --> 00:02:52,030
+The unchanged change attribute will be set to an arrow function that accepts in the new value.
+
+39
+00:02:55,960 --> 00:03:02,470
+Used the props object and called the set attributes function update, the block alignment attribute.
+
+40
+00:03:04,690 --> 00:03:09,540
+We've created the toolbar, the last step to all of this is to apply it to the block.
+
+41
+00:03:09,820 --> 00:03:11,170
+Here's where things change.
+
+42
+00:03:11,380 --> 00:03:14,320
+The block alignment changes the block itself.
+
+43
+00:03:14,650 --> 00:03:18,710
+The block in the editor is more complex than the block that appears on the front end.
+
+44
+00:03:19,390 --> 00:03:23,860
+It's a bit more difficult to apply changes to the block when we add controls, most of it.
+
+45
+00:03:24,190 --> 00:03:29,500
+In these cases, we'll have to use a special function right above the edit function.
+
+46
+00:03:29,500 --> 00:03:32,260
+Add the property, get edit rapper props.
+
+47
+00:03:37,910 --> 00:03:43,260
+This will be set to an arrow function that will accept in the props object two things worth noting here.
+
+48
+00:03:43,580 --> 00:03:47,820
+This function will automatically be triggered whenever a change to the block is made.
+
+49
+00:03:48,260 --> 00:03:52,260
+This includes the additional settings and features WordPress adds to your block.
+
+50
+00:03:52,460 --> 00:03:54,270
+It's not just our attributes.
+
+51
+00:03:54,800 --> 00:03:58,990
+The second thing is that the props object is slightly different than before.
+
+52
+00:03:59,480 --> 00:04:04,420
+Previously, you would access your attributes through the prompt DOT attributes object.
+
+53
+00:04:04,790 --> 00:04:09,290
+This time you can directly access the attributes through the props object alone.
+
+54
+00:04:09,980 --> 00:04:16,070
+With that being said, we only need the block alignment attribute lets the structure this and grab the
+
+55
+00:04:16,070 --> 00:04:18,230
+block alignment property like so.
+
+56
+00:04:20,450 --> 00:04:27,110
+This function expects us to return any changes to its properties, we can change any of the block properties.
+
+57
+00:04:27,290 --> 00:04:28,540
+It's not just our own.
+
+58
+00:04:28,760 --> 00:04:31,920
+With that being said, we only want to change the alignment.
+
+59
+00:04:32,240 --> 00:04:37,790
+I'm going to create a conditional statement that will check if the block alignment is set to left,
+
+60
+00:04:37,790 --> 00:04:38,900
+right or full.
+
+61
+00:04:44,470 --> 00:04:50,170
+These are all the alignments available, if the alignment is set to any of these values, then will
+
+62
+00:04:50,170 --> 00:04:53,170
+return data dash aligned bloc alignment.
+
+63
+00:04:56,150 --> 00:04:59,580
+Previously, we would call a function to update and ask of you.
+
+64
+00:04:59,810 --> 00:05:05,960
+However, since WordPress controls the block, we can just return what we want to change and WordPress
+
+65
+00:05:05,960 --> 00:05:07,120
+will process everything.
+
+66
+00:05:07,580 --> 00:05:09,970
+You may be wondering how I found this value.
+
+67
+00:05:10,280 --> 00:05:13,540
+I'll show you soon enough, but just keep following along.
+
+68
+00:05:14,180 --> 00:05:19,010
+Now that the attribute is properly updated, we can begin to apply it to the block.
+
+69
+00:05:19,400 --> 00:05:24,080
+The great thing about Gutenberg is that the block will be updated visually automatically.
+
+70
+00:05:24,500 --> 00:05:27,980
+We don't need to make any further changes to the edit function.
+
+71
+00:05:28,580 --> 00:05:35,360
+Scroll down to the same function in the route development and the class name attribute and set it to
+
+72
+00:05:35,360 --> 00:05:35,990
+the following.
+
+73
+00:05:36,620 --> 00:05:40,100
+A line prompts attributes block alignment.
+
+74
+00:05:43,080 --> 00:05:49,110
+The class a line is provided by the theme we're using, it starts with the phrase a line followed by
+
+75
+00:05:49,110 --> 00:05:55,560
+the position of the block, there are four possible positions at the moment, wide left, center and
+
+76
+00:05:55,560 --> 00:05:55,920
+right.
+
+77
+00:05:56,370 --> 00:06:01,000
+Wide is the default position, which will make the block take up the full width of the container.
+
+78
+00:06:01,530 --> 00:06:08,670
+Let's test this out, save your changes and CD into the blocks directory, then run the commands npm
+
+79
+00:06:08,670 --> 00:06:09,420
+run deve.
+
+80
+00:06:11,650 --> 00:06:17,140
+Go ahead and refresh the page, the block may be broken, just added and again, if you have to.
+
+81
+00:06:22,100 --> 00:06:27,830
+You should see the block alignment toolbar up here, you should be able to select any of the alignments
+
+82
+00:06:27,830 --> 00:06:29,500
+and see the block move accordingly.
+
+83
+00:06:29,900 --> 00:06:34,040
+Like I said before, the blocked position is taken care of by WordPress.
+
+84
+00:06:34,340 --> 00:06:40,520
+All we have to do is notify WordPress of the change, save your changes and try viewing the post on
+
+85
+00:06:40,520 --> 00:06:41,190
+the front end.
+
+86
+00:06:41,510 --> 00:06:43,700
+The block should appear correctly positioned.
+
+87
+00:06:44,090 --> 00:06:49,760
+If you were to view the element in the developer tools, then you should see the class a line applied
+
+88
+00:06:49,760 --> 00:06:51,840
+to the div tag to the right.
+
+89
+00:06:51,890 --> 00:06:53,060
+The style should appear.
+
+90
+00:06:53,240 --> 00:06:57,980
+As you can see, you don't have to do much to make it appear aligned to the left or right.
+
+91
+00:06:58,460 --> 00:07:01,960
+Feel free to use the bootstrap success for your own themes.
+
+92
+00:07:02,600 --> 00:07:03,110
+All right.
+
+93
+00:07:03,260 --> 00:07:09,170
+Before I finish this lecture, I want to explain how I found out that you had to change the data, align
+
+94
+00:07:09,170 --> 00:07:11,870
+property, go back to the Gutenberg editor.
+
+95
+00:07:12,080 --> 00:07:16,700
+If you were to inspect the recipe block, then you won't see the data align property.
+
+96
+00:07:17,240 --> 00:07:19,630
+You'll have to scroll up quite a bit to find it.
+
+97
+00:07:19,850 --> 00:07:25,520
+As you can see, the data, a line of property appears here and it has the position you selected to
+
+98
+00:07:25,520 --> 00:07:27,460
+find what values you can change.
+
+99
+00:07:27,470 --> 00:07:29,510
+You can search in one of two places.
+
+100
+00:07:29,810 --> 00:07:35,210
+You can search through the JavaScript code itself or look at the elements generated by Gutenberg.
+
+101
+00:07:35,890 --> 00:07:36,410
+All right.
+
+102
+00:07:36,560 --> 00:07:37,610
+That does it for now.
+
+103
+00:07:37,790 --> 00:07:42,410
+In the next couple of lectures, we'll continue exploring more features of Gutenberg.
+
+104
+00:07:42,710 --> 00:07:43,670
+I'll see you there.
+

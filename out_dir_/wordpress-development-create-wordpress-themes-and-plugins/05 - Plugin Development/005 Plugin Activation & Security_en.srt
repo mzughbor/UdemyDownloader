@@ -1,0 +1,300 @@
+1
+00:00:07,300 --> 00:00:13,380
+If you've activated the recipe, plug in, then that's fine, but you'll need to deactivate it for now
+
+2
+00:00:13,750 --> 00:00:18,730
+and this lecture will be doing some plug activation settings and add some plug in security.
+
+3
+00:00:19,390 --> 00:00:23,860
+As developers, we have to do everything in our power to secure our plug ins.
+
+4
+00:00:24,130 --> 00:00:28,540
+Of course, we can't account for every hack there is throughout this course.
+
+5
+00:00:28,540 --> 00:00:31,990
+I'll be sure to advise you what you can do to secure your plug in.
+
+6
+00:00:32,830 --> 00:00:37,510
+One course of action we can take to secure this plug in is preventing users from calling this plug in
+
+7
+00:00:37,510 --> 00:00:38,020
+directly.
+
+8
+00:00:38,470 --> 00:00:43,190
+It's common for hackers to try to visit the file directly instead of letting WordPress load it.
+
+9
+00:00:43,840 --> 00:00:45,400
+So how do we prevent this?
+
+10
+00:00:45,640 --> 00:00:47,560
+Well, it's actually quite simple.
+
+11
+00:00:47,890 --> 00:00:52,780
+Open up the recipe, plug and file at the very top at a conditional statement.
+
+12
+00:00:54,960 --> 00:01:00,690
+This conditional statement, we'll check to see if a function exists, WordPress loads its own files
+
+13
+00:01:00,690 --> 00:01:04,129
+and constants before loading plugins so that they're available to us.
+
+14
+00:01:04,470 --> 00:01:08,010
+The function we want to check exists is called add action.
+
+15
+00:01:10,120 --> 00:01:16,030
+If this function doesn't exist, then we know for sure that WordPress isn't loaded and therefore we
+
+16
+00:01:16,030 --> 00:01:20,240
+don't want to run the rest of this script inside this conditional statement.
+
+17
+00:01:20,350 --> 00:01:22,870
+We're simply going to echo out a message.
+
+18
+00:01:23,050 --> 00:01:23,730
+Hi there.
+
+19
+00:01:23,770 --> 00:01:24,690
+I'm just a plug in.
+
+20
+00:01:24,940 --> 00:01:28,570
+Not much I can do when called directly and then exit out of here.
+
+21
+00:01:34,720 --> 00:01:37,180
+This way of doing it is common amongst plugins.
+
+22
+00:01:37,450 --> 00:01:40,280
+Actually, I took this from the plug in a kismet.
+
+23
+00:01:40,600 --> 00:01:44,300
+This is a plug in Prepackage with most WordPress installations.
+
+24
+00:01:44,620 --> 00:01:45,510
+Let's take a look.
+
+25
+00:01:45,730 --> 00:01:52,630
+If we open the Kismet folder and view the Kismet file, you'll find that this is implemented in the
+
+26
+00:01:52,630 --> 00:01:55,070
+same style and fashion as the recipe plug.
+
+27
+00:01:55,810 --> 00:02:01,010
+This isn't completely foolproof, but this should stop some of the most basic attacks out there.
+
+28
+00:02:01,330 --> 00:02:06,050
+Let's begin working on the plug activation now inside the main plugin file.
+
+29
+00:02:06,100 --> 00:02:07,740
+Let's add some sections first.
+
+30
+00:02:07,930 --> 00:02:13,690
+Here are the four sections that will make setup includes hooks and short codes.
+
+31
+00:02:19,970 --> 00:02:24,830
+Under the hooks section, we're going to call a function called Register Activation Hook.
+
+32
+00:02:26,890 --> 00:02:32,590
+This function is a special kind of hook made specifically for plugins, this function will be called
+
+33
+00:02:32,590 --> 00:02:33,940
+when our plug in is activated.
+
+34
+00:02:34,570 --> 00:02:36,540
+This function has two parameters.
+
+35
+00:02:36,820 --> 00:02:39,160
+The first parameter is the path to our plug in.
+
+36
+00:02:39,610 --> 00:02:45,100
+We could use some built-In functions to get the path, but there's actually a simpler way of doing this.
+
+37
+00:02:45,460 --> 00:02:48,400
+The HP provides a constant named file.
+
+38
+00:02:48,910 --> 00:02:52,030
+This concept will always point to the file it's used in.
+
+39
+00:02:52,390 --> 00:02:55,900
+The second parameter is the name of the function that will execute.
+
+40
+00:02:56,230 --> 00:02:58,660
+We'll call this our activate plug in.
+
+41
+00:03:00,820 --> 00:03:07,210
+Just like last time, I'll be prefixing the variables, functions and anything else with our underscore
+
+42
+00:03:07,210 --> 00:03:11,950
+to prevent collisions with other plugins and themes, let's define this function now.
+
+43
+00:03:12,310 --> 00:03:18,550
+Create a folder called Includes, and within this folder, create a file called Activate P.
+
+44
+00:03:25,040 --> 00:03:30,140
+Within this file, determine the function and make sure to include it from the main plug and file.
+
+45
+00:03:36,270 --> 00:03:41,370
+Before we execute any code, I want to check if the current version of WordPress is compatible with
+
+46
+00:03:41,370 --> 00:03:41,940
+this plugin.
+
+47
+00:03:42,480 --> 00:03:47,640
+You can set this to any version you'd like, but I'm going to keep things simple and say that the minimum
+
+48
+00:03:47,640 --> 00:03:52,610
+version required is 5.0 inside the activation function.
+
+49
+00:03:52,680 --> 00:03:54,630
+We're going to use a conditional statement.
+
+50
+00:03:56,670 --> 00:04:00,940
+Inside this conditional statement, let's call the version compare function.
+
+51
+00:04:01,380 --> 00:04:04,860
+This is a function that will help you with comparing versions.
+
+52
+00:04:05,310 --> 00:04:10,680
+The reason we use this function, rather than a traditional comparison operator, is because versions
+
+53
+00:04:10,680 --> 00:04:12,810
+will usually have multiple decimals.
+
+54
+00:04:13,080 --> 00:04:17,779
+For example, WordPress currently released version five point zero point one.
+
+55
+00:04:18,329 --> 00:04:21,420
+This is a number that can't be compared traditionally.
+
+56
+00:04:21,899 --> 00:04:24,060
+So this function will help you with that.
+
+57
+00:04:24,060 --> 00:04:30,450
+No matter the schematic versioning you use for the first parameter I'm going to use to get blog info
+
+58
+00:04:30,450 --> 00:04:32,630
+function and pass in the value version.
+
+59
+00:04:34,720 --> 00:04:40,930
+This will return the current WordPress installation version, the second parameter is 5.0, which will
+
+60
+00:04:40,930 --> 00:04:42,730
+be the minimum version required.
+
+61
+00:04:43,270 --> 00:04:46,360
+Lastly, we'll use the less than operator.
+
+62
+00:04:46,660 --> 00:04:51,400
+This will basically check if the current version is less than the minimum required version.
+
+63
+00:04:51,730 --> 00:04:57,370
+For example, if the current version is five point eight, then it would be processed as five point
+
+64
+00:04:57,370 --> 00:04:59,540
+eight, less than five point zero.
+
+65
+00:04:59,860 --> 00:05:05,440
+This will return false, which is great because that means our plugin is compatible with the WordPress
+
+66
+00:05:05,440 --> 00:05:06,100
+installation.
+
+67
+00:05:06,850 --> 00:05:12,110
+However, if this returns true, then that means the WordPress version is really low.
+
+68
+00:05:12,460 --> 00:05:15,700
+If it is, then we don't want to activate this plugin.
+
+69
+00:05:15,970 --> 00:05:20,820
+So we'll use the WP day function and output the following message.
+
+70
+00:05:21,130 --> 00:05:23,770
+You must update WordPress to use this plugin.
+
+71
+00:05:29,080 --> 00:05:34,000
+Make this string translatable, the text domain this time will be recipe.
+
+72
+00:05:34,690 --> 00:05:39,260
+All right, so activate your plug in and you should be able to do so without any errors.
+
+73
+00:05:39,580 --> 00:05:41,770
+Now we can start developing the plug.
+
+74
+00:05:41,770 --> 00:05:45,520
+It will be revising this function later to create some settings.
+
+75
+00:05:45,520 --> 00:05:47,530
+But for now, we'll leave it as is.
+

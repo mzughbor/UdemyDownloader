@@ -1,0 +1,136 @@
+1
+00:00:07,310 --> 00:00:12,770
+A lot of languages in the world are written from left to right, English, French and German are just
+
+2
+00:00:12,770 --> 00:00:16,260
+some examples of languages that are read and written from left to right.
+
+3
+00:00:16,760 --> 00:00:21,110
+There are languages out there that read left to right or RTL like Arabic.
+
+4
+00:00:21,410 --> 00:00:26,370
+In these cases, having your theme support, these languages can increase your reach and sales.
+
+5
+00:00:26,930 --> 00:00:31,310
+Unfortunately, there is a problem, which is most of our content by default.
+
+6
+00:00:31,310 --> 00:00:33,280
+Is Elter meaning left to right?
+
+7
+00:00:33,650 --> 00:00:40,780
+Actually, developing a theme or plugin for RTL sites requires that you set up a WordPress RTL installation.
+
+8
+00:00:41,180 --> 00:00:42,620
+This would take too much time.
+
+9
+00:00:43,040 --> 00:00:48,320
+Luckily, there is a plug in that someone developed that will help us test our site with RTL content,
+
+10
+00:00:48,920 --> 00:00:51,740
+go to the admin dashboard and navigate to plugins.
+
+11
+00:00:51,740 --> 00:00:55,250
+Add new search for the plug in called RTL Testor.
+
+12
+00:00:55,460 --> 00:00:56,840
+Install and activate it.
+
+13
+00:01:03,920 --> 00:01:10,070
+This plugin will add a new menu item on a Nalpas that will let you switch from Elter to RCL, switch
+
+14
+00:01:10,070 --> 00:01:11,510
+your site to RTL.
+
+15
+00:01:11,780 --> 00:01:13,680
+You'll notice things don't really change.
+
+16
+00:01:14,180 --> 00:01:18,410
+That's because we need to prepare the success that will move things from right to left.
+
+17
+00:01:18,740 --> 00:01:23,300
+This isn't a success course, so I won't be going over how the system works.
+
+18
+00:01:23,900 --> 00:01:24,680
+Be aware of that.
+
+19
+00:01:24,680 --> 00:01:29,440
+To make a site RTL, you have to access code that makes it appear RTL.
+
+20
+00:01:29,870 --> 00:01:33,110
+I've already created this access files that changed things.
+
+21
+00:01:33,350 --> 00:01:40,310
+To load these files, we have to register and interview them, open the includes the front end queued
+
+22
+00:01:40,310 --> 00:01:42,920
+up file to save some time.
+
+23
+00:01:42,950 --> 00:01:45,800
+I'm just going to paste the register of styles functions.
+
+24
+00:01:48,470 --> 00:01:54,380
+All these styles will make the necessary changes required to make the site and content arty already.
+
+25
+00:01:54,770 --> 00:01:57,880
+However, I don't want to include these files right away.
+
+26
+00:01:58,190 --> 00:02:04,190
+I want to check to see if the site is in RTR mode inside a conditional statement called The Function
+
+27
+00:02:04,190 --> 00:02:05,240
+is ARTlE.
+
+28
+00:02:07,650 --> 00:02:14,070
+If this function returns true, then that means the site is in RTL mode, if it is an RTL mode, then
+
+29
+00:02:14,070 --> 00:02:17,580
+I'm going to interview all the styles we just registered like so.
+
+30
+00:02:25,150 --> 00:02:31,240
+Now that we're loading the RCL styles, let's test it out, go ahead and refresh the page, the content
+
+31
+00:02:31,240 --> 00:02:37,060
+should now be reading from right to left, switch back to LTA to test if the site returns to normal.
+
+32
+00:02:37,330 --> 00:02:39,970
+After confirming the changes, you should be finished.
+
+33
+00:02:40,510 --> 00:02:46,280
+Adding RTL support is as easy as including the Cyesis files needed to make a site RTL.
+
+34
+00:02:46,690 --> 00:02:50,830
+You don't have to use any special functions or change the core.
+

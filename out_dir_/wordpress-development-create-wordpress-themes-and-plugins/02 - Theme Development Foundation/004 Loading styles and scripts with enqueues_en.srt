@@ -1,0 +1,676 @@
+1
+00:00:07,630 --> 00:00:11,620
+Let's take a look at how to add styles and scripts through our hook.
+
+2
+00:00:11,890 --> 00:00:13,010
+It's pretty straightforward.
+
+3
+00:00:13,270 --> 00:00:16,780
+There are only two steps required to add styles to our pages.
+
+4
+00:00:17,320 --> 00:00:19,420
+The first step is to register the style.
+
+5
+00:00:19,720 --> 00:00:24,400
+Registering styles simply means that you're telling WordPress that you have a style sheet and you would
+
+6
+00:00:24,400 --> 00:00:27,610
+like WordPress to know its location, along with other details.
+
+7
+00:00:27,970 --> 00:00:33,310
+In the resource section of this lecture, I'll provide a link to learn all about registering styles.
+
+8
+00:00:33,790 --> 00:00:41,200
+In order to register a style, we need to use the WP register style function under the notes section.
+
+9
+00:00:41,200 --> 00:00:47,950
+You'll see we're using this function correctly because it says Use the WP and Qs scripts action to call
+
+10
+00:00:47,950 --> 00:00:48,610
+this function.
+
+11
+00:00:48,970 --> 00:00:51,930
+Calling it outside of an action can lead to problems.
+
+12
+00:00:52,480 --> 00:00:56,260
+Since we're already doing that, it's safe to assume we can use this function.
+
+13
+00:00:56,650 --> 00:00:59,140
+This function has two required parameters.
+
+14
+00:00:59,710 --> 00:01:01,840
+The first parameter is the handle name.
+
+15
+00:01:02,230 --> 00:01:05,560
+The handle name can be thought of as a unique name or ID.
+
+16
+00:01:05,560 --> 00:01:09,570
+For reference, the second parameter is the source to the stylesheet.
+
+17
+00:01:10,150 --> 00:01:14,740
+Let's go back to the NQ function and call the WP Register style function.
+
+18
+00:01:17,060 --> 00:01:23,360
+Now we have to pass in a handle for the first parameter, if we go back to the index template, you'll
+
+19
+00:01:23,360 --> 00:01:26,060
+see we have quite a few stylesheets being loaded.
+
+20
+00:01:26,420 --> 00:01:28,730
+The first stylesheet is a Google font.
+
+21
+00:01:29,060 --> 00:01:32,300
+So let's call this handle Jiyu Google fonts.
+
+22
+00:01:34,670 --> 00:01:40,370
+Just like functions, it's also common practice to prefix our handles with some initials for the second
+
+23
+00:01:40,370 --> 00:01:42,590
+parameter, lets pass in the euro.
+
+24
+00:01:49,940 --> 00:01:55,040
+We're loading this font from a sudden so we can just paste the URL like so as a string.
+
+25
+00:01:56,430 --> 00:02:04,050
+Next up is the Bootstrap Docs file, you'll need to call the WP register style function again, just
+
+26
+00:02:04,050 --> 00:02:04,680
+like before.
+
+27
+00:02:04,800 --> 00:02:07,160
+I'm going to use the same naming convention.
+
+28
+00:02:07,410 --> 00:02:09,810
+The name will be Jiyu Bootstrap.
+
+29
+00:02:12,400 --> 00:02:18,460
+Unlike the Font's, this file is located within our theme directory, will use WordPress to help us
+
+30
+00:02:18,460 --> 00:02:20,270
+generate a Eurail to this file.
+
+31
+00:02:20,710 --> 00:02:24,790
+There's actually a function that will always point to the current theme directory.
+
+32
+00:02:25,150 --> 00:02:28,540
+This makes it easier on us as we don't have to perform checks.
+
+33
+00:02:28,540 --> 00:02:34,560
+If the owner of the site changed the name of the theme directory right at the top of this function,
+
+34
+00:02:34,570 --> 00:02:39,400
+I'm going to create a variable named Urai and set its value to the function.
+
+35
+00:02:39,400 --> 00:02:40,510
+Get the file.
+
+36
+00:02:40,510 --> 00:02:41,050
+You are right.
+
+37
+00:02:43,400 --> 00:02:48,500
+You do not have to pass in anything and you don't have to include any file to get this function to work,
+
+38
+00:02:48,980 --> 00:02:52,210
+this function is loaded and defined for you by WordPress.
+
+39
+00:02:52,820 --> 00:02:57,340
+You may notice this function has a similar name to the get the file path function.
+
+40
+00:02:57,860 --> 00:03:03,620
+The difference between these two functions is that you are riperton will actually get the web URL the
+
+41
+00:03:03,620 --> 00:03:08,260
+non-driver and get the system path with this dirigibles set.
+
+42
+00:03:08,270 --> 00:03:11,480
+I'm going to pass it into the function right after this.
+
+43
+00:03:11,490 --> 00:03:19,850
+I'm going to append the path relative to our theme folder, which as assets exists, bootstrap access.
+
+44
+00:03:22,190 --> 00:03:24,420
+The first two parameters are required.
+
+45
+00:03:24,800 --> 00:03:28,850
+These next three are optional, but the last two aren't used as often.
+
+46
+00:03:29,240 --> 00:03:31,580
+The third parameter is what's most important.
+
+47
+00:03:31,820 --> 00:03:34,730
+The third parameter is an array of dependencies.
+
+48
+00:03:35,000 --> 00:03:38,810
+Sometimes your styles may depend on another style sheet to load.
+
+49
+00:03:39,230 --> 00:03:44,420
+You simply pass in an array of panel names, and WordPress will take care of loading those style sheets
+
+50
+00:03:44,420 --> 00:03:45,130
+before this one.
+
+51
+00:03:45,590 --> 00:03:49,920
+If WordPress doesn't find a style sheet, then this style sheet will not be loaded.
+
+52
+00:03:50,540 --> 00:03:55,820
+For example, if I wanted the Google font to load before the style sheet, then I could pass in the
+
+53
+00:03:55,820 --> 00:04:00,740
+handle name like so I'm not too worried about dependencies so we can leave this out.
+
+54
+00:04:01,370 --> 00:04:05,320
+Now that we have that finished, I'm going to register the rest of the styles.
+
+55
+00:04:05,510 --> 00:04:06,860
+It's the same as before.
+
+56
+00:04:09,700 --> 00:04:15,430
+Post the video if you need to have what I have, if we refresh the page, you'll notice that this won't
+
+57
+00:04:15,430 --> 00:04:16,230
+work just yet.
+
+58
+00:04:16,600 --> 00:04:18,839
+We've only registered our styles.
+
+59
+00:04:19,269 --> 00:04:23,120
+Now we must tell WordPress we would like to add it to our page.
+
+60
+00:04:23,500 --> 00:04:27,150
+We now have to use a function called WP and Q style.
+
+61
+00:04:27,880 --> 00:04:32,160
+I've also included a link to this function in the resource section of this lecture.
+
+62
+00:04:32,620 --> 00:04:38,020
+This function only has one required parameter, which is the handle name of the style we registered
+
+63
+00:04:38,020 --> 00:04:38,420
+earlier.
+
+64
+00:04:38,920 --> 00:04:43,760
+You'll notice the other parameters are similar to the WP register style function.
+
+65
+00:04:44,440 --> 00:04:49,300
+However, these are only available just in case you forget to register a style.
+
+66
+00:04:49,690 --> 00:04:51,540
+You should always register a style.
+
+67
+00:04:51,550 --> 00:04:57,190
+Though the difference between registering and cueing a file is that registering will tell WordPress
+
+68
+00:04:57,190 --> 00:05:00,250
+about a stylesheet and make it available to be called later on.
+
+69
+00:05:00,820 --> 00:05:06,280
+While in queuing will instruct WordPress to load our stylesheet onto the page right away.
+
+70
+00:05:07,090 --> 00:05:11,580
+You will not always want to in Kiwa style on every page as it is inefficient.
+
+71
+00:05:11,980 --> 00:05:17,710
+There's also plugins out there that will sometimes scan registered siles and perform actions such as
+
+72
+00:05:17,710 --> 00:05:20,440
+modifying and concatenating style sheets together.
+
+73
+00:05:20,920 --> 00:05:24,070
+So it's best to register first, then NQ.
+
+74
+00:05:24,610 --> 00:05:31,780
+Let's nq the font stylesheet right after the register functions called the function WP and Kusile and
+
+75
+00:05:31,780 --> 00:05:34,660
+pass in the handle name Jiyu Google Fonts.
+
+76
+00:05:35,080 --> 00:05:37,180
+Let's do this for all the stylesheets.
+
+77
+00:05:48,000 --> 00:05:49,410
+All right, we're almost done.
+
+78
+00:05:49,530 --> 00:05:54,270
+I promise there's only one last thing we need to do in order for all this to work.
+
+79
+00:05:54,570 --> 00:06:00,600
+If we go back to the index template, you'll notice we haven't told WordPress where to load our stylesheets.
+
+80
+00:06:01,200 --> 00:06:03,330
+Our template is pure HTML.
+
+81
+00:06:03,750 --> 00:06:08,830
+WordPress doesn't magically scan our files and insert everything in the appropriate place.
+
+82
+00:06:09,240 --> 00:06:11,980
+We have to tell WordPress where to load our files.
+
+83
+00:06:12,150 --> 00:06:13,360
+So let's do that.
+
+84
+00:06:13,740 --> 00:06:16,100
+Go to the head section of the template.
+
+85
+00:06:16,500 --> 00:06:20,520
+We are going to replace the stylesheets and call the function WP head.
+
+86
+00:06:22,870 --> 00:06:29,170
+The WP head function is a function defined by WordPress, this function simply tells WordPress that
+
+87
+00:06:29,200 --> 00:06:34,100
+this is the spot where themes and plugins can NQ their stylesheet and script files.
+
+88
+00:06:34,690 --> 00:06:37,080
+Let's refresh the page and we should see it working.
+
+89
+00:06:37,480 --> 00:06:40,830
+If you see something similar to what I see, then you're good to go.
+
+90
+00:06:41,620 --> 00:06:44,110
+Let's double check some things and open the console.
+
+91
+00:06:44,470 --> 00:06:47,720
+You'll notice we get a lot of errors, but we'll fix this soon.
+
+92
+00:06:48,190 --> 00:06:52,600
+What I want you to look for is any 404 errors related to stylesheets.
+
+93
+00:06:52,720 --> 00:06:56,190
+If you don't see any, then that means you loaded everything correctly.
+
+94
+00:06:56,830 --> 00:06:58,690
+We can now begin adding scripts.
+
+95
+00:06:59,020 --> 00:07:02,630
+Adding a script file is almost the same as adding a stylesheet.
+
+96
+00:07:03,130 --> 00:07:07,210
+However, unlike stylesheets, we can load script files in the footer.
+
+97
+00:07:07,660 --> 00:07:13,720
+If we take a look at the template, we have all our scripts being loaded into the footer, just like
+
+98
+00:07:13,720 --> 00:07:16,110
+adding files inside the head tag.
+
+99
+00:07:16,150 --> 00:07:21,370
+We also have to call a function from the footer to instruct WordPress where to load files in the footer
+
+100
+00:07:22,060 --> 00:07:28,330
+at the very bottom of the template right before the closing body tag called the WP footer function.
+
+101
+00:07:33,440 --> 00:07:37,910
+This function allows our theme and other plug ins to load their files into the footer.
+
+102
+00:07:38,690 --> 00:07:44,540
+All right, now that we have that set up, let's go to the NQ function and start adding our scripts.
+
+103
+00:07:45,200 --> 00:07:51,080
+Just like stylesheets, we have to register our scripts in the resource section of this lecture.
+
+104
+00:07:51,170 --> 00:07:54,420
+I provide a link to the WP Register, a script function.
+
+105
+00:07:54,890 --> 00:07:58,120
+Let's take a look at what WordPress has to say about this function.
+
+106
+00:07:58,730 --> 00:08:04,610
+As you can see, only the first two parameters are required and they're basically similar to the WP
+
+107
+00:08:04,610 --> 00:08:05,900
+register style function.
+
+108
+00:08:06,500 --> 00:08:10,540
+Back inside the index template, we include a script called Plugins.
+
+109
+00:08:10,880 --> 00:08:14,090
+Let's add this script to the footer through the NQ function.
+
+110
+00:08:14,750 --> 00:08:18,980
+Let's call the WP Register script function and pass in a handle name.
+
+111
+00:08:19,430 --> 00:08:21,890
+The handle name will be Jiyu plugins.
+
+112
+00:08:24,290 --> 00:08:29,560
+I don't have to worry about name conflicts here because stylesheets and scripts are stored separately,
+
+113
+00:08:30,170 --> 00:08:32,200
+the second parameter is the source.
+
+114
+00:08:32,360 --> 00:08:33,679
+It's the same as last time.
+
+115
+00:08:34,010 --> 00:08:37,580
+You just use the URAI variable and append the path.
+
+116
+00:08:37,850 --> 00:08:42,789
+The path would be assents exact plug ins, James.
+
+117
+00:08:45,540 --> 00:08:51,510
+Now, in most cases, you always want to load your scripts in the footer to allow our content to be
+
+118
+00:08:51,510 --> 00:08:52,980
+loaded before our scripts.
+
+119
+00:08:53,370 --> 00:08:55,730
+So how do we make our script load in the footer?
+
+120
+00:08:56,400 --> 00:09:01,340
+Let's go back to the documentation and look at the WP Register script function again.
+
+121
+00:09:01,830 --> 00:09:07,730
+You'll notice that the fit parameter determines whether or not a script is loaded in the footer by default.
+
+122
+00:09:07,740 --> 00:09:08,340
+It doesn't.
+
+123
+00:09:08,610 --> 00:09:14,030
+We have to pass in a true boolean value so that we can load the script inside the flitter.
+
+124
+00:09:14,930 --> 00:09:21,080
+Let's go back to the function and start using this, the third parameter is this scripts dependencies.
+
+125
+00:09:21,410 --> 00:09:25,920
+In some cases your scripts will depend on the functionality of another script.
+
+126
+00:09:26,300 --> 00:09:30,920
+You have to pass in an array of handling things for WordPress to make sure those scripts are loaded
+
+127
+00:09:30,920 --> 00:09:32,110
+first before this one.
+
+128
+00:09:32,630 --> 00:09:37,910
+In our case, we don't have to worry about dependencies, so we'll just passing an empty array.
+
+129
+00:09:38,600 --> 00:09:41,290
+The fourth parameter is the version of the script.
+
+130
+00:09:41,570 --> 00:09:47,810
+If you update your script frequently, this can be a useful parameter to say this is because a lot of
+
+131
+00:09:47,810 --> 00:09:53,840
+WordPress sites have cache enabled by updating the version, you'll force WordPress to load the latest
+
+132
+00:09:53,840 --> 00:09:55,000
+version of the script.
+
+133
+00:09:55,580 --> 00:10:00,530
+I'm going to set this to false as I don't really need to worry about versioning for this script.
+
+134
+00:10:00,920 --> 00:10:05,720
+The whole point of this part of the lecture is to load the script into the footer, which is the fifth
+
+135
+00:10:05,720 --> 00:10:06,770
+and final parameter.
+
+136
+00:10:07,220 --> 00:10:08,960
+All you have to do is pass in.
+
+137
+00:10:08,960 --> 00:10:10,630
+True, that's it.
+
+138
+00:10:10,910 --> 00:10:16,910
+Let's include the plugins file using the WP and Qs script function and see if it loads on the page.
+
+139
+00:10:24,070 --> 00:10:30,400
+You'll notice that WordPress also loads its top now bar for users who are logged in after confirming
+
+140
+00:10:30,400 --> 00:10:34,240
+that it loads, why don't you pause the video and load the rest of the scripts?
+
+141
+00:10:34,540 --> 00:10:38,080
+Be sure to remove the script tags after you include them.
+
+142
+00:10:41,130 --> 00:10:47,010
+All right, so I basically just registered and include the rest of our scripts, you'll notice that
+
+143
+00:10:47,010 --> 00:10:49,730
+I also removed their inclusions from the footer.
+
+144
+00:10:50,070 --> 00:10:55,620
+If I refresh the page, you'll see that everything is loaded correctly except for one thing, Jacquier.
+
+145
+00:10:56,460 --> 00:11:02,790
+We also get a couple of errors inside the console thing that Jake query isn't loaded or defined in the
+
+146
+00:11:02,790 --> 00:11:03,670
+NQ file.
+
+147
+00:11:03,720 --> 00:11:06,840
+I didn't bother registering or even skewing it, but one.
+
+148
+00:11:07,530 --> 00:11:13,800
+Let's go back to the WordPress documentation and take a look at the WP Register a script function on
+
+149
+00:11:13,800 --> 00:11:15,380
+the contents sidebar.
+
+150
+00:11:15,420 --> 00:11:18,090
+I want you to click core registered scripts.
+
+151
+00:11:18,750 --> 00:11:23,880
+You'll be taken to a part of the page that tells you that WordPress registers a number of scripts that
+
+152
+00:11:23,880 --> 00:11:25,650
+are commonly used by developers.
+
+153
+00:11:26,160 --> 00:11:33,300
+WordPress automatically registers a large number of scripts libraries like Jaquie or UI and underscore
+
+154
+00:11:33,870 --> 00:11:36,710
+if we scroll down long enough, you'll find a query.
+
+155
+00:11:37,050 --> 00:11:41,990
+So all we have to do is in queue this script before and cueing anything else.
+
+156
+00:11:42,150 --> 00:11:43,140
+Let's do this now.
+
+157
+00:11:50,400 --> 00:11:55,620
+Refresh the page, and if you did everything right, then you should see that any errors related to
+
+158
+00:11:55,630 --> 00:11:56,940
+GAO query are now gone.
+
+159
+00:11:57,450 --> 00:12:01,620
+Now, before I end this lecture, I want to say one very important thing.
+
+160
+00:12:02,070 --> 00:12:06,250
+Never, ever override word press's default scripts, including query.
+
+161
+00:12:06,840 --> 00:12:12,120
+There are some developers out there that like to include their own version of jury, which may seem
+
+162
+00:12:12,120 --> 00:12:14,530
+great and all, but it's really not a good idea.
+
+163
+00:12:15,150 --> 00:12:17,640
+You aren't the only developer using GE query.
+
+164
+00:12:17,910 --> 00:12:23,670
+If developers constantly use their own versions of scripts, then this could break a client site and
+
+165
+00:12:23,670 --> 00:12:25,230
+can cause hours of debugging.
+
+166
+00:12:25,620 --> 00:12:30,240
+It's so much better to just use a J.A.G. version that's consistent throughout the site.
+
+167
+00:12:31,020 --> 00:12:37,710
+Inside the HTML template, we use a different version of GE query, but that's only for the email template
+
+168
+00:12:37,710 --> 00:12:40,100
+and not meant to be used for the WordPress theme at all.
+
+169
+00:12:40,500 --> 00:12:44,220
+So please don't try and override WordPress query.
+

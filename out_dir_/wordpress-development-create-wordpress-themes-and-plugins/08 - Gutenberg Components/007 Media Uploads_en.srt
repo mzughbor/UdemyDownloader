@@ -1,0 +1,776 @@
+1
+00:00:07,370 --> 00:00:14,030
+Media is a great way to enhance your content, WordPress fully supports all kinds of media, from images
+
+2
+00:00:14,030 --> 00:00:20,330
+to videos to audio files, you can view all the media you have uploaded on the media page in the WordPress
+
+3
+00:00:20,330 --> 00:00:21,260
+admin dashboard.
+
+4
+00:00:21,650 --> 00:00:23,650
+You may see some images here already.
+
+5
+00:00:23,960 --> 00:00:26,550
+These were provided by Fakher Press when we ran it.
+
+6
+00:00:26,900 --> 00:00:32,270
+We're going to create a blog that will allow the user to select an image from the media uploader and
+
+7
+00:00:32,270 --> 00:00:33,530
+render it on the page.
+
+8
+00:00:33,950 --> 00:00:39,200
+WordPress already provides this feature, but you may end up having to create your own version later
+
+9
+00:00:39,200 --> 00:00:39,860
+down the road.
+
+10
+00:00:40,490 --> 00:00:45,500
+In the resource section of this lecture, I provided zip file that contains everything you'll need,
+
+11
+00:00:45,890 --> 00:00:49,430
+download it and unzip the contents into the app directories.
+
+12
+00:00:49,880 --> 00:00:53,210
+You'll be provided a folder called Media Upload Block.
+
+13
+00:00:53,510 --> 00:01:00,320
+Inside this folder should be two files and indexed JS File and editor access file.
+
+14
+00:01:00,860 --> 00:01:04,879
+The editor file will contain some style links to position a remove button.
+
+15
+00:01:05,209 --> 00:01:08,600
+We will give our users the choice to remove an image they select.
+
+16
+00:01:08,930 --> 00:01:11,120
+The index file contains the usual.
+
+17
+00:01:11,420 --> 00:01:16,120
+We are restructuring some components and registering the block to get started.
+
+18
+00:01:16,130 --> 00:01:23,210
+We'll need to structure a couple more components from the WP editor object, the structure the media
+
+19
+00:01:23,210 --> 00:01:25,910
+upload and media upload sheet components.
+
+20
+00:01:32,630 --> 00:01:37,550
+From the WP components object, the structure, the dash icon object.
+
+21
+00:01:39,710 --> 00:01:45,680
+The media upload component will generate the UI for selecting and uploading images to the media uploader,
+
+22
+00:01:46,010 --> 00:01:50,900
+the media upload check component does something different than any other component we've encountered
+
+23
+00:01:50,900 --> 00:01:51,490
+so far.
+
+24
+00:01:51,890 --> 00:01:57,350
+It was specifically made to check to see if the user currently logged in has the correct permissions
+
+25
+00:01:57,350 --> 00:01:58,890
+to upload and manage files.
+
+26
+00:01:59,360 --> 00:02:02,920
+This component must be wrapped around the media upload component.
+
+27
+00:02:03,350 --> 00:02:05,180
+You'll see how that's done soon enough.
+
+28
+00:02:05,810 --> 00:02:11,160
+The dash icon component allows you to use the dash icon set anywhere in your block.
+
+29
+00:02:11,550 --> 00:02:17,330
+Previously we used the name to display an icon, but that's because WordPress took the time to render
+
+30
+00:02:17,330 --> 00:02:18,430
+this component for you.
+
+31
+00:02:18,800 --> 00:02:24,230
+If we want to use a dash icon in a custom location, then it will need to be the ones to render the
+
+32
+00:02:24,230 --> 00:02:26,350
+icon it super simple.
+
+33
+00:02:26,360 --> 00:02:30,590
+So don't worry with the components, the structured, let's set some attributes.
+
+34
+00:02:30,890 --> 00:02:37,100
+The attribute we're going to create will revolve around what the media upload or returns will be returned
+
+35
+00:02:37,100 --> 00:02:40,210
+inside your URL and alternative text.
+
+36
+00:02:40,640 --> 00:02:42,140
+Let's start with the ID.
+
+37
+00:02:42,440 --> 00:02:44,390
+The name will be image ID.
+
+38
+00:02:44,650 --> 00:02:46,490
+The type will be No.
+
+39
+00:02:48,760 --> 00:02:53,140
+The ID will be the ID of the media item, which is stored in the database.
+
+40
+00:02:53,610 --> 00:02:57,580
+We won't be using it, but it's still something you may need later down the road.
+
+41
+00:02:57,850 --> 00:03:00,480
+I'm also not going to store it in the element.
+
+42
+00:03:00,640 --> 00:03:03,090
+Instead, I'll just stored in the comments.
+
+43
+00:03:03,550 --> 00:03:09,160
+Next is the image you are the type will be stirring and the source will be attribute.
+
+44
+00:03:15,390 --> 00:03:20,370
+We're essentially telling WordPress that the value can be found inside an attribute when it's loading
+
+45
+00:03:20,370 --> 00:03:22,110
+the HTML from the database.
+
+46
+00:03:22,320 --> 00:03:27,810
+If you set the source to attribute, then you'll need to set the attribute property next.
+
+47
+00:03:28,380 --> 00:03:32,040
+This will allow you to specify the attribute the value is stored in.
+
+48
+00:03:32,280 --> 00:03:33,720
+Set this to source.
+
+49
+00:03:35,860 --> 00:03:40,420
+We'll be using an image tag, it would make sense that the euro would be stored there.
+
+50
+00:03:40,780 --> 00:03:44,980
+Lastly, to find The Selecter property and set it to image.
+
+51
+00:03:47,120 --> 00:03:52,790
+I'm going to make a copy of this as the alternative text will be the same thing, except the attribute
+
+52
+00:03:52,790 --> 00:03:53,480
+will be ALZ.
+
+53
+00:03:57,940 --> 00:04:04,060
+All right, the attributes are ready, the next step is to set up the UI, the UI will require a bit
+
+54
+00:04:04,060 --> 00:04:04,960
+of work to set up.
+
+55
+00:04:04,960 --> 00:04:06,930
+So prepare yourself first.
+
+56
+00:04:06,940 --> 00:04:09,670
+We're going to need to return some X.
+
+57
+00:04:17,600 --> 00:04:23,030
+Then we'll need to display a button that will render the media uploader here's the problem, though.
+
+58
+00:04:23,330 --> 00:04:27,530
+We only want to display the button if there is no media currently being displayed.
+
+59
+00:04:27,920 --> 00:04:33,170
+We want to use a conditional statement for this, but we can't use traditional conditional statements
+
+60
+00:04:33,170 --> 00:04:34,190
+in sex.
+
+61
+00:04:34,640 --> 00:04:38,770
+Instead will have to use a ternary operator for the condition.
+
+62
+00:04:38,780 --> 00:04:41,810
+I'm going to check if the prompts got attributes.
+
+63
+00:04:41,810 --> 00:04:43,460
+Dot image ID is set.
+
+64
+00:04:45,880 --> 00:04:51,360
+If it is, then we'll display the image, otherwise we'll display the button for the media uploader,
+
+65
+00:04:51,700 --> 00:04:57,700
+we'll start with the media uploader output the media upload, check and media upload components.
+
+66
+00:05:09,730 --> 00:05:15,910
+I'm wrapping the media upload component inside the media upload check component, this is required if
+
+67
+00:05:15,910 --> 00:05:22,880
+you want to limit who can and who can't upload images, you're not required to pass in any special attributes
+
+68
+00:05:22,880 --> 00:05:23,530
+to the media.
+
+69
+00:05:23,530 --> 00:05:24,720
+Upload check component.
+
+70
+00:05:25,030 --> 00:05:27,310
+It's already properly configured for you.
+
+71
+00:05:27,910 --> 00:05:32,950
+In the resource section of this lecture, I provide a link to this component's documentation.
+
+72
+00:05:33,430 --> 00:05:38,110
+This page will provide an example on how to use this component and its attributes.
+
+73
+00:05:38,470 --> 00:05:41,140
+Feel free to read up on it after you finish this lecture.
+
+74
+00:05:41,890 --> 00:05:46,540
+Back inside the script, the first attribute will define is allowed to types.
+
+75
+00:05:46,900 --> 00:05:50,280
+This should be set to an array of file types you'd like to allow.
+
+76
+00:05:50,650 --> 00:05:54,160
+We only want to allow one type of file, which is image.
+
+77
+00:05:56,470 --> 00:06:02,420
+This is optional, but if you set it, WordPress will limit what media file type of user can select.
+
+78
+00:06:02,770 --> 00:06:05,660
+We only want to allow users to select images.
+
+79
+00:06:06,310 --> 00:06:13,090
+Next, we'll need to set the value attribute, set this to props, the attributes, dot image ID.
+
+80
+00:06:15,470 --> 00:06:21,080
+If you pass in a value, then WordPress will automatically select the media item with the same ID,
+
+81
+00:06:21,560 --> 00:06:26,800
+this way the user doesn't have to scroll around to find the media item they selected previously.
+
+82
+00:06:27,550 --> 00:06:32,120
+The next attribute is on select cities to Select Image.
+
+83
+00:06:34,410 --> 00:06:39,990
+This is an event that will be triggered when the user selects an image, the value for this attribute
+
+84
+00:06:39,990 --> 00:06:45,510
+should be a function that will process the image we're passing in unnamed function that currently isn't
+
+85
+00:06:45,510 --> 00:06:46,080
+defined.
+
+86
+00:06:46,470 --> 00:06:49,830
+We'll define it in just a moment, but let's keep moving forward.
+
+87
+00:06:50,220 --> 00:06:53,460
+Lastly, we'll need to set the render attribute.
+
+88
+00:06:53,730 --> 00:06:57,540
+This attribute is used to render the button that will open the media uploader.
+
+89
+00:06:57,810 --> 00:07:02,220
+The media upload component will not display the media upload or immediately.
+
+90
+00:07:02,520 --> 00:07:08,610
+Instead, it gets rendered within a certain function is called the media upload component gives us the
+
+91
+00:07:08,610 --> 00:07:11,160
+opportunity to create that button ourselves.
+
+92
+00:07:11,460 --> 00:07:16,380
+The value for this attribute will be an anonymous function that will be passed in an object.
+
+93
+00:07:16,770 --> 00:07:22,470
+We only care about one property from this object and that's the open function, the structure that.
+
+94
+00:07:24,770 --> 00:07:30,770
+The open function will open, the media uploader will call this in a moment, but let's create a button
+
+95
+00:07:30,770 --> 00:07:32,210
+using the button component.
+
+96
+00:07:36,990 --> 00:07:43,050
+I'm applying the button and button dash large classes, the text inside will be upload image.
+
+97
+00:07:47,840 --> 00:07:51,030
+Now, let's set the unclick event to the open function.
+
+98
+00:07:51,740 --> 00:07:53,060
+Here's what's going to happen.
+
+99
+00:07:53,300 --> 00:07:57,980
+The media upload component will display the button we created in the render attribute.
+
+100
+00:07:58,340 --> 00:08:00,590
+The button will call the open function.
+
+101
+00:08:00,590 --> 00:08:06,230
+When the click event is triggered, the open function will take care of displaying the media uploader
+
+102
+00:08:06,230 --> 00:08:06,890
+when called.
+
+103
+00:08:07,610 --> 00:08:13,340
+Before we begin displaying the image after it's been selected, we'll need to store the image data for
+
+104
+00:08:13,340 --> 00:08:15,100
+the on select attribute.
+
+105
+00:08:15,200 --> 00:08:17,470
+We're calling the select image function.
+
+106
+00:08:17,870 --> 00:08:19,220
+Let's define that above.
+
+107
+00:08:26,850 --> 00:08:29,650
+The function will be passed in an object called image.
+
+108
+00:08:29,910 --> 00:08:35,610
+This object will contain the properties and values related to the image selected from the media uploader
+
+109
+00:08:36,090 --> 00:08:37,110
+using this object.
+
+110
+00:08:37,230 --> 00:08:40,530
+I'm going to set each attribute to their respective property.
+
+111
+00:08:50,570 --> 00:08:57,320
+To do this, I'm calling the set attributes function in a previous lecture, we would only set one value,
+
+112
+00:08:57,410 --> 00:09:00,980
+but it is possible to set multiple values like I'm doing here.
+
+113
+00:09:01,310 --> 00:09:04,610
+The idea of the image is stored in the ID property.
+
+114
+00:09:04,730 --> 00:09:10,130
+The image you are well is stored in the euro property and the alternative text is stored in the allt
+
+115
+00:09:10,130 --> 00:09:10,670
+property.
+
+116
+00:09:11,300 --> 00:09:16,260
+I was able to find out the names by simply logging the object and reviewing it in the console.
+
+117
+00:09:16,730 --> 00:09:19,510
+I recommend you try logging the object yourself.
+
+118
+00:09:19,880 --> 00:09:23,670
+This will give you a better idea of what properties are inside the object.
+
+119
+00:09:24,290 --> 00:09:28,750
+The next step is to display the image back inside the return statement.
+
+120
+00:09:28,850 --> 00:09:33,590
+I'm going to add the code to the section that will run if the condition is true, which is checking
+
+121
+00:09:33,590 --> 00:09:34,810
+if there is an image ID.
+
+122
+00:09:35,300 --> 00:09:38,030
+I'm going to wrap everything with a div tag.
+
+123
+00:09:38,360 --> 00:09:41,300
+The tag should have the class image container.
+
+124
+00:09:47,800 --> 00:09:53,500
+I'm adding this because we're going to have a button with absolute positioning in order to have elements
+
+125
+00:09:53,500 --> 00:09:58,660
+with absolute positioning, we need a tag with relative positioning, which is what this class does.
+
+126
+00:09:59,110 --> 00:09:59,740
+From here.
+
+127
+00:09:59,740 --> 00:10:04,300
+I'm going to add the image tag with the source and all attributes.
+
+128
+00:10:04,570 --> 00:10:07,210
+I'll set them to their respective attribute values.
+
+129
+00:10:13,360 --> 00:10:19,240
+Lastly, we need to add the button that will remove the image if the user clicks on it, we're going
+
+130
+00:10:19,240 --> 00:10:21,830
+to use another ternary operator for this.
+
+131
+00:10:22,030 --> 00:10:25,610
+We only want to display the button if the block is currently selected.
+
+132
+00:10:25,960 --> 00:10:28,420
+This is a user experience design decision.
+
+133
+00:10:28,940 --> 00:10:34,430
+If the user is editing the block, then it makes sense to display options related to editing the block.
+
+134
+00:10:34,750 --> 00:10:40,540
+However, if the block isn't selected, then we want to hide the options to prevent adding clutter to
+
+135
+00:10:40,540 --> 00:10:41,290
+the interface.
+
+136
+00:10:41,710 --> 00:10:45,130
+Once again, this step is optional, but I think it makes sense here.
+
+137
+00:10:45,880 --> 00:10:49,060
+We're going to check if the props DOT is selected.
+
+138
+00:10:49,060 --> 00:10:50,650
+Property is set to true.
+
+139
+00:10:51,190 --> 00:10:56,770
+Remember, this is a property WordPress will automatically update for you if the block is being edited.
+
+140
+00:10:57,160 --> 00:11:00,820
+If this returns true, then will display the button component.
+
+141
+00:11:01,060 --> 00:11:06,720
+I'm applying the class button remove and setting the on click event to remove image.
+
+142
+00:11:07,180 --> 00:11:12,310
+This function doesn't exist, but will be adding it soon enough for the content inside.
+
+143
+00:11:12,310 --> 00:11:15,040
+I'm going to add the dash icon component.
+
+144
+00:11:19,700 --> 00:11:26,200
+You have the option of adding your own custom SVG icon, but I think a dash icon will suffice here.
+
+145
+00:11:26,660 --> 00:11:29,940
+You can use any of the national icons provided by WordPress.
+
+146
+00:11:30,320 --> 00:11:35,780
+All you need to do is add the icon attribute and pass in the name of the icon you'd like to use.
+
+147
+00:11:36,230 --> 00:11:40,660
+You don't have to add the dash icon dash prefix as it's added for you.
+
+148
+00:11:41,060 --> 00:11:45,160
+The icon and we're going to use is the no icon, which is an X mark.
+
+149
+00:11:45,800 --> 00:11:49,020
+I'm also going to set the size attribute to twenty.
+
+150
+00:11:49,400 --> 00:11:52,720
+This is measured in pixels that should display the button.
+
+151
+00:11:52,850 --> 00:11:54,590
+It has absolute positioning.
+
+152
+00:11:54,830 --> 00:11:57,680
+Check out the editor file for the CSC Code.
+
+153
+00:11:58,010 --> 00:12:03,500
+To finish things off, we'll need to set the second half of the ternary operator to know which we'll
+
+154
+00:12:03,500 --> 00:12:05,770
+display nothing if the lock isn't selected.
+
+155
+00:12:06,500 --> 00:12:12,860
+The last step is to create the remove image function we specified for the on click event and created
+
+156
+00:12:12,860 --> 00:12:13,340
+above.
+
+157
+00:12:13,670 --> 00:12:16,460
+It will be the same thing as before, except all set.
+
+158
+00:12:16,460 --> 00:12:18,740
+All attributes to know like so.
+
+159
+00:12:24,640 --> 00:12:27,430
+All right, let's recap what this function will do.
+
+160
+00:12:27,670 --> 00:12:30,360
+Let's assume the block was added for the first time.
+
+161
+00:12:30,700 --> 00:12:33,340
+The first thing that will happen is this condition check.
+
+162
+00:12:33,550 --> 00:12:38,020
+It will check if there is a value for image ID by default, it should be.
+
+163
+00:12:38,020 --> 00:12:41,980
+No, since that's the case, the second half of this code will run.
+
+164
+00:12:42,310 --> 00:12:44,830
+The media upload component will be rendered.
+
+165
+00:12:45,130 --> 00:12:49,300
+That media upload component will display whatever is in the render property.
+
+166
+00:12:49,600 --> 00:12:53,530
+The render property will display a button that will run the open function.
+
+167
+00:12:53,530 --> 00:12:59,770
+When it's clicked, the open function was provided to us by the component, so we don't have to do anything
+
+168
+00:12:59,770 --> 00:13:00,160
+else.
+
+169
+00:13:00,580 --> 00:13:05,500
+The media library model will open and allow the user to select or upload an image.
+
+170
+00:13:05,830 --> 00:13:12,210
+If an image is selected, then the function inside the on select function will run scrolling up.
+
+171
+00:13:12,220 --> 00:13:17,590
+All we're doing here is using the image object and setting the attributes of their respective values.
+
+172
+00:13:17,950 --> 00:13:20,230
+This will cause the block to re render again.
+
+173
+00:13:20,740 --> 00:13:26,920
+This time since the image ID attribute has a value, the code inside the first half will render.
+
+174
+00:13:27,250 --> 00:13:29,920
+This will render the image the user selected.
+
+175
+00:13:30,340 --> 00:13:35,020
+This will also display a button that will allow them to remove the image of the block as active.
+
+176
+00:13:35,260 --> 00:13:39,130
+If they click the button, then the remove image function will run.
+
+177
+00:13:39,580 --> 00:13:43,600
+This will set all the attributes to know that's basically it.
+
+178
+00:13:43,930 --> 00:13:50,680
+The same function will display the image, use the image tag and set the source and all attributes to
+
+179
+00:13:50,680 --> 00:13:51,940
+their respective values.
+
+180
+00:13:56,610 --> 00:14:01,800
+Save your changes and import this block from the app index file.
+
+181
+00:14:04,210 --> 00:14:09,460
+Then segued into the blocks rectory and run the NPM run deve command.
+
+182
+00:14:11,730 --> 00:14:16,470
+Lastly, try creating a new recipe post and add this block to your content.
+
+183
+00:14:21,750 --> 00:14:26,100
+Initially, you should see a button, if you click it, then a model should appear.
+
+184
+00:14:26,370 --> 00:14:28,050
+This is the media library.
+
+185
+00:14:28,350 --> 00:14:34,260
+You can select any image and then press select the buttons should disappear and instead the image should
+
+186
+00:14:34,260 --> 00:14:35,320
+appear in its place.
+
+187
+00:14:35,640 --> 00:14:37,950
+There's also the option of removing the button.
+
+188
+00:14:38,250 --> 00:14:42,230
+If I were to deselect the block, then the remove button should go away.
+
+189
+00:14:42,480 --> 00:14:45,810
+If I were to select the block again, then it will reappear.
+
+190
+00:14:46,170 --> 00:14:48,120
+Clicking on this should remove the image.
+
+191
+00:14:48,330 --> 00:14:51,300
+I'm going to add the image back in and save the post.
+
+192
+00:14:53,550 --> 00:14:59,100
+Using the post on the front end should just display the image, we're finished, we know how to add
+
+193
+00:14:59,100 --> 00:15:00,950
+the media uploader to our blogs.
+
+194
+00:15:01,170 --> 00:15:02,970
+Feel free to play around with this.
+

@@ -1,0 +1,779 @@
+1
+00:00:07,550 --> 00:00:13,220
+Let's prepare our machines for WordPress development, if you already have things set up and prefer
+
+2
+00:00:13,220 --> 00:00:16,390
+your own kind of environment, then you're free to skip this lecture.
+
+3
+00:00:16,640 --> 00:00:18,380
+If not, then just follow along.
+
+4
+00:00:18,620 --> 00:00:20,770
+I'll try my best to explain everything.
+
+5
+00:00:21,380 --> 00:00:24,380
+The very first thing we need is a development environment.
+
+6
+00:00:24,650 --> 00:00:28,520
+There are various environments out there, but the one I recommend is Zamp.
+
+7
+00:00:28,730 --> 00:00:34,760
+It's free and constantly updated with the latest versions of software for web development to download
+
+8
+00:00:34,760 --> 00:00:38,200
+Zamp, you'll need to visit the site Apache Friends Dog.
+
+9
+00:00:38,790 --> 00:00:42,640
+I'll provide a link to this site in the resource section of this lecture.
+
+10
+00:00:42,950 --> 00:00:44,010
+Just a side note.
+
+11
+00:00:44,120 --> 00:00:49,790
+Most sites I talk about will be provided in the resource section of each lecture, so just be aware
+
+12
+00:00:49,790 --> 00:00:50,090
+of that.
+
+13
+00:00:50,690 --> 00:00:52,970
+You should see something similar to what I see.
+
+14
+00:00:53,240 --> 00:00:56,630
+Zamp is a program that bundles various programs together.
+
+15
+00:00:56,990 --> 00:00:59,440
+Let's take a deeper look at these programs.
+
+16
+00:00:59,990 --> 00:01:02,270
+The very first program is Apache.
+
+17
+00:01:02,540 --> 00:01:05,270
+The official Apache site is Apache Dog.
+
+18
+00:01:05,540 --> 00:01:11,230
+Apache is actually an open source software foundation that provides free programs for everyone.
+
+19
+00:01:11,600 --> 00:01:15,760
+One of their most popular programs is the HTTP server program.
+
+20
+00:01:16,160 --> 00:01:18,500
+We can find this program under projects.
+
+21
+00:01:18,710 --> 00:01:21,690
+You'll find a link to the server project.
+
+22
+00:01:22,310 --> 00:01:27,670
+This program allows you to turn your computer into a server that accepts and sends requests.
+
+23
+00:01:27,980 --> 00:01:29,960
+It's very lightweight and easy to use.
+
+24
+00:01:30,290 --> 00:01:32,860
+The next piece of software is Maria DB.
+
+25
+00:01:33,080 --> 00:01:37,640
+You can find more information about the software at Maria Dbag.
+
+26
+00:01:38,060 --> 00:01:42,340
+Maria DB is a database that allows you to store data about anything you want.
+
+27
+00:01:42,710 --> 00:01:49,130
+There are all kinds of databases out there, but the most popular choices are either Oracle or My School.
+
+28
+00:01:49,670 --> 00:01:55,370
+My school and Maria DB are the two databases WordPress is one hundred percent compatible with.
+
+29
+00:01:55,700 --> 00:02:00,660
+So you may be wondering why are we installing Maria DB instead of my school?
+
+30
+00:02:01,010 --> 00:02:06,140
+Well, there's a lot of business politics that I won't dive too much into because it's really boring.
+
+31
+00:02:06,140 --> 00:02:07,960
+But here's the overall gist of it.
+
+32
+00:02:08,510 --> 00:02:11,960
+My school has seen very little development in recent years.
+
+33
+00:02:12,200 --> 00:02:18,050
+A lot of developers have decided to fork my school and continue developing and under a new name, which
+
+34
+00:02:18,050 --> 00:02:24,830
+is Maria de Borking, is just a fancy term for downloading open source code and then adding on to it.
+
+35
+00:02:25,190 --> 00:02:31,430
+Essentially, Maria De is my school, but with more features and is constantly updated.
+
+36
+00:02:31,850 --> 00:02:37,280
+So most code that you write for my school will also be compatible with Maria DB and vice versa.
+
+37
+00:02:37,640 --> 00:02:42,890
+I promise that all code we write will be compatible with both Maria DB and my school.
+
+38
+00:02:43,100 --> 00:02:51,800
+The last piece of software is that you can find the official Web site at p dot net p p is the programming
+
+39
+00:02:51,800 --> 00:02:53,420
+language WordPress is built with.
+
+40
+00:02:53,690 --> 00:02:57,470
+I assume you already know about p p, so I won't be talking about it.
+
+41
+00:02:58,070 --> 00:03:03,530
+You'll notice that Perl is also bundled, but we won't be using Perl at all, so you don't have to worry
+
+42
+00:03:03,530 --> 00:03:04,070
+about that.
+
+43
+00:03:04,460 --> 00:03:11,450
+The X and Zamp stands for operating system, implying that Zamp is cross compatible with all operating
+
+44
+00:03:11,450 --> 00:03:12,020
+systems.
+
+45
+00:03:12,590 --> 00:03:17,060
+All these programs combined together will create an environment you can run on your computer.
+
+46
+00:03:17,540 --> 00:03:21,440
+This environment will allow you to install and work with WordPress locally.
+
+47
+00:03:21,860 --> 00:03:26,000
+There are other environments out there, but I highly recommend you use Zamp.
+
+48
+00:03:26,480 --> 00:03:30,350
+I find Zamp the easiest to work with out of all the environments available.
+
+49
+00:03:30,680 --> 00:03:34,130
+There are better options out there, but those tend to be overkill.
+
+50
+00:03:34,430 --> 00:03:39,950
+In the next lecture, I'll talk about other options and why we won't be using them for now.
+
+51
+00:03:40,040 --> 00:03:41,750
+Just keep following along with me.
+
+52
+00:03:42,320 --> 00:03:44,120
+Let's download and install Zamp.
+
+53
+00:03:44,360 --> 00:03:49,700
+There are various versions of Zamp, but I prefer the one that comes bundled with p p seven point two.
+
+54
+00:03:50,120 --> 00:03:56,180
+People ask me all the time what version of p p they should be using and I always recommend BB seven
+
+55
+00:03:56,180 --> 00:04:02,720
+or higher p p seven is fast and allows for faster processing times, which is great for development.
+
+56
+00:04:03,350 --> 00:04:05,030
+Let me show you something really quick.
+
+57
+00:04:05,180 --> 00:04:09,560
+Go to the WordPress Dawg site and I want you to click the about link.
+
+58
+00:04:09,830 --> 00:04:13,010
+On the side you'll find a page called Requirements.
+
+59
+00:04:13,250 --> 00:04:16,100
+WordPress will recommend you work with B seven.
+
+60
+00:04:16,460 --> 00:04:21,890
+If you read a little further, then you'll find that the absolute minimum version you need to run WordPress
+
+61
+00:04:21,890 --> 00:04:29,870
+is five point two point for a lot of hosts will still use five point two or five point three.
+
+62
+00:04:30,080 --> 00:04:34,180
+But I'm going to recommend that you don't develop for these versions of P.
+
+63
+00:04:34,850 --> 00:04:40,280
+It may seem like you're limiting the amount of clients you'll work with, but you save yourself a huge
+
+64
+00:04:40,280 --> 00:04:42,010
+headache by avoiding these versions.
+
+65
+00:04:42,290 --> 00:04:46,670
+The reason being is that these versions are no longer supported by P.
+
+66
+00:04:47,210 --> 00:04:51,010
+These versions have security vulnerabilities and exploitations.
+
+67
+00:04:51,650 --> 00:04:57,170
+Personally, I only developed plug ins and things that are compatible with P p seven Nannup.
+
+68
+00:04:57,380 --> 00:05:03,170
+A lot of developers such as Muffin Group and Theme Fusion don't even support these lower versions and
+
+69
+00:05:03,170 --> 00:05:05,210
+yet they still receive a lot of clients.
+
+70
+00:05:05,810 --> 00:05:06,500
+In the end.
+
+71
+00:05:06,500 --> 00:05:06,830
+It's a.
+
+72
+00:05:06,960 --> 00:05:13,740
+You all code we write will be compatible with IP Version seven and up, in case you were curious, you
+
+73
+00:05:13,740 --> 00:05:17,090
+can also check out this interesting link called Statistics.
+
+74
+00:05:17,490 --> 00:05:23,190
+This page shows information about the setup most hosts use and what versions of each software they're
+
+75
+00:05:23,190 --> 00:05:23,580
+using.
+
+76
+00:05:24,120 --> 00:05:27,120
+This should give you a good idea about what the market is like.
+
+77
+00:05:27,750 --> 00:05:31,110
+All right, let's move on, download and install Zamp.
+
+78
+00:05:31,500 --> 00:05:35,560
+Just go through the default settings as they usually will suit you best.
+
+79
+00:05:35,850 --> 00:05:41,310
+I won't be going through the installation as I've already installed one installed.
+
+80
+00:05:41,430 --> 00:05:45,920
+You can open up the control panel by searching for something called Zamp Control Panel.
+
+81
+00:05:46,560 --> 00:05:51,930
+The great thing about using Zamp is that it automatically bundles and configures most of the software
+
+82
+00:05:51,930 --> 00:05:54,140
+you need to run a local development environment.
+
+83
+00:05:54,420 --> 00:05:55,770
+It's fast and easy.
+
+84
+00:05:56,430 --> 00:06:02,070
+You'll notice that Zamp installs other programs such as File, Zillah, Mercury and Tomcat.
+
+85
+00:06:02,490 --> 00:06:07,620
+We won't be using this software, so you don't need to worry about what these do and what they're for.
+
+86
+00:06:08,100 --> 00:06:11,760
+To boot the server, you need to turn on Apache and MySQL.
+
+87
+00:06:12,390 --> 00:06:18,150
+You should see the modules highlighted in green indicating that these modules have successfully been
+
+88
+00:06:18,150 --> 00:06:20,070
+turned on and are currently running.
+
+89
+00:06:20,520 --> 00:06:26,070
+If you don't, then be sure to read the log below and ask for support at the Apache Friends site.
+
+90
+00:06:26,550 --> 00:06:29,160
+We can test to see if everything is working.
+
+91
+00:06:29,160 --> 00:06:34,230
+By clicking the admin button inside the Apache row, you'll be taken to localhost.
+
+92
+00:06:34,410 --> 00:06:35,910
+You may see a welcome message.
+
+93
+00:06:36,090 --> 00:06:38,430
+I don't because I deleted those files.
+
+94
+00:06:38,670 --> 00:06:41,810
+I'll show you where to delete those files in just a moment.
+
+95
+00:06:42,480 --> 00:06:48,480
+Let's set up the database first, open the control panel once again and click the admin button in the
+
+96
+00:06:48,480 --> 00:06:49,500
+MySQL wrote.
+
+97
+00:06:49,890 --> 00:06:53,070
+You'll be taken to a page called My Admin.
+
+98
+00:06:53,460 --> 00:06:58,980
+Personally, I don't like my admin because it is a web script almost like WordPress.
+
+99
+00:07:00,120 --> 00:07:05,970
+My admin is a way to manage and view your database inside your browser, just like any other script.
+
+100
+00:07:06,150 --> 00:07:11,400
+This script will load JavaScript Cyesis and handle all requests with me.
+
+101
+00:07:11,850 --> 00:07:17,130
+It works, but it tends to be very slow at times because you have to wait for the page to load to know
+
+102
+00:07:17,130 --> 00:07:19,200
+whether or not your request was successful.
+
+103
+00:07:19,830 --> 00:07:25,500
+I prefer to use something called Heidi Skill, which can be found at high school dotcom.
+
+104
+00:07:26,010 --> 00:07:31,350
+You can go to the download section and just download the appropriate download for your operating system.
+
+105
+00:07:32,010 --> 00:07:34,230
+Heidi doesn't work well for Mac Systems.
+
+106
+00:07:34,230 --> 00:07:36,180
+So here's an alternative solution.
+
+107
+00:07:36,930 --> 00:07:40,710
+If you're on a Mac OS system, then you should check out Sequel Pro.
+
+108
+00:07:40,950 --> 00:07:42,270
+It's fast and free.
+
+109
+00:07:42,600 --> 00:07:47,790
+You should be able to connect to any MySQL and Maria DB databases without any problem.
+
+110
+00:07:48,420 --> 00:07:51,420
+Once you have those installed, open it up like so.
+
+111
+00:07:51,750 --> 00:07:58,650
+Heidi Eskil is similar to my admin, except it is written in a language called Object Pascal, which
+
+112
+00:07:58,650 --> 00:08:03,840
+is a bit faster than a B and can execute MySQL queries so much faster.
+
+113
+00:08:04,410 --> 00:08:08,700
+This program also comes with more features which will be useful in later lectures.
+
+114
+00:08:09,060 --> 00:08:12,900
+It'll take some time to get used to this, but I promise it'll be worth it.
+
+115
+00:08:13,560 --> 00:08:15,780
+Using Heidi Eskil is pretty simple.
+
+116
+00:08:16,020 --> 00:08:18,470
+First, you need to create a new session.
+
+117
+00:08:18,900 --> 00:08:20,250
+Name it whatever you want.
+
+118
+00:08:20,460 --> 00:08:22,290
+I'll be naming mine localhost.
+
+119
+00:08:22,470 --> 00:08:24,660
+A lot of the default settings are pretty good.
+
+120
+00:08:24,990 --> 00:08:30,570
+The host should be one two seven zero zero one, which is the IP of localhost.
+
+121
+00:08:30,840 --> 00:08:34,260
+The username is root and the password will be left empty.
+
+122
+00:08:34,590 --> 00:08:37,260
+This user is automatically created for you.
+
+123
+00:08:37,260 --> 00:08:40,290
+When you install Zamp, everything else is fine.
+
+124
+00:08:40,470 --> 00:08:42,420
+Make sure to save and then click open.
+
+125
+00:08:42,720 --> 00:08:45,870
+You'll notice that I already have a few databases set up.
+
+126
+00:08:46,200 --> 00:08:47,970
+Let's create a new database.
+
+127
+00:08:48,420 --> 00:08:55,140
+You simply right click in the left column and under Create Click database you'll be presented with two
+
+128
+00:08:55,140 --> 00:08:55,650
+options.
+
+129
+00:08:55,800 --> 00:09:01,500
+The name of the database and the colation the name will be using is You To Me and the Colation will
+
+130
+00:09:01,500 --> 00:09:02,490
+be UTSA.
+
+131
+00:09:02,490 --> 00:09:08,220
+And before General SII, the colation determines how characters are sorted and compare.
+
+132
+00:09:08,850 --> 00:09:14,880
+For example, you can have the letter A as upper case or lower case which gets displayed first.
+
+133
+00:09:15,150 --> 00:09:18,720
+What about characters where there's an accent above the letter A?
+
+134
+00:09:19,080 --> 00:09:25,140
+As you can see, there are dozens of correlations with their own set of rules on how to compare characters.
+
+135
+00:09:25,740 --> 00:09:31,680
+For this course we'll be using UTF eight and before General SII because it's been tested to be highly
+
+136
+00:09:31,680 --> 00:09:32,940
+performance and accurate.
+
+137
+00:09:33,240 --> 00:09:37,770
+It works with all characters, including Chinese, Japanese and so much more.
+
+138
+00:09:38,160 --> 00:09:39,630
+Click OK, and that's it.
+
+139
+00:09:39,990 --> 00:09:44,100
+You can click on your database in the left hand column and you'll notice that it's empty.
+
+140
+00:09:44,490 --> 00:09:48,120
+We can now install WordPress in the previous lecture.
+
+141
+00:09:48,150 --> 00:09:49,950
+You should have downloaded WordPress.
+
+142
+00:09:49,950 --> 00:09:51,840
+If you haven't, then do so now.
+
+143
+00:09:52,230 --> 00:09:55,290
+The file you downloaded should be in the form of a zip file.
+
+144
+00:09:55,590 --> 00:09:57,120
+Have not file in hand.
+
+145
+00:09:57,600 --> 00:10:01,440
+Next, open the Zamp control panel from the control panel.
+
+146
+00:10:01,440 --> 00:10:03,270
+Click on the Explorer button.
+
+147
+00:10:03,600 --> 00:10:06,600
+This is where Zamp is installed all files.
+
+148
+00:10:06,650 --> 00:10:12,710
+That are served from the server to your browser is located in the Docs folder, he docks, stands for
+
+149
+00:10:12,710 --> 00:10:19,220
+hypertext documents, this folder is very important as we will be working inside it throughout most
+
+150
+00:10:19,220 --> 00:10:19,970
+of this course.
+
+151
+00:10:20,390 --> 00:10:23,830
+Feel free to delete any default files inside this folder.
+
+152
+00:10:24,110 --> 00:10:25,000
+You don't need them.
+
+153
+00:10:25,400 --> 00:10:29,900
+I already have some files here as I use them daily for web development.
+
+154
+00:10:30,260 --> 00:10:35,420
+Open your zip file and drag and drop the files from the zip file into this folder.
+
+155
+00:10:42,110 --> 00:10:45,320
+I'm going to rename this from WordPress to you to me.
+
+156
+00:10:47,500 --> 00:10:52,870
+We can now visit this by opening up the browser and navigating to localhost, argued Amy.
+
+157
+00:10:55,050 --> 00:10:59,440
+Upon arriving on the page, you'll be asked to begin installing WordPress.
+
+158
+00:10:59,760 --> 00:11:00,940
+Let's do this together.
+
+159
+00:11:01,200 --> 00:11:03,430
+You'll be asked to select your language.
+
+160
+00:11:03,630 --> 00:11:05,020
+Are we using English?
+
+161
+00:11:05,100 --> 00:11:07,350
+Select whatever language suits you best.
+
+162
+00:11:07,590 --> 00:11:13,020
+Afterwards, you'll be told that the WP config file isn't available.
+
+163
+00:11:13,350 --> 00:11:16,950
+WordPress will then ask you if you'd like to create this file now.
+
+164
+00:11:17,770 --> 00:11:24,070
+I'm going to let WordPress generate this file before it can do so, it's going to ask us for the database
+
+165
+00:11:24,070 --> 00:11:24,730
+details.
+
+166
+00:11:24,940 --> 00:11:26,740
+Let's go through it one by one.
+
+167
+00:11:27,680 --> 00:11:33,530
+The database name is Udemy and their user name is Root, there is no password and will leave the rest
+
+168
+00:11:33,530 --> 00:11:37,190
+as is the last field is table prefix.
+
+169
+00:11:37,430 --> 00:11:41,630
+The table prefix allows you to give your database tables a unique name.
+
+170
+00:11:42,050 --> 00:11:46,640
+Whatever you input here will be prefixed to all the tables WordPress generates.
+
+171
+00:11:47,270 --> 00:11:51,050
+WordPress will generate a little over 10 different tables for your site.
+
+172
+00:11:51,560 --> 00:11:55,000
+The names it generates tend to be very simple and basic.
+
+173
+00:11:55,340 --> 00:11:56,540
+This can cause issues.
+
+174
+00:11:56,540 --> 00:12:02,660
+If you already have tables inside your database to avoid naming conflicts, you can set a prefix to
+
+175
+00:12:02,660 --> 00:12:04,390
+give each table a unique name.
+
+176
+00:12:05,060 --> 00:12:07,940
+For example, there is a table named posts.
+
+177
+00:12:08,210 --> 00:12:14,360
+If you set the prefix to WP underscore, then the new name will be WPE underscore posts.
+
+178
+00:12:14,690 --> 00:12:19,110
+You should always be mindful of the setting as will be using in ourselves in the future.
+
+179
+00:12:19,460 --> 00:12:21,650
+For now, I'm going to leave this assets.
+
+180
+00:12:22,130 --> 00:12:24,200
+If you don't understand, that's fine.
+
+181
+00:12:24,470 --> 00:12:26,870
+You'll understand what I mean in a future lecture.
+
+182
+00:12:27,110 --> 00:12:28,370
+Run the installation.
+
+183
+00:12:30,870 --> 00:12:37,620
+After some time, you should see a success message, you'll be then asked to input some basic details
+
+184
+00:12:37,620 --> 00:12:42,240
+about your site and set up a user account input, whatever details you want.
+
+185
+00:12:42,450 --> 00:12:44,580
+You can just copy what I put, if you like.
+
+186
+00:12:46,810 --> 00:12:51,070
+Once you're finished, you should see a success message and you can now log in.
+
+187
+00:12:55,700 --> 00:13:01,580
+Congrats, we've successfully installed WordPress, we're pretty much done, there's one last thing
+
+188
+00:13:01,580 --> 00:13:03,630
+I want you to do before you finish things up here.
+
+189
+00:13:03,860 --> 00:13:11,240
+Go ahead and log into your WordPress site, then go to Settings Permalink, change the permalink settings
+
+190
+00:13:11,240 --> 00:13:12,290
+to Postnet.
+
+191
+00:13:12,800 --> 00:13:15,250
+This will make our new URLs easy to read.
+
+192
+00:13:15,560 --> 00:13:18,350
+It's not necessary, but it will make your life simpler.
+
+193
+00:13:18,980 --> 00:13:19,910
+We're now finished.
+
+194
+00:13:20,090 --> 00:13:23,000
+That was a lot to go through, but hopefully you got through it.
+
+195
+00:13:24,480 --> 00:13:25,040
+Oh.

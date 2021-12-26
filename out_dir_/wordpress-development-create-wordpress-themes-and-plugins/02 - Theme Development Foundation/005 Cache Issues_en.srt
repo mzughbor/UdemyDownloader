@@ -1,0 +1,400 @@
+1
+00:00:07,810 --> 00:00:13,960
+One of the most common annoyances Web developers face is caching, caching is a pretty basic concept.
+
+2
+00:00:14,200 --> 00:00:17,060
+Whenever you visit a site, you're downloading files.
+
+3
+00:00:17,320 --> 00:00:19,920
+These range from iest to image files.
+
+4
+00:00:20,170 --> 00:00:26,710
+The Web would be quite slow if you had to download those same files over and over again to solve this.
+
+5
+00:00:26,720 --> 00:00:31,780
+Your browser will store copies of those files and then load those copies rather than downloading the
+
+6
+00:00:31,780 --> 00:00:32,420
+same files.
+
+7
+00:00:32,439 --> 00:00:35,230
+Again, this provides a better user experience.
+
+8
+00:00:35,230 --> 00:00:41,280
+Overall, as developers, we want this, but not during the development phase of a plug in or theme.
+
+9
+00:00:41,710 --> 00:00:48,100
+If I made a change to a file, then I won't be able to see those changes as the browser will load the
+
+10
+00:00:48,100 --> 00:00:50,560
+cached version rather than the updated version.
+
+11
+00:00:53,130 --> 00:00:59,070
+Right now, I have my browser opened up for the home page, I'm going to press F 12 on my keyboard to
+
+12
+00:00:59,070 --> 00:01:00,620
+open up the developer tools.
+
+13
+00:01:00,960 --> 00:01:03,870
+One of the most helpful tabs is the network out.
+
+14
+00:01:04,050 --> 00:01:05,010
+Select that tab.
+
+15
+00:01:05,040 --> 00:01:11,160
+Now, this tab will display a list of files that have been downloaded and how long it took to download
+
+16
+00:01:11,160 --> 00:01:11,380
+them.
+
+17
+00:01:11,820 --> 00:01:14,940
+It also keep track of the order downloaded and size.
+
+18
+00:01:15,360 --> 00:01:18,150
+So you may be thinking, how does this relate to caching?
+
+19
+00:01:18,750 --> 00:01:23,820
+Well, this town provides some really helpful information to determine whether a file was cached or
+
+20
+00:01:23,820 --> 00:01:24,090
+not.
+
+21
+00:01:24,480 --> 00:01:27,580
+Before we view what's cached, let's filter the results.
+
+22
+00:01:27,930 --> 00:01:31,980
+Right now, the network tab will display every single file downloaded.
+
+23
+00:01:32,670 --> 00:01:37,870
+I'm going to filter this to only display CFS file so that this doesn't get cluttered.
+
+24
+00:01:38,250 --> 00:01:39,620
+I want you to do the same.
+
+25
+00:01:39,930 --> 00:01:43,620
+Once you have the CSF filter on, refresh the page.
+
+26
+00:01:43,860 --> 00:01:47,970
+The page shouldn't load normally, but let's focus on the network tab.
+
+27
+00:01:48,330 --> 00:01:53,970
+Taking a closer look at the science column, you'll see that the browser only loads cached versions
+
+28
+00:01:53,970 --> 00:01:54,720
+of the files.
+
+29
+00:01:55,140 --> 00:02:00,510
+It doesn't matter how many times you refresh the page, it'll always load these files from the cache.
+
+30
+00:02:01,110 --> 00:02:04,130
+Any changes we make will not be reflected on the page.
+
+31
+00:02:04,440 --> 00:02:06,560
+There are a couple of ways to get around this.
+
+32
+00:02:06,810 --> 00:02:11,130
+The first immediate option is to check this box that says disable cache.
+
+33
+00:02:11,700 --> 00:02:13,800
+I don't recommend you check this box.
+
+34
+00:02:14,070 --> 00:02:19,190
+While this does allow the latest version to load, this option will affect all sites we visit.
+
+35
+00:02:19,500 --> 00:02:22,290
+This includes Facebook, YouTube, etc..
+
+36
+00:02:22,680 --> 00:02:28,230
+If I hover my mouse over this option, then you'll also see that the developer tools have to be opened
+
+37
+00:02:28,230 --> 00:02:28,440
+up.
+
+38
+00:02:28,440 --> 00:02:32,390
+In order for this option to work, I'm going to uncheck this box.
+
+39
+00:02:32,700 --> 00:02:36,770
+The second solution would be to press control F5 on our keyboards.
+
+40
+00:02:37,410 --> 00:02:41,880
+This will force the browser to clear the cache for the current site and refresh the page.
+
+41
+00:02:42,160 --> 00:02:46,430
+After a while you'll see that the true size of each file is displayed.
+
+42
+00:02:46,920 --> 00:02:51,240
+This indicates that the file was downloaded from the server and not the browsers cache.
+
+43
+00:02:51,870 --> 00:02:53,790
+This works, but it isn't ideal.
+
+44
+00:02:54,090 --> 00:02:59,260
+I hate having to refresh the page twice because I forgot to clear the cache on the first refresh.
+
+45
+00:02:59,970 --> 00:03:04,060
+The ideal solution would be to trick the browser into downloading the file.
+
+46
+00:03:04,500 --> 00:03:05,610
+Let me show you what I mean.
+
+47
+00:03:05,850 --> 00:03:11,550
+If you look at the file names, you'll notice that WordPress adds a query parameter called BRX, which
+
+48
+00:03:11,550 --> 00:03:12,660
+is short for a version.
+
+49
+00:03:13,350 --> 00:03:16,500
+The value for this will be the actual version of WordPress.
+
+50
+00:03:16,830 --> 00:03:19,680
+This simple trick forces the browser to download.
+
+51
+00:03:19,680 --> 00:03:22,350
+The latest version of the file of WordPress is updated.
+
+52
+00:03:22,740 --> 00:03:23,830
+It works rather well.
+
+53
+00:03:24,240 --> 00:03:28,930
+However, if I refresh the page again, then you'll see that the version never changes.
+
+54
+00:03:29,250 --> 00:03:33,120
+This works perfectly for upgrades, but not so much for development.
+
+55
+00:03:33,810 --> 00:03:36,630
+Luckily, we can modify this behavior easily.
+
+56
+00:03:36,930 --> 00:03:41,600
+Let's open our editors and review the NQ file we worked on in the previous election.
+
+57
+00:03:42,000 --> 00:03:44,490
+We're going to start with the stylesheets first.
+
+58
+00:03:44,850 --> 00:03:50,070
+The WP register style function we're using here has a fourth parameter called version.
+
+59
+00:03:50,820 --> 00:03:57,420
+Right now we're only taking advantage of the first to the third parameter would be an array of dependencies,
+
+60
+00:03:57,420 --> 00:04:00,150
+but none of our files required that kind of power.
+
+61
+00:04:00,150 --> 00:04:02,430
+So I'm going to pass in an empty array.
+
+62
+00:04:03,150 --> 00:04:06,570
+The fourth parameter allows us to pass in a custom version.
+
+63
+00:04:06,570 --> 00:04:12,660
+No, if we don't want to use the WordPress version number by default, this will be set to false, which
+
+64
+00:04:12,660 --> 00:04:18,839
+will let WordPress pick the version instead of hard coding, a version I'm going to pass in the time
+
+65
+00:04:18,839 --> 00:04:19,350
+function.
+
+66
+00:04:20,070 --> 00:04:23,100
+Now I'll refresh the page and view the network tab.
+
+67
+00:04:23,430 --> 00:04:28,220
+I applied this to the Google font so we should see the file size appearing for that file.
+
+68
+00:04:28,650 --> 00:04:31,860
+As expected, the file is now loading from the server.
+
+69
+00:04:32,280 --> 00:04:38,460
+If I were to hover my mouse over the filename, you'll see that the full URL includes the version query
+
+70
+00:04:38,460 --> 00:04:39,000
+parameter.
+
+71
+00:04:39,750 --> 00:04:42,930
+The value for this will be the value of the time function.
+
+72
+00:04:43,260 --> 00:04:46,050
+This is great, but it can definitely be improved.
+
+73
+00:04:46,380 --> 00:04:47,910
+Let's switch back to the editor.
+
+74
+00:04:48,540 --> 00:04:51,540
+The next logical step would be to update each function.
+
+75
+00:04:51,720 --> 00:04:53,310
+But there's a problem with that.
+
+76
+00:04:53,610 --> 00:04:55,710
+Let's say we were finished with our theme.
+
+77
+00:04:56,130 --> 00:04:59,400
+We would have to come back to this file and update the values again.
+
+78
+00:04:59,910 --> 00:05:05,820
+Then if we wanted to make changes, we would have to update the values once more before moving forward.
+
+79
+00:05:06,510 --> 00:05:09,570
+That can be a bit annoying, but this can be solved easily.
+
+80
+00:05:09,900 --> 00:05:13,620
+I'm going to open the functions file inside this file.
+
+81
+00:05:13,620 --> 00:05:15,270
+We have a section called Set Up.
+
+82
+00:05:15,750 --> 00:05:21,090
+Personally, I like to create a constant that determines whether we're in development mode or not.
+
+83
+00:05:21,570 --> 00:05:25,950
+You don't have to do this, but I recommend you do as it'll make your life easier.
+
+84
+00:05:26,610 --> 00:05:32,040
+I'm going to create a constant named Jiyu dev mode with the value of true.
+
+85
+00:05:35,870 --> 00:05:42,260
+Then let's go back to the interview file and create a variable named version right below the URAI variable,
+
+86
+00:05:42,650 --> 00:05:47,180
+the value for this will be Jiyu dev mode time false.
+
+87
+00:05:49,910 --> 00:05:56,570
+Basically, I'm checking if development mode is on, if it is all set, the aversion to the value returned
+
+88
+00:05:56,570 --> 00:06:03,500
+by the time function, if development is off, then offset the value to false below in the register
+
+89
+00:06:03,500 --> 00:06:03,990
+function.
+
+90
+00:06:04,010 --> 00:06:08,300
+I'm going to replace the time function with the version variable like so.
+
+91
+00:06:10,500 --> 00:06:13,980
+Now, I'm going to do the same for the rest of the register functions.
+
+92
+00:06:23,090 --> 00:06:28,310
+For the script functions, I'm going to update these from false to the version variable.
+
+93
+00:06:30,680 --> 00:06:31,230
+That's it.
+
+94
+00:06:31,550 --> 00:06:36,830
+Now, we don't have to update all of this in the future, switching between development and production
+
+95
+00:06:36,830 --> 00:06:37,080
+mode.
+
+96
+00:06:37,100 --> 00:06:39,250
+It's as simple as modifying one value.
+
+97
+00:06:39,710 --> 00:06:45,190
+Let's refresh the page and see the changes the page should load normally without any errors.
+
+98
+00:06:45,410 --> 00:06:51,110
+If we were to view the network tab, then you'll see the version for our files are completely dependent
+
+99
+00:06:51,110 --> 00:06:52,090
+on the current time.
+
+100
+00:06:52,490 --> 00:06:54,710
+We no longer have to worry about caching.
+

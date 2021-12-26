@@ -1,0 +1,468 @@
+1
+00:00:07,390 --> 00:00:13,780
+ASIO is a beast of its own as a developer, you should take every step to make sure your theme is security
+
+2
+00:00:13,780 --> 00:00:16,210
+and is compatible with most SEO plug ins.
+
+3
+00:00:16,510 --> 00:00:19,300
+There are dozens of them out there throughout this course.
+
+4
+00:00:19,300 --> 00:00:24,220
+We've prepared the theme to be CEO already, but we can definitely take it a step further.
+
+5
+00:00:24,820 --> 00:00:27,580
+Right now, I'm on a site called Schema Dog.
+
+6
+00:00:27,790 --> 00:00:33,430
+I'll provide a link in the resource section of this lecture schema is a way to tell bots and crawlers
+
+7
+00:00:33,430 --> 00:00:35,220
+more about the content on your site.
+
+8
+00:00:35,610 --> 00:00:41,710
+Currently, if a crawler like Google's Crawler were to read through our HTML, it would have to guess
+
+9
+00:00:41,710 --> 00:00:43,510
+what kind of content is being read.
+
+10
+00:00:43,960 --> 00:00:49,330
+Google's algorithm is smart enough to be able to sort through all the HTML and make good guesses.
+
+11
+00:00:49,900 --> 00:00:51,310
+However, we can help.
+
+12
+00:00:51,530 --> 00:00:53,710
+This is where microdata comes into play.
+
+13
+00:00:54,010 --> 00:00:59,290
+You can add attributes to certain tags to the crawlers and bots know what they're looking at and decide
+
+14
+00:00:59,290 --> 00:01:00,790
+how important the content is.
+
+15
+00:01:01,210 --> 00:01:07,180
+Most SEO plugins will assist you by adding some micro data for you, but there are just some sections
+
+16
+00:01:07,180 --> 00:01:08,010
+it can't reach.
+
+17
+00:01:08,320 --> 00:01:11,020
+So it's our job to cover those missing spots.
+
+18
+00:01:11,680 --> 00:01:15,340
+This site will provide you everything you need to know about microdata.
+
+19
+00:01:15,580 --> 00:01:19,180
+If you go to the documentation, you'll find a link for getting started.
+
+20
+00:01:19,630 --> 00:01:21,880
+We won't be going over every little thing.
+
+21
+00:01:22,060 --> 00:01:23,820
+I'll just cover the main points.
+
+22
+00:01:23,860 --> 00:01:24,910
+It isn't that hard.
+
+23
+00:01:27,270 --> 00:01:34,530
+Microdata is just a fancy word for a few set of specific HTML attributes that specify what kind of content
+
+24
+00:01:34,530 --> 00:01:39,780
+a bot or crawler is viewing, the first attribute you use is called the item scope.
+
+25
+00:01:40,080 --> 00:01:45,300
+Just by including this attribute, you're specifying that the HTML element contains information about
+
+26
+00:01:45,300 --> 00:01:45,780
+something.
+
+27
+00:01:46,440 --> 00:01:52,050
+The next property is the item type where the value of this attribute is that you are able to share more
+
+28
+00:01:52,050 --> 00:01:54,210
+information about this element can be found.
+
+29
+00:01:54,690 --> 00:01:59,030
+The Eurail must point to schema dog and to the appropriate page.
+
+30
+00:01:59,370 --> 00:02:03,020
+We'll talk more about these URLs and how you would go about setting them.
+
+31
+00:02:03,690 --> 00:02:09,509
+The last property is Item Propp, which is an attribute you set to specify how the element is related
+
+32
+00:02:09,509 --> 00:02:10,590
+to the item type.
+
+33
+00:02:10,949 --> 00:02:13,860
+It gives you the ability to fully describe the content.
+
+34
+00:02:14,310 --> 00:02:19,670
+These three attributes are the attributes you'll use the most when adding microdata to your templates.
+
+35
+00:02:19,980 --> 00:02:24,660
+It may seem kind of confusing at first, but you'll get the hang of it once you start adding them.
+
+36
+00:02:26,530 --> 00:02:29,020
+Let's start using them on the schema site.
+
+37
+00:02:29,050 --> 00:02:34,510
+I want you to click on the schemas link, you'll be taken to a page where you can view certain types
+
+38
+00:02:34,510 --> 00:02:35,920
+or view the full list.
+
+39
+00:02:36,130 --> 00:02:39,000
+I'm going to view the full list on this page.
+
+40
+00:02:39,010 --> 00:02:44,620
+You'll see the full hierarchy of types you can select when you get started with microdata.
+
+41
+00:02:44,620 --> 00:02:48,490
+The very first thing you want to do is think about what type you want to set.
+
+42
+00:02:49,030 --> 00:02:54,580
+In general, your website is a type of data that sounds weird, but just go with me on this.
+
+43
+00:02:54,760 --> 00:02:58,050
+If you look around, you'll find a type called Web page.
+
+44
+00:02:58,240 --> 00:02:59,050
+Click on this.
+
+45
+00:02:59,320 --> 00:03:01,800
+Here is what schema has to say about this type.
+
+46
+00:03:02,380 --> 00:03:06,870
+Every Web page is implicitly assumed to be declared to be of type Web page.
+
+47
+00:03:07,030 --> 00:03:11,520
+So the various properties about that Web page such as Breadcrumb may be used.
+
+48
+00:03:11,920 --> 00:03:17,170
+We recommend explicit declaration of these properties are specified, but if they are found outside
+
+49
+00:03:17,170 --> 00:03:20,420
+of an item scope, they will be assumed to be about the page.
+
+50
+00:03:21,100 --> 00:03:25,990
+We really don't have to set this type, but I believe it's a good example when it comes to getting started
+
+51
+00:03:25,990 --> 00:03:26,880
+with microdata.
+
+52
+00:03:27,250 --> 00:03:30,250
+I want you to open the header file from our theme.
+
+53
+00:03:32,630 --> 00:03:38,300
+Search for the opening body tag and applying the items scope attribute, this is the first step.
+
+54
+00:03:38,690 --> 00:03:43,880
+By applying this attribute, you're telling the crawler that this element contains information the crawler
+
+55
+00:03:43,880 --> 00:03:44,780
+should be aware of.
+
+56
+00:03:45,380 --> 00:03:48,770
+The next attribute you need to set is the item type attribute.
+
+57
+00:03:49,130 --> 00:03:52,190
+The value of this attribute is the Eurail to that type.
+
+58
+00:03:52,580 --> 00:03:53,870
+This is an important step.
+
+59
+00:03:54,120 --> 00:03:59,720
+As I stated previously, it must be a Eurail to where more information can be found about that type.
+
+60
+00:04:00,170 --> 00:04:07,340
+The normal is the full you url http colon's schema, Doug, followed by the type.
+
+61
+00:04:07,790 --> 00:04:10,940
+You can also just copy and paste the URL you find here.
+
+62
+00:04:13,430 --> 00:04:20,120
+It's important to understand that only you, orell to the schema dog site, are allowed on, other sites
+
+63
+00:04:20,120 --> 00:04:21,209
+will just be ignored.
+
+64
+00:04:21,950 --> 00:04:25,100
+The bot will see this and then look at the URL for reference.
+
+65
+00:04:25,310 --> 00:04:30,320
+By looking at this page, it'll understand what kind of property you can set and what you can expect
+
+66
+00:04:30,320 --> 00:04:32,850
+to look for when it's scanning all the children elements.
+
+67
+00:04:33,110 --> 00:04:34,260
+That's the basics of it.
+
+68
+00:04:34,910 --> 00:04:38,570
+There is one more attribute, but I want to use that in another example.
+
+69
+00:04:38,810 --> 00:04:44,030
+It's perfectly fine to specify a type and no properties all expand more on this later.
+
+70
+00:04:44,030 --> 00:04:45,920
+But let's move on to the next example.
+
+71
+00:04:46,460 --> 00:04:49,610
+Open the single template and search for the author box.
+
+72
+00:04:51,900 --> 00:04:57,540
+This element contains information about the author, it would be ideal to apply some microdata to it,
+
+73
+00:04:57,870 --> 00:05:00,800
+just like the last element we need to decide on the type.
+
+74
+00:05:01,590 --> 00:05:05,400
+If you look through the list, you'll eventually find an item called person.
+
+75
+00:05:05,700 --> 00:05:12,450
+Let's use this inside the template and the items, scope and item type attributes, copy and paste the
+
+76
+00:05:12,450 --> 00:05:14,310
+URL as the value for the type.
+
+77
+00:05:20,980 --> 00:05:26,260
+This time, I want to specify more information, if you look through this documentation, you'll find
+
+78
+00:05:26,260 --> 00:05:28,480
+all the properties we can set for this type.
+
+79
+00:05:28,780 --> 00:05:30,340
+One of these is name.
+
+80
+00:05:30,640 --> 00:05:34,600
+Every person has a name and are often Borke Display's the author's name.
+
+81
+00:05:35,020 --> 00:05:38,860
+To apply a property, you have to use the item Propp attribute.
+
+82
+00:05:39,160 --> 00:05:42,970
+Apply this attribute to the spane tag, which encompasses the name.
+
+83
+00:05:45,380 --> 00:05:51,740
+Then set its value to name, we're only going to apply this property, you're more than free to apply
+
+84
+00:05:51,740 --> 00:05:52,700
+more properties.
+
+85
+00:05:52,880 --> 00:05:58,190
+You'll also notice that we have a type on the body tag and a type for this element, which is inside
+
+86
+00:05:58,190 --> 00:05:58,950
+the body tag.
+
+87
+00:05:59,300 --> 00:06:00,530
+This is perfectly allowed.
+
+88
+00:06:00,710 --> 00:06:06,750
+Types can have types inside them to reiterate what's going on when search engines scan this page.
+
+89
+00:06:06,770 --> 00:06:08,780
+They will eventually come upon this element.
+
+90
+00:06:09,080 --> 00:06:14,810
+Upon scanning it, it'll find the attribute item SCOP telling it that the developer is specifying what
+
+91
+00:06:14,810 --> 00:06:16,880
+kind of information is inside this element.
+
+92
+00:06:17,210 --> 00:06:20,510
+It will then look for a type which in this case is person.
+
+93
+00:06:20,790 --> 00:06:23,480
+It will then search through the properties for this type.
+
+94
+00:06:24,110 --> 00:06:26,630
+This is how you would go about using microdata.
+
+95
+00:06:27,050 --> 00:06:33,230
+So far we've used only the Web page and person types, but there are dozens of them on this page.
+
+96
+00:06:33,410 --> 00:06:35,600
+Some are even children of certain ones.
+
+97
+00:06:35,730 --> 00:06:41,570
+For example, the type thing is the parent of all these types, including Web page and person.
+
+98
+00:06:41,840 --> 00:06:47,330
+If we look at the Web page type, you can see we can get even more specific with the type by seeing
+
+99
+00:06:47,330 --> 00:06:50,360
+the page is an about page or contact page type.
+
+100
+00:06:50,750 --> 00:06:52,700
+The more specific you are, the better.
+
+101
+00:06:53,300 --> 00:06:55,460
+I'm going to give some closing thoughts.
+
+102
+00:06:55,700 --> 00:06:58,720
+Adding microdata is absolutely not required.
+
+103
+00:06:59,000 --> 00:07:01,790
+You'll find that a lot of sites don't use microdata.
+
+104
+00:07:02,000 --> 00:07:06,050
+It's more or less a way to help search engines better understand a page.
+
+105
+00:07:06,290 --> 00:07:10,710
+If you forget to add microdata to a comment or to an article, then that's fine.
+
+106
+00:07:11,060 --> 00:07:15,620
+Search engines will still scan the elements and try to understand the content on its own.
+
+107
+00:07:16,220 --> 00:07:21,680
+These attributes are just a way to help it better understand your content without having to guess if
+
+108
+00:07:21,680 --> 00:07:23,540
+you're having trouble using microdata.
+
+109
+00:07:23,690 --> 00:07:29,570
+I highly recommend you work with an SEO specialist and work together to maximize the CEO of your theme.
+
+110
+00:07:30,230 --> 00:07:34,820
+To test your snippets, you can go to the structured data testing tool from Google.
+
+111
+00:07:35,180 --> 00:07:36,530
+I'll provide a link to this.
+
+112
+00:07:36,530 --> 00:07:42,380
+In the resource section of this lecture, you just paste in a tutorial or just paste in a small snippet
+
+113
+00:07:42,380 --> 00:07:45,200
+of code and Google will tell you how it reads that data.
+
+114
+00:07:45,710 --> 00:07:48,440
+Since we're on a local server, we really can't test it.
+
+115
+00:07:49,010 --> 00:07:52,040
+That basically sums up micro data and how to use them.
+
+116
+00:07:52,310 --> 00:07:53,690
+I highly encourage that.
+
+117
+00:07:53,690 --> 00:07:57,770
+You read the documentation to learn more about what you can do with Microdata.
+

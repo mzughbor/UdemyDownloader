@@ -1,0 +1,136 @@
+1
+00:00:07,750 --> 00:00:10,420
+Our site is starting to come along really well.
+
+2
+00:00:10,510 --> 00:00:15,720
+All we need to do is make it more dynamic and fix a lot of the links before we can do this.
+
+3
+00:00:15,730 --> 00:00:22,600
+We need to have some dummy content setup so let's add some dummy content navigate to the dashboard and
+
+4
+00:00:22,600 --> 00:00:28,810
+let's add a new plugin in search for the plugin called faker press this plug will take care of generating
+
+5
+00:00:28,810 --> 00:00:36,210
+dummy content for your site install and activate it.
+
+6
+00:00:36,240 --> 00:00:36,600
+All right.
+
+7
+00:00:36,780 --> 00:00:41,760
+So once activated you'll see a new menu item pop up called faker press.
+
+8
+00:00:41,760 --> 00:00:44,760
+Let's start by creating some users first.
+
+9
+00:00:44,760 --> 00:00:50,740
+I'm going to create just two users and I'm going to set their roles to offer click generate.
+
+10
+00:00:50,790 --> 00:00:53,590
+And you should see a success message afterwards.
+
+11
+00:00:53,610 --> 00:01:00,330
+If the two users were created next I want to create some terms.
+
+12
+00:01:00,480 --> 00:01:06,960
+Even though we haven't discussed what terms are all you need to know is that they are words and phrases
+
+13
+00:01:06,960 --> 00:01:08,430
+attached to a post.
+
+14
+00:01:08,610 --> 00:01:15,660
+I'm going to set the quantity between five and 10 the name size will be between 1 and 3.
+
+15
+00:01:15,750 --> 00:01:22,580
+The taxonomy is will be set to categories and tags that should do it.
+
+16
+00:01:22,740 --> 00:01:25,920
+Click generate and that should generate some terms.
+
+17
+00:01:25,920 --> 00:01:30,760
+Lastly let's create some posts under press posts.
+
+18
+00:01:30,780 --> 00:01:36,990
+This will allow us to generate some posts and the quantity put 15 and 20.
+
+19
+00:01:36,990 --> 00:01:40,220
+Change the date to last 15 days.
+
+20
+00:01:40,290 --> 00:01:45,870
+Set the author feel to all users including the admin.
+
+21
+00:01:46,120 --> 00:01:48,440
+A lot of these fields are fine as is.
+
+22
+00:01:48,460 --> 00:01:53,650
+Scroll down to the taxonomy section and select all the terms we created previously
+
+23
+00:02:00,850 --> 00:02:02,620
+set the rate to 100.
+
+24
+00:02:02,680 --> 00:02:05,950
+Leave the rest of the fields as is and click generate.
+
+25
+00:02:05,980 --> 00:02:10,060
+This may take a while for some of you as images are being downloaded for preview.
+
+26
+00:02:17,070 --> 00:02:20,730
+Hopefully you will receive a success message once that's finished.
+
+27
+00:02:20,730 --> 00:02:22,920
+Let's view the posts generated.
+
+28
+00:02:22,920 --> 00:02:28,740
+We don't need to generate any more content from faker press for now so I'm going to deactivate this
+
+29
+00:02:28,740 --> 00:02:34,290
+plugin let's create one page called about us.
+
+30
+00:02:34,360 --> 00:02:43,170
+Insert a few words and then publish it.
+
+31
+00:02:43,180 --> 00:02:45,560
+Lastly let's create a menu.
+
+32
+00:02:45,670 --> 00:02:51,180
+The menu links should be right under appearance but you'll notice that it's unavailable to us.
+
+33
+00:02:51,190 --> 00:02:55,660
+This is because we need to tell WordPress that our theme supports menus.
+
+34
+00:02:55,690 --> 00:02:58,180
+Let's learn how to do that in the next lecture.
+

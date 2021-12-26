@@ -1,0 +1,44 @@
+1
+00:00:00,740 --> 00:00:03,469
+Congratulations, you've made it to the very end.
+
+2
+00:00:03,680 --> 00:00:06,080
+We've talked a lot about WordPress development.
+
+3
+00:00:06,350 --> 00:00:11,990
+We created a theme and plug them that takes advantage of most of the APIs available and WordPress.
+
+4
+00:00:12,440 --> 00:00:16,640
+We've gone over how to translate plugins and even learned about selling them as well.
+
+5
+00:00:17,030 --> 00:00:19,970
+I hope you found this experience most helpful to you.
+
+6
+00:00:20,360 --> 00:00:23,660
+I wish you a lot of luck in your career as a WordPress developer.
+
+7
+00:00:23,960 --> 00:00:28,130
+If you have any questions at all, please feel free to ask in the comments.
+
+8
+00:00:28,730 --> 00:00:34,460
+Also, if you can, please take the time to rate this course, then encourages me to keep improving
+
+9
+00:00:34,460 --> 00:00:35,150
+this course.
+
+10
+00:00:35,450 --> 00:00:36,680
+I appreciate it a lot.
+
+11
+00:00:37,010 --> 00:00:37,580
+Thank you.
+

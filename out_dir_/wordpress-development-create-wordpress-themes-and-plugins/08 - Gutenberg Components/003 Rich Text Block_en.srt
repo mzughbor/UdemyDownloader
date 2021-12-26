@@ -1,0 +1,444 @@
+1
+00:00:07,390 --> 00:00:13,570
+In this lecture, we're going to explore how to create a rich text block, a rich text block is a block
+
+2
+00:00:13,570 --> 00:00:15,840
+that allows you to write content with formatting.
+
+3
+00:00:16,180 --> 00:00:19,320
+It's the equivalent of adding a tiny MCE editor.
+
+4
+00:00:19,690 --> 00:00:22,070
+You can make text bold and italicized.
+
+5
+00:00:22,420 --> 00:00:29,030
+This shouldn't be confused with a text area field as text area doesn't allow for formatting to get started.
+
+6
+00:00:29,170 --> 00:00:33,140
+I've provided some starter files in the resource section of this lecture.
+
+7
+00:00:33,610 --> 00:00:35,740
+Download it and unzip the contents.
+
+8
+00:00:35,740 --> 00:00:42,490
+Inside the blocks after victory of our plugin, there should be a folder called Rich Text Blocks with
+
+9
+00:00:42,490 --> 00:00:43,890
+a single JFS file.
+
+10
+00:00:44,530 --> 00:00:49,630
+If you open this, you'll find that I'm just importing some components and registering a new block.
+
+11
+00:00:50,050 --> 00:00:52,610
+This code won't work because we aren't importing it.
+
+12
+00:00:52,960 --> 00:00:58,240
+Why don't you give that a try and pause the video and try importing this so that web pack can process
+
+13
+00:00:58,240 --> 00:00:58,420
+it?
+
+14
+00:01:00,650 --> 00:01:01,460
+Welcome back.
+
+15
+00:01:01,640 --> 00:01:04,060
+If you were able to do this, then that's great.
+
+16
+00:01:04,190 --> 00:01:05,960
+If not, that's fine as well.
+
+17
+00:01:06,290 --> 00:01:07,400
+Let's do it together.
+
+18
+00:01:07,730 --> 00:01:11,050
+Open the app index file.
+
+19
+00:01:11,330 --> 00:01:15,220
+This is where we import our blocks right below the recipe block.
+
+20
+00:01:15,260 --> 00:01:18,290
+Add the following import rich text block.
+
+21
+00:01:20,570 --> 00:01:24,030
+That's all we have to do now, the block will be loaded properly.
+
+22
+00:01:24,350 --> 00:01:26,570
+Let's switch back to the rich tax block.
+
+23
+00:01:26,820 --> 00:01:28,640
+A lot of this should be familiar to you.
+
+24
+00:01:28,850 --> 00:01:31,460
+I'm naming my block udemy rich text.
+
+25
+00:01:31,760 --> 00:01:33,380
+The settings have been simplified.
+
+26
+00:01:33,710 --> 00:01:37,340
+I didn't bother adding the key words since this is a simple example.
+
+27
+00:01:37,790 --> 00:01:41,930
+The attributes are currently empty will be adding an attribute soon enough.
+
+28
+00:01:42,560 --> 00:01:46,070
+The edit function is returning a simple div tag with a title.
+
+29
+00:01:46,400 --> 00:01:49,250
+The save function isn't returning anything at all.
+
+30
+00:01:49,610 --> 00:01:51,350
+This should be enough to get us started.
+
+31
+00:01:51,590 --> 00:01:54,230
+The process for all of this should be straightforward.
+
+32
+00:01:54,800 --> 00:01:59,480
+First, we'll import any necessary components, then we'll define the attributes.
+
+33
+00:01:59,750 --> 00:02:03,050
+Next will load the component inside the added function.
+
+34
+00:02:03,410 --> 00:02:05,270
+Lastly, will render the block.
+
+35
+00:02:07,820 --> 00:02:14,000
+The component we're going to need will come from the WP editor Object Wieldy structure and grabbed the
+
+36
+00:02:14,000 --> 00:02:15,320
+rich text component.
+
+37
+00:02:18,320 --> 00:02:23,840
+The rich text component will allow the user to edit the content inside of it, while also allowing them
+
+38
+00:02:23,840 --> 00:02:25,110
+to format their content.
+
+39
+00:02:25,580 --> 00:02:27,830
+The next step is to create the attribute.
+
+40
+00:02:28,130 --> 00:02:30,950
+I'm going to create an attribute called message.
+
+41
+00:02:33,180 --> 00:02:35,310
+The type for this will be Ouray.
+
+42
+00:02:37,730 --> 00:02:44,180
+Previously, we used Stream, however, this time we're not just storing text, we're storing elements
+
+43
+00:02:44,180 --> 00:02:45,430
+and attributes as well.
+
+44
+00:02:45,800 --> 00:02:51,590
+The rich text component will generate a lot of content and so an array is ideal for multiple pieces
+
+45
+00:02:51,590 --> 00:02:52,190
+of content.
+
+46
+00:02:52,820 --> 00:02:54,740
+The source will be children.
+
+47
+00:02:56,930 --> 00:03:03,410
+Once again, the content generated will be complex when WordPress is extracting the data from the content,
+
+48
+00:03:03,440 --> 00:03:04,940
+it will need to grab everything.
+
+49
+00:03:05,270 --> 00:03:09,710
+This includes text elements, attributes and anything that is nested.
+
+50
+00:03:10,070 --> 00:03:12,700
+The children value will instruct it to do so.
+
+51
+00:03:13,550 --> 00:03:16,370
+The selector will be message container.
+
+52
+00:03:18,710 --> 00:03:24,920
+This element doesn't exist, but will be creating it soon enough, the attribute is now already let's
+
+53
+00:03:24,920 --> 00:03:31,220
+move onto the edit function right below the three elements and the rich text component.
+
+54
+00:03:33,470 --> 00:03:39,380
+The rich text component requires quite a few attributes in the resource section of this lecture, I
+
+55
+00:03:39,380 --> 00:03:42,530
+provide a link to the rich text component documentation.
+
+56
+00:03:42,980 --> 00:03:47,620
+Here you'll find information on the various attributes you can set and even some examples.
+
+57
+00:03:48,170 --> 00:03:50,090
+There should be an S5 example.
+
+58
+00:03:50,090 --> 00:03:55,310
+If you're using S5, feel free to read up on this page to learn more about this component.
+
+59
+00:03:55,700 --> 00:03:57,170
+Let's go back to our script.
+
+60
+00:03:57,350 --> 00:04:00,620
+The first property will set is the tag name property.
+
+61
+00:04:00,890 --> 00:04:02,150
+Set this to div.
+
+62
+00:04:04,260 --> 00:04:09,330
+This will be the element that's wrapped around the content and put it, you can set this to an age three
+
+63
+00:04:09,330 --> 00:04:13,800
+tag if you want the content to be a title, it's a very flexible component.
+
+64
+00:04:14,130 --> 00:04:16,709
+A div tag will do for our purposes.
+
+65
+00:04:17,010 --> 00:04:18,839
+The next property is multiline.
+
+66
+00:04:18,959 --> 00:04:20,130
+Set this, Tuppy.
+
+67
+00:04:22,410 --> 00:04:28,770
+The rich text component will allow your users to create multiline content whenever a user presses the
+
+68
+00:04:28,770 --> 00:04:30,280
+enter key on their keyboard.
+
+69
+00:04:30,420 --> 00:04:34,660
+Then this will determine how that content is broken down by default.
+
+70
+00:04:34,710 --> 00:04:39,450
+This will use a line break, but I prefer to use paragraph tags for better formatting.
+
+71
+00:04:40,080 --> 00:04:42,060
+The next property is placeholder.
+
+72
+00:04:42,270 --> 00:04:45,690
+Make this translatable and set it to add your content here.
+
+73
+00:04:49,160 --> 00:04:53,250
+The next property will be on change, just like the other components.
+
+74
+00:04:53,300 --> 00:04:58,520
+This will be triggered when the user changes the content, set this to an arrow function that will call
+
+75
+00:04:58,520 --> 00:05:03,800
+the props, set attributes, function and update the message attribute with the new value.
+
+76
+00:05:08,500 --> 00:05:15,100
+The last property will set is the value property, set this to props, Don attributes stock message.
+
+77
+00:05:17,360 --> 00:05:18,840
+This one should be straightforward.
+
+78
+00:05:18,980 --> 00:05:23,640
+It's the value or content inside the component that should finish things up.
+
+79
+00:05:23,870 --> 00:05:25,910
+Let's move on to the same function.
+
+80
+00:05:26,210 --> 00:05:28,430
+We won't have to do much to get this to work.
+
+81
+00:05:28,580 --> 00:05:30,880
+It's as simple as displaying the attribute.
+
+82
+00:05:31,160 --> 00:05:36,800
+Why don't you give this a try, pause the video and try displaying the content from the rich text component.
+
+83
+00:05:38,700 --> 00:05:39,480
+Welcome back.
+
+84
+00:05:39,600 --> 00:05:43,620
+If you were able to do it, then congrats, if not, that's fine as well.
+
+85
+00:05:43,860 --> 00:05:44,970
+Let's do it together.
+
+86
+00:05:45,240 --> 00:05:46,370
+Inside the function.
+
+87
+00:05:46,380 --> 00:05:49,470
+I'm going to return a pair of div tags.
+
+88
+00:05:51,630 --> 00:05:57,240
+I won't be applying the class as Gutenberg will do it for us inside this div tag.
+
+89
+00:05:57,270 --> 00:06:01,560
+I'm going to add the three tags with the message we had in the edit function.
+
+90
+00:06:03,890 --> 00:06:07,370
+This is not necessary, but I like to add it for consistency.
+
+91
+00:06:07,760 --> 00:06:13,940
+Lastly, I'll add another pair of div tags with the props attributes message inside.
+
+92
+00:06:16,260 --> 00:06:21,720
+Make sure to apply the message container class, since that's what we specified inside The Selecter
+
+93
+00:06:21,720 --> 00:06:23,070
+property for the attribute.
+
+94
+00:06:25,290 --> 00:06:31,140
+That should do it into the blocks directory and run the NPM run dev command.
+
+95
+00:06:35,180 --> 00:06:41,540
+You shouldn't see any error so far once you have that comp., go ahead and create a new recipe post
+
+96
+00:06:41,780 --> 00:06:44,490
+if you were to search for the rich text component.
+
+97
+00:06:44,570 --> 00:06:46,820
+You should see it appear with the title and icon.
+
+98
+00:06:47,090 --> 00:06:49,720
+Select the component to add it onto the editor.
+
+99
+00:06:50,210 --> 00:06:51,830
+It should appear without a problem.
+
+100
+00:06:52,010 --> 00:06:55,200
+If you check the console, then you shouldn't see any errors.
+
+101
+00:06:55,460 --> 00:06:57,710
+Now try editing the content area.
+
+102
+00:06:57,980 --> 00:07:01,790
+You can input anything you want and even add multiline content.
+
+103
+00:07:02,150 --> 00:07:05,950
+I can press control, be on my keyboard to make the content bold.
+
+104
+00:07:06,290 --> 00:07:07,440
+This is fantastic.
+
+105
+00:07:08,000 --> 00:07:10,010
+Let's see if things work on the front end.
+
+106
+00:07:10,250 --> 00:07:12,350
+Publish the post and then view the post.
+
+107
+00:07:17,200 --> 00:07:19,300
+The content should be rendered on the front end.
+
+108
+00:07:19,540 --> 00:07:23,110
+Congrats, you've created your first rich text block.
+
+109
+00:07:23,410 --> 00:07:25,140
+You can use this in several ways.
+
+110
+00:07:25,270 --> 00:07:30,820
+It's not practical to use this by itself since Gutenberg already has a blog but does something similar.
+
+111
+00:07:30,940 --> 00:07:33,280
+But I'm sure you'll find a use case for this.
+

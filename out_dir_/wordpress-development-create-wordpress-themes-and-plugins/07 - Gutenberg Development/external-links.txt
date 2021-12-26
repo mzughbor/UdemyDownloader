@@ -1,0 +1,42 @@
+
+001 Babel-Preset
+https://www.npmjs.com/package/@wordpress/babel-preset-default
+
+003 Gutenberg-Handbook
+https://developer.wordpress.org/block-editor/
+
+003 Gutenberg-Github-Repo
+https://github.com/WordPress/gutenberg
+
+004 Dashicons
+https://developer.wordpress.org/resource/dashicons/
+
+004 SVG-to-JSX
+https://svg2jsx.herokuapp.com/
+
+004 Flat-Icon
+https://www.flaticon.com/
+
+004 Wapuu
+https://wapu.us/
+
+004 Support-Settings
+https://developer.wordpress.org/block-editor/developers/block-api/block-registration/#supports-optional
+
+010 Raw-Loader
+https://github.com/webpack-contrib/raw-loader
+
+010 Node-SASS
+https://github.com/sass/node-sass
+
+010 SASS-Loader
+https://github.com/webpack-contrib/sass-loader
+
+010 Mini-CSS-Extract-Plugin
+https://github.com/webpack-contrib/mini-css-extract-plugin
+
+010 CSS-Loader
+https://github.com/webpack-contrib/css-loader
+
+010 Lato-Google-Font
+https://fonts.google.com/specimen/Lato

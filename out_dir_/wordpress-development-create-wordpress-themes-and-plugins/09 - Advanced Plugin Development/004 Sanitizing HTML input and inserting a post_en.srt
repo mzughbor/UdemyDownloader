@@ -1,0 +1,416 @@
+1
+00:00:07,390 --> 00:00:09,710
+Let's start working on submitting the recipe.
+
+2
+00:00:10,000 --> 00:00:13,780
+Let's give the recipe form an idea of recipe dash form.
+
+3
+00:00:15,970 --> 00:00:21,520
+Above this form, let's add a status div with the ID of recipe dash status.
+
+4
+00:00:24,760 --> 00:00:30,520
+We'll use this Divx to display a message to the user whether or not the recipe was simple and successfully
+
+5
+00:00:31,090 --> 00:00:33,280
+open the main dog's file.
+
+6
+00:00:35,330 --> 00:00:38,280
+This is the same file that should contain the reading submission.
+
+7
+00:00:38,660 --> 00:00:41,870
+Let's listen for the form submission using the on method.
+
+8
+00:00:46,690 --> 00:00:48,790
+We'll be given an event object.
+
+9
+00:00:49,060 --> 00:00:53,080
+We're going to call the prevent default method so that the form isn't submitted.
+
+10
+00:00:55,320 --> 00:01:00,700
+We want to use Ajax for submitting the form, we're going to hide the form during submission.
+
+11
+00:01:00,990 --> 00:01:03,840
+This will make sure the user doesn't submit the form twice.
+
+12
+00:01:05,940 --> 00:01:12,260
+Next, we're going to select the Status d'Hiv and add some HTML, add a simple weighting message.
+
+13
+00:01:12,510 --> 00:01:16,100
+I'm going to wrap this around some bootstrap markup to make it look good.
+
+14
+00:01:22,340 --> 00:01:28,520
+Just like last time, create an object that will contain the form values to grab the values, you simply
+
+15
+00:01:28,520 --> 00:01:33,140
+select the input field by their IDs and use the VAL method to get the value.
+
+16
+00:01:36,480 --> 00:01:40,230
+For the action will set this to our submit user recipe.
+
+17
+00:01:45,540 --> 00:01:51,510
+Grabbing the content from the editor is pretty simple when we included the editor, WordPress also loaded
+
+18
+00:01:51,510 --> 00:01:53,340
+the tiny MCE object.
+
+19
+00:01:53,670 --> 00:01:59,400
+We can grab the content by using this object and grabbing the current active editor and called the get
+
+20
+00:01:59,400 --> 00:02:02,730
+content method, which will return unsanitized each HTML.
+
+21
+00:02:05,130 --> 00:02:09,060
+Lastly, we submit this data using GAO queries post method.
+
+22
+00:02:13,410 --> 00:02:20,400
+Remember that the recipe object is available to us and we can use it to provide the Ajax You URL inside
+
+23
+00:02:20,400 --> 00:02:24,090
+the response function, we'll be doing either one of two things.
+
+24
+00:02:24,360 --> 00:02:30,060
+We're going to check the data object for a status property and check if its value is equal to two.
+
+25
+00:02:30,480 --> 00:02:36,220
+If it is, then we know that the form submission was a success, otherwise an error occurred.
+
+26
+00:02:36,840 --> 00:02:41,850
+I'm going to update the status h html appropriately if the submission was a failure.
+
+27
+00:02:41,910 --> 00:02:43,530
+I'm going to show the form again.
+
+28
+00:02:45,200 --> 00:02:52,400
+Let's handle the form submission now inside the main plug and file, let's add the action Hook WP Ajax.
+
+29
+00:02:54,500 --> 00:03:00,350
+We have to append our action to this hook like so the function we want to call will be the same name
+
+30
+00:03:00,350 --> 00:03:01,070
+as the action.
+
+31
+00:03:01,460 --> 00:03:06,920
+I'm also going to make this hook available for guests as I'm going to allow for guest submissions to.
+
+32
+00:03:09,170 --> 00:03:16,280
+Inside the process folder, create the file called submit dash user dash recipe and define the function
+
+33
+00:03:16,280 --> 00:03:16,640
+here.
+
+34
+00:03:17,060 --> 00:03:19,990
+We'll need to include this file from the main plugin as well.
+
+35
+00:03:25,710 --> 00:03:27,990
+Create a variable named output.
+
+36
+00:03:30,210 --> 00:03:34,710
+This will be an array that will contain the status, set the status to one.
+
+37
+00:03:36,900 --> 00:03:42,210
+I'm going to perform a very simple check on the title input, I want to know if it's empty.
+
+38
+00:03:42,390 --> 00:03:47,610
+If it is, I'm going to send back the output with the WP, send Jason function.
+
+39
+00:03:47,910 --> 00:03:49,710
+This will also kill the scripts.
+
+40
+00:03:54,900 --> 00:03:57,360
+After this, I'm going to paste in some code.
+
+41
+00:03:58,870 --> 00:04:00,460
+Pause the video if you need to.
+
+42
+00:04:00,670 --> 00:04:05,200
+All I'm doing here is sanitizing the input, I'm also creating the metadata.
+
+43
+00:04:05,470 --> 00:04:12,490
+We create the recipe data array just like last time I've set the rating and rating count to zero.
+
+44
+00:04:13,000 --> 00:04:18,220
+Something you'll notice is that for the title, I'm using these sanitized TextField function, but I'm
+
+45
+00:04:18,220 --> 00:04:20,550
+not applying this to the content itself.
+
+46
+00:04:20,890 --> 00:04:23,830
+We can't use this function for sanitizing the content.
+
+47
+00:04:24,250 --> 00:04:29,950
+Instead, I'm using a function called WP KSEE Post and the resource section.
+
+48
+00:04:29,950 --> 00:04:33,490
+I provide a link to a function called WPX says.
+
+49
+00:04:34,030 --> 00:04:36,270
+Let's take a look at this function in more detail.
+
+50
+00:04:36,580 --> 00:04:41,230
+There are a few libraries out there in AP that help with sanitizing each HTML.
+
+51
+00:04:41,680 --> 00:04:46,780
+WordPress provides its own solution, which is the preferred method for sanitizing HTML.
+
+52
+00:04:47,320 --> 00:04:55,090
+The WPX function is a pretty flexible function as it allows us to define what HTML tags, attributes
+
+53
+00:04:55,090 --> 00:04:56,710
+and protocols are allowed.
+
+54
+00:04:57,100 --> 00:05:03,190
+It would be pretty time consuming to have to re-enter what HTML is allowed every time we use this function.
+
+55
+00:05:03,850 --> 00:05:08,500
+If we scroll down, there's a link to the WP KSEE post function.
+
+56
+00:05:08,860 --> 00:05:15,640
+This function does the exact same thing as the WP access function, but instead uses the same filter
+
+57
+00:05:15,640 --> 00:05:16,320
+for posts.
+
+58
+00:05:16,660 --> 00:05:23,260
+This saves us some time since our recipe post is basically just a post, it makes sense to just use
+
+59
+00:05:23,260 --> 00:05:24,310
+this Schauder function.
+
+60
+00:05:24,610 --> 00:05:31,990
+If you prefer to define your own set of HTML and attributes, then I suggest using the WP KSEE function.
+
+61
+00:05:32,620 --> 00:05:36,790
+All our data is now sanitized and ready to be inserted into the database.
+
+62
+00:05:37,090 --> 00:05:39,460
+Inserting opposes actually really easy.
+
+63
+00:05:39,760 --> 00:05:44,800
+We don't even have to use the global WP object to perform this task.
+
+64
+00:05:45,160 --> 00:05:49,270
+WordPress provides a handy function called WP Insert Post.
+
+65
+00:05:49,660 --> 00:05:53,110
+I'll provide a link to this function inside the resources section.
+
+66
+00:05:53,800 --> 00:05:59,260
+This function will insert a post for us and even take care of sanitisation just in case we forgot to
+
+67
+00:05:59,260 --> 00:06:00,220
+do it ourselves.
+
+68
+00:06:00,610 --> 00:06:03,610
+There's only one parameter, which is an array of arguments.
+
+69
+00:06:03,910 --> 00:06:07,660
+There are numerous things we can set, but we won't be using all of them.
+
+70
+00:06:07,960 --> 00:06:11,110
+The only required arguments are the content and the title.
+
+71
+00:06:11,680 --> 00:06:14,410
+If we skip anything, WordPress will fill in the rest.
+
+72
+00:06:14,410 --> 00:06:19,990
+By default, this function will end up returning the idea of the post created, which we will need for
+
+73
+00:06:19,990 --> 00:06:26,500
+adding the post metadata, creating a variable named post ID and its value will be the value returned
+
+74
+00:06:26,500 --> 00:06:28,840
+by the WP insert post function.
+
+75
+00:06:31,100 --> 00:06:32,340
+Pass in an array.
+
+76
+00:06:32,660 --> 00:06:38,810
+We're going to define the following arguments, post content will be set to the content variable.
+
+77
+00:06:41,050 --> 00:06:44,380
+Post name and post title will both be set to the title.
+
+78
+00:06:50,840 --> 00:06:56,060
+The difference between these two is the name will be used for the slug and the title is used for the
+
+79
+00:06:56,060 --> 00:07:00,440
+human readable title, post status will be set to pending.
+
+80
+00:07:02,540 --> 00:07:08,510
+By default, this is set to draft, will consider the post complete, but we don't want to publish the
+
+81
+00:07:08,510 --> 00:07:09,380
+recipe either.
+
+82
+00:07:09,710 --> 00:07:14,270
+Pending will let administrators know that the Post needs to be reviewed before being published.
+
+83
+00:07:14,750 --> 00:07:18,430
+Post type will be set to recipe, since that is our post type.
+
+84
+00:07:20,830 --> 00:07:21,440
+That's it.
+
+85
+00:07:21,670 --> 00:07:26,620
+Feel free to read over the codex and set the rest of the arguments if you would like to customize this
+
+86
+00:07:26,620 --> 00:07:27,070
+further.
+
+87
+00:07:27,430 --> 00:07:32,590
+Next, let's call the update post meta function to set the recipe data metadata.
+
+88
+00:07:36,650 --> 00:07:42,620
+Our function is almost finished, all we need to do now is update the status in the output array to
+
+89
+00:07:42,620 --> 00:07:46,670
+two and then output it using the WP, send JSON function.
+
+90
+00:07:48,860 --> 00:07:52,730
+Refresh the recipe form page and try submitting the form with no input.
+
+91
+00:07:52,910 --> 00:07:54,110
+You should get an error.
+
+92
+00:07:56,650 --> 00:08:00,220
+Now, try filling in all the fields and we should see a success message.
+
+93
+00:08:02,600 --> 00:08:08,480
+You should also have your console open to check for any errors if you've received no errors and received
+
+94
+00:08:08,480 --> 00:08:09,650
+a success message.
+
+95
+00:08:09,770 --> 00:08:11,790
+Then there's one last thing we need to check.
+
+96
+00:08:12,140 --> 00:08:15,650
+Go to the recipe admin page and see if the post has been added.
+
+97
+00:08:17,790 --> 00:08:23,520
+After confirming that it's available, let's view the contents in the editor, as you can see, everything
+
+98
+00:08:23,520 --> 00:08:24,770
+was inputted correctly.
+
+99
+00:08:25,110 --> 00:08:26,850
+This is exactly what we wanted.
+
+100
+00:08:27,120 --> 00:08:30,470
+We now have a form where users can submit their own recipes.
+
+101
+00:08:30,840 --> 00:08:36,030
+What I like about this is that even though we're not using the Gutenberg editor on the front end, this
+
+102
+00:08:36,030 --> 00:08:36,830
+will still work.
+
+103
+00:08:37,169 --> 00:08:40,960
+The content has been converted into a blog called The Classic Block.
+
+104
+00:08:41,309 --> 00:08:43,620
+This makes Gutenberg backwards compatible.
+

@@ -1,0 +1,57 @@
+
+002 Official-WordPress-Site.org-
+https://wordpress.org/
+
+002 WordPress-Hosting-Platform
+https://wordpress.com/
+
+002 Developer-Documentation
+https://developer.wordpress.org/
+
+002 Automaticc
+https://automattic.com/
+
+003 XAMPP
+https://www.apachefriends.org/index.html
+
+003 Apache
+http://www.apache.org/
+
+003 MariaDB
+https://mariadb.org/
+
+003 PHP
+http://www.php.net/
+
+003 HeidiSQL
+https://www.heidisql.com/
+
+003 WordPress-Requirements
+https://wordpress.org/about/requirements/
+
+003 Sequel-Pro
+https://www.sequelpro.com/
+
+004 MAMP
+https://www.mamp.info/en/
+
+004 WAMP
+http://www.wampserver.com/en/
+
+004 PHPStorm
+https://www.jetbrains.com/phpstorm/
+
+004 Visual-Studio
+https://code.visualstudio.com/
+
+004 Local-by-Flywheel
+https://localbyflywheel.com/
+
+005 WritePHPOnline
+http://www.writephponline.com/
+
+005 PHP-OOP-Tutorial-Series
+https://code.tutsplus.com/tutorials/object-oriented-php-for-beginners--net-12762
+
+005 WordPress-Best-Practices
+https://make.wordpress.org/core/handbook/best-practices/

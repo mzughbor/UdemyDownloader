@@ -1,0 +1,576 @@
+1
+00:00:07,480 --> 00:00:14,200
+Let's begin exploring some of the built in modules from Node right now and on the official no documentation
+
+2
+00:00:14,200 --> 00:00:18,460
+page here, you'll find information about using Node to its fullest.
+
+3
+00:00:18,670 --> 00:00:22,990
+On the sidebar, you'll find a list of modules that come with node by default.
+
+4
+00:00:23,560 --> 00:00:25,840
+I want you to click on utilities.
+
+5
+00:00:26,080 --> 00:00:28,630
+The utilities module is a pretty simple one.
+
+6
+00:00:28,940 --> 00:00:33,360
+It provides you with methods that can help you with string manipulation and so much more.
+
+7
+00:00:33,910 --> 00:00:36,390
+If you scroll down, you'll see a basic example.
+
+8
+00:00:36,820 --> 00:00:41,230
+You'll notice that node recommends you use const instead of VAR.
+
+9
+00:00:41,530 --> 00:00:47,200
+This is a brand new JavaScript feature that I don't expect you to know in the next couple of lectures
+
+10
+00:00:47,200 --> 00:00:51,050
+will definitely explore some of the new features available in JavaScript.
+
+11
+00:00:51,340 --> 00:00:53,410
+For now, we're going to keep things simple.
+
+12
+00:00:54,010 --> 00:00:57,610
+We are going to continue using VAR instead of const.
+
+13
+00:00:57,940 --> 00:01:02,530
+Don't worry, you won't experience any problems by using VAR instead of CONSED.
+
+14
+00:01:03,100 --> 00:01:05,010
+All right, let's use this module.
+
+15
+00:01:05,200 --> 00:01:08,770
+I'm going to comment about the code inside the index file.
+
+16
+00:01:10,980 --> 00:01:15,360
+Create a variable named util and require the module util.
+
+17
+00:01:17,660 --> 00:01:23,930
+This is the same code on the documentation, as you can see, it's recommended you name your variable
+
+18
+00:01:23,930 --> 00:01:29,720
+after the module name, you are allowed to change the variable name to whatever you want, but I don't
+
+19
+00:01:29,720 --> 00:01:31,690
+recommend it doing it like this.
+
+20
+00:01:31,700 --> 00:01:34,330
+Just make your code easier to read and manage.
+
+21
+00:01:35,000 --> 00:01:40,130
+One thing you'll notice is that I'm just requiring the module without having to specify a path.
+
+22
+00:01:40,550 --> 00:01:43,010
+Node modules are global modules.
+
+23
+00:01:43,280 --> 00:01:49,910
+There are usually two kinds of modules, modules that exist inside your directory and modules that exist
+
+24
+00:01:49,910 --> 00:01:50,480
+globally.
+
+25
+00:01:50,990 --> 00:01:53,900
+Node will search for modules in three locations.
+
+26
+00:01:54,140 --> 00:02:00,260
+It will search for the module inside your directory, then it'll search for the module in a directory
+
+27
+00:02:00,260 --> 00:02:02,590
+called Node Underscore Modules.
+
+28
+00:02:02,900 --> 00:02:07,010
+Lastly, it'll search for the module in the Global Modules directory.
+
+29
+00:02:07,370 --> 00:02:10,100
+Global modules can be used anywhere on your system.
+
+30
+00:02:10,669 --> 00:02:15,710
+You can use global modules inside your documents, desktop and even your Windows folder.
+
+31
+00:02:16,010 --> 00:02:21,530
+The util module is a global module, so we do not need to worry about inputting a full path.
+
+32
+00:02:21,950 --> 00:02:24,680
+Node is smart enough to find this module for you.
+
+33
+00:02:25,430 --> 00:02:26,750
+Let's use this module.
+
+34
+00:02:26,900 --> 00:02:31,850
+It can be used the same way we used our own custom module in the previous lecture.
+
+35
+00:02:32,240 --> 00:02:36,710
+This module returns an object with properties and methods that can help us with formatting.
+
+36
+00:02:37,370 --> 00:02:43,490
+I'm going to log a message and inside this log I'm going to use the util object and call the method
+
+37
+00:02:43,490 --> 00:02:44,000
+format.
+
+38
+00:02:46,340 --> 00:02:51,270
+This is a method that will take in a string and replace certain parts of a string with other values.
+
+39
+00:02:51,620 --> 00:02:56,600
+I'm going to input the following hello percent sine s exclamation point.
+
+40
+00:02:59,140 --> 00:03:05,530
+The percent sign EST is a placeholder you should be familiar with this concept, it works similar to
+
+41
+00:03:05,530 --> 00:03:08,020
+this string replace function.
+
+42
+00:03:08,350 --> 00:03:09,220
+The percent?
+
+43
+00:03:09,220 --> 00:03:11,900
+S can be replaced with any value you want.
+
+44
+00:03:12,160 --> 00:03:15,330
+The second parameter to this method is the word world.
+
+45
+00:03:15,880 --> 00:03:19,180
+I'm going to run this now using the node index command.
+
+46
+00:03:21,550 --> 00:03:27,460
+Just like that, we should see the message, hello, world, it's a very simple function and it's provided
+
+47
+00:03:27,460 --> 00:03:31,740
+to you by not all you have to do is include the utilities module.
+
+48
+00:03:32,350 --> 00:03:37,980
+You can go to the documentation and click on this util format link to learn more about this method.
+
+49
+00:03:38,440 --> 00:03:42,680
+You can do a lot with this method and there are plenty of examples on how to use it.
+
+50
+00:03:43,360 --> 00:03:46,480
+This is just one of the modules provided to you by node.
+
+51
+00:03:46,810 --> 00:03:50,080
+There are dozens of them available and you're free to check them out.
+
+52
+00:03:50,530 --> 00:03:55,130
+For the most part, we won't be using these modules ourselves as we don't really need them.
+
+53
+00:03:55,490 --> 00:04:01,680
+However, the library we do plan on using will use these modules along with third party modules.
+
+54
+00:04:02,260 --> 00:04:04,930
+Let's explore how to use third party modules.
+
+55
+00:04:04,930 --> 00:04:10,210
+Now, in the resource section of this lecture, I provide a link to a site called NPM.
+
+56
+00:04:10,630 --> 00:04:13,860
+NPM is short for node package manager.
+
+57
+00:04:14,170 --> 00:04:16,630
+This is the official site for node modules.
+
+58
+00:04:17,079 --> 00:04:22,600
+Here you'll find modules where users can upload their own modules and make it available for others to
+
+59
+00:04:22,600 --> 00:04:23,470
+use and download.
+
+60
+00:04:23,710 --> 00:04:26,740
+Let's search for a module called API.
+
+61
+00:04:28,940 --> 00:04:33,530
+This is the module that provides a framework for building websites and single page apps.
+
+62
+00:04:34,040 --> 00:04:39,290
+It's one of my favorite frameworks, along with Adonis for building websites using note.
+
+63
+00:04:39,680 --> 00:04:41,630
+Installing a module is pretty easy.
+
+64
+00:04:41,870 --> 00:04:47,150
+On the right side bar, you'll see NPM provides this command that you can input to install it.
+
+65
+00:04:47,480 --> 00:04:48,830
+Let's use this command now.
+
+66
+00:04:49,370 --> 00:04:52,580
+Type in NPM, install API.
+
+67
+00:04:55,090 --> 00:05:03,040
+The NPM command is created for you by Noad when you installed it, actually, let's use the NPM command
+
+68
+00:05:03,040 --> 00:05:04,660
+by itself and see what we get.
+
+69
+00:05:05,320 --> 00:05:11,020
+As you can see, we get a list of subcommander you can use with this command and some additional information
+
+70
+00:05:11,020 --> 00:05:15,000
+about this command commands are allowed to have subcommanders.
+
+71
+00:05:15,280 --> 00:05:20,230
+The reason for this is, is because it makes it easier to manage so many commands.
+
+72
+00:05:20,860 --> 00:05:25,410
+The NPM command is a way for you to communicate with the NPM site.
+
+73
+00:05:25,810 --> 00:05:31,510
+One of the sub commands you can use is the install command, which will download any module you want
+
+74
+00:05:31,510 --> 00:05:32,650
+from the NPM site.
+
+75
+00:05:33,130 --> 00:05:40,600
+The module I want to install is called API, so we pass him the NPM install API command.
+
+76
+00:05:42,970 --> 00:05:44,000
+Run this command.
+
+77
+00:05:44,290 --> 00:05:50,620
+This may take a while for some of you, you'll see that Noad outputted some messages about the installation.
+
+78
+00:05:50,980 --> 00:05:53,770
+For the most part, you don't have to worry about this.
+
+79
+00:05:54,010 --> 00:05:57,580
+You may see some errors, but we can safely ignore those for now.
+
+80
+00:05:58,210 --> 00:06:04,810
+Once the installation is a success, you'll find that node creates this folder called node underscore
+
+81
+00:06:04,810 --> 00:06:06,640
+modules by default.
+
+82
+00:06:06,790 --> 00:06:11,580
+All modules that are created by a third party vendor will be stored inside this folder.
+
+83
+00:06:12,040 --> 00:06:16,240
+You can open this folder and you'll find another folder called API.
+
+84
+00:06:16,630 --> 00:06:19,270
+Just like that, we've installed another module.
+
+85
+00:06:19,780 --> 00:06:25,610
+So you may be wondering why use the NPM command instead of just downloading the module ourselves?
+
+86
+00:06:25,930 --> 00:06:30,850
+Well, the NPM does a lot behind the scenes that takes care of setting all this up for you.
+
+87
+00:06:31,120 --> 00:06:36,370
+At first glance, it's not really visible until you start using modules that are more complex than.
+
+88
+00:06:37,810 --> 00:06:39,130
+Let me show you what I mean.
+
+89
+00:06:39,340 --> 00:06:44,440
+In the resource section of this lecture, I provide a link to a framework called Express.
+
+90
+00:06:44,680 --> 00:06:50,380
+Express is a framework that makes it easy to create Web sites and single page apps just like Happy.
+
+91
+00:06:50,830 --> 00:06:56,250
+It is currently the most popular framework available, used by many developers around the world.
+
+92
+00:06:56,830 --> 00:06:58,950
+It's considered an industry standard.
+
+93
+00:06:59,230 --> 00:07:03,280
+If you take a closer look, you'll find this command that installs express.
+
+94
+00:07:03,640 --> 00:07:08,290
+You'll also see that there's this additional text dash, dash, save.
+
+95
+00:07:08,620 --> 00:07:10,000
+We won't be using this.
+
+96
+00:07:10,180 --> 00:07:10,900
+I promise.
+
+97
+00:07:10,900 --> 00:07:13,690
+In a future lecture we will go over what this does.
+
+98
+00:07:13,690 --> 00:07:18,010
+But for now, I'm going to keep things simple inside the command line.
+
+99
+00:07:18,010 --> 00:07:22,180
+I want you to input the commands NPM install, express.
+
+100
+00:07:22,480 --> 00:07:24,580
+This will install express for you.
+
+101
+00:07:24,760 --> 00:07:25,780
+It may take a while.
+
+102
+00:07:29,630 --> 00:07:36,260
+After installing Express, I want you to take a look at the node underscore modules folder again right
+
+103
+00:07:36,260 --> 00:07:40,580
+away you'll notice a whole lot of other modules were installed besides Express.
+
+104
+00:07:40,730 --> 00:07:41,300
+But why?
+
+105
+00:07:41,930 --> 00:07:45,050
+Well, let's open the express folder for a moment.
+
+106
+00:07:45,320 --> 00:07:48,870
+Inside this folder, you'll find a file called Package Dot.
+
+107
+00:07:48,920 --> 00:07:53,850
+Jason, we haven't gone over what this file is yet, but we can ignore a lot of it.
+
+108
+00:07:54,200 --> 00:07:58,040
+This is just a file that contains settings related to a module.
+
+109
+00:07:58,430 --> 00:08:02,480
+I want you to scroll down until you find a property called dependencies.
+
+110
+00:08:02,900 --> 00:08:08,360
+This property allows the developer to specify if the module requires other modules to work.
+
+111
+00:08:08,780 --> 00:08:14,330
+Just like in our previous examples, we required certain modules to make our code work the way you wanted
+
+112
+00:08:14,330 --> 00:08:14,690
+it to.
+
+113
+00:08:15,140 --> 00:08:18,770
+This same concept can also apply to other third party modules.
+
+114
+00:08:19,310 --> 00:08:24,170
+As you can see, expressed relies on other modules in order for it to work.
+
+115
+00:08:24,560 --> 00:08:29,990
+Node will look at this and begin installing all these modules next to each module.
+
+116
+00:08:29,990 --> 00:08:32,039
+Name is the version it should download.
+
+117
+00:08:32,450 --> 00:08:35,299
+Let's go down the rabbit hole and see how far we can go.
+
+118
+00:08:36,020 --> 00:08:40,210
+The very first module Xpress requires is the accept module.
+
+119
+00:08:40,610 --> 00:08:46,640
+Let's look for this folder and sure enough we find this folder inside the node underscore modules folder,
+
+120
+00:08:47,090 --> 00:08:50,750
+open this folder and open the package JSON file.
+
+121
+00:08:53,280 --> 00:08:59,190
+Once again, I want you to scroll down to the dependency list and you'll see this module requires a
+
+122
+00:08:59,190 --> 00:09:00,450
+set of more modules.
+
+123
+00:09:01,050 --> 00:09:01,850
+Let's keep going.
+
+124
+00:09:02,160 --> 00:09:05,890
+One of the models required is the MYM dash types module.
+
+125
+00:09:06,210 --> 00:09:09,510
+I want you to open this module and view its package.
+
+126
+00:09:09,720 --> 00:09:10,500
+Jason file.
+
+127
+00:09:12,750 --> 00:09:18,600
+You'll end up seeing more dependencies, this will go on and on until every module required has been
+
+128
+00:09:18,600 --> 00:09:23,940
+installed with the correct version, you can already imagine the amount of work that has to be done
+
+129
+00:09:23,940 --> 00:09:25,670
+just to make one module work.
+
+130
+00:09:26,070 --> 00:09:31,880
+It's always best to just use this command as NPM will take care of managing all of this for you.
+
+131
+00:09:32,370 --> 00:09:38,130
+Now that we have expressed and happy installed, we can use it just like any other module inside the
+
+132
+00:09:38,130 --> 00:09:39,110
+index file.
+
+133
+00:09:39,120 --> 00:09:42,990
+Create a variable named Happy and required the happy module.
+
+134
+00:09:45,350 --> 00:09:51,440
+You can now use the happy module however you like, it's that simple, I won't be going over how to
+
+135
+00:09:51,440 --> 00:09:53,920
+use this module as it's not required to learn it.
+
+136
+00:09:54,320 --> 00:09:57,620
+I just wanted to show you how to install third party modules.
+
+137
+00:09:57,950 --> 00:10:03,920
+I'm going to delete the node underscore modules folder as we don't need to use any of this code for
+
+138
+00:10:03,920 --> 00:10:06,610
+our project that does it for modules.
+
+139
+00:10:06,860 --> 00:10:10,120
+There's a lot more we can talk about, but we don't need to go that far.
+
+140
+00:10:10,430 --> 00:10:14,410
+We don't need to create our own servers or worry about processing data.
+
+141
+00:10:14,690 --> 00:10:18,670
+We have Apache and WordPress to do that for us.
+
+142
+00:10:19,040 --> 00:10:25,010
+The reason we had to learn node is that so we can use some of the tools that will help us with creating
+
+143
+00:10:25,010 --> 00:10:26,210
+Duesenberg blocks.
+
+144
+00:10:26,480 --> 00:10:30,700
+In the next lecture, we'll explore one of these tools, which is called Web Pack.
+

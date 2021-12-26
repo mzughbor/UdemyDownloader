@@ -1,0 +1,832 @@
+1
+00:00:07,540 --> 00:00:13,360
+WordPress is very smart and powerful, as you can already tell, it handled most of the logic for us.
+
+2
+00:00:13,570 --> 00:00:17,560
+It can handle even more logic for us by selecting which templates to load.
+
+3
+00:00:17,770 --> 00:00:21,330
+Right now, we only have one template, which is the index template.
+
+4
+00:00:21,760 --> 00:00:27,520
+However, we can create multiple templates for different pages, such as for all fours, single blog
+
+5
+00:00:27,520 --> 00:00:30,470
+posts, pages, archives and so much more.
+
+6
+00:00:30,850 --> 00:00:36,490
+The question is, how do we make WordPress acknowledge we have multiple templates and which one is meant
+
+7
+00:00:36,490 --> 00:00:39,550
+for which type of page and the resource section?
+
+8
+00:00:39,550 --> 00:00:43,170
+On this lecture, I provide a link to the WordPress template hierarchy.
+
+9
+00:00:43,570 --> 00:00:46,270
+What you'll see here isn't the WordPress codex.
+
+10
+00:00:46,570 --> 00:00:51,070
+What this actually is, is a free theme handbook created by WordPress.
+
+11
+00:00:51,400 --> 00:00:56,830
+You'll find a lot of information on how to create themes, and it's especially useful if you're new
+
+12
+00:00:56,830 --> 00:00:59,070
+to team development right now.
+
+13
+00:00:59,140 --> 00:01:02,230
+I skipped to the Template Hierarchy chapter of this book.
+
+14
+00:01:02,530 --> 00:01:04,209
+You'll find a diagram here.
+
+15
+00:01:04,540 --> 00:01:09,660
+The diagram shows us the order in which WordPress uses to load a particular template.
+
+16
+00:01:10,240 --> 00:01:11,920
+It starts from left to right.
+
+17
+00:01:12,340 --> 00:01:13,330
+First things first.
+
+18
+00:01:13,360 --> 00:01:16,840
+WordPress will check what kind of page type is being loaded.
+
+19
+00:01:17,110 --> 00:01:21,610
+Is it loading an archive, single post or maybe a 404 has occurred.
+
+20
+00:01:21,970 --> 00:01:26,210
+Then it'll go through the diagram and try to find the correct file to load.
+
+21
+00:01:26,860 --> 00:01:29,830
+For example, let's say we're on a 404 page.
+
+22
+00:01:29,980 --> 00:01:36,850
+If we look at the diagram and follow the line, you'll see WordPress will first look for a 404 file.
+
+23
+00:01:37,240 --> 00:01:42,790
+If it finds that file, then it'll use that as a template and stop searching for a template to use.
+
+24
+00:01:43,390 --> 00:01:46,990
+Otherwise, WordPress will just load the index template.
+
+25
+00:01:47,410 --> 00:01:53,860
+Actually, if you take a look at the overall diagram, all points eventually lead to the index template.
+
+26
+00:01:53,860 --> 00:02:01,060
+If nothing is found, we could if we wanted to just use an index template and then add our own logic
+
+27
+00:02:01,060 --> 00:02:03,510
+to check to see what kind of pages being loaded.
+
+28
+00:02:03,670 --> 00:02:04,900
+But that's overkill.
+
+29
+00:02:05,230 --> 00:02:10,360
+It would be so much simpler to just use the template hierarchy WordPress provides out of the box.
+
+30
+00:02:10,690 --> 00:02:12,460
+You don't have to write any logic.
+
+31
+00:02:12,670 --> 00:02:14,710
+WordPress handles it all for us.
+
+32
+00:02:15,460 --> 00:02:17,920
+Let's go back to the Template Hierarchy page.
+
+33
+00:02:18,190 --> 00:02:23,950
+On this page, you'll find more info on how the process works and which templates have precedence over
+
+34
+00:02:23,950 --> 00:02:24,400
+others.
+
+35
+00:02:24,740 --> 00:02:30,730
+For example, if I scroll down further, I'll eventually find information about the fall for template
+
+36
+00:02:31,150 --> 00:02:35,080
+WordPress documents what template files WordPress will search for.
+
+37
+00:02:35,710 --> 00:02:41,500
+It's usually best to go through this document to better understand how the template hierarchy works,
+
+38
+00:02:41,860 --> 00:02:44,850
+especially if you have a hard time following the diagram.
+
+39
+00:02:45,460 --> 00:02:52,510
+Another useful resource is this site called WP Hierarchy dot com, which I also provide in the resource
+
+40
+00:02:52,510 --> 00:02:53,590
+section of this lecture.
+
+41
+00:02:54,010 --> 00:02:57,760
+It's very similar to the image we looked at earlier, except it's interactive.
+
+42
+00:02:58,060 --> 00:03:02,860
+You can click on a particular template and you'll be taken to the page with relevant information.
+
+43
+00:03:03,310 --> 00:03:08,590
+I highly recommend you bookmark this for future reference after you finish this lecture.
+
+44
+00:03:08,740 --> 00:03:12,790
+I also recommend you read this guide on how it works and our theme.
+
+45
+00:03:12,820 --> 00:03:19,450
+We will be creating templates for single post pages, categories, search results for all four pages
+
+46
+00:03:19,450 --> 00:03:20,170
+and even more.
+
+47
+00:03:20,860 --> 00:03:24,940
+Right now, I want you to go to your site and click on a single blog post.
+
+48
+00:03:25,210 --> 00:03:30,820
+You'll see that WordPress takes care of querying everything and displaying only a single post.
+
+49
+00:03:31,240 --> 00:03:31,870
+That's great.
+
+50
+00:03:31,870 --> 00:03:33,940
+But there's a few noticeable problems.
+
+51
+00:03:34,180 --> 00:03:36,850
+Our post is only showing the excerpts.
+
+52
+00:03:37,090 --> 00:03:42,820
+It has this read more button, which we don't need, and it also isn't showing tags or comments.
+
+53
+00:03:43,480 --> 00:03:49,360
+We could add logic to the index template to check to see if this is a single post, but I think creating
+
+54
+00:03:49,360 --> 00:03:52,540
+a template for this would be so much better, cleaner and efficient.
+
+55
+00:03:53,170 --> 00:03:56,680
+Before we move forward, I want to talk about post types.
+
+56
+00:03:56,980 --> 00:04:00,460
+Post types are a way to describe different types of content.
+
+57
+00:04:00,790 --> 00:04:07,030
+If you were to go to the admin dashboard, then you'll see that WordPress provides two post types called
+
+58
+00:04:07,030 --> 00:04:08,440
+posts and pages.
+
+59
+00:04:08,950 --> 00:04:14,350
+If you were to view their edit pages, then you'll see that there are some similarities in terms of
+
+60
+00:04:14,350 --> 00:04:14,830
+you want.
+
+61
+00:04:15,190 --> 00:04:17,890
+However, they're meant for different types of content.
+
+62
+00:04:18,250 --> 00:04:24,190
+WordPress provides you the ability to create your own custom post types, but we'll discuss that when
+
+63
+00:04:24,190 --> 00:04:25,570
+we start plugin development.
+
+64
+00:04:26,200 --> 00:04:31,240
+All you need to know is that post types are a way to categorize different pieces of content.
+
+65
+00:04:33,630 --> 00:04:40,110
+The template we're going to create is a template for the post post type word press will look for five
+
+66
+00:04:40,110 --> 00:04:41,130
+certain templates.
+
+67
+00:04:41,370 --> 00:04:47,280
+First, it'll look for a file called Single Dash, followed by the name of the post type and then the
+
+68
+00:04:47,280 --> 00:04:53,730
+slug, for example, if I had a post with the slug, hello, then the file name would be single dash
+
+69
+00:04:53,730 --> 00:04:54,620
+post dash.
+
+70
+00:04:54,630 --> 00:04:54,970
+Hello.
+
+71
+00:04:56,520 --> 00:05:01,200
+This can be very helpful if you want to create a specific template for a specific page.
+
+72
+00:05:01,590 --> 00:05:06,300
+WordPress really allows you to control the design of your site with the template hierarchy.
+
+73
+00:05:07,110 --> 00:05:12,090
+The next template to look for is the single dash, followed by the name of the prototype.
+
+74
+00:05:12,570 --> 00:05:16,530
+For example, it'll look for a file named Single Dash Post Dot.
+
+75
+00:05:17,880 --> 00:05:22,890
+Then WordPress will search for the single DOT template, then be singular.
+
+76
+00:05:23,760 --> 00:05:26,610
+And lastly, the indexed HP template.
+
+77
+00:05:26,940 --> 00:05:31,080
+The index top is the fallback template for every situation.
+
+78
+00:05:31,500 --> 00:05:36,930
+This is why WordPress forces us to create it in order for our theme to be officially recognized.
+
+79
+00:05:37,470 --> 00:05:42,540
+So you may be wondering what's the difference between singled out and singular?
+
+80
+00:05:43,800 --> 00:05:47,740
+The single dot p p template is custom post types only.
+
+81
+00:05:48,150 --> 00:05:50,700
+This also includes the post post type.
+
+82
+00:05:50,970 --> 00:05:53,430
+WordPress provides its own post types.
+
+83
+00:05:53,580 --> 00:05:56,060
+There's about six, but we'll look into that later.
+
+84
+00:05:56,460 --> 00:06:01,860
+This means that there's two types of post types which are the ones provided by WordPress and ones that
+
+85
+00:06:01,860 --> 00:06:03,450
+come bundled with WordPress.
+
+86
+00:06:03,870 --> 00:06:09,740
+The ones that come bundled with, with the exception of posts, don't use the single PHP template.
+
+87
+00:06:10,050 --> 00:06:12,720
+Instead they get assigned their own templates.
+
+88
+00:06:13,050 --> 00:06:16,980
+The singular template is a universal post type template.
+
+89
+00:06:17,580 --> 00:06:23,600
+It doesn't matter if the post type is custom or inbuilt, the singular template will be used.
+
+90
+00:06:23,760 --> 00:06:24,780
+That's all there is to it.
+
+91
+00:06:27,340 --> 00:06:34,870
+We're going to keep things simple will be creating the single template, create this file now I'm going
+
+92
+00:06:34,870 --> 00:06:39,100
+to just simply copy and paste the code from the index template to the single template.
+
+93
+00:06:41,300 --> 00:06:44,450
+We can now begin modifying this template to suit our needs.
+
+94
+00:06:44,900 --> 00:06:51,370
+First, I want to remove everything inside this div tag with the idea of posts and the pagination.
+
+95
+00:06:51,770 --> 00:06:55,310
+I also want to remove the breaking news at the very top.
+
+96
+00:07:00,940 --> 00:07:07,510
+Next, open the single door HTML template file inside the assets folder, I want you to look for the
+
+97
+00:07:07,510 --> 00:07:10,330
+div tag with the class single dash post.
+
+98
+00:07:12,630 --> 00:07:17,100
+Copy everything here and then paste it in the spot where we deleted the previous diptych.
+
+99
+00:07:19,470 --> 00:07:24,450
+So we're kind of back to where we started, but that's fine, because this gives us the opportunity
+
+100
+00:07:24,450 --> 00:07:25,320
+to fix everything.
+
+101
+00:07:25,740 --> 00:07:30,130
+Unlike the index template, there are a couple of sections here we didn't go over.
+
+102
+00:07:30,510 --> 00:07:31,110
+That's fine.
+
+103
+00:07:31,260 --> 00:07:34,170
+I'll show you how to tackle those extra sections.
+
+104
+00:07:34,680 --> 00:07:35,320
+For now.
+
+105
+00:07:35,340 --> 00:07:40,020
+What I want you to do is to remake the loop and fill in the blanks as much as you can.
+
+106
+00:07:40,410 --> 00:07:41,940
+Pause the video if you need to.
+
+107
+00:07:42,760 --> 00:07:44,450
+All right, let's do this together.
+
+108
+00:07:44,770 --> 00:07:48,940
+The first step is to check if there are any posts using a conditional statement.
+
+109
+00:07:53,220 --> 00:07:57,780
+Then we'll begin the loop inside the loop, we'll call the post function.
+
+110
+00:08:00,840 --> 00:08:05,040
+Now, I'm just going to cut and paste this code inside the loop like so.
+
+111
+00:08:15,050 --> 00:08:20,300
+If you need a refresher, I suggest you watch the previous lectures, if you were confused by what we
+
+112
+00:08:20,300 --> 00:08:26,270
+did so far at this point, the only thing we need to do is use template tag functions to replace the
+
+113
+00:08:26,270 --> 00:08:27,110
+static content.
+
+114
+00:08:27,920 --> 00:08:30,060
+First up is the actual post itself.
+
+115
+00:08:30,380 --> 00:08:32,220
+Let's go through this one by one.
+
+116
+00:08:32,570 --> 00:08:36,260
+Replace the text inside the tag with the title function.
+
+117
+00:08:38,570 --> 00:08:45,560
+Echo out the date, use the category template tag, then use the comments, no template tag.
+
+118
+00:08:52,840 --> 00:08:58,230
+For the single template, we display more information about the author other than their name, and in
+
+119
+00:08:58,230 --> 00:09:01,580
+this case, we want to keep our code clean and not repeat code.
+
+120
+00:09:01,930 --> 00:09:06,300
+The best way to do this is by using variables at the top of the loop.
+
+121
+00:09:06,340 --> 00:09:09,250
+I'm going to include the Global Post variable.
+
+122
+00:09:09,640 --> 00:09:12,430
+This variable is created for you by WordPress.
+
+123
+00:09:12,670 --> 00:09:15,430
+WordPress will define a lot of variables for you.
+
+124
+00:09:15,820 --> 00:09:19,450
+This variable in particular will contain properties about the post.
+
+125
+00:09:19,810 --> 00:09:24,570
+One of these properties is Post author, which contains the ID of the author.
+
+126
+00:09:25,090 --> 00:09:30,550
+Let's create a variable named Author ID and set its value to post post author.
+
+127
+00:09:32,830 --> 00:09:39,000
+Next, create a variable named Author You URL and set its value returned by the get author posts you
+
+128
+00:09:39,010 --> 00:09:42,280
+URL function, make sure to pass him the author ID.
+
+129
+00:09:47,290 --> 00:09:52,600
+Now we can just echo out the URL and use the author template tag like so.
+
+130
+00:09:59,570 --> 00:10:04,610
+For the featured image, I'm going to use the same code from the index template and paste it into the
+
+131
+00:10:04,620 --> 00:10:05,990
+single template like so.
+
+132
+00:10:13,450 --> 00:10:19,120
+I'm going to make a small modification, I'm going to remove this array, since I don't need the Fada
+
+133
+00:10:19,120 --> 00:10:26,260
+fetch, let's move onto the content itself instead of using the the excerpt function will be using the
+
+134
+00:10:26,260 --> 00:10:27,400
+content function.
+
+135
+00:10:33,960 --> 00:10:38,700
+This function will display the full contents of the post, which is what we want, instead of a summary.
+
+136
+00:10:39,210 --> 00:10:42,660
+Lastly, I'm going to call a function called the tags.
+
+137
+00:10:42,940 --> 00:10:47,790
+I'm going to place this function inside the div tag with the class tag cloud.
+
+138
+00:10:49,960 --> 00:10:55,930
+This function will include all tags related to this post and take care of comma separating all the tags,
+
+139
+00:10:56,260 --> 00:10:58,840
+it'll also generate a link for each tag.
+
+140
+00:10:59,260 --> 00:11:04,780
+This function has three parameters which are all optional, will only concern ourselves with the first
+
+141
+00:11:04,780 --> 00:11:08,470
+to the first parameter, will display text before the tags.
+
+142
+00:11:08,740 --> 00:11:12,880
+I don't want to display any text, so I'll just pass in an empty string.
+
+143
+00:11:13,390 --> 00:11:15,610
+The second parameter will be the separator.
+
+144
+00:11:15,880 --> 00:11:18,010
+I'm just going to pass in a space.
+
+145
+00:11:18,040 --> 00:11:19,590
+The default value is comma.
+
+146
+00:11:20,230 --> 00:11:23,170
+Let's check out the single post and see if everything is working.
+
+147
+00:11:25,390 --> 00:11:31,420
+If you don't see tanks, then it's probably because you don't have tanks attached to the post and that
+
+148
+00:11:31,420 --> 00:11:36,820
+case, just quickly add some and then check back on the page, you should see something similar to what
+
+149
+00:11:36,820 --> 00:11:37,240
+I have.
+
+150
+00:11:37,930 --> 00:11:38,740
+We're almost done.
+
+151
+00:11:39,100 --> 00:11:44,650
+There's actually a few things WordPress recommends we do to make our theme compatible with most WordPress
+
+152
+00:11:44,650 --> 00:11:45,070
+sites.
+
+153
+00:11:45,550 --> 00:11:52,050
+In the resource section, I provide a link to the theme development codecs on the contents sidebar.
+
+154
+00:11:52,180 --> 00:11:54,250
+I want you to click single post.
+
+155
+00:11:54,490 --> 00:11:59,890
+If you scroll up and down, you'll notice WordPress jots down some important notes for us to know when
+
+156
+00:11:59,890 --> 00:12:00,970
+creating templates.
+
+157
+00:12:01,330 --> 00:12:04,770
+You shouldn't consider these rules, but more as recommendations.
+
+158
+00:12:05,320 --> 00:12:09,370
+So let's see what WordPress has to say about the single post template.
+
+159
+00:12:09,820 --> 00:12:16,170
+The first thing it recommends is that we should call a function called WP link pages per patinated posts.
+
+160
+00:12:16,930 --> 00:12:19,390
+What exactly does this do and how does it work?
+
+161
+00:12:19,720 --> 00:12:23,170
+Well, WordPress provides a feature called Patinated Posts.
+
+162
+00:12:23,530 --> 00:12:29,350
+Rather than create multiple posts, you can create one single post with page breaks.
+
+163
+00:12:29,650 --> 00:12:36,820
+To test this out, you'll need to edit a post any post will do then somewhere in the middle at a block.
+
+164
+00:12:37,030 --> 00:12:40,270
+The block, you should add, should be called page break.
+
+165
+00:12:40,900 --> 00:12:44,440
+What this will do is break the content into multiple pages.
+
+166
+00:12:44,800 --> 00:12:49,750
+This is useful if you have an extremely long post and would like to pagination it into separate pages.
+
+167
+00:12:50,140 --> 00:12:56,110
+This way you don't have to manually create a post for one long post and link all the posts together
+
+168
+00:12:56,110 --> 00:12:56,650
+yourself.
+
+169
+00:12:57,310 --> 00:12:59,440
+Save this and then let's do the post.
+
+170
+00:13:01,450 --> 00:13:03,260
+You'll notice it won't work right away.
+
+171
+00:13:03,580 --> 00:13:09,700
+This is because we haven't called the WP link pages function, called this function right after the
+
+172
+00:13:09,700 --> 00:13:10,750
+content function.
+
+173
+00:13:14,900 --> 00:13:19,790
+Let's refresh the post and you should now see the Post being patinated into separate pages.
+
+174
+00:13:20,390 --> 00:13:21,270
+This is really great.
+
+175
+00:13:21,560 --> 00:13:24,760
+The best part is we didn't have to do much to get this working.
+
+176
+00:13:25,040 --> 00:13:28,250
+I'm going to provide a link to this function to learn more about it.
+
+177
+00:13:28,940 --> 00:13:32,450
+Actually, now that I look at it, I want to centralists.
+
+178
+00:13:32,600 --> 00:13:38,840
+If we take a look at the documentation, you'll see it says we can pass an array to customize this further.
+
+179
+00:13:39,260 --> 00:13:45,710
+The before and after keys is the text HTML that is displayed before the list.
+
+180
+00:13:46,400 --> 00:13:48,670
+There's even an example usage provided.
+
+181
+00:13:48,950 --> 00:13:53,810
+Let's use that and remove everything but the before and after keys in the array.
+
+182
+00:13:54,290 --> 00:13:58,390
+Bootstrap provides a handy class called Text That Center.
+
+183
+00:13:58,400 --> 00:14:03,380
+So we'll just modify this paragraph tag and add the class text dash center.
+
+184
+00:14:08,090 --> 00:14:11,270
+Let's refresh the page to see if Artex is now centered.
+
+185
+00:14:13,450 --> 00:14:19,240
+Let's keep going down the list, we're already displaying the title and content so we can skip those.
+
+186
+00:14:19,480 --> 00:14:21,880
+The post date is already being displayed.
+
+187
+00:14:22,570 --> 00:14:25,380
+We're already displaying the categories and links.
+
+188
+00:14:25,540 --> 00:14:26,860
+So let's skip that.
+
+189
+00:14:26,860 --> 00:14:28,690
+What it's suggesting.
+
+190
+00:14:28,690 --> 00:14:32,530
+We provide an edit link, but I'm going to ignore this suggestion.
+
+191
+00:14:32,830 --> 00:14:38,440
+If we were to read the post, you'll notice WordPress already provides this top bar with a link to edit
+
+192
+00:14:38,440 --> 00:14:41,510
+the current post so we don't need to add our own.
+
+193
+00:14:42,310 --> 00:14:46,070
+Now it's recommending we display comments and a forum for submission.
+
+194
+00:14:46,480 --> 00:14:51,060
+I'm going to cover this in a future lecture as comments deserve its own kind of lecture.
+
+195
+00:14:51,460 --> 00:14:55,510
+So let's skip over this one for now and move on to the last and final point.
+
+196
+00:14:56,230 --> 00:15:02,440
+WordPress now recommends we add links to any posts posted previously or after this post.
+
+197
+00:15:02,860 --> 00:15:08,530
+We can do this by simply calling the previous post link and next post link functions.
+
+198
+00:15:09,160 --> 00:15:13,240
+I want you to know that you shouldn't confuse these two functions with its plural form.
+
+199
+00:15:13,630 --> 00:15:20,020
+The plural form is used for pages with multiple posts, while the singular form is for single posts.
+
+200
+00:15:20,530 --> 00:15:24,400
+Inside the template we have a section for the next and previous posts.
+
+201
+00:15:24,790 --> 00:15:28,980
+Search for the div tag with the class post dash navigation.
+
+202
+00:15:29,380 --> 00:15:33,300
+There should also be a comment right above the element that says page navigation.
+
+203
+00:15:33,730 --> 00:15:38,230
+Let's replace these static HTML links with their respective functions like so.
+
+204
+00:15:43,170 --> 00:15:48,960
+Refresh the page and check if the links are working, WordPress will automatically generate these links
+
+205
+00:15:48,960 --> 00:15:50,260
+with the appropriate title.
+
+206
+00:15:50,940 --> 00:15:51,840
+That's it for now.
+
+207
+00:15:52,020 --> 00:15:57,240
+And the next lecture will finish up our template by adding comments and the form to submit additional
+
+208
+00:15:57,240 --> 00:15:57,840
+comments.
+

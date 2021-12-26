@@ -1,0 +1,196 @@
+1
+00:00:07,790 --> 00:00:13,850
+The homepage features a list of posts submitted, however, I want to expand on this, I also want to
+
+2
+00:00:13,850 --> 00:00:15,610
+display recipe posts as well.
+
+3
+00:00:15,920 --> 00:00:18,250
+There are two solutions to accomplish this.
+
+4
+00:00:18,830 --> 00:00:22,890
+The first solution would be to create our own query, ignoring the main query.
+
+5
+00:00:23,240 --> 00:00:25,220
+However, that's a lot of work to do.
+
+6
+00:00:25,220 --> 00:00:30,530
+And we don't want to completely ignore the main query as other plugins may want to modify how it works.
+
+7
+00:00:30,920 --> 00:00:34,370
+Luckily, we can modify the main query to suit our needs.
+
+8
+00:00:34,670 --> 00:00:36,920
+This is the best solution and it's easy.
+
+9
+00:00:37,490 --> 00:00:42,100
+Inside the functions file at an action hook called pre get posts.
+
+10
+00:00:42,440 --> 00:00:46,520
+The function I want to call will be named Jiyu Modify home page query.
+
+11
+00:00:48,910 --> 00:00:55,810
+Inside the includes folder, create a file named Home Dash Query and define the function inside this
+
+12
+00:00:55,810 --> 00:00:56,200
+file.
+
+13
+00:00:56,620 --> 00:00:58,390
+Lastly, include this file.
+
+14
+00:01:03,500 --> 00:01:08,390
+This hook will be called when the main query is created, but it will not be executed at this point
+
+15
+00:01:08,720 --> 00:01:10,370
+since it's not being executed.
+
+16
+00:01:10,460 --> 00:01:13,360
+We have the opportunity to modify it as we please.
+
+17
+00:01:13,760 --> 00:01:16,700
+This function will be passed in an object called Query.
+
+18
+00:01:17,120 --> 00:01:22,010
+Whenever we work with the WP query class, we always created a new instance.
+
+19
+00:01:22,490 --> 00:01:27,080
+However, at this point, we already have an instance to modify a query.
+
+20
+00:01:27,080 --> 00:01:28,310
+After it's created.
+
+21
+00:01:28,340 --> 00:01:32,710
+We have to use a method called set, but we'll get to that in just a moment.
+
+22
+00:01:33,050 --> 00:01:38,000
+Something that you need to keep in mind is that this hook will always give you the main query for every
+
+23
+00:01:38,000 --> 00:01:39,980
+page, not just the home page.
+
+24
+00:01:40,550 --> 00:01:45,320
+Since this is the case, we have to use a conditional statement to check for two things.
+
+25
+00:01:45,650 --> 00:01:50,300
+We have to check if this query is for the home page using the IS home method.
+
+26
+00:01:52,940 --> 00:01:57,410
+Then we need to use the is main query method to check if this is the main query.
+
+27
+00:01:59,600 --> 00:02:07,030
+If both return true, then we'll modify query, I'm now going to call the set method and set the post
+
+28
+00:02:07,040 --> 00:02:11,750
+tight parameter to an array that contains the name of the post types I'd like to retrieve.
+
+29
+00:02:12,140 --> 00:02:15,200
+I want to get the post and recipe post types.
+
+30
+00:02:17,810 --> 00:02:23,990
+In the resource section of this lecture, I provide a link to the WP query class again, you'll find
+
+31
+00:02:23,990 --> 00:02:27,050
+more information about these methods and properties that I'm using.
+
+32
+00:02:27,710 --> 00:02:28,220
+All right.
+
+33
+00:02:28,430 --> 00:02:30,420
+Now that we've modified the main query.
+
+34
+00:02:30,530 --> 00:02:31,990
+Let's check out the home page.
+
+35
+00:02:32,210 --> 00:02:36,090
+If you refresh the page, you should have both recipes and posts appearing.
+
+36
+00:02:36,530 --> 00:02:37,720
+That's all there is to it.
+
+37
+00:02:37,910 --> 00:02:43,280
+Before I am this lecture, I want to talk about a function called query posts, which you can find in
+
+38
+00:02:43,280 --> 00:02:45,030
+the resource section of this lecture.
+
+39
+00:02:45,740 --> 00:02:50,720
+There is a function that you can use to modify the main query, but I highly recommend you don't use
+
+40
+00:02:50,720 --> 00:02:50,900
+it.
+
+41
+00:02:51,200 --> 00:02:57,080
+If you take a look, you'll find this note from WordPress that says note this function will completely
+
+42
+00:02:57,080 --> 00:03:01,340
+override the main query and isn't intended for use by plugins or themes.
+
+43
+00:03:01,670 --> 00:03:07,070
+It's overly simplistic approach to modifying the main query can be problematic and should be avoided
+
+44
+00:03:07,070 --> 00:03:08,060
+wherever possible.
+
+45
+00:03:08,480 --> 00:03:14,240
+In most cases, there are better, more performance options for modifying the main query, such as via
+
+46
+00:03:14,240 --> 00:03:17,470
+the pre get posts action within WP query.
+
+47
+00:03:18,020 --> 00:03:20,390
+This must not be used within the WordPress loop.
+
+48
+00:03:20,960 --> 00:03:23,120
+Try your best not to use this function.
+
+49
+00:03:23,310 --> 00:03:28,220
+There are a lot of things in plugins out there that use this, but it's just bad practice to do so.
+

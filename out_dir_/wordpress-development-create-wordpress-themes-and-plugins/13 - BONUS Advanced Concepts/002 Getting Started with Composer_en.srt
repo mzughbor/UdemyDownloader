@@ -1,0 +1,600 @@
+1
+00:00:07,390 --> 00:00:13,880
+And this lecture will be learning about composer, composer is a dependency management program for Pete.
+
+2
+00:00:14,320 --> 00:00:16,110
+But what exactly does that mean?
+
+3
+00:00:16,540 --> 00:00:21,760
+As you can imagine, if you're working on a large plug in or theme, then there's a high possibility
+
+4
+00:00:21,760 --> 00:00:24,080
+that you're including third party libraries.
+
+5
+00:00:24,610 --> 00:00:28,510
+This can be anything from libraries to see us as framework's.
+
+6
+00:00:28,750 --> 00:00:33,160
+Previously, you would have to download each library and include it yourself.
+
+7
+00:00:33,380 --> 00:00:35,090
+However, with composer.
+
+8
+00:00:35,140 --> 00:00:37,310
+Everything is semi automated for you.
+
+9
+00:00:37,630 --> 00:00:41,690
+Another benefit to using composer is that it makes things standardized.
+
+10
+00:00:42,100 --> 00:00:47,320
+If you've ever downloaded a library, then you probably had to mess around with the folder structure
+
+11
+00:00:47,320 --> 00:00:49,240
+a bit to make it fit with your project.
+
+12
+00:00:49,600 --> 00:00:55,120
+Composer automatically takes care of structuring and loading all your files so that you don't have to
+
+13
+00:00:55,120 --> 00:00:58,180
+type dozens of include and require functions.
+
+14
+00:00:58,840 --> 00:01:04,150
+Composer has gained a lot of popularity over the past few years because of how simple it is to use.
+
+15
+00:01:04,599 --> 00:01:09,700
+Most beginner developers tend to be intimidated by this program because you have to use the command
+
+16
+00:01:09,700 --> 00:01:09,970
+line.
+
+17
+00:01:10,450 --> 00:01:16,000
+Hopefully you feel a little comfortable using the command line at this point, using composer isn't
+
+18
+00:01:16,000 --> 00:01:20,140
+all that hard and once you understand the basics, then you should be good to go.
+
+19
+00:01:20,920 --> 00:01:25,480
+In the resource section of this lecture, I provide a link to the official composer site.
+
+20
+00:01:25,960 --> 00:01:29,190
+Here you'll find information about composer and even download it.
+
+21
+00:01:29,500 --> 00:01:30,490
+Let's do that now.
+
+22
+00:01:31,060 --> 00:01:33,550
+If you're on a Windows machine, then you're in luck.
+
+23
+00:01:33,790 --> 00:01:38,260
+There's an installer that you can download and we'll take care of setting up composer for you.
+
+24
+00:01:38,590 --> 00:01:43,600
+If you're on a Linux or Mac, then you'll have to follow these instructions for setting up composer.
+
+25
+00:01:44,020 --> 00:01:48,910
+If you were to click on the getting started link, then you'll find a more detailed guide.
+
+26
+00:01:49,390 --> 00:01:53,620
+I have already installed composer using the installer file for Windows.
+
+27
+00:01:53,740 --> 00:01:55,420
+It's just a regular install.
+
+28
+00:01:55,750 --> 00:01:58,600
+There's nothing special you need to do if you are on windows.
+
+29
+00:01:59,730 --> 00:02:05,250
+After installing composer, you can then open the terminal, something important I want to highlight
+
+30
+00:02:05,250 --> 00:02:07,320
+is that you need to open a new terminal.
+
+31
+00:02:07,650 --> 00:02:11,080
+You can't have one open before or during the installation.
+
+32
+00:02:11,490 --> 00:02:15,880
+This is because the settings will only be applied to new instances of the terminal.
+
+33
+00:02:16,590 --> 00:02:18,540
+Right now, I'm inside my editor.
+
+34
+00:02:18,750 --> 00:02:21,650
+I'm in a brand new folder called Web Dash App.
+
+35
+00:02:22,020 --> 00:02:24,950
+Make sure your command line is pointed to this directory.
+
+36
+00:02:25,260 --> 00:02:28,080
+My editor automatically points to this directory.
+
+37
+00:02:28,380 --> 00:02:31,350
+If you don't have visual studio code, then that's fine.
+
+38
+00:02:31,710 --> 00:02:38,160
+You can use the command line your operating system comes with, use the code and else commands to help
+
+39
+00:02:38,160 --> 00:02:39,600
+you navigate to this folder.
+
+40
+00:02:40,290 --> 00:02:44,580
+When you install the composer, you were given a new command called Composer.
+
+41
+00:02:44,880 --> 00:02:47,040
+Input this command and press enter.
+
+42
+00:02:49,540 --> 00:02:55,000
+As you can see, we get a list of subcommanders you can use with this command and some additional information
+
+43
+00:02:55,000 --> 00:02:59,880
+about this command, the first subcommander you'll usually use is in it.
+
+44
+00:03:00,190 --> 00:03:03,580
+Let's use that now, run the command composer in it.
+
+45
+00:03:06,210 --> 00:03:12,690
+This will tell composer to create a composer, Jason file this file will contain all your settings for
+
+46
+00:03:12,690 --> 00:03:18,690
+your project with composer, this command helps you by creating this file and inputting all your settings
+
+47
+00:03:18,690 --> 00:03:19,640
+without any error.
+
+48
+00:03:20,310 --> 00:03:22,450
+The first setting is the package name.
+
+49
+00:03:22,710 --> 00:03:26,880
+You'll notice that composer tells you the format should be vendor's last name.
+
+50
+00:03:27,300 --> 00:03:29,310
+The vendor can be considered a user name.
+
+51
+00:03:29,580 --> 00:03:33,900
+When we start including third party packages, you'll see it being formatted like this.
+
+52
+00:03:34,200 --> 00:03:37,280
+As you can see, composer gives us a default value.
+
+53
+00:03:37,590 --> 00:03:41,950
+I'm not going to input anything which will tell composer to use its default name.
+
+54
+00:03:42,660 --> 00:03:44,460
+Next up is the description.
+
+55
+00:03:44,700 --> 00:03:47,580
+I'm going to leave this empty as well and continue on.
+
+56
+00:03:47,880 --> 00:03:52,620
+Then you'll be asked to input the author, it says, to input N to skip it.
+
+57
+00:03:52,620 --> 00:03:53,520
+So I'll do that.
+
+58
+00:03:54,180 --> 00:03:56,630
+The next setting is minimum stability.
+
+59
+00:03:57,000 --> 00:04:00,720
+This is asking us if the packages we plan on using are stable.
+
+60
+00:04:01,020 --> 00:04:04,830
+A package that is stable is considered to be usable and error-free.
+
+61
+00:04:05,250 --> 00:04:09,750
+Non stable packages tend to have errors aren't maintained and outdated.
+
+62
+00:04:10,080 --> 00:04:11,970
+If you don't understand, that's fine.
+
+63
+00:04:12,180 --> 00:04:13,740
+We'll leave this at the default.
+
+64
+00:04:14,100 --> 00:04:16,709
+We'll talk more about packages in just a moment.
+
+65
+00:04:17,399 --> 00:04:22,650
+I'm also going to skip the package type and license as I don't care to set them.
+
+66
+00:04:22,960 --> 00:04:26,460
+You will then be asked if you would like to set up some package dependencies.
+
+67
+00:04:26,730 --> 00:04:27,990
+We'll do this in a moment.
+
+68
+00:04:27,990 --> 00:04:31,020
+But for now, I'm going to input no for both.
+
+69
+00:04:31,740 --> 00:04:34,680
+You'll then be shown an example of what the file will look like.
+
+70
+00:04:34,830 --> 00:04:36,720
+It's pretty minimal, which is good for now.
+
+71
+00:04:36,900 --> 00:04:40,680
+I'm going to say, yes, composer will now generate this file.
+
+72
+00:04:43,330 --> 00:04:49,330
+Open this file, as you can see, it's just a JavaScript object with properties that contain your settings.
+
+73
+00:04:49,600 --> 00:04:52,290
+You'll notice this one property called require.
+
+74
+00:04:52,750 --> 00:04:56,380
+This will contain a list of all packages that your project requires.
+
+75
+00:04:56,620 --> 00:05:02,590
+A package is the word composer uses to describe the files that you use, like query or bootstrap.
+
+76
+00:05:03,220 --> 00:05:05,230
+Right now, we have no packages.
+
+77
+00:05:05,410 --> 00:05:08,650
+I'm going to input the following monologues.
+
+78
+00:05:08,650 --> 00:05:12,190
+Monolog Colen one, two, three, zero.
+
+79
+00:05:14,930 --> 00:05:20,600
+As you can see, the package names are formatted, as I told you earlier, it starts with the name of
+
+80
+00:05:20,600 --> 00:05:24,310
+the vendor, a.k.a. the company or person who owns this package.
+
+81
+00:05:24,680 --> 00:05:27,440
+Then it's followed up with the name of the package itself.
+
+82
+00:05:27,770 --> 00:05:29,910
+After this, you can specify the version.
+
+83
+00:05:30,620 --> 00:05:33,010
+This is one of the benefits of using composer.
+
+84
+00:05:33,260 --> 00:05:37,530
+You can specify a version with very little worry about downloading the wrong version.
+
+85
+00:05:37,850 --> 00:05:40,100
+There are a lot of formats for the version.
+
+86
+00:05:40,460 --> 00:05:45,620
+In the resource section of this lecture, I provide a link to more information about the various formats
+
+87
+00:05:45,620 --> 00:05:46,340
+for versions.
+
+88
+00:05:46,580 --> 00:05:51,590
+It gets complicated, but if you're like me, then you can just use the wild card symbol.
+
+89
+00:05:52,160 --> 00:05:56,470
+The wild card tells composer to just download the latest stable version.
+
+90
+00:05:56,780 --> 00:06:02,570
+Let's test this out to install the packages inside this file, you need to run the command composer
+
+91
+00:06:02,570 --> 00:06:03,140
+install.
+
+92
+00:06:07,790 --> 00:06:13,030
+Before I run this command, I want to highlight that you must be in the same directory as this file
+
+93
+00:06:13,370 --> 00:06:15,450
+if you were inside a different directory.
+
+94
+00:06:15,470 --> 00:06:16,720
+Then you'll receive an error.
+
+95
+00:06:17,240 --> 00:06:20,290
+It may take a while for you as it's downloading files.
+
+96
+00:06:20,300 --> 00:06:21,390
+Just be patient.
+
+97
+00:06:22,160 --> 00:06:22,630
+All right.
+
+98
+00:06:22,700 --> 00:06:24,620
+So the package is finally finished.
+
+99
+00:06:24,620 --> 00:06:29,690
+Downloading composer will store all your packages inside a folder called Vendor.
+
+100
+00:06:30,050 --> 00:06:31,940
+Let's look at what's inside this folder.
+
+101
+00:06:32,480 --> 00:06:35,300
+You'll see the package we wanted, which was monolog.
+
+102
+00:06:35,480 --> 00:06:37,450
+You'll also see a couple more folders.
+
+103
+00:06:37,640 --> 00:06:42,470
+This may seem strange at first, but it makes sense once you understand how packages work.
+
+104
+00:06:42,830 --> 00:06:47,030
+There's a folder named a composer, which is just composer's own settings.
+
+105
+00:06:47,300 --> 00:06:49,150
+You can safely ignore this folder.
+
+106
+00:06:49,730 --> 00:06:51,580
+Let's open the monologue folder.
+
+107
+00:06:51,890 --> 00:06:57,110
+There are a lot of files here, but the one we care about is the composer Jason File.
+
+108
+00:06:57,500 --> 00:07:02,840
+Just like our project, packages we install will have their own composer Jason File.
+
+109
+00:07:03,200 --> 00:07:05,150
+A lot of this is unimportant to us.
+
+110
+00:07:05,360 --> 00:07:10,220
+Scroll down to where it defines its own dependencies, which is this require property.
+
+111
+00:07:10,880 --> 00:07:13,880
+Some packages can specify their own dependencies.
+
+112
+00:07:14,120 --> 00:07:16,040
+This is the beauty of composer.
+
+113
+00:07:16,340 --> 00:07:20,090
+Composer will take care of downloading and then selling these packages for you.
+
+114
+00:07:20,480 --> 00:07:25,800
+One of these is you can specify the minimum version for a package.
+
+115
+00:07:26,030 --> 00:07:28,360
+This is to help with compatibility issues.
+
+116
+00:07:28,970 --> 00:07:29,440
+All right.
+
+117
+00:07:29,510 --> 00:07:34,310
+So the other package it specifies is the PSR long package.
+
+118
+00:07:34,580 --> 00:07:38,690
+If you look inside the vendor folder again, you'll see it downloaded here.
+
+119
+00:07:39,260 --> 00:07:43,040
+So you may be wondering where do you even get these package names?
+
+120
+00:07:43,220 --> 00:07:48,890
+In the resource section of this lecture, I provide a link to the site package iste package.
+
+121
+00:07:48,920 --> 00:07:54,110
+This is a site where users can submit their packages to be downloaded and installed with composer.
+
+122
+00:07:54,590 --> 00:07:57,890
+Any and all packages you want to install can be found here.
+
+123
+00:07:58,310 --> 00:08:02,750
+Let's search for the package monolog click on the first result you find.
+
+124
+00:08:05,480 --> 00:08:10,880
+On this page, you'll find more information about this package, you'll even see a list of required
+
+125
+00:08:10,880 --> 00:08:13,100
+packages beforehand, which is quite nice.
+
+126
+00:08:13,430 --> 00:08:17,780
+If you take a closer look, you'll find a command you can use to download this package.
+
+127
+00:08:18,140 --> 00:08:19,190
+Let's try this out.
+
+128
+00:08:19,890 --> 00:08:26,840
+I'm going to delete my vendor folder, delete the composer lock file and empty out the require object
+
+129
+00:08:26,840 --> 00:08:27,470
+like Selm.
+
+130
+00:08:32,400 --> 00:08:38,370
+Then I'm going to run the command given which was composer require monologues, monologue.
+
+131
+00:08:40,960 --> 00:08:46,990
+After running this command, we have monolog installed again, composer also took the time to update
+
+132
+00:08:46,990 --> 00:08:50,540
+the composer Jason File with the require property set.
+
+133
+00:08:51,010 --> 00:08:53,900
+I mentioned the composer block file earlier.
+
+134
+00:08:54,220 --> 00:08:57,820
+What this does is lock down the versions of the installed packages.
+
+135
+00:08:58,270 --> 00:09:02,380
+The lock file can make sure that everyone works with the same package versions.
+
+136
+00:09:02,740 --> 00:09:08,150
+Just because the application shouldn't break due to a package update doesn't mean that all your teammates
+
+137
+00:09:08,170 --> 00:09:11,200
+and your production server should all be running separate versions.
+
+138
+00:09:11,980 --> 00:09:17,290
+When you first use composer to grab a dependency, it writes the exact version to the lock file.
+
+139
+00:09:17,860 --> 00:09:24,250
+If you specified two, not three asterisk and two three five is the latest version than the installed
+
+140
+00:09:24,250 --> 00:09:28,530
+version will be two, three, five and it will be entered into the lock file.
+
+141
+00:09:29,230 --> 00:09:32,200
+You can't, of course, decide to update your dependencies.
+
+142
+00:09:32,380 --> 00:09:38,380
+In this case, you should run the command composer update this will grab the latest versions aloud and
+
+143
+00:09:38,380 --> 00:09:39,730
+write them to the lock file.
+
+144
+00:09:40,000 --> 00:09:42,610
+This will then be distributed to all sources.
+
+145
+00:09:43,180 --> 00:09:43,690
+All right.
+
+146
+00:09:43,750 --> 00:09:48,790
+So that doesn't for composer, there's a lot more features, but we've learned everything we need to
+
+147
+00:09:48,790 --> 00:09:49,060
+learn.
+
+148
+00:09:49,060 --> 00:09:53,680
+So far, I highly encourage you to start using composer for your projects.
+
+149
+00:09:53,920 --> 00:09:56,800
+It'll help you manage files such as Bootstrap, J.
+
+150
+00:09:56,800 --> 00:09:59,260
+Creary and other P libraries.
+

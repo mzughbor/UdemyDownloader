@@ -1,0 +1,900 @@
+1
+00:00:07,190 --> 00:00:13,520
+Welcome to the first aside and aside, is a lecture that isn't necessary to watch, it's more of a bonus
+
+2
+00:00:13,520 --> 00:00:13,870
+lecture.
+
+3
+00:00:13,880 --> 00:00:18,770
+For more information about a particular topic, you're free to skip these lectures and come back to
+
+4
+00:00:18,770 --> 00:00:20,630
+them after you finish this course.
+
+5
+00:00:21,230 --> 00:00:25,850
+In this first assigned lecture, I'm going to show you how to create a Walker class.
+
+6
+00:00:26,180 --> 00:00:32,390
+In the previous lecture, I talked about how to create a menu using the WP now menu function.
+
+7
+00:00:32,659 --> 00:00:36,980
+This function has one extra setting you can set, which is the Walker key.
+
+8
+00:00:37,370 --> 00:00:41,930
+Before we get into how the Walker key works, let's talk about Walker's in general.
+
+9
+00:00:42,230 --> 00:00:44,990
+Walker's aren't specific to just WordPress.
+
+10
+00:00:45,200 --> 00:00:47,630
+Walker's our general programming technique.
+
+11
+00:00:47,930 --> 00:00:52,380
+Basically, they are a class or function that takes care of looping through an array.
+
+12
+00:00:53,060 --> 00:00:54,950
+What's so special about Walker's?
+
+13
+00:00:54,950 --> 00:00:57,460
+It's that they will loop through nested arrays as well.
+
+14
+00:00:57,890 --> 00:01:02,930
+It doesn't matter how deep an array is, a walker will loop through every value.
+
+15
+00:01:03,200 --> 00:01:04,340
+It's simple as that.
+
+16
+00:01:06,020 --> 00:01:11,720
+Now that we understand how Walker's work, let's create one ourselves, just like everything else,
+
+17
+00:01:11,750 --> 00:01:18,300
+we're going to put this code in a separate file inside the includes directory, create a file named
+
+18
+00:01:18,320 --> 00:01:21,610
+Custom Dash NAV Dash Walker B.
+
+19
+00:01:23,890 --> 00:01:31,840
+Inside this file, I'm going to create a class named Jiyu, underscore custom, underscore nav, underscore
+
+20
+00:01:31,840 --> 00:01:35,380
+Walker that extends the Walker NAV menu class.
+
+21
+00:01:40,070 --> 00:01:44,020
+All right, at this point, you may be wondering why are we using classes?
+
+22
+00:01:44,390 --> 00:01:50,570
+Well, walkers can only be created using object oriented programming, so using regular functions won't
+
+23
+00:01:50,570 --> 00:01:50,930
+work.
+
+24
+00:01:51,320 --> 00:01:57,870
+If you need to pass this video and brush up on your object oriented programming before proceeding the
+
+25
+00:01:57,890 --> 00:02:02,990
+walk or nav menu class we just extended takes care of the heavy lifting for us all.
+
+26
+00:02:02,990 --> 00:02:05,470
+Talk more about this class and what it does soon.
+
+27
+00:02:05,480 --> 00:02:07,400
+But for now, let's use this class.
+
+28
+00:02:07,730 --> 00:02:14,720
+Even though it's empty, it'll work as it's back inside the index template search for the menu we created.
+
+29
+00:02:14,990 --> 00:02:20,720
+This array we pass into the WP nav menu function has an extra option called Walker.
+
+30
+00:02:21,170 --> 00:02:22,340
+Add that in now.
+
+31
+00:02:24,450 --> 00:02:31,140
+The value for this must be set to a new instance of the Walker class we created in this case, it would
+
+32
+00:02:31,140 --> 00:02:35,360
+be Jiyu, underscore custom, underscore Knab, underscore Walker.
+
+33
+00:02:36,060 --> 00:02:37,380
+This won't work just yet.
+
+34
+00:02:37,680 --> 00:02:41,280
+This is because WordPress doesn't know where to find this class.
+
+35
+00:02:41,550 --> 00:02:45,630
+Inside the functions file include the Walker class file.
+
+36
+00:02:50,300 --> 00:02:54,560
+Now that we have that set, let's refresh the homepage and see the final result.
+
+37
+00:02:54,950 --> 00:02:59,900
+If everything worked, then you should receive no errors and see the menu working normally.
+
+38
+00:03:00,410 --> 00:03:05,390
+While it may not seem like it, WordPress is using our Walker class to generate this menu.
+
+39
+00:03:06,080 --> 00:03:11,840
+Even though our class is empty, the class we're extending comes with some default style links and formatting,
+
+40
+00:03:11,870 --> 00:03:14,410
+which is similar to word press's default menu.
+
+41
+00:03:14,900 --> 00:03:18,040
+With that being said, leaving it like this isn't practical.
+
+42
+00:03:18,350 --> 00:03:22,130
+The point of creating a Walker class is to customize the menu.
+
+43
+00:03:22,140 --> 00:03:23,360
+So let's do that now.
+
+44
+00:03:24,170 --> 00:03:29,270
+Back inside the class, I'm going to create a public function called start level.
+
+45
+00:03:29,670 --> 00:03:32,060
+I'm also going to add in some parameters.
+
+46
+00:03:36,350 --> 00:03:42,770
+WordPress allows you to override the four functions inside the Walker class, each of these functions
+
+47
+00:03:42,770 --> 00:03:47,880
+determine when certain HTML is output, it will go through each of them one at a time.
+
+48
+00:03:48,290 --> 00:03:50,440
+The first function is the start level.
+
+49
+00:03:50,840 --> 00:03:54,590
+This function is called when WordPress begins looping through a nested array.
+
+50
+00:03:55,280 --> 00:03:57,890
+This function is passed in three arguments.
+
+51
+00:03:58,220 --> 00:04:00,050
+The first argument is the output.
+
+52
+00:04:00,530 --> 00:04:03,950
+You'll notice I'm prefixing this with an ampersand symbol.
+
+53
+00:04:04,310 --> 00:04:06,980
+This value is being passed in as a reference.
+
+54
+00:04:07,310 --> 00:04:10,040
+Usually you will be provided a unique value.
+
+55
+00:04:10,040 --> 00:04:14,590
+But since this is passed in as a reference, then we're not provided a unique value.
+
+56
+00:04:15,230 --> 00:04:21,709
+Instead, any changes we make to the output variable will change any instances of the output variable
+
+57
+00:04:22,100 --> 00:04:24,170
+you'll see that affects us soon enough.
+
+58
+00:04:24,800 --> 00:04:27,770
+Moving on, the second argument is the depth.
+
+59
+00:04:28,070 --> 00:04:30,970
+This is the depth of the menu being generated.
+
+60
+00:04:31,370 --> 00:04:32,030
+Right now.
+
+61
+00:04:32,060 --> 00:04:36,130
+Our menu has a depth of zero as there are no sub menu items.
+
+62
+00:04:36,710 --> 00:04:39,770
+Lastly, the third argument is the arguments.
+
+63
+00:04:40,070 --> 00:04:44,320
+This will be the values you pass into the WP now menu function.
+
+64
+00:04:44,780 --> 00:04:47,510
+This gives you complete control over your menu.
+
+65
+00:04:47,930 --> 00:04:51,490
+You can choose to use or ignore the values you pass in.
+
+66
+00:04:52,220 --> 00:04:55,370
+Now that we understand the basics, let's use this function.
+
+67
+00:04:55,700 --> 00:04:58,970
+In most cases you would just echo out the elements.
+
+68
+00:04:58,970 --> 00:05:01,630
+You want to be outputted, but that's not the case here.
+
+69
+00:05:01,940 --> 00:05:08,000
+Instead, you have to make changes directly to the output variable to properly output each HTML.
+
+70
+00:05:08,690 --> 00:05:12,410
+I'm going to keep things simple and set the output variable to help.
+
+71
+00:05:14,660 --> 00:05:18,240
+This is the incorrect way of doing things, but that's fine for now.
+
+72
+00:05:18,560 --> 00:05:20,030
+This is just an example.
+
+73
+00:05:20,360 --> 00:05:23,330
+I'm going to say my changes and refresh the page.
+
+74
+00:05:23,660 --> 00:05:26,720
+After some time, you'll notice that nothing really changes.
+
+75
+00:05:26,960 --> 00:05:29,250
+Our menu is still displaying as normal.
+
+76
+00:05:29,870 --> 00:05:34,430
+This is because the water class only gets applied to Nestande menu items.
+
+77
+00:05:34,870 --> 00:05:38,020
+First level menu items don't use the Walker class at all.
+
+78
+00:05:38,480 --> 00:05:42,930
+It's only when you have some menu items is when the Walker class will be used.
+
+79
+00:05:43,430 --> 00:05:48,100
+Right now I don't have any sub menu items so the class will not be used.
+
+80
+00:05:48,410 --> 00:05:49,340
+Let's change that.
+
+81
+00:05:49,910 --> 00:05:55,720
+I'm going to open the WordPress admin dashboard and navigate to the menus page on this page.
+
+82
+00:05:55,730 --> 00:06:00,560
+I'm going to quickly add a sub menu item to any of these main level menu items.
+
+83
+00:06:02,820 --> 00:06:08,340
+Make sure to save your changes before proceeding, once that's done, refresh the page one more time.
+
+84
+00:06:08,720 --> 00:06:13,190
+If you look at the menu now, you'll see the hello message being outputted.
+
+85
+00:06:13,620 --> 00:06:16,790
+This will also break the menu in page, but that's fine.
+
+86
+00:06:17,130 --> 00:06:18,600
+Let's go back to our editors.
+
+87
+00:06:19,270 --> 00:06:22,350
+Obviously, this isn't the proper way of doing things.
+
+88
+00:06:22,380 --> 00:06:27,840
+Something I want to know is that whenever you make changes to the output variable, you should always
+
+89
+00:06:27,840 --> 00:06:31,250
+append the value rather than assigning a new one like we're doing here.
+
+90
+00:06:31,920 --> 00:06:36,360
+I'm going to change this into an unordered list tag and append the value.
+
+91
+00:06:38,610 --> 00:06:44,460
+The reason I'm creating an unordered list is because this function is called when the menu is about
+
+92
+00:06:44,460 --> 00:06:45,250
+to be generated.
+
+93
+00:06:45,720 --> 00:06:50,430
+This function gives you the opportunity to set things up before the actual menu was created.
+
+94
+00:06:50,820 --> 00:06:55,150
+You'll notice I'm not closing this tag either, since we're setting things up.
+
+95
+00:06:55,170 --> 00:06:59,600
+We don't want to immediately close the tank before we see this in action.
+
+96
+00:06:59,610 --> 00:07:02,250
+I want to make sure WordPress is using this walker.
+
+97
+00:07:02,580 --> 00:07:06,600
+So I'm going to add a class named Special Dash Class.
+
+98
+00:07:08,910 --> 00:07:15,180
+This class isn't specific to WordPress or my theme, it's just a class I made up on the spot with that
+
+99
+00:07:15,180 --> 00:07:20,370
+set, refresh the page and see the final result the page should now be displaying.
+
+100
+00:07:20,370 --> 00:07:26,580
+Normally, even though we didn't close the unordered list tag, WordPress defaults to an unordered list
+
+101
+00:07:26,580 --> 00:07:28,470
+anyway, so it closes for us.
+
+102
+00:07:29,160 --> 00:07:32,970
+If I cover my mouse over the submenu, you'll see it appearing normally.
+
+103
+00:07:33,360 --> 00:07:36,510
+I'm going to right click and select, inspect.
+
+104
+00:07:36,780 --> 00:07:38,490
+I want to see the HTML.
+
+105
+00:07:38,760 --> 00:07:44,430
+As you can see, the Walker class is being used for the submenu because we have this unordered list
+
+106
+00:07:44,430 --> 00:07:46,290
+tag being generated with the class.
+
+107
+00:07:46,290 --> 00:07:48,200
+We specify that's great.
+
+108
+00:07:48,570 --> 00:07:54,900
+We now have more control over the menu and can assign classes, IDs, attributes, etc..
+
+109
+00:07:55,680 --> 00:08:00,990
+Let's learn how to control the rest of the HTML generated back inside the editor.
+
+110
+00:08:01,110 --> 00:08:04,950
+I'm going to create a public function called and Lovel.
+
+111
+00:08:12,400 --> 00:08:19,300
+Just like last time were passed in the same arguments with the same values, however, the output variable
+
+112
+00:08:19,300 --> 00:08:22,620
+contains all the HTML from the previous functions.
+
+113
+00:08:23,020 --> 00:08:29,260
+If we were to override this value than any HTML generated before, this function will cease to exist.
+
+114
+00:08:29,710 --> 00:08:33,929
+We'll keep it simple and just append a closing unordered list tag.
+
+115
+00:08:38,940 --> 00:08:44,770
+So that takes care of the before and after, the next step is to work on each individual link.
+
+116
+00:08:45,090 --> 00:08:48,410
+This will require a little more work right above.
+
+117
+00:08:48,420 --> 00:08:52,170
+I'm going to create a public function called start element.
+
+118
+00:08:54,510 --> 00:09:00,600
+This function has the same parameters as the previous functions with two additional add ons, the second
+
+119
+00:09:00,600 --> 00:09:03,080
+parameter contains the item object.
+
+120
+00:09:03,450 --> 00:09:09,570
+This object contains information related to the link itself, such as the euro title, et cetera.
+
+121
+00:09:10,380 --> 00:09:12,570
+Lastly, we have the ID.
+
+122
+00:09:12,960 --> 00:09:16,830
+This variable contains the ID for the menu item itself.
+
+123
+00:09:17,310 --> 00:09:23,070
+This may seem strange, but WordPress keeps track of all menu items by assigning them an ID.
+
+124
+00:09:23,550 --> 00:09:27,100
+You can use this to add special features by using their ID.
+
+125
+00:09:27,870 --> 00:09:31,410
+We won't be going that far, but you are free to use it if you like.
+
+126
+00:09:31,530 --> 00:09:38,940
+I'm going to start things off by appending a list tag to the output variable with a class of special
+
+127
+00:09:38,940 --> 00:09:41,220
+dash class dash item.
+
+128
+00:09:46,170 --> 00:09:50,400
+Then I'll append the variable arguments and access the value before.
+
+129
+00:09:53,920 --> 00:09:59,650
+You may be wondering where I'm getting this value, the arguments variable contains the values you set
+
+130
+00:09:59,650 --> 00:10:02,080
+inside the NAF menu function.
+
+131
+00:10:02,470 --> 00:10:06,450
+In the resource section of this lecture, I provide a link to this function.
+
+132
+00:10:06,880 --> 00:10:13,390
+If you scroll down to the parameters, you'll find two keys called before and after, according to the
+
+133
+00:10:13,390 --> 00:10:18,240
+description you pass in text that will be placed before and after the link.
+
+134
+00:10:18,730 --> 00:10:23,620
+Since we're creating the Walker class, we're responsible for outputting these values.
+
+135
+00:10:24,190 --> 00:10:29,530
+Technically, we didn't set these values, but it's always good practice to set them in your Walker
+
+136
+00:10:29,530 --> 00:10:29,920
+class.
+
+137
+00:10:29,920 --> 00:10:36,220
+Regardless, WordPress does provide a way for plugin developers to override these values, but we'll
+
+138
+00:10:36,220 --> 00:10:37,320
+get to that soon enough.
+
+139
+00:10:37,990 --> 00:10:43,810
+Back inside the Walker class, I'm going to append both the before and after values.
+
+140
+00:10:48,770 --> 00:10:52,190
+In between these two values, I'm going to set up an anchor link.
+
+141
+00:10:58,090 --> 00:11:03,110
+First, let's start with setting up the ref attribute inside this attribute.
+
+142
+00:11:03,130 --> 00:11:05,800
+I'm going to set the value to item you are out.
+
+143
+00:11:10,950 --> 00:11:17,400
+The item variable contains information about the specific menu item in the loop, it's an object where
+
+144
+00:11:17,400 --> 00:11:19,280
+one of the properties is you are out.
+
+145
+00:11:19,710 --> 00:11:25,290
+If you're curious on how I know these values, then you can just use the print R function to output
+
+146
+00:11:25,290 --> 00:11:25,760
+the data.
+
+147
+00:11:26,070 --> 00:11:31,590
+If you never know what values a certain object contains, then I always recommend you just output it.
+
+148
+00:11:32,010 --> 00:11:33,090
+Moving right along.
+
+149
+00:11:33,090 --> 00:11:35,760
+Let's add the text between these two tags.
+
+150
+00:11:36,030 --> 00:11:40,950
+I'm going to output the link before, link after and the title itself.
+
+151
+00:11:48,150 --> 00:11:55,520
+Like before the link, before and link after our values that can be set inside the WP now menu function,
+
+152
+00:11:56,010 --> 00:11:58,740
+the title comes for the item object.
+
+153
+00:11:59,160 --> 00:12:01,560
+That's all we need to do for the opening element.
+
+154
+00:12:01,840 --> 00:12:08,370
+You'll notice I'm not closing the list tag that shouldn't be done here and said will need to create
+
+155
+00:12:08,370 --> 00:12:11,040
+a public function called end element.
+
+156
+00:12:18,260 --> 00:12:23,240
+This functions purpose is to close the element, which we'll do by closing the list tag.
+
+157
+00:12:28,600 --> 00:12:33,640
+That's it, we're finished with this class, there's a whole more we should do, but I'll cover that
+
+158
+00:12:33,640 --> 00:12:33,970
+soon.
+
+159
+00:12:34,330 --> 00:12:37,670
+This is usually the minimum set up you'll find yourself doing.
+
+160
+00:12:38,050 --> 00:12:40,270
+Let's go to the homepage and refresh.
+
+161
+00:12:40,510 --> 00:12:43,750
+After refreshing, you should see the menu working as usual.
+
+162
+00:12:44,470 --> 00:12:50,380
+If you inspect the element, then you should see that the special class item class is being applied.
+
+163
+00:12:50,890 --> 00:12:56,790
+Not only is it applied to sub menu items, but it's also being applied to main level items.
+
+164
+00:12:57,010 --> 00:13:02,590
+To be clear, the start level and end level functions can apply to sub menu items.
+
+165
+00:13:03,220 --> 00:13:09,610
+The start elements and end element functions get applied to all menu items, including main level ones.
+
+166
+00:13:10,000 --> 00:13:12,100
+This is why we see being applied here.
+
+167
+00:13:12,520 --> 00:13:16,660
+Now that we're finished with the Walker class, let's explore what else we can do.
+
+168
+00:13:17,290 --> 00:13:22,600
+In the resource section of this lecture, I provide a link to the Walker documentation page.
+
+169
+00:13:22,960 --> 00:13:26,110
+This page goes into detail about what walkers can do.
+
+170
+00:13:26,560 --> 00:13:29,110
+Walkers don't apply to just menus.
+
+171
+00:13:29,320 --> 00:13:32,980
+They can also be used for creating other types of content.
+
+172
+00:13:33,400 --> 00:13:34,860
+More on that in just a moment.
+
+173
+00:13:35,500 --> 00:13:37,500
+Let's read what WordPress has to say.
+
+174
+00:13:38,110 --> 00:13:43,900
+The Walker class was implemented in WordPress, two point one to provide developers with a means to
+
+175
+00:13:43,900 --> 00:13:48,040
+traverse treelike data structures for the purpose of rendering HTML.
+
+176
+00:13:48,370 --> 00:13:55,210
+This is just another way of saying of being able to loop through a nested array so you can output HTML.
+
+177
+00:13:55,570 --> 00:13:59,800
+Let's scroll down to the very bottom to the section called Related Classes.
+
+178
+00:14:00,370 --> 00:14:04,810
+Here is a list of WordPress classes that take advantage of the Walker class.
+
+179
+00:14:05,230 --> 00:14:10,750
+The difference between these classes and the Walker class is that the Walker class simply loops through
+
+180
+00:14:10,750 --> 00:14:11,260
+your data.
+
+181
+00:14:11,710 --> 00:14:13,300
+It doesn't do anything with it.
+
+182
+00:14:13,630 --> 00:14:17,620
+These classes here take care of using that data and outputting HTML.
+
+183
+00:14:18,340 --> 00:14:23,680
+Let's click on the Walker Now menu class, which we extended in our custom walker class.
+
+184
+00:14:24,100 --> 00:14:27,310
+You won't find much written information in this case.
+
+185
+00:14:27,340 --> 00:14:29,230
+We'll have to study the code ourselves.
+
+186
+00:14:29,410 --> 00:14:32,020
+Click on the link to the file here.
+
+187
+00:14:32,020 --> 00:14:35,650
+You'll find the walker that WordPress uses to generate the menu.
+
+188
+00:14:36,070 --> 00:14:40,480
+As you may notice, there's a whole lot more going on than what we had in our own class.
+
+189
+00:14:40,810 --> 00:14:45,490
+I won't be able to go over every little thing, but here's a few things you should know.
+
+190
+00:14:46,320 --> 00:14:53,820
+First, you'll find a lot of backslash tea and backslash n strings appearing in the HTML, the backslash
+
+191
+00:14:53,820 --> 00:14:57,090
+T tells the browser to tab the HTML.
+
+192
+00:14:57,510 --> 00:15:01,660
+The Backslash N tells the browser to put the HTML on a new line.
+
+193
+00:15:02,160 --> 00:15:04,290
+These are used for formatting reasons.
+
+194
+00:15:04,590 --> 00:15:10,010
+You don't have to do this as the developer tools already take care of formatting your HTML.
+
+195
+00:15:10,440 --> 00:15:15,090
+With that being said, if you don't use these, then it's actually beneficial to you.
+
+196
+00:15:15,780 --> 00:15:21,570
+By removing whitespace, you're essentially making the file size smaller, which can allow for faster
+
+197
+00:15:21,570 --> 00:15:22,380
+loading times.
+
+198
+00:15:22,740 --> 00:15:24,860
+It's up to you whether you want to use them.
+
+199
+00:15:25,200 --> 00:15:27,750
+The first function here is the start level.
+
+200
+00:15:28,110 --> 00:15:32,540
+Just like in our own function, this will output an unordered list tag.
+
+201
+00:15:33,300 --> 00:15:38,730
+It'll also take the time to check if there should be whitespace and it'll take the time to apply certain
+
+202
+00:15:38,730 --> 00:15:39,470
+attributes.
+
+203
+00:15:39,960 --> 00:15:43,530
+There are some functions being used here that are WordPress specific.
+
+204
+00:15:44,190 --> 00:15:48,990
+If you're coming to this lecture after finishing this course, then you're most likely familiar with
+
+205
+00:15:48,990 --> 00:15:49,780
+what these do.
+
+206
+00:15:50,160 --> 00:15:51,870
+If not, that's perfectly fine.
+
+207
+00:15:52,230 --> 00:15:56,250
+I won't be explaining these functions in this lecture, but I will in the future.
+
+208
+00:15:56,250 --> 00:15:59,040
+One, keep in mind that this is an aside.
+
+209
+00:15:59,370 --> 00:16:01,730
+You don't have to take this lecture right away.
+
+210
+00:16:02,010 --> 00:16:04,230
+You can always come back to it any time.
+
+211
+00:16:04,890 --> 00:16:11,280
+Moving on the end level, function takes care of closing the unordered list tag and checking for whitespace.
+
+212
+00:16:11,880 --> 00:16:16,440
+Afterwards, we have the start element function just like last time.
+
+213
+00:16:16,560 --> 00:16:19,800
+This will output a list tag with the link inside.
+
+214
+00:16:20,250 --> 00:16:25,560
+There's a whole lot more going on here, but it's mostly checking if certain attributes should be applied.
+
+215
+00:16:25,950 --> 00:16:28,560
+It'll also take care of generating classes.
+
+216
+00:16:28,950 --> 00:16:33,360
+Once again, if you don't understand the functions being used here, then that's fine.
+
+217
+00:16:33,720 --> 00:16:36,180
+You'll learn about them as the course progresses.
+
+218
+00:16:36,900 --> 00:16:41,040
+Lastly, we have the NS element function which closes everything.
+
+219
+00:16:41,640 --> 00:16:45,450
+This is the default WordPress menu and will work in most situations.
+
+220
+00:16:45,720 --> 00:16:52,290
+If you ever need to override the default HTML markup, then you need to use a Walker class for the rest
+
+221
+00:16:52,290 --> 00:16:53,010
+of this course.
+
+222
+00:16:53,130 --> 00:16:56,160
+We're going to continue using the default Walker class.
+
+223
+00:16:56,160 --> 00:17:01,320
+So I'm going to comment about the Walker key inside the WP naff menu function.
+
+224
+00:17:03,540 --> 00:17:06,490
+Once you've done that, let's move on to the next lecture.
+
+225
+00:17:06,810 --> 00:17:07,680
+I'll see you there.
+

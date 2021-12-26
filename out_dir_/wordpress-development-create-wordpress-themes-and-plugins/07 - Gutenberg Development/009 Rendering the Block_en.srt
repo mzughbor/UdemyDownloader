@@ -1,0 +1,496 @@
+1
+00:00:07,400 --> 00:00:13,220
+The last step to completing our block is to render it right now I'm looking at the block we just created.
+
+2
+00:00:13,640 --> 00:00:16,700
+I filled in all the fields and updated the post.
+
+3
+00:00:16,910 --> 00:00:21,140
+If I were to view the post on the front end, then you'll see it displays just fine.
+
+4
+00:00:21,830 --> 00:00:26,570
+Something you'll notice is that the styles are completely different from the styles used in the ED.
+
+5
+00:00:26,870 --> 00:00:29,520
+In most cases, you want this to be consistent.
+
+6
+00:00:29,930 --> 00:00:34,010
+I'll show you how to load styles for Gutenberg, but for now you can ignore this.
+
+7
+00:00:34,730 --> 00:00:40,850
+Right now the problem we face is Gutenberg is unable to render the block again after a page refresh.
+
+8
+00:00:41,270 --> 00:00:42,230
+What does that mean?
+
+9
+00:00:42,530 --> 00:00:46,130
+First, we'll have to understand how Gutenberg handles our content.
+
+10
+00:00:47,930 --> 00:00:51,930
+The Gutenberg lifestyle is straightforward, but there's a lot that goes into it.
+
+11
+00:00:52,310 --> 00:00:58,050
+This diagram is grossly oversimplified whenever you're writing content on The Gutenberg editor.
+
+12
+00:00:58,070 --> 00:01:01,460
+The edit function is constantly called to update everything.
+
+13
+00:01:01,940 --> 00:01:07,740
+The edit function will always return processed HTML, which will then be rendered onto the editor.
+
+14
+00:01:08,540 --> 00:01:11,750
+Things change when the user clicks on, publish or update.
+
+15
+00:01:12,080 --> 00:01:16,460
+The save function is called, which does something similar to the edit function.
+
+16
+00:01:16,880 --> 00:01:20,600
+It will run any code inside and return the process to HTML.
+
+17
+00:01:21,080 --> 00:01:24,500
+This time the processed HTML is sent to the database.
+
+18
+00:01:26,950 --> 00:01:33,700
+I currently have Heidi opens, all posts are saved in the WP posts table, if you scroll down to the
+
+19
+00:01:33,700 --> 00:01:38,490
+bottom, you should find the recipe posts you created just in case you can't find it.
+
+20
+00:01:38,530 --> 00:01:41,170
+You can go back to the browser and look at the URL.
+
+21
+00:01:41,530 --> 00:01:44,800
+The post is set under the post query here.
+
+22
+00:01:47,270 --> 00:01:53,680
+Once you have the posted, you can switch back to Heidi and look for it under the post content column,
+
+23
+00:01:53,690 --> 00:01:55,280
+you will find the content saved.
+
+24
+00:01:55,550 --> 00:01:58,820
+As you can see, there is no JavaScript or ESX.
+
+25
+00:01:59,030 --> 00:02:01,730
+This is pure HTML right now.
+
+26
+00:02:01,730 --> 00:02:03,220
+We only have one block.
+
+27
+00:02:03,530 --> 00:02:05,270
+These comments prove that fact.
+
+28
+00:02:05,600 --> 00:02:09,930
+WordPress will take the time to surround your blocks with comments that contain the name.
+
+29
+00:02:10,729 --> 00:02:12,400
+These comments serve a purpose.
+
+30
+00:02:12,620 --> 00:02:14,120
+I'll explain in just a moment.
+
+31
+00:02:14,150 --> 00:02:16,000
+But let's look at the front end again.
+
+32
+00:02:16,340 --> 00:02:20,780
+If you were to view the HTML for the post, you'll see the comments no longer appear.
+
+33
+00:02:23,290 --> 00:02:28,600
+Before content is displayed, the Guttenberg comments are removed as they're not necessary.
+
+34
+00:02:29,260 --> 00:02:31,870
+All right, so what is the purpose of these comments?
+
+35
+00:02:32,140 --> 00:02:33,250
+Later down the road?
+
+36
+00:02:33,280 --> 00:02:34,900
+You may want to edit a post.
+
+37
+00:02:35,020 --> 00:02:38,860
+When you do so, Gutenberg will load the content from the database.
+
+38
+00:02:39,100 --> 00:02:40,690
+However, here's the problem.
+
+39
+00:02:41,200 --> 00:02:43,390
+The content is pure HTML.
+
+40
+00:02:43,780 --> 00:02:47,970
+Gutenberg has to take the time to break down your content into blocks again.
+
+41
+00:02:48,400 --> 00:02:54,880
+The comments assist with that by telling Gutenberg which pieces of HTML belong to which block and this
+
+42
+00:02:54,880 --> 00:03:00,700
+example Gutenberg will be able to understand this HTML here belongs to the recipe block.
+
+43
+00:03:01,030 --> 00:03:02,190
+Simple enough so far.
+
+44
+00:03:02,470 --> 00:03:04,390
+Here's where the complication begins.
+
+45
+00:03:04,660 --> 00:03:08,680
+Gutenberg doesn't know which piece of text belongs to which attribute.
+
+46
+00:03:09,070 --> 00:03:15,100
+It's obvious to us that this piece of text is four ingredients and this other piece of text is for cooking
+
+47
+00:03:15,100 --> 00:03:15,390
+time.
+
+48
+00:03:15,970 --> 00:03:18,070
+However, Gutenberg doesn't know that.
+
+49
+00:03:20,860 --> 00:03:26,350
+For the most part, Guttenberg doesn't care what the HTML looks like, it's looking for the attribute
+
+50
+00:03:26,350 --> 00:03:30,490
+data to recap, it loads the HTML from the database.
+
+51
+00:03:30,640 --> 00:03:33,610
+It will then convert the HTML into blocks.
+
+52
+00:03:33,790 --> 00:03:35,620
+It will then look for the attributes.
+
+53
+00:03:36,070 --> 00:03:40,480
+Once it grabs the attributes, it will then use those values in store for the block.
+
+54
+00:03:40,960 --> 00:03:46,210
+The edit function will then be triggered so that it can render the HTML on the ED itself.
+
+55
+00:03:46,510 --> 00:03:52,000
+If it's unable to find certain attributes, then it'll assume the content was changed outside of its
+
+56
+00:03:52,000 --> 00:03:52,420
+scope.
+
+57
+00:03:53,050 --> 00:03:59,140
+The question now is how do we get Gutenberg to identify which piece of text belongs to which attribute?
+
+58
+00:04:01,750 --> 00:04:07,330
+Before I answer that, I want to note that I commented out the update ingredients function and placed
+
+59
+00:04:07,330 --> 00:04:09,520
+the function back inside the text component.
+
+60
+00:04:10,180 --> 00:04:11,510
+All right, let's move on.
+
+61
+00:04:11,740 --> 00:04:15,720
+I'm going to minimize the edit function so that it doesn't get in our way.
+
+62
+00:04:16,120 --> 00:04:19,420
+Then I'm going to scroll up to the attributes object.
+
+63
+00:04:19,810 --> 00:04:21,750
+Each attribute can have a type.
+
+64
+00:04:22,120 --> 00:04:24,770
+Add this property to the ingredients attribute.
+
+65
+00:04:27,090 --> 00:04:32,550
+The type determines the data type of the content, if the attribute stores a number, then you can set
+
+66
+00:04:32,550 --> 00:04:33,660
+this to integer.
+
+67
+00:04:33,960 --> 00:04:40,620
+A string is used for text and you can even use array for multiple pieces of content will be using string.
+
+68
+00:04:41,340 --> 00:04:45,030
+The question is, what's the difference between type and source?
+
+69
+00:04:45,330 --> 00:04:47,490
+The type is for setting the data type.
+
+70
+00:04:47,850 --> 00:04:53,580
+The source is used to instruct Gutenberg what exactly it should extract from the GML that comes from
+
+71
+00:04:53,580 --> 00:04:54,270
+the database.
+
+72
+00:04:54,660 --> 00:04:56,160
+More on this in just a moment.
+
+73
+00:04:56,910 --> 00:05:00,330
+The next property will need you set is The Selecter property.
+
+74
+00:05:02,630 --> 00:05:06,560
+This will instruct Leuchtenburg where the data can be found inside the HTML.
+
+75
+00:05:06,920 --> 00:05:10,070
+I'm going to set this to dot ingredients dash.
+
+76
+00:05:13,350 --> 00:05:15,420
+Here's how Guttenberg will interpret this.
+
+77
+00:05:15,630 --> 00:05:20,820
+We're telling Guttenberg, hey, I have an attribute called ingredients, if you're loading the data
+
+78
+00:05:20,820 --> 00:05:26,490
+from the HTML, then you will be able to find the data inside a tag with the class ingredients.
+
+79
+00:05:27,750 --> 00:05:31,920
+I want you to extract the text inside and store the value as a string.
+
+80
+00:05:32,790 --> 00:05:34,500
+It will do this for each attribute.
+
+81
+00:05:34,770 --> 00:05:40,110
+Once all the attributes have been accounted for, it will then run the edit function and render the
+
+82
+00:05:40,110 --> 00:05:42,120
+content onto the ED itself.
+
+83
+00:05:42,510 --> 00:05:46,350
+Something I want to know is that the type property is optional here.
+
+84
+00:05:46,770 --> 00:05:52,080
+It's only required if you're working with metadata, but we're not using metadata, so it doesn't really
+
+85
+00:05:52,080 --> 00:05:52,650
+matter here.
+
+86
+00:05:53,250 --> 00:05:57,270
+I like to set it just in case I recommend you set it to.
+
+87
+00:05:57,600 --> 00:06:02,190
+Another thing I want to note is that the value we passed in for the selector doesn't exist.
+
+88
+00:06:02,430 --> 00:06:03,930
+We'll be adding it soon enough.
+
+89
+00:06:04,170 --> 00:06:04,830
+For now.
+
+90
+00:06:04,890 --> 00:06:07,470
+I want you should do this for the rest of the attributes.
+
+91
+00:06:22,370 --> 00:06:29,060
+All of them will have a type of strength, The Selecter will be their names, followed by Dash P.H.
+
+92
+00:06:29,810 --> 00:06:34,120
+being short for placeholder WordPress now knows where to look for the data.
+
+93
+00:06:34,400 --> 00:06:36,740
+However, it can't look for the attributes.
+
+94
+00:06:36,740 --> 00:06:43,160
+Since we're not rendering the GML as we're specifying here, we'll need to update both the edit and
+
+95
+00:06:43,160 --> 00:06:47,030
+save functions for this will start with the edit function.
+
+96
+00:06:47,330 --> 00:06:52,610
+All you need to do is surround the attributes with some spane tags with their respective class names
+
+97
+00:06:52,610 --> 00:06:53,210
+like so.
+
+98
+00:07:06,890 --> 00:07:11,150
+To save some time, you can just copy this and paste it into the save function.
+
+99
+00:07:11,570 --> 00:07:16,940
+Be sure to remove the class name attribute from the root element as WordPress takes care of adding it
+
+100
+00:07:16,940 --> 00:07:17,360
+for you.
+
+101
+00:07:25,100 --> 00:07:31,370
+That should do it, open your command line and see into the blocks directory, then run the command
+
+102
+00:07:31,370 --> 00:07:32,930
+npm run dev.
+
+103
+00:07:37,190 --> 00:07:39,410
+You shouldn't receive any errors thus far.
+
+104
+00:07:39,710 --> 00:07:43,580
+Go back to the Gutenberg editor, remove the block we have and save it.
+
+105
+00:07:46,680 --> 00:07:52,410
+We have to do this since we want to remove the copy stored in the database, then refresh the page so
+
+106
+00:07:52,410 --> 00:07:58,830
+that we can load in the latest code for our block lastly and the block and again and add some settings.
+
+107
+00:07:59,040 --> 00:08:01,170
+Once you have that set, save your post.
+
+108
+00:08:08,000 --> 00:08:12,800
+If we did everything right, then we should be able to view the post without a problem, you should
+
+109
+00:08:12,800 --> 00:08:13,630
+see what I see.
+
+110
+00:08:13,970 --> 00:08:19,520
+If I were to inspect the element, then you'll see it has all the correct classes and formatting just
+
+111
+00:08:19,520 --> 00:08:22,910
+to double check open HYNE and view the contents of the post.
+
+112
+00:08:25,460 --> 00:08:31,940
+It should be the exact same age HTML with the comments added in lastly, go ahead and refresh the ED
+
+113
+00:08:31,940 --> 00:08:32,470
+itself.
+
+114
+00:08:32,750 --> 00:08:35,789
+The Block should be displaying just fine with the data saved.
+
+115
+00:08:36,380 --> 00:08:37,490
+Congratulations.
+
+116
+00:08:37,610 --> 00:08:39,580
+You just created your first block.
+
+117
+00:08:39,799 --> 00:08:43,059
+It took a long time to get to this point, but it was well worth it.
+
+118
+00:08:45,750 --> 00:08:51,870
+Here is our trusty process chart, we've prepared the environment include the files registered the block,
+
+119
+00:08:51,960 --> 00:08:54,150
+created the settings and render the block.
+
+120
+00:08:54,420 --> 00:08:58,810
+You will want to make sure that the block renders perfectly on both the front and back end.
+
+121
+00:08:59,580 --> 00:09:03,120
+I've added an extra step here, which is optimize and enhance.
+
+122
+00:09:03,330 --> 00:09:08,460
+In the next few lectures, we'll take a look at how we can improve the user experience by styling the
+
+123
+00:09:08,460 --> 00:09:10,410
+block and adding additional settings.
+
+124
+00:09:10,770 --> 00:09:13,350
+When you're ready, I'll see you in the next lecture.
+

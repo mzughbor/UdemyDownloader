@@ -1,0 +1,176 @@
+1
+00:00:07,580 --> 00:00:10,620
+Our theme and plug in have come a long way since we first started.
+
+2
+00:00:10,850 --> 00:00:15,110
+It's now time to take it to the next level by working on some advanced concepts.
+
+3
+00:00:15,350 --> 00:00:20,420
+If you plan on selling your theme, then it would be wise to show support for some of the most popular
+
+4
+00:00:20,420 --> 00:00:22,860
+plugins available in this section.
+
+5
+00:00:22,880 --> 00:00:26,300
+We will work on adding support for Buddy Press and Will Commerce.
+
+6
+00:00:26,540 --> 00:00:27,980
+I want to make something clear.
+
+7
+00:00:28,220 --> 00:00:31,730
+By default, these plug ins are already compatible with our theme.
+
+8
+00:00:32,060 --> 00:00:35,840
+Most plug ins that are released to the public are compatible with WordPress.
+
+9
+00:00:36,110 --> 00:00:40,970
+As long as that theme and plug in are adhering to the WordPress coding standards, then they should
+
+10
+00:00:40,970 --> 00:00:42,280
+be compatible with each other.
+
+11
+00:00:42,980 --> 00:00:48,650
+What we'll be doing is furthering the compatibility by customizing the look and feel to match our theme.
+
+12
+00:00:49,130 --> 00:00:54,410
+This step is completely optional, but by doing this, you open yourself up to gaining more customers
+
+13
+00:00:54,410 --> 00:00:56,080
+and learning more about WordPress.
+
+14
+00:00:56,870 --> 00:01:00,350
+If you're not familiar with these plug ins, then let's take a mini tour.
+
+15
+00:01:00,650 --> 00:01:04,879
+In the resource section of this lecture, I provide links to both plugins.
+
+16
+00:01:05,209 --> 00:01:08,030
+The first plugin will be working with is Buddy Press.
+
+17
+00:01:08,720 --> 00:01:12,860
+Buddy Press is a plugin that will convert your site into a social media site.
+
+18
+00:01:13,130 --> 00:01:18,830
+It adds features such as profiles, groups, activity streams, notifications and much more.
+
+19
+00:01:19,130 --> 00:01:24,050
+It's very easy to use and even comes with some default styles if your theme doesn't have any.
+
+20
+00:01:24,770 --> 00:01:25,070
+Woohoo!
+
+21
+00:01:25,070 --> 00:01:28,990
+Commerce is a plug in that will transform a WordPress site into a store.
+
+22
+00:01:29,420 --> 00:01:31,790
+This is one of the most popular plugins around.
+
+23
+00:01:32,120 --> 00:01:36,020
+It helps process payments, keep track of inventory and so much more.
+
+24
+00:01:36,350 --> 00:01:42,170
+On top of that, there are a lot of plugins that extend to commerce and and a plethora of features.
+
+25
+00:01:42,470 --> 00:01:47,540
+Adding support for this plug in is truly beneficial at this point of the course.
+
+26
+00:01:47,660 --> 00:01:51,350
+Things are about to get mixed up between both plug in and team development.
+
+27
+00:01:51,680 --> 00:01:56,720
+What I mean by this is that sometimes we'll be working in the theme and other times we'll be working
+
+28
+00:01:56,720 --> 00:01:57,350
+in the plug in.
+
+29
+00:01:57,740 --> 00:02:00,200
+We'll be switching often, so be prepared for that.
+
+30
+00:02:00,860 --> 00:02:02,960
+What you're experiencing is my workflow.
+
+31
+00:02:03,170 --> 00:02:04,820
+This is how I prefer to work.
+
+32
+00:02:05,060 --> 00:02:08,210
+Actually, this whole chorus has been showing my workflow.
+
+33
+00:02:08,479 --> 00:02:14,240
+Whenever I start working on a custom theme, I start with breaking down my HTML template into template
+
+34
+00:02:14,240 --> 00:02:17,360
+parts for WordPress, just like we did in the first section.
+
+35
+00:02:17,930 --> 00:02:23,540
+Once I have most of the foundation set, I start working on a custom plugin for the theme to add any
+
+36
+00:02:23,540 --> 00:02:24,680
+features I might like.
+
+37
+00:02:24,980 --> 00:02:30,890
+Eventually I'll start adding in the more advanced features and integrations like Buddy Press and Commerce.
+
+38
+00:02:31,220 --> 00:02:36,650
+Once it gets to that point, I find myself working in both the theme and plug in at the same time.
+
+39
+00:02:37,340 --> 00:02:38,450
+That's perfectly normal.
+
+40
+00:02:38,450 --> 00:02:39,590
+And WordPress development.
+
+41
+00:02:39,860 --> 00:02:43,280
+Hopefully you will find that workflow optimal for you too.
+
+42
+00:02:43,550 --> 00:02:45,470
+If you feel otherwise, let me know.
+
+43
+00:02:45,740 --> 00:02:47,420
+All right, let's get to work.
+
+44
+00:02:48,770 --> 00:02:49,310
+Oh.
+

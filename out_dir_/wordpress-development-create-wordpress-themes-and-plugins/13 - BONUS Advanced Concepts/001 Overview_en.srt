@@ -1,0 +1,36 @@
+1
+00:00:08,470 --> 00:00:13,720
+In the past few sections, we've been working on creating a single plug in and theme, we've covered
+
+2
+00:00:13,720 --> 00:00:15,040
+a variety of topics.
+
+3
+00:00:15,160 --> 00:00:20,770
+At this point, you're more than ready to start developing your own plug ins and themes in this bonus
+
+4
+00:00:20,770 --> 00:00:24,190
+section of the course, we're going to explore some advanced topics.
+
+5
+00:00:24,640 --> 00:00:28,540
+A lot of these topics are useful when you're developing a large plug in our theme.
+
+6
+00:00:28,960 --> 00:00:33,070
+What you'll learn here will help you manage large amounts of code and projects.
+
+7
+00:00:33,370 --> 00:00:37,460
+A lot of this is experimental, and so you should approach this section with care.
+
+8
+00:00:37,960 --> 00:00:43,690
+This section gives a brief overview of some tools and techniques you can use once you're ready.
+
+9
+00:00:43,720 --> 00:00:45,460
+I'll see you in the next lecture.
+

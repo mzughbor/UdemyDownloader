@@ -1,0 +1,696 @@
+1
+00:00:07,610 --> 00:00:12,890
+We've explored how to load modules in the previous lectures, but now it's time to learn how to use
+
+2
+00:00:12,890 --> 00:00:17,570
+an actual module, throughout this course we'll be using something called Web Pack.
+
+3
+00:00:17,780 --> 00:00:21,950
+In the resource section of this lecture, I provide a link to the Web site.
+
+4
+00:00:22,340 --> 00:00:25,070
+WINPAC describes itself as a module bungler.
+
+5
+00:00:25,370 --> 00:00:26,620
+That's not very descriptive.
+
+6
+00:00:26,630 --> 00:00:28,400
+So allow me to explain further.
+
+7
+00:00:28,730 --> 00:00:33,010
+Gutenberg requires a lot of files in order for it to function correctly.
+
+8
+00:00:33,470 --> 00:00:38,930
+As you progressed through this course, you'll find that we'll have dozens of files created just for
+
+9
+00:00:38,930 --> 00:00:39,590
+the front end.
+
+10
+00:00:39,980 --> 00:00:45,620
+Loading all these files is bad practice as it can use up resources and hurt the performance of our site.
+
+11
+00:00:46,370 --> 00:00:50,490
+When PAC solves most of this by combining all your files together.
+
+12
+00:00:50,990 --> 00:00:54,380
+Let's say you had dozens of JS files for your plugin.
+
+13
+00:00:54,800 --> 00:00:59,230
+WINPAC will grab all those scripts and try to combine them into one or two files.
+
+14
+00:00:59,510 --> 00:01:05,960
+It'll also take care of Minifie and optimizing your code for you when PAC can do so much more.
+
+15
+00:01:05,960 --> 00:01:12,110
+By also combining your styles and compressing your images, it can also create a web server for testing
+
+16
+00:01:12,110 --> 00:01:12,530
+your site.
+
+17
+00:01:13,250 --> 00:01:13,940
+On the site.
+
+18
+00:01:13,940 --> 00:01:17,990
+You'll see that Web pack provides a simple diagram on how it works.
+
+19
+00:01:18,230 --> 00:01:21,700
+On the left, you'll see various files needed for your code to work.
+
+20
+00:01:22,070 --> 00:01:25,310
+This includes files from third party frameworks and libraries.
+
+21
+00:01:25,640 --> 00:01:31,370
+These files will be processed through Web pack and as a result, you'll have fewer files that are ready
+
+22
+00:01:31,370 --> 00:01:32,650
+to be used in production.
+
+23
+00:01:33,350 --> 00:01:36,800
+You'll notice that it also processes different file types.
+
+24
+00:01:36,980 --> 00:01:40,430
+So it's not just JavaScript success and HTML.
+
+25
+00:01:40,700 --> 00:01:46,220
+Westpac takes a little bit of work to set up initially, but I promise you that it's very easy once
+
+26
+00:01:46,220 --> 00:01:47,690
+you understand what's going on.
+
+27
+00:01:48,380 --> 00:01:52,250
+I want to highlight that we won't be using all of web packs features.
+
+28
+00:01:52,610 --> 00:01:55,520
+We don't need it server because we already have one.
+
+29
+00:01:55,820 --> 00:01:59,690
+We don't need to compress images or process access files.
+
+30
+00:02:00,020 --> 00:02:04,400
+We will solely focus on the JavaScript that web pack can help us with.
+
+31
+00:02:04,970 --> 00:02:06,140
+This is perfectly fine.
+
+32
+00:02:06,440 --> 00:02:09,050
+You don't have to use Web pack to its full extent.
+
+33
+00:02:09,320 --> 00:02:14,360
+A lot of the additional features are for developers who want to use Web Pappe with known as the back
+
+34
+00:02:14,360 --> 00:02:14,570
+end.
+
+35
+00:02:14,990 --> 00:02:19,160
+Since we're using P and WordPress, we don't need those extra features.
+
+36
+00:02:19,190 --> 00:02:21,350
+We just want help with the JavaScript code.
+
+37
+00:02:21,920 --> 00:02:24,050
+Using Web pack is completely optional.
+
+38
+00:02:24,170 --> 00:02:28,730
+However, as you may have noticed, I like to keep my code clean and organized.
+
+39
+00:02:29,000 --> 00:02:32,540
+Web pack will really help us with organizing and scanning our code.
+
+40
+00:02:32,880 --> 00:02:37,670
+I also want to use the latest JavaScript features which aren't available in modern browsers.
+
+41
+00:02:37,970 --> 00:02:41,120
+This is something we'll explore more as the course progresses.
+
+42
+00:02:41,720 --> 00:02:44,780
+Let's look at some examples you don't have to follow along.
+
+43
+00:02:44,930 --> 00:02:45,830
+Just watch.
+
+44
+00:02:46,070 --> 00:02:49,760
+Right now I'm on a site called Strandberg Guitars.
+
+45
+00:02:49,970 --> 00:02:53,630
+I'm going to open my developer tools and select the network tab.
+
+46
+00:02:54,110 --> 00:02:56,210
+We've talked about the network tab before.
+
+47
+00:02:56,480 --> 00:03:01,430
+It allows you to view the files loaded and how long it takes for those files to load.
+
+48
+00:03:02,060 --> 00:03:08,180
+I'm going to filter the results to only display JavaScript, then I'm going to completely refresh the
+
+49
+00:03:08,180 --> 00:03:09,530
+page and see what we get.
+
+50
+00:03:11,670 --> 00:03:16,620
+As you can see, there are dozens of files being loaded and the site takes some time to load.
+
+51
+00:03:17,250 --> 00:03:19,150
+Let's take a look at another example.
+
+52
+00:03:19,320 --> 00:03:21,390
+I'm on the Udemy site now.
+
+53
+00:03:21,600 --> 00:03:23,760
+I'm going to do the same thing as before.
+
+54
+00:03:24,030 --> 00:03:27,880
+Open the developer tools and refresh the page right away.
+
+55
+00:03:27,900 --> 00:03:30,000
+You'll notice one huge difference.
+
+56
+00:03:30,180 --> 00:03:33,830
+There are way less files being loaded and the site is loading faster.
+
+57
+00:03:34,200 --> 00:03:37,920
+You may or may not have noticed, but Udemy is a single page app.
+
+58
+00:03:38,280 --> 00:03:42,790
+Since it's a single page app, you don't have hundreds and hundreds of files that should be loaded.
+
+59
+00:03:43,410 --> 00:03:46,350
+However, the Udemy development team is very smart.
+
+60
+00:03:46,680 --> 00:03:52,920
+If the developers use web pack to combine all their files together, which reduces the amount of time
+
+61
+00:03:52,920 --> 00:03:56,040
+to load their site, I can actually prove this further.
+
+62
+00:03:56,430 --> 00:04:00,270
+If I click on one of these scripts, you'll see the preview appear on the right.
+
+63
+00:04:00,870 --> 00:04:04,020
+You'll notice the code has the key word web pack.
+
+64
+00:04:04,260 --> 00:04:07,800
+Web pack will load its own code to help you organize your code.
+
+65
+00:04:08,190 --> 00:04:13,860
+If you take a closer look, you'll notice that this file contains libraries such as angular and angular
+
+66
+00:04:13,860 --> 00:04:14,460
+carousel.
+
+67
+00:04:15,030 --> 00:04:17,970
+Usually you would expect these to be in separate files.
+
+68
+00:04:17,970 --> 00:04:21,140
+But with Westpac, we now have one individual file.
+
+69
+00:04:21,779 --> 00:04:23,520
+This is the power of Web page.
+
+70
+00:04:24,000 --> 00:04:26,520
+All right, let's get started with using Web pack.
+
+71
+00:04:26,790 --> 00:04:30,510
+Right now, I'm inside a folder called Web Pack Dash example.
+
+72
+00:04:30,870 --> 00:04:34,250
+I want you to create a folder and name it whatever you want.
+
+73
+00:04:34,590 --> 00:04:38,160
+I also want you to open your terminal and navigate to this directory.
+
+74
+00:04:38,800 --> 00:04:44,010
+I'm using Visual Studio Code, so my terminal will automatically point to this directory.
+
+75
+00:04:44,460 --> 00:04:47,550
+I'm going to run the command npm in it.
+
+76
+00:04:49,900 --> 00:04:53,870
+This is a subcommander that will help us generate a basic package file.
+
+77
+00:04:54,310 --> 00:04:56,110
+You'll see what this looks like in a moment.
+
+78
+00:04:56,570 --> 00:05:01,000
+After running, this command will be taken through a walk through to help you customize your package
+
+79
+00:05:01,000 --> 00:05:01,330
+file.
+
+80
+00:05:01,690 --> 00:05:08,140
+The first field is the name property node will usually recommend some default settings if you decide
+
+81
+00:05:08,140 --> 00:05:09,340
+to leave these fields empty.
+
+82
+00:05:09,910 --> 00:05:13,060
+I'm fine with the name, so I'm just going to press enter.
+
+83
+00:05:13,330 --> 00:05:15,180
+It'll then ask for a version.
+
+84
+00:05:15,460 --> 00:05:17,190
+I'm also fine with the default.
+
+85
+00:05:17,560 --> 00:05:19,840
+Then you'll be asked to enter a description.
+
+86
+00:05:20,110 --> 00:05:21,760
+Even though there is no default.
+
+87
+00:05:21,790 --> 00:05:23,590
+This value is also optional.
+
+88
+00:05:23,800 --> 00:05:26,250
+So I'm just going to keep moving forward.
+
+89
+00:05:26,700 --> 00:05:30,710
+It will then ask for the name of the entry point file by default.
+
+90
+00:05:30,760 --> 00:05:33,280
+This is set to index JETS'.
+
+91
+00:05:33,520 --> 00:05:37,170
+Keep in mind that you can name your entry point file whatever you want.
+
+92
+00:05:37,450 --> 00:05:40,810
+You can set this to Apgar's or even server.
+
+93
+00:05:41,210 --> 00:05:45,720
+Yes, I'm going to keep it simple and just leave it at the default which is indexed.
+
+94
+00:05:47,170 --> 00:05:49,030
+The next property is the test.
+
+95
+00:05:49,030 --> 00:05:52,600
+Command's tests do exactly what they sound like.
+
+96
+00:05:52,840 --> 00:05:55,570
+They will test your code for any bugs or errors.
+
+97
+00:05:55,720 --> 00:05:58,390
+However, we won't be doing that, so we'll will leave.
+
+98
+00:05:58,390 --> 00:06:04,690
+This empty git repository will also be empty since we won't be using git keywords.
+
+99
+00:06:04,690 --> 00:06:07,050
+Author and license will also be empty.
+
+100
+00:06:07,720 --> 00:06:10,320
+You'll be asked if the settings you set are fine.
+
+101
+00:06:10,660 --> 00:06:17,110
+I'm going to say yes and then press enter node will then generate a file called Packaged Dodgson.
+
+102
+00:06:17,410 --> 00:06:19,420
+Open this file and view the contents.
+
+103
+00:06:19,810 --> 00:06:23,590
+As you can see, all our settings are now set for the most part.
+
+104
+00:06:23,710 --> 00:06:29,710
+A lot of these properties are unimportant to us as we won't be using node heavily will only be using
+
+105
+00:06:29,710 --> 00:06:31,930
+it to help process and combine files.
+
+106
+00:06:32,470 --> 00:06:37,330
+You'll notice we have this property called scripts where we can define our own commands.
+
+107
+00:06:37,690 --> 00:06:42,970
+Will take a look at this later, but you should be aware that it contains the test command we were asked
+
+108
+00:06:42,970 --> 00:06:43,990
+to input earlier.
+
+109
+00:06:44,380 --> 00:06:49,540
+Since we input nothing, it'll just have this default text saying there was no test command.
+
+110
+00:06:49,540 --> 00:06:49,870
+Give it.
+
+111
+00:06:50,530 --> 00:06:51,160
+That's fine.
+
+112
+00:06:51,430 --> 00:06:52,990
+We won't be using this anyway.
+
+113
+00:06:52,990 --> 00:06:55,750
+So the default value is just fine as is.
+
+114
+00:06:56,020 --> 00:07:01,760
+You are allowed to create this file manually, but I always prefer using the command as it makes sure
+
+115
+00:07:01,810 --> 00:07:02,870
+there are no errors.
+
+116
+00:07:03,430 --> 00:07:08,260
+The reason we need this package file is because we will be installing and using various modules.
+
+117
+00:07:08,560 --> 00:07:13,750
+The package file will save the modules we use and even keep track of the versions used.
+
+118
+00:07:13,960 --> 00:07:19,170
+You won't be able to see the benefits in this lecture, but I assure you that it'll help us in the future.
+
+119
+00:07:19,390 --> 00:07:21,190
+For now, just make sure you have it.
+
+120
+00:07:21,790 --> 00:07:22,270
+All right.
+
+121
+00:07:22,420 --> 00:07:25,720
+Now we can install Web pack to install WINPAC.
+
+122
+00:07:25,720 --> 00:07:31,930
+You'll need to run the commands, npm install web pack, dash, dash, save, dash dev.
+
+123
+00:07:34,170 --> 00:07:40,320
+Let's stop right here for the most part, this isn't anything we haven't done so far to install Web
+
+124
+00:07:40,320 --> 00:07:44,020
+pack, we have to use the NPM install web pack commands.
+
+125
+00:07:44,330 --> 00:07:50,220
+However, we also have this dash, dash, save, dash, dev text right after it.
+
+126
+00:07:50,790 --> 00:07:54,210
+And this example, we're using the save dev flag.
+
+127
+00:07:54,480 --> 00:08:00,630
+This flag tells Node that it should save this module inside the package, adjacent file as it's a required
+
+128
+00:08:00,630 --> 00:08:01,110
+module.
+
+129
+00:08:01,560 --> 00:08:03,600
+You'll see what this looks like in just a moment.
+
+130
+00:08:04,170 --> 00:08:10,110
+All right, let's execute this command node will do its usual thing and install Westpac for us.
+
+131
+00:08:16,360 --> 00:08:22,450
+Once Westpac is installed, you'll see the node underscore modules up here, along with all the modules
+
+132
+00:08:22,450 --> 00:08:24,170
+required to make Westpac work.
+
+133
+00:08:24,520 --> 00:08:30,070
+I want you to open up the package, Jason, file, and you'll notice that there has been one change
+
+134
+00:08:30,070 --> 00:08:37,600
+to the file by using the save dev flag node will update the contents of this file by setting this property
+
+135
+00:08:37,600 --> 00:08:39,250
+called div dependencies.
+
+136
+00:08:39,610 --> 00:08:43,380
+This property contains a list of all modules we have installed.
+
+137
+00:08:43,840 --> 00:08:48,760
+The benefit of this is that we no longer have to worry about remembering the name of the module.
+
+138
+00:08:49,390 --> 00:08:50,770
+I want to show you something.
+
+139
+00:08:51,010 --> 00:08:54,310
+I'm going to delete the node underscore modules folder.
+
+140
+00:08:56,530 --> 00:09:02,440
+Let's imagine that I'm moving my files from one system to another, transferring modules can take a
+
+141
+00:09:02,440 --> 00:09:04,590
+bit of time to save some time.
+
+142
+00:09:04,600 --> 00:09:06,400
+You may want to ignore those files.
+
+143
+00:09:06,880 --> 00:09:11,070
+Luckily, you don't have to memorize all the names for each package.
+
+144
+00:09:11,200 --> 00:09:17,560
+Instead, if you have the package Jason file, then you can reinstall all the modules by just running
+
+145
+00:09:17,560 --> 00:09:18,660
+NPM install.
+
+146
+00:09:19,060 --> 00:09:25,000
+If you don't specify a module to install, the node will assume you want to install the dependencies
+
+147
+00:09:25,000 --> 00:09:26,800
+specified inside the package.
+
+148
+00:09:27,010 --> 00:09:27,790
+Jason File.
+
+149
+00:09:28,210 --> 00:09:29,830
+I'm going to run this command.
+
+150
+00:09:32,140 --> 00:09:34,780
+Just like that, I'll have Westpac installed again.
+
+151
+00:09:35,440 --> 00:09:40,200
+All right, there's one last thing I want to show you before we move on to configuring Westpac.
+
+152
+00:09:40,420 --> 00:09:45,580
+There are two kinds of dependencies, production dependencies and developer dependency.
+
+153
+00:09:45,850 --> 00:09:48,430
+Right now, we're using a developer dependency.
+
+154
+00:09:48,730 --> 00:09:52,450
+Developer dependencies are modules that are only meant for development.
+
+155
+00:09:52,810 --> 00:09:55,870
+Developer dependency should not be used on a life site.
+
+156
+00:09:56,230 --> 00:10:01,560
+Production dependencies, on the other hand, are meant to be used for live sites or projects.
+
+157
+00:10:02,080 --> 00:10:08,080
+I'm going to delete my node underscore modules folder and remove the property dev dependencies.
+
+158
+00:10:10,410 --> 00:10:15,870
+This time, I'm going to run the command npm, install web pack, dash, dash, save.
+
+159
+00:10:18,300 --> 00:10:24,150
+There are two flags for saving dependencies, I'm going to run this command and then go over the differences.
+
+160
+00:10:26,490 --> 00:10:33,330
+Once again, I'll have Watpac installed, let's view the package Jason file again, this time a new
+
+161
+00:10:33,330 --> 00:10:36,090
+property called Dependencies is created.
+
+162
+00:10:36,480 --> 00:10:39,660
+This property will contain modules for production only.
+
+163
+00:10:39,990 --> 00:10:43,830
+The dev dependencies will contain modules for development only.
+
+164
+00:10:44,220 --> 00:10:50,490
+You can specify what modules should be for production or development by using either the save or save
+
+165
+00:10:50,490 --> 00:10:52,470
+dash dev Flagg's respectively.
+
+166
+00:10:53,040 --> 00:10:58,200
+For the most part, it actually doesn't matter in our project because we won't be using node at all
+
+167
+00:10:58,200 --> 00:10:59,700
+for the production part of the site.
+
+168
+00:11:00,150 --> 00:11:02,660
+We're only using node for development purposes.
+
+169
+00:11:02,670 --> 00:11:05,130
+So I just use the save dev flag.
+
+170
+00:11:05,760 --> 00:11:11,700
+I'm going to delete the node underscore modules folder again and remove the dependencies property.
+
+171
+00:11:14,050 --> 00:11:20,830
+Then I'm going to run the NPM, install web pack, dash, dash, save, dash, dev, command again.
+
+172
+00:11:23,230 --> 00:11:28,480
+All right, that was a long introduction, and I know it was a lot to go through, but that's the basics
+
+173
+00:11:28,480 --> 00:11:33,860
+of getting started with Westpac and the next lecture, we're going to be getting configuring Web back.
+
+174
+00:11:35,180 --> 00:11:35,790
+Oh.
+

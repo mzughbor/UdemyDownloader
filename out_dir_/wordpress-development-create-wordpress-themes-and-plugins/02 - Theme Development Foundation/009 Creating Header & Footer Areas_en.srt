@@ -1,0 +1,348 @@
+1
+00:00:08,210 --> 00:00:12,150
+As this course progresses, will be creating multiple templates.
+
+2
+00:00:12,440 --> 00:00:17,930
+Keep in mind that the index template is just the default template WordPress uses when there isn't a
+
+3
+00:00:17,930 --> 00:00:19,400
+suitable template to be found.
+
+4
+00:00:20,090 --> 00:00:21,770
+Our theme should be consistent.
+
+5
+00:00:21,770 --> 00:00:25,810
+And so therefore the header footer and sidebar should look the same.
+
+6
+00:00:26,480 --> 00:00:30,430
+Our templates can get pretty big if we just copy and paste our header and footers.
+
+7
+00:00:30,890 --> 00:00:35,850
+It would also be a pain to have to edit each template every time he made a change to the header.
+
+8
+00:00:36,230 --> 00:00:42,320
+Luckily, WordPress provides a solution by providing a couple of functions for including different sections
+
+9
+00:00:42,320 --> 00:00:42,970
+of our template.
+
+10
+00:00:43,790 --> 00:00:46,120
+Let's create the required files first.
+
+11
+00:00:46,460 --> 00:00:51,350
+First, we have to create a file called Headers in our theme's folder.
+
+12
+00:00:53,550 --> 00:00:59,100
+It's very important that you give the file this name as this is the name WordPress will search for when
+
+13
+00:00:59,100 --> 00:01:05,430
+trying to include your header from the index template, let's cut everything from the dark tag to the
+
+14
+00:01:05,430 --> 00:01:08,340
+closing header tags and then paste it into the header file.
+
+15
+00:01:10,750 --> 00:01:14,020
+Next, let's create a photo op file.
+
+16
+00:01:16,390 --> 00:01:22,570
+Just like before, we are forced to name it this by WordPress from the index template, cut everything
+
+17
+00:01:22,570 --> 00:01:28,090
+from the bottom of the file to the opening tag of the footer comment, then paste it into the footer
+
+18
+00:01:28,090 --> 00:01:28,990
+file like so.
+
+19
+00:01:31,290 --> 00:01:35,730
+This will leave us with the section tag, with the ID of content.
+
+20
+00:01:36,270 --> 00:01:42,340
+All right, now all we have to do is include our files at the very top of the index template.
+
+21
+00:01:42,360 --> 00:01:43,890
+Call the function, get header.
+
+22
+00:01:45,930 --> 00:01:52,350
+This function will look for a file called header and include it at the very bottom of the file, call
+
+23
+00:01:52,350 --> 00:01:53,520
+the function, get footer.
+
+24
+00:01:55,600 --> 00:02:01,420
+Just like the header function, this function will look for a file called Footrot, the HP, I'm going
+
+25
+00:02:01,420 --> 00:02:03,790
+to format template so it's easier to read.
+
+26
+00:02:05,940 --> 00:02:11,850
+Once that's done, refresh the page and see if everything is working properly, if you see no errors,
+
+27
+00:02:11,850 --> 00:02:13,810
+then that means you did everything right.
+
+28
+00:02:14,520 --> 00:02:16,800
+Let's go over how these functions work.
+
+29
+00:02:17,130 --> 00:02:24,640
+These two functions will look for files named headers and footers within the themes directory, respectively.
+
+30
+00:02:25,080 --> 00:02:31,750
+I want you to be aware we're not completely forced to name our files, header up and it up.
+
+31
+00:02:32,730 --> 00:02:39,720
+Let's say we had a header called Header Dash V 2.0 and we wanted to use this header for post templates
+
+32
+00:02:39,720 --> 00:02:40,420
+specifically.
+
+33
+00:02:40,920 --> 00:02:47,310
+Well, all you have to do is pass in the name the two and WordPress will then search for a file called
+
+34
+00:02:47,310 --> 00:02:48,600
+Header Dash V to.
+
+35
+00:02:50,100 --> 00:02:56,850
+Don't worry about free pending the word header or appending the extension P WordPress takes care of
+
+36
+00:02:56,850 --> 00:02:57,390
+this for you.
+
+37
+00:02:58,260 --> 00:03:00,480
+This way you can have various headers.
+
+38
+00:03:00,690 --> 00:03:06,900
+These same rules apply to the get futer function for this course will only have one header and footer.
+
+39
+00:03:07,230 --> 00:03:10,680
+So we don't need to pass in anything to these functions.
+
+40
+00:03:11,340 --> 00:03:11,760
+All right.
+
+41
+00:03:11,910 --> 00:03:12,930
+We're almost done here.
+
+42
+00:03:13,140 --> 00:03:19,200
+I want to do one thing, which is to allow any plugins or WordPress itself to add classes to the body
+
+43
+00:03:19,200 --> 00:03:19,500
+tag.
+
+44
+00:03:20,010 --> 00:03:25,730
+By doing this, you can take advantage knowing which features are active on the site with your success.
+
+45
+00:03:26,040 --> 00:03:27,660
+Let's explore how this is done.
+
+46
+00:03:28,350 --> 00:03:34,920
+The first step is to open the header template and inside the body tag called the Function Body Class.
+
+47
+00:03:39,100 --> 00:03:45,040
+This function will add an attribute called class and then output some classes, I have some classes
+
+48
+00:03:45,040 --> 00:03:49,780
+I'd like added which are the No Dasch transition and stretched classes.
+
+49
+00:03:52,030 --> 00:03:56,450
+Let's refresh the page and then let's use the developer tool to see what's going on.
+
+50
+00:03:57,370 --> 00:03:57,670
+Right.
+
+51
+00:03:57,670 --> 00:04:00,640
+Click and select, inspect anywhere on the page.
+
+52
+00:04:01,060 --> 00:04:03,610
+What you should be viewing is the elements tab.
+
+53
+00:04:03,940 --> 00:04:10,270
+This tab allows you to view the HTML of the current page in real time, meaning if any changes were
+
+54
+00:04:10,270 --> 00:04:16,000
+made inside this template while the user is browsing than the HTML will update accordingly and vice
+
+55
+00:04:16,000 --> 00:04:16,420
+versa.
+
+56
+00:04:17,079 --> 00:04:22,450
+If you take a look at the body class, then you'll notice that a few classes have been added that weren't
+
+57
+00:04:22,450 --> 00:04:23,110
+there before.
+
+58
+00:04:23,650 --> 00:04:28,900
+WordPress automatically loads these classes for you so you can apply appropriate success.
+
+59
+00:04:29,560 --> 00:04:34,300
+For example, the admin dashboard class should appear if you're logged in.
+
+60
+00:04:34,820 --> 00:04:38,050
+However, if I log out, then this class will disappear.
+
+61
+00:04:40,360 --> 00:04:44,500
+After logging out, you will see the admin bar class disappear.
+
+62
+00:04:44,890 --> 00:04:45,830
+This is really great.
+
+63
+00:04:45,880 --> 00:04:51,060
+As you can apply a certain style links to the page depending on the classes added to the body.
+
+64
+00:04:51,520 --> 00:04:52,960
+I'm going to log back in.
+
+65
+00:04:53,940 --> 00:04:59,540
+As I stated from the beginning, I did not make any changes to my template to prepare for WordPress,
+
+66
+00:04:59,910 --> 00:05:05,970
+so even though these classes are loaded, there aren't any styles in my files that takes advantage of
+
+67
+00:05:05,970 --> 00:05:06,720
+these classes.
+
+68
+00:05:07,140 --> 00:05:09,570
+Using these classes is completely optional.
+
+69
+00:05:09,870 --> 00:05:13,640
+Even though we aren't using these functions, there are plug ins that do.
+
+70
+00:05:14,310 --> 00:05:16,710
+This is an important point I want to make.
+
+71
+00:05:16,980 --> 00:05:20,280
+Some features you add aren't just for WordPress or yourself.
+
+72
+00:05:20,520 --> 00:05:25,680
+Sometimes you'll want to add features so plug ins can extend how WordPress functions.
+
+73
+00:05:26,460 --> 00:05:29,640
+I'm going to remove the body class function for a moment.
+
+74
+00:05:31,800 --> 00:05:37,200
+Refresh the page and you'll notice our site is a little different from before, if you take a look at
+
+75
+00:05:37,200 --> 00:05:40,620
+the body tag, then you'll notice some classes still appear.
+
+76
+00:05:41,070 --> 00:05:42,720
+WordPress has a fallback.
+
+77
+00:05:42,960 --> 00:05:48,540
+It will use some JavaScript code to add some classes, but most of the original classes are gone.
+
+78
+00:05:49,050 --> 00:05:54,900
+To prove this further, you can right click and select view page source and you'll notice the body tag
+
+79
+00:05:54,900 --> 00:05:56,410
+has no classes applied.
+
+80
+00:05:57,150 --> 00:06:01,140
+I'm going to revamp the body class function because of its usefulness.
+
+81
+00:06:03,260 --> 00:06:09,350
+Let's refresh the page one more time, and all the S.O.S classes we had before should reappear just
+
+82
+00:06:09,350 --> 00:06:10,650
+to recap what's going on.
+
+83
+00:06:10,760 --> 00:06:13,190
+All we did was split up the index template.
+
+84
+00:06:13,520 --> 00:06:17,030
+We put the header and footer into their own respective templates.
+
+85
+00:06:17,420 --> 00:06:21,970
+Then we modified the body tag so WordPress can generate some classes.
+
+86
+00:06:22,580 --> 00:06:26,620
+I'm going to add a link to this function in the resource section of this lecture.
+
+87
+00:06:26,930 --> 00:06:29,090
+We can now begin working on the sidebar.
+

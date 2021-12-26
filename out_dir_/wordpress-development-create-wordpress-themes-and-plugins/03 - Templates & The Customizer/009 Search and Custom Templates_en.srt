@@ -1,0 +1,400 @@
+1
+00:00:07,410 --> 00:00:09,720
+Creating the search template is fairly easy.
+
+2
+00:00:09,990 --> 00:00:13,600
+I'm still in a theme development Codex page on the sidebar.
+
+3
+00:00:13,620 --> 00:00:14,570
+Click on Search.
+
+4
+00:00:15,780 --> 00:00:18,550
+You'll see what WordPress recommends for this template.
+
+5
+00:00:18,870 --> 00:00:25,110
+Basically, it just says we need to include results and a search form with the search query if a user
+
+6
+00:00:25,110 --> 00:00:25,810
+inputted one.
+
+7
+00:00:26,520 --> 00:00:27,480
+First things first.
+
+8
+00:00:27,480 --> 00:00:28,770
+Let's create this file.
+
+9
+00:00:30,930 --> 00:00:36,400
+I'm going to be using the code from the index template, I'm going to remove the breaking news widget
+
+10
+00:00:36,420 --> 00:00:37,830
+before I do anything else.
+
+11
+00:00:44,280 --> 00:00:46,810
+Then open the static search template.
+
+12
+00:00:47,070 --> 00:00:49,290
+There are a few components that we need to add.
+
+13
+00:00:49,620 --> 00:00:51,840
+The first is the page title bar.
+
+14
+00:00:51,870 --> 00:00:53,100
+So add that right now.
+
+15
+00:00:58,530 --> 00:01:03,720
+The next thing the setup is the search for him right above the posts, inside the search template,
+
+16
+00:01:03,720 --> 00:01:06,030
+you'll find a section called Search Box.
+
+17
+00:01:06,300 --> 00:01:10,640
+Copy everything between these two comments and pasted inside the search template.
+
+18
+00:01:11,040 --> 00:01:15,390
+It should be placed inside the div tag with the class post content.
+
+19
+00:01:17,620 --> 00:01:23,530
+With both components added, let's convert them into dynamic code back to the search template right
+
+20
+00:01:23,530 --> 00:01:27,890
+above the loop, we already have a search form and so it would make sense to reuse it.
+
+21
+00:01:28,300 --> 00:01:31,780
+I'm going to replace this form with the get search form function.
+
+22
+00:01:34,070 --> 00:01:39,560
+For the title, I'm going to make this part of the text translatable and echo it out with the underscore
+
+23
+00:01:39,560 --> 00:01:40,250
+E function.
+
+24
+00:01:43,870 --> 00:01:49,870
+After that, I'm going to call the function, the search query, this function will output the text
+
+25
+00:01:49,870 --> 00:01:51,040
+the user searched for.
+
+26
+00:01:53,410 --> 00:01:56,470
+Lastly, I'm going to make this text translatable.
+
+27
+00:02:00,550 --> 00:02:05,290
+I'm going to go back to the homepage now, we can try and search for something and we should see some
+
+28
+00:02:05,290 --> 00:02:05,860
+results.
+
+29
+00:02:06,160 --> 00:02:13,300
+Keep in mind that our posts are created using Fagre Press, which uses a lorem if some generator, regular
+
+30
+00:02:13,300 --> 00:02:19,840
+English words won't work unless your posts actually contain English words, the search template should
+
+31
+00:02:19,840 --> 00:02:21,110
+be working without a problem.
+
+32
+00:02:21,520 --> 00:02:23,850
+We can begin working on custom templates.
+
+33
+00:02:24,220 --> 00:02:29,860
+There are some situations where we want to make custom templates for pages, posts and any other post
+
+34
+00:02:29,860 --> 00:02:30,340
+types.
+
+35
+00:02:30,670 --> 00:02:33,760
+For example, let's take a look at the About US page.
+
+36
+00:02:34,480 --> 00:02:38,050
+This page contains our content on the left and the sidebar on the right.
+
+37
+00:02:38,530 --> 00:02:41,830
+A lot of themes out there provide the option to make this full width.
+
+38
+00:02:42,160 --> 00:02:44,350
+There are two ways we can replicate this.
+
+39
+00:02:44,620 --> 00:02:49,710
+We can cut up our own logic and then perform checks to see if the user wants a full with page.
+
+40
+00:02:50,080 --> 00:02:54,940
+The second option is we can take advantage of WordPress custom templates feature.
+
+41
+00:02:55,240 --> 00:03:00,490
+I don't know about you, but I think the custom template route seems simpler and it actually is.
+
+42
+00:03:00,730 --> 00:03:02,140
+Let's see how this works.
+
+43
+00:03:02,750 --> 00:03:07,900
+I'm going to create a file called Full Dash with Dash Page Dot BHP.
+
+44
+00:03:08,380 --> 00:03:12,700
+Unlike WordPress templates, you can name your custom template files, whatever you want.
+
+45
+00:03:12,910 --> 00:03:15,540
+I could have called this fire truck if I wanted to.
+
+46
+00:03:16,300 --> 00:03:21,250
+Next, I'm going to copy the contents of the page template into this custom template.
+
+47
+00:03:23,500 --> 00:03:29,260
+Then I'm going to remove the sidebar from this template and remove this div tag with the class post
+
+48
+00:03:29,260 --> 00:03:29,770
+content.
+
+49
+00:03:30,340 --> 00:03:32,590
+I'm not going to remove what's inside.
+
+50
+00:03:32,620 --> 00:03:35,110
+Only the opening and closing tag itself.
+
+51
+00:03:42,180 --> 00:03:47,520
+So now the question is, how do we make WordPress recognize this as a custom template?
+
+52
+00:03:47,910 --> 00:03:50,980
+Well, it's simple at the very top of the file.
+
+53
+00:03:51,030 --> 00:03:52,730
+We're going to add a file header.
+
+54
+00:03:53,490 --> 00:03:55,610
+Do you remember how we make file headers?
+
+55
+00:03:55,650 --> 00:03:57,090
+We use block comments.
+
+56
+00:03:57,360 --> 00:03:59,370
+Let's create a block comment now.
+
+57
+00:03:59,730 --> 00:04:03,810
+Add the following text template name, column for Web page.
+
+58
+00:04:06,150 --> 00:04:11,280
+We have to pass in the words template name, followed by the name of the template, you can name it
+
+59
+00:04:11,280 --> 00:04:14,930
+whatever you want, but it's good practice to keep it short and concise.
+
+60
+00:04:15,540 --> 00:04:18,740
+Go back to your browser and try editing the About US page.
+
+61
+00:04:18,899 --> 00:04:22,680
+If you look on the side, you'll see an option to select a template.
+
+62
+00:04:23,010 --> 00:04:27,680
+WordPress automatically finds our custom templates and we can select it as an option.
+
+63
+00:04:28,050 --> 00:04:32,450
+So let's select the full width page template and save our changes.
+
+64
+00:04:32,790 --> 00:04:36,360
+If you look at the page now, you'll see it's completely full width.
+
+65
+00:04:37,020 --> 00:04:39,630
+We didn't have to code any logic whatsoever.
+
+66
+00:04:39,900 --> 00:04:44,940
+WordPress took care of checking our theme for custom templates and handling which template to load.
+
+67
+00:04:45,540 --> 00:04:49,700
+The more you use WordPress, the more you'll find out how powerful it actually is.
+
+68
+00:04:50,400 --> 00:04:53,460
+Now, let's say I want to have a full with post.
+
+69
+00:04:53,700 --> 00:04:56,250
+Let's try viewing a post and then editing it.
+
+70
+00:04:58,610 --> 00:05:04,760
+You'll notice that we don't have that template option available, this is because by default, WordPress
+
+71
+00:05:04,760 --> 00:05:08,200
+will only allow custom templates to be enabled for pages only.
+
+72
+00:05:08,570 --> 00:05:12,740
+It's very simple to make custom templates available for any post type you want.
+
+73
+00:05:13,460 --> 00:05:18,580
+In the resource section of this lecture, I provide a link to the page template handbook.
+
+74
+00:05:19,370 --> 00:05:22,550
+This whole page talks about how to work with custom templates.
+
+75
+00:05:22,640 --> 00:05:28,910
+But the one section I want you to focus on is the creating page templates for specific post types.
+
+76
+00:05:29,690 --> 00:05:35,420
+WordPress shows us in the example that in order to make a template available for other post types,
+
+77
+00:05:35,540 --> 00:05:40,250
+you have to add the template post type setting followed by the name of the post type.
+
+78
+00:05:41,060 --> 00:05:46,250
+Before you make a template for posts, I want you to notice one thing, and that is this warning right
+
+79
+00:05:46,250 --> 00:05:47,360
+below the example.
+
+80
+00:05:47,750 --> 00:05:53,600
+It states that custom templates for post types other than pages has only been available since version
+
+81
+00:05:53,600 --> 00:05:54,450
+four point seven.
+
+82
+00:05:55,010 --> 00:05:56,900
+This is very important to note.
+
+83
+00:05:56,900 --> 00:06:02,460
+If you ever work on a theme on a WordPress version earlier than four point seven, let's get started.
+
+84
+00:06:02,750 --> 00:06:07,670
+I will not be using the full dash with dash page template as before with post template.
+
+85
+00:06:08,000 --> 00:06:13,610
+This is because this template is based on the original page template, which is really just a stripped
+
+86
+00:06:13,610 --> 00:06:15,520
+down version of the single post template.
+
+87
+00:06:16,340 --> 00:06:19,190
+I want to have all the features of the single post template.
+
+88
+00:06:19,190 --> 00:06:25,510
+Without the sidebar, I'm going to create a new file named for Dash with Dash Post P.
+
+89
+00:06:28,250 --> 00:06:34,880
+Copy the contents from the single template into this newly created file, unlike last time, I'm going
+
+90
+00:06:34,880 --> 00:06:41,510
+to remove the sidebar and remove the div tags with the clasp post content, just the opening and closing
+
+91
+00:06:41,510 --> 00:06:43,250
+tags, nothing in between.
+
+92
+00:06:49,190 --> 00:06:55,850
+At the very top, create a new file header set the template name has full width post and add the other
+
+93
+00:06:55,850 --> 00:06:58,910
+part template post type with the value of post.
+
+94
+00:06:59,360 --> 00:07:01,940
+This file with template will only be four posts.
+
+95
+00:07:02,180 --> 00:07:04,580
+It will not be made available for pages.
+
+96
+00:07:06,920 --> 00:07:12,170
+Try editing the post and you'll find the template available for use, save your changes and view the
+
+97
+00:07:12,170 --> 00:07:12,620
+post.
+
+98
+00:07:17,610 --> 00:07:19,080
+That's it for custom templates.
+
+99
+00:07:19,260 --> 00:07:22,270
+Be sure to read up on this link I provided earlier.
+
+100
+00:07:22,290 --> 00:07:24,720
+For more information about custom templates.
+

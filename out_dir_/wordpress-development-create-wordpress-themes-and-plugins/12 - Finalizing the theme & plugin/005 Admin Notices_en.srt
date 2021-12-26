@@ -1,0 +1,372 @@
+1
+00:00:07,710 --> 00:00:12,730
+WordPress provides a set of notices that we can use to display warnings or success messages.
+
+2
+00:00:13,020 --> 00:00:16,900
+We could just use our own bootstrap classes, but I don't want to use them.
+
+3
+00:00:17,250 --> 00:00:21,730
+This is because I plan on making the notices appear on most admin pages.
+
+4
+00:00:21,970 --> 00:00:26,240
+However, I don't want to load bootstrap classes just to display messages.
+
+5
+00:00:26,790 --> 00:00:29,590
+It's better to just use the word press stylings for this.
+
+6
+00:00:29,820 --> 00:00:32,240
+It's not hard to pull off, so let's get started.
+
+7
+00:00:32,759 --> 00:00:39,360
+I want to display notices to the admin if there are more than five pending recipes inside the main plugin
+
+8
+00:00:39,360 --> 00:00:39,850
+file.
+
+9
+00:00:39,900 --> 00:00:42,570
+Let's have the action hook admin notices.
+
+10
+00:00:46,760 --> 00:00:52,310
+This event will trigger when the admin notices begin loading, so we want to load ours to the function
+
+11
+00:00:52,310 --> 00:00:54,560
+will be called our admin notices.
+
+12
+00:00:57,080 --> 00:01:04,280
+Create a file inside the includes admin folder named Notice, stop defining the function here and make
+
+13
+00:01:04,280 --> 00:01:05,180
+sure to include it.
+
+14
+00:01:13,130 --> 00:01:19,130
+Inside this function, we're going to output a div tag with the classes, notice, notice the warning.
+
+15
+00:01:19,130 --> 00:01:20,510
+Is Dasch dismissable?
+
+16
+00:01:29,780 --> 00:01:35,090
+I'm also going to give it the ID of Ardeche recipe dash pending dash notice.
+
+17
+00:01:37,650 --> 00:01:43,230
+I'm going to insert a P tag for formatting reasons, and inside it, I'm going to output the message.
+
+18
+00:01:43,620 --> 00:01:46,230
+You have a couple of recipes waiting to be reviewed.
+
+19
+00:01:46,560 --> 00:01:48,750
+I'm also going to make this translatable.
+
+20
+00:01:53,930 --> 00:01:59,210
+This is the very basics of creating an admin notice, the only things worth highlighting is the class
+
+21
+00:01:59,210 --> 00:01:59,690
+names.
+
+22
+00:02:00,050 --> 00:02:04,820
+The notice class is required to have WordPress format and space to notice for you.
+
+23
+00:02:05,210 --> 00:02:09,120
+The notice dash warning class will determine the color of the class.
+
+24
+00:02:09,680 --> 00:02:16,310
+There are four classes you can use to change the colors, which are the notice info, notice Dasch success,
+
+25
+00:02:16,430 --> 00:02:19,970
+notice Stasch warning and notice Dasch error classes.
+
+26
+00:02:20,270 --> 00:02:21,110
+And this example.
+
+27
+00:02:21,110 --> 00:02:23,920
+We're using the warning version which gives us the color yellow.
+
+28
+00:02:24,560 --> 00:02:27,720
+The last class is the is dash dismissable class.
+
+29
+00:02:28,040 --> 00:02:32,960
+This class will add a little close button to the far right, which will allow the user to close this
+
+30
+00:02:32,960 --> 00:02:33,460
+notice.
+
+31
+00:02:33,770 --> 00:02:36,800
+Let's refresh the admin page and see if everything works.
+
+32
+00:02:37,220 --> 00:02:39,680
+As you can see, the notice is now displaying.
+
+33
+00:02:39,980 --> 00:02:43,850
+The only problem is that this notice is displaying on every page load.
+
+34
+00:02:44,420 --> 00:02:49,280
+Even if we were to click on the close button, it'll only disappear on that current page load.
+
+35
+00:02:49,520 --> 00:02:52,580
+If we refresh the page again, you'll see it reappears.
+
+36
+00:02:53,060 --> 00:02:55,970
+WordPress doesn't take care of managing notices for you.
+
+37
+00:02:56,090 --> 00:02:58,240
+It all has to be done manually by you.
+
+38
+00:02:58,550 --> 00:03:00,650
+Luckily, the process is very simple.
+
+39
+00:03:00,860 --> 00:03:05,210
+I'm going to create an option that will determine whether or not to display the notice.
+
+40
+00:03:05,720 --> 00:03:11,720
+The best place to put this is inside the submit dash user dash recipe file.
+
+41
+00:03:14,060 --> 00:03:19,640
+I only want this code to apply to this file because all posts submitted on the front end are automatically
+
+42
+00:03:19,640 --> 00:03:21,950
+set to pending open this file.
+
+43
+00:03:21,950 --> 00:03:25,660
+And right before we output the response, we're going to place the code here.
+
+44
+00:03:26,030 --> 00:03:29,630
+I'm going to add a comment so that it can be easier to read this file.
+
+45
+00:03:34,470 --> 00:03:40,680
+Right before we define the variables, I'm going to include the WP DB variable so that we can make a
+
+46
+00:03:40,680 --> 00:03:43,010
+query to grab how many posts are pending.
+
+47
+00:03:43,620 --> 00:03:48,710
+Then back up this spot, I'm going to create a variable named pending recipe count.
+
+48
+00:03:49,200 --> 00:03:52,050
+I'm going to set this to the value returned by the method.
+
+49
+00:03:52,050 --> 00:03:55,050
+Get Vare of the WP DB Object.
+
+50
+00:03:57,340 --> 00:04:05,170
+Here is the query I'm going to make select count from WP posts where posts underscore status equals
+
+51
+00:04:05,170 --> 00:04:08,290
+pending and post underscore type equals recipe.
+
+52
+00:04:18,720 --> 00:04:24,630
+This query is very straightforward, I'm counting how many posts are inside the post database table
+
+53
+00:04:24,930 --> 00:04:30,210
+and filtering the results, who only include the posts that are pending approval and that the post type
+
+54
+00:04:30,210 --> 00:04:30,950
+is recipe.
+
+55
+00:04:31,620 --> 00:04:36,810
+After this, I'm going to create a conditional statement that will check if the number is greater than
+
+56
+00:04:36,810 --> 00:04:38,070
+or equal to five.
+
+57
+00:04:40,820 --> 00:04:47,180
+If this returns true, then I'm going to call the update option function, this function will automatically
+
+58
+00:04:47,180 --> 00:04:49,190
+create the option if it doesn't exist.
+
+59
+00:04:49,310 --> 00:04:53,540
+So that's why we're using the update version instead of using the ad version.
+
+60
+00:04:53,930 --> 00:04:57,110
+The option I want to add will be called our pending recipe.
+
+61
+00:04:57,120 --> 00:04:59,120
+Notice the value will be one.
+
+62
+00:04:59,720 --> 00:05:04,400
+One will mean there are recipes pending and zero will mean there are no recipes pending.
+
+63
+00:05:04,760 --> 00:05:05,600
+Just like that.
+
+64
+00:05:05,610 --> 00:05:10,390
+We've added an option only if there are currently more than five recipes pending approval.
+
+65
+00:05:11,090 --> 00:05:13,310
+The next step is to update the notice function.
+
+66
+00:05:13,310 --> 00:05:17,150
+To check for this value, I'm going to add a conditional statement.
+
+67
+00:05:17,420 --> 00:05:21,650
+I'm simply going to check the value returned by the get option function.
+
+68
+00:05:27,720 --> 00:05:33,480
+We just passed it and the option we created earlier, I'm going to check if this returns false, if
+
+69
+00:05:33,480 --> 00:05:37,860
+it does, then we'll just return the function, preventing the notice from displaying.
+
+70
+00:05:40,640 --> 00:05:45,520
+The very last step to all of this is to remove the notice if the user clicks on the closed button,
+
+71
+00:05:46,100 --> 00:05:49,910
+if we don't, then the notice will appear permanently, which we don't want.
+
+72
+00:05:50,270 --> 00:05:52,820
+We'll need the help of JavaScript to accomplish this.
+
+73
+00:05:53,390 --> 00:05:58,940
+Inside the assets logs folder, open the admin Dasch Global Dodgiest file.
+
+74
+00:05:59,330 --> 00:06:02,210
+I've already provided the code for you to speed things up.
+
+75
+00:06:02,480 --> 00:06:06,430
+As the name suggests, this file will be loaded on every admin page.
+
+76
+00:06:06,740 --> 00:06:10,810
+This file should only have code that you'd want to load on every admin page.
+
+77
+00:06:11,150 --> 00:06:13,820
+You don't want to bloat a user's admin dashboard.
+
+78
+00:06:14,480 --> 00:06:17,810
+All I'm doing here is listening for a click on the Dismas button.
+
+79
+00:06:18,020 --> 00:06:20,780
+If it's clicked, then I'll make an action request.
+
+80
+00:06:21,020 --> 00:06:25,700
+I won't be sending data besides the action name, since this will be a pretty simple function.
+
+81
+00:06:26,090 --> 00:06:32,180
+The name of the action is are dismissed pending recipe notice inside the main plug and file.
+
+82
+00:06:32,180 --> 00:06:35,450
+At this hook, the name of the function will be the same name.
+
+83
+00:06:42,990 --> 00:06:49,880
+Then create a file inside the process folder called Remove Dash Noticed and define the function here,
+
+84
+00:06:50,250 --> 00:06:51,860
+make sure to include it as well.
+
+85
+00:06:55,910 --> 00:07:00,710
+All we will do is update the option, our pending recipe notice to zero.
+
+86
+00:07:04,530 --> 00:07:07,520
+That should do it, let's test to see if everything works.
+
+87
+00:07:07,670 --> 00:07:11,580
+I'm going to submit a little over five recipes from the front end publisher.
+
+88
+00:07:12,200 --> 00:07:12,710
+All right.
+
+89
+00:07:12,860 --> 00:07:15,560
+As you can see, I have five pending recipes.
+
+90
+00:07:15,740 --> 00:07:18,170
+If you look at the top, you'll see the notice appearing hearing.
+
+91
+00:07:18,440 --> 00:07:21,050
+I'm going to remove this notice and it should disappear.
+
+92
+00:07:22,390 --> 00:07:27,790
+If I refresh the page, then it should still be gone just like that, we've added a nice little notice
+
+93
+00:07:27,790 --> 00:07:29,050
+on the admin dashboard.
+

@@ -1,0 +1,352 @@
+1
+00:00:07,340 --> 00:00:09,270
+Let's get started with child themes.
+
+2
+00:00:09,410 --> 00:00:15,500
+If you heard of child themes but don't know what or how a child theme works, then this lecture is important
+
+3
+00:00:15,500 --> 00:00:15,920
+for you.
+
+4
+00:00:16,309 --> 00:00:21,530
+A lot of developers avoid child themes because WordPress doesn't really make it clear how to develop
+
+5
+00:00:21,530 --> 00:00:22,750
+or use child themes.
+
+6
+00:00:23,090 --> 00:00:25,430
+I don't want you to be one of those developers.
+
+7
+00:00:26,060 --> 00:00:28,880
+A child theme is extremely powerful and useful.
+
+8
+00:00:29,210 --> 00:00:34,010
+What makes it so useful is that you can modify an existing theme without having to worry about your
+
+9
+00:00:34,010 --> 00:00:36,200
+code becoming irrelevant or overwritten.
+
+10
+00:00:36,750 --> 00:00:42,200
+Back in the old days, if he wanted to modify a theme, then you'd have to directly edit the files.
+
+11
+00:00:42,470 --> 00:00:48,050
+Then when an update was available, you'd have to start all over again and keep track of all the edited
+
+12
+00:00:48,050 --> 00:00:49,130
+files and changes.
+
+13
+00:00:49,460 --> 00:00:51,560
+It was very annoying and time consuming.
+
+14
+00:00:52,280 --> 00:00:57,680
+When child themes were introduced, the whole process became so much easier because your code was never
+
+15
+00:00:57,680 --> 00:01:00,320
+overwritten and the theme was also not modified.
+
+16
+00:01:01,010 --> 00:01:05,209
+Now that you understand what child themes are, let's get started with creating one.
+
+17
+00:01:05,870 --> 00:01:09,320
+Go to WordPress dot org and go to the themes pages.
+
+18
+00:01:09,560 --> 00:01:13,010
+We're going to download a theme called M.H. Magazine Lite.
+
+19
+00:01:13,400 --> 00:01:18,890
+Then we're going to add this theme to our WordPress site by opening the themes folder and then dragging
+
+20
+00:01:18,890 --> 00:01:21,950
+the contents of the zip file into this folder like so.
+
+21
+00:01:29,160 --> 00:01:34,260
+Next, I'm going to copy this folder and I'm going to paste it in again, I'm going to reading this
+
+22
+00:01:34,260 --> 00:01:38,730
+folder and use the same name, except I'm going to append Dash child.
+
+23
+00:01:38,730 --> 00:01:40,490
+So I know that this is a child name.
+
+24
+00:01:43,240 --> 00:01:45,710
+WordPress doesn't require you to name a child.
+
+25
+00:01:45,980 --> 00:01:52,300
+Anyway, this is just how I prefer to do it and how I recommend you do it, open the child theme and
+
+26
+00:01:52,300 --> 00:01:57,160
+select every folder in files except the functions, style and screenshot files.
+
+27
+00:01:57,460 --> 00:01:58,630
+Delete these files.
+
+28
+00:02:07,440 --> 00:02:13,140
+I'm now going to open my editor and look for the trial theme, open to functions, file and delete all
+
+29
+00:02:13,140 --> 00:02:13,720
+this code.
+
+30
+00:02:14,100 --> 00:02:16,980
+I'm just going to leave an open tag for later.
+
+31
+00:02:19,880 --> 00:02:25,370
+We're going to do the same to the style access file, except you should not delete the headers that
+
+32
+00:02:25,370 --> 00:02:25,970
+come with it.
+
+33
+00:02:31,840 --> 00:02:34,250
+From here, we're going to make two changes.
+
+34
+00:02:34,540 --> 00:02:36,700
+The first change is the name of this theme.
+
+35
+00:02:37,060 --> 00:02:39,430
+I'm going to add a child theme to the name.
+
+36
+00:02:42,080 --> 00:02:47,450
+Once again, this is not required, but it makes it easier to tell which theme is the parent theme and
+
+37
+00:02:47,450 --> 00:02:48,710
+which is the child theme.
+
+38
+00:02:49,190 --> 00:02:52,580
+Next, we have to define a new property called template.
+
+39
+00:02:53,030 --> 00:02:56,770
+The value of this property will be the name of the parent themes folder name.
+
+40
+00:02:57,200 --> 00:03:01,280
+In our case, it would be MH Dash magazine Dash Light.
+
+41
+00:03:04,070 --> 00:03:05,780
+This value is case sensitive.
+
+42
+00:03:06,080 --> 00:03:10,020
+Be sure to set this value correctly after that, you're all done.
+
+43
+00:03:10,310 --> 00:03:14,030
+Let's go to the WordPress dashboard and navigate to appearance.
+
+44
+00:03:14,330 --> 00:03:20,540
+We now have to make magazine light themes, activate the child themed version and then try visiting
+
+45
+00:03:20,540 --> 00:03:21,020
+your site.
+
+46
+00:03:27,020 --> 00:03:32,280
+We don't get any errors, not even in the console, but the site isn't displaying correctly.
+
+47
+00:03:32,750 --> 00:03:33,470
+Why is that?
+
+48
+00:03:33,680 --> 00:03:35,060
+Well, it's pretty simple.
+
+49
+00:03:35,270 --> 00:03:40,580
+WordPress is loading the style access file because that's what the parent team does.
+
+50
+00:03:41,150 --> 00:03:46,620
+WordPress will load the functions, file from the parent theme and load the child themes function file.
+
+51
+00:03:47,090 --> 00:03:49,370
+Let's take a look at the parents function file.
+
+52
+00:03:53,930 --> 00:03:59,270
+If you scroll down a bit, the parent theme and cusa a file with the function get stylesheet.
+
+53
+00:03:59,270 --> 00:04:05,050
+You are right, this function will return the URAI to the current theme style access file.
+
+54
+00:04:05,780 --> 00:04:12,080
+Even if we're using a child theme, this would be the child's style access file and not the parents
+
+55
+00:04:12,080 --> 00:04:13,670
+style access file.
+
+56
+00:04:14,150 --> 00:04:18,540
+The parent style access contains all the main styles for the theme.
+
+57
+00:04:19,100 --> 00:04:23,990
+The question is how do we load both the parent styles and the child styles?
+
+58
+00:04:24,620 --> 00:04:27,590
+There are a couple solutions here, but the developer friendly.
+
+59
+00:04:27,590 --> 00:04:34,160
+One is by using action hooks, let's open the child things function file and add the action hook WP
+
+60
+00:04:34,160 --> 00:04:35,240
+NQ Scripts.
+
+61
+00:04:37,660 --> 00:04:42,160
+I'm going to be using an anonymous function, since we won't be doing much with this child thing.
+
+62
+00:04:42,910 --> 00:04:49,720
+I'm going to register the parents style to get the parent style access, we first have to use a function
+
+63
+00:04:49,720 --> 00:04:52,420
+called get template directory, you or I.
+
+64
+00:04:57,250 --> 00:05:02,620
+This function will get the director of the parent theme without the forward slash, since we're in the
+
+65
+00:05:02,620 --> 00:05:03,890
+parent team directory.
+
+66
+00:05:03,970 --> 00:05:06,760
+We can append the style X file name.
+
+67
+00:05:09,490 --> 00:05:16,240
+Next, I'm going to register the child theme style access file by using the function get stylesheet
+
+68
+00:05:16,240 --> 00:05:21,100
+uteri, which will return the URL of the current theme style access file.
+
+69
+00:05:28,870 --> 00:05:31,810
+Lastly, I'm going to interview both philes.
+
+70
+00:05:38,850 --> 00:05:44,580
+Refresh your site and you should now see that it's working properly just to make sure I'm going to open
+
+71
+00:05:44,580 --> 00:05:49,980
+the child's style access file and change the background color of the body to yellow.
+
+72
+00:05:55,900 --> 00:05:57,050
+Refresh the page.
+
+73
+00:05:57,280 --> 00:06:01,590
+That's absolutely hideous, but at least we know our styles are loading correctly.
+
+74
+00:06:01,870 --> 00:06:07,900
+If your changes aren't being loaded, you can press control five on your keyboard to force a refresh
+
+75
+00:06:07,900 --> 00:06:09,730
+with a clear cache for this page.
+
+76
+00:06:10,240 --> 00:06:12,040
+That's pretty much it for child themes.
+
+77
+00:06:12,250 --> 00:06:14,380
+From here, you can add anything you like.
+
+78
+00:06:14,980 --> 00:06:22,930
+If you were to create a file named for or for inside the child theme, then the child themes 404 template
+
+79
+00:06:22,930 --> 00:06:25,080
+will load instead of the parent themes version.
+
+80
+00:06:25,450 --> 00:06:27,340
+It's that simple, actually.
+
+81
+00:06:27,340 --> 00:06:30,670
+Let's try that really quick in the address bar of your browser.
+
+82
+00:06:30,790 --> 00:06:35,770
+Type in some random characters and you'll see the parent themes for a four template being loaded.
+
+83
+00:06:36,460 --> 00:06:43,810
+Let's create our version by creating a forum for PHP file inside the child theme and just add the text
+
+84
+00:06:43,810 --> 00:06:44,560
+for all four.
+
+85
+00:06:47,360 --> 00:06:52,940
+Let's refresh this page and you will now see the child themed template being loaded instead of the parents
+
+86
+00:06:52,940 --> 00:06:58,400
+version, WordPress is smart enough to know which template to use your child themes.
+
+87
+00:06:58,400 --> 00:07:01,220
+Templates will be loaded over the parent themes templates.
+
+88
+00:07:01,550 --> 00:07:04,520
+You're now free to overwrite anything from the parent theme.
+

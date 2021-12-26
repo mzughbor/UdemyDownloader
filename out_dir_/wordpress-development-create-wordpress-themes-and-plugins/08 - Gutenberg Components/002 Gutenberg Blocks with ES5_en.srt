@@ -1,0 +1,288 @@
+1
+00:00:07,360 --> 00:00:13,240
+In this lecture, I'm going to briefly go over how you would go about using Gutenberg without any tools
+
+2
+00:00:13,240 --> 00:00:14,110
+or libraries.
+
+3
+00:00:14,390 --> 00:00:16,690
+It's just going to be pure JavaScript.
+
+4
+00:00:16,960 --> 00:00:22,780
+In the resource section of this lecture, I provide a link to the repository called Gutenberg Example's.
+
+5
+00:00:23,290 --> 00:00:27,010
+This is the official repository for Gutenberg demo examples.
+
+6
+00:00:27,250 --> 00:00:30,300
+It shows you how to build your own blocks for Gutenberg.
+
+7
+00:00:30,700 --> 00:00:35,920
+The demos use some components that we haven't gone over yet, but a lot of it should make sense to you
+
+8
+00:00:35,920 --> 00:00:36,680
+regardless.
+
+9
+00:00:37,330 --> 00:00:41,220
+What I like about this report is that there are two versions for each demo.
+
+10
+00:00:41,560 --> 00:00:45,700
+There's the regular S5 version and then there's the S next version.
+
+11
+00:00:46,150 --> 00:00:51,400
+Throughout this course, we've been using the next version, meaning we've been using the command line
+
+12
+00:00:51,400 --> 00:00:53,940
+tools and libraries to build our blocks.
+
+13
+00:00:54,340 --> 00:00:57,370
+However, it's not necessary to use those tools.
+
+14
+00:00:57,520 --> 00:01:01,660
+It's completely possible to create blocks using plain JavaScript.
+
+15
+00:01:01,900 --> 00:01:07,930
+If you scroll down, you'll see that WordPress has the following for each of the examples that include
+
+16
+00:01:07,930 --> 00:01:09,490
+an S next example.
+
+17
+00:01:09,490 --> 00:01:12,430
+The following commands are required to build the plugins.
+
+18
+00:01:13,000 --> 00:01:18,670
+If you were to look into any of the X next folders, then you'll find some familiar files like the Bible,
+
+19
+00:01:18,670 --> 00:01:22,450
+RC Web pack config and package adjacent files.
+
+20
+00:01:22,870 --> 00:01:27,150
+You'll more or less see some of the same code we've been using for our own blocks.
+
+21
+00:01:27,730 --> 00:01:31,240
+Let's go back and check out the basic block right away.
+
+22
+00:01:31,240 --> 00:01:34,150
+You'll notice that there is way less files than before.
+
+23
+00:01:34,570 --> 00:01:39,790
+There should only be two, which are the indexed and bloggs files.
+
+24
+00:01:40,120 --> 00:01:41,920
+Let's start with the file.
+
+25
+00:01:42,550 --> 00:01:44,560
+Nothing significant going on here.
+
+26
+00:01:44,830 --> 00:01:51,250
+All they're doing here is using the init hook to load the JavaScript file, just like the S next version.
+
+27
+00:01:51,250 --> 00:01:55,720
+A lot of the code is handled on the JavaScript side rather than the up side.
+
+28
+00:01:56,350 --> 00:01:58,930
+Let's go back and check out the jazz file now.
+
+29
+00:01:59,320 --> 00:02:00,910
+Things are quite different here.
+
+30
+00:02:01,180 --> 00:02:06,040
+In this version, the developers use a self invoked function to contain everything.
+
+31
+00:02:06,400 --> 00:02:12,040
+This step is optional, but it's recommended because it keeps things encapsulated and it allows you
+
+32
+00:02:12,040 --> 00:02:14,230
+to grab certain properties from an object.
+
+33
+00:02:14,740 --> 00:02:20,080
+If you look at the bottom, you'll see that the WP blocks I.
+
+34
+00:02:20,490 --> 00:02:23,650
+N and WP element objects are passed in.
+
+35
+00:02:24,070 --> 00:02:28,990
+Then at the top you'll see them referred to as blocks in an element.
+
+36
+00:02:29,590 --> 00:02:32,650
+This is how you would have properties as their own variables.
+
+37
+00:02:32,800 --> 00:02:35,860
+As you can see, it's not perfect like these structuring.
+
+38
+00:02:36,040 --> 00:02:40,030
+It requires us to have nested code and you still have to break things down.
+
+39
+00:02:40,030 --> 00:02:46,120
+If you want to have values as standalone variables scrolling down, you'll see the register block type
+
+40
+00:02:46,120 --> 00:02:47,260
+function being called.
+
+41
+00:02:47,620 --> 00:02:52,630
+It works just like before you pass in a name and an object with the settings.
+
+42
+00:02:52,900 --> 00:02:54,490
+The properties are all the same.
+
+43
+00:02:54,790 --> 00:02:59,890
+And this example, the title icon and category settings are pretty straightforward.
+
+44
+00:03:00,550 --> 00:03:04,800
+The edit and save functions require that you return the code to render.
+
+45
+00:03:05,140 --> 00:03:08,500
+However, this time JSS X isn't being used.
+
+46
+00:03:08,740 --> 00:03:12,610
+Remember Gess X is JavaScript, not HTML.
+
+47
+00:03:12,940 --> 00:03:16,810
+The code that you see here is what web pack turns sex into.
+
+48
+00:03:17,140 --> 00:03:23,040
+To create elements, you need to use the WP elements to create element function.
+
+49
+00:03:23,740 --> 00:03:26,200
+The example here shortens it to E-L.
+
+50
+00:03:26,530 --> 00:03:32,500
+The create element functions works the exact same way the recreate element function does.
+
+51
+00:03:32,920 --> 00:03:37,780
+The first parameter is the element name, followed by an object with the attributes to add.
+
+52
+00:03:38,230 --> 00:03:40,690
+The last parameter is the content inside.
+
+53
+00:03:41,440 --> 00:03:43,090
+Right now things are simple.
+
+54
+00:03:43,210 --> 00:03:46,910
+It's just a paragraph element with some text and stylings apply.
+
+55
+00:03:47,350 --> 00:03:49,480
+Let's look at a more complex example.
+
+56
+00:03:49,810 --> 00:03:53,350
+Go back to the examples and select the recipe card block.
+
+57
+00:03:55,710 --> 00:03:57,960
+Everything is basically the same as before.
+
+58
+00:03:58,290 --> 00:04:03,120
+Let's skip to the edit function, there's a crazy amount of nesting going on here.
+
+59
+00:04:03,420 --> 00:04:08,790
+If you want to have an element inside of another element, then you'll need to call the create element
+
+60
+00:04:08,790 --> 00:04:12,110
+function inside of the third parameter of the parent element.
+
+61
+00:04:12,900 --> 00:04:16,470
+Basically, you're trying to write HTML with JavaScript.
+
+62
+00:04:16,680 --> 00:04:21,870
+It isn't too fun, which is why I don't recommend it, especially if you're trying to create something
+
+63
+00:04:21,870 --> 00:04:22,640
+complex.
+
+64
+00:04:22,950 --> 00:04:26,440
+If you're just creating a static block, then this approach is fine.
+
+65
+00:04:26,970 --> 00:04:29,700
+This is why I taught you the next approach.
+
+66
+00:04:30,150 --> 00:04:32,440
+While it does take some time to set up.
+
+67
+00:04:32,550 --> 00:04:36,220
+Once you have a set up, then you can forget about it and work on your project.
+
+68
+00:04:36,570 --> 00:04:37,770
+That's basically it.
+
+69
+00:04:37,770 --> 00:04:44,040
+When it comes to working with S5 blocks, the only real difference is how you load in variables and
+
+70
+00:04:44,040 --> 00:04:45,090
+create elements.
+
+71
+00:04:45,300 --> 00:04:48,560
+The rest of the settings and attributes work the same as before.
+
+72
+00:04:48,960 --> 00:04:54,030
+If it's all right with you, will continue using is next for the rest of our blocks.
+

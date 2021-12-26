@@ -1,0 +1,388 @@
+1
+00:00:07,800 --> 00:00:12,960
+The very first thing you'll need to know is the command line, the command line can be very intimidating,
+
+2
+00:00:12,960 --> 00:00:15,130
+especially if you're new to Web development.
+
+3
+00:00:15,570 --> 00:00:19,820
+However, you will need to know your way around if you plan on doing Leuchtenburg development.
+
+4
+00:00:20,160 --> 00:00:22,620
+So that's what you'll be learning in this lecture.
+
+5
+00:00:23,070 --> 00:00:28,700
+The command line is extremely powerful, but you actually don't need to know every feature there is.
+
+6
+00:00:29,040 --> 00:00:32,580
+There are dozens of commands, but will only be learning a handful.
+
+7
+00:00:32,940 --> 00:00:37,150
+The reason being is because we don't need to know the other commands or even use them.
+
+8
+00:00:37,560 --> 00:00:42,900
+You don't have to be a master at using the command line, especially when it comes to WordPress.
+
+9
+00:00:43,410 --> 00:00:47,990
+The commands I teach you here will be the only commands you'll need for the rest of this course.
+
+10
+00:00:48,360 --> 00:00:49,530
+So let's get started.
+
+11
+00:00:50,250 --> 00:00:53,130
+The very first thing you want to do is open up the command line.
+
+12
+00:00:53,490 --> 00:00:57,180
+The command line can be opened by searching for the phrase command prompt.
+
+13
+00:00:57,180 --> 00:01:01,860
+If you're on a Windows machine, if you're on a Linux or Mac, then this will be called terminal.
+
+14
+00:01:02,550 --> 00:01:07,050
+The command line is just this basic window with a black background and white text.
+
+15
+00:01:07,200 --> 00:01:11,460
+Before there were websites and user interfaces, we had the command prompt.
+
+16
+00:01:11,850 --> 00:01:15,120
+Everything you ever wanted to do would be through the command prompt.
+
+17
+00:01:15,810 --> 00:01:21,180
+The reason you would use a command prompt is because it's ten times faster than using an interface.
+
+18
+00:01:21,540 --> 00:01:23,970
+You don't really need an interface for everything.
+
+19
+00:01:23,970 --> 00:01:27,720
+And as web developers, we want to do everything as fast as we can.
+
+20
+00:01:28,530 --> 00:01:34,920
+Not only that, Web servers themselves generally don't have interfaces, so learning how to use the
+
+21
+00:01:34,920 --> 00:01:36,330
+command line is beneficial.
+
+22
+00:01:36,630 --> 00:01:40,680
+If you're on a Windows machine, then you're faced with a major disadvantage.
+
+23
+00:01:41,280 --> 00:01:45,240
+The command prompt doesn't use the exact same commands as Linux or Mac.
+
+24
+00:01:45,580 --> 00:01:50,800
+This is a problem as most tutorials and resources use Unix like commands.
+
+25
+00:01:51,180 --> 00:01:53,400
+This has been a problem for a very long time.
+
+26
+00:01:53,880 --> 00:01:57,860
+However, Microsoft developed another command line called the Power Shell.
+
+27
+00:01:58,300 --> 00:02:00,390
+I want you to search for that and open it up.
+
+28
+00:02:01,140 --> 00:02:05,090
+The power shell is a newer and faster command line than the command prompt.
+
+29
+00:02:05,490 --> 00:02:12,240
+Not only is it faster, but it has the same exact commands as Unix like systems will be using the power
+
+30
+00:02:12,240 --> 00:02:13,850
+shell for the rest of this lecture.
+
+31
+00:02:14,190 --> 00:02:18,330
+That way you don't have to memorize two different commands for the same thing.
+
+32
+00:02:19,050 --> 00:02:22,110
+When you first open the command line, you won't see much initially.
+
+33
+00:02:22,440 --> 00:02:24,840
+You'll just see where you are in your directory.
+
+34
+00:02:25,290 --> 00:02:30,840
+Some command lines will have a dollar sign to indicate that anything after that sign is user input,
+
+35
+00:02:30,840 --> 00:02:33,060
+a.k.a. your own commands or text.
+
+36
+00:02:33,870 --> 00:02:36,420
+Right now I'm able to see my full path.
+
+37
+00:02:36,690 --> 00:02:41,760
+I'm inside the C Colon Backslash Users Backslash Jack directory.
+
+38
+00:02:42,180 --> 00:02:45,180
+Some command lines will not even show you the full path.
+
+39
+00:02:45,510 --> 00:02:47,820
+The reason for this is to save some space.
+
+40
+00:02:48,240 --> 00:02:53,220
+You may be in a directory that has a long name and it would be kind of annoying to have to see it for
+
+41
+00:02:53,220 --> 00:02:54,660
+every line on the command line.
+
+42
+00:02:55,260 --> 00:02:59,550
+If you ever want to see the full path, then you simply type in P WD.
+
+43
+00:02:59,850 --> 00:03:02,930
+TWD is short for present working directory.
+
+44
+00:03:03,330 --> 00:03:07,140
+Upon entering this command, you'll see the full path you're currently in.
+
+45
+00:03:07,920 --> 00:03:13,860
+This is super useful, especially if you can't use something like the Explorer to tell you exactly where
+
+46
+00:03:13,860 --> 00:03:14,310
+you want.
+
+47
+00:03:14,850 --> 00:03:20,940
+Now that we have an idea of where we are, let's learn to navigate around before you can navigate around,
+
+48
+00:03:20,940 --> 00:03:24,450
+you have to know where you can navigate to the next command.
+
+49
+00:03:24,450 --> 00:03:27,060
+You need to know is the Elst command.
+
+50
+00:03:27,480 --> 00:03:29,970
+This command is sure for the word list.
+
+51
+00:03:30,210 --> 00:03:31,320
+Enter this commands.
+
+52
+00:03:31,590 --> 00:03:35,520
+This will output a list of files and folders currently in the directory.
+
+53
+00:03:35,520 --> 00:03:36,180
+You're working it.
+
+54
+00:03:36,750 --> 00:03:42,300
+As you can see here, I have all these files and folders along with information about when the last
+
+55
+00:03:42,300 --> 00:03:44,880
+time each file was modified and their permissions.
+
+56
+00:03:45,360 --> 00:03:48,930
+Now that I have an idea of where I am, let's move into a folder.
+
+57
+00:03:49,680 --> 00:03:55,620
+To move into a folder, you need to use the C D command, which is short for change directory.
+
+58
+00:03:56,010 --> 00:04:00,120
+After this command, you have to input the name of the directory you'd like to move into.
+
+59
+00:04:00,480 --> 00:04:06,360
+I want to move into the music directory, so I'll input that and press enter just like that.
+
+60
+00:04:06,360 --> 00:04:08,310
+I'm inside the music directory.
+
+61
+00:04:08,640 --> 00:04:12,630
+If I wanted to move back, I would have to use the CD command again.
+
+62
+00:04:12,960 --> 00:04:18,810
+But this time I would input two dots like so two dots represent up one directory.
+
+63
+00:04:19,500 --> 00:04:21,810
+This command will move up one directory.
+
+64
+00:04:22,290 --> 00:04:23,730
+We are back to where we started.
+
+65
+00:04:24,150 --> 00:04:28,260
+If I wanted to move up multiple directories, then I would just input dot.
+
+66
+00:04:28,260 --> 00:04:33,510
+Dot forgot this will take me all the way up to the root of my drive.
+
+67
+00:04:33,870 --> 00:04:38,490
+You can use forward slash is to indicate that you'd like to move through multiple directories.
+
+68
+00:04:39,150 --> 00:04:42,150
+This also applies to moving into directories.
+
+69
+00:04:42,450 --> 00:04:46,590
+I know for a fact that my Zamp installation is inside this directory.
+
+70
+00:04:46,950 --> 00:04:54,060
+I'm going to move into the T docs directory by inputting CD Zamp Slash HD docs.
+
+71
+00:04:56,310 --> 00:04:58,180
+Let's make this into an exercise.
+
+72
+00:04:58,500 --> 00:05:03,320
+I want you to move into your H.T. docs directly using the CD command.
+
+73
+00:05:03,690 --> 00:05:06,720
+If you're not completely sure where it is, then it's fine to cheat.
+
+74
+00:05:07,320 --> 00:05:10,590
+You can open the file explorer and check where the full path is.
+
+75
+00:05:10,920 --> 00:05:17,460
+Once you know where the path is, then you just use the LS and CD commands to help navigate your way
+
+76
+00:05:17,460 --> 00:05:22,540
+around the command line to verify that I'm inside the H.G. Docs folder.
+
+77
+00:05:22,680 --> 00:05:25,710
+I want to use the LS Command to view the folders.
+
+78
+00:05:26,100 --> 00:05:29,200
+I'll find my projects and the Udemy folder here as well.
+
+79
+00:05:29,970 --> 00:05:34,280
+There's one last command I want to use and that's the mkdir command.
+
+80
+00:05:34,650 --> 00:05:37,050
+This command is short for make directory.
+
+81
+00:05:37,740 --> 00:05:39,630
+This will create a new folder.
+
+82
+00:05:39,810 --> 00:05:42,870
+I want to create a folder called Lern Dash.
+
+83
+00:05:42,870 --> 00:05:46,500
+JS entered this commands and a new folder should be made.
+
+84
+00:05:46,920 --> 00:05:48,170
+Let's double check this.
+
+85
+00:05:48,420 --> 00:05:52,950
+I want you to open your editor and then open this directory inside your editor.
+
+86
+00:05:54,780 --> 00:06:00,330
+That's basically it when it comes to commands, not much to it, honestly, these commands will just
+
+87
+00:06:00,330 --> 00:06:02,080
+help you navigate around the command line.
+
+88
+00:06:02,490 --> 00:06:06,270
+There's other commands that will help with modifying and deleting files.
+
+89
+00:06:06,390 --> 00:06:10,590
+But you don't need to know, though, since we'll be working in an editor most of the time.
+
+90
+00:06:11,310 --> 00:06:17,010
+If you have a visual studio code like me, then you'll be able to open the command line by going to
+
+91
+00:06:17,010 --> 00:06:18,750
+view integrated terminal.
+
+92
+00:06:19,290 --> 00:06:23,870
+One of the great things about this is that it automatically points to the current directory you're in.
+
+93
+00:06:24,270 --> 00:06:25,980
+This is a huge timesaver.
+
+94
+00:06:25,980 --> 00:06:30,940
+So you won't have to use this command every time you wanted to move into this directory.
+
+95
+00:06:31,650 --> 00:06:34,560
+I'll be using this terminal throughout the rest of this course.
+
+96
+00:06:34,830 --> 00:06:36,780
+If you don't have it, then that's fine.
+
+97
+00:06:37,170 --> 00:06:41,370
+You can continue using the command line your operating system has provided you.
+

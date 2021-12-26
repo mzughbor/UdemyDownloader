@@ -1,0 +1,567 @@
+1
+00:00:07,370 --> 00:00:12,120
+Before we get started, I want to go over some these concepts that you should be aware of.
+
+2
+00:00:12,500 --> 00:00:16,190
+I want to make it clear that this isn't a BASIX course.
+
+3
+00:00:16,490 --> 00:00:22,040
+I expect you to know and some of the fundamental concepts, such as variables and functions.
+
+4
+00:00:22,580 --> 00:00:27,170
+With that being said, there are some techniques and concepts that you will see me use throughout this
+
+5
+00:00:27,170 --> 00:00:27,640
+course.
+
+6
+00:00:27,920 --> 00:00:31,940
+I just want to make sure we're all on the same page right now.
+
+7
+00:00:31,950 --> 00:00:34,580
+I'm on a site called Right Online.
+
+8
+00:00:34,940 --> 00:00:40,520
+I'll provide a link to this and the resource section of this lecture, I promise that will only be using
+
+9
+00:00:40,520 --> 00:00:42,470
+this tool for this lecture only.
+
+10
+00:00:43,130 --> 00:00:46,640
+So the first thing I want to go over is the final constant.
+
+11
+00:00:46,880 --> 00:00:50,150
+I'm going to echo out this constant and run the code.
+
+12
+00:00:52,420 --> 00:00:58,510
+This constant will always contain the full system path to the file it's being used in, it's very important
+
+13
+00:00:58,510 --> 00:01:01,470
+that you understand what the value returns when you use it.
+
+14
+00:01:01,900 --> 00:01:06,230
+Each page we file, you create will automatically define this content for you.
+
+15
+00:01:06,670 --> 00:01:11,080
+You also don't have to worry about conflicts between each file throughout.
+
+16
+00:01:11,080 --> 00:01:17,150
+This course will be working inside multiple directories when you're working inside multiple directories.
+
+17
+00:01:17,170 --> 00:01:19,710
+It can be rather difficult to determine where you are.
+
+18
+00:01:20,050 --> 00:01:22,480
+The file constant will help us greatly.
+
+19
+00:01:23,020 --> 00:01:25,780
+The next concept I want to go over is ARray's.
+
+20
+00:01:25,960 --> 00:01:31,420
+I'm going to create an array named Ah and it will contain the values one through five.
+
+21
+00:01:37,370 --> 00:01:42,980
+Arrays aren't anything special and aren't hard to understand, what I want to highlight is the way I'm
+
+22
+00:01:42,980 --> 00:01:43,820
+writing arrays.
+
+23
+00:01:44,060 --> 00:01:45,760
+I don't use the key word array.
+
+24
+00:01:45,920 --> 00:01:48,240
+Instead, I just use square brackets.
+
+25
+00:01:48,440 --> 00:01:50,730
+This is the shorthand way of writing arrays.
+
+26
+00:01:50,960 --> 00:01:56,390
+I know some people like to use the array keyword, but I won't be doing so just to speed things up.
+
+27
+00:01:57,050 --> 00:02:00,630
+If you prefer to use the array keyword, then that's perfectly fine.
+
+28
+00:02:00,980 --> 00:02:02,600
+I do want to give a warning.
+
+29
+00:02:02,900 --> 00:02:08,900
+Not all hosts support the shorthand version of writing appearance, so use these with caution.
+
+30
+00:02:08,900 --> 00:02:15,200
+If you plan on supporting older versions of the next thing I want to go over or anonymous functions,
+
+31
+00:02:15,320 --> 00:02:17,170
+I'm going to type one up quickly.
+
+32
+00:02:19,450 --> 00:02:24,970
+An anonymous function is exactly what it sounds like, it's a function that does not have a name since
+
+33
+00:02:24,970 --> 00:02:27,980
+it does not have a name, you have no way to reference it.
+
+34
+00:02:28,660 --> 00:02:34,300
+The reason you would use anonymous functions is to write less code if you write less code than your
+
+35
+00:02:34,300 --> 00:02:35,720
+code becomes more readable.
+
+36
+00:02:35,980 --> 00:02:39,610
+I'm going to delete my example and paste in a more practical one.
+
+37
+00:02:42,060 --> 00:02:47,940
+There's quite a bit going on here, so let me break down what's going on and creating a new array called
+
+38
+00:02:47,940 --> 00:02:53,160
+Array Double, this will be assigned to the value returned by the function array map.
+
+39
+00:02:53,670 --> 00:02:59,820
+The array map function will taken an array and call a function that will be passed in the value to manipulate
+
+40
+00:03:00,240 --> 00:03:01,230
+the function past.
+
+41
+00:03:01,230 --> 00:03:07,600
+It must return either to value a modified version of the value or add a completely different value.
+
+42
+00:03:08,160 --> 00:03:14,070
+And this example, I'm showing two ways of passing in a function in the first example and passing in
+
+43
+00:03:14,070 --> 00:03:15,210
+an anonymous function.
+
+44
+00:03:15,480 --> 00:03:21,810
+In the second example, I'm creating a named function and passing in the name to the array map function.
+
+45
+00:03:22,440 --> 00:03:25,530
+Both solutions are completely valid and acceptable.
+
+46
+00:03:25,800 --> 00:03:29,050
+After both of these, all I'm doing is printing the array.
+
+47
+00:03:29,340 --> 00:03:31,440
+Let's run the code and see what we get.
+
+48
+00:03:32,040 --> 00:03:35,340
+As expected, we get to arrays that are identical.
+
+49
+00:03:35,700 --> 00:03:38,790
+Both methods work and one isn't better than the other.
+
+50
+00:03:39,180 --> 00:03:41,070
+You're more than free to use either one.
+
+51
+00:03:41,400 --> 00:03:44,250
+Throughout this course, we'll be using a combination of both.
+
+52
+00:03:44,850 --> 00:03:50,810
+The last concept you should be aware of is object oriented programming, also known as OP.
+
+53
+00:03:51,120 --> 00:03:56,270
+OP is a pretty complex topic and I couldn't possibly cover it in this single lecture.
+
+54
+00:03:56,810 --> 00:04:02,610
+Instead, I'm going to refer you to a tutorial series which is completely free in this series.
+
+55
+00:04:02,640 --> 00:04:06,110
+A lot of things related to object oriented programming is covered.
+
+56
+00:04:06,510 --> 00:04:10,560
+We actually won't be writing a lot of opis throughout this course.
+
+57
+00:04:10,570 --> 00:04:13,110
+So you're OK with just knowing the bare minimum.
+
+58
+00:04:13,410 --> 00:04:17,250
+If you're already comfortable with OLP, then you can just skip on a head.
+
+59
+00:04:17,910 --> 00:04:18,890
+That's pretty much it.
+
+60
+00:04:19,080 --> 00:04:21,710
+I just wanted to highlight those concepts to you.
+
+61
+00:04:22,110 --> 00:04:24,000
+There's one last thing I want to show you.
+
+62
+00:04:24,270 --> 00:04:30,030
+In the resource section of this lecture, I provided a link to the WordPress Best Practices page.
+
+63
+00:04:30,630 --> 00:04:33,270
+WordPress provides a guideline for writing code.
+
+64
+00:04:33,540 --> 00:04:38,430
+If you plan on contributing to the word press corps, then these guidelines are important.
+
+65
+00:04:38,640 --> 00:04:44,700
+However, if you just plan on making your own plugins and themes, then you can follow any coding style
+
+66
+00:04:44,700 --> 00:04:45,180
+you like.
+
+67
+00:04:45,690 --> 00:04:49,350
+I'm going to click on the AP Coding Standards Link.
+
+68
+00:04:49,650 --> 00:04:55,320
+Basically, this page goes over how you should write your code from indentation to formatting blocks
+
+69
+00:04:55,320 --> 00:04:55,740
+of code.
+
+70
+00:04:56,190 --> 00:04:59,970
+You are absolutely not required to follow these standards.
+
+71
+00:05:00,300 --> 00:05:04,860
+With that being said, let's give this page three and go over these standards together.
+
+72
+00:05:05,490 --> 00:05:09,480
+The first thing that goes over is when to use single quotes or double quotes.
+
+73
+00:05:09,750 --> 00:05:12,950
+From word perspective, it generally doesn't matter.
+
+74
+00:05:13,320 --> 00:05:19,650
+The most important thing is that you escape your data when combining HTML and dynamic data together.
+
+75
+00:05:20,310 --> 00:05:22,050
+Up next is indentation.
+
+76
+00:05:22,350 --> 00:05:27,750
+There's a whole debate whether you should use tabs or spaces, but WordPress recommends you use real
+
+77
+00:05:27,750 --> 00:05:29,340
+tabs and not spaces.
+
+78
+00:05:29,640 --> 00:05:35,580
+Something that's also worth noting down is that WordPress prefers you align your code for readability.
+
+79
+00:05:36,000 --> 00:05:42,030
+And this example, you can see that the equals sign is perfectly aligned no matter how long the variable
+
+80
+00:05:42,030 --> 00:05:44,220
+name gets afterwards.
+
+81
+00:05:44,220 --> 00:05:48,150
+You're told you should always use braces when writing blocks of code.
+
+82
+00:05:48,540 --> 00:05:52,950
+Even if you're a block of code is only one line inside, you should still use braces.
+
+83
+00:05:53,220 --> 00:05:58,950
+This applies to loops, conditional statements, functions, classes and anything else you can think
+
+84
+00:05:58,950 --> 00:06:00,150
+of that uses braces.
+
+85
+00:06:00,750 --> 00:06:05,520
+When it comes to using conditional statements, you may end up using an elusive statement.
+
+86
+00:06:05,820 --> 00:06:07,710
+You can write this one of two ways.
+
+87
+00:06:07,860 --> 00:06:09,210
+You can write the else.
+
+88
+00:06:09,210 --> 00:06:14,040
+If with a space or without a space, WordPress recommends no spaces.
+
+89
+00:06:14,550 --> 00:06:19,590
+I'm going to skip regular expressions as we won't be using them that much throughout this course.
+
+90
+00:06:20,310 --> 00:06:25,830
+Down a little further, you'll see that you should use the long hand version of opening and closing
+
+91
+00:06:26,430 --> 00:06:26,970
+tax.
+
+92
+00:06:27,300 --> 00:06:31,710
+You should never use the shorthand version because it's not supported on most hosts.
+
+93
+00:06:32,130 --> 00:06:37,500
+On top of that, you'll see that you should take the time to format your code as opposed to having an
+
+94
+00:06:37,500 --> 00:06:38,640
+unreadable mess.
+
+95
+00:06:38,640 --> 00:06:39,570
+In this example.
+
+96
+00:06:39,840 --> 00:06:45,630
+After this, you'll see that WordPress recommends you space everything inside functions and loops.
+
+97
+00:06:45,630 --> 00:06:50,880
+Neatly omitting the spaces can really make it hard to read your code, especially if you're dealing
+
+98
+00:06:50,880 --> 00:06:52,710
+with variables versus hard coding.
+
+99
+00:06:52,710 --> 00:06:54,810
+Things aren't moving right along.
+
+100
+00:06:54,810 --> 00:06:58,980
+You'll then be told that you should take the time to format your skill queries.
+
+101
+00:06:59,340 --> 00:07:04,680
+They don't provide a good example here, but you'll see soon enough how to format your queries for readability.
+
+102
+00:07:05,280 --> 00:07:09,840
+Right after this, you'll be told about making queries directly to the database.
+
+103
+00:07:10,200 --> 00:07:14,940
+Throughout most of this course, we'll be using functions that will take care of querying the database
+
+104
+00:07:14,940 --> 00:07:16,280
+and sanitizing the data.
+
+105
+00:07:16,620 --> 00:07:21,210
+However, these functions will not cover all scenarios and these cases.
+
+106
+00:07:21,210 --> 00:07:26,070
+I'll show you how to properly query the database and make sure it's safe for execution.
+
+107
+00:07:26,700 --> 00:07:29,520
+Up next, it's telling us about naming conventions.
+
+108
+00:07:29,910 --> 00:07:35,730
+Whenever you create variables, classes or functions, it's recommended you use underscores if your
+
+109
+00:07:35,730 --> 00:07:37,590
+code contains multiple words.
+
+110
+00:07:38,010 --> 00:07:41,190
+If you're someone who uses Camil case, then you may want to.
+
+111
+00:07:41,270 --> 00:07:47,060
+Consider switching, there's also rules for how you should name your files if there are multiple words
+
+112
+00:07:47,060 --> 00:07:53,000
+and you should use hyphens to separate those words, I'm going to skip these next two as they're more
+
+113
+00:07:53,000 --> 00:07:55,830
+WordPress specific topics, which we'll cover soon enough.
+
+114
+00:07:56,420 --> 00:08:02,630
+Now we're at ternary operators, ternary operator or a shorthand way of writing conditional statements
+
+115
+00:08:02,630 --> 00:08:03,580
+for setting values.
+
+116
+00:08:03,830 --> 00:08:06,560
+They're really handy and it can even be readable if used.
+
+117
+00:08:06,560 --> 00:08:06,840
+Right.
+
+118
+00:08:07,160 --> 00:08:10,940
+Just make sure you space everything right and then it makes sense when you read it.
+
+119
+00:08:11,300 --> 00:08:15,190
+You'll see plenty of examples of ternary operators throughout this course.
+
+120
+00:08:15,650 --> 00:08:18,100
+Then we run into yota conditions.
+
+121
+00:08:18,260 --> 00:08:23,780
+It's a strange name, but this simply states that when writing conditional statements with variables,
+
+122
+00:08:23,780 --> 00:08:26,380
+you should place the variables on the right side.
+
+123
+00:08:26,690 --> 00:08:32,150
+And this example, it's read like this, if true, the force then victorious you will be.
+
+124
+00:08:32,580 --> 00:08:36,320
+I am not really a fan of this, but you can use it if it makes sense to you.
+
+125
+00:08:37,010 --> 00:08:41,580
+Lastly, it's telling us that you should choose readability over clever code.
+
+126
+00:08:41,930 --> 00:08:47,330
+What this means is that you shouldn't write your code just for the sake of writing less code while being
+
+127
+00:08:47,330 --> 00:08:49,740
+clever with your code does mean writing less.
+
+128
+00:08:49,760 --> 00:08:53,730
+It can also be harder to read for anyone else that will want to get into your code.
+
+129
+00:08:54,410 --> 00:08:57,230
+There's more here, but we can safely ignore this.
+
+130
+00:08:57,410 --> 00:08:58,700
+You can read them if you want.
+
+131
+00:08:59,030 --> 00:09:03,170
+Now, I do want to say that these standards are only recommendations.
+
+132
+00:09:03,440 --> 00:09:07,100
+You won't receive errors or warnings from writing your code differently.
+
+133
+00:09:07,430 --> 00:09:11,780
+The point of these standards is so that there's consistency across the board.
+
+134
+00:09:12,080 --> 00:09:13,790
+At the end of the day, it's up to you.
+
+135
+00:09:14,360 --> 00:09:16,670
+I myself follow some of these.
+
+136
+00:09:16,880 --> 00:09:21,190
+You'll notice that throughout this course I like to organize and format my code.
+
+137
+00:09:21,560 --> 00:09:27,020
+You're more than free to follow along with my coding style, even though it does take some time to get
+
+138
+00:09:27,020 --> 00:09:27,590
+used to.
+
+139
+00:09:27,620 --> 00:09:28,710
+I believe it is worth it.
+
+140
+00:09:29,040 --> 00:09:31,630
+It makes my code more readable and approachable.
+
+141
+00:09:32,270 --> 00:09:33,550
+All right, that's it.
+
+142
+00:09:33,860 --> 00:09:36,140
+Let's move on to developing a theme.

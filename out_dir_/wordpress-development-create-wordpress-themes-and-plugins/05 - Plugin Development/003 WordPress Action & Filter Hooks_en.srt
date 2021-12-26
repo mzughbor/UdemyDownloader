@@ -1,0 +1,544 @@
+1
+00:00:07,630 --> 00:00:14,080
+Before we continue with developing plug ins, I want to finally talk about how Hooke's actions and filters
+
+2
+00:00:14,080 --> 00:00:14,410
+work.
+
+3
+00:00:14,860 --> 00:00:18,520
+This lecture will demystify the concepts behind these topics.
+
+4
+00:00:19,180 --> 00:00:21,410
+Understanding Hooke's isn't all that easy.
+
+5
+00:00:21,730 --> 00:00:27,040
+This is because the terms themselves are rather tricky to visualize and distinguish from one another.
+
+6
+00:00:27,490 --> 00:00:32,210
+Once you understand how everything works, then you'll be able to understand how WordPress works.
+
+7
+00:00:32,530 --> 00:00:38,860
+I find that working with filters and actions is probably the most common way I interact with WordPress.
+
+8
+00:00:39,250 --> 00:00:43,030
+As time has passed by, it's become one of my favorite things to do.
+
+9
+00:00:43,030 --> 00:00:46,570
+And WordPress understanding the terms is half the battle.
+
+10
+00:00:46,900 --> 00:00:51,970
+The WordPress codecs uses all three terms very casually and consistently.
+
+11
+00:00:52,300 --> 00:00:55,090
+I'm going to try to clarify those uses here.
+
+12
+00:00:55,360 --> 00:01:00,390
+These are what the terms really mean, although you will find them use differently in many places.
+
+13
+00:01:00,760 --> 00:01:02,570
+Let's start to define the terms.
+
+14
+00:01:03,160 --> 00:01:07,420
+The topic that we're discussing is what WordPress calls the plugin API.
+
+15
+00:01:07,990 --> 00:01:13,920
+Despite the name, these concepts don't apply to plug ins exclusively in previous sections.
+
+16
+00:01:13,930 --> 00:01:15,660
+We used action hooks frequently.
+
+17
+00:01:15,880 --> 00:01:18,160
+So this also applies to themes.
+
+18
+00:01:18,670 --> 00:01:25,330
+Sometimes you'll hear this API referred to as the Hooke's API hooks are the dominant concept that we
+
+19
+00:01:25,330 --> 00:01:29,150
+need to understand to make WordPress actions and filters work for us.
+
+20
+00:01:29,650 --> 00:01:31,420
+So what exactly is a hook?
+
+21
+00:01:31,960 --> 00:01:32,500
+A hook?
+
+22
+00:01:32,500 --> 00:01:36,010
+It's a place in WordPress is code that can get functions added to it.
+
+23
+00:01:36,310 --> 00:01:41,710
+When you create a hook and WordPress, you give yourself and other developers the opportunity to add
+
+24
+00:01:41,710 --> 00:01:43,780
+in extra functionality at that location.
+
+25
+00:01:44,440 --> 00:01:49,960
+Hooked functions are the pieces of external code that can be added into WordPress is processing at the
+
+26
+00:01:49,960 --> 00:01:52,420
+locations specified by its hooks.
+
+27
+00:01:52,760 --> 00:01:57,190
+In other words, these are the functions that get hooked into WordPress.
+
+28
+00:01:57,880 --> 00:02:00,940
+Basically, you could think of hooks as events.
+
+29
+00:02:01,270 --> 00:02:05,860
+These events are accessible to us and we can execute functions during those events.
+
+30
+00:02:06,430 --> 00:02:11,050
+There are basically two types of hooks action hooks and filter hooks.
+
+31
+00:02:11,320 --> 00:02:14,550
+Action hooks can do any type of custom functionality.
+
+32
+00:02:14,920 --> 00:02:20,560
+This includes sending out emails, updating the database, or just output something onto the screen,
+
+33
+00:02:21,070 --> 00:02:23,560
+filter hooks, modify existing output.
+
+34
+00:02:23,980 --> 00:02:30,010
+You're basically given data and you're expected to return that data or a modified version of that data.
+
+35
+00:02:30,340 --> 00:02:32,760
+You can even return a brand new set of data.
+
+36
+00:02:33,430 --> 00:02:33,670
+Good.
+
+37
+00:02:33,670 --> 00:02:34,210
+So far.
+
+38
+00:02:34,420 --> 00:02:36,640
+Don't worry either way and let's move on.
+
+39
+00:02:36,880 --> 00:02:40,510
+I'll show you some examples soon enough to explain hooks.
+
+40
+00:02:40,540 --> 00:02:42,790
+We will think of WordPress as a big factory.
+
+41
+00:02:43,090 --> 00:02:48,910
+The factory kicks on whenever a visitor browses to your site and manufactures the specific Web page
+
+42
+00:02:48,910 --> 00:02:49,720
+they've asked for.
+
+43
+00:02:50,140 --> 00:02:57,220
+The page generated has the contents of one or more posts as well as the header are sidebar and so on.
+
+44
+00:02:57,880 --> 00:03:04,150
+By the way, WordPress as a factory is probably the best analogy there is for how WordPress works.
+
+45
+00:03:04,150 --> 00:03:10,510
+In general, it's almost a literal description of how WordPress actually works, except with digital
+
+46
+00:03:10,510 --> 00:03:17,140
+factory equipment, a.k.a. P files and raw materials, a.k.a. the database contents.
+
+47
+00:03:17,710 --> 00:03:23,980
+We can think of custom code as outside contractors that help the WordPress factory do its web page assembly
+
+48
+00:03:23,980 --> 00:03:24,310
+work.
+
+49
+00:03:24,640 --> 00:03:30,820
+Hooke's both action hooks and filter hooks are the gateway into the parts of the WordPress factory where
+
+50
+00:03:30,820 --> 00:03:33,430
+these outside contractors go to do their work.
+
+51
+00:03:34,210 --> 00:03:37,480
+The core WordPress software is a rather simple factory.
+
+52
+00:03:37,810 --> 00:03:40,570
+There's also a lot it can't do by default.
+
+53
+00:03:40,720 --> 00:03:47,980
+Everything from display today's date at the top of every page to create ecommerce product pages, complete
+
+54
+00:03:48,010 --> 00:03:50,620
+with price shipping and payment information.
+
+55
+00:03:51,160 --> 00:03:56,680
+WordPress can handle these special orders, but to do so it needs outside contractors.
+
+56
+00:03:57,040 --> 00:04:01,930
+This is where functions stop HP, other custom code and plug ins come into play.
+
+57
+00:04:02,620 --> 00:04:05,920
+Our contractors don't have a permanent place in the factory.
+
+58
+00:04:06,250 --> 00:04:10,390
+They're stuck in the lobby until they're invited in by the factory itself.
+
+59
+00:04:10,720 --> 00:04:15,910
+Hooks are how this WordPress factory invites in any contractors that may be needed.
+
+60
+00:04:16,600 --> 00:04:23,230
+We can think of WordPress hooks as a bunch of actual giant factory hooks which the contractors write
+
+61
+00:04:23,230 --> 00:04:23,560
+on.
+
+62
+00:04:23,560 --> 00:04:24,550
+Like this image.
+
+63
+00:04:25,210 --> 00:04:32,200
+Each hook is labeled with a specific name, such as WP Head corresponding to a part of the WordPress
+
+64
+00:04:32,200 --> 00:04:33,430
+factories process.
+
+65
+00:04:33,730 --> 00:04:41,770
+In the case of head, the process of building the pages HTML head section, these hooks travel out to
+
+66
+00:04:41,770 --> 00:04:46,300
+the lobby so that contractors can write them in and they do it in a specific order.
+
+67
+00:04:46,690 --> 00:04:52,660
+The WP head hook travels out to the lobby and back right before the head tag completes.
+
+68
+00:04:53,140 --> 00:04:59,770
+Likewise, the WP foot or hook travels to the lobby and back right before the body tag completes and
+
+69
+00:04:59,770 --> 00:05:00,220
+so on.
+
+70
+00:05:00,670 --> 00:05:06,310
+The contractor is always writing his hook directly to the active to be worked on part of the factory.
+
+71
+00:05:07,000 --> 00:05:12,040
+When a contractor wants to be part of a specific process, he waits for that hook to show up at the
+
+72
+00:05:12,040 --> 00:05:15,720
+entrance and rides that hook straight into the proper part of the factory.
+
+73
+00:05:16,480 --> 00:05:21,850
+If the contractor didn't write the proper hook in, he couldn't get to where he's going in the factory.
+
+74
+00:05:22,210 --> 00:05:28,630
+Hooks are what invites outside code into defined areas of work, processes of processing.
+
+75
+00:05:29,380 --> 00:05:32,970
+We're halfway to understanding Hooke's actions and filters.
+
+76
+00:05:33,280 --> 00:05:35,300
+The other part is a bit more specific.
+
+77
+00:05:35,590 --> 00:05:39,630
+The factory has two kinds of hooks action hooks and filter hooks.
+
+78
+00:05:40,210 --> 00:05:46,270
+The action hooks tend to get dangle that milestone's like you're almost done building the pages head
+
+79
+00:05:46,270 --> 00:05:49,990
+section or you're almost done building the pages body section.
+
+80
+00:05:50,470 --> 00:05:56,050
+When contractors write action hooks into the factory, they tend to do just about anything they want
+
+81
+00:05:56,320 --> 00:06:01,890
+at a bunch of stuff to the page or do completely other things like log an error or even send an email.
+
+82
+00:06:02,650 --> 00:06:04,880
+The filter hooks work a bit differently.
+
+83
+00:06:05,380 --> 00:06:10,600
+Contractors who write in on action hooks can do whatever they want and have no responsibility to anyone.
+
+84
+00:06:11,050 --> 00:06:16,240
+But contractors who write in unfiltered hooks insert themselves in the normal workers process.
+
+85
+00:06:16,840 --> 00:06:22,750
+They're given something to handle, say, a block of text and have to give that same block of text slightly
+
+86
+00:06:22,750 --> 00:06:27,220
+modified back to the regular worker via a return statement.
+
+87
+00:06:27,910 --> 00:06:32,200
+A contractor using a filter hook generally doesn't just do whatever he wants.
+
+88
+00:06:32,470 --> 00:06:36,200
+He works with the piece of code that he's given in his section of the factory.
+
+89
+00:06:36,730 --> 00:06:38,980
+This section works on the post title.
+
+90
+00:06:38,980 --> 00:06:42,700
+The sections manager might say, do whatever you want to the post title.
+
+91
+00:06:42,700 --> 00:06:48,010
+But if you don't hand me back the post title after you've made your changes, then this whole process
+
+92
+00:06:48,010 --> 00:06:49,080
+won't work properly.
+
+93
+00:06:49,750 --> 00:06:51,310
+I hope I'm making sense so far.
+
+94
+00:06:51,640 --> 00:06:56,260
+Now we're going to get a bit more technical so you can start writing these things.
+
+95
+00:06:56,560 --> 00:07:03,430
+The contractors are specialized functions because these functions make it into WordPress by attaching
+
+96
+00:07:03,430 --> 00:07:07,720
+themselves to WordPress hooks that is being hooked in from outside.
+
+97
+00:07:07,870 --> 00:07:10,750
+The formal term for them is hooked functions.
+
+98
+00:07:11,880 --> 00:07:17,970
+Enough talk, let's actually write some code to take a look at what all this looks like, I'm going
+
+99
+00:07:17,970 --> 00:07:24,480
+to create a brand new plugin called Hooke's Dash Exampled, be inside the plugins folder.
+
+100
+00:07:26,660 --> 00:07:33,000
+I'm not going to create a folder for this plugin as everything will be contained in this one file also.
+
+101
+00:07:33,130 --> 00:07:34,690
+And so this is just an example.
+
+102
+00:07:34,700 --> 00:07:36,800
+I'm not too concerned on organization.
+
+103
+00:07:37,130 --> 00:07:40,280
+I'm going to set the plugin name to Hooke's example.
+
+104
+00:07:42,610 --> 00:07:44,740
+Activate this plug in and let's get started.
+
+105
+00:07:50,010 --> 00:07:52,320
+I'm going to use the function add filter.
+
+106
+00:07:54,520 --> 00:08:00,250
+This is how filter folks are started, you tell WordPress that you would like to filter particular data
+
+107
+00:08:00,250 --> 00:08:05,320
+by calling this function, this function has the same parameters as the add action hook.
+
+108
+00:08:05,770 --> 00:08:08,290
+The hook we want to use is called the title.
+
+109
+00:08:10,500 --> 00:08:16,980
+This hook runs when a post is being displayed and its title is being outputted or returned, the function
+
+110
+00:08:16,980 --> 00:08:19,260
+I want to run is called Jiyu title.
+
+111
+00:08:21,500 --> 00:08:27,710
+Let's define this function now, filter Hooke's will always have at least one argument in this case,
+
+112
+00:08:27,710 --> 00:08:29,900
+the title is passed on to us.
+
+113
+00:08:30,320 --> 00:08:31,820
+This is the original title.
+
+114
+00:08:32,150 --> 00:08:37,190
+WordPress expects us to return this title or a modified version of this title.
+
+115
+00:08:37,700 --> 00:08:41,200
+Alternatively, we can give a completely different title.
+
+116
+00:08:41,780 --> 00:08:45,830
+I'm going to return the text hooked, followed by the original title.
+
+117
+00:08:48,030 --> 00:08:54,300
+Save your work and visit the home page, you'll notice all our posts now have the text hooked before
+
+118
+00:08:54,300 --> 00:08:54,790
+the title.
+
+119
+00:08:55,560 --> 00:08:57,490
+Let's take a look at action hooks now.
+
+120
+00:08:57,930 --> 00:09:02,160
+We've already done this a bunch of times in our theme, but let's take a closer look.
+
+121
+00:09:02,370 --> 00:09:04,500
+I'm going to create an action hook.
+
+122
+00:09:04,770 --> 00:09:07,470
+I want to hook into the WP footer hook.
+
+123
+00:09:09,580 --> 00:09:16,120
+The function I want to call is Jiyu footer, shout out to find this function underneath and echo out
+
+124
+00:09:16,120 --> 00:09:18,310
+Hooke's example, plug in was here.
+
+125
+00:09:23,190 --> 00:09:28,550
+Save your work and refresh the page, scroll down to the very bottom and you'll see the message outputted.
+
+126
+00:09:29,370 --> 00:09:33,630
+One thing you'll notice about action functions is that they do not need to return anything.
+
+127
+00:09:34,080 --> 00:09:36,480
+They don't even need to echo out anything.
+
+128
+00:09:36,900 --> 00:09:40,590
+You can do whatever you want from querying the database to sending out an email.
+
+129
+00:09:41,160 --> 00:09:43,470
+The code in here can work behind the scenes.
+
+130
+00:09:43,890 --> 00:09:47,550
+Filter hooks, on the other hand, must filter data or modify it.
+
+131
+00:09:48,030 --> 00:09:51,830
+If you don't return anything, then you can end up breaking WordPress.
+
+132
+00:09:52,140 --> 00:09:53,250
+Think of it like this.
+
+133
+00:09:53,400 --> 00:09:58,350
+If you need to modify text or data before it's used, then you should use filter hooks.
+
+134
+00:09:58,530 --> 00:10:04,920
+If you need to perform custom actions, then use action hooks and the next lecture will take a look
+
+135
+00:10:04,920 --> 00:10:09,120
+at how to create our own custom hooks and prioritising hooks.
+
+136
+00:10:09,450 --> 00:10:12,840
+By doing this, we'll see how hooks work more in-depth.
+

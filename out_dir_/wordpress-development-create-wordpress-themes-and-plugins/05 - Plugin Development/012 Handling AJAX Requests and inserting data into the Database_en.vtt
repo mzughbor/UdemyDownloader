@@ -1,0 +1,421 @@
+WEBVTT
+
+00:07.540 --> 00:12.680
+I forgot to mention previously that WordPress will output zero if you don't kill the script.
+
+00:13.120 --> 00:20.980
+If I were to open the WP dash admin, slash admin dash AIJAC stop file and scroll down to the bottom,
+
+00:21.160 --> 00:26.470
+there will be this conditional statement that checks if the user is logged in, if the user is logged
+
+00:26.470 --> 00:28.750
+in, it'll use the normal Ajax function.
+
+00:29.020 --> 00:32.620
+Otherwise it'll perform the non privileged Ajax function.
+
+00:33.340 --> 00:36.950
+The very last line here kills the script with the output zero.
+
+00:37.210 --> 00:41.980
+So keep in mind that you're more than save to kill the script and your function and most of the time
+
+00:41.980 --> 00:45.910
+you'll want to do so will be working inside the Ajax function.
+
+00:45.910 --> 00:52.060
+Throughout most of this lecture, I'm going to include the global WP DB object so we can insert the
+
+00:52.060 --> 00:53.380
+rating into the database.
+
+00:55.740 --> 01:02.790
+Next, I'm going to process the post array and create two separate variables named post ID and rating,
+
+01:02.790 --> 01:05.580
+which will be set to the corresponding post values.
+
+01:14.590 --> 01:20.080
+I'm going to process the ID through the function abb's it, which will return an absolute integer.
+
+01:20.590 --> 01:23.530
+The rating will be processed through the round function.
+
+01:25.770 --> 01:31.350
+This function will round the rating, set the precision to one, since we don't want anything deeper
+
+01:31.350 --> 01:35.310
+than a tenth of a value, will also need the user's IP.
+
+01:35.580 --> 01:40.500
+There are a lot of ways we can do this, and it's up to the developers decide how to get the IP.
+
+01:40.920 --> 01:45.450
+WordPress does not provide any functions for getting the IP for this lecture.
+
+01:45.480 --> 01:50.940
+I'm going to grab the IP from the remote ADR of server variable.
+
+01:53.250 --> 01:58.830
+It's not the best way because there are other keys in this array that contain IP addresses, but it'll
+
+01:58.830 --> 02:03.830
+do for our purposes, the last variable I want to create is one for the response.
+
+02:04.170 --> 02:08.280
+This will be an array with a key of status and its value will be one.
+
+02:10.550 --> 02:16.400
+You'll see what this value is for in a moment, this step is optional, but I want to show you how to
+
+02:16.400 --> 02:17.510
+handle responses.
+
+02:17.790 --> 02:20.820
+The next step is to insert the data into the database.
+
+02:21.440 --> 02:24.810
+Let's take a look at the DBS documentation.
+
+02:25.160 --> 02:27.460
+This object has a method called insert.
+
+02:27.710 --> 02:28.820
+Let's take a look at that.
+
+02:29.060 --> 02:34.790
+As you can see, WordPress provides all the information on how to use this method along with an example.
+
+02:35.210 --> 02:36.360
+Let's use this method.
+
+02:36.380 --> 02:40.070
+Now, I'm going to call this function right after our variables.
+
+02:44.940 --> 02:50.640
+The first parameter of this method is the name of the table we want to insert data into, just like
+
+02:50.640 --> 02:56.630
+last time will be using the prefix property to get the prefix of the current WordPress installation.
+
+02:57.150 --> 02:59.760
+The name of the table is recipe ratings.
+
+03:02.070 --> 03:08.790
+The second parameter is an array with the keys as the column names and the value as the value to insert
+
+03:09.300 --> 03:15.870
+our table has three columns, we should set the recipe ID rating and user EPEAT.
+
+03:23.460 --> 03:29.040
+Your array should look something like mine, the third parameter is optional, but you should always
+
+03:29.040 --> 03:30.700
+use it for security purposes.
+
+03:31.080 --> 03:34.980
+The third parameter allows you to filter each value by data type.
+
+03:35.370 --> 03:38.310
+For example, the ID will always be an integer.
+
+03:38.640 --> 03:40.380
+We don't want a string or a boolean.
+
+03:40.440 --> 03:43.550
+We want an integer pass in an array.
+
+03:43.800 --> 03:45.850
+You will have to pass in a certain format.
+
+03:46.110 --> 03:50.730
+There are three formats we can use string integer and float.
+
+03:51.120 --> 03:54.030
+The format for string is %s s.
+
+03:54.240 --> 03:59.010
+The format for integer is percent d the format for float is percent.
+
+03:59.010 --> 04:04.260
+F float, by the way, is just a fancy word for numbers with decimal values.
+
+04:04.890 --> 04:07.560
+We'll be using all three of these for our query.
+
+04:07.890 --> 04:13.050
+Since the first value we insert is an integer, we're going to use percent D for that value.
+
+04:13.440 --> 04:18.120
+The second value should be percent F and the third value should be percent s.
+
+04:18.720 --> 04:20.790
+We're almost done after the insert.
+
+04:20.790 --> 04:24.840
+I want to update the status key of the output variable to two.
+
+04:27.380 --> 04:32.360
+One will be if the insert was a failure, two will mean it was a success.
+
+04:32.660 --> 04:35.480
+I want to send this variable back as the response.
+
+04:35.720 --> 04:41.210
+WordPress provides a function specifically for this task called the WP.
+
+04:41.210 --> 04:44.630
+Send Jason function and pass it in the output variable.
+
+04:46.910 --> 04:52.490
+This function, will Jason encode the array and then kill the script, you can think of it as a sugar
+
+04:52.490 --> 04:52.970
+function.
+
+04:53.300 --> 04:55.380
+This is perfect for Ajax requests.
+
+04:55.700 --> 04:59.300
+It'll also take the time to send the response as a Jason type.
+
+04:59.300 --> 05:03.460
+So jiggering knows to process the body and let you use the data as an object.
+
+05:04.100 --> 05:05.840
+Try reading the recipe now.
+
+05:07.920 --> 05:13.800
+If you check the developer tools, then you should see the response to an object with the status properties
+
+05:13.800 --> 05:19.560
+set as to you should also check the table in the database to make sure the data was inserted correctly.
+
+05:21.770 --> 05:27.590
+If you refresh the page and try reading the recipe again, you'll find another insert, we don't want
+
+05:27.590 --> 05:28.060
+this.
+
+05:28.070 --> 05:30.260
+Let's delete that second insert.
+
+05:31.010 --> 05:37.460
+Let's fix this by checking if the user already rated the recipe or this will be using a custom sequel
+
+05:37.460 --> 05:38.840
+query rather than a method.
+
+05:39.200 --> 05:42.350
+We could have inserted our data without the insert method.
+
+05:42.440 --> 05:49.310
+But the insert method provides extra security and sanitation, create a variable called rating count,
+
+05:49.310 --> 05:55.310
+and the value will be set to the value returned by the giver method of a WP object.
+
+06:00.390 --> 06:06.840
+The documentation tells us that this method will return a single value from a sequel Curreri, the sequel
+
+06:06.840 --> 06:11.520
+query we're about to make will count the number of rows from the recipe ratings table.
+
+06:11.880 --> 06:22.710
+Here is the query select count star from WP Prefix recipe ratings where recipe ID equals post ID and
+
+06:22.710 --> 06:25.080
+user IP equals user IP.
+
+06:34.690 --> 06:41.290
+We also need to specify the recipe ID and the IP of the user so we don't get any generic results.
+
+06:41.710 --> 06:48.140
+If we do end up finding some rows, this variable will be set to the amount of rows found next.
+
+06:48.160 --> 06:51.760
+I'm just going to check if RO count is greater than zero.
+
+06:52.060 --> 06:58.360
+If it is, I'm going to call the WP, send JSON function and pass in the output variable again.
+
+07:03.300 --> 07:10.110
+Let's try reading the recipe again, you should see the response object with the status of one, check
+
+07:10.110 --> 07:15.360
+your database as well to make sure no rows were inserted to recap what's going on.
+
+07:15.360 --> 07:20.340
+When the user clicks on the rating for the first time, the function will check if the user has written
+
+07:20.340 --> 07:24.120
+this recipe before, if they haven't, it will insert the rating.
+
+07:24.510 --> 07:29.910
+If the user is able to rate the recipe a second time, then the function will make the same check and
+
+07:29.910 --> 07:32.420
+if there already is a rating, it'll end immediately.
+
+07:33.060 --> 07:37.290
+There are two possible results, which is the status being one or two.
+
+07:37.860 --> 07:40.430
+Looks like we're finished with processing the results.
+
+07:40.830 --> 07:46.110
+The next thing we'll need to do is check for the rating on a page, refresh and average out all the
+
+07:46.110 --> 07:46.680
+ratings.
+
+07:46.920 --> 07:49.740
+The post metadata needs to be updated as well.
+
+07:50.190 --> 07:51.410
+Before you get started.
+
+07:51.420 --> 07:53.400
+Empty the recipe rating table.
+
+07:53.670 --> 07:55.020
+We're going to start fresh.
+
+07:57.310 --> 08:03.110
+Let's get started with averaging the rating first inside the orate recipe function.
+
+08:03.130 --> 08:06.060
+I'm going to add the code right after the database insert.
+
+08:06.460 --> 08:10.450
+Let's grab the metadata first by calling the get post meta function.
+
+08:17.950 --> 08:22.900
+There are two properties we want to update, the first property is the rating count.
+
+08:25.100 --> 08:30.920
+This will contain the number of raiding this recipe has had so far, all we need to do is increment
+
+08:30.920 --> 08:32.600
+this with the double plus sign.
+
+08:33.230 --> 08:35.330
+Next, we need to average the rating.
+
+08:35.540 --> 08:38.030
+We can use the VA method for this.
+
+08:38.270 --> 08:40.760
+Let's use the same query we used last time.
+
+08:41.090 --> 08:43.670
+This time we don't need to check for the IP.
+
+08:51.300 --> 08:54.240
+Instead of count, change this to Avijit.
+
+08:56.470 --> 09:02.380
+This is a Miskell function that will calculate the average of a specific column, the column we want
+
+09:02.380 --> 09:03.970
+to average out is rating.
+
+09:04.570 --> 09:06.520
+This query will return the average.
+
+09:06.670 --> 09:10.990
+I'm going to wrap this query with the round function and set its precision to one.
+
+09:13.460 --> 09:19.850
+I don't want a long decimal number, that's basically it, all we have to do now is update this post
+
+09:19.880 --> 09:23.330
+metadata using the update, post meta function like so.
+
+09:29.940 --> 09:33.600
+I'm going to add some comments so that it's easier to read our code.
+
+09:40.480 --> 09:45.580
+The next step is to display the average rating to the user and prevent them from rating again, if they
+
+09:45.600 --> 09:52.960
+already rated the recipe inside the template and the attribute data dash rate it dash value and set
+
+09:52.960 --> 09:54.850
+its value to a string placeholder.
+
+09:55.270 --> 09:58.810
+I'm also going to add a placeholder for the read-only property.
+
+10:05.650 --> 10:11.380
+Open the filter function file and replace the rating placeholder with the actual rating.
+
+10:19.380 --> 10:24.930
+For the Read-Only property, we're going to borrow the code from the rating function, specifically
+
+10:24.930 --> 10:26.910
+the rating account variables.
+
+10:36.060 --> 10:41.800
+We need to add the WP DB global variable so that we can use the get bar method.
+
+10:42.270 --> 10:48.720
+We also need to replace the ID in the query with the post object and access the ID property.
+
+10:50.950 --> 10:57.440
+Now we can simply use a conditional statement and act accordingly, if the user already rated the recipe,
+
+10:57.460 --> 11:04.300
+then we'll change the read only placeholder to the data dash rated dash read only attribute and set
+
+11:04.300 --> 11:04.890
+it to true.
+
+11:05.290 --> 11:09.160
+Otherwise, we'll just replace the placeholder with an empty shrink.
+
+11:09.610 --> 11:15.150
+The read only property is set to false by default, so we don't need to set it ourselves.
+
+11:29.640 --> 11:34.870
+Rate your recipe to five stars, refresh the page and you should see your rating still there.
+
+11:35.280 --> 11:38.340
+You also shouldn't be able to rate this recipe again.
+
+11:39.090 --> 11:41.770
+I'm going to do something you usually shouldn't do.
+
+11:42.180 --> 11:47.970
+I'm going to go back to the ratings table and I'm going to change the IP of our rating to a random number.
+
+11:50.210 --> 11:55.400
+I want to test out the average Joe, I will now be able to rate the recipe again.
+
+11:55.730 --> 12:01.850
+This time I'm going to rate it a three hour refresh the page one last time, and we should have an average
+
+12:01.850 --> 12:04.140
+rating before we're finished.
+
+12:04.340 --> 12:06.070
+Congrats at this point.
+
+12:06.110 --> 12:08.990
+We're done with the rating system and the single post.
+
+12:09.290 --> 12:15.080
+I'm going to give you a challenge, try and figure out a way so that our plugin allows for users to
+
+12:15.080 --> 12:18.880
+change their rating for a recipe and update the rating accordingly.
+
+12:19.370 --> 12:22.010
+You will also need to update the average as well.
+
+12:22.760 --> 12:25.100
+You have the knowledge to handle this challenge.
+
+12:25.280 --> 12:25.940
+Good luck.

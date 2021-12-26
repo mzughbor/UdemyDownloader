@@ -1,0 +1,208 @@
+1
+00:00:07,270 --> 00:00:12,180
+We're almost done with Buddy Press, the last thing we want to do is learn how to make some customer
+
+2
+00:00:12,190 --> 00:00:13,350
+success changes.
+
+3
+00:00:13,600 --> 00:00:15,220
+It's simpler than you may think.
+
+4
+00:00:15,460 --> 00:00:20,410
+Inside the Buddy Press Default Nouveau template, you'll find a folder called CSX.
+
+5
+00:00:21,040 --> 00:00:25,120
+Buddy Press will look for a folder named CSX inside your theme's folder.
+
+6
+00:00:25,360 --> 00:00:30,910
+If it's available, then it will look for a file named Buddy Press Access and automatically load it
+
+7
+00:00:30,910 --> 00:00:31,330
+for you.
+
+8
+00:00:31,720 --> 00:00:36,760
+I'm going to copy the entire access folder and paste it into our team's folder like so.
+
+9
+00:00:39,530 --> 00:00:46,580
+To verify that this is working, I'm going to open the buddy press Dominique's file, I'm going to select
+
+10
+00:00:46,580 --> 00:00:50,510
+the Buddy Press ID and apply a random background color change.
+
+11
+00:00:54,220 --> 00:00:58,270
+Refresh the page after doing so, you should see the changes applied.
+
+12
+00:00:58,570 --> 00:01:04,099
+This shows that Buddy Press is now loading the stylesheets from our theme rather than its default stylings.
+
+13
+00:01:04,660 --> 00:01:06,910
+I'm going to remove the code we just added.
+
+14
+00:01:07,210 --> 00:01:11,940
+Now that we verified the case file was being loaded, we can now make some changes.
+
+15
+00:01:12,160 --> 00:01:15,490
+You're free to modify this Cyesis file any way you like.
+
+16
+00:01:15,700 --> 00:01:17,060
+It is as simple as that.
+
+17
+00:01:17,470 --> 00:01:22,450
+The only unfortunate part is that you need to name these files a certain way and they must be placed
+
+18
+00:01:22,450 --> 00:01:24,450
+inside a folder called success.
+
+19
+00:01:24,790 --> 00:01:27,370
+Other than that, everything else is customizable.
+
+20
+00:01:27,940 --> 00:01:30,580
+So that does it for the buddy press development.
+
+21
+00:01:30,580 --> 00:01:33,430
+Part of this course, there isn't much to it, honestly.
+
+22
+00:01:33,670 --> 00:01:39,040
+You'll end up doing one of three things you may want to modify the templates html.
+
+23
+00:01:39,310 --> 00:01:40,870
+You now know how to do that.
+
+24
+00:01:41,140 --> 00:01:47,140
+You just study the HTML or read the template hierarchy and add that file to your theme and their respective
+
+25
+00:01:47,140 --> 00:01:47,740
+directory.
+
+26
+00:01:48,140 --> 00:01:50,880
+Afterwards, you can make the changes you'd like to see.
+
+27
+00:01:51,610 --> 00:01:54,310
+You may want to hook into certain parts of Buddy Press.
+
+28
+00:01:54,460 --> 00:01:59,980
+It's as simple as looking for the do action function inside the templates and using that hook to output
+
+29
+00:01:59,980 --> 00:02:00,970
+some HTML.
+
+30
+00:02:00,970 --> 00:02:06,490
+In case you don't want to modify the template directly, the last thing you may want to do is make some
+
+31
+00:02:06,490 --> 00:02:07,630
+Cyesis changes.
+
+32
+00:02:07,840 --> 00:02:11,500
+And that's as simple as creating the Buddy Press Access file.
+
+33
+00:02:12,370 --> 00:02:17,710
+Before I wrap up this lecture and move on to the next thing you may be concerned about drastic changes
+
+34
+00:02:17,710 --> 00:02:18,580
+to Buddy Press.
+
+35
+00:02:18,910 --> 00:02:22,720
+Luckily, Buddy Press will always inform you about template changes.
+
+36
+00:02:22,900 --> 00:02:27,970
+If your theme supports Buddy Press, it's always best to keep up with the latest updates and to read
+
+37
+00:02:27,970 --> 00:02:29,800
+about them when they do release notes.
+
+38
+00:02:30,490 --> 00:02:36,430
+However, if for some reason you miss an email, you can always go to the Buddy Press theme development
+
+39
+00:02:36,430 --> 00:02:37,720
+documentation page.
+
+40
+00:02:38,020 --> 00:02:42,970
+On the sidebar, you'll find a list called Template Updates, followed by the version No.
+
+41
+00:02:43,270 --> 00:02:45,280
+I'm going to click on two point seven.
+
+42
+00:02:45,640 --> 00:02:51,010
+You'll be shown a list of changes made to their templates if you made a change to any of these templates,
+
+43
+00:02:51,130 --> 00:02:54,550
+then you just have to read through this and apply the changes manually.
+
+44
+00:02:55,210 --> 00:02:59,260
+This is the benefit of only copying the templates you use into your theme.
+
+45
+00:02:59,590 --> 00:03:05,050
+If you were to copy the entire directory into your theme, then you would end up having to apply every
+
+46
+00:03:05,050 --> 00:03:06,850
+single change documented here.
+
+47
+00:03:07,300 --> 00:03:12,280
+This is why I highly recommend you only override the templates you actually want to make changes.
+
+48
+00:03:12,280 --> 00:03:17,950
+You also, as you can see here, there is a lot of code and changes you'd have to make.
+
+49
+00:03:18,250 --> 00:03:20,680
+It's almost an entire night's worth of code here.
+
+50
+00:03:21,100 --> 00:03:21,580
+All right.
+
+51
+00:03:21,760 --> 00:03:23,200
+That does it for Buddy Press.
+
+52
+00:03:23,350 --> 00:03:27,910
+In the next couple of lectures, we're going to begin working on new commerce development.
+

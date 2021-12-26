@@ -1,0 +1,240 @@
+1
+00:00:07,420 --> 00:00:13,420
+There are only two sections left inside the single template that are static, those two sections are
+
+2
+00:00:13,420 --> 00:00:16,490
+the author info box and the related post section.
+
+3
+00:00:16,900 --> 00:00:18,660
+Let's tackle the author box first.
+
+4
+00:00:18,880 --> 00:00:22,060
+This lecture will be rather short to start things off.
+
+5
+00:00:22,240 --> 00:00:27,190
+I'm going to replace the name with the author function, which will output the name of the author.
+
+6
+00:00:29,570 --> 00:00:35,720
+For the euro, we can simply echo the variable offer euro, which already contains the URL to the author
+
+7
+00:00:35,720 --> 00:00:36,290
+profile.
+
+8
+00:00:38,570 --> 00:00:39,780
+Nothing really new so far.
+
+9
+00:00:40,010 --> 00:00:45,700
+I'm going to save the image for last, let's skip onto the author description, which is fairly simple.
+
+10
+00:00:46,010 --> 00:00:51,980
+We're going to echo out the function, get the author meta, which will grab a specific value that we
+
+11
+00:00:51,980 --> 00:00:52,580
+can decide.
+
+12
+00:00:54,880 --> 00:01:01,480
+In the resource section, I provided a link to the author meta function, as I stated earlier, WordPress
+
+13
+00:01:01,480 --> 00:01:04,090
+has a tendency to name their functions like this.
+
+14
+00:01:04,510 --> 00:01:09,670
+The get version returns the value, while the non get version will echo out the value.
+
+15
+00:01:10,390 --> 00:01:13,840
+The reason we want the value returned is because we want to format it.
+
+16
+00:01:14,260 --> 00:01:16,140
+I'll show you what I mean in just a moment.
+
+17
+00:01:16,450 --> 00:01:19,180
+Let's look at the possible values we can pass in.
+
+18
+00:01:19,570 --> 00:01:24,660
+If you look through this list, you'll eventually find something along the lines of description.
+
+19
+00:01:25,090 --> 00:01:26,800
+This is exactly what we want.
+
+20
+00:01:26,800 --> 00:01:28,270
+So I'll put that now.
+
+21
+00:01:30,680 --> 00:01:33,540
+Make sure this is echoed out onto the page.
+
+22
+00:01:33,950 --> 00:01:37,650
+I'm going to refresh the page and we get exactly what we wanted.
+
+23
+00:01:38,090 --> 00:01:41,570
+If you don't see description, then chances are the user doesn't have one.
+
+24
+00:01:41,900 --> 00:01:47,060
+And that case go to the admin dashboard and update the users via the user.
+
+25
+00:01:47,060 --> 00:01:49,240
+BIOS doesn't exactly have a limit.
+
+26
+00:01:49,550 --> 00:01:53,000
+If the user had a long bio, then this box can become unreadable.
+
+27
+00:01:53,300 --> 00:01:55,630
+The best way to approach this is to format it.
+
+28
+00:01:56,330 --> 00:02:00,530
+I'm going to wrap my function with another function called Nele Toubab.
+
+29
+00:02:02,790 --> 00:02:10,680
+This is a specific function that will convert new lines to B-R HTML tags, refresh the page one more
+
+30
+00:02:10,680 --> 00:02:13,630
+time and you should see the description neatly formatted.
+
+31
+00:02:14,370 --> 00:02:15,030
+This is great.
+
+32
+00:02:15,450 --> 00:02:21,750
+Now, you may be wondering why are we using the get version instead of the non get version of this function?
+
+33
+00:02:22,110 --> 00:02:23,400
+Well, it's quite simple.
+
+34
+00:02:23,640 --> 00:02:27,570
+A value that is echoed out cannot be manipulated easily.
+
+35
+00:02:27,900 --> 00:02:32,670
+When you want to make modifications to a value, then you'll want to call a function that returns a
+
+36
+00:02:32,670 --> 00:02:34,080
+value rather than output it.
+
+37
+00:02:34,500 --> 00:02:37,940
+This is specific to AP in general and not WordPress.
+
+38
+00:02:38,580 --> 00:02:43,230
+There is a way to grab values that are already echoed out, but we'll take a look into that later.
+
+39
+00:02:43,620 --> 00:02:47,160
+The very last thing to do is to display the user's avatar.
+
+40
+00:02:47,700 --> 00:02:49,050
+This is easy to pull off.
+
+41
+00:02:49,170 --> 00:02:52,650
+It's done by echoing out the get avatar function.
+
+42
+00:02:54,820 --> 00:02:55,790
+This is nothing new.
+
+43
+00:02:55,900 --> 00:03:02,260
+You've used it before when we worked on comets, unlike last time, we'll be using all the parameters
+
+44
+00:03:02,260 --> 00:03:08,530
+as I want to apply a class to this avatar and the resource section, I provide a link to this function.
+
+45
+00:03:09,280 --> 00:03:14,290
+The very first thing we have to pass in is an ID e-mail or a comment object.
+
+46
+00:03:14,630 --> 00:03:16,570
+Any of these three are perfectly fine.
+
+47
+00:03:16,990 --> 00:03:20,440
+We already have the authority so we can just pass that in like.
+
+48
+00:03:20,440 --> 00:03:28,990
+So the second parameter is the size I'm going to pass in the third parameter is the Eurail to a default
+
+49
+00:03:28,990 --> 00:03:29,890
+avatar image.
+
+50
+00:03:29,890 --> 00:03:34,540
+If one isn't available, WordPress already provides one that's just fine with us.
+
+51
+00:03:34,540 --> 00:03:36,310
+So you can pass in an empty string.
+
+52
+00:03:36,550 --> 00:03:40,440
+The fourth parameter is the text to display in the AWALT attribute.
+
+53
+00:03:40,780 --> 00:03:44,710
+I'm going to set this as false since I don't care much for that attribute.
+
+54
+00:03:45,490 --> 00:03:50,140
+The final parameter is an array of other values we can set which are completely optional.
+
+55
+00:03:50,410 --> 00:03:57,190
+I'm going to pass an array with a key of class and its value will be IMG Dasch Circle, which will make
+
+56
+00:03:57,190 --> 00:03:58,450
+the Avatar circular.
+
+57
+00:04:00,600 --> 00:04:01,180
+That's it.
+
+58
+00:04:01,470 --> 00:04:03,900
+Refresh the page and see if everything works.
+
+59
+00:04:03,960 --> 00:04:04,690
+We're almost done.
+
+60
+00:04:05,130 --> 00:04:08,250
+The very last thing is this related post section.
+

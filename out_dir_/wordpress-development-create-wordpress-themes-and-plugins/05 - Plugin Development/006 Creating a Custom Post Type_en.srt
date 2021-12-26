@@ -1,0 +1,560 @@
+1
+00:00:07,470 --> 00:00:09,970
+WordPress sites are great at holding content.
+
+2
+00:00:10,350 --> 00:00:15,160
+Got some words and pictures you want to show to the world, WordPress is a great tool for that job.
+
+3
+00:00:15,480 --> 00:00:19,470
+I'd even argue that in at least some capacities, it's clearly the best for it.
+
+4
+00:00:20,070 --> 00:00:24,360
+In some situations, you'll find yourself wanting to display different types of content.
+
+5
+00:00:24,750 --> 00:00:30,470
+WordPress only provides you with two types of content you can create, which are posts and pages.
+
+6
+00:00:30,900 --> 00:00:35,610
+It is possible to work with these two default content types, but it can be a hassle.
+
+7
+00:00:36,360 --> 00:00:41,820
+For example, let's say you wanted to create a post for a recipe for recipe posts.
+
+8
+00:00:42,000 --> 00:00:49,560
+You may want to display orating ingredients, time required, etc. with just the default content types,
+
+9
+00:00:49,560 --> 00:00:54,810
+you would have to constantly format each post and even keep track which posts or recipes.
+
+10
+00:00:55,470 --> 00:01:01,290
+Even if you mangled a default post type to serve the purpose, the concept just doesn't fit well.
+
+11
+00:01:01,710 --> 00:01:06,300
+Wouldn't it be great if we could separate regular posts and recipe posts?
+
+12
+00:01:06,650 --> 00:01:09,570
+That's completely possible with custom post types.
+
+13
+00:01:10,290 --> 00:01:14,600
+WordPress is all about creating content and making it easy to do so.
+
+14
+00:01:14,940 --> 00:01:19,850
+With that said, there are various kinds of content and WordPress can't account for all of it.
+
+15
+00:01:20,430 --> 00:01:23,190
+We want the recipe plug in to have its own pages.
+
+16
+00:01:23,310 --> 00:01:28,770
+We want to take advantage of the categories and tags and all the editors that come with posts.
+
+17
+00:01:28,770 --> 00:01:33,600
+But on its own page, it would be quite cumbersome to have to set this all up.
+
+18
+00:01:33,690 --> 00:01:36,690
+But WordPress provides an easy way to do this.
+
+19
+00:01:38,710 --> 00:01:45,190
+And the resource section, I provide a link to the post type's Codex page, by default, WordPress provides
+
+20
+00:01:45,190 --> 00:01:50,500
+five post types which are post page attachment revision and menu.
+
+21
+00:01:51,010 --> 00:01:53,950
+We are allowed to create our own or extend these.
+
+22
+00:01:54,640 --> 00:01:58,690
+Let's create a custom post type inside the main plug file.
+
+23
+00:01:58,780 --> 00:02:01,330
+We're going to add an action hook called in it.
+
+24
+00:02:03,480 --> 00:02:08,479
+This hook is triggered when WordPress begins to initialize the data required for the current page,
+
+25
+00:02:08,880 --> 00:02:11,250
+this hook should be used to help set up your plugin.
+
+26
+00:02:12,000 --> 00:02:14,940
+The function we want to call is a recipe in it.
+
+27
+00:02:15,360 --> 00:02:17,630
+This is where we should set up our custom post type.
+
+28
+00:02:18,150 --> 00:02:24,490
+Let's create a file called Init inside the includes folder and define the function here.
+
+29
+00:02:24,930 --> 00:02:27,090
+Make sure to include it from your plugin file.
+
+30
+00:02:30,420 --> 00:02:37,290
+In the resource section, you'll find a link to the register post type function, this function is extensively
+
+31
+00:02:37,290 --> 00:02:40,440
+documented, so I suggest you take some time to read it.
+
+32
+00:02:40,440 --> 00:02:45,170
+After this lecture is over, go down to the user contributed notes section.
+
+33
+00:02:45,600 --> 00:02:49,410
+We're going to copy and paste this bit of code into the Init function.
+
+34
+00:02:53,420 --> 00:02:54,920
+Let's go over what this does.
+
+35
+00:02:55,220 --> 00:03:01,610
+First up, we have this labels arrayed, all these values are actually just pieces of text that will
+
+36
+00:03:01,610 --> 00:03:03,300
+appear throughout the custom post type.
+
+37
+00:03:03,650 --> 00:03:05,660
+Most of them are self-explanatory.
+
+38
+00:03:06,020 --> 00:03:10,070
+You can refer to the documentation to learn more about where these labels will appear.
+
+39
+00:03:10,880 --> 00:03:14,050
+You'll also notice that each label is translated.
+
+40
+00:03:14,480 --> 00:03:17,870
+There's a new translation function called Underscore X.
+
+41
+00:03:18,260 --> 00:03:23,240
+This function is the same as the double underscore function, except the second parameter allows you
+
+42
+00:03:23,240 --> 00:03:24,370
+to add a context.
+
+43
+00:03:24,710 --> 00:03:29,150
+This is useful for when you have two words that are the same, but they have different meanings in the
+
+44
+00:03:29,150 --> 00:03:30,200
+current translation.
+
+45
+00:03:30,960 --> 00:03:35,870
+For example, the word BAS is spelled the same, but there are two meanings.
+
+46
+00:03:36,110 --> 00:03:39,370
+It can either mean the fish bass or the instrument base.
+
+47
+00:03:39,740 --> 00:03:45,260
+Therefore, the underscore X function can be useful to let the translator know about the various meanings
+
+48
+00:03:45,380 --> 00:03:48,320
+and what the word currently being translated means.
+
+49
+00:03:48,710 --> 00:03:51,590
+It doesn't really do anything for the plugin itself.
+
+50
+00:03:51,620 --> 00:03:53,330
+It's just helpful for the translator.
+
+51
+00:03:54,230 --> 00:03:59,120
+Let's change the text domain for each of these functions to our text domain, which is recipe.
+
+52
+00:04:08,050 --> 00:04:13,840
+Next, I want you to change each text value to a recipe instead of books like soap.
+
+53
+00:04:18,610 --> 00:04:24,520
+WordPress will take care of placing these labels in the appropriate spot, even though it's not necessary.
+
+54
+00:04:24,610 --> 00:04:27,580
+I'm going to leave the underscore X function alone.
+
+55
+00:04:28,120 --> 00:04:32,970
+We are allowed to change these to the double underscore function, but that's not necessary.
+
+56
+00:04:33,350 --> 00:04:38,380
+And there's not much difference between these two besides the context parameter I mentioned earlier.
+
+57
+00:04:39,160 --> 00:04:41,020
+Next up is the arguments.
+
+58
+00:04:41,800 --> 00:04:44,960
+This will contain a list of settings for the custom post site.
+
+59
+00:04:45,490 --> 00:04:47,530
+The first one is the label's key.
+
+60
+00:04:47,920 --> 00:04:51,220
+This will be set to the labels array we created previously.
+
+61
+00:04:51,820 --> 00:04:53,510
+Next up is the description.
+
+62
+00:04:53,890 --> 00:04:55,690
+This wasn't provided with the example.
+
+63
+00:04:55,720 --> 00:04:58,330
+So I'm going to add it in right after the labels.
+
+64
+00:04:58,690 --> 00:05:01,720
+This is just a simple description about the custom post type.
+
+65
+00:05:02,110 --> 00:05:06,100
+I'm going to set this to a custom post type for recipe's.
+
+66
+00:05:08,310 --> 00:05:14,130
+The public value is whether or not the content generated from this post type is available globally throughout
+
+67
+00:05:14,130 --> 00:05:19,080
+the site, set this to true, since we want it to be public publicly.
+
+68
+00:05:19,080 --> 00:05:23,480
+Querido asks if this post can be used in your URL to query.
+
+69
+00:05:23,910 --> 00:05:25,520
+This should also be true.
+
+70
+00:05:26,430 --> 00:05:30,480
+Show UI asks if WordPress should generate a UI for you.
+
+71
+00:05:30,840 --> 00:05:31,920
+Set this to true.
+
+72
+00:05:31,920 --> 00:05:34,890
+As we do want WordPress to generate the UI for us.
+
+73
+00:05:35,220 --> 00:05:37,950
+We will later extend this UI to suit our needs.
+
+74
+00:05:38,670 --> 00:05:44,220
+Show in menu asks us if this post type should appear in the menu of the admin dashboard.
+
+75
+00:05:44,460 --> 00:05:46,950
+Set this to true query.
+
+76
+00:05:46,950 --> 00:05:53,270
+VAR works hand in hand with publicly query able to help with adding the post type to query var array.
+
+77
+00:05:53,760 --> 00:05:55,460
+This value should be true.
+
+78
+00:05:56,160 --> 00:06:00,490
+Rewrite allows us to customize the URL for our custom post type.
+
+79
+00:06:00,810 --> 00:06:05,020
+This accepts in an array, but we only want to change the slug.
+
+80
+00:06:05,250 --> 00:06:06,930
+Let's set this to recipe.
+
+81
+00:06:09,130 --> 00:06:15,370
+You'll see what this looks like when we create a recipe, the capability type is a special setting and
+
+82
+00:06:15,370 --> 00:06:21,760
+allows you to define how this post type is handled by users, for example, who gets to publish recipes
+
+83
+00:06:21,760 --> 00:06:24,440
+and who gets to review other recipes, et cetera.
+
+84
+00:06:24,850 --> 00:06:27,480
+There are two ways we can go about setting this value.
+
+85
+00:06:27,790 --> 00:06:34,180
+We can create an array with all the permissions or we can just put in post by setting it to post.
+
+86
+00:06:34,210 --> 00:06:38,020
+You're telling WordPress to set up the permissions for you WordPress.
+
+87
+00:06:38,020 --> 00:06:41,260
+We use the same permissions it uses for its other post types.
+
+88
+00:06:41,740 --> 00:06:45,790
+This means that contributors can create recipes but can't publish.
+
+89
+00:06:46,150 --> 00:06:49,790
+Editors can modify recipes and unpublished them as well.
+
+90
+00:06:50,340 --> 00:06:53,230
+Basically, this takes care of permissions and such.
+
+91
+00:06:53,770 --> 00:06:58,730
+Moving on, the HAS Archive asks if our post type will have an archive.
+
+92
+00:06:59,050 --> 00:07:06,070
+Let's leave this as true hierarchical asks if our plugin allows for recipes to have parent recipes and
+
+93
+00:07:06,070 --> 00:07:07,180
+so on and so forth.
+
+94
+00:07:07,550 --> 00:07:12,180
+In our case, it doesn't make much sense for a recipe to be built on top of another.
+
+95
+00:07:12,190 --> 00:07:15,430
+So we're going to leave this as false menu.
+
+96
+00:07:15,430 --> 00:07:17,970
+Position is the location of the menu item.
+
+97
+00:07:18,310 --> 00:07:20,170
+I'm going to change this to 20.
+
+98
+00:07:20,410 --> 00:07:22,720
+This value should be experimental for you.
+
+99
+00:07:22,960 --> 00:07:28,060
+If you believe that your custom post types should be placed at the top, then you should set this to
+
+100
+00:07:28,060 --> 00:07:28,420
+one.
+
+101
+00:07:28,900 --> 00:07:35,050
+The lower the number, the higher it's placed on top of the menu supports is a very important value
+
+102
+00:07:35,050 --> 00:07:35,510
+to set.
+
+103
+00:07:35,920 --> 00:07:38,500
+Let's take a look at the documentation for a second.
+
+104
+00:07:43,260 --> 00:07:46,390
+This is an array of components we can add to our post type.
+
+105
+00:07:46,830 --> 00:07:47,970
+What are they exactly?
+
+106
+00:07:48,300 --> 00:07:54,480
+Well, if we take a look at a regular post, you can see we have this title field, a content editor,
+
+107
+00:07:54,630 --> 00:07:57,040
+categories, tags, et cetera.
+
+108
+00:07:57,510 --> 00:08:02,410
+We can actually use those in our post type without having to actually recreate them ourselves.
+
+109
+00:08:02,790 --> 00:08:07,970
+Here's what we want to add support for title editor, author thumbnail.
+
+110
+00:08:08,340 --> 00:08:10,920
+We don't want excerpts or comments.
+
+111
+00:08:13,190 --> 00:08:16,700
+There is one more value we want to add, and that's taxonomies.
+
+112
+00:08:18,980 --> 00:08:26,000
+Taxonomies may seem like a complex term, but it isn't taxonomies are basically just words or phrases
+
+113
+00:08:26,000 --> 00:08:27,150
+related to our posts.
+
+114
+00:08:27,380 --> 00:08:33,140
+For example, when you create tags, the WordPress search engine will search for those tags and find
+
+115
+00:08:33,140 --> 00:08:35,150
+what posts have those tags.
+
+116
+00:08:35,419 --> 00:08:37,419
+You can create your own taxonomies.
+
+117
+00:08:37,520 --> 00:08:41,150
+What we want to take advantage of WordPress is built in taxonomies.
+
+118
+00:08:41,630 --> 00:08:45,440
+In our case, we want to take advantage of categories and tags.
+
+119
+00:08:45,680 --> 00:08:50,900
+So this key value should be an array with category and post tag.
+
+120
+00:08:55,450 --> 00:09:00,820
+Before we declare this finished, there are two things we want to check for this course will be using
+
+121
+00:09:00,820 --> 00:09:03,970
+the Gutenberg editor for Maxim Compatability.
+
+122
+00:09:04,030 --> 00:09:08,900
+Gutenberg requires two settings for it to appear in the supports array.
+
+123
+00:09:08,950 --> 00:09:11,600
+We have to make sure the editor value is there.
+
+124
+00:09:12,070 --> 00:09:13,470
+We already set that earlier.
+
+125
+00:09:13,480 --> 00:09:15,310
+So that takes care of the first edit.
+
+126
+00:09:15,910 --> 00:09:16,900
+The second setting.
+
+127
+00:09:16,900 --> 00:09:18,760
+Is the show in Risky?
+
+128
+00:09:20,950 --> 00:09:26,090
+I'm going to set this to true WordPress has something called the rest API.
+
+129
+00:09:26,440 --> 00:09:31,660
+We haven't talked about that yet, but all you need to know is that the Gutenberg editor requires the
+
+130
+00:09:31,660 --> 00:09:34,300
+setting to be true in a future lecture.
+
+131
+00:09:34,360 --> 00:09:37,050
+I will go over the rest API in depth.
+
+132
+00:09:37,360 --> 00:09:39,480
+Don't worry if you don't fully understand.
+
+133
+00:09:40,210 --> 00:09:44,170
+Now, all we have to do is call the function, register, post, type.
+
+134
+00:09:44,590 --> 00:09:48,070
+The first parameter is the name of our post time, which is recipe.
+
+135
+00:09:50,510 --> 00:09:56,240
+The second parameter is all the settings for the post type, refresh the admin dashboard and you should
+
+136
+00:09:56,240 --> 00:09:58,970
+now see the recipe post being displayed.
+
+137
+00:10:01,300 --> 00:10:07,150
+Just like that, WordPress will generate all these pages for us, you can even see our labels being
+
+138
+00:10:07,150 --> 00:10:12,130
+outputted, you can create recipes and manage them easily using the WordPress UI.
+
+139
+00:10:12,460 --> 00:10:14,490
+All it took was a few lines of code.
+
+140
+00:10:14,650 --> 00:10:17,260
+We can now begin extending this post type.
+

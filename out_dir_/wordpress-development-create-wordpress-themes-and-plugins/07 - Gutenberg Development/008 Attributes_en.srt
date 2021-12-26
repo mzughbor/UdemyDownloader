@@ -1,0 +1,536 @@
+1
+00:00:07,720 --> 00:00:12,670
+The recipe block is starting to come along really great, the next step is to save the values.
+
+2
+00:00:12,880 --> 00:00:15,490
+Every block comes with something called attributes.
+
+3
+00:00:15,760 --> 00:00:19,240
+Attributes are the custom values associated with your block.
+
+4
+00:00:19,480 --> 00:00:23,140
+A few lectures ago I showed you the is selected property.
+
+5
+00:00:23,770 --> 00:00:29,000
+This property will be set to true or false, depending on if the user is editing our block.
+
+6
+00:00:29,350 --> 00:00:32,560
+This is a property that was provided and handled by WordPress.
+
+7
+00:00:32,980 --> 00:00:35,890
+We didn't have to worry about updating it or managing it.
+
+8
+00:00:36,430 --> 00:00:39,480
+Values provided by WordPress are automatically handled.
+
+9
+00:00:39,760 --> 00:00:43,980
+However, any values we create ourselves have to be managed by us.
+
+10
+00:00:44,290 --> 00:00:47,800
+These custom values are what WordPress calls attributes.
+
+11
+00:00:50,110 --> 00:00:55,660
+Right now, I'm looking at the handbook page for attributes when defining an attribute, you need to
+
+12
+00:00:55,660 --> 00:00:57,000
+specify the source.
+
+13
+00:00:57,370 --> 00:01:04,510
+If you look through the examples, you'll see there are sources for HTML, text, boolean, etc. Each
+
+14
+00:01:04,510 --> 00:01:08,140
+of these have a purpose, but the one will be using is text.
+
+15
+00:01:08,680 --> 00:01:14,680
+Here is what WordPress says about text use text to extract the inner text from Mark-Up.
+
+16
+00:01:15,170 --> 00:01:16,460
+That's some strange wording.
+
+17
+00:01:16,660 --> 00:01:19,120
+What does WordPress mean by extract?
+
+18
+00:01:19,510 --> 00:01:23,250
+Well, it's a bit difficult to explain right now without a proper example.
+
+19
+00:01:23,470 --> 00:01:26,140
+I promise I'll break down what this means soon enough.
+
+20
+00:01:26,290 --> 00:01:31,930
+But for now, just know that when creating an attribute you need to set what kind of value it'll store.
+
+21
+00:01:32,290 --> 00:01:34,900
+You need to define the source property.
+
+22
+00:01:35,500 --> 00:01:40,630
+If you want to store HTML, then you'll need to pass in HTML for our example.
+
+23
+00:01:40,630 --> 00:01:42,160
+Text will work just fine.
+
+24
+00:01:42,550 --> 00:01:46,180
+Before we move ahead with this, I want you to take note of one thing.
+
+25
+00:01:46,540 --> 00:01:52,800
+If you scroll down long enough, you'll see that WordPress provides examples in S5 and it's next.
+
+26
+00:01:53,350 --> 00:01:57,100
+It's completely possible to write this stuff without Web page in Bable.
+
+27
+00:01:57,430 --> 00:02:02,420
+We will take a look at how to do these kinds of things without web, but that will be in a future lecture.
+
+28
+00:02:03,130 --> 00:02:04,570
+Let's go back to our scripts.
+
+29
+00:02:04,810 --> 00:02:08,669
+I'm going to minimize the edit function so that it doesn't get in our way.
+
+30
+00:02:10,880 --> 00:02:14,780
+Right above it, I'm going to create a new property called Attributes.
+
+31
+00:02:16,860 --> 00:02:21,700
+This will be set to an object within this object, you need to create your custom data.
+
+32
+00:02:22,110 --> 00:02:28,890
+I'm going to create five properties called ingredients, cooking time, utensils, cooking experience
+
+33
+00:02:28,890 --> 00:02:29,820
+and meal type.
+
+34
+00:02:38,120 --> 00:02:43,350
+Each property must be set to an object, the object will contain the settings for your data.
+
+35
+00:02:43,730 --> 00:02:45,670
+We'll start with the ingredients.
+
+36
+00:02:45,860 --> 00:02:47,180
+We're going to keep it simple.
+
+37
+00:02:47,180 --> 00:02:50,600
+And just to find the source, set this to text.
+
+38
+00:02:52,940 --> 00:02:55,280
+Now, do the same for the rest of the properties.
+
+39
+00:03:00,570 --> 00:03:05,820
+We're not doing anything that would warrant any other types of data, so text will work for all of our
+
+40
+00:03:05,820 --> 00:03:06,220
+data.
+
+41
+00:03:06,660 --> 00:03:10,770
+Now that WordPress is aware of our data, the next step is to display them.
+
+42
+00:03:11,520 --> 00:03:17,400
+The data will be exposed in both the edit and save functions, but will only concern ourselves with
+
+43
+00:03:17,400 --> 00:03:18,240
+the edit function.
+
+44
+00:03:18,240 --> 00:03:23,160
+For now, open the edit function and minimize the inspector controls component.
+
+45
+00:03:23,550 --> 00:03:27,790
+Each list item in the blog component should have a placeholder for our data.
+
+46
+00:03:28,350 --> 00:03:31,110
+I'm going to format this a bit so that we can see it better.
+
+47
+00:03:36,210 --> 00:03:41,580
+We'll start with the ingredients, I'm going to replace the placeholder with a pair of curly brackets
+
+48
+00:03:41,850 --> 00:03:47,340
+inside the curly brackets, input prompts, attributes, ingredients.
+
+49
+00:03:49,420 --> 00:03:55,360
+All your attributes are stored inside the props, stored attributes object the data you want to access
+
+50
+00:03:55,360 --> 00:03:56,950
+can be accessed by its name.
+
+51
+00:03:57,160 --> 00:03:58,440
+It's pretty straightforward.
+
+52
+00:03:58,720 --> 00:04:01,020
+I'm going to now do the same for the rest.
+
+53
+00:04:01,150 --> 00:04:02,560
+I want you to do the same.
+
+54
+00:04:02,980 --> 00:04:05,890
+Be sure to format the HTML for readability.
+
+55
+00:04:14,410 --> 00:04:20,800
+Let's give things a test CD into the bloc's directory and run the commands npm run deve.
+
+56
+00:04:26,130 --> 00:04:31,710
+Next view your recipe post on the admin dashboard, you may end up seeing a message saying that the
+
+57
+00:04:31,710 --> 00:04:33,620
+block has been modified externally.
+
+58
+00:04:34,020 --> 00:04:38,070
+This is to be expected since we've made changes to the way the block works.
+
+59
+00:04:38,520 --> 00:04:44,520
+You may end up having to Rijad the Block to see the changes, paused the video and do so now if you
+
+60
+00:04:44,520 --> 00:04:45,000
+have to.
+
+61
+00:04:47,150 --> 00:04:52,410
+The block should be appearing without any errors, the placeholders have been replaced with the data.
+
+62
+00:04:52,710 --> 00:04:56,110
+However, you won't really see anything since the data is empty.
+
+63
+00:04:56,390 --> 00:05:00,980
+We also can't update it since the form fields are not connected to our attributes.
+
+64
+00:05:01,580 --> 00:05:05,600
+First, let's verify that the data is being displayed on the block itself.
+
+65
+00:05:05,900 --> 00:05:10,970
+Back inside, the editor at a property to the ingredients attribute called default.
+
+66
+00:05:18,080 --> 00:05:22,260
+The default property is used to assign a default value to an attribute.
+
+67
+00:05:22,490 --> 00:05:24,470
+I'm going to set this to test.
+
+68
+00:05:26,630 --> 00:05:29,700
+Go ahead and refresh the page if you refresh.
+
+69
+00:05:29,720 --> 00:05:31,880
+You may see the message hello up here.
+
+70
+00:05:32,280 --> 00:05:37,310
+I'll explain while this is happening in a future lecture, but you will need to delete this block and
+
+71
+00:05:37,310 --> 00:05:39,140
+add the recipe block again.
+
+72
+00:05:43,280 --> 00:05:48,890
+Every last item should be empty except for the ingredients items, it shouldn't be displaying the text
+
+73
+00:05:48,890 --> 00:05:49,470
+test.
+
+74
+00:05:49,940 --> 00:05:53,570
+This confirms the edit function is displaying the data dynamically.
+
+75
+00:05:54,080 --> 00:05:54,550
+All right.
+
+76
+00:05:54,680 --> 00:05:56,020
+Let's keep moving forward.
+
+77
+00:05:56,240 --> 00:06:01,650
+The next step is to tie the input fields to our block back inside the script.
+
+78
+00:06:01,700 --> 00:06:05,090
+I'm going to remove the default value as we won't be needing it.
+
+79
+00:06:07,330 --> 00:06:12,530
+Then let's scroll down to the inspector controls component just by looking at this.
+
+80
+00:06:12,670 --> 00:06:16,140
+What do you think will have to change to tie the data to these fields?
+
+81
+00:06:16,660 --> 00:06:21,580
+If you guessed the on change events and value attribute, then you'd be correct.
+
+82
+00:06:21,970 --> 00:06:24,130
+Right now, we're logging the new value.
+
+83
+00:06:24,400 --> 00:06:26,860
+However, we want to update the attribute.
+
+84
+00:06:27,100 --> 00:06:30,240
+This isn't handled for us inside this function.
+
+85
+00:06:30,250 --> 00:06:33,910
+I'm going to use the prompts, not set attribute function.
+
+86
+00:06:36,140 --> 00:06:42,290
+The scent attributes function will update any data in our attributes whenever the attributes are updated,
+
+87
+00:06:42,380 --> 00:06:45,810
+then any components that use the attributes will be updated as well.
+
+88
+00:06:46,160 --> 00:06:47,450
+This includes our block.
+
+89
+00:06:47,810 --> 00:06:49,850
+This function will accept an object.
+
+90
+00:06:50,120 --> 00:06:54,620
+The object must contain the properties you want to change and their new values.
+
+91
+00:06:55,140 --> 00:06:59,870
+I'm going to pass in one property called ingredients and set it to new value.
+
+92
+00:07:02,200 --> 00:07:03,230
+We're not finished yet.
+
+93
+00:07:03,520 --> 00:07:09,580
+We'll also want to update the value attribute instead of a string, we're going to replace this with
+
+94
+00:07:09,580 --> 00:07:12,850
+the props, attributes, ingredients, property.
+
+95
+00:07:15,180 --> 00:07:20,820
+The text control component will now display the value of ingredients and update it whenever a change
+
+96
+00:07:20,820 --> 00:07:21,360
+has occurred.
+
+97
+00:07:21,840 --> 00:07:25,050
+I'm now going to do the same for the rest of the text components.
+
+98
+00:07:25,440 --> 00:07:28,230
+Be sure to set each one to their respect value.
+
+99
+00:07:47,370 --> 00:07:53,520
+The process is pretty straightforward, you should have also updated the select components as the attributes
+
+100
+00:07:53,520 --> 00:07:54,580
+behave the same way.
+
+101
+00:07:55,110 --> 00:07:58,650
+There are two more things we'll need to do before we declare this complete.
+
+102
+00:07:59,160 --> 00:08:02,640
+First, the select components kind of need a default value.
+
+103
+00:08:03,390 --> 00:08:08,870
+WordPress won't give you much heat if you don't set a default value, but I recommend it as a good practice.
+
+104
+00:08:09,120 --> 00:08:15,540
+I'm going to give the cooking experience, attribute a default value of beginner and the meal type attribute
+
+105
+00:08:15,540 --> 00:08:17,400
+a default value of breakfast.
+
+106
+00:08:23,450 --> 00:08:29,150
+The second thing we'll need to do is actually optional right now, we're hard coding the functions into
+
+107
+00:08:29,150 --> 00:08:29,990
+the attributes.
+
+108
+00:08:30,200 --> 00:08:34,610
+However, you can define the functions outside of the component to make things cleaner.
+
+109
+00:08:35,390 --> 00:08:41,090
+Right above the return statement, I'm going to create a constant named update ingredients.
+
+110
+00:08:43,400 --> 00:08:47,450
+Then I'm going to copy the function and set it as the value for the constant.
+
+111
+00:08:55,210 --> 00:09:01,060
+The last step is to replace the on change event with the function itself, something I want to know
+
+112
+00:09:01,060 --> 00:09:04,000
+is that you should not add the parentheses after the name.
+
+113
+00:09:04,330 --> 00:09:07,710
+If you were to add the parentheses, then you would be calling the function.
+
+114
+00:09:08,080 --> 00:09:11,140
+We only want to show you this function when the event is triggered.
+
+115
+00:09:11,470 --> 00:09:13,050
+Just passing in the name is fine.
+
+116
+00:09:13,750 --> 00:09:16,720
+I'm only going to do this for the ingredients input.
+
+117
+00:09:16,990 --> 00:09:21,250
+I prefer to define the function inside the attribute unless I'm doing filtering.
+
+118
+00:09:21,580 --> 00:09:24,440
+Feel free to do the same if it makes things readable for you.
+
+119
+00:09:25,150 --> 00:09:28,000
+All right, save your changes and let's test this out.
+
+120
+00:09:28,240 --> 00:09:29,410
+Refresh the page.
+
+121
+00:09:29,590 --> 00:09:32,020
+You may have to remove and add the blocking in.
+
+122
+00:09:38,450 --> 00:09:43,850
+Once you have that settled, you should see both mule type and cooking experience set their default
+
+123
+00:09:43,850 --> 00:09:44,480
+values.
+
+124
+00:09:45,020 --> 00:09:49,250
+If you were to update any of the input fields, then everything should follow suit.
+
+125
+00:09:49,640 --> 00:09:50,840
+This is fantastic.
+
+126
+00:09:50,990 --> 00:09:53,930
+I'm going to fill in all the fields and save my changes.
+
+127
+00:09:54,090 --> 00:09:55,460
+I want you to do the same.
+
+128
+00:09:58,020 --> 00:10:02,320
+Refresh the ed, you will see that the values didn't get saved properly.
+
+129
+00:10:02,610 --> 00:10:09,390
+Instead, they all have hello as the value this is happening because we need to update the same function
+
+130
+00:10:09,390 --> 00:10:10,560
+and render the block.
+
+131
+00:10:13,090 --> 00:10:18,280
+It's been a while since we've taken a look at this chart so far, we've covered the first four steps,
+
+132
+00:10:18,520 --> 00:10:23,880
+we've prepared the environment include the files, registered the block and created the settings.
+
+133
+00:10:24,160 --> 00:10:26,140
+The last step is to render the block.
+
+134
+00:10:26,350 --> 00:10:28,210
+We'll cover that in the next lecture.
+

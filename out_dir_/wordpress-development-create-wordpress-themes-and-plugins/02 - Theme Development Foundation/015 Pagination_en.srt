@@ -1,0 +1,284 @@
+1
+00:00:07,600 --> 00:00:13,450
+Pagination is pretty simple in the resource section, I provide a link to word pressies, pagination,
+
+2
+00:00:13,450 --> 00:00:19,960
+codecs page typically pagination tends to be difficult because you have to account for various scenarios.
+
+3
+00:00:20,230 --> 00:00:25,570
+However, as you can see here, WordPress provides a few functions that we can use for pagination.
+
+4
+00:00:26,320 --> 00:00:30,820
+These functions will work universally on various templates and different types of pages.
+
+5
+00:00:31,210 --> 00:00:34,960
+This is great because now you don't have to do a lot of the work.
+
+6
+00:00:35,290 --> 00:00:37,680
+WordPress will do the heavy lifting for you.
+
+7
+00:00:38,200 --> 00:00:42,160
+All you have to do is call these functions in the appropriate locations.
+
+8
+00:00:42,700 --> 00:00:45,490
+Opened the index template inside your editor.
+
+9
+00:00:45,490 --> 00:00:50,710
+At the bottom of the template, you'll see the static pagination buttons right above the links.
+
+10
+00:00:50,710 --> 00:00:52,480
+I'm going to place my code here.
+
+11
+00:00:52,810 --> 00:00:55,270
+Call the function next post link.
+
+12
+00:00:57,550 --> 00:01:03,220
+This function is pretty simple, it will check if there are older posts and if there is, then it'll
+
+13
+00:01:03,220 --> 00:01:04,739
+output a link to that page.
+
+14
+00:01:05,050 --> 00:01:08,020
+There's an optional parameter, which is the text to display.
+
+15
+00:01:08,470 --> 00:01:12,130
+I'm going to use the text I had in the static pagination link.
+
+16
+00:01:16,960 --> 00:01:20,680
+Next, we're going to use a function called Previous Posts Link.
+
+17
+00:01:22,830 --> 00:01:27,280
+Which does the same thing as our previous function, except it checks for newer posts.
+
+18
+00:01:27,780 --> 00:01:33,810
+I will also pass in the same text in its static version, I'm going to comment out the static version
+
+19
+00:01:33,810 --> 00:01:37,980
+of the pagination links will be needing them later, so no need to get rid of them.
+
+20
+00:01:38,790 --> 00:01:42,540
+All right, let's refresh the page and test out the pagination links.
+
+21
+00:01:42,750 --> 00:01:44,870
+The links should be appearing and working.
+
+22
+00:01:45,150 --> 00:01:46,590
+However, there is a problem.
+
+23
+00:01:46,950 --> 00:01:48,870
+They don't have the nice styling.
+
+24
+00:01:49,390 --> 00:01:52,750
+Unfortunately, these can't be changed through the function.
+
+25
+00:01:53,310 --> 00:01:57,330
+Instead, we have to use something called filters to accomplish this.
+
+26
+00:01:57,660 --> 00:01:59,070
+We haven't gotten that far.
+
+27
+00:01:59,080 --> 00:02:02,970
+So for now, we're going to leave things as is in a future.
+
+28
+00:02:02,970 --> 00:02:08,729
+Lecture will be fixing these pagination links to look more like the static template after we've discussed
+
+29
+00:02:08,729 --> 00:02:12,100
+filters now that everything is working perfectly.
+
+30
+00:02:12,270 --> 00:02:13,740
+Let's take a look at our template.
+
+31
+00:02:14,160 --> 00:02:16,980
+When we started, we had a few hundred lines of code.
+
+32
+00:02:17,310 --> 00:02:22,250
+With the help of WordPress, it's been reduced heavily to less than one hundred lines of code.
+
+33
+00:02:22,770 --> 00:02:24,750
+We worried very little about the code.
+
+34
+00:02:24,930 --> 00:02:31,290
+It's extremely easy to integrate your template into a WordPress that we haven't had to write one single
+
+35
+00:02:31,290 --> 00:02:33,560
+database query or perform any checks.
+
+36
+00:02:33,930 --> 00:02:35,910
+This is the power of WordPress.
+
+37
+00:02:35,910 --> 00:02:37,330
+It is this simple.
+
+38
+00:02:38,040 --> 00:02:39,570
+This concludes this section.
+
+39
+00:02:39,870 --> 00:02:45,000
+We started out with a static HTML template and converted it into a functioning WordPress theme.
+
+40
+00:02:45,450 --> 00:02:50,550
+This theme is not even close to complete, but look at how far we got in such a short amount of time.
+
+41
+00:02:53,560 --> 00:02:56,830
+I'm going to recap over some of the things we've learned so far.
+
+42
+00:02:57,250 --> 00:03:01,470
+One of the most important steps we took was loading the stylesheets and scripts.
+
+43
+00:03:01,810 --> 00:03:04,430
+We did this by registering and interviewing them.
+
+44
+00:03:04,810 --> 00:03:09,670
+A lot of beginners usually want to avoid the step and just manually link them in the head.
+
+45
+00:03:10,660 --> 00:03:13,290
+However, this is considered bad practice.
+
+46
+00:03:13,570 --> 00:03:17,320
+You end up missing out on a lot of the features WordPress provides.
+
+47
+00:03:17,680 --> 00:03:22,630
+There are plug ins out there that provide compression, magnification and concatenation.
+
+48
+00:03:23,020 --> 00:03:26,380
+All these concepts speed up your site significantly.
+
+49
+00:03:27,130 --> 00:03:31,340
+These features are only available if you register and in queue your files.
+
+50
+00:03:31,750 --> 00:03:37,480
+So it's always important that you use the proper hooks and functions for loading your files, never
+
+51
+00:03:37,480 --> 00:03:40,050
+manually placed them in the head tags.
+
+52
+00:03:40,720 --> 00:03:43,590
+The next thing we did was start displaying the menus.
+
+53
+00:03:43,870 --> 00:03:45,850
+There are two ways to go about this.
+
+54
+00:03:46,060 --> 00:03:48,800
+You can manually create your own menu system.
+
+55
+00:03:49,090 --> 00:03:53,230
+This is a completely acceptable solution, but it is not a common one.
+
+56
+00:03:53,650 --> 00:03:56,710
+WordPress provides this feature along with others.
+
+57
+00:03:56,710 --> 00:03:57,190
+For you.
+
+58
+00:03:57,850 --> 00:04:01,750
+All you have to do is register a menu and then display it in your template.
+
+59
+00:04:02,200 --> 00:04:05,660
+WordPress takes care of managing and processing the data for you.
+
+60
+00:04:06,310 --> 00:04:10,220
+After that, we began splitting up the template into various sections.
+
+61
+00:04:10,510 --> 00:04:13,570
+This makes our code more readable and easier to manage.
+
+62
+00:04:13,930 --> 00:04:18,370
+We also took care of creating the form and began displaying the posts.
+
+63
+00:04:19,029 --> 00:04:20,800
+The steps we took were pretty simple.
+
+64
+00:04:21,079 --> 00:04:26,380
+I want to stress that even though all this was simple, you shouldn't take this process lightly.
+
+65
+00:04:26,770 --> 00:04:31,660
+Most developers will try and stuff all their coding in as little files as possible.
+
+66
+00:04:32,230 --> 00:04:35,700
+While this does speed things up, it can make things harder to scale.
+
+67
+00:04:36,010 --> 00:04:40,560
+You should be very conscious about how you organize your files and what you put in them.
+
+68
+00:04:40,990 --> 00:04:47,320
+You'll repeatedly see me try and separate our code throughout this course and the next section we're
+
+69
+00:04:47,320 --> 00:04:49,480
+going to start working on other templates.
+
+70
+00:04:49,870 --> 00:04:53,890
+Templates give you the opportunity to display content in various styles.
+
+71
+00:04:54,220 --> 00:04:56,980
+You'll see what that looks like in the next few lectures.
+

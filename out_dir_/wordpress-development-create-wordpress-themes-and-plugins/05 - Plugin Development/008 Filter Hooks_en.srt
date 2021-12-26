@@ -1,0 +1,408 @@
+1
+00:00:07,530 --> 00:00:10,330
+Throughout this course, we've been using action hooks.
+
+2
+00:00:10,590 --> 00:00:13,110
+There is another type of hook called filter hooks.
+
+3
+00:00:13,350 --> 00:00:19,200
+Filter hooks are similar to action hooks except for one thing, they are passive value and you're expected
+
+4
+00:00:19,200 --> 00:00:20,160
+to return a value.
+
+5
+00:00:20,460 --> 00:00:24,160
+In most cases, it's a modified version of the past in value.
+
+6
+00:00:24,900 --> 00:00:27,330
+We're going to be using our first filter hook.
+
+7
+00:00:27,330 --> 00:00:28,040
+So get ready.
+
+8
+00:00:28,410 --> 00:00:30,630
+Let's view the recipe post on the front end.
+
+9
+00:00:30,930 --> 00:00:34,040
+You may receive this 404 error initially.
+
+10
+00:00:34,050 --> 00:00:36,480
+You may think this is strange and it is.
+
+11
+00:00:36,720 --> 00:00:37,760
+We did everything right.
+
+12
+00:00:37,770 --> 00:00:39,900
+So why are we getting a 404 error?
+
+13
+00:00:40,440 --> 00:00:44,780
+Well, WordPress is not aware that we have updated the permalink structure.
+
+14
+00:00:45,210 --> 00:00:51,000
+What I mean by this is that when you create a post type, you will receive a special URL format for
+
+15
+00:00:51,000 --> 00:00:51,650
+your post type.
+
+16
+00:00:52,080 --> 00:00:56,170
+In our case, it would be a recipe followed by the slug of the post.
+
+17
+00:00:56,550 --> 00:00:59,200
+Take a look at the URL bar to see this new format.
+
+18
+00:00:59,460 --> 00:01:01,390
+There are two ways we can fix this.
+
+19
+00:01:01,680 --> 00:01:06,870
+There is the manual way, which is updating the permalink structure and then there is the developer
+
+20
+00:01:06,870 --> 00:01:08,790
+way by flushing the rewrite rules.
+
+21
+00:01:09,150 --> 00:01:10,770
+How are we doing this the first way?
+
+22
+00:01:10,770 --> 00:01:12,900
+Because it'll be a lot faster to do so.
+
+23
+00:01:13,290 --> 00:01:19,320
+I will definitely show you how to flush rules through PHP, but that deserves a lecture of its own.
+
+24
+00:01:19,680 --> 00:01:22,180
+For now, updating the structure will suffice.
+
+25
+00:01:22,710 --> 00:01:26,280
+Go to the admin dashboard and under settings permalink.
+
+26
+00:01:26,400 --> 00:01:33,000
+Just update the settings once you don't need to make any changes now you can go to the recipe post and
+
+27
+00:01:33,000 --> 00:01:34,650
+everything should display just fine.
+
+28
+00:01:35,070 --> 00:01:38,840
+As you can see, the Post is displaying just like any other post.
+
+29
+00:01:39,090 --> 00:01:41,360
+The only thing missing is the recipe data.
+
+30
+00:01:41,670 --> 00:01:45,020
+Go back to the main plugin file so we can begin this process.
+
+31
+00:01:45,330 --> 00:01:47,490
+There are a couple of ways we can go about this.
+
+32
+00:01:47,670 --> 00:01:50,310
+The recommended way is by using a filter hook.
+
+33
+00:01:50,820 --> 00:01:54,030
+Filter hooks can be used by using the add filter function.
+
+34
+00:01:56,220 --> 00:02:01,450
+This function works exactly the same as the add action function for our post.
+
+35
+00:02:01,470 --> 00:02:04,260
+I want to add the recipe data right above the content.
+
+36
+00:02:04,830 --> 00:02:07,890
+So I want to use a hook called the content.
+
+37
+00:02:10,250 --> 00:02:15,920
+This hook is triggered when the content of a post or page is being displayed, the name of the function
+
+38
+00:02:15,920 --> 00:02:18,950
+I want to run is called our filter recipe content.
+
+39
+00:02:21,300 --> 00:02:28,850
+Let's create a file inside the process folder called Filter Dash Content and define the function here.
+
+40
+00:02:29,310 --> 00:02:31,410
+Make sure to include it from the plug and file.
+
+41
+00:02:35,960 --> 00:02:42,470
+Unlike action, Hoke's filter hooks will always pass in something for you to filter, the content will
+
+42
+00:02:42,470 --> 00:02:48,670
+be passed in the contents of the post will call this argument content inside the function.
+
+43
+00:02:48,740 --> 00:02:51,380
+You should always return the content.
+
+44
+00:02:51,770 --> 00:02:54,130
+Let's see what happens if you don't return anything.
+
+45
+00:02:54,470 --> 00:02:57,840
+Refresh the post and you'll see the content disappears.
+
+46
+00:02:58,160 --> 00:03:01,400
+Let's return the content from the post.
+
+47
+00:03:03,440 --> 00:03:08,750
+If you go back to the page, then you should see the content reappear, this function will apply to
+
+48
+00:03:08,750 --> 00:03:09,720
+all post types.
+
+49
+00:03:09,920 --> 00:03:12,870
+We need to make sure this only applies to recipes.
+
+50
+00:03:13,160 --> 00:03:16,780
+We also need to check if this is a single post and not an excerpt.
+
+51
+00:03:17,120 --> 00:03:21,320
+We're going to check both cases by using one function called is singular.
+
+52
+00:03:23,650 --> 00:03:29,320
+This function will check if this is a single post, we can also pass this function of post type.
+
+53
+00:03:29,680 --> 00:03:32,230
+The post type we want to check is for a recipe.
+
+54
+00:03:32,500 --> 00:03:36,580
+If this function returns false, then we'll just return the content.
+
+55
+00:03:38,940 --> 00:03:45,870
+Otherwise will continue on with filtering the posts, let's create the HTML that will be used to display
+
+56
+00:03:45,870 --> 00:03:52,080
+the recipe data, create a file inside the process folder called Recipe Dash, template DOT.
+
+57
+00:03:54,960 --> 00:04:01,110
+Inside the assets slash extras folder, you'll find a file named recipe dash template.
+
+58
+00:04:02,460 --> 00:04:05,610
+Copy and paste everything here to our template.
+
+59
+00:04:07,950 --> 00:04:13,920
+This is just a regular HTML, we have an unordered list, there is one thing you'll notice, though,
+
+60
+00:04:14,130 --> 00:04:21,990
+we have all these capitalized words such as Great Underscore I won eight and these are placeholders.
+
+61
+00:04:22,230 --> 00:04:27,820
+You don't have to name them like this, but I like to make them all caps so that they're easier to identify.
+
+62
+00:04:28,290 --> 00:04:33,330
+We're going to grab this file and its contents and replace the placeholders with our data.
+
+63
+00:04:33,990 --> 00:04:38,130
+First things first, let's grab the template from within the filter function.
+
+64
+00:04:38,130 --> 00:04:42,060
+I'm going to create a variable named recipe HTML.
+
+65
+00:04:42,450 --> 00:04:45,420
+I will assign it to the value returned by the function file.
+
+66
+00:04:45,420 --> 00:04:46,380
+Get contents.
+
+67
+00:04:48,690 --> 00:04:52,860
+The file I want to get is the template recipe, dash template.
+
+68
+00:04:54,240 --> 00:04:57,210
+I'm also going to set the second parameter to true.
+
+69
+00:04:59,400 --> 00:05:05,040
+This will make the function work just like the include function to check if this is working, I'm going
+
+70
+00:05:05,040 --> 00:05:09,930
+to return the recipe HTML variable and concatenate the content.
+
+71
+00:05:12,200 --> 00:05:16,280
+Let's refresh the page and you should now see the template right before the content.
+
+72
+00:05:16,760 --> 00:05:21,110
+Now, all we have to do is replace these placeholders with the recipe data.
+
+73
+00:05:21,710 --> 00:05:25,340
+First, we have to grab the metadata just like last time.
+
+74
+00:05:25,340 --> 00:05:27,910
+We can use the get post meta function.
+
+75
+00:05:28,130 --> 00:05:30,430
+However, first we need to post it.
+
+76
+00:05:30,830 --> 00:05:35,240
+Luckily for us, WordPress will create a variable name to post.
+
+77
+00:05:35,540 --> 00:05:37,680
+This variable is a global variable.
+
+78
+00:05:38,000 --> 00:05:40,990
+Now we have access to all this posts properties.
+
+79
+00:05:41,300 --> 00:05:45,800
+Let's create the recipe data variable and grab the metadata like so.
+
+80
+00:05:48,190 --> 00:05:51,850
+From here, we can use a function called Star Replace.
+
+81
+00:05:54,250 --> 00:06:00,070
+We're basically going to use this function to replace the text with the template, the first parameter
+
+82
+00:06:00,070 --> 00:06:02,170
+is the name of the string you want to replace.
+
+83
+00:06:02,410 --> 00:06:06,730
+In this case, we want to replace the rating placeholder with the text rating.
+
+84
+00:06:08,930 --> 00:06:11,820
+Make sure that the string is translation ready?
+
+85
+00:06:12,110 --> 00:06:18,230
+The third parameter is a string that will be searched, which is the recipe HTML variable.
+
+86
+00:06:20,450 --> 00:06:24,510
+It's as simple as that, you should now have something similar to what I have.
+
+87
+00:06:24,860 --> 00:06:27,630
+Let's refresh the page and you'll now see our data.
+
+88
+00:06:27,920 --> 00:06:30,140
+This is the power of filter hooks.
+
+89
+00:06:30,350 --> 00:06:36,680
+They're similar to action hooks, except you will receive data to filter and be expected to return that
+
+90
+00:06:36,680 --> 00:06:37,470
+filter data.
+
+91
+00:06:38,090 --> 00:06:40,340
+We kept it simple by just translating.
+
+92
+00:06:40,340 --> 00:06:43,430
+The text will be adding the rating itself soon enough.
+
+93
+00:06:43,970 --> 00:06:49,040
+Before I in this lecture, I want to talk about what this I in a phrase you see here means.
+
+94
+00:06:49,310 --> 00:06:52,320
+I simply means internationalization.
+
+95
+00:06:52,670 --> 00:06:58,580
+The name comes from the first and last letters of internationalization, with 18 being the number of
+
+96
+00:06:58,580 --> 00:07:02,350
+letters between these two letters to reiterate what's going on.
+
+97
+00:07:02,420 --> 00:07:06,260
+All I'm doing is grabbing the recipe data and the HTML template.
+
+98
+00:07:06,620 --> 00:07:08,870
+The email template is pretty basic.
+
+99
+00:07:09,050 --> 00:07:11,870
+It just contains placeholders for our data.
+
+100
+00:07:12,230 --> 00:07:15,170
+This makes it so that it's always dynamic and fresh.
+
+101
+00:07:15,500 --> 00:07:20,920
+Then we just replace the placeholders with the data using the function as TR replace.
+
+102
+00:07:21,170 --> 00:07:25,550
+Then we just return the template with the modified data right before the content.
+

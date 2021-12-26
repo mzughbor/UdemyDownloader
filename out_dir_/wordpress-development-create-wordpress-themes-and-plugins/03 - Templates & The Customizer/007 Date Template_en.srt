@@ -1,0 +1,228 @@
+1
+00:00:07,590 --> 00:00:12,960
+The next template we're going to work on is the dates template, the date template is used to display
+
+2
+00:00:12,960 --> 00:00:19,500
+posts if a user is viewing an archive for a particular date, year, month or day, the order that's
+
+3
+00:00:19,500 --> 00:00:22,920
+used here is date P, then archived.
+
+4
+00:00:23,880 --> 00:00:31,050
+And lastly, indexed WordPress provides functionality for checking if a post is from a certain year,
+
+5
+00:00:31,050 --> 00:00:34,860
+month or day, but doesn't utilize that in their template system.
+
+6
+00:00:35,310 --> 00:00:38,150
+This actually gives us more trouble than it does help.
+
+7
+00:00:38,490 --> 00:00:44,250
+It would be great if we could create templates for certain time frames, but that's just not possible
+
+8
+00:00:44,250 --> 00:00:45,080
+with WordPress.
+
+9
+00:00:45,480 --> 00:00:48,870
+Instead, we will have to perform those checks in our templates.
+
+10
+00:00:49,140 --> 00:00:51,500
+You'll see why this is a problem in just a moment.
+
+11
+00:00:53,800 --> 00:00:59,860
+If you haven't already drag and drop the archives widget onto your sidebar, this will provide some
+
+12
+00:00:59,860 --> 00:01:02,430
+links to viewer posts for particular dates.
+
+13
+00:01:02,650 --> 00:01:04,739
+It will help us a lot later in this lecture.
+
+14
+00:01:05,500 --> 00:01:10,060
+Once you have that set up, let's create the Daytop template file.
+
+15
+00:01:10,450 --> 00:01:16,600
+The date template is an archive template so we can just use the category template as a base.
+
+16
+00:01:18,870 --> 00:01:24,900
+When it comes to date templates, we can't use the archive description function as you can't assign
+
+17
+00:01:24,900 --> 00:01:31,230
+descriptions for dates, and these cases will have to create our own custom descriptions or just remove
+
+18
+00:01:31,230 --> 00:01:31,900
+it entirely.
+
+19
+00:01:32,250 --> 00:01:35,430
+It's up to you and what works best for your theme or design?
+
+20
+00:01:36,210 --> 00:01:39,150
+I'm going to use something called a conditional tag.
+
+21
+00:01:39,450 --> 00:01:43,860
+Conditional tags are just a fancy phrase for functions that perform checks for you.
+
+22
+00:01:44,370 --> 00:01:48,150
+They're similar to template tags, except they're meant to be used inside.
+
+23
+00:01:48,150 --> 00:01:52,830
+Conditional statements will be exploring more conditional tags later in this course.
+
+24
+00:01:52,830 --> 00:01:54,560
+But let's keep it simple for now.
+
+25
+00:01:55,260 --> 00:01:58,290
+I'm going to update this description and add in some code.
+
+26
+00:01:59,700 --> 00:02:06,270
+All right, I'm back and add in a series of conditional statements, it's nothing really complex inside
+
+27
+00:02:06,270 --> 00:02:07,500
+these conditional statements.
+
+28
+00:02:07,500 --> 00:02:09,180
+I'm using a conditional tag.
+
+29
+00:02:09,630 --> 00:02:15,390
+Each of these functions will check if the date being displayed is for a particular year, month or day.
+
+30
+00:02:16,260 --> 00:02:20,760
+Depending on the date that's being displayed, an appropriate message will be outputted.
+
+31
+00:02:21,270 --> 00:02:24,960
+With that all set, let's check out an archive on the sidebar.
+
+32
+00:02:24,990 --> 00:02:28,170
+You should have this archive widget that displays dates.
+
+33
+00:02:28,560 --> 00:02:32,070
+Click on any of these and you should now see our template working.
+
+34
+00:02:32,820 --> 00:02:39,000
+Once again, WordPress was able to read the euro and determine what kind of posts to grab from the database.
+
+35
+00:02:39,390 --> 00:02:41,640
+It also took care of generating the title.
+
+36
+00:02:42,060 --> 00:02:45,510
+The only thing we did was taking care of generating the description.
+
+37
+00:02:46,320 --> 00:02:49,670
+Now, let's look at the problems that arise with this template.
+
+38
+00:02:50,010 --> 00:02:55,890
+If you look at the URL, you should see the date it's formatted as year, month and then the day.
+
+39
+00:02:56,370 --> 00:03:01,530
+If I wanted to see post on a specific date, then I could pass in a day like so.
+
+40
+00:03:02,010 --> 00:03:05,540
+The only requirement for displaying a date archive is the year.
+
+41
+00:03:05,580 --> 00:03:07,860
+So I can remove the month and day like.
+
+42
+00:03:07,860 --> 00:03:13,020
+So something you should know about the date archive is that it will only display if there's at least
+
+43
+00:03:13,020 --> 00:03:14,690
+one post for the date range.
+
+44
+00:03:15,090 --> 00:03:20,790
+For example, if I were to change the year to twenty twenty and refresh the page, then you should see
+
+45
+00:03:20,790 --> 00:03:24,340
+no post the date template doesn't even get loaded.
+
+46
+00:03:24,540 --> 00:03:26,850
+Instead we get the 404 template.
+
+47
+00:03:27,210 --> 00:03:33,210
+Even though it isn't documented inside the template hierarchy, WordPress will fall back to the 404
+
+48
+00:03:33,210 --> 00:03:35,940
+template if there are no posts for a date range.
+
+49
+00:03:36,360 --> 00:03:41,820
+This is a problem because what if we wanted to display a message telling the user there are no posts
+
+50
+00:03:41,820 --> 00:03:42,390
+for a date?
+
+51
+00:03:42,870 --> 00:03:44,010
+We can't do that.
+
+52
+00:03:44,280 --> 00:03:48,270
+We can't even use conditional tags as they will return false.
+
+53
+00:03:48,990 --> 00:03:52,410
+Luckily, the date template isn't a commonly used template.
+
+54
+00:03:52,710 --> 00:03:58,820
+I actually don't find myself creating it or even using it that often, despite the quirks it gives off,
+
+55
+00:03:58,830 --> 00:04:00,540
+they aren't that dangerous or bad.
+
+56
+00:04:00,870 --> 00:04:03,840
+So you can get away with not creating this template.
+
+57
+00:04:04,140 --> 00:04:06,900
+It's definitely a case by case scenario, though.
+

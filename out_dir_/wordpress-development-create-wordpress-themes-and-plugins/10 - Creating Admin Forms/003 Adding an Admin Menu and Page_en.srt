@@ -1,0 +1,596 @@
+1
+00:00:07,340 --> 00:00:12,380
+It's time to create a page for editing the plug options to perform this task.
+
+2
+00:00:12,410 --> 00:00:18,110
+We need to use a function called ad menu page and the resource section of this lecture.
+
+3
+00:00:18,230 --> 00:00:20,700
+I provide a link to learn more about this function.
+
+4
+00:00:20,990 --> 00:00:23,510
+We have quite a few options for this function.
+
+5
+00:00:23,840 --> 00:00:26,570
+Scroll down to the user contributor section.
+
+6
+00:00:26,900 --> 00:00:32,689
+You'll see the user contributor note suggests that we should use a hook called admin menu and then use
+
+7
+00:00:32,689 --> 00:00:34,500
+this function from within that hook.
+
+8
+00:00:34,970 --> 00:00:38,290
+So let's do that inside the main plug and file.
+
+9
+00:00:38,420 --> 00:00:42,920
+Add this action and the function we want to call is our admin menus.
+
+10
+00:00:47,280 --> 00:00:53,550
+I want you to take note that we're not running this hook inside the admin and it function in the resource
+
+11
+00:00:53,550 --> 00:00:56,580
+section of this lecture, I provide a link to this hook.
+
+12
+00:00:56,940 --> 00:00:59,760
+If you read the notes, WordPress will state the following.
+
+13
+00:01:00,480 --> 00:01:07,320
+This action mustn't be placed in an admin in an action function because the admin in its action is called
+
+14
+00:01:07,320 --> 00:01:08,550
+after admin menu.
+
+15
+00:01:09,180 --> 00:01:14,730
+It's always good practice to read the notes for any hook or function before using it for clarification
+
+16
+00:01:14,730 --> 00:01:15,440
+on usage.
+
+17
+00:01:15,780 --> 00:01:19,540
+Moving on inside the includes admin folder.
+
+18
+00:01:19,710 --> 00:01:21,810
+Let's create a file called Menus.
+
+19
+00:01:23,220 --> 00:01:25,050
+Lastly, include this file.
+
+20
+00:01:30,820 --> 00:01:34,660
+Inside this file, create the are admin menus function.
+
+21
+00:01:36,960 --> 00:01:42,890
+Now we can call the ad menu page function, this function has quite a few parameters.
+
+22
+00:01:43,080 --> 00:01:45,790
+The first parameter is the title of this page.
+
+23
+00:01:46,200 --> 00:01:49,150
+This will appear on the top of the browser in Tabs.
+
+24
+00:01:49,500 --> 00:01:52,350
+I'm going to pass in the text recipe options.
+
+25
+00:01:54,730 --> 00:01:58,100
+The second parameter is the name that will appear in the sidebar.
+
+26
+00:01:58,390 --> 00:02:01,870
+I'm going to keep this simple and pass in recipe options.
+
+27
+00:02:04,420 --> 00:02:11,020
+The third parameter is the capability we haven't talked about capabilities yet and the resource section,
+
+28
+00:02:11,050 --> 00:02:18,370
+I provide a link to the capabilities Codex page, a capability is basically what a user can or cannot
+
+29
+00:02:18,370 --> 00:02:19,870
+do by default.
+
+30
+00:02:19,900 --> 00:02:27,190
+WordPress provides 60 fault rolls, which are super admin administrator, Ed, author, contributor
+
+31
+00:02:27,190 --> 00:02:28,230
+and subscriber.
+
+32
+00:02:28,900 --> 00:02:31,320
+Each of these roles have certain capabilities.
+
+33
+00:02:31,540 --> 00:02:36,400
+Let's scroll down to the capability versus roll table section of this page.
+
+34
+00:02:36,700 --> 00:02:44,230
+As you can see, a super admin can do everything, whereas a subscriber can only read posts and pages.
+
+35
+00:02:44,560 --> 00:02:47,770
+You can think of rolls as a way to group capabilities.
+
+36
+00:02:48,040 --> 00:02:53,300
+When you are checking, every user can perform a certain action, then you'll want to check their capability.
+
+37
+00:02:53,740 --> 00:02:57,550
+It's important that you check their capabilities rather than checking their role.
+
+38
+00:02:58,330 --> 00:03:03,520
+There are plugins out there that allow you to create new roles and assign custom capabilities.
+
+39
+00:03:03,910 --> 00:03:08,250
+Those same plug ins can also modify existing capabilities for roles.
+
+40
+00:03:08,620 --> 00:03:12,570
+So it's always important to check a capability rather than a role.
+
+41
+00:03:13,330 --> 00:03:17,630
+This function would like to know who can view this page by passing in a capability.
+
+42
+00:03:18,070 --> 00:03:22,680
+Currently, I only want super admin and administrators to view this page.
+
+43
+00:03:22,990 --> 00:03:29,380
+If we look at the table, we can use any of these capabilities that only a super admin or administrator
+
+44
+00:03:29,380 --> 00:03:29,910
+can do.
+
+45
+00:03:30,400 --> 00:03:33,790
+I'm going to use the capability, edit them options.
+
+46
+00:03:36,100 --> 00:03:41,800
+You don't have to use this specific capability, you can use any of the other ones just as long as they
+
+47
+00:03:41,800 --> 00:03:48,150
+apply to both super admins and administrators, the fourth parameter is the menu slug.
+
+48
+00:03:48,460 --> 00:03:50,290
+This is basically the Eurail.
+
+49
+00:03:50,680 --> 00:03:53,140
+I'll show you what this looks like in just a moment.
+
+50
+00:03:53,350 --> 00:03:55,330
+This should be a unique you are out.
+
+51
+00:03:55,630 --> 00:04:01,800
+Do you know what we do when we want something to be unique and WordPress, we prefix it with our underscore.
+
+52
+00:04:02,110 --> 00:04:04,290
+I'm going to pass an AR plugin.
+
+53
+00:04:04,300 --> 00:04:09,670
+What's the fifth parameter is the name of the function that will be called we're going to call this
+
+54
+00:04:09,670 --> 00:04:12,070
+function R plugin ops page.
+
+55
+00:04:14,450 --> 00:04:21,230
+This function doesn't exist, so let's create that now inside the admin folder, create a file called
+
+56
+00:04:21,230 --> 00:04:23,090
+Options Dash, Page, Dot.
+
+57
+00:04:26,400 --> 00:04:29,340
+Next include this file from the main plug and file.
+
+58
+00:04:35,260 --> 00:04:37,420
+Lastly, let's define the function.
+
+59
+00:04:40,060 --> 00:04:46,300
+Whatever you output from, this function will be outputted onto the page, we can, if we want to use
+
+60
+00:04:46,300 --> 00:04:49,630
+WordPress is stylings and classes style this page.
+
+61
+00:04:49,870 --> 00:04:53,350
+However, we won't and will be using bootstrap.
+
+62
+00:04:53,620 --> 00:04:54,670
+First things first.
+
+63
+00:04:54,820 --> 00:04:57,360
+Let's try out putting something on to our page.
+
+64
+00:04:57,670 --> 00:05:02,080
+There is one special class that we will use and that's called the wrap class.
+
+65
+00:05:04,710 --> 00:05:07,000
+This class is created by WordPress.
+
+66
+00:05:07,350 --> 00:05:13,470
+This is just one of the very few classes that WordPress provides that we can use, this class will take
+
+67
+00:05:13,470 --> 00:05:17,460
+care of placing our page to the right of the menu and make it responsive.
+
+68
+00:05:17,880 --> 00:05:19,710
+Let's output a simple message.
+
+69
+00:05:22,450 --> 00:05:28,540
+Now go to your WordPress admin dashboard and you'll notice our menu, pop up, click on it, you'll
+
+70
+00:05:28,540 --> 00:05:31,330
+see the message outputted and positioned correctly.
+
+71
+00:05:31,810 --> 00:05:32,650
+One last thing.
+
+72
+00:05:32,860 --> 00:05:36,870
+Earlier I told you about this look inside the URL bar.
+
+73
+00:05:36,950 --> 00:05:41,230
+You'll see the slug we passed in in order to access this page.
+
+74
+00:05:41,230 --> 00:05:46,480
+All we have to do is use the page query and use the value r plug in ops.
+
+75
+00:05:46,750 --> 00:05:48,460
+That should bring us to this page.
+
+76
+00:05:48,730 --> 00:05:50,470
+That's how our slug works.
+
+77
+00:05:50,740 --> 00:05:56,800
+Now that the page is being displayed, let's start creating the forms and adding some styles will be
+
+78
+00:05:56,800 --> 00:05:58,750
+using bootstrap styling for this.
+
+79
+00:05:58,870 --> 00:06:01,910
+It's not required, but I prefer it to begin.
+
+80
+00:06:02,020 --> 00:06:04,750
+We'll need to load the bootstrap success.
+
+81
+00:06:05,080 --> 00:06:12,070
+WordPress has a specific hook for loading styles and scripts on the admin side inside the admin init
+
+82
+00:06:12,070 --> 00:06:12,640
+function.
+
+83
+00:06:12,760 --> 00:06:16,090
+Add the action hook called admin and Qs scripts.
+
+84
+00:06:20,270 --> 00:06:27,020
+The function we want to call is are admin NQ WordPress has quite a few hooks for in keeping files in
+
+85
+00:06:27,020 --> 00:06:28,170
+different locations.
+
+86
+00:06:28,340 --> 00:06:32,850
+We have one for the front end, one for the admin and Anta for Gutenberg.
+
+87
+00:06:33,110 --> 00:06:40,270
+Anyway, let's create a file inside the admin folder called and cued up and define the function there.
+
+88
+00:06:43,000 --> 00:06:48,810
+Before we in any files, I want to make sure we only load bootstrap in our custom page.
+
+89
+00:06:49,150 --> 00:06:55,360
+It's irresponsible to load bootstrap for every admin page will want to make sure the files only get
+
+90
+00:06:55,360 --> 00:06:57,980
+loaded for the admin options page we created.
+
+91
+00:06:58,450 --> 00:07:05,230
+Luckily, that's easy to do using the page query we saw earlier inside a conditional statement.
+
+92
+00:07:05,320 --> 00:07:10,030
+I'm going to check if that query argument is not set and its value is not.
+
+93
+00:07:10,030 --> 00:07:11,260
+Our plugin opts.
+
+94
+00:07:15,350 --> 00:07:19,980
+If either of these conditions return true, then we'll want to return nothing.
+
+95
+00:07:20,480 --> 00:07:26,030
+This will mean that the page the user is currently on is not our plugins page, and so we shouldn't
+
+96
+00:07:26,030 --> 00:07:29,360
+do anything else if the user makes it this far.
+
+97
+00:07:29,390 --> 00:07:32,270
+Then we'll include the bootstrap stylesheet.
+
+98
+00:07:32,540 --> 00:07:34,130
+We don't need the James.
+
+99
+00:07:34,670 --> 00:07:37,250
+The Cyesis file is inside the assets.
+
+100
+00:07:37,250 --> 00:07:40,880
+Slash access, slash bootstrap access.
+
+101
+00:07:40,880 --> 00:07:41,750
+That is relative.
+
+102
+00:07:41,780 --> 00:07:43,250
+The recipe plugin file.
+
+103
+00:07:53,870 --> 00:08:00,110
+Let's refresh the admin page, if we get no errors in our console related to the files we include,
+
+104
+00:08:00,240 --> 00:08:01,290
+then we're good to go.
+
+105
+00:08:01,610 --> 00:08:05,520
+It's time to create a form inside the options page.
+
+106
+00:08:05,540 --> 00:08:07,400
+I'm going to paste in some markup.
+
+107
+00:08:09,680 --> 00:08:12,290
+This form has nothing unique to WordPress.
+
+108
+00:08:12,590 --> 00:08:15,150
+This is all bootstrap markup to make it look pretty.
+
+109
+00:08:15,560 --> 00:08:23,430
+You can find this markup inside these assets, extra options, dash, page, dot, text file.
+
+110
+00:08:24,320 --> 00:08:26,000
+Let's go over what's going on.
+
+111
+00:08:26,330 --> 00:08:32,570
+As you can see, I've created a form input for the two options we created earlier in the activation
+
+112
+00:08:32,570 --> 00:08:33,049
+function.
+
+113
+00:08:33,440 --> 00:08:38,169
+I've also made all text translatable using the underscore E function.
+
+114
+00:08:38,690 --> 00:08:43,100
+One important thing I want you to know is the name attribute for each input.
+
+115
+00:08:43,400 --> 00:08:46,990
+As you can see, I prefix everything with our underscore.
+
+116
+00:08:47,300 --> 00:08:52,350
+This is to prevent any collisions with any other data WordPress sends out when we submit this form.
+
+117
+00:08:53,030 --> 00:08:55,880
+So how do we get the form to submit correctly?
+
+118
+00:08:56,150 --> 00:08:57,560
+Well, it's pretty simple.
+
+119
+00:08:57,710 --> 00:09:05,840
+In the form tag I'm going to set the method to post the action will be sent to admin post P.
+
+120
+00:09:09,430 --> 00:09:15,640
+This is very important whenever you create forms, this is the you are you should submit your info to
+
+121
+00:09:16,000 --> 00:09:19,630
+to be more specific forms on the admin side of WordPress.
+
+122
+00:09:20,290 --> 00:09:24,850
+Actually you can find this file inside the WP dash admin folder.
+
+123
+00:09:25,150 --> 00:09:26,140
+Open this file.
+
+124
+00:09:28,330 --> 00:09:33,820
+If you take a look at this comment, you'll notice it says, intended for form submission, handling
+
+125
+00:09:34,000 --> 00:09:38,710
+themes and plugins, it's safe to assume that we can send our data to this file.
+
+126
+00:09:39,400 --> 00:09:43,360
+There are a couple of things we need to do before this form is fully functional.
+
+127
+00:09:43,780 --> 00:09:45,220
+We face two problems.
+
+128
+00:09:45,400 --> 00:09:50,730
+We're not the only ones who will be posting data to the admin post file.
+
+129
+00:09:51,160 --> 00:09:56,620
+We need to make WordPress aware that we're the ones submitting the form and execute the appropriate
+
+130
+00:09:56,620 --> 00:09:57,220
+functions.
+
+131
+00:09:57,700 --> 00:10:00,870
+The second problem is excess injections.
+
+132
+00:10:01,240 --> 00:10:05,180
+This form can be easily recreated and submitted without our permission.
+
+133
+00:10:05,860 --> 00:10:10,120
+The answer to both these problems are simple and taken care of by WordPress.
+
+134
+00:10:10,480 --> 00:10:13,720
+First, create an input field that should be hidden.
+
+135
+00:10:14,020 --> 00:10:15,970
+Its name should be action.
+
+136
+00:10:20,630 --> 00:10:23,460
+WordPress will search for this field and check its value.
+
+137
+00:10:23,930 --> 00:10:28,400
+The value of this field will determine what function will be used to save this data.
+
+138
+00:10:28,790 --> 00:10:33,020
+I'm going to set the value attribute to our save options.
+
+139
+00:10:35,480 --> 00:10:37,280
+You'll see what this does in a moment.
+
+140
+00:10:37,550 --> 00:10:41,780
+Next, we need to make our form secure from excess attacks.
+
+141
+00:10:42,230 --> 00:10:48,330
+WordPress recommends we create a field with a unique key that is generated when we visit this page.
+
+142
+00:10:48,530 --> 00:10:51,240
+We can then validate this key during submission.
+
+143
+00:10:51,980 --> 00:10:54,640
+We already know how to handle something like this.
+
+144
+00:10:54,800 --> 00:11:02,690
+We can use the WP nonce field function like before, called this function and pass in our options VeriFone.
+
+145
+00:11:08,540 --> 00:11:13,310
+I'm not going to deal with the other parameters because we're out putting this onto the screen rather
+
+146
+00:11:13,310 --> 00:11:17,110
+than returning it, so I'm not so concerned with the other values.
+
+147
+00:11:17,660 --> 00:11:19,610
+Let's refresh the admin page.
+
+148
+00:11:19,830 --> 00:11:22,760
+You should see this field being generated by WordPress.
+
+149
+00:11:24,970 --> 00:11:28,900
+After confirming this, we can now submit and update our settings.
+

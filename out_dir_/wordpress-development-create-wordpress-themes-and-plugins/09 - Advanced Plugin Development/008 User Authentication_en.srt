@@ -1,0 +1,268 @@
+1
+00:00:07,300 --> 00:00:13,000
+In this lecture, we're going to finish up our shortcode by making the law informed work inside the
+
+2
+00:00:13,000 --> 00:00:14,480
+main JS file.
+
+3
+00:00:14,530 --> 00:00:19,110
+I'm going to copy and paste the previous JavaScript code we use for the register form.
+
+4
+00:00:19,480 --> 00:00:24,400
+I'm going to change a lot of this code from the field to the status messages so that they reflect the
+
+5
+00:00:24,400 --> 00:00:25,090
+log in the form.
+
+6
+00:00:25,090 --> 00:00:28,910
+Instead, the action will be recipe user login.
+
+7
+00:00:29,350 --> 00:00:32,350
+Make sure to update the status messages and selections.
+
+8
+00:00:32,650 --> 00:00:33,730
+Nothing crazy here.
+
+9
+00:00:33,790 --> 00:00:39,430
+It's what we did previously create a new Ajax Action hook with no privileges.
+
+10
+00:00:39,640 --> 00:00:44,050
+I'm going to copy and paste the action I used in the form object like so.
+
+11
+00:00:50,680 --> 00:00:57,610
+Create a file inside the process folder called login and define the function inside here, make sure
+
+12
+00:00:57,610 --> 00:00:59,590
+to include it from the main plug and file.
+
+13
+00:01:05,319 --> 00:01:10,720
+Inside this function, I'm going to ground the first two lines from the create account file and paste
+
+14
+00:01:10,720 --> 00:01:11,260
+it in here.
+
+15
+00:01:13,740 --> 00:01:19,950
+I'm creating an output variable, grabbing and verifying the nonce and then checking to see if the username
+
+16
+00:01:19,950 --> 00:01:21,370
+and password was submitted.
+
+17
+00:01:21,900 --> 00:01:25,920
+I'm going to remove the e-mail and password confirmation from this check.
+
+18
+00:01:28,670 --> 00:01:30,060
+Really nothing new so far.
+
+19
+00:01:30,290 --> 00:01:36,740
+I'm going to create a new variable named user that will contain the value returned by the function WP
+
+20
+00:01:36,740 --> 00:01:37,310
+Sinon.
+
+21
+00:01:39,790 --> 00:01:45,370
+This function will authenticate users for you, this is the function I recommend you use when you're
+
+22
+00:01:45,370 --> 00:01:50,740
+authenticating users who have already logged in before this function has two parameters.
+
+23
+00:01:50,950 --> 00:01:56,540
+The first is an array of the login credentials it will use to verify and authenticate the current user.
+
+24
+00:01:56,980 --> 00:02:01,690
+There are three fields we can set the user login except the username.
+
+25
+00:02:01,930 --> 00:02:04,150
+I'm going to sanitize this while I'm at it.
+
+26
+00:02:08,810 --> 00:02:12,380
+The next key is user password, which accepts the password.
+
+27
+00:02:12,830 --> 00:02:18,560
+Lastly, the remember key allows you to specify whether the user should be remembered on this device.
+
+28
+00:02:18,830 --> 00:02:20,780
+I'm going to set this to true.
+
+29
+00:02:24,260 --> 00:02:30,080
+This will suddenly user in just to make sure we're going to create another conditional statement checking
+
+30
+00:02:30,080 --> 00:02:34,430
+if this function returns, an error object using the IS error function.
+
+31
+00:02:34,790 --> 00:02:37,970
+If it is an error object, then we'll just kill the script.
+
+32
+00:02:38,300 --> 00:02:43,070
+Otherwise we'll update the status to two and kill the script once more.
+
+33
+00:02:49,680 --> 00:02:54,450
+That will take care of everything if you haven't already, log out and then try logging in.
+
+34
+00:02:57,050 --> 00:03:00,840
+After confirming that everything works, there's one last thing we want to do.
+
+35
+00:03:01,160 --> 00:03:02,200
+We're almost finished.
+
+36
+00:03:02,210 --> 00:03:02,980
+I promise.
+
+37
+00:03:03,170 --> 00:03:08,510
+If you were to go to the admin dashboard and navigate to settings general, you'll find a setting called
+
+38
+00:03:08,510 --> 00:03:09,770
+anyone can register.
+
+39
+00:03:10,370 --> 00:03:13,250
+This setting controls word registration form.
+
+40
+00:03:13,580 --> 00:03:17,450
+Even if this is ticked off, plugins can still create accounts with code.
+
+41
+00:03:17,810 --> 00:03:20,150
+We're going to use this setting to our advantage.
+
+42
+00:03:20,390 --> 00:03:21,830
+I want to hide the form.
+
+43
+00:03:21,830 --> 00:03:26,900
+If registration is disabled, we'll start by creating a placeholder inside the template.
+
+44
+00:03:27,290 --> 00:03:32,420
+Find the div tag that contains the whole registration form and add show regg form.
+
+45
+00:03:34,910 --> 00:03:41,120
+Will replace this placeholder with a style attribute inside the shortcode function, add another string
+
+46
+00:03:41,120 --> 00:03:42,170
+replacement function.
+
+47
+00:03:46,690 --> 00:03:52,180
+For the replace function we're going to use, a ternary operator will be performing a check using a
+
+48
+00:03:52,180 --> 00:03:58,000
+function called get option, we haven't discussed the options API, but this function will grab the
+
+49
+00:03:58,000 --> 00:03:59,620
+options from the options table.
+
+50
+00:04:00,680 --> 00:04:07,300
+Using Heidi skill, you can open the WP options table, WordPress stores, all of its settings here.
+
+51
+00:04:07,670 --> 00:04:10,390
+It also stores transients and plug in options.
+
+52
+00:04:10,670 --> 00:04:13,380
+One of the options is users can register.
+
+53
+00:04:13,790 --> 00:04:15,500
+This is the option that is updated.
+
+54
+00:04:15,500 --> 00:04:21,680
+When you took the checkbox on the admin settings page, if the value is zero, then that means the registration
+
+55
+00:04:21,680 --> 00:04:22,410
+is closed.
+
+56
+00:04:22,670 --> 00:04:25,610
+If it's one, then that means registration is open.
+
+57
+00:04:26,180 --> 00:04:31,720
+We can pass this into the get option function and it'll tell us whether or not registration is open.
+
+58
+00:04:32,390 --> 00:04:38,510
+If this check returns false, we'll hide the registration form with a simple display success style.
+
+59
+00:04:40,950 --> 00:04:47,160
+Otherwise, it'll be empty and display, as is save your work, update the settings to disable registration
+
+60
+00:04:47,160 --> 00:04:48,480
+and try viewing the form.
+
+61
+00:04:55,580 --> 00:05:01,350
+It should not display the very last thing I want to do is hide these forms if the user is logged in.
+
+62
+00:05:02,000 --> 00:05:06,980
+Right now I'm logged in and it should not be displaying inside the shortcode function.
+
+63
+00:05:06,980 --> 00:05:10,220
+Create a conditional statement at the very top call.
+
+64
+00:05:10,230 --> 00:05:12,140
+The function is user logged in.
+
+65
+00:05:12,500 --> 00:05:15,710
+If this returns true, we'll just return an empty string.
+
+66
+00:05:20,640 --> 00:05:25,560
+Refresh the page and you should see nothing up here, that's it, we're finally finished.
+
+67
+00:05:25,740 --> 00:05:28,100
+It was a lot to go through, but well worth it.
+

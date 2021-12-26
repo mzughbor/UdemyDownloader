@@ -1,0 +1,200 @@
+1
+00:00:07,820 --> 00:00:14,180
+Just recently, WordPress introduced a new editor called Gutenberg Gutenberg is a visual editor for
+
+2
+00:00:14,180 --> 00:00:15,780
+creating posts and content.
+
+3
+00:00:16,129 --> 00:00:20,750
+If you were to go to the admin dashboard and create a new post, then you should see something like
+
+4
+00:00:20,750 --> 00:00:21,170
+this.
+
+5
+00:00:21,770 --> 00:00:26,780
+Gutenberg introduces a more modern and intuitive editing experience like never before.
+
+6
+00:00:27,230 --> 00:00:31,750
+For the past decade, WordPress use tiny MCE as the main editor.
+
+7
+00:00:32,119 --> 00:00:34,800
+It worked, but it was lacking in many areas.
+
+8
+00:00:35,030 --> 00:00:39,320
+If you've used WordPress before, then you are probably familiar with it.
+
+9
+00:00:39,950 --> 00:00:42,690
+If you don't know what it is, then that's perfectly fine.
+
+10
+00:00:43,040 --> 00:00:48,740
+It's currently being pushed out of WordPress, so it isn't required to know regardless if you're a fan
+
+11
+00:00:48,740 --> 00:00:53,690
+of Gutenberg or not, it's part of the KORNEL, so it would be beneficial to know how to extend it.
+
+12
+00:00:54,440 --> 00:00:59,350
+During the creation of this course, I struggled with how to approach grundberg development.
+
+13
+00:00:59,660 --> 00:01:04,970
+It's not just the editing experience that has changed, but the development experience has changed as
+
+14
+00:01:04,970 --> 00:01:05,280
+well.
+
+15
+00:01:05,810 --> 00:01:08,620
+Certain books aren't encouraged as much anymore.
+
+16
+00:01:09,020 --> 00:01:13,760
+The Shortcode API and metabolises are being replaced with something called Bloks.
+
+17
+00:01:14,120 --> 00:01:18,380
+If you take in my course before then, you may be familiar with these concepts.
+
+18
+00:01:18,710 --> 00:01:20,720
+If not, then that's perfectly fine.
+
+19
+00:01:21,020 --> 00:01:23,780
+I do go over some of this stuff later in this course.
+
+20
+00:01:24,110 --> 00:01:30,440
+The reason I'm mentioning it now is because you may look for more tutorials online and those tutorials
+
+21
+00:01:30,440 --> 00:01:33,230
+can be outdated because of the introduction of Gutenberg.
+
+22
+00:01:33,800 --> 00:01:38,300
+On top of some breaking changes, Gutenberg also has a higher learning curve.
+
+23
+00:01:38,660 --> 00:01:43,540
+Gutenberg is built with react and therefore you should be confident with your JavaScript skills.
+
+24
+00:01:44,180 --> 00:01:50,470
+From the beginning, I told you that you should have a solid understanding of HTML, S.O.S and JavaScript.
+
+25
+00:01:50,780 --> 00:01:56,390
+However, we're going to begin diving into more advanced topics, so I don't expect you to know these
+
+26
+00:01:56,390 --> 00:01:57,530
+advanced concepts.
+
+27
+00:01:57,920 --> 00:02:04,700
+Before you can get into Gutenberg development, you need to know what erro functions, imports and structuring
+
+28
+00:02:04,700 --> 00:02:04,910
+are.
+
+29
+00:02:05,600 --> 00:02:07,610
+That's what I'll be teaching you in this section.
+
+30
+00:02:07,820 --> 00:02:12,980
+If you are already comfortable with these topics, then you can skip this section and move on to the
+
+31
+00:02:12,980 --> 00:02:13,460
+next one.
+
+32
+00:02:13,850 --> 00:02:18,680
+This section will completely step away from WordPress to discuss these important topics.
+
+33
+00:02:19,310 --> 00:02:25,190
+Before we get started, I do want to clarify that there are two ways to approach Gutenberg development.
+
+34
+00:02:25,580 --> 00:02:29,330
+The first approach is by using S5 or simple JavaScript.
+
+35
+00:02:29,840 --> 00:02:31,730
+This is the more simpler approach.
+
+36
+00:02:32,030 --> 00:02:35,150
+This is how we've been creating our plug ins and themes thus far.
+
+37
+00:02:35,510 --> 00:02:37,670
+No fancy tools or libraries.
+
+38
+00:02:37,910 --> 00:02:40,870
+You just write regular JavaScript and you're good to go.
+
+39
+00:02:41,240 --> 00:02:45,440
+The problem with this approach is that it makes your code harder to read and manage.
+
+40
+00:02:45,830 --> 00:02:50,210
+By now you should know that I'm all about organization and management.
+
+41
+00:02:50,630 --> 00:02:57,200
+While it does require a little more work, organizing your code allows for better scaling by using plain
+
+42
+00:02:57,200 --> 00:03:01,880
+JavaScript and P, you make Gutenberg development more difficult for yourself.
+
+43
+00:03:02,190 --> 00:03:05,750
+The second approach is by using React Web and Bable.
+
+44
+00:03:06,110 --> 00:03:09,170
+This approach has a higher learning curve, but it's well worth it.
+
+45
+00:03:09,530 --> 00:03:12,580
+You will find it easier to manage and organize your code.
+
+46
+00:03:12,950 --> 00:03:16,100
+This is the solution will be using for the rest of this course.
+
+47
+00:03:16,760 --> 00:03:19,370
+Once again, you're not required to know these things.
+
+48
+00:03:19,520 --> 00:03:24,610
+I will teach you how to use technologies and how they specifically tie to WordPress.
+
+49
+00:03:24,920 --> 00:03:26,420
+All right, let's get started.
+
+50
+00:03:26,600 --> 00:03:28,250
+I'll see you in the next lecture.
+

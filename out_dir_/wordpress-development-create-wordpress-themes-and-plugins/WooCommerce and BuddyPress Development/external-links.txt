@@ -1,0 +1,21 @@
+
+001 BuddyPress
+https://buddypress.org/
+
+001 WooCommerce
+https://woocommerce.com/
+
+002 BuddyPress-Template-Hierarchy
+https://codex.buddypress.org/themes/theme-compatibility-1-7/template-hierarchy/
+
+003 Theme-Compatibility-Template-Files
+https://codex.buddypress.org/themes/theme-compatibility-1-7/a-quick-look-at-1-7-theme-compatibility/
+
+004 bp-core-new-nav-item-Function
+https://codex.buddypress.org/developer/function-examples/core/bp_core_new_nav_item/
+
+006 WooCommerce-Integration-Guide
+https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
+
+007 Template-Structure
+https://docs.woocommerce.com/document/template-structure/

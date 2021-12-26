@@ -1,0 +1,240 @@
+1
+00:00:07,260 --> 00:00:13,310
+And the resource section of this lecture, I provide a link to WordPress as Options API Codex Page,
+
+2
+00:00:13,650 --> 00:00:16,950
+this is what WordPress has to say about the options API.
+
+3
+00:00:17,550 --> 00:00:22,520
+The Options API is a simple and standardized way of storing data in the database.
+
+4
+00:00:22,890 --> 00:00:27,990
+The API makes it easy to create access, update and delete options.
+
+5
+00:00:28,380 --> 00:00:33,480
+All the data is stored in the WP underscore options table under a given custom name.
+
+6
+00:00:34,020 --> 00:00:38,610
+This page contains the technical documentation needed to use the options API.
+
+7
+00:00:39,360 --> 00:00:43,940
+To put it simply, it's a way for us to create options for plug ins and themes.
+
+8
+00:00:44,190 --> 00:00:49,630
+If you created some web apps, you're probably used to creating a table for your settings.
+
+9
+00:00:49,950 --> 00:00:54,570
+While this may seem appropriate for your own web apps, it's overkill for WordPress.
+
+10
+00:00:54,870 --> 00:00:58,200
+A lot of WordPress sites will have dozens of plug ins installed.
+
+11
+00:00:58,500 --> 00:01:04,140
+It would be pretty hard to maintain the database if every plugin and thing created their own set of
+
+12
+00:01:04,140 --> 00:01:05,489
+tables with settings.
+
+13
+00:01:06,120 --> 00:01:11,250
+WordPress has standardize these types of situations by providing the options API.
+
+14
+00:01:11,670 --> 00:01:18,980
+The Options API will provide an easy way to create, retrieve, update Angelie options and or settings.
+
+15
+00:01:19,260 --> 00:01:20,580
+Here's what we're going to do.
+
+16
+00:01:21,180 --> 00:01:27,360
+We will create an admin page with settings related to the recipe plug in the settings will determine
+
+17
+00:01:27,360 --> 00:01:31,440
+whether or not a user has to be registered to create a recipe or rate one.
+
+18
+00:01:32,220 --> 00:01:34,620
+I want you to open the activation file.
+
+19
+00:01:34,930 --> 00:01:41,070
+I'm going to start using the Options API right away before we can edit the settings we need to create
+
+20
+00:01:41,070 --> 00:01:41,370
+them.
+
+21
+00:01:41,700 --> 00:01:44,500
+Create a variable called recipe ops.
+
+22
+00:01:44,970 --> 00:01:50,220
+This variables value will be set to the value returned by the function get option.
+
+23
+00:01:52,690 --> 00:01:55,450
+This is the first function in the Options API.
+
+24
+00:01:55,900 --> 00:01:58,800
+This will simply retrieve the value of an option.
+
+25
+00:01:59,170 --> 00:02:02,380
+The option I want to retrieve is called our ops.
+
+26
+00:02:05,130 --> 00:02:10,889
+This option doesn't exist, or at least it shouldn't, when the user first activates the plug and if
+
+27
+00:02:10,889 --> 00:02:17,220
+this option doesn't exist, WordPress will return false next inside a conditional statement.
+
+28
+00:02:17,340 --> 00:02:19,860
+I'm going to check if this value is false.
+
+29
+00:02:22,140 --> 00:02:28,320
+It's very important that we do this if a user deactivates and reactivates, does plug in, then we could
+
+30
+00:02:28,320 --> 00:02:32,130
+end up overriding their settings if they previously activated the plug in.
+
+31
+00:02:32,820 --> 00:02:36,570
+At this point, the user is activating the plug in for the first time.
+
+32
+00:02:36,900 --> 00:02:39,750
+I'm going to create an array called Ops.
+
+33
+00:02:40,110 --> 00:02:42,960
+This array will have a few key value pairs.
+
+34
+00:02:43,350 --> 00:02:50,280
+I'm going to create two values named rating login required and recipe's submission login required.
+
+35
+00:02:54,050 --> 00:02:57,080
+Both values will be set to one, which will mean No.
+
+36
+00:02:57,410 --> 00:03:02,270
+Two, for yes, if the user is required to be logged in to submit or rate a recipe.
+
+37
+00:03:03,080 --> 00:03:06,210
+Now it's time to add the option into the database.
+
+38
+00:03:06,530 --> 00:03:09,170
+We're going to call a function called add option.
+
+39
+00:03:11,530 --> 00:03:16,070
+This function has two parameters, the name of the option and its value.
+
+40
+00:03:16,390 --> 00:03:18,430
+The name will be our ops.
+
+41
+00:03:18,730 --> 00:03:21,250
+The value will be the array we just created.
+
+42
+00:03:23,920 --> 00:03:30,070
+One thing I should be clear on is that you don't have to set the option, as in Iran, you can use any
+
+43
+00:03:30,070 --> 00:03:31,030
+value you want.
+
+44
+00:03:31,430 --> 00:03:35,050
+It can be a boolean integer or just a plain string.
+
+45
+00:03:35,360 --> 00:03:40,620
+However, I want you to use an array, as I don't want to create two different options.
+
+46
+00:03:40,900 --> 00:03:44,670
+It's much easier to have one option with an array of values.
+
+47
+00:03:45,250 --> 00:03:49,210
+Now that we're finished, let's deactivate and reactivate this plugin.
+
+48
+00:03:49,510 --> 00:03:51,310
+You should receive no errors.
+
+49
+00:03:53,990 --> 00:03:57,290
+To confirm if the option was saved open highest.
+
+50
+00:03:57,350 --> 00:04:03,170
+Well, I'm going to navigate to the WordPress database and open the WP options table.
+
+51
+00:04:05,600 --> 00:04:10,940
+I know for a fact that this is the table where options are stored, because that's what was stated in
+
+52
+00:04:10,940 --> 00:04:16,760
+the documentation, since I know we just created this option, I can then go to the very last row and
+
+53
+00:04:16,760 --> 00:04:19,700
+see if the R opts option was created.
+
+54
+00:04:20,240 --> 00:04:22,250
+As you can see, it was created.
+
+55
+00:04:22,490 --> 00:04:23,960
+The value was pretty weird.
+
+56
+00:04:24,230 --> 00:04:25,460
+Don't worry about this.
+
+57
+00:04:25,700 --> 00:04:30,470
+WordPress has to format an array so that it can fit inside the database properly.
+
+58
+00:04:30,830 --> 00:04:36,290
+All our values are serialized during input and then convert it back to an array when we need it.
+
+59
+00:04:36,740 --> 00:04:41,180
+In the next few lectures will start creating a page for the plugin settings.
+
+60
+00:04:41,390 --> 00:04:45,290
+This special page will allow users to update the plugin options.
+

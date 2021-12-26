@@ -1,0 +1,51 @@
+
+002 File-Header
+https://codex.wordpress.org/File_Header
+
+004 Plugin-API
+https://codex.wordpress.org/Plugin_API
+
+004 wp-footer-Function
+https://developer.wordpress.org/reference/functions/wp_footer/
+
+006 register-post-type-Function
+https://codex.wordpress.org/Function_Reference/register_post_type
+
+006 Post-Type
+https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/
+
+007 Metadata-API
+https://codex.wordpress.org/Metadata_API
+
+007 Lorem-Ipsum
+https://www.lipsum.com/
+
+007 save-post-Action-Hook
+https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
+
+007 Validating-and-Sanitizing-Data
+https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/
+
+007 update-post-meta-Function
+https://codex.wordpress.org/Function_Reference/update_post_meta
+
+009 dbDelta-Function
+https://developer.wordpress.org/reference/functions/dbdelta/
+
+011 Rate-It
+https://github.com/gjunge/rateit.js
+
+011 AJAX-in-Plugins
+https://codex.wordpress.org/AJAX_in_Plugins
+
+011 wp-ajax-Hook
+https://codex.wordpress.org/Plugin_API/Action_Reference/wp_ajax_(action)
+
+012 wpdb-Class
+https://codex.wordpress.org/Class_Reference/wpdb
+
+013 manage-post-type-posts-columns-Hook
+https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
+
+013 manage-post-type-posts-custom-column-Hook
+https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column

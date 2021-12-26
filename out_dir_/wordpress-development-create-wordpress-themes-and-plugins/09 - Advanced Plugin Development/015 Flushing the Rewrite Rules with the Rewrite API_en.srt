@@ -1,0 +1,388 @@
+1
+00:00:07,440 --> 00:00:13,770
+The rewrite API is probably the most dangerous API WordPress has to offer, and that's because even
+
+2
+00:00:13,770 --> 00:00:17,730
+during the development phase of your plugin or theme, it can destroy your site.
+
+3
+00:00:18,150 --> 00:00:23,970
+So to kind of keep things from getting too hectic, this lecture will only be a light introduction to
+
+4
+00:00:23,970 --> 00:00:24,760
+this API.
+
+5
+00:00:25,560 --> 00:00:32,220
+The rewrite API allows you to modify the Eurail structure of WordPress, the SEO friendly you URLs you
+
+6
+00:00:32,220 --> 00:00:37,440
+see being generated are all thanks to the access file and WordPress rewrite rules.
+
+7
+00:00:37,920 --> 00:00:43,980
+The ability to add more rules or customize existing ones are all possible with the rewrite API.
+
+8
+00:00:44,580 --> 00:00:48,970
+In the resource section of this lecture, I provide a link to this API.
+
+9
+00:00:49,380 --> 00:00:51,480
+Here's what WordPress has to say about it.
+
+10
+00:00:52,140 --> 00:00:58,440
+WordPress allows theme and plugin developers to programmatically specify new custom rewrite rules.
+
+11
+00:00:58,800 --> 00:01:05,140
+The following functions, which are mostly aliases for WP rewrite methods, can be used to achieve this.
+
+12
+00:01:05,820 --> 00:01:11,310
+Let's explore how you URLs are stored and what makes the rewrite API work the way it does.
+
+13
+00:01:11,730 --> 00:01:14,550
+First, let's open the access file.
+
+14
+00:01:14,880 --> 00:01:18,260
+You can find this file in the root installation of your WordPress site.
+
+15
+00:01:18,690 --> 00:01:21,900
+Open this file and let's check out what's so important about it.
+
+16
+00:01:22,350 --> 00:01:27,770
+This file allows you to control how a site works by directly editing some of the server settings.
+
+17
+00:01:28,110 --> 00:01:32,570
+It's important to understand that Apache, not PGP, reads this file.
+
+18
+00:01:32,910 --> 00:01:37,200
+If you have an error in this file, then you'll end up destroying your whole site.
+
+19
+00:01:37,590 --> 00:01:40,590
+So editing this file should be taken with extra care.
+
+20
+00:01:40,980 --> 00:01:46,170
+The commands you'll find inside this file aren't really newbie friendly, but let's go through it one
+
+21
+00:01:46,170 --> 00:01:46,680
+by one.
+
+22
+00:01:47,460 --> 00:01:50,990
+First, you'll find these hash tags with some text after it.
+
+23
+00:01:51,330 --> 00:01:56,610
+These are considered comments, so you're free to type whatever you want after these tags without breaking
+
+24
+00:01:56,610 --> 00:01:57,060
+the site.
+
+25
+00:01:58,070 --> 00:02:03,620
+Next up is this conditional statement, it's written in an odd fashion, but keep in mind that this
+
+26
+00:02:03,620 --> 00:02:09,710
+isn't what this line does is check of a module called Mond Rewrite is enabled.
+
+27
+00:02:10,070 --> 00:02:12,890
+If it is, then the rest of this code will execute.
+
+28
+00:02:13,220 --> 00:02:18,920
+The Mod rewrite module makes it possible for you URLs to have user friendly you or else rather than
+
+29
+00:02:18,920 --> 00:02:22,430
+having a lot of question marks, ampersand, signs, et cetera.
+
+30
+00:02:23,210 --> 00:02:29,930
+Inside this statement is code that will intercept all your requests and make the index for you file
+
+31
+00:02:29,930 --> 00:02:31,130
+control the requests.
+
+32
+00:02:31,790 --> 00:02:35,620
+First, we're instructing Apache to turn on the rewrite engine.
+
+33
+00:02:36,020 --> 00:02:40,130
+This will allow us to begin controlling how your role should be displayed.
+
+34
+00:02:40,850 --> 00:02:43,520
+Then we're specifying a rewrite base.
+
+35
+00:02:43,790 --> 00:02:47,630
+The rewrite base is the list of folders relative to the root domain.
+
+36
+00:02:48,050 --> 00:02:53,770
+I'm currently inside my Udemy folder, so that's what will be inputted here next.
+
+37
+00:02:53,780 --> 00:02:59,310
+All requests made to our site and any directories will be handled by the indexed file.
+
+38
+00:02:59,660 --> 00:03:02,150
+There are some flags in place before this, though.
+
+39
+00:03:02,510 --> 00:03:06,410
+These flags will make sure to display files that exist like image files.
+
+40
+00:03:06,680 --> 00:03:14,120
+If the files or directories don't exist, then everything will be passed onto the index file the way
+
+41
+00:03:14,120 --> 00:03:20,040
+the image displays and WordPress doesn't have to use any CPU or bandwidth to handle the request.
+
+42
+00:03:20,510 --> 00:03:24,430
+This bit of code is what makes WordPress have a clean YORO structure.
+
+43
+00:03:24,890 --> 00:03:29,360
+Keep in mind that this is only part of it, but a very important part nonetheless.
+
+44
+00:03:29,960 --> 00:03:36,340
+As an extra precaution, WordPress provides this page, which stores the original contents of the access
+
+45
+00:03:36,350 --> 00:03:40,420
+file and provide a link in the resource section of this lecture.
+
+46
+00:03:40,730 --> 00:03:46,760
+If you ever break the access file, then just copy and paste this into the file and you should be good
+
+47
+00:03:46,760 --> 00:03:48,470
+to go open.
+
+48
+00:03:48,470 --> 00:03:50,960
+Heidi Yassky will review the options table.
+
+49
+00:03:51,200 --> 00:03:54,200
+Look for an option named rewrite underscore rules.
+
+50
+00:03:56,450 --> 00:04:02,300
+If you were to open this options value, you'll find that the word press corps plugins and themes all
+
+51
+00:04:02,300 --> 00:04:04,330
+take the time to modify this option.
+
+52
+00:04:04,730 --> 00:04:05,980
+It's pretty extensive.
+
+53
+00:04:06,230 --> 00:04:08,530
+This is where all the rewrite rules are stored.
+
+54
+00:04:09,080 --> 00:04:14,690
+We are more than allowed to use the options API to modify this option, but that's too risky.
+
+55
+00:04:15,350 --> 00:04:16,820
+All right, enough talk.
+
+56
+00:04:16,820 --> 00:04:18,320
+Let's use this API.
+
+57
+00:04:18,620 --> 00:04:22,630
+Like I said before, this will be a light introduction to this API.
+
+58
+00:04:22,970 --> 00:04:27,260
+Right now I have the activation function opened up for our plugin.
+
+59
+00:04:27,680 --> 00:04:33,800
+I run into a problem where when I create a custom post type, it won't work because the walls aren't
+
+60
+00:04:33,800 --> 00:04:34,370
+flushed.
+
+61
+00:04:34,760 --> 00:04:38,210
+This varies from site to site, but the problem is all the same.
+
+62
+00:04:38,840 --> 00:04:44,630
+To fix this, you can go into the settings permalink page and just click update for the rules to be
+
+63
+00:04:44,630 --> 00:04:45,120
+rewritten.
+
+64
+00:04:45,630 --> 00:04:50,510
+However, this is a pain and we always just want our plug in to work out of the box.
+
+65
+00:04:50,870 --> 00:04:53,470
+We can flush the rules ourselves with code.
+
+66
+00:04:53,900 --> 00:04:56,330
+There are only two steps we need to do.
+
+67
+00:04:56,630 --> 00:04:59,840
+The first step is to first register the custom post type.
+
+68
+00:05:00,590 --> 00:05:06,200
+Despite this being done in the Init function, WordPress won't run the Init function when the plugin
+
+69
+00:05:06,200 --> 00:05:06,980
+is activated.
+
+70
+00:05:07,310 --> 00:05:09,590
+We have to call this function manually.
+
+71
+00:05:10,010 --> 00:05:15,470
+We previously named this recipe init, which contains the registration apropo type.
+
+72
+00:05:15,920 --> 00:05:19,160
+We have to register it as it contains the URL rewrite.
+
+73
+00:05:19,940 --> 00:05:24,320
+We can now flush the rules by calling the function called flush rewrite rules.
+
+74
+00:05:26,660 --> 00:05:32,540
+This function will update the rewrite rules since we registered our post type, WordPress will be able
+
+75
+00:05:32,540 --> 00:05:35,930
+to find out that there is a new Eurail structure to account for.
+
+76
+00:05:36,320 --> 00:05:42,560
+It'll update the rewrite rules appropriately, trying, deactivating and reactivating your plugin.
+
+77
+00:05:44,880 --> 00:05:50,820
+You should receive no errors just like that, you were able to flush the rewrite rules and have our
+
+78
+00:05:50,820 --> 00:05:53,290
+plugin compatible with most WordPress sites.
+
+79
+00:05:53,730 --> 00:05:55,560
+This step is super important.
+
+80
+00:05:55,560 --> 00:06:01,320
+If you plan on creating custom post types, let me go over what's going on in detail.
+
+81
+00:06:01,650 --> 00:06:08,160
+When a user makes a request to our site, WordPress will check the rewrite rules option inside the database
+
+82
+00:06:08,160 --> 00:06:09,840
+and determine what page to load.
+
+83
+00:06:09,840 --> 00:06:14,940
+Based on the rules, WordPress will grab the euro and then go through each rule.
+
+84
+00:06:15,270 --> 00:06:18,300
+It will try and match the Eurail to each rule.
+
+85
+00:06:18,780 --> 00:06:23,850
+Once it finds a match, WordPress will then make the correct queries and load the template for that
+
+86
+00:06:23,850 --> 00:06:24,350
+page.
+
+87
+00:06:24,990 --> 00:06:29,730
+If it doesn't find a rule that matches, then WordPress will return a fall for error.
+
+88
+00:06:30,120 --> 00:06:32,340
+The rewrite rules are highly sensitive.
+
+89
+00:06:32,610 --> 00:06:36,080
+WordPress does not check for changes on every page request.
+
+90
+00:06:36,720 --> 00:06:41,370
+When we created our post site, we created a brand New York URL structure.
+
+91
+00:06:41,730 --> 00:06:44,520
+However, WordPress does not save the changes.
+
+92
+00:06:44,760 --> 00:06:49,830
+So in our activation function, we told WordPress about the New York URL structure.
+
+93
+00:06:50,220 --> 00:06:55,710
+Then we told WordPress to add this new rule by calling the flush rewrite rules function.
+
+94
+00:06:56,400 --> 00:07:01,860
+The reason we do not call this function inside the Init function is because it's not recommended by
+
+95
+00:07:01,860 --> 00:07:04,800
+WordPress, if you think about it constantly.
+
+96
+00:07:04,800 --> 00:07:08,880
+Telling WordPress to update its rules on every page load is inefficient.
+
+97
+00:07:09,210 --> 00:07:12,660
+It can also open yourself up to security vulnerabilities.
+

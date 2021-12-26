@@ -1,0 +1,168 @@
+1
+00:00:07,640 --> 00:00:09,240
+We're almost finished here, folks.
+
+2
+00:00:09,380 --> 00:00:12,350
+The last step to any plug in our theme is distributing it.
+
+3
+00:00:12,710 --> 00:00:14,840
+Let's start by talking about licensing.
+
+4
+00:00:15,110 --> 00:00:19,580
+Admittedly, WordPress has had a controversial history with licensing.
+
+5
+00:00:19,970 --> 00:00:26,420
+Back in 2009, people predicted that WordPress would die due to dual licensing or split licensing.
+
+6
+00:00:26,930 --> 00:00:29,710
+WordPress is licensed under the license.
+
+7
+00:00:30,200 --> 00:00:34,550
+It basically means that the software is free to use, modify and distribute.
+
+8
+00:00:35,030 --> 00:00:38,870
+There is no secret encryption or files that you were not allowed to access.
+
+9
+00:00:39,050 --> 00:00:40,460
+It's all available to you.
+
+10
+00:00:40,820 --> 00:00:44,960
+This was considered great to many, but there was one important question some had.
+
+11
+00:00:45,290 --> 00:00:47,240
+What about commercial themes and plugins?
+
+12
+00:00:47,840 --> 00:00:54,650
+Well, technically, all plug ins and themes must all be distributed with the license to this concerned
+
+13
+00:00:54,650 --> 00:00:59,120
+many developers because it meant that all their code would have to be made available for free.
+
+14
+00:00:59,480 --> 00:01:01,600
+However, this is far from the truth.
+
+15
+00:01:02,210 --> 00:01:04,900
+You are still allowed to sell plug ins and themes.
+
+16
+00:01:05,150 --> 00:01:09,710
+Your code must be available to modify, but that doesn't mean you can't sell it.
+
+17
+00:01:10,070 --> 00:01:12,970
+It's perfectly fine to sell your plugins and themes.
+
+18
+00:01:13,280 --> 00:01:18,530
+You can also create a license system that provides buyers a way to receive updates and support.
+
+19
+00:01:19,250 --> 00:01:24,230
+If you're providing your plug in or theme for free, then this topic shouldn't worry you so much.
+
+20
+00:01:24,470 --> 00:01:29,180
+You can simply go to WordPress, Digg, create an account and upload your plugin.
+
+21
+00:01:29,600 --> 00:01:31,490
+The rest is taken care of for you.
+
+22
+00:01:31,880 --> 00:01:37,640
+If you want to sell your plugin and or theme, then you have two main options available to you.
+
+23
+00:01:38,270 --> 00:01:41,050
+You can create your own site to attract buyers.
+
+24
+00:01:41,300 --> 00:01:46,910
+This would mean you would have to take care of everything from SEO to processing transactions and creating
+
+25
+00:01:46,910 --> 00:01:47,990
+a licensing system.
+
+26
+00:01:48,410 --> 00:01:52,130
+A lot of developers have taken this route and are successful to this day.
+
+27
+00:01:52,850 --> 00:01:58,160
+For others, this can be a bit time consuming as it can take a long time and money to market your plugin.
+
+28
+00:01:58,550 --> 00:02:00,770
+Luckily, there's another alternative.
+
+29
+00:02:01,010 --> 00:02:04,430
+There's a marketplace called Code Canyon and Forest.
+
+30
+00:02:04,700 --> 00:02:08,090
+Both marketplaces are owned by a company called an Votto.
+
+31
+00:02:08,750 --> 00:02:13,250
+Right now I'm on the for looking at the top selling WordPress themes page.
+
+32
+00:02:13,550 --> 00:02:16,280
+The most popular theme here is called Aveda.
+
+33
+00:02:16,670 --> 00:02:22,400
+This company is selling about two thousand copies a week at the price of sixty dollars through theme,
+
+34
+00:02:22,400 --> 00:02:25,820
+for they're able to generate a lot of revenue in.
+
+35
+00:02:25,820 --> 00:02:31,550
+Votto provides the licensing, transaction, processing and the marketing of your plugin and our theme.
+
+36
+00:02:31,910 --> 00:02:37,310
+There's a rating system, a forum, a lot of buyers and the tools to help sell your Coan.
+
+37
+00:02:37,700 --> 00:02:39,980
+All you have to do is provide the goods.
+
+38
+00:02:40,550 --> 00:02:44,950
+Of course there is a variable fee of around 20 percent, but it's well worth it.
+
+39
+00:02:45,320 --> 00:02:50,330
+I've personally sold on this platform and have made a decent amount of sales selling both themes and
+
+40
+00:02:50,330 --> 00:02:50,900
+plugins.
+
+41
+00:02:51,200 --> 00:02:56,480
+If you want to start receiving sales quickly, then I highly recommend you consider selling uncowed
+
+42
+00:02:56,480 --> 00:02:58,100
+Kanyon and Team Forest.
+

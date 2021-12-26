@@ -1,0 +1,204 @@
+1
+00:00:07,320 --> 00:00:12,750
+Our theme is not complete yet, we're nowhere close to that, but I want to make some simple adjustments
+
+2
+00:00:12,750 --> 00:00:14,240
+before we move on to plugins.
+
+3
+00:00:14,580 --> 00:00:20,640
+I would like to create a plugin that will allow user submission, user account login, slash registration
+
+4
+00:00:20,640 --> 00:00:21,960
+and a bunch of other features.
+
+5
+00:00:21,960 --> 00:00:24,630
+But let's add some finishing touches to this theme.
+
+6
+00:00:25,410 --> 00:00:29,240
+What I want to show you are just things we overlooked when we were creating the theme.
+
+7
+00:00:29,250 --> 00:00:33,640
+But these topics don't need a lecture of their own, so we'll be jumping around a little bit.
+
+8
+00:00:34,350 --> 00:00:40,560
+The first thing I want to do is replace these two attributes in the HTML tag I'm going to call a function
+
+9
+00:00:40,560 --> 00:00:45,420
+called Language Attributes, which will generate the HTML attributes we had previously.
+
+10
+00:00:47,730 --> 00:00:54,030
+This course assumes, you know, HTML, but I'll explain what these two attributes to the first attribute
+
+11
+00:00:54,030 --> 00:00:57,390
+created is called Dyax, which is short for direction.
+
+12
+00:00:57,810 --> 00:01:03,180
+This attribute will tell the browser whether or not the language used on the site is left to right or
+
+13
+00:01:03,180 --> 00:01:04,019
+right to left.
+
+14
+00:01:04,349 --> 00:01:09,840
+Most of the time, WordPress will not generate this attribute because most browsers by default assume
+
+15
+00:01:09,840 --> 00:01:10,500
+left to write.
+
+16
+00:01:11,010 --> 00:01:14,620
+The next attribute is called langue, which is short for language.
+
+17
+00:01:14,910 --> 00:01:18,710
+This attribute will specify what language the page is currently using.
+
+18
+00:01:19,020 --> 00:01:24,570
+This is beneficial because scripts and styles can display the content differently depending on the language
+
+19
+00:01:24,870 --> 00:01:26,300
+and the resources section.
+
+20
+00:01:26,310 --> 00:01:29,200
+I provide a link to more information about this attribute.
+
+21
+00:01:29,850 --> 00:01:36,480
+If you scroll down to these styling pages section, you'll see how this attribute is used using CSS.
+
+22
+00:01:36,540 --> 00:01:40,720
+You can check what language the page is using and update the CFS accordingly.
+
+23
+00:01:41,070 --> 00:01:45,090
+And this example, the default font family is Palazzi no linotype.
+
+24
+00:01:45,090 --> 00:01:51,750
+But if the language was Arabic and the font family would change to traditional Arabic, WordPress will
+
+25
+00:01:51,750 --> 00:01:54,730
+handle generating these attributes for you without a problem.
+
+26
+00:01:55,140 --> 00:02:01,260
+The next thing we want to do is create a meta tag with the care set attributes set to the Dalu return
+
+27
+00:02:01,260 --> 00:02:02,700
+by the function blog info.
+
+28
+00:02:04,850 --> 00:02:10,820
+In the resources section, I provide a link to this function, this function will return any value you
+
+29
+00:02:10,820 --> 00:02:12,400
+specify inside the function.
+
+30
+00:02:12,800 --> 00:02:17,450
+This function will return information about the current WordPress installation, such as the version
+
+31
+00:02:17,450 --> 00:02:18,160
+or language.
+
+32
+00:02:18,500 --> 00:02:23,060
+If you scroll down, you'll notice one of these is cassette, which is short for character set.
+
+33
+00:02:23,810 --> 00:02:27,860
+This is very important as it'll determine how a lot of your characters are displayed.
+
+34
+00:02:28,310 --> 00:02:33,200
+If you let the browser handle it, then some characters will be outputted differently than you'd like
+
+35
+00:02:33,620 --> 00:02:38,130
+by setting the characters that you instruct the browser to display it the same way every time.
+
+36
+00:02:38,870 --> 00:02:39,970
+That's it for the header.
+
+37
+00:02:40,130 --> 00:02:44,810
+I'm going to close this and open the single template and make a change inside the loop.
+
+38
+00:02:45,170 --> 00:02:48,050
+Every post is assigned an ID and classes.
+
+39
+00:02:48,560 --> 00:02:51,910
+I'm going to modify the route div tag inside the loop.
+
+40
+00:02:52,250 --> 00:02:55,070
+This tag encompasses everything about this post.
+
+41
+00:02:55,370 --> 00:02:59,210
+Create an ID attribute that begins with post dash.
+
+42
+00:02:59,480 --> 00:03:03,440
+Then I'm going to open up some tags and I'll put the ID.
+
+43
+00:03:05,630 --> 00:03:11,690
+This function will output the ID of the current post by doing this, the Post will always have a unique
+
+44
+00:03:11,690 --> 00:03:11,990
+ID.
+
+45
+00:03:12,650 --> 00:03:15,380
+I'm going to call a function called post class.
+
+46
+00:03:17,520 --> 00:03:23,040
+This function will output various classes for this post that plugins or your team can use to stylize
+
+47
+00:03:23,040 --> 00:03:29,190
+this post, I already have a few classes being outputted, so I'm going to put these inside this function
+
+48
+00:03:29,190 --> 00:03:29,760
+like so.
+
+49
+00:03:31,890 --> 00:03:36,730
+Now, these classes will be added onto the list of classes, that's about it for now.
+
+50
+00:03:36,960 --> 00:03:40,190
+There are still a few things we can do, but we can take care of that later.
+
+51
+00:03:40,410 --> 00:03:44,130
+Let's finish talking about the development and then move on to plug ins.
+

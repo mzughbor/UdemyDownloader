@@ -1,0 +1,320 @@
+1
+00:00:07,330 --> 00:00:13,060
+One of the best things you could do is make your site accessible to people with disabilities, accessibility
+
+2
+00:00:13,060 --> 00:00:17,720
+is a pretty huge topic and there are a lot of steps you need to take to cover every area.
+
+3
+00:00:18,130 --> 00:00:23,140
+This election will be an overview of what you can do to make your team and plug an accessible to people
+
+4
+00:00:23,140 --> 00:00:26,290
+with disabilities before we make any changes.
+
+5
+00:00:26,320 --> 00:00:30,390
+It's important to understand the various kinds of disabilities you may come across.
+
+6
+00:00:30,730 --> 00:00:38,020
+Usually they can be categorized into four different topics visual such as blindness or colorblindness,
+
+7
+00:00:38,410 --> 00:00:45,610
+hearing such as deafness or being hard of hearing motor such as a lack of fine motor skills or difficulty
+
+8
+00:00:45,610 --> 00:00:52,390
+in using a mouse or mousepad cognitive such as learning difficulties, attention deficit disorders or
+
+9
+00:00:52,390 --> 00:00:53,070
+dyslexia.
+
+10
+00:00:53,710 --> 00:00:58,720
+It's usually up to the producer of the content to determine how to tackle these situations.
+
+11
+00:00:59,020 --> 00:01:04,060
+However, as developers, we should also take the time to help users navigate around the site.
+
+12
+00:01:07,010 --> 00:01:14,660
+The topic we're discussing is what HTML5 calls Aria Aria is short for accessible, rich Internet applications.
+
+13
+00:01:14,870 --> 00:01:19,730
+In the resource section of this lecture, I provide a link to where you can find more information about
+
+14
+00:01:19,730 --> 00:01:20,380
+this topic.
+
+15
+00:01:21,110 --> 00:01:25,160
+As you can see, there's a lot of information here and a lot of attributes.
+
+16
+00:01:25,160 --> 00:01:27,960
+You can say we won't be going over all of them.
+
+17
+00:01:28,220 --> 00:01:30,740
+This is just a brief introduction to this topic.
+
+18
+00:01:30,980 --> 00:01:32,300
+So let's get started.
+
+19
+00:01:32,930 --> 00:01:37,450
+One of the first steps you can take is to make the elements on your page more understandable.
+
+20
+00:01:37,820 --> 00:01:43,820
+For example, on the sidebar, I have the search widget, if you can recall, this is formatted using
+
+21
+00:01:43,820 --> 00:01:46,180
+these search form template to us.
+
+22
+00:01:46,190 --> 00:01:47,620
+It's clear what this will do.
+
+23
+00:01:48,270 --> 00:01:53,510
+However, that's because we can identify the search icon inside the button and know right away what
+
+24
+00:01:53,510 --> 00:01:56,960
+it means for people who can't or don't understand.
+
+25
+00:01:56,960 --> 00:02:01,280
+We will need more information, especially people who can't see this visually.
+
+26
+00:02:01,940 --> 00:02:03,830
+Open the search form template.
+
+27
+00:02:06,160 --> 00:02:12,670
+This button is entirely made up of HTML and no text in order to provide more information about this
+
+28
+00:02:12,670 --> 00:02:16,420
+element, we can apply an attribute called Ariah Dash label.
+
+29
+00:02:18,910 --> 00:02:21,590
+The value for this attribute can be anything you want.
+
+30
+00:02:21,970 --> 00:02:26,060
+Usually you would provide a short and concise description about this element.
+
+31
+00:02:26,650 --> 00:02:29,500
+I'm going to input search just like that.
+
+32
+00:02:29,590 --> 00:02:35,590
+If a user is using a device such as a screenwriter, then they'll easily be able to identify what this
+
+33
+00:02:35,590 --> 00:02:36,320
+button does.
+
+34
+00:02:36,970 --> 00:02:40,960
+You can apply the Ariah Dash label attribute to any element you like.
+
+35
+00:02:41,320 --> 00:02:42,790
+There are some exceptions, though.
+
+36
+00:02:43,060 --> 00:02:48,760
+Image tags don't need this attribute because there's the alt attribute that already does something similar
+
+37
+00:02:48,760 --> 00:02:50,720
+to the Ariah Dash label attribute.
+
+38
+00:02:51,490 --> 00:02:52,760
+Let's keep moving forward.
+
+39
+00:02:53,080 --> 00:02:57,070
+One of the biggest ways you can make your site navigable is by using rolls.
+
+40
+00:02:57,430 --> 00:03:00,510
+Rolls are a way to categorize the sections of your site.
+
+41
+00:03:00,970 --> 00:03:03,420
+They're very simple and straightforward to use.
+
+42
+00:03:03,970 --> 00:03:08,680
+If you look at the search form template, you'll notice we have an attribute called Roll.
+
+43
+00:03:09,100 --> 00:03:13,850
+By adding this attribute, you can specify the type of content that's inside this element.
+
+44
+00:03:14,290 --> 00:03:16,780
+This is a great and simple attribute to use.
+
+45
+00:03:17,080 --> 00:03:21,660
+It allows for users to skip around without having to go through each individual element.
+
+46
+00:03:22,360 --> 00:03:25,000
+Let's play with the raw, attribute some more.
+
+47
+00:03:25,330 --> 00:03:26,800
+Open the header template.
+
+48
+00:03:29,150 --> 00:03:32,790
+I'm going to apply the role attribute to the header element.
+
+49
+00:03:33,140 --> 00:03:35,000
+I'm going to set this to Baner.
+
+50
+00:03:37,350 --> 00:03:42,720
+The banner is the value you want to set to the element that contains the logo and navigation links,
+
+51
+00:03:43,350 --> 00:03:46,160
+go to the page that describes Ariah in detail.
+
+52
+00:03:46,440 --> 00:03:51,830
+If you click no to, you'll be taken to a list of all the values that role can be set to.
+
+53
+00:03:52,320 --> 00:03:56,570
+There are dozens of them available will only be using the more major ones.
+
+54
+00:03:57,180 --> 00:03:59,670
+So we told the user where the header is.
+
+55
+00:03:59,880 --> 00:04:03,870
+The next region we can set is the main content side bar and footer.
+
+56
+00:04:04,200 --> 00:04:06,300
+Open the single template next.
+
+57
+00:04:08,480 --> 00:04:15,110
+Applying the role attribute to the div tag with the class post content, I'm going to set this to mean.
+
+58
+00:04:17,610 --> 00:04:21,120
+This will tell the user this is where the main content is located.
+
+59
+00:04:21,779 --> 00:04:26,190
+I want to highlight that you should only apply this region once as a standard.
+
+60
+00:04:26,340 --> 00:04:29,580
+You usually only have one region for the main content.
+
+61
+00:04:29,910 --> 00:04:31,800
+You don't want to confuse the user.
+
+62
+00:04:32,130 --> 00:04:34,230
+Be conscious of where you define this region.
+
+63
+00:04:34,830 --> 00:04:35,330
+All right.
+
+64
+00:04:35,460 --> 00:04:39,690
+Let's keep going on open the sidebar template and apply the role.
+
+65
+00:04:39,690 --> 00:04:41,160
+Complimentary attribute.
+
+66
+00:04:43,750 --> 00:04:51,190
+This will specify the sidebar region, lastly, open the footer file and apply the roll content info
+
+67
+00:04:51,190 --> 00:04:52,900
+attribute to the footer element.
+
+68
+00:04:55,720 --> 00:05:01,480
+This is a weird name, but this is usually the name of the region for the footer, just like that,
+
+69
+00:05:01,480 --> 00:05:03,270
+we set all our regions.
+
+70
+00:05:03,550 --> 00:05:07,000
+There are so many more things we could do to make this thing accessible.
+
+71
+00:05:07,010 --> 00:05:08,620
+But I'm going to stop right here.
+
+72
+00:05:09,070 --> 00:05:15,020
+If you want to test a theme for accessibility, you can simply use a tool called wave web accessibility.
+
+73
+00:05:15,460 --> 00:05:16,780
+I'll provide a link to this.
+
+74
+00:05:16,780 --> 00:05:21,300
+In the resource section of this lecture, I'm going to give some final thoughts.
+
+75
+00:05:21,460 --> 00:05:25,770
+I find that adding accessibility to my themes is not a high priority.
+
+76
+00:05:26,200 --> 00:05:32,140
+I usually tackle accessibility last and I don't build upon it unless the product I'm building has high
+
+77
+00:05:32,140 --> 00:05:32,720
+usage.
+
+78
+00:05:33,220 --> 00:05:35,460
+It really is a case by case scenario.
+
+79
+00:05:35,740 --> 00:05:40,720
+It's up to you in the end, if you want to make your themes and plugins accessible, it's never a bad
+
+80
+00:05:40,720 --> 00:05:41,710
+idea to do so.
+

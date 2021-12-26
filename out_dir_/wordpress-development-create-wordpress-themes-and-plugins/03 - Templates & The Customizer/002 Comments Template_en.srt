@@ -1,0 +1,600 @@
+1
+00:00:07,450 --> 00:00:09,560
+Comments deserve a lecture of their own.
+
+2
+00:00:09,850 --> 00:00:14,540
+We'll be taking a look at how to make a template for comments and how to submit a comment.
+
+3
+00:00:15,070 --> 00:00:17,890
+I'm still working inside the single template file.
+
+4
+00:00:18,190 --> 00:00:22,240
+Scroll down until you find a section called Comments right before this.
+
+5
+00:00:22,250 --> 00:00:24,580
+We're going to call the function comments template.
+
+6
+00:00:27,890 --> 00:00:34,020
+This function will look for a template file called Common Stock and load it, let's create that file.
+
+7
+00:00:34,040 --> 00:00:38,900
+Now, I'm going to move the comments from the single template into the comments template.
+
+8
+00:00:47,040 --> 00:00:52,410
+Back inside the single template, I'm going to read the comments template function with a conditional
+
+9
+00:00:52,410 --> 00:00:52,860
+statement.
+
+10
+00:00:55,020 --> 00:01:00,030
+I want to check for two things, the first thing I want to check is to see if the comments are open
+
+11
+00:01:00,030 --> 00:01:01,950
+using the comments open function.
+
+12
+00:01:04,129 --> 00:01:09,560
+The second thing I want to check is if there are already comments for this post using the get comments,
+
+13
+00:01:09,560 --> 00:01:10,370
+no function.
+
+14
+00:01:12,640 --> 00:01:18,080
+If there are already comments, then we'll want to display those, even if the comments section is close.
+
+15
+00:01:18,730 --> 00:01:20,430
+Let's go back to the comments template.
+
+16
+00:01:20,650 --> 00:01:25,480
+I'm going to set up a conditional statement and call the function post password required.
+
+17
+00:01:30,070 --> 00:01:35,170
+This function will check to see if this post requires a password value before viewing it and if the
+
+18
+00:01:35,170 --> 00:01:41,740
+current visitor has not inputted that password, if this returns true, then we shouldn't display anything
+
+19
+00:01:41,740 --> 00:01:42,330
+to the user.
+
+20
+00:01:42,730 --> 00:01:48,910
+In this case, I'll just add a return statement like so you may be wondering, will this really stop
+
+21
+00:01:48,910 --> 00:01:50,500
+the rest of the file from returning?
+
+22
+00:01:50,710 --> 00:01:53,500
+Wouldn't using the exit or day function be better?
+
+23
+00:01:54,100 --> 00:01:59,200
+Well, keep in mind that we're calling this template file using the comments template function.
+
+24
+00:01:59,710 --> 00:02:05,590
+This function includes this file and so we can use the return statement to end this function early.
+
+25
+00:02:06,310 --> 00:02:12,060
+You'll also notice that I'm not even using the post password required function inside the single template.
+
+26
+00:02:12,430 --> 00:02:17,410
+In a way, it would make sense to block the rest of the post from displaying, but we don't have to
+
+27
+00:02:17,410 --> 00:02:20,190
+do that because WordPress already does that for us.
+
+28
+00:02:20,800 --> 00:02:26,290
+The only reason I'm using this function inside the comments template is because the comments template
+
+29
+00:02:26,290 --> 00:02:28,000
+can be used anywhere in our theme.
+
+30
+00:02:28,540 --> 00:02:30,880
+Comments are used everywhere in WordPress.
+
+31
+00:02:30,880 --> 00:02:34,480
+So we want to take into account of those situations as well.
+
+32
+00:02:34,930 --> 00:02:39,550
+Assuming everything is good so far, we can begin displaying the comments and form.
+
+33
+00:02:39,850 --> 00:02:41,500
+I'm going to start with the form.
+
+34
+00:02:41,740 --> 00:02:44,440
+Scroll down to the section that says comment form.
+
+35
+00:02:45,010 --> 00:02:50,520
+I'm going to place this code directly inside the div tag with the ID of response.
+
+36
+00:02:50,950 --> 00:02:56,200
+There is a function variable that will help with generating the form, which is the comment form function.
+
+37
+00:02:58,400 --> 00:03:03,920
+This function has two parameters, which are both completely optional in the resource section of this
+
+38
+00:03:03,920 --> 00:03:06,360
+lecture, I provide a link to this function.
+
+39
+00:03:06,800 --> 00:03:09,220
+Let's look at the developer page for a second.
+
+40
+00:03:09,740 --> 00:03:14,710
+As you can see, like most WordPress functions, this function is heavily documented.
+
+41
+00:03:15,140 --> 00:03:19,700
+This function will generate a form where a user can submit a comment for a post.
+
+42
+00:03:20,060 --> 00:03:24,000
+You are allowed to create your own form, but this function is pluggable.
+
+43
+00:03:24,620 --> 00:03:26,380
+This is a new phrase we're learning here.
+
+44
+00:03:26,600 --> 00:03:32,570
+Anything in WordPress that is pluggable simply means that plug ins are allowed to extend the functionality
+
+45
+00:03:32,570 --> 00:03:33,650
+of that bit of code.
+
+46
+00:03:34,160 --> 00:03:39,050
+Developers are allowed to add in their own fields or change the way it looks with plugins.
+
+47
+00:03:39,410 --> 00:03:43,820
+So it's always best to use this function rather than creating a form manually.
+
+48
+00:03:44,600 --> 00:03:46,760
+There are a lot of options we can set here.
+
+49
+00:03:47,030 --> 00:03:49,130
+We won't be defining all parameters.
+
+50
+00:03:49,280 --> 00:03:54,980
+If we were to leave this function as is and do the page, then you'll notice that the form doesn't match
+
+51
+00:03:54,980 --> 00:03:56,040
+the one in our template.
+
+52
+00:03:56,480 --> 00:04:00,800
+This can be fixed easily inside the comment form function.
+
+53
+00:04:00,810 --> 00:04:02,630
+I want you to input an array.
+
+54
+00:04:02,990 --> 00:04:08,780
+This array can have a multitude of values and keys, but will only be setting a few which are mostly
+
+55
+00:04:08,780 --> 00:04:09,440
+ascetics.
+
+56
+00:04:10,070 --> 00:04:12,470
+The first key is the comment field keep.
+
+57
+00:04:14,680 --> 00:04:20,529
+This kid's value will be the actual input field for the common body from the template, I'm going to
+
+58
+00:04:20,529 --> 00:04:24,730
+cut and paste the HTML for the body into this case value like so.
+
+59
+00:04:32,160 --> 00:04:37,470
+Next up is the rest of the fields, the other fields are defined using the fields key.
+
+60
+00:04:39,690 --> 00:04:45,030
+This key's value will be an array of all the fields available in the comments form, there are three
+
+61
+00:04:45,030 --> 00:04:48,110
+which are the author email and you are out.
+
+62
+00:04:48,870 --> 00:04:54,870
+All you really need to do is set each of these keys values to the corresponding HTML in the static template.
+
+63
+00:04:55,230 --> 00:04:57,840
+I'm going to post this video and do this really quick.
+
+64
+00:04:59,340 --> 00:05:05,540
+All right, I'm back, and as you can see, I cut and pasted the HTML into each corresponding key,
+
+65
+00:05:06,090 --> 00:05:07,970
+there are two things I want you to notice.
+
+66
+00:05:08,250 --> 00:05:14,820
+The first is that for each label, I actually made the text translatable, which is completely optional,
+
+67
+00:05:14,820 --> 00:05:16,190
+but always good practice.
+
+68
+00:05:16,590 --> 00:05:20,570
+The second is that you should take careful notice of the name of each field.
+
+69
+00:05:21,210 --> 00:05:25,350
+It's important that you assign each of these fields, these specific names.
+
+70
+00:05:25,740 --> 00:05:28,290
+This is because we won't be processing the commas.
+
+71
+00:05:28,560 --> 00:05:32,040
+WordPress already takes care of processing and saving comments.
+
+72
+00:05:32,340 --> 00:05:35,270
+WordPress expects these names for each field.
+
+73
+00:05:36,000 --> 00:05:36,800
+We're almost done.
+
+74
+00:05:37,110 --> 00:05:43,380
+There are three more keys to set which are the class submit, label, submit and title reply keys.
+
+75
+00:05:49,750 --> 00:05:56,160
+The class submit Mickey's value should be the S.O.S classes, the submit button uses in the HTML document,
+
+76
+00:05:56,680 --> 00:05:58,930
+I'm going to simply cut and paste like so.
+
+77
+00:06:01,140 --> 00:06:05,520
+The label summit will be a translatable string, but says submit comment.
+
+78
+00:06:12,400 --> 00:06:18,370
+The title reply, His value will be leave assman comments span, but it's also translatable.
+
+79
+00:06:23,680 --> 00:06:29,830
+That should do it if you haven't already delete the static comment form, then refresh the page and
+
+80
+00:06:29,830 --> 00:06:32,090
+you should see something similar to what I see.
+
+81
+00:06:32,590 --> 00:06:37,410
+This may seem like a lot of work, but WordPress handles a lot for us behind the scenes.
+
+82
+00:06:37,780 --> 00:06:40,360
+This function does a lot more than output a form.
+
+83
+00:06:40,630 --> 00:06:42,130
+Let me go over what goes on.
+
+84
+00:06:42,790 --> 00:06:48,000
+First, WordPress checks to see if the user is logged in and can submit comments.
+
+85
+00:06:48,340 --> 00:06:51,310
+It'll also check if comments are open for submission.
+
+86
+00:06:51,710 --> 00:06:55,170
+It'll also take care of submitting the correct post information.
+
+87
+00:06:55,180 --> 00:06:58,690
+This comment belongs to try submitting a comment, if you like.
+
+88
+00:07:00,730 --> 00:07:04,750
+Something I should also note is that the form may be different if you are not logged in.
+
+89
+00:07:05,140 --> 00:07:07,960
+I want you to log out of WordPress and check the form.
+
+90
+00:07:12,020 --> 00:07:16,620
+As you can see, WordPress displays these extra fields for logged out users.
+
+91
+00:07:17,180 --> 00:07:20,390
+I'm going to log back in and then go back to the comments.
+
+92
+00:07:25,430 --> 00:07:30,920
+If you wanted to, you could have just written this logic yourself, but that's overcomplicating things,
+
+93
+00:07:31,280 --> 00:07:34,820
+using this function is much more simpler, cleaner and efficient.
+
+94
+00:07:35,180 --> 00:07:40,700
+If you wish to customize this form further than I highly recommend, you read up on the documentation
+
+95
+00:07:40,700 --> 00:07:41,280
+to do so.
+
+96
+00:07:42,050 --> 00:07:44,090
+Now it's time to display the comments.
+
+97
+00:07:44,270 --> 00:07:49,430
+Scroll all the way up to the comments list section inside the ordered list.
+
+98
+00:07:49,460 --> 00:07:52,520
+Hagg, I want you to delete all of the comments except one.
+
+99
+00:07:54,750 --> 00:08:01,770
+We will be using the single comment as a reference, then set up a foreach loop, WordPress puts all
+
+100
+00:08:01,770 --> 00:08:04,950
+the post comments in a handy little variable called comments.
+
+101
+00:08:05,400 --> 00:08:09,630
+We're going to loop through each element in this array and refer to it as comment.
+
+102
+00:08:12,000 --> 00:08:17,790
+You don't have to worry about tying us all together as WordPress, does it, for you, it will automatically
+
+103
+00:08:17,790 --> 00:08:19,950
+create the comments variable for you.
+
+104
+00:08:20,370 --> 00:08:24,090
+I'm going to cut and paste that single comment into this loop like so.
+
+105
+00:08:31,710 --> 00:08:37,559
+Just like the loop before, all we have to do is simply replace the static content with template tags,
+
+106
+00:08:37,950 --> 00:08:45,180
+the first template tag for comments is the get avatar function inside the div tag with the class comment
+
+107
+00:08:45,180 --> 00:08:50,100
+dash author, replace the image tag and echo out the get avatar function.
+
+108
+00:08:52,210 --> 00:08:59,260
+This function in general gets the avatar of a user, usually we can leave this function like so, however,
+
+109
+00:08:59,290 --> 00:09:02,200
+we're using it inside a loop that's inside of a loop.
+
+110
+00:09:02,620 --> 00:09:04,650
+This makes things confusing for this function.
+
+111
+00:09:04,990 --> 00:09:08,440
+So we have to pass in the comment object itself.
+
+112
+00:09:10,930 --> 00:09:16,840
+WordPress will be able to scan this object for the idea of the user to get the correct avatar, the
+
+113
+00:09:16,840 --> 00:09:19,870
+second parameter would be the size for this template.
+
+114
+00:09:19,900 --> 00:09:21,750
+The size 60 is perfect.
+
+115
+00:09:22,300 --> 00:09:26,240
+The third parameter is the default image URL if the user doesn't have one.
+
+116
+00:09:26,650 --> 00:09:32,180
+I'm going to pass in an empty string, which will tell WordPress to handle the default image URL.
+
+117
+00:09:32,620 --> 00:09:36,190
+I'm also going to pass in an empty string for the fourth parameter.
+
+118
+00:09:36,550 --> 00:09:40,960
+The value for this must be the text to display inside the alt attribute.
+
+119
+00:09:41,680 --> 00:09:45,730
+I don't want to display anything in the alt text, so only this empty.
+
+120
+00:09:46,090 --> 00:09:48,940
+The fifth parameter is an array of additional settings.
+
+121
+00:09:49,270 --> 00:09:52,120
+I'm going to pass that in and set the Klasky.
+
+122
+00:09:52,660 --> 00:09:57,070
+The value of this should be the classes inside, the image tag below.
+
+123
+00:10:02,500 --> 00:10:06,820
+Scrolling down, you'll find a div tag with declasse comment author.
+
+124
+00:10:07,210 --> 00:10:10,990
+I'm going to replace the static author name with the function comment author.
+
+125
+00:10:13,090 --> 00:10:18,520
+Unlike the previous function comment, specific functions will only grab its values from the current
+
+126
+00:10:18,520 --> 00:10:19,520
+comment in the loop.
+
+127
+00:10:20,020 --> 00:10:23,080
+This function will output the name of the author of this comment.
+
+128
+00:10:23,920 --> 00:10:29,530
+The next one is the comments date function, which returns a formatted date when the comment was made.
+
+129
+00:10:31,730 --> 00:10:36,620
+Lastly, we use the function comments, text to return the text made by the user.
+
+130
+00:10:38,930 --> 00:10:44,480
+Nothing much to it, honestly, if we refresh the page, then you'll see the comment we made previously
+
+131
+00:10:44,480 --> 00:10:48,740
+appear, the very last thing we need to do is add comments pagination.
+
+132
+00:10:49,070 --> 00:10:53,450
+You simply call the comments pagination function right after the loop.
+
+133
+00:10:58,880 --> 00:11:00,870
+This next step is completely optional.
+
+134
+00:11:01,220 --> 00:11:06,320
+I don't want to display this part of the template unless there are comments, I'm going to wrap this
+
+135
+00:11:06,320 --> 00:11:08,660
+bit of code inside a conditional statement.
+
+136
+00:11:19,820 --> 00:11:24,680
+I'm going to use the House of Commons function to check to see if there are any comments.
+
+137
+00:11:27,090 --> 00:11:33,580
+I'm also going to display the number of comments inside this age three tag using the comments, no function.
+
+138
+00:11:34,110 --> 00:11:36,830
+Make sure you remove the comments text as well.
+
+139
+00:11:39,270 --> 00:11:43,800
+That's it for the comments template, you may be wondering, but what about spam protection?
+
+140
+00:11:44,100 --> 00:11:48,150
+Actually, spam protection is something we can leave to plug in developers.
+
+141
+00:11:48,750 --> 00:11:54,060
+There are dozens of plug ins available to block spam, and so we won't bother adding a built in system
+
+142
+00:11:54,060 --> 00:11:54,660
+ourselves.
+
+143
+00:11:54,960 --> 00:11:56,200
+It would be a bit overkill.
+
+144
+00:11:56,910 --> 00:12:00,200
+All comments are processed through a particular file.
+
+145
+00:12:00,480 --> 00:12:08,010
+If we look at the WordPress installation, you'll see the WP dash comments dash post file inside the
+
+146
+00:12:08,010 --> 00:12:08,800
+root directory.
+
+147
+00:12:09,360 --> 00:12:12,390
+This file will process all comments posted to it.
+
+148
+00:12:12,840 --> 00:12:13,870
+Feel free to check it out.
+
+149
+00:12:14,220 --> 00:12:15,090
+That's it for now.
+
+150
+00:12:15,240 --> 00:12:18,480
+In the next few lectures will finish up the single template.
+

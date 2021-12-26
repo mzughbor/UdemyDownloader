@@ -1,0 +1,516 @@
+1
+00:00:07,280 --> 00:00:11,000
+In the previous lecture, we set up the forum and prep the JavaScript code.
+
+2
+00:00:11,270 --> 00:00:15,260
+Now we begin processing the data inside the main plug file.
+
+3
+00:00:15,290 --> 00:00:18,950
+I'm going to use the WP Ajax no priv hook.
+
+4
+00:00:21,100 --> 00:00:22,160
+This is important.
+
+5
+00:00:22,450 --> 00:00:26,780
+Users who are not logged in should be the only ones to be able to create accounts.
+
+6
+00:00:27,130 --> 00:00:34,060
+The function will use the same name as the dynamic look inside the process folder, create a file named
+
+7
+00:00:34,060 --> 00:00:37,770
+create dash account and define the function here.
+
+8
+00:00:38,230 --> 00:00:40,900
+Make sure to include it from the main plug and file as well.
+
+9
+00:00:44,050 --> 00:00:50,620
+Inside this function, I'm going to create the output array with a status key and its value being one.
+
+10
+00:00:52,860 --> 00:00:59,070
+Immediately afterwards, I'm going to grab the underscore WP Norns field and store it in a variable
+
+11
+00:00:59,070 --> 00:01:00,030
+called Knot's.
+
+12
+00:01:00,360 --> 00:01:04,769
+I'm going to check if it's available by using a ternary operator.
+
+13
+00:01:05,099 --> 00:01:07,770
+If it's set, I'll set this variable to the field.
+
+14
+00:01:08,010 --> 00:01:10,650
+Otherwise I'll just set it to an empty string.
+
+15
+00:01:17,030 --> 00:01:23,240
+Next, inside a conditional statement, I'm going to use a function called WP Verify Knot's.
+
+16
+00:01:25,550 --> 00:01:30,740
+This function will take in the nonce we were given and then the name of the action, if we go back to
+
+17
+00:01:30,740 --> 00:01:36,620
+the shortcode function, you'll see we named it recipe off, passed that in as a string to the function.
+
+18
+00:01:38,850 --> 00:01:44,190
+If the function returns false, then we'll want to kill the script with the output like we always do.
+
+19
+00:01:46,660 --> 00:01:52,060
+I'm going to create an additional conditional statement to check if the rest of the post variables were
+
+20
+00:01:52,060 --> 00:01:55,660
+set, if any of them weren't, then I'll just kill the scripts.
+
+21
+00:01:56,620 --> 00:02:03,130
+After performing these simple checks, let's create variables for each of these post values, I'm going
+
+22
+00:02:03,130 --> 00:02:09,430
+to sanitize each value with these sanitized TextField function, the email will be sanitized with these
+
+23
+00:02:09,430 --> 00:02:11,039
+sanitized email function.
+
+24
+00:02:11,440 --> 00:02:17,740
+It works like the sanitized TextField function, except for emails with the data being set, I'm going
+
+25
+00:02:17,740 --> 00:02:21,310
+to use another conditional statement and perform quite a few checks.
+
+26
+00:02:23,860 --> 00:02:30,610
+Are we using the username exists and email exists functions to check if the user name or email is already
+
+27
+00:02:30,610 --> 00:02:31,140
+in use?
+
+28
+00:02:33,670 --> 00:02:38,770
+These functions are provided by WordPress, and we'll make the necessary SQL queries to check if these
+
+29
+00:02:38,770 --> 00:02:44,740
+two values are taken while I'm performing these checks, I'll check if the two passwords match and I'll
+
+30
+00:02:44,740 --> 00:02:49,330
+check if the email being submitted is a valid email using the IS email function.
+
+31
+00:02:51,790 --> 00:02:57,070
+The is email is another WordPress function that helps with verifying an email and its format.
+
+32
+00:02:57,460 --> 00:03:02,500
+Be sure to check this conditional statement twice, make sure your code matches mine.
+
+33
+00:03:02,800 --> 00:03:04,400
+Pause the video if you need to.
+
+34
+00:03:04,690 --> 00:03:08,100
+If any of these checks pass, I'm going to kill the script again.
+
+35
+00:03:09,860 --> 00:03:13,350
+If the user has made it this far, then will begin creating the user.
+
+36
+00:03:13,730 --> 00:03:16,180
+There are two functions available for doing this.
+
+37
+00:03:16,430 --> 00:03:20,780
+The WP create user and WP insert user functions.
+
+38
+00:03:21,140 --> 00:03:23,030
+Both do the exact same thing.
+
+39
+00:03:23,690 --> 00:03:29,690
+The WP create user is a rapper and a more simplified version of the WP insert user function.
+
+40
+00:03:30,080 --> 00:03:33,340
+This may seem appealing, but it won't do for our purposes.
+
+41
+00:03:33,590 --> 00:03:39,620
+I want to set more values than this function will allow, so it will be using the WP insert user function
+
+42
+00:03:39,620 --> 00:03:40,100
+instead.
+
+43
+00:03:40,610 --> 00:03:44,750
+In the resource section of this lecture, I provide a link to this function.
+
+44
+00:03:45,350 --> 00:03:49,370
+As you can see, this function accepts an array of fields we can set.
+
+45
+00:03:49,820 --> 00:03:53,480
+We won't be setting all of these, only the ones the user has submitted.
+
+46
+00:03:53,810 --> 00:03:55,460
+Let's use this function now.
+
+47
+00:03:55,790 --> 00:03:57,550
+This function will return inside.
+
+48
+00:03:57,560 --> 00:03:58,400
+If successful.
+
+49
+00:03:58,760 --> 00:04:01,240
+I want to save this ID for future use.
+
+50
+00:04:01,250 --> 00:04:05,720
+So create a variable named user ID and assign its value to this function.
+
+51
+00:04:08,190 --> 00:04:13,920
+Pass an array and set the following fields user log and will be set to the username.
+
+52
+00:04:16,480 --> 00:04:18,760
+User pass will be set to pass.
+
+53
+00:04:21,050 --> 00:04:26,960
+We're passing this in as plain text, but you don't have to worry about it being saved as is WordPress
+
+54
+00:04:26,960 --> 00:04:32,430
+will take the time to salt and hash this password for you before inserting it into the database.
+
+55
+00:04:33,080 --> 00:04:35,390
+User email will be set to the email.
+
+56
+00:04:37,960 --> 00:04:40,220
+Use your nice name will be set to the name.
+
+57
+00:04:42,560 --> 00:04:47,780
+The nice name is used to display a friendlier name to users rather than displaying the username.
+
+58
+00:04:48,440 --> 00:04:50,910
+That's all you need to do to create a user.
+
+59
+00:04:51,170 --> 00:04:55,560
+If we look at the documentation, you'll see a list of possible return values.
+
+60
+00:04:55,880 --> 00:04:59,090
+Here is what WordPress says about the possible returns.
+
+61
+00:04:59,600 --> 00:05:01,370
+If successful returns.
+
+62
+00:05:01,370 --> 00:05:08,900
+The newly created users user underscore ID if query fails, returns a WP underscore error object.
+
+63
+00:05:09,290 --> 00:05:14,270
+So if this fails, we can definitely expect a WP er object.
+
+64
+00:05:14,630 --> 00:05:21,110
+I'm going to create a conditional statement and use the IS WP error function to help us identify if
+
+65
+00:05:21,110 --> 00:05:23,150
+the value returned is an error object.
+
+66
+00:05:25,810 --> 00:05:31,660
+If this returns true, then I want to kill the script and let the user know the registration was a failure.
+
+67
+00:05:34,550 --> 00:05:40,430
+At this point, the user is completely registered, something WordPress does is send an email to the
+
+68
+00:05:40,430 --> 00:05:42,780
+admin and user about their registration.
+
+69
+00:05:43,190 --> 00:05:45,770
+Let's also mimic this behavior for the user.
+
+70
+00:05:45,770 --> 00:05:50,810
+Only WordPress provides a function called WP New User Registration.
+
+71
+00:05:53,220 --> 00:05:58,770
+This function will send an email to the user with their credential info, the first parameter is the
+
+72
+00:05:58,770 --> 00:06:03,330
+user ID, the second parameter is deprecated, so you'll have to pass in.
+
+73
+00:06:03,330 --> 00:06:07,880
+Not the last parameter allows you to specify who should be sent an email.
+
+74
+00:06:08,220 --> 00:06:10,380
+There are three possible values for this.
+
+75
+00:06:10,690 --> 00:06:14,030
+You can set this to admin for the admin to get an email.
+
+76
+00:06:14,340 --> 00:06:18,000
+There's also user if you want only the user to get the email.
+
+77
+00:06:18,450 --> 00:06:23,670
+Lastly, you can set this too, both for both admin and user to get the emails.
+
+78
+00:06:24,000 --> 00:06:28,050
+I'm going to set this to user since I want the user to get the email.
+
+79
+00:06:28,680 --> 00:06:32,750
+Now that the user has been created, we only have a few more things to do.
+
+80
+00:06:33,300 --> 00:06:37,950
+This next step is completely optional, but I like to automatically log in the user.
+
+81
+00:06:37,950 --> 00:06:43,380
+After creating their account to log the user in, we need to grant the user object.
+
+82
+00:06:43,680 --> 00:06:49,830
+I'm going to create a new variable named user and assign its value to the value returned by the function
+
+83
+00:06:50,190 --> 00:06:50,880
+user by.
+
+84
+00:06:53,480 --> 00:06:59,510
+This function will return a user object, it allows you to grab a user with numerous fields and values,
+
+85
+00:07:00,110 --> 00:07:02,990
+since we have the user I.D., we'll just use that.
+
+86
+00:07:03,350 --> 00:07:08,830
+The first parameter will be the string ID to specify that we want to grab the user by their ID.
+
+87
+00:07:09,260 --> 00:07:11,780
+The second parameter will be the ID itself.
+
+88
+00:07:14,130 --> 00:07:18,570
+They should return the user and all their properties to log in a user.
+
+89
+00:07:18,690 --> 00:07:20,710
+There are a couple of things we need to do.
+
+90
+00:07:21,360 --> 00:07:24,580
+First, we need to let WordPress know about the current user.
+
+91
+00:07:24,960 --> 00:07:30,630
+This will not authenticate the user, but simply tell WordPress that a user is now active within the
+
+92
+00:07:30,630 --> 00:07:37,650
+system called the said current user function and pass him the user ID along with the user login.
+
+93
+00:07:40,320 --> 00:07:46,170
+Next, I want to set up a cookie so that WordPress will remember this user for future use called the
+
+94
+00:07:46,170 --> 00:07:50,040
+function WP set off Cookie and pass in the user ID.
+
+95
+00:07:52,500 --> 00:07:57,710
+This function has a second parameter, which will remember the user even if they exit out of their browser
+
+96
+00:07:58,170 --> 00:07:58,870
+by default.
+
+97
+00:07:59,010 --> 00:08:00,910
+This is false, which is what we want.
+
+98
+00:08:01,350 --> 00:08:06,290
+The reason I want this is because the user may be registering on an insecure location.
+
+99
+00:08:06,660 --> 00:08:10,650
+This cookie will only be active until the user exits out their browser.
+
+100
+00:08:11,250 --> 00:08:15,240
+Next, I want to set off a hook using the do action function.
+
+101
+00:08:15,600 --> 00:08:21,060
+The hook I want to run is called WP Login and I'm going to pass in two extra arguments.
+
+102
+00:08:21,360 --> 00:08:25,290
+I'm going to pass in the user login and the user object.
+
+103
+00:08:27,800 --> 00:08:33,230
+This hook will allow WordPress itself to run any authentication settings and will allow for any other
+
+104
+00:08:33,230 --> 00:08:38,169
+plugins to perform any setups when a user is logged in after doing all of this.
+
+105
+00:08:38,210 --> 00:08:39,830
+The user is now logged in.
+
+106
+00:08:40,190 --> 00:08:46,400
+Before I move on, I want to inform you about a function called Sinon that does all this for us.
+
+107
+00:08:46,640 --> 00:08:51,410
+But the reason we didn't use it is because it brings back mixed results upon first log in.
+
+108
+00:08:51,830 --> 00:08:57,140
+When a user logs in for the first time, there is additional setup that WordPress and additional plugins
+
+109
+00:08:57,140 --> 00:08:57,980
+want to perform.
+
+110
+00:08:58,400 --> 00:09:02,090
+By doing it this way, we make it easier to let those plug ins do so.
+
+111
+00:09:02,810 --> 00:09:08,900
+What I just showed you is a more definite way to login a user for the first time to end this function.
+
+112
+00:09:08,910 --> 00:09:14,060
+I'm going to update the output status key to two, then I will kill the script.
+
+113
+00:09:18,250 --> 00:09:23,740
+This will let the script know the user has successfully created an account, we're almost done with
+
+114
+00:09:23,740 --> 00:09:29,020
+the registration since the user is logged in after registering, then we should redirect them to the
+
+115
+00:09:29,020 --> 00:09:35,240
+home page so that they don't have to stare at this page inside the front NQ function.
+
+116
+00:09:35,290 --> 00:09:41,680
+I'm going to create another local variable named Home Your URL and set its value returned by the function
+
+117
+00:09:41,680 --> 00:09:42,700
+home you URL.
+
+118
+00:09:45,250 --> 00:09:50,510
+Passing a symbol forward slash to let this function know you want the Eurail to the root page itself.
+
+119
+00:09:51,040 --> 00:09:58,120
+We can now use this variable inside our script right after the status message set, the HCF property
+
+120
+00:09:58,120 --> 00:10:01,780
+of the location object to the new localized property like so.
+
+121
+00:10:04,480 --> 00:10:09,460
+You can now test this form, make sure you are logged out or this form will not work.
+
+122
+00:10:10,300 --> 00:10:12,820
+Try testing this form with invalid info.
+
+123
+00:10:15,500 --> 00:10:17,600
+Then try testing it with valid info.
+
+124
+00:10:23,270 --> 00:10:28,200
+You should see a success message for a brief moment and then be redirected to the home page.
+
+125
+00:10:28,490 --> 00:10:32,050
+You should also notice that you are now logged back in by WordPress.
+
+126
+00:10:32,450 --> 00:10:34,490
+This is exactly what we wanted.
+
+127
+00:10:34,760 --> 00:10:39,210
+I'm going to log out again and navigate back to this page in the next lecture.
+
+128
+00:10:39,230 --> 00:10:41,720
+We'll work on making the login form work.
+
+129
+00:10:42,140 --> 00:10:45,320
+It's very similar to what we did with the registration form.
+

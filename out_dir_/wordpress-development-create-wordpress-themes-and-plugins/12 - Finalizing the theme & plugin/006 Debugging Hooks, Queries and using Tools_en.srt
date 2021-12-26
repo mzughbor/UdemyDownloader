@@ -1,0 +1,428 @@
+1
+00:00:07,420 --> 00:00:11,920
+Throughout this whole course, we've talked about some debugging techniques that you can use when developing
+
+2
+00:00:11,920 --> 00:00:17,800
+plugins and themes, for example, using the developer tools or dumping out data or just searching through
+
+3
+00:00:17,800 --> 00:00:19,690
+the code to understand how it works.
+
+4
+00:00:20,050 --> 00:00:23,800
+We've also turned on debug mode inside the WordPress config file.
+
+5
+00:00:24,460 --> 00:00:28,750
+There are hundreds of debugging tools available and a lot of it tends to be preference.
+
+6
+00:00:29,050 --> 00:00:34,720
+Some tools require that you make some modifications and others are just plug and play in this lecture.
+
+7
+00:00:34,750 --> 00:00:39,730
+We're going to explore certain techniques and tools that can be useful for plugging in theme development.
+
+8
+00:00:40,420 --> 00:00:44,320
+One thing you may have noticed is that WordPress heavily relies on hooks.
+
+9
+00:00:44,530 --> 00:00:46,780
+It's how you get anything done in WordPress.
+
+10
+00:00:46,990 --> 00:00:48,940
+The hook system is extremely old.
+
+11
+00:00:49,130 --> 00:00:51,250
+It's been around for over a decade now.
+
+12
+00:00:51,460 --> 00:00:56,110
+Since its inception, it has grown to contain more information than most people would assume.
+
+13
+00:00:56,740 --> 00:00:58,300
+Opened the index template.
+
+14
+00:00:58,570 --> 00:01:01,180
+Add some tags anywhere in the template.
+
+15
+00:01:01,300 --> 00:01:07,030
+It doesn't matter all action and filter hooks that have been registered or stored in a global variable
+
+16
+00:01:07,030 --> 00:01:08,500
+called WP filter.
+
+17
+00:01:08,920 --> 00:01:12,670
+I'm going to dump out the contents of this array and form out the results of it.
+
+18
+00:01:20,960 --> 00:01:25,740
+Refresh the home page, you'll notice the page may take a little longer than usual to load.
+
+19
+00:01:26,060 --> 00:01:27,380
+There's a good reason for this.
+
+20
+00:01:28,480 --> 00:01:33,310
+Once your page is finished loading, you'll have this big array being loaded with nested objects and
+
+21
+00:01:33,310 --> 00:01:38,860
+arrays, some of these hooks belong to you, others to other plugins and the rest belonging to the word
+
+22
+00:01:38,860 --> 00:01:40,030
+press corps itself.
+
+23
+00:01:40,270 --> 00:01:43,350
+As you can see, a lot takes place behind the scenes.
+
+24
+00:01:43,600 --> 00:01:45,190
+There is a lot of information here.
+
+25
+00:01:45,190 --> 00:01:49,650
+So let's just take a look at one hook, go back to the index template.
+
+26
+00:01:49,900 --> 00:01:55,090
+We're going to modify this dump by checking out a certain hook called WP Underscore Footer.
+
+27
+00:01:57,540 --> 00:02:03,360
+We haven't used this action hook before, but it's called when the footer of our site is loaded, refreshed
+
+28
+00:02:03,360 --> 00:02:07,200
+the page and you should see all the functions and data related to this hook.
+
+29
+00:02:07,950 --> 00:02:10,130
+This is a great way to debug your code.
+
+30
+00:02:10,440 --> 00:02:12,990
+I find myself doing this for one of two reasons.
+
+31
+00:02:13,410 --> 00:02:14,310
+I like to check.
+
+32
+00:02:14,310 --> 00:02:20,100
+If my register to hooks are being registered, I can even check the priority and determine a good priority
+
+33
+00:02:20,100 --> 00:02:21,330
+without having to guess.
+
+34
+00:02:21,660 --> 00:02:26,400
+Another use is to check what functions are running from other plugins are really good.
+
+35
+00:02:26,400 --> 00:02:29,550
+Example would be when we were discussing how well commerce works.
+
+36
+00:02:29,730 --> 00:02:35,430
+If you can recall, we would go through the template files and read any do action functions and read
+
+37
+00:02:35,430 --> 00:02:36,390
+the comments above.
+
+38
+00:02:36,990 --> 00:02:39,840
+Even the commerce provided that useful information.
+
+39
+00:02:39,960 --> 00:02:41,360
+Not all plugins do that.
+
+40
+00:02:41,700 --> 00:02:46,920
+Luckily, if you have an editor like Visual Studio Code, you can find functions pretty fast.
+
+41
+00:02:47,190 --> 00:02:52,770
+However, if you don't have visual studio code, then the next best thing to do would be to echo out
+
+42
+00:02:52,770 --> 00:02:58,290
+the contents of the WP filter variable and check out what functions are being called along with their
+
+43
+00:02:58,290 --> 00:02:58,910
+priority.
+
+44
+00:02:59,370 --> 00:03:02,190
+You could then remove it and even replace them afterwards.
+
+45
+00:03:02,760 --> 00:03:07,800
+Before we move further, you should know that you can dump out the contents of an object or an array,
+
+46
+00:03:07,800 --> 00:03:14,040
+but also using the function print are the difference between prints are and var dump functions is that
+
+47
+00:03:14,040 --> 00:03:17,580
+the VA don't function will usually output a little more information.
+
+48
+00:03:17,970 --> 00:03:21,750
+However, this can be hard to read, especially if you're a beginner.
+
+49
+00:03:22,110 --> 00:03:26,730
+The prints are a function will output a decent amount of information and it's more readable.
+
+50
+00:03:27,000 --> 00:03:28,710
+In the end, it's preference.
+
+51
+00:03:28,830 --> 00:03:32,340
+I'm going to use the print R function for the rest of this lecture.
+
+52
+00:03:32,970 --> 00:03:33,480
+All right.
+
+53
+00:03:33,750 --> 00:03:37,710
+The next set of data we can examine is the database queries executed.
+
+54
+00:03:38,040 --> 00:03:41,160
+To view all the queries executed, we have to modify it.
+
+55
+00:03:41,190 --> 00:03:48,420
+The WP dash config file, open this file and add a new content called Save Queries and set it to true.
+
+56
+00:03:53,470 --> 00:03:58,780
+By defining this constant, you're telling WordPress that you would like to save all SQL queries made
+
+57
+00:03:58,780 --> 00:04:05,290
+by plugins, themes and the core itself to view the queries, go back to the index template and add
+
+58
+00:04:05,290 --> 00:04:06,920
+the global variable WP.
+
+59
+00:04:07,810 --> 00:04:11,530
+This time we're going to jump out the property queries from this object.
+
+60
+00:04:15,020 --> 00:04:20,690
+This property will store an array of all the queries made this far, save your changes and then refresh
+
+61
+00:04:20,700 --> 00:04:21,290
+the page.
+
+62
+00:04:23,540 --> 00:04:26,490
+If you examine the array of queries, you'll notice a pattern.
+
+63
+00:04:26,750 --> 00:04:31,420
+Each item in the array has the query itself, the time it took to execute the query.
+
+64
+00:04:31,430 --> 00:04:34,730
+And lastly, the files that led up to this query being executed.
+
+65
+00:04:35,390 --> 00:04:40,070
+You should keep in mind that this will only store the queries that have been executed thus far.
+
+66
+00:04:40,400 --> 00:04:42,930
+We added this bit of code at the top of the file.
+
+67
+00:04:43,160 --> 00:04:49,160
+So if any queries are executed after dumping up the contents, then those queries will be added at those
+
+68
+00:04:49,160 --> 00:04:50,850
+times to prove this.
+
+69
+00:04:50,990 --> 00:04:53,350
+Take a look at the number of queries executed.
+
+70
+00:04:53,510 --> 00:04:54,530
+It's around 50.
+
+71
+00:04:54,980 --> 00:04:58,580
+Then I want you to move this bit of code to the very bottom of the template.
+
+72
+00:05:02,790 --> 00:05:08,370
+If you refresh the page, you'll notice the number of queries executed has risen, one of the things
+
+73
+00:05:08,370 --> 00:05:12,840
+I love about this array is that you really get to understand how queries are structured.
+
+74
+00:05:13,290 --> 00:05:18,330
+Throughout most of this course, you use functions to take care of updating and retrieving data from
+
+75
+00:05:18,330 --> 00:05:19,040
+the database.
+
+76
+00:05:19,620 --> 00:05:21,810
+You can take these queries and learn from them.
+
+77
+00:05:22,080 --> 00:05:23,910
+You can even use them in your own code.
+
+78
+00:05:24,210 --> 00:05:26,520
+I want to test out one of these queries.
+
+79
+00:05:26,970 --> 00:05:31,350
+I'm going to copy one of these queries and then I'm going to open up, Heidi, as you will.
+
+80
+00:05:37,490 --> 00:05:43,040
+With your database selected, you can select this tab called query and paste in the query inside the
+
+81
+00:05:43,040 --> 00:05:48,440
+text box, then you can click the run button, which is this blue arrow, and you'll find the results
+
+82
+00:05:48,440 --> 00:05:50,060
+from the query outputted below.
+
+83
+00:05:50,720 --> 00:05:52,640
+This is so useful for debugging.
+
+84
+00:05:52,850 --> 00:05:57,260
+However, it's kind of messy to constantly make these changes throughout your files.
+
+85
+00:05:57,680 --> 00:06:01,850
+Luckily, there's a tool that will help us examine and debug WordPress.
+
+86
+00:06:02,030 --> 00:06:03,950
+I'm going to remove the code, we added.
+
+87
+00:06:06,880 --> 00:06:12,550
+Go to the admin dashboard and navigate to plug ins, add new, I want you to search for the plug and
+
+88
+00:06:12,550 --> 00:06:15,220
+query monitor installed and activated.
+
+89
+00:06:21,450 --> 00:06:27,090
+After installing it, you'll find a new menu item on top by clicking on this, you'll be taken to the
+
+90
+00:06:27,100 --> 00:06:30,390
+part of the page where you can view everything executed so far.
+
+91
+00:06:30,990 --> 00:06:34,620
+This plugin will log and display everything executed on any page.
+
+92
+00:06:34,830 --> 00:06:40,770
+If I go to the front end and check this again, you'll see a list of all Hooke's queries, scripts,
+
+93
+00:06:40,770 --> 00:06:44,010
+styles, HTTP requests and so much more.
+
+94
+00:06:44,430 --> 00:06:50,430
+Everything that WordPress does is logged by this plug and is neatly formatted for you to read for obvious
+
+95
+00:06:50,430 --> 00:06:51,050
+reasons.
+
+96
+00:06:51,060 --> 00:06:53,670
+You should only use this plugin for development only.
+
+97
+00:06:54,330 --> 00:06:58,230
+This plugin is incredibly useful and I'm sure you would benefit from using it.
+
+98
+00:06:58,560 --> 00:07:03,330
+Before I on this lecture, I want you to check out this link in the resource section of this lecture,
+
+99
+00:07:03,630 --> 00:07:06,750
+the page goes over some tips and tricks for debugging WordPress.
+
+100
+00:07:07,110 --> 00:07:09,900
+Scroll down to the bottom to view some more examples.
+
+101
+00:07:10,320 --> 00:07:15,510
+As you can see, you have the ability to enable logging, which will create a file that you can read
+
+102
+00:07:15,510 --> 00:07:18,740
+to view any errors or warnings that may run behind the scenes.
+
+103
+00:07:19,080 --> 00:07:23,430
+You're also allowed to load the debug versions of certain WordPress core scripts.
+
+104
+00:07:23,850 --> 00:07:27,900
+Lastly, you'll find information about useful debugging, WordPress, plug ins.
+
+105
+00:07:28,350 --> 00:07:31,700
+We won't be going over them, but you're more than free to check them out.
+
+106
+00:07:31,980 --> 00:07:38,340
+The debug bar and logging plug ins are incredibly useful and are just as easy to use as the query monitor
+
+107
+00:07:38,340 --> 00:07:38,760
+plugin.
+

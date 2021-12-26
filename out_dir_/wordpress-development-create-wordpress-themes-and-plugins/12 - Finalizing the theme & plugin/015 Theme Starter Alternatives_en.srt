@@ -1,0 +1,160 @@
+1
+00:00:07,560 --> 00:00:12,600
+Developing a theme can be really fun, but as you may have saw throughout this course, I'm all about
+
+2
+00:00:12,600 --> 00:00:14,160
+efficiency and organization.
+
+3
+00:00:14,550 --> 00:00:18,550
+Creating a theme from scratch can be time consuming to speed things up.
+
+4
+00:00:18,570 --> 00:00:23,280
+It's not a bad idea to use a starter template that takes care of all the boring stuff and templates.
+
+5
+00:00:23,610 --> 00:00:26,130
+Then you can just take it from there and customize it.
+
+6
+00:00:26,760 --> 00:00:33,530
+Here are some suggestions I recommend the best free starter template is called Underscores Underscores.
+
+7
+00:00:33,540 --> 00:00:38,610
+It's developed by a bunch of fantastic developers who all agree on how theme should be developed.
+
+8
+00:00:38,970 --> 00:00:43,890
+The people who develop this starter theme are the same people who work on the word press corps itself.
+
+9
+00:00:44,520 --> 00:00:50,040
+Every single line of code in this template has a purpose and is carefully inputted for the best practices.
+
+10
+00:00:50,380 --> 00:00:53,460
+If you were to download this template and view some of the code.
+
+11
+00:00:53,580 --> 00:00:56,220
+You'll notice that they organize their code a bit differently.
+
+12
+00:00:56,970 --> 00:00:58,140
+That's perfectly fine.
+
+13
+00:00:58,380 --> 00:01:00,810
+You can organize your code anywhere you like.
+
+14
+00:01:01,140 --> 00:01:02,790
+You could do it the way I taught you.
+
+15
+00:01:02,790 --> 00:01:08,210
+Or you could use someone else's organization system, or you can just organize it the way you like.
+
+16
+00:01:08,640 --> 00:01:10,770
+There was no right or wrong answer here.
+
+17
+00:01:11,100 --> 00:01:14,280
+I recommend you download this theme and play around with it a bit.
+
+18
+00:01:14,550 --> 00:01:17,300
+It's well documented and easy to understand.
+
+19
+00:01:17,880 --> 00:01:22,800
+Another solution is under strap, which is the underscore theme, but with more features.
+
+20
+00:01:23,100 --> 00:01:26,040
+Specifically, it has bootstrapped for included.
+
+21
+00:01:26,340 --> 00:01:29,730
+If you like bootstrap, then this might be something you'll want to use.
+
+22
+00:01:30,300 --> 00:01:32,820
+Next up is Sage by Roots.
+
+23
+00:01:33,150 --> 00:01:35,790
+This starter theme is for hardcore developers.
+
+24
+00:01:36,030 --> 00:01:39,780
+Out of all the recommendations I provide, this one is the most advanced.
+
+25
+00:01:40,050 --> 00:01:46,020
+It goes beyond the basic PVP includes statements and has support for bootstrap, for blade templates
+
+26
+00:01:46,020 --> 00:01:46,980
+and so much more.
+
+27
+00:01:47,430 --> 00:01:49,950
+This is something I want to go over with you in the future.
+
+28
+00:01:50,310 --> 00:01:54,360
+Let me know on the comments if you'd be interested in a section for this starter theme.
+
+29
+00:01:54,720 --> 00:01:57,420
+I truly believe it would be beneficial to anyone.
+
+30
+00:01:58,020 --> 00:02:01,110
+An alternative is called Genesis by Studio Press.
+
+31
+00:02:01,410 --> 00:02:04,800
+This is the most popular premium starter template available.
+
+32
+00:02:05,100 --> 00:02:07,770
+I hear nothing but good things about this template.
+
+33
+00:02:08,070 --> 00:02:12,780
+It's about sixty dollars, but it comes with so many features and it comes with functions that would
+
+34
+00:02:12,780 --> 00:02:14,640
+be useful to you for team development.
+
+35
+00:02:15,270 --> 00:02:18,060
+The support is top notch and the code is well written.
+
+36
+00:02:18,450 --> 00:02:21,390
+I highly recommend this if you need help with theme development.
+
+37
+00:02:21,840 --> 00:02:25,470
+Another starter template is from Wu Commerce called Storefront.
+
+38
+00:02:25,800 --> 00:02:30,630
+Storefront is a starter template that comes with e-commerce integration out of the box.
+
+39
+00:02:30,930 --> 00:02:33,120
+It provides good practices and support.
+
+40
+00:02:33,600 --> 00:02:37,950
+I encourage you to explore any of these themes to learn more about theme development.
+

@@ -1,0 +1,484 @@
+1
+00:00:07,650 --> 00:00:12,270
+Throughout this course, we've talked about quite a few important concepts for WordPress development,
+
+2
+00:00:12,540 --> 00:00:17,940
+a lot of the problems we've been facing can be solved by using to plug ins called custom post tight
+
+3
+00:00:17,940 --> 00:00:20,490
+UI and advanced custom fields.
+
+4
+00:00:21,090 --> 00:00:25,750
+These two plug ins will create post types, taxonomies and custom fields for us.
+
+5
+00:00:26,190 --> 00:00:32,490
+Let's check these plug ins out inside the admin dashboard, navigate to plug ins, add new search for
+
+6
+00:00:32,490 --> 00:00:32,940
+the plug in.
+
+7
+00:00:32,940 --> 00:00:34,930
+It called custom post type UI.
+
+8
+00:00:35,400 --> 00:00:38,190
+This plug in was created by Web Dev Studios.
+
+9
+00:00:38,370 --> 00:00:40,350
+Install and activate this plug in.
+
+10
+00:00:44,250 --> 00:00:51,000
+After activating this plugin, you should find a menu called CPT UI appear, let's create a new post
+
+11
+00:00:51,000 --> 00:00:51,280
+type.
+
+12
+00:00:51,540 --> 00:00:56,940
+There are a lot of fields here, but each field corresponds to a setting we can set in the register
+
+13
+00:00:56,940 --> 00:00:58,040
+post type function.
+
+14
+00:00:58,410 --> 00:01:04,310
+Not only that, but there are also these little helper texts that describe what each setting does.
+
+15
+00:01:04,800 --> 00:01:10,460
+As you can see, this plugin is extremely powerful and easy to use, even for people who can't code.
+
+16
+00:01:10,890 --> 00:01:12,650
+Let's create a new post type.
+
+17
+00:01:13,020 --> 00:01:14,770
+The first three fields are required.
+
+18
+00:01:15,030 --> 00:01:18,420
+I'm going to set the post type slug to music.
+
+19
+00:01:18,660 --> 00:01:21,990
+The plural and singular labels will be music.
+
+20
+00:01:24,440 --> 00:01:29,990
+Right after this, you can set additional labels, but I'm going to leave this as is, I'm going to
+
+21
+00:01:29,990 --> 00:01:33,670
+toggle this for a second so that we don't have to scroll all the way down.
+
+22
+00:01:34,460 --> 00:01:36,380
+Then we have some settings we can set.
+
+23
+00:01:36,680 --> 00:01:38,530
+Most of these are fine by default.
+
+24
+00:01:38,810 --> 00:01:43,460
+If you scroll down, you'll find a list of taxonomies we can assign to this post type.
+
+25
+00:01:43,910 --> 00:01:47,450
+We even see the origin taxonomy we created earlier.
+
+26
+00:01:47,730 --> 00:01:51,200
+I want to create a custom taxonomy for this post type.
+
+27
+00:01:51,530 --> 00:01:52,700
+We'll do that next.
+
+28
+00:01:52,760 --> 00:01:55,190
+Before we do, let's add this post type.
+
+29
+00:01:57,890 --> 00:02:03,740
+Once added, you can view the post site by clicking on The View post type's tab, the plugin provides
+
+30
+00:02:03,740 --> 00:02:09,500
+plenty of information about this post type edit settings and even provides information about how you
+
+31
+00:02:09,500 --> 00:02:12,080
+would use this post type in the template hierarchy.
+
+32
+00:02:12,530 --> 00:02:14,100
+This is incredibly useful.
+
+33
+00:02:14,810 --> 00:02:19,340
+Let's create the taxonomy genre that will be associated with this post type.
+
+34
+00:02:19,820 --> 00:02:24,040
+This plugin allows you to create taxonomies without having to write code.
+
+35
+00:02:24,440 --> 00:02:29,240
+You can create it by going to see UI add edit taxonomies.
+
+36
+00:02:29,750 --> 00:02:32,120
+Let's create a taxonomy for genres.
+
+37
+00:02:32,330 --> 00:02:37,370
+The slug will be genre, the plural will be genres and the singular will be genre.
+
+38
+00:02:39,670 --> 00:02:46,060
+Nothing too crazy, we even have the opportunity to assign this taxonomy to a post type, I only want
+
+39
+00:02:46,060 --> 00:02:49,070
+this taxonomy to apply to the music post type.
+
+40
+00:02:49,090 --> 00:02:52,130
+So check that box only just like last time.
+
+41
+00:02:52,150 --> 00:02:55,010
+You can also set some additional labels and settings.
+
+42
+00:02:55,270 --> 00:02:57,820
+I'm fine with most of these settings except for one.
+
+43
+00:02:58,150 --> 00:03:02,740
+The show in reste settings should be set to true just like last time.
+
+44
+00:03:02,950 --> 00:03:05,560
+Custom taxonomies can only work in Gothenburg.
+
+45
+00:03:05,560 --> 00:03:06,810
+If this value is true.
+
+46
+00:03:07,150 --> 00:03:08,050
+Submit the form.
+
+47
+00:03:08,200 --> 00:03:09,910
+You should see a success message.
+
+48
+00:03:10,420 --> 00:03:16,840
+If you look at the menu, you'll find our music post type and under the men you'll find the genre taxonomy.
+
+49
+00:03:17,140 --> 00:03:21,970
+If you were to create a new music post, you'll find a new panel for the genre.
+
+50
+00:03:22,360 --> 00:03:25,900
+We didn't have to write a single line of code to accomplish any of this.
+
+51
+00:03:26,500 --> 00:03:27,970
+Let's keep going with this route.
+
+52
+00:03:28,210 --> 00:03:30,430
+I want to create some custom fields.
+
+53
+00:03:30,640 --> 00:03:37,120
+Unfortunately, it's not possible with the custom post type UI plugin, go to plugins, add new and
+
+54
+00:03:37,120 --> 00:03:40,690
+search for the plugin Advanced Custom Fields by Elliott Condon.
+
+55
+00:03:41,050 --> 00:03:42,820
+Install and activate this plugin.
+
+56
+00:03:49,490 --> 00:03:55,370
+On the menu, you'll find a new item called Custom Fields, click on it and you'll see an overview of
+
+57
+00:03:55,370 --> 00:03:57,830
+all the custom fields created with this plug in.
+
+58
+00:03:58,190 --> 00:03:58,810
+It's empty.
+
+59
+00:03:58,820 --> 00:04:00,890
+So let's add in two new fields.
+
+60
+00:04:01,100 --> 00:04:06,250
+Click on the add field buttons and you'll be taken to this page where you can create some fields.
+
+61
+00:04:06,560 --> 00:04:11,360
+I'm going to call this group Music Options, then I'm going to add one field.
+
+62
+00:04:13,970 --> 00:04:16,040
+The first field will be called release date.
+
+63
+00:04:18,410 --> 00:04:24,320
+Immediately after typing this, Akef will automatically generate the next field that's fine with me,
+
+64
+00:04:24,320 --> 00:04:29,450
+as that would be the name I would have used originally for the field type, I'm going to set this to
+
+65
+00:04:29,450 --> 00:04:30,290
+date picture.
+
+66
+00:04:30,320 --> 00:04:32,510
+The rest of the settings are fine, as is.
+
+67
+00:04:33,170 --> 00:04:33,950
+That's about it.
+
+68
+00:04:34,100 --> 00:04:36,110
+I'm going to publish these changes.
+
+69
+00:04:38,250 --> 00:04:40,240
+You should receive a success message.
+
+70
+00:04:40,800 --> 00:04:43,080
+Let's try creating a new music post.
+
+71
+00:04:49,450 --> 00:04:54,670
+All the way at the bottom, you should see the field appearing, the release date even has this fancy
+
+72
+00:04:54,670 --> 00:04:55,350
+date picture.
+
+73
+00:04:55,690 --> 00:05:00,400
+I'm going to fill in some stuff here, make sure to publish your post after doing so.
+
+74
+00:05:06,320 --> 00:05:11,180
+If you look at the post, it'll look all right, but we get this error and it's loading information
+
+75
+00:05:11,180 --> 00:05:16,910
+we're not interested in to fix this, we're going to create a template specific to this post type,
+
+76
+00:05:17,270 --> 00:05:24,830
+create a file named single dash music, copy everything from the single template into this template.
+
+77
+00:05:27,200 --> 00:05:30,470
+I'm going to remove the comments and related posts section.
+
+78
+00:05:37,730 --> 00:05:41,450
+Then I'm going to add some code right above the content function.
+
+79
+00:05:44,540 --> 00:05:49,760
+In order to get fields from the advanced custom fields, you're provided a function called the field
+
+80
+00:05:50,090 --> 00:05:52,500
+you pass in the name of the field you'd like to grab.
+
+81
+00:05:53,060 --> 00:05:55,310
+I'm going to grab the release date.
+
+82
+00:05:57,230 --> 00:06:02,040
+Refresh the page after you've made these changes, and you should see the template working accordingly.
+
+83
+00:06:02,360 --> 00:06:04,640
+This is the power of these two plugins.
+
+84
+00:06:04,880 --> 00:06:08,280
+They're really popular with over a million installations combined.
+
+85
+00:06:08,840 --> 00:06:11,960
+So why don't I show you how to do all of this manually?
+
+86
+00:06:12,230 --> 00:06:17,780
+Well, it's important to understand how WordPress works and how these plugins work behind the scenes.
+
+87
+00:06:18,140 --> 00:06:22,140
+These plug ins are doing the exact same thing we did in the previous lectures.
+
+88
+00:06:22,510 --> 00:06:27,230
+They're calling the register taxonomy function and using metadata just like we were.
+
+89
+00:06:27,950 --> 00:06:33,110
+The only difference is that these plugins take it a step further by simply automating the process for
+
+90
+00:06:33,110 --> 00:06:33,310
+you.
+
+91
+00:06:33,650 --> 00:06:36,200
+In my opinion, these plug ins are really great.
+
+92
+00:06:36,500 --> 00:06:39,000
+They make developing sites a whole lot faster.
+
+93
+00:06:39,230 --> 00:06:41,990
+I recommend you give them a try and learn more about them.
+
+94
+00:06:42,560 --> 00:06:48,410
+Of course, they can't handle all situations for you, but they should be able to solve most, if not
+
+95
+00:06:48,410 --> 00:06:49,850
+half of your problems for you.
+
+96
+00:06:50,210 --> 00:06:53,120
+You're not limited to just using one or the other.
+
+97
+00:06:53,450 --> 00:06:58,160
+You can use these plug ins to create post types, taxonomies and custom fields for you.
+
+98
+00:06:58,550 --> 00:07:00,140
+Then you can add in your own code.
+
+99
+00:07:00,140 --> 00:07:05,780
+If you need more functionality, you use the exact same functions as you would before without any worry
+
+100
+00:07:05,780 --> 00:07:06,360
+or hassle.
+
+101
+00:07:06,770 --> 00:07:09,020
+This is the beauty of WordPress development.
+
+102
+00:07:09,470 --> 00:07:15,230
+Even though every plugin does different things, they all use the same APIs and functions as you would
+
+103
+00:07:15,830 --> 00:07:16,340
+before.
+
+104
+00:07:16,340 --> 00:07:20,840
+And this lecture, there was one more resource I want to show you that will help me with some of the
+
+105
+00:07:20,840 --> 00:07:23,570
+problems you'll face in the field of WordPress development.
+
+106
+00:07:23,930 --> 00:07:29,230
+In the resource section of this lecture, I provide a link to the Generate WP site.
+
+107
+00:07:29,900 --> 00:07:31,640
+This site will help generate code.
+
+108
+00:07:31,640 --> 00:07:35,750
+You need to create things like taxonomies, post types and so much more.
+
+109
+00:07:36,110 --> 00:07:37,880
+Let's explore one of these tools.
+
+110
+00:07:38,090 --> 00:07:41,420
+I'm going to click on the post type generator page.
+
+111
+00:07:41,720 --> 00:07:45,710
+This generator will generate the exact code you need to create a post type.
+
+112
+00:07:46,370 --> 00:07:49,670
+You can even modify these settings with a user friendly interface.
+
+113
+00:07:49,880 --> 00:07:55,370
+I'm going to change the post type feel to music, then I'm going to click update code.
+
+114
+00:07:55,700 --> 00:08:00,200
+The code will then refresh and you will now see our changes reflected on the code.
+
+115
+00:08:00,560 --> 00:08:03,530
+This tool is invaluable and is extremely flexible.
+
+116
+00:08:04,100 --> 00:08:08,780
+If you're not comfortable with using a plugin to generate your post types and would rather write your
+
+117
+00:08:08,780 --> 00:08:14,810
+own code than this tool and site will make that process easier, I highly recommend you bookmark it.
+
+118
+00:08:15,050 --> 00:08:18,770
+It has several tools you can use related to WordPress development.
+
+119
+00:08:19,340 --> 00:08:20,450
+That's basically it.
+
+120
+00:08:20,690 --> 00:08:23,870
+And the next few lectures will be getting into some advanced topics.
+
+121
+00:08:23,870 --> 00:08:25,940
+So get ready to do some more coding.
+

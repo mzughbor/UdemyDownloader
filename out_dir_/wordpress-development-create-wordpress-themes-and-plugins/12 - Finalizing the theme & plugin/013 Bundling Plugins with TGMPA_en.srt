@@ -1,0 +1,516 @@
+1
+00:00:07,200 --> 00:00:10,630
+Throughout this course, we've been bundling various plug ins with our theme.
+
+2
+00:00:10,950 --> 00:00:16,650
+We even have a custom plugin developed forcing the user to manually download each plug and would be
+
+3
+00:00:16,650 --> 00:00:17,150
+a pain.
+
+4
+00:00:17,520 --> 00:00:20,960
+It would be nice if the user could download all the plug ins at once.
+
+5
+00:00:21,570 --> 00:00:24,560
+We could just download it and then include it with Pete.
+
+6
+00:00:24,690 --> 00:00:26,160
+But this would be inefficient.
+
+7
+00:00:26,520 --> 00:00:32,340
+We would have to manually update each plug and every time one of them gets updated, it would also bloat
+
+8
+00:00:32,340 --> 00:00:33,370
+our plug in heavily.
+
+9
+00:00:33,780 --> 00:00:37,600
+Can you imagine having to manage your plugging along with 10 other plug ins?
+
+10
+00:00:37,770 --> 00:00:39,210
+It would be disastrous.
+
+11
+00:00:39,780 --> 00:00:44,400
+The more efficient solution would be to notify the user of the required plug ins and then help them
+
+12
+00:00:44,400 --> 00:00:48,970
+install those plug ins with a simple UI that would take a lot of code to write.
+
+13
+00:00:49,410 --> 00:00:54,630
+Luckily, there's a solution that helps with bundling plug ins and making the process so much smoother.
+
+14
+00:00:55,320 --> 00:01:00,300
+And that solution is called TGF plug in activation and the resource section.
+
+15
+00:01:00,330 --> 00:01:02,350
+I provide a link to this class.
+
+16
+00:01:02,700 --> 00:01:06,810
+This class handles a lot of the work for us and it does exactly what we need.
+
+17
+00:01:07,200 --> 00:01:10,170
+It'll check the user's WordPress site and their plug ins.
+
+18
+00:01:10,440 --> 00:01:13,170
+It'll check if the site contains the plug ins, need it.
+
+19
+00:01:13,500 --> 00:01:18,510
+If they don't have those plug ins, then it'll allowed a warning notice and instruct the user to install
+
+20
+00:01:18,510 --> 00:01:19,350
+those plug ins.
+
+21
+00:01:19,650 --> 00:01:22,980
+It will also provide a UI for installing those plug ins.
+
+22
+00:01:23,730 --> 00:01:25,290
+It's a very lightweight class.
+
+23
+00:01:25,530 --> 00:01:29,440
+It's just one file, so you don't have to worry about your theme being bloated.
+
+24
+00:01:29,940 --> 00:01:30,900
+Let's get started.
+
+25
+00:01:31,170 --> 00:01:35,270
+First, we need to download this file, go to the download section.
+
+26
+00:01:35,520 --> 00:01:39,030
+You're allowed to download this plugin without any modifications.
+
+27
+00:01:39,120 --> 00:01:44,250
+But there's this handy little generator that takes care of modifying the plug in to suit our needs.
+
+28
+00:01:44,970 --> 00:01:48,030
+I'm going to set this to work with our theme and for the fields.
+
+29
+00:01:48,030 --> 00:01:50,790
+I'm going to input our theme settings like so.
+
+30
+00:01:53,440 --> 00:01:59,390
+Feel free to follow along after setting up this field click generate, you should receive a zip file.
+
+31
+00:02:00,010 --> 00:02:07,300
+There are a lot of files inside the zip file, but the only file we care about is the class dash TKM
+
+32
+00:02:07,300 --> 00:02:10,880
+Dash plugin dash activation page PDF file.
+
+33
+00:02:11,410 --> 00:02:15,550
+Let's open the Udemy theme folder and navigate to the includes folder.
+
+34
+00:02:15,910 --> 00:02:20,050
+Create a new folder called Lives and drop this file into this folder.
+
+35
+00:02:27,100 --> 00:02:31,210
+Open your code editor and required this file from within the functions file.
+
+36
+00:02:39,560 --> 00:02:45,260
+We used the require one function instead of the include function, because this is what the developers
+
+37
+00:02:45,260 --> 00:02:45,830
+recommend.
+
+38
+00:02:46,190 --> 00:02:48,040
+So will heed their advice.
+
+39
+00:02:48,380 --> 00:02:51,590
+Keep in mind that this class can also be used in plugins.
+
+40
+00:02:52,070 --> 00:02:57,750
+This can possibly cause errors as we may get errors related to redefining an existing class.
+
+41
+00:02:58,040 --> 00:03:02,970
+Luckily, we don't have to do anything because the developers have taken care of this for us.
+
+42
+00:03:03,500 --> 00:03:08,270
+If you were to open this class, you'll find the classes wrapped inside this conditional statement.
+
+43
+00:03:08,660 --> 00:03:11,840
+This statement will check of this class has already been defined.
+
+44
+00:03:12,110 --> 00:03:14,350
+If it has been, it won't be redefined.
+
+45
+00:03:14,600 --> 00:03:19,010
+Like I said before, this is a great piece of code to use in your theme or plug in.
+
+46
+00:03:19,670 --> 00:03:20,180
+All right.
+
+47
+00:03:20,330 --> 00:03:24,010
+Now we can begin using this class inside the zip file.
+
+48
+00:03:24,050 --> 00:03:30,980
+There is another file called Exampled that provides a very detailed example on how to use this class.
+
+49
+00:03:31,370 --> 00:03:37,490
+It's neatly commented and all examples are clear after this course, I highly recommend you take the
+
+50
+00:03:37,490 --> 00:03:40,900
+time to look over this example file so that you can get the most out of it.
+
+51
+00:03:41,720 --> 00:03:47,270
+The first step we need to take is to use an action hook called T.G. MPLX Register.
+
+52
+00:03:47,720 --> 00:03:51,530
+The function to call is Jiyu register required plugins.
+
+53
+00:03:56,640 --> 00:04:03,180
+Create a file inside the includes folder called Register Dash Plug INS and define the function here.
+
+54
+00:04:07,800 --> 00:04:10,080
+Include this file from the functions file.
+
+55
+00:04:13,750 --> 00:04:16,640
+We're first going to create an array called plug ins.
+
+56
+00:04:16,959 --> 00:04:18,579
+This will be an array of plug ins.
+
+57
+00:04:18,579 --> 00:04:22,900
+Our theme requires each plug and we want to require will also be an array.
+
+58
+00:04:23,290 --> 00:04:26,470
+First, we need to determine which plug ins we want to come.
+
+59
+00:04:26,470 --> 00:04:30,060
+Bundled with our theme, go to the plug ins admin page.
+
+60
+00:04:30,280 --> 00:04:35,610
+We have some plug ins here that are only for development purposes, so we don't want to bundle those.
+
+61
+00:04:35,980 --> 00:04:40,210
+I'm going to deactivate some and will go over the ones we do want to bundle.
+
+62
+00:04:41,740 --> 00:04:46,900
+All right, so I just deactivated some plugins here are the plug ins I want to come bundled with our
+
+63
+00:04:46,900 --> 00:04:55,240
+theme and since integration WP Quad's Buddy Press Recipe, Regenerate Thumbnails, Woo Commerce, WordPress,
+
+64
+00:04:55,240 --> 00:04:57,820
+Popular Posts and WP subtitle.
+
+65
+00:04:58,480 --> 00:05:01,060
+Let's start with the WP Kwon's plugin.
+
+66
+00:05:01,420 --> 00:05:04,660
+To add a plug into the array, you just add another array.
+
+67
+00:05:05,110 --> 00:05:11,440
+The array must have certain keys so TGF knows which plug in to grab from the WordPress plugin repository.
+
+68
+00:05:11,890 --> 00:05:14,200
+The first key is the name of this plugin.
+
+69
+00:05:14,620 --> 00:05:17,680
+We can grab this from the plugin page, which is ad sense.
+
+70
+00:05:17,680 --> 00:05:19,510
+Plug in WP Kwon's.
+
+71
+00:05:23,780 --> 00:05:30,030
+The next to said is the slug, this would be the plug ins, unique dorelle from the WordPress repository.
+
+72
+00:05:30,470 --> 00:05:33,160
+You can grab this from the euro of the plug and page.
+
+73
+00:05:33,470 --> 00:05:35,210
+You don't need the whole euro.
+
+74
+00:05:35,210 --> 00:05:38,390
+Just this bit that says quick dash, add cents.
+
+75
+00:05:38,390 --> 00:05:39,320
+Dash reloaded.
+
+76
+00:05:41,890 --> 00:05:48,550
+Lastly, we can set the required key, we have two options here, if we set this to true, then this
+
+77
+00:05:48,550 --> 00:05:52,180
+class will tell the user of this plug in is required for the thing to work.
+
+78
+00:05:52,420 --> 00:05:58,720
+If false, then WordPress will recommend this plug in and said it's up to you whether a plug in is required
+
+79
+00:05:58,720 --> 00:05:59,520
+or recommended.
+
+80
+00:05:59,800 --> 00:06:01,720
+I'm going to set this to false.
+
+81
+00:06:04,270 --> 00:06:09,370
+I'm going to pause the video and do this for the other plugins, except for the custom recipe plugins
+
+82
+00:06:09,370 --> 00:06:11,290
+as those require different settings.
+
+83
+00:06:15,450 --> 00:06:21,540
+All right, so I added the plug ins, all I did was I went to each plug and repository page and grabbed
+
+84
+00:06:21,540 --> 00:06:26,760
+the title and your URL from that page, the last plug, and we need to include is the custom plug.
+
+85
+00:06:26,760 --> 00:06:29,930
+And we developed this plug in is not available anywhere.
+
+86
+00:06:30,270 --> 00:06:31,890
+There are two solutions here.
+
+87
+00:06:32,130 --> 00:06:36,090
+We can upload our plug into the repository, but that takes a long time.
+
+88
+00:06:36,090 --> 00:06:39,250
+And I just want this plug in to be exclusive to this theme.
+
+89
+00:06:40,080 --> 00:06:45,720
+Luckily, GM is also willing to look for plug ins in other locations like inside your own theme.
+
+90
+00:06:46,410 --> 00:06:47,820
+Here's what I want you to do.
+
+91
+00:06:48,090 --> 00:06:51,270
+Zip up the recipe, plug in and cut the zip file.
+
+92
+00:06:59,610 --> 00:07:05,730
+Next, open the unity theme folder, create a folder called Plugins and paste it inside here.
+
+93
+00:07:10,250 --> 00:07:16,820
+Now we just have to let them know about this plug in, add another array and set the name to recipe.
+
+94
+00:07:19,550 --> 00:07:23,570
+The slug should be set to the name of the plugin folder, which is recipe.
+
+95
+00:07:26,920 --> 00:07:32,570
+The next key is a must, which is source, this path can be a system path or an HDP.
+
+96
+00:07:32,770 --> 00:07:38,500
+You, Earl, I'm going to use the function, get template directory and then append the path to the
+
+97
+00:07:38,500 --> 00:07:39,070
+recipe.
+
+98
+00:07:39,070 --> 00:07:40,090
+Plug in zip file.
+
+99
+00:07:42,230 --> 00:07:45,800
+Lastly, I'm going to set the required key to true.
+
+100
+00:07:46,160 --> 00:07:49,220
+Next, we need to create an array called config.
+
+101
+00:07:51,690 --> 00:07:57,150
+This will contain the settings for the class, there are a lot of settings we can set, but the following
+
+102
+00:07:57,150 --> 00:07:58,680
+are the only ones we care about.
+
+103
+00:07:59,400 --> 00:08:01,530
+Idy this is a unique ID.
+
+104
+00:08:01,830 --> 00:08:04,940
+Keep in mind that we can use this class multiple times.
+
+105
+00:08:05,220 --> 00:08:09,200
+We want to make sure that these plug ins and settings are related to our theme only.
+
+106
+00:08:09,600 --> 00:08:11,070
+I'm going to set this to you.
+
+107
+00:08:11,070 --> 00:08:11,400
+To me.
+
+108
+00:08:14,010 --> 00:08:20,310
+Menu, this is the menu slug that WordPress will use for displaying the UI, the recommended path is
+
+109
+00:08:20,310 --> 00:08:23,280
+to dash install dash plugins.
+
+110
+00:08:25,830 --> 00:08:32,340
+Parents slug, this will be the page to use for displaying the UI once again, it's recommended we use
+
+111
+00:08:32,340 --> 00:08:34,169
+the theme Stop PHP file.
+
+112
+00:08:36,789 --> 00:08:43,419
+Capability who can install and activate the plugins will be using the edit the options capability.
+
+113
+00:08:46,280 --> 00:08:51,920
+Has notices a boolean value which will determine whether or not the admin will be notified about the
+
+114
+00:08:51,920 --> 00:08:54,950
+required plugins, we want to set this to true.
+
+115
+00:08:57,640 --> 00:09:03,850
+Dismissable whether or not the notice messages can be dismissed, set this to true as we don't want
+
+116
+00:09:03,850 --> 00:09:06,250
+to annoy users with irremovable notices.
+
+117
+00:09:09,090 --> 00:09:15,030
+The very last step is to call a function called TKG MPLX, this function has two parameters, which
+
+118
+00:09:15,030 --> 00:09:18,320
+is the plugins to install and then the configuration settings.
+
+119
+00:09:18,690 --> 00:09:19,280
+That's it.
+
+120
+00:09:19,530 --> 00:09:21,180
+Let's go to the plug ins page.
+
+121
+00:09:26,680 --> 00:09:31,410
+We should see nothing changed so far, but let's see, activate Buddy Press for a moment.
+
+122
+00:09:31,750 --> 00:09:36,790
+You'll now see a notice telling us that the team recommends Buddy Press as an activated plug in.
+
+123
+00:09:37,210 --> 00:09:39,030
+Let's click install plug ins.
+
+124
+00:09:39,310 --> 00:09:43,630
+We now have this table of plug ins to install along with additional information.
+
+125
+00:09:44,350 --> 00:09:45,970
+Activate Buddy Press again.
+
+126
+00:09:48,310 --> 00:09:53,560
+Just like that, we were able to install and activate a third party, plug in with very little code
+
+127
+00:09:53,560 --> 00:09:54,070
+and work.
+
+128
+00:09:54,490 --> 00:09:59,770
+Now, we don't have to worry about keeping track of this plug in as WordPress will do it for us all,
+
+129
+00:09:59,770 --> 00:10:02,170
+thanks to the NPR class.
+

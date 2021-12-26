@@ -1,0 +1,364 @@
+1
+00:00:07,410 --> 00:00:12,310
+Yes, six comes with a new way of creating functions which are called aero functions.
+
+2
+00:00:12,660 --> 00:00:16,050
+I'm going to comment on any code inside the index file.
+
+3
+00:00:18,420 --> 00:00:24,460
+I'm now going to create a function called Hello, and all it will do is output a simple message.
+
+4
+00:00:24,870 --> 00:00:26,940
+Lastly, I'm going to call this function.
+
+5
+00:00:29,340 --> 00:00:34,530
+This is a regular function, I'm going to run the node app, slash index command.
+
+6
+00:00:36,770 --> 00:00:39,780
+As expected, this will just output the message.
+
+7
+00:00:40,010 --> 00:00:41,290
+Nothing really new so far.
+
+8
+00:00:41,600 --> 00:00:44,560
+Eral functions are a new way to create functions.
+
+9
+00:00:44,870 --> 00:00:49,250
+The syntax can be a bit confusing at first, but it's definitely more readable.
+
+10
+00:00:49,250 --> 00:00:55,640
+Once you understand what's going on to create an arrow function, you need to do the following first.
+
+11
+00:00:55,730 --> 00:00:59,930
+You don't need to use the function keyboard so you can safely remove that.
+
+12
+00:01:00,350 --> 00:01:03,290
+Next, you'll have to remove the name of the function.
+
+13
+00:01:03,650 --> 00:01:10,010
+Then you need to add the following symbols after the parentheses equals sign greater than sine.
+
+14
+00:01:12,460 --> 00:01:15,110
+This is what JavaScript calls a fat arrow.
+
+15
+00:01:15,430 --> 00:01:19,710
+Lastly, you can remove these curly braces and move the message on the same line.
+
+16
+00:01:22,110 --> 00:01:28,410
+This is a very basic example of an arrow function, it's a sure way of writing a function right off
+
+17
+00:01:28,410 --> 00:01:28,890
+the bat.
+
+18
+00:01:28,890 --> 00:01:31,320
+Arrow functions are completely anonymous.
+
+19
+00:01:31,470 --> 00:01:34,070
+You cannot just write an arrow function by itself.
+
+20
+00:01:34,560 --> 00:01:39,570
+You either have to assign it to a variable or pass it into another function that will use it.
+
+21
+00:01:39,990 --> 00:01:44,650
+If you were to add the name of the function before the parentheses, then you will receive an error.
+
+22
+00:01:45,360 --> 00:01:48,170
+Let's first learn how to assign it to a variable.
+
+23
+00:01:48,510 --> 00:01:51,500
+I'm going to create a variable called Hello.
+
+24
+00:01:51,990 --> 00:01:55,920
+The value of this variable will be assigned to the arrow function like so.
+
+25
+00:01:58,150 --> 00:02:03,820
+Just like that, the Arrow function is now usable, I can run the node command again and you'll see
+
+26
+00:02:03,830 --> 00:02:05,200
+the message just like before.
+
+27
+00:02:07,630 --> 00:02:09,770
+Let's do a side by side comparison.
+
+28
+00:02:10,090 --> 00:02:16,270
+I'm going to add a comment above indicating that this is an arrow function, then I'm going to create
+
+29
+00:02:16,270 --> 00:02:18,610
+a normal function like the one we had before.
+
+30
+00:02:25,800 --> 00:02:31,560
+These two functions do the exact same thing and are completely identical as far as functionality goes.
+
+31
+00:02:31,980 --> 00:02:34,650
+The only noticeable difference is the way they're written.
+
+32
+00:02:35,070 --> 00:02:40,800
+Unlike aero functions, regular functions are usually multiline, even if you only have one line of
+
+33
+00:02:40,800 --> 00:02:41,130
+code.
+
+34
+00:02:41,760 --> 00:02:45,490
+Of course, you can always move everything to be one line of code.
+
+35
+00:02:45,720 --> 00:02:48,290
+However, the code becomes less readable.
+
+36
+00:02:48,630 --> 00:02:51,240
+The Arrow function is much more readable and shorter.
+
+37
+00:02:51,310 --> 00:02:51,660
+All right.
+
+38
+00:02:52,080 --> 00:02:54,210
+I'm going to come on out the regular function.
+
+39
+00:02:56,270 --> 00:03:03,050
+Let's keep working with the arrow function, arrow functions can also be multi-line to make a multi-line
+
+40
+00:03:03,050 --> 00:03:03,550
+function.
+
+41
+00:03:03,560 --> 00:03:05,480
+You can just add in the curly brackets.
+
+42
+00:03:05,780 --> 00:03:08,180
+The curly brackets are completely optional.
+
+43
+00:03:08,180 --> 00:03:14,030
+If you have one line of code required, if you want to have multiple lines, just like any other function,
+
+44
+00:03:14,030 --> 00:03:16,220
+we can also have parameters.
+
+45
+00:03:16,460 --> 00:03:19,370
+I'm going to create a parameter called Perram.
+
+46
+00:03:19,370 --> 00:03:21,760
+Want to have multiple parameters.
+
+47
+00:03:21,770 --> 00:03:24,790
+You can just add a comma to separate each parameter.
+
+48
+00:03:25,100 --> 00:03:27,440
+For now, I only want one parameter.
+
+49
+00:03:27,980 --> 00:03:32,930
+I'm going to update the code where I called the Halo function and pass on a message.
+
+50
+00:03:33,350 --> 00:03:38,960
+I want to use this parameter so I'll replace this static message with the message we're passed in.
+
+51
+00:03:41,250 --> 00:03:43,500
+Lastly, I'm going to run my command.
+
+52
+00:03:49,310 --> 00:03:53,570
+The script should work as expected, where the message is being outputted onto the console.
+
+53
+00:03:53,990 --> 00:03:55,450
+This is pretty simple so far.
+
+54
+00:03:55,760 --> 00:03:59,010
+There are two things you should be aware of when using arrow functions.
+
+55
+00:03:59,480 --> 00:04:02,530
+The first thing is that the parentheses are optional.
+
+56
+00:04:02,540 --> 00:04:08,870
+If you only have one parameter and this example, we only have one parameter and so we can just remove
+
+57
+00:04:08,870 --> 00:04:10,890
+the parentheses from this line of code.
+
+58
+00:04:11,270 --> 00:04:13,630
+This is completely valid and allowed.
+
+59
+00:04:14,240 --> 00:04:17,870
+However, this option is only available if you have one parameter.
+
+60
+00:04:18,200 --> 00:04:23,960
+For example, if an arrow function has zero parameters, then you're required to have parentheses.
+
+61
+00:04:24,200 --> 00:04:28,340
+If you have one parameter, then you have the option of using parentheses.
+
+62
+00:04:28,610 --> 00:04:33,350
+If you have two or more parameters, then you're required to have parentheses.
+
+63
+00:04:33,980 --> 00:04:38,320
+I'm going to add my parentheses back in, even though we only have one parameter.
+
+64
+00:04:38,750 --> 00:04:40,610
+This right here is preference.
+
+65
+00:04:40,880 --> 00:04:46,400
+Throughout this course I will continue using parentheses, even if my arrow functions only have one
+
+66
+00:04:46,400 --> 00:04:46,910
+parameter.
+
+67
+00:04:47,690 --> 00:04:53,450
+The second thing you need to be aware of is that arrow functions do not have a scope right below this
+
+68
+00:04:53,450 --> 00:04:54,070
+bit of code.
+
+69
+00:04:54,080 --> 00:04:56,960
+I'm going to create an object called Foo.
+
+70
+00:04:59,130 --> 00:05:06,300
+This object will have two properties, Prop one will be set to test Prop two will be a regular function,
+
+71
+00:05:06,300 --> 00:05:07,620
+that log's Prop one.
+
+72
+00:05:14,800 --> 00:05:21,400
+There are two ways to reference Prop one, I can use the food variable and then access its property
+
+73
+00:05:21,430 --> 00:05:26,970
+or I can use the this keyword, the this keyword is the most commonly used method.
+
+74
+00:05:27,280 --> 00:05:31,540
+I'm going to run my node command and I should see the number 10 outputted.
+
+75
+00:05:33,720 --> 00:05:40,290
+Let's try using aero functions now, I'm going to remove the function keyword and add in the fat arrow.
+
+76
+00:05:42,670 --> 00:05:46,180
+Lastly, I'm going to run the command again and see what we get.
+
+77
+00:05:48,580 --> 00:05:54,850
+No, I will not throw an error, but instead output, undefined error functions don't really have a
+
+78
+00:05:54,850 --> 00:05:55,310
+scope.
+
+79
+00:05:55,600 --> 00:05:59,080
+This means that the this key word doesn't really exist.
+
+80
+00:05:59,380 --> 00:06:03,660
+What JavaScript will do is look up one level and see if that property exists.
+
+81
+00:06:04,240 --> 00:06:09,310
+If we want to output Prop one, we would have to change the this key word to Foo.
+
+82
+00:06:09,760 --> 00:06:13,470
+Then we can run the command and we should see the number of being outputted again.
+
+83
+00:06:14,050 --> 00:06:15,160
+That's all there is to it.
+
+84
+00:06:15,370 --> 00:06:18,130
+Erro functions are popular for two reasons.
+
+85
+00:06:18,310 --> 00:06:22,190
+The first reason is that it's easier to read and write than regular functions.
+
+86
+00:06:22,510 --> 00:06:25,650
+The second reason is that the scope becomes less of a problem.
+
+87
+00:06:26,020 --> 00:06:28,090
+This is because you know what to expect.
+
+88
+00:06:28,090 --> 00:06:29,890
+Even if you have nested functions.
+
+89
+00:06:30,490 --> 00:06:35,780
+Since Arrow functions have no scope, it becomes easier to understand where variables are coming from.
+
+90
+00:06:36,130 --> 00:06:39,550
+I know it may not seem like a big deal, but it really does matter.
+
+91
+00:06:39,550 --> 00:06:45,100
+When we begin writing bigger applications throughout this course, we will use arrow functions a lot.
+

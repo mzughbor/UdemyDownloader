@@ -1,0 +1,744 @@
+1
+00:00:07,430 --> 00:00:12,330
+In the last three lectures, we took a look at how to register and authenticate users manually.
+
+2
+00:00:12,680 --> 00:00:15,570
+We took care of submitting and processing the request.
+
+3
+00:00:15,920 --> 00:00:21,710
+We also took care of error handling and redirecting the user if the authentication was a success in
+
+4
+00:00:21,710 --> 00:00:22,440
+this lecture.
+
+5
+00:00:22,490 --> 00:00:26,490
+We're going to take a look at an alternative method for authenticating the user.
+
+6
+00:00:27,000 --> 00:00:31,250
+Previously, we only use the functions WordPress provides to handle the login.
+
+7
+00:00:31,490 --> 00:00:35,630
+However, WordPress provides a couple of files for handling the logic for us.
+
+8
+00:00:35,990 --> 00:00:41,330
+This process is a bit more limited and harder, but we get the advantage of letting WordPress handle
+
+9
+00:00:41,330 --> 00:00:42,360
+the logic for us.
+
+10
+00:00:43,040 --> 00:00:47,200
+The original WordPress login page can be used to authenticate the users.
+
+11
+00:00:47,450 --> 00:00:50,390
+We can hook into this system and use it to our advantage.
+
+12
+00:00:50,870 --> 00:00:52,220
+So let's get started.
+
+13
+00:00:52,490 --> 00:00:58,580
+The very first thing we need to do is create the shortcode inside the main plugin file under the shortcode
+
+14
+00:00:58,580 --> 00:01:02,840
+section, add a new shortcode and call it recipe off and form.
+
+15
+00:01:03,260 --> 00:01:07,430
+The function to call will be our recipe off alt form shortcode.
+
+16
+00:01:10,050 --> 00:01:15,780
+After defining the shortcode, let's define the function that will contain our shortcode logic inside
+
+17
+00:01:15,780 --> 00:01:24,060
+the includes shortcode subfolder, create a file named off Dasch form Dasch also define the function
+
+18
+00:01:24,060 --> 00:01:26,250
+here and include it from the main plug and file.
+
+19
+00:01:31,280 --> 00:01:38,690
+Let's have this shortcode to the my account page, we previously named it recipe off alt form, so input
+
+20
+00:01:38,690 --> 00:01:41,690
+that into the shortcode block and update your changes.
+
+21
+00:01:47,190 --> 00:01:51,360
+Once that's been inputted, log out and then navigate to the my account page.
+
+22
+00:01:53,930 --> 00:01:59,300
+I'm going to place the shortcode right below the forum so we can do some comparisons back inside my
+
+23
+00:01:59,300 --> 00:01:59,830
+editor.
+
+24
+00:01:59,870 --> 00:02:04,280
+I'm going to copy the code from the original authentication shortcode into the new one.
+
+25
+00:02:09,229 --> 00:02:15,050
+Then I'm going to get rid of most of this code except the conditional statement at top and the return
+
+26
+00:02:15,050 --> 00:02:19,280
+statement, WordPress provides a function for generating a login form.
+
+27
+00:02:19,490 --> 00:02:22,780
+It integrates really well with WordPress login system.
+
+28
+00:02:23,120 --> 00:02:24,800
+However, it is not formatted.
+
+29
+00:02:24,800 --> 00:02:26,930
+So we'll have to take care of that quickly.
+
+30
+00:02:27,630 --> 00:02:33,710
+I'm going to set the form html variable to div class equals call one third.
+
+31
+00:02:33,710 --> 00:02:34,910
+No bottom margin.
+
+32
+00:02:39,330 --> 00:02:43,020
+Then I'm going to close the div tag right before the return statement.
+
+33
+00:02:47,960 --> 00:02:53,270
+We'll be placing most of our code between these two tags, the function that WordPress provides for
+
+34
+00:02:53,270 --> 00:02:56,360
+generating a login form is WP login form.
+
+35
+00:02:56,750 --> 00:03:00,740
+I'm going to append this function onto the form HTML variable.
+
+36
+00:03:03,500 --> 00:03:08,930
+In the resource section of this lecture, I provide a link to this function, this function only has
+
+37
+00:03:08,930 --> 00:03:13,640
+one parameter and that's an array of settings we can pass in to change the output of the form.
+
+38
+00:03:14,210 --> 00:03:19,400
+One thing I do want to highlight is that while there are quite a few parameters here, the login form
+
+39
+00:03:19,400 --> 00:03:20,570
+is not that flexible.
+
+40
+00:03:21,110 --> 00:03:25,720
+WordPress doesn't really provide a way to add classes or change the HTML.
+
+41
+00:03:26,030 --> 00:03:29,440
+We'll just work with what we have back inside the editor.
+
+42
+00:03:29,450 --> 00:03:31,110
+I'm going to pass in an array.
+
+43
+00:03:31,460 --> 00:03:33,620
+There are only two keys I want to set.
+
+44
+00:03:33,920 --> 00:03:35,720
+The first key is the echo key.
+
+45
+00:03:36,350 --> 00:03:39,710
+Since this is a short code, we have to return the HTML.
+
+46
+00:03:40,040 --> 00:03:47,360
+The WP login form function will output the form by default in order to make it return the HTML, we
+
+47
+00:03:47,360 --> 00:03:49,190
+have to set this key to false.
+
+48
+00:03:49,490 --> 00:03:52,160
+The next key I want to set is the redirect key.
+
+49
+00:03:52,670 --> 00:03:58,100
+By default, WordPress will automatically redirect the user to the page where the form was submitted.
+
+50
+00:03:58,430 --> 00:04:03,470
+It doesn't really make much sense to redirect the user back to the login page if they've successfully
+
+51
+00:04:03,470 --> 00:04:04,040
+logged in.
+
+52
+00:04:04,370 --> 00:04:10,400
+I'm going to set this to the home you URL function and I'll simply pass in a forward slash to indicate
+
+53
+00:04:10,400 --> 00:04:12,980
+I want the user to land on the Eurail.
+
+54
+00:04:14,450 --> 00:04:19,670
+With all that said, let's refresh the page and see what we get, WordPress generates this form for
+
+55
+00:04:19,670 --> 00:04:21,470
+us, which doesn't really look appealing.
+
+56
+00:04:21,860 --> 00:04:27,860
+Like I said before, the function we are using doesn't allow us to customize the HTML and classes being
+
+57
+00:04:27,860 --> 00:04:28,290
+used.
+
+58
+00:04:28,910 --> 00:04:34,070
+The reason we use it is because it'll generate all the input fields required for this form to work with
+
+59
+00:04:34,070 --> 00:04:35,420
+the WordPress login flow.
+
+60
+00:04:35,840 --> 00:04:41,990
+Alternatively, you could just copy and paste the HTML into your shortcode and just modify it from there.
+
+61
+00:04:42,530 --> 00:04:49,580
+For this course, I'm just going to apply some styles to the HTML generated inside the slash assets
+
+62
+00:04:49,580 --> 00:04:51,230
+slash success folder.
+
+63
+00:04:51,350 --> 00:04:54,080
+You'll find a file called off DOCSIS.
+
+64
+00:04:54,350 --> 00:04:58,280
+I want you to register and in Q this style sheet from the front end.
+
+65
+00:04:58,280 --> 00:04:59,000
+Q function.
+
+66
+00:04:59,360 --> 00:05:00,980
+I'm going to do this really quickly.
+
+67
+00:05:02,560 --> 00:05:05,230
+All right, I just registered and include this.
+
+68
+00:05:05,950 --> 00:05:10,180
+All I'm really doing is stretching the width so that it doesn't look so out of place.
+
+69
+00:05:10,510 --> 00:05:14,910
+Refresh the page and you should see form look more formatted and improved.
+
+70
+00:05:15,520 --> 00:05:19,180
+You can leave it like this as we don't really need to do anything else.
+
+71
+00:05:19,540 --> 00:05:23,690
+WordPress will now handle authenticating the user and providing errors.
+
+72
+00:05:24,070 --> 00:05:26,380
+There is one problem I have with this form, though.
+
+73
+00:05:26,380 --> 00:05:30,970
+Besides the styling, I'm going to empty out these fields and then submit the form.
+
+74
+00:05:31,600 --> 00:05:34,420
+After submitting the form, you should see an error message.
+
+75
+00:05:34,570 --> 00:05:37,980
+However, I'm not redirected to the my account page.
+
+76
+00:05:38,260 --> 00:05:41,420
+Instead, we end up on the default WordPress login page.
+
+77
+00:05:41,800 --> 00:05:47,620
+The point of having a front end form is so that the user doesn't have to see this will have to slightly
+
+78
+00:05:47,620 --> 00:05:53,200
+modify the way the authentication behaves in order to make the submission redirect back to the my account
+
+79
+00:05:53,200 --> 00:05:53,550
+page.
+
+80
+00:05:53,560 --> 00:05:59,830
+If it was a failure just to save some time, I'm going to post the code inside the main plugin file.
+
+81
+00:06:00,980 --> 00:06:06,410
+I'm inside the main plug and file, and I added in two hooks here, which are both the same, these
+
+82
+00:06:06,410 --> 00:06:09,250
+hooks are actual hooks, WordPress registers.
+
+83
+00:06:09,620 --> 00:06:13,060
+The reason I'm adding them here is just, for example, purposes.
+
+84
+00:06:13,400 --> 00:06:15,950
+So the name of the hook is authenticate.
+
+85
+00:06:16,310 --> 00:06:18,590
+You use this hook to check the user data.
+
+86
+00:06:18,920 --> 00:06:21,550
+WordPress will register two different functions here.
+
+87
+00:06:22,250 --> 00:06:24,650
+What's most important here is the priority.
+
+88
+00:06:24,950 --> 00:06:30,080
+What we want to do is change the way the authentication behaves while still letting WordPress do the
+
+89
+00:06:30,080 --> 00:06:30,790
+heavy lifting.
+
+90
+00:06:31,430 --> 00:06:36,980
+I want my function to run after WordPress has finished processing everything and is about to redirect
+
+91
+00:06:36,980 --> 00:06:37,550
+the user.
+
+92
+00:06:38,000 --> 00:06:43,580
+I want my priority to be a higher number than these two so my function gets executed last.
+
+93
+00:06:43,940 --> 00:06:46,850
+I'm pasting him these two hooks to show you their priority.
+
+94
+00:06:47,510 --> 00:06:53,090
+After these two hooks, WordPress will have already executed everything and we can then take over.
+
+95
+00:06:53,420 --> 00:06:55,310
+I'm going to comment these two out.
+
+96
+00:06:55,310 --> 00:07:00,370
+Since WordPress already registers these two hooks, doing it ourselves would be redundant.
+
+97
+00:07:00,770 --> 00:07:05,750
+Below this, I'm going to add a filter hook using the same authenticate hook as above.
+
+98
+00:07:06,230 --> 00:07:09,950
+The function I want to call will be called Are Alz authenticate.
+
+99
+00:07:12,590 --> 00:07:15,090
+Then we must set the priority by default.
+
+100
+00:07:15,140 --> 00:07:19,460
+This will be 10, but I want this to be higher than the ones WordPress registers.
+
+101
+00:07:19,760 --> 00:07:22,590
+Therefore, I'm going to set this to 100.
+
+102
+00:07:22,970 --> 00:07:26,390
+You will also be provided with three values to use in the function.
+
+103
+00:07:26,760 --> 00:07:32,210
+I'm going to set the fourth parameter to three so we can accept all three values in our function.
+
+104
+00:07:32,840 --> 00:07:34,310
+Just to save some time.
+
+105
+00:07:34,320 --> 00:07:40,190
+I'm going to define this function inside the shortcode file at the bottom like so the three parameters
+
+106
+00:07:40,190 --> 00:07:43,880
+that are accepted are the user username and password.
+
+107
+00:07:46,550 --> 00:07:52,130
+Inside this function, I'm going to create a conditional statement that will check if the request method
+
+108
+00:07:52,130 --> 00:07:55,160
+of the server variable is not set to post.
+
+109
+00:07:59,420 --> 00:08:05,450
+If this condition passes, I'm just going to return the user, I don't want to redirect the user if
+
+110
+00:08:05,450 --> 00:08:10,970
+the method is not post, post is usually the method that's used when processing logging data.
+
+111
+00:08:11,690 --> 00:08:18,140
+Next, I'm going to create another conditional statement to check if the user object has errors by passing
+
+112
+00:08:18,140 --> 00:08:20,480
+it into the function is WP error.
+
+113
+00:08:24,030 --> 00:08:30,540
+If this returns false, I'm going to once again return the user object, if this ends up happening,
+
+114
+00:08:30,570 --> 00:08:34,110
+then that usually means the user was successfully authenticated.
+
+115
+00:08:34,110 --> 00:08:37,220
+And so there's no need to redirect them back to the login page.
+
+116
+00:08:37,890 --> 00:08:42,220
+If the function has made it this far, then that means the login submission has failed.
+
+117
+00:08:42,750 --> 00:08:47,340
+I'm going to create a variable named error codes and set its value to the function.
+
+118
+00:08:47,340 --> 00:08:49,830
+Get error codes from the user object.
+
+119
+00:08:52,330 --> 00:08:55,070
+This function will return an array of error codes.
+
+120
+00:08:55,660 --> 00:09:00,710
+I want to pass the error codes back to my form so that we can display the errors to the user.
+
+121
+00:09:01,120 --> 00:09:06,590
+However, we can't really pass an array back to the user, so we'll need to convert this to a string.
+
+122
+00:09:07,030 --> 00:09:11,740
+I'm going to wrap this with a function called Joline, which will convert an array to a string.
+
+123
+00:09:14,330 --> 00:09:19,940
+The first parameter to this function is the separator, which will just be a comma, the second parameter
+
+124
+00:09:19,940 --> 00:09:21,130
+is the array itself.
+
+125
+00:09:21,800 --> 00:09:27,140
+Now that we have the error codes in string form will have to append it to the Eurail itself that we
+
+126
+00:09:27,140 --> 00:09:28,740
+want to redirect the user to.
+
+127
+00:09:29,150 --> 00:09:35,780
+I'm going to create a variable named log in neutral and set its value to the home URL function and pass
+
+128
+00:09:35,780 --> 00:09:37,550
+in the string my Dasch account.
+
+129
+00:09:40,250 --> 00:09:46,070
+We are manually setting the page here, usually you want this to be dynamic, but will keep things simple
+
+130
+00:09:46,070 --> 00:09:46,740
+here for now.
+
+131
+00:09:47,090 --> 00:09:52,520
+This is just an alternative example to the original authentication method we did anyway.
+
+132
+00:09:52,520 --> 00:09:55,520
+Anyway, I'm then going to reassign this variable to the function.
+
+133
+00:09:55,520 --> 00:09:56,690
+Add query ARG.
+
+134
+00:09:59,300 --> 00:10:04,880
+This is a function provided by WordPress that basically accepts a Eurail and will add a query to the
+
+135
+00:10:04,880 --> 00:10:10,780
+URL for you, it will take care of making sure the euro is safe and ready to be used.
+
+136
+00:10:11,090 --> 00:10:13,330
+There's three parameters for this function.
+
+137
+00:10:13,610 --> 00:10:17,210
+The first parameter is the name of the query, which will be log in.
+
+138
+00:10:17,540 --> 00:10:22,330
+You can name this whatever you want, but log in tends to be a common naming convention.
+
+139
+00:10:22,880 --> 00:10:26,810
+The second parameter is the value for this query, which will be the error codes.
+
+140
+00:10:27,110 --> 00:10:31,280
+Lastly, you just pass in the euro, which would be login neutral.
+
+141
+00:10:31,670 --> 00:10:34,510
+Now we have a full URL with the error codes.
+
+142
+00:10:34,790 --> 00:10:37,620
+You'll see what the error codes look like in just a moment.
+
+143
+00:10:38,240 --> 00:10:43,130
+The last step is to call the WP redirect function and pass in the early.
+
+144
+00:10:45,510 --> 00:10:51,450
+This function will redirect the user to the my account page just as an extra measure, I'm going to
+
+145
+00:10:51,450 --> 00:10:55,460
+kill the script with the exit statement that should finish up our function.
+
+146
+00:10:56,100 --> 00:11:00,300
+Let's refresh the page and try submitting the form with no input whatsoever.
+
+147
+00:11:03,760 --> 00:11:09,400
+You should be redirected back to the page like I have, if you look at the Eurail bar, you'll see the
+
+148
+00:11:09,400 --> 00:11:10,510
+error codes appearing.
+
+149
+00:11:10,780 --> 00:11:13,930
+Each error code is separated with the comma, which is great.
+
+150
+00:11:14,380 --> 00:11:19,870
+Back inside the shortcode function, we can grab the error codes by creating a variable named errors
+
+151
+00:11:19,870 --> 00:11:21,730
+and set it to the get variable.
+
+152
+00:11:26,980 --> 00:11:33,250
+By default, the error codes will not appear, so we'll use a ternary operator here, I'm going to check
+
+153
+00:11:33,250 --> 00:11:34,920
+if the get variable is set.
+
+154
+00:11:35,230 --> 00:11:37,840
+If it is, I'm going to set it to this variable.
+
+155
+00:11:38,170 --> 00:11:40,470
+If not, I'm going to set it to an array.
+
+156
+00:11:42,830 --> 00:11:47,870
+Of course, the get variable is a string, so we'll need to convert it into an array.
+
+157
+00:11:48,560 --> 00:11:52,790
+I'm going to use the function explo to convert it from a string to an array.
+
+158
+00:11:55,340 --> 00:12:00,560
+The first parameter is the separator, which is a comma and the second parameter is the string itself,
+
+159
+00:12:01,220 --> 00:12:03,080
+just like that, we now have our error.
+
+160
+00:12:03,770 --> 00:12:06,620
+I'm going to paste in some code here, which I'll go over.
+
+161
+00:12:08,320 --> 00:12:12,620
+All right, so all I have here is a loop going through each error in the array.
+
+162
+00:12:13,090 --> 00:12:19,390
+There are four possible error codes which are empty username, empty password, invalid username and
+
+163
+00:12:19,390 --> 00:12:20,510
+incorrect password.
+
+164
+00:12:20,920 --> 00:12:26,090
+I'm adding some messages to the form element and displaying a user friendly message to the user.
+
+165
+00:12:26,710 --> 00:12:28,030
+Nothing too crazy here.
+
+166
+00:12:28,300 --> 00:12:32,660
+All right, let's refresh the page and you should see the two errors appearing here.
+
+167
+00:12:32,980 --> 00:12:37,450
+I'm going to submit the form again, but this time with correct credentials.
+
+168
+00:12:40,000 --> 00:12:43,780
+You should be logged in and redirected to the home page if it was successful.
+
+169
+00:12:44,110 --> 00:12:45,920
+This is exactly what we wanted.
+
+170
+00:12:46,210 --> 00:12:49,180
+So that concludes how you would authenticate a user.
+
+171
+00:12:49,480 --> 00:12:53,910
+I've shown you two ways on how to do this, and either one is a valid solution.
+
+172
+00:12:54,610 --> 00:12:59,680
+Some developers tend to think that they have to extend everything, but that's simply not true.
+
+173
+00:13:00,340 --> 00:13:06,430
+You can take advantage of WordPress core behavior and just tweak some things internally using hooks.
+
+174
+00:13:06,560 --> 00:13:08,710
+At the end of the day, it's all preference.
+
+175
+00:13:09,160 --> 00:13:11,620
+I'm going to comment about this second solution.
+
+176
+00:13:11,830 --> 00:13:16,640
+I usually don't recommend it because at any point WordPress could change this behavior.
+
+177
+00:13:17,020 --> 00:13:21,160
+There's also a lot of plugins that alter the way WordPress logs users in.
+
+178
+00:13:21,400 --> 00:13:23,550
+It tends to be a pain to deal with.
+
+179
+00:13:24,100 --> 00:13:27,060
+Now, you may be wondering, but what about user registration?
+
+180
+00:13:27,430 --> 00:13:32,280
+Unfortunately, WordPress doesn't provide any functions for creating a register form.
+
+181
+00:13:32,710 --> 00:13:38,160
+This means you'll have to create it manually and hook it into the regular WordPress registration system.
+
+182
+00:13:38,650 --> 00:13:44,020
+We won't be doing that in this course as it tends to be a long and hard process, making it not worth
+
+183
+00:13:44,020 --> 00:13:44,150
+it.
+
+184
+00:13:44,710 --> 00:13:47,170
+However, you're free to check it out yourself.
+
+185
+00:13:47,440 --> 00:13:53,050
+All login and registration is handled inside the WP dash login file.
+
+186
+00:13:53,350 --> 00:13:55,840
+Anyway, I'll see you in the next lecture.
+

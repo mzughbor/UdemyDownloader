@@ -1,0 +1,332 @@
+1
+00:00:07,340 --> 00:00:12,890
+In this lecture, we're going to add a toolbar to the recipe, block the text inside the recipe block
+
+2
+00:00:12,890 --> 00:00:14,600
+is currently aligned to the left.
+
+3
+00:00:14,810 --> 00:00:18,140
+Some users may want to align it to the center or to the right.
+
+4
+00:00:18,710 --> 00:00:24,920
+If I were to begin typing than a new paragraph block will be added above it, I'll be provided a toolbar.
+
+5
+00:00:25,160 --> 00:00:31,460
+I have the option to change this to a heading alignment text, bold the text, create a link, et cetera.
+
+6
+00:00:31,850 --> 00:00:37,280
+WordPress allows us to add a toolbar to our blog that can manipulate the way a block looks and feels.
+
+7
+00:00:37,790 --> 00:00:40,850
+We even have the power to add in our own options to the block.
+
+8
+00:00:41,240 --> 00:00:45,920
+For now, I want to focus solely on adding the alignment options to our block.
+
+9
+00:00:46,160 --> 00:00:49,550
+The toolbar we're trying to add is called Block Controls.
+
+10
+00:00:49,770 --> 00:00:52,130
+This is a component provided by WordPress.
+
+11
+00:00:52,520 --> 00:00:56,990
+It will take care of creating the UI and correctly positioned the toolbar for us.
+
+12
+00:00:57,260 --> 00:00:58,190
+Let's load it in.
+
+13
+00:00:58,490 --> 00:01:01,070
+Back inside the index file for the block.
+
+14
+00:01:01,070 --> 00:01:03,410
+I'm going to D structure two components.
+
+15
+00:01:03,620 --> 00:01:09,770
+The components will be Block Controls and alignment toolbar from the WP Editor Object.
+
+16
+00:01:15,560 --> 00:01:21,670
+Once again, the bloc controls component will take care of creating the container and UI for the toolbar,
+
+17
+00:01:22,100 --> 00:01:27,180
+the alignment toolbar component will take care of creating the buttons for the alignment toolbar.
+
+18
+00:01:27,620 --> 00:01:30,500
+This includes the icons and functionality as well.
+
+19
+00:01:31,220 --> 00:01:36,890
+Before we begin using these components, we'll need to store the value for the alignment inside the
+
+20
+00:01:36,890 --> 00:01:37,610
+attributes.
+
+21
+00:01:37,610 --> 00:01:42,500
+Object create a new property called text alignment with a type of string.
+
+22
+00:01:46,040 --> 00:01:52,620
+We are not going to specify a source or selector, even though the value will be used inside an attribute.
+
+23
+00:01:52,700 --> 00:01:55,350
+We're going to let WordPress keep track of the value.
+
+24
+00:01:55,700 --> 00:01:58,100
+I'll explain how this will work in just a moment.
+
+25
+00:01:58,310 --> 00:02:00,350
+For now, let's keep moving forward.
+
+26
+00:02:00,980 --> 00:02:06,680
+Now that we have an attribute to store the value, let's add the component to the block inside the block
+
+27
+00:02:06,680 --> 00:02:10,580
+before the unordered list and the block controls component.
+
+28
+00:02:15,520 --> 00:02:19,010
+Anything in between these tags will be placed inside the toolbar.
+
+29
+00:02:19,330 --> 00:02:24,460
+We want to place the alignment toolbar inside the toolbar, so do so now.
+
+30
+00:02:27,080 --> 00:02:29,300
+This component requires two values.
+
+31
+00:02:29,450 --> 00:02:33,110
+The first is the value and the second is the function to run.
+
+32
+00:02:33,110 --> 00:02:38,720
+When the alignment changes, I'm going to set the value to the text alignment attribute.
+
+33
+00:02:43,580 --> 00:02:47,390
+For the unchanged property, we're going to add in line function.
+
+34
+00:02:49,900 --> 00:02:56,590
+Will refer to the new value as new value using the prompts object, call these set attributes function
+
+35
+00:02:56,590 --> 00:03:01,420
+and pass in an object, set the text alignment property to new value.
+
+36
+00:03:03,730 --> 00:03:09,700
+The event is triggered whenever a user selects an alignment, we've updated the value, the last step
+
+37
+00:03:09,700 --> 00:03:16,300
+to all of this is to apply the alignment to the block inside the unordered list and the style attribute.
+
+38
+00:03:18,530 --> 00:03:24,560
+This will be set to an object, the properties inside the object will be converted into Sears's properties
+
+39
+00:03:24,560 --> 00:03:26,030
+with their respective values.
+
+40
+00:03:26,300 --> 00:03:30,450
+We only need to set one property and that's the text align property.
+
+41
+00:03:30,920 --> 00:03:34,400
+You'll notice that I'm writing this with camel casing react.
+
+42
+00:03:34,400 --> 00:03:38,040
+We'll take the time to convert this into its original siestas property.
+
+43
+00:03:38,660 --> 00:03:42,200
+This will apply to Mosiah says properties with multiple words.
+
+44
+00:03:42,470 --> 00:03:45,530
+For example, background color is written like this.
+
+45
+00:03:45,800 --> 00:03:49,020
+This is common practice among developers, so be aware of that.
+
+46
+00:03:49,340 --> 00:03:54,770
+I'm going to set the alignment property to props attributes, dot text alignment.
+
+47
+00:03:57,240 --> 00:04:02,610
+This will also need to be applied to the save function, copy this code and paste it in the same area.
+
+48
+00:04:09,080 --> 00:04:09,870
+We're finished.
+
+49
+00:04:10,040 --> 00:04:16,579
+Save your changes and CD into the blocks directory, then run the NPM run Jeb Command.
+
+50
+00:04:18,779 --> 00:04:24,780
+Once the code has been compiled, go to your recipe post on the admin area, you may see a message saying
+
+51
+00:04:24,780 --> 00:04:26,000
+the block has changed.
+
+52
+00:04:26,160 --> 00:04:28,860
+That's to be expected just around the block again.
+
+53
+00:04:30,170 --> 00:04:35,560
+If you have your block selected, then you should see the block controls component up here above it,
+
+54
+00:04:36,020 --> 00:04:38,600
+you should be able to change the alignment easily.
+
+55
+00:04:38,930 --> 00:04:44,450
+If you were to inspect the element, then you should see the style attribute being applied to the unordered
+
+56
+00:04:44,450 --> 00:04:44,900
+list.
+
+57
+00:04:47,150 --> 00:04:51,560
+The camel casing has also been converted into the appropriate access property.
+
+58
+00:04:51,970 --> 00:04:56,780
+If I were to change the alignment again, then you should see the style update in real time.
+
+59
+00:04:57,080 --> 00:04:58,260
+This is fantastic.
+
+60
+00:04:58,550 --> 00:05:01,510
+Let's save the post and try viewing the post on the front end.
+
+61
+00:05:03,910 --> 00:05:09,310
+The tax should be aligned accordingly, as you can see, using WordPress components is simple.
+
+62
+00:05:09,640 --> 00:05:13,780
+The block controls component will take care of appearing when the block is selected.
+
+63
+00:05:14,110 --> 00:05:18,940
+Gutenberg will handle correctly placing the toolbar for you and most of the basic setup.
+
+64
+00:05:19,540 --> 00:05:21,110
+Before I end this lecture.
+
+65
+00:05:21,160 --> 00:05:24,490
+I want to take a moment to talk about the attribute we created.
+
+66
+00:05:24,700 --> 00:05:29,000
+If you can recall, we did not set a default source or selector.
+
+67
+00:05:29,540 --> 00:05:34,870
+However, if I were to refresh the Gutenberg editor, then you should see the text still aligned to
+
+68
+00:05:34,870 --> 00:05:35,400
+the center.
+
+69
+00:05:35,770 --> 00:05:39,090
+The button will also be selected in previous lectures.
+
+70
+00:05:39,100 --> 00:05:42,760
+We had to save the value, but this is not the case for the alignment.
+
+71
+00:05:43,360 --> 00:05:48,760
+Open Heidi and select the post stable search for the post where we have the alignment applied.
+
+72
+00:05:51,010 --> 00:05:56,130
+If you were to view the post content, then you'll see that everything is saved like before.
+
+73
+00:05:56,140 --> 00:06:03,370
+But with one change inside the HTML comment, you'll find an object with the attribute saved, WordPress
+
+74
+00:06:03,370 --> 00:06:08,830
+will attempt to save any attributes that don't have a selector in the comments for something as simple
+
+75
+00:06:08,830 --> 00:06:10,070
+as the text alignment.
+
+76
+00:06:10,120 --> 00:06:12,100
+I recommend storing it in the comment.
+
+77
+00:06:12,730 --> 00:06:17,850
+If you have something that takes up multiple lines or large values, then I recommend a selector.
+
+78
+00:06:18,100 --> 00:06:19,600
+In the end, it's up to you.
+
+79
+00:06:19,810 --> 00:06:22,820
+You can store the value in an HTML attribute if you want.
+
+80
+00:06:23,080 --> 00:06:25,630
+For me, I prefer to let WordPress save it.
+
+81
+00:06:26,260 --> 00:06:26,770
+All right.
+
+82
+00:06:26,920 --> 00:06:32,230
+That does it for the blog controls component will continue our Gutenberg journey in the next lecture.
+
+83
+00:06:32,380 --> 00:06:33,250
+I'll see you there.
+

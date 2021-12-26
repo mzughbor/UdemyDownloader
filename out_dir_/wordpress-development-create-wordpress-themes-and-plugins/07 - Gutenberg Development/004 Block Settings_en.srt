@@ -1,0 +1,784 @@
+1
+00:00:07,470 --> 00:00:13,050
+The next step to all of this is to create the block settings, all settings are set inside the object
+
+2
+00:00:13,050 --> 00:00:16,720
+we passed in as the second argument of the register block type function.
+
+3
+00:00:17,160 --> 00:00:22,020
+You don't have to name these in any order, but we'll start simple and work our way down to the more
+
+4
+00:00:22,020 --> 00:00:23,070
+complex settings.
+
+5
+00:00:23,550 --> 00:00:25,830
+The first setting is the title setting.
+
+6
+00:00:26,220 --> 00:00:29,690
+Before we set this, let's check out where this is used in the editor.
+
+7
+00:00:30,090 --> 00:00:33,540
+Go to your admin dashboard and create a new recipe post.
+
+8
+00:00:33,720 --> 00:00:38,990
+If we were to view the list of blocks available, you'll see that the title appears below each icon.
+
+9
+00:00:39,540 --> 00:00:43,920
+Something important I want to highlight is that each title is only one or two words.
+
+10
+00:00:44,250 --> 00:00:47,070
+You want to keep your title short and concise.
+
+11
+00:00:47,370 --> 00:00:51,900
+If you feel like your title should have a longer name, then I still recommend keeping it short.
+
+12
+00:00:52,290 --> 00:00:56,970
+There is a way to make it easier to search for your block, even if there are certain keywords that
+
+13
+00:00:56,970 --> 00:00:58,510
+you want to include in your title.
+
+14
+00:00:58,860 --> 00:01:00,800
+I'll talk about that in just a moment.
+
+15
+00:01:01,440 --> 00:01:03,330
+Let's add the paragraph block.
+
+16
+00:01:03,600 --> 00:01:05,099
+The Block will appear below.
+
+17
+00:01:05,400 --> 00:01:09,570
+If you select it, you'll see that it appears on the sidebar with a description.
+
+18
+00:01:10,200 --> 00:01:15,810
+Now that we understand how the title is used in Gutenberg, let's set it back inside the editor.
+
+19
+00:01:15,810 --> 00:01:18,450
+I'm going to set the title to Recipe.
+
+20
+00:01:20,630 --> 00:01:26,090
+I'm going to wrap this with the WP and underscore underscore function.
+
+21
+00:01:28,210 --> 00:01:34,540
+I'm introducing a new object here called Ideating, in which is short for internationalization, WordPress
+
+22
+00:01:34,540 --> 00:01:37,410
+provides a way to translate strings with JavaScript.
+
+23
+00:01:37,750 --> 00:01:41,280
+All translation related functions are stored under this object.
+
+24
+00:01:41,590 --> 00:01:45,520
+The double underscore function is similar to its counterpart.
+
+25
+00:01:45,880 --> 00:01:50,260
+The first parameter is the string to translate and the second is the text domain.
+
+26
+00:01:50,830 --> 00:01:52,840
+Set the text domain to recipe.
+
+27
+00:01:55,140 --> 00:02:00,600
+Before we move any further, the way we're using these functions can be simplified, we're constantly
+
+28
+00:02:00,600 --> 00:02:02,810
+accessing BWP object.
+
+29
+00:02:03,150 --> 00:02:06,970
+Wouldn't it be nice if we could just type the functions without typing all this out?
+
+30
+00:02:07,530 --> 00:02:11,670
+Well, that's possible with the structuring at the top of the file.
+
+31
+00:02:11,700 --> 00:02:19,290
+I'm going to create a constant that D structures the WP blocks object and grabs only the register block
+
+32
+00:02:19,290 --> 00:02:20,010
+type function.
+
+33
+00:02:24,670 --> 00:02:27,850
+I'm going to do the same for the devil underscore function.
+
+34
+00:02:31,390 --> 00:02:36,730
+Now we can call these functions as is remove this stuff before these functions like so.
+
+35
+00:02:39,000 --> 00:02:44,460
+This makes our code look cleaner and readable, let's keep moving forward to the next setting is the
+
+36
+00:02:44,460 --> 00:02:45,210
+description.
+
+37
+00:02:47,550 --> 00:02:53,010
+This will also be translatable set this to provides a short summary of a recipe.
+
+38
+00:02:57,360 --> 00:02:59,310
+The next setting is category.
+
+39
+00:03:00,490 --> 00:03:06,280
+WordPress comes with a few inbuilt categories, let's go back to the visual editor and see what they
+
+40
+00:03:06,280 --> 00:03:06,600
+are.
+
+41
+00:03:06,910 --> 00:03:10,540
+To see the categories, you'll have to select the blocks tab.
+
+42
+00:03:10,810 --> 00:03:13,830
+We have a category for generic or common blocks.
+
+43
+00:03:14,380 --> 00:03:18,880
+We have another category for formatting and layouts which are more design oriented.
+
+44
+00:03:19,270 --> 00:03:24,650
+We also have widgets for blocks that require assistance from the server to display the content.
+
+45
+00:03:25,120 --> 00:03:30,340
+There are quite a few blocks here, so being able to categorise them will help the user navigate their
+
+46
+00:03:30,340 --> 00:03:31,040
+way around.
+
+47
+00:03:31,690 --> 00:03:33,420
+Let's switch back to the editor.
+
+48
+00:03:33,550 --> 00:03:35,430
+I'm going to add a comment above.
+
+49
+00:03:35,680 --> 00:03:37,570
+Here are the following categories.
+
+50
+00:03:37,990 --> 00:03:41,560
+Comment, formatting, layouts, widgets, embed.
+
+51
+00:03:43,850 --> 00:03:47,330
+For our recipe, which it will be using the category common.
+
+52
+00:03:49,560 --> 00:03:51,960
+The next setting we can set is the icon.
+
+53
+00:03:54,010 --> 00:04:00,190
+The icon setting can take in various values in the resource section of this lecture, I provide a link
+
+54
+00:04:00,190 --> 00:04:02,620
+to an icon set called Dasch Icons.
+
+55
+00:04:02,950 --> 00:04:05,140
+Here is what WordPress says about this set.
+
+56
+00:04:05,800 --> 00:04:11,050
+National Icons is the official icon font on the WordPress admin as of three point eight.
+
+57
+00:04:11,770 --> 00:04:15,030
+You're free to use these icons in your own plugins and themes.
+
+58
+00:04:15,160 --> 00:04:18,279
+If you scroll down, you'll find all the icons available.
+
+59
+00:04:18,550 --> 00:04:22,840
+You can select any of these and WordPress will provide the full name right here.
+
+60
+00:04:23,170 --> 00:04:30,340
+You only need to use the keyword after the phrase Dasch icons dash by default, WordPress will add this
+
+61
+00:04:30,340 --> 00:04:31,570
+beginning phrase for you.
+
+62
+00:04:31,780 --> 00:04:35,350
+I'm going to select a random Dasch icon and copy the name.
+
+63
+00:04:35,710 --> 00:04:39,580
+Then I'm going to set this as the value for the icon setting.
+
+64
+00:04:41,870 --> 00:04:47,180
+This is one way of using the setting, however, if you were to switch to the Gutenberg editor, then
+
+65
+00:04:47,180 --> 00:04:50,570
+you'll see that WordPress uses Dasch icons for their own blocks.
+
+66
+00:04:50,570 --> 00:04:56,180
+Already you're free to use a dash icon, but you may want to go the other route, which is your own
+
+67
+00:04:56,180 --> 00:04:57,080
+custom icon.
+
+68
+00:04:57,410 --> 00:05:00,080
+WordPress supports SVG icons.
+
+69
+00:05:02,270 --> 00:05:09,950
+SPG stands for scalable vector graphics, SVG is a type of image just like PNG or JPEG images.
+
+70
+00:05:10,190 --> 00:05:14,890
+However, unlike other image types, ACG is created using code.
+
+71
+00:05:15,260 --> 00:05:18,360
+There are a lot of benefits to using SVG images.
+
+72
+00:05:18,590 --> 00:05:20,120
+For one, they're scalable.
+
+73
+00:05:20,360 --> 00:05:24,140
+You can increase or decrease the size and you will never lose quality.
+
+74
+00:05:24,710 --> 00:05:30,390
+I will say, though, the more complex your image is, the more resources that image will use.
+
+75
+00:05:30,770 --> 00:05:37,080
+This makes it perfect for logos, icon sets and cartoon character designs since it's made with code.
+
+76
+00:05:37,190 --> 00:05:40,550
+You also have the ability to adjust the image to your needs.
+
+77
+00:05:42,890 --> 00:05:49,220
+Creating SVG images with code is not ideal, I would recommend downloading a program like Illustrator
+
+78
+00:05:49,220 --> 00:05:51,250
+to help you generate SVG code.
+
+79
+00:05:51,620 --> 00:05:56,670
+I provide an alternative solution for getting icons, but just keep following along with me.
+
+80
+00:05:57,410 --> 00:05:59,420
+I have an icon already created.
+
+81
+00:05:59,780 --> 00:06:06,410
+This cute little character is called -- Doo --, who is the official mascot for WordPress in the resource
+
+82
+00:06:06,410 --> 00:06:07,730
+section of this lecture.
+
+83
+00:06:07,730 --> 00:06:09,200
+I provide this file for you.
+
+84
+00:06:09,620 --> 00:06:13,430
+I've already taken the time to convert this into an SVG image.
+
+85
+00:06:14,090 --> 00:06:20,690
+Once you have it downloaded, create a folder inside the app directory called Icons and place it here.
+
+86
+00:06:25,860 --> 00:06:33,540
+Then open the CFG file inside your editor, as you can see, SFG is all code, you can make changes
+
+87
+00:06:33,540 --> 00:06:35,900
+here and they'll be reflected on the image.
+
+88
+00:06:36,160 --> 00:06:42,330
+However, there's a lot of code and it can be really confusing to understand what does what I always
+
+89
+00:06:42,330 --> 00:06:47,410
+recommend using a program like Illustrator to make changes and then export the final result.
+
+90
+00:06:48,120 --> 00:06:50,430
+I want you to copy the SVG code.
+
+91
+00:06:50,760 --> 00:06:52,800
+We're going to paste this in as the value.
+
+92
+00:06:53,220 --> 00:06:54,510
+There is one problem, though.
+
+93
+00:06:54,720 --> 00:07:00,930
+We want to paste this in as code, but we're not completely sure if it's compatible.
+
+94
+00:07:01,470 --> 00:07:06,870
+In the resource section of this lecture, I provide a link to an SPG to joysticks converter.
+
+95
+00:07:07,550 --> 00:07:13,170
+Just paste your SPG code on the left and it should be converted into G six compatible code on the right
+
+96
+00:07:13,680 --> 00:07:17,970
+cockily the Jena six version and then paste it in as the value for the icon setting.
+
+97
+00:07:22,500 --> 00:07:24,040
+This should work without a hitch.
+
+98
+00:07:24,330 --> 00:07:28,960
+Now we have a new problem, this is making our code look really stuffy and unreadable.
+
+99
+00:07:29,250 --> 00:07:32,350
+It would be better if we could put this code into its own file.
+
+100
+00:07:32,670 --> 00:07:34,990
+We can do just that by using modules.
+
+101
+00:07:35,400 --> 00:07:41,940
+I'm going to undo this paste inside the icons folder, create a file named index, James.
+
+102
+00:07:44,120 --> 00:07:46,700
+Any icons for our blocks will be placed here.
+
+103
+00:07:46,970 --> 00:07:52,220
+I'm going to create a constant named block icons that will be sent to an empty object.
+
+104
+00:07:54,440 --> 00:07:59,330
+Then I'm going to create a new property called WAPA and set it to the image.
+
+105
+00:08:04,780 --> 00:08:10,450
+There's a possibility that the convertor may have removed two important attributes called width and
+
+106
+00:08:10,450 --> 00:08:13,840
+height, apply this to the SVG element like so.
+
+107
+00:08:16,010 --> 00:08:21,290
+The recommended size for an image is 20 by 20 to finish things off.
+
+108
+00:08:21,320 --> 00:08:25,190
+I'm going to export the block icons as the default.
+
+109
+00:08:28,740 --> 00:08:34,030
+Whenever you want to create new icons, you can just add onto the block icons variable.
+
+110
+00:08:34,409 --> 00:08:40,830
+Now that we're exporting the icons, let's import the icon set, which is really just one icon back
+
+111
+00:08:40,830 --> 00:08:42,150
+inside the recipe block.
+
+112
+00:08:42,179 --> 00:08:46,440
+I'm going to import the icons file as block icons.
+
+113
+00:08:50,550 --> 00:08:57,420
+The path to the file must be relative, so you'll need to input dot, dot, slash, icon slash index
+
+114
+00:08:57,420 --> 00:08:58,360
+as I'm doing here.
+
+115
+00:08:58,860 --> 00:09:04,610
+We could have just put the file in the same directory, but I prefer to keep my icons in their own directory.
+
+116
+00:09:04,620 --> 00:09:07,020
+Since icons can be used in multiple blocks.
+
+117
+00:09:07,290 --> 00:09:08,580
+It's up to you in the end.
+
+118
+00:09:09,270 --> 00:09:14,220
+The last stamp is who just sent the icon setting to block icons dot SWAPO.
+
+119
+00:09:16,300 --> 00:09:22,090
+Before I move on to the next setting, I want to show you some resources for grabbing icons in the resource
+
+120
+00:09:22,090 --> 00:09:26,170
+section of this lecture, I provide a link to a site called Flat Icon.
+
+121
+00:09:26,500 --> 00:09:29,560
+Flat Icon provides over seventy thousand icons.
+
+122
+00:09:29,860 --> 00:09:33,890
+They're all free, but you're required to mention them in your project if you use them.
+
+123
+00:09:34,570 --> 00:09:37,740
+They also provide premium icons, if that's what you're looking for.
+
+124
+00:09:38,020 --> 00:09:42,770
+All icons are provided in SPG code, you won't have to make many changes.
+
+125
+00:09:43,180 --> 00:09:47,320
+Alternatively, you can check out the official site for WAPA here.
+
+126
+00:09:47,320 --> 00:09:51,290
+You'll find various versions of Wampus and download the SVG code for him.
+
+127
+00:09:51,940 --> 00:09:52,450
+All right.
+
+128
+00:09:52,660 --> 00:09:54,130
+That should set the icon.
+
+129
+00:09:54,310 --> 00:09:56,080
+The next setting is key words.
+
+130
+00:09:56,290 --> 00:10:00,970
+This setting is optional, but it will allow users to find your block by using keywords.
+
+131
+00:10:01,270 --> 00:10:04,750
+This way you don't have to stuff your title with a lot of keywords.
+
+132
+00:10:05,050 --> 00:10:07,630
+The value for this should be an array of keywords.
+
+133
+00:10:07,960 --> 00:10:08,710
+The keywords.
+
+134
+00:10:08,710 --> 00:10:11,710
+Our input will be food, ingredients, meal type.
+
+135
+00:10:17,710 --> 00:10:22,570
+I've taken the time to translate them as well, something I want to know is that you're limited by the
+
+136
+00:10:22,570 --> 00:10:24,160
+number of key words you can input.
+
+137
+00:10:24,520 --> 00:10:27,370
+WordPress will only allow a limit of three key words.
+
+138
+00:10:27,610 --> 00:10:31,210
+However, you can bypass this by making one key word really long.
+
+139
+00:10:31,840 --> 00:10:33,430
+This isn't strictly enforced.
+
+140
+00:10:33,430 --> 00:10:35,610
+So I would recommend you don't abuse this.
+
+141
+00:10:35,830 --> 00:10:38,140
+It would just be a bad user experience.
+
+142
+00:10:38,380 --> 00:10:43,210
+If a user types a word that isn't related to your block, then it would force them to have to scroll
+
+143
+00:10:43,210 --> 00:10:45,810
+through other blocks in order to find what they're looking for.
+
+144
+00:10:46,360 --> 00:10:47,690
+You want to keep it relevant?
+
+145
+00:10:47,920 --> 00:10:49,420
+All right, let's move forward.
+
+146
+00:10:49,660 --> 00:10:51,670
+The next setting is supports.
+
+147
+00:10:53,740 --> 00:10:59,530
+The supports setting works similar to the ad themes, support function, except it's specific to the
+
+148
+00:10:59,530 --> 00:11:05,770
+ED itself, Guttenberg will add features to your block that you have the ability to enable or disable.
+
+149
+00:11:06,070 --> 00:11:11,470
+In the resource section of this lecture, I provide a link to the Block API handbook page.
+
+150
+00:11:11,920 --> 00:11:16,550
+If you scroll down, you'll find information on how to use the supports setting.
+
+151
+00:11:16,960 --> 00:11:18,810
+Let's go through some of them quickly.
+
+152
+00:11:19,060 --> 00:11:24,700
+The anchor feature will allow users to input links in your block and Gutenberg will convert them into
+
+153
+00:11:24,910 --> 00:11:25,750
+HTML links.
+
+154
+00:11:26,320 --> 00:11:32,440
+The custom class names setting will allow users to attach custom access classes to your block for whatever
+
+155
+00:11:32,440 --> 00:11:32,800
+reason.
+
+156
+00:11:33,310 --> 00:11:39,840
+Lastly, there's the HTML feature, which will allow users to edit the HTML generated by your block.
+
+157
+00:11:40,210 --> 00:11:44,640
+You may want to disable this feature if your block generates complex HTML.
+
+158
+00:11:45,010 --> 00:11:47,930
+Let's use this back inside the editor.
+
+159
+00:11:47,950 --> 00:11:50,950
+I'm going to set the HTML property to false.
+
+160
+00:11:53,210 --> 00:11:59,120
+The HTML will be creating won't be that complex, but it will require to be structured in a certain
+
+161
+00:11:59,120 --> 00:12:01,990
+way, which is a valid reason to turn off HTML.
+
+162
+00:12:02,390 --> 00:12:04,040
+The next setting is save.
+
+163
+00:12:06,270 --> 00:12:11,450
+The value for this will be an arrow function, the function must return G.S. Xcode.
+
+164
+00:12:11,760 --> 00:12:14,900
+I'm going to return a paragraph tag with the text.
+
+165
+00:12:14,910 --> 00:12:15,660
+Hello World.
+
+166
+00:12:21,410 --> 00:12:26,430
+The same setting is what gets rendered on the Ed and on the page we're finished.
+
+167
+00:12:26,660 --> 00:12:30,910
+There are more settings than this, but these are the minimum requirements for a block.
+
+168
+00:12:31,270 --> 00:12:34,000
+Obviously, this won't do much, but it's a start.
+
+169
+00:12:34,370 --> 00:12:36,610
+Save your changes and open the command line.
+
+170
+00:12:36,860 --> 00:12:43,190
+Make sure to seed into the blocks directory, then run the command npm run dev.
+
+171
+00:12:46,900 --> 00:12:52,570
+Lastly, refresh the Gutenberg editor, I would recommend opening your developer tools and checking
+
+172
+00:12:52,570 --> 00:12:56,440
+for any errors, go up to the top left corner and add a block.
+
+173
+00:12:56,650 --> 00:13:01,770
+If you are to view the common category, then you should find the block with the WAPA icon.
+
+174
+00:13:02,080 --> 00:13:02,660
+Perfect.
+
+175
+00:13:02,860 --> 00:13:04,480
+This is exactly what we wanted.
+
+176
+00:13:04,870 --> 00:13:08,850
+Before I have this block, let's test to see if the keywords worked.
+
+177
+00:13:09,400 --> 00:13:13,570
+I'm going to type in food and that should make our recipe block appear.
+
+178
+00:13:13,990 --> 00:13:18,040
+We also had a keyword called meal type, but let's just type in type.
+
+179
+00:13:18,250 --> 00:13:23,120
+As you can see, the recipe block appears even though we didn't type in the full keyword.
+
+180
+00:13:23,500 --> 00:13:28,840
+Once again, it's fine to have multiple words in a keyword, but you don't want to stuff it as that
+
+181
+00:13:28,840 --> 00:13:31,030
+would provide a terrible user experience.
+
+182
+00:13:31,540 --> 00:13:33,400
+All right, let's add this block.
+
+183
+00:13:33,640 --> 00:13:36,910
+It should appear inside the content with the block selected.
+
+184
+00:13:37,030 --> 00:13:39,190
+You should see the settings appear for the block.
+
+185
+00:13:39,520 --> 00:13:42,340
+We see the icon title and description.
+
+186
+00:13:42,730 --> 00:13:46,960
+You're also provide a custom field for any custom Sears's classes.
+
+187
+00:13:47,290 --> 00:13:51,910
+By default, Gutenberg will enable the custom class name feature for you.
+
+188
+00:13:52,300 --> 00:13:57,310
+If you want to turn this off, then add this to your supports object and set it to false.
+
+189
+00:13:57,910 --> 00:14:00,450
+I'm perfectly fine with it, so I'll leave it as is.
+
+190
+00:14:00,730 --> 00:14:01,510
+Congrats.
+
+191
+00:14:01,510 --> 00:14:04,270
+You successfully created your first block.
+
+192
+00:14:05,840 --> 00:14:11,360
+We've covered the first four steps in the process, we prepared the environment and cued the files,
+
+193
+00:14:11,450 --> 00:14:16,000
+registered the block and created the block settings, we even rendered the block.
+
+194
+00:14:16,250 --> 00:14:19,690
+With that being said, the block we created doesn't do much.
+
+195
+00:14:19,820 --> 00:14:21,770
+It's just a plain and simple block.
+
+196
+00:14:21,980 --> 00:14:27,560
+In the next few lectures, we're going to make this more dynamic and provide a UI to edit the block.
+

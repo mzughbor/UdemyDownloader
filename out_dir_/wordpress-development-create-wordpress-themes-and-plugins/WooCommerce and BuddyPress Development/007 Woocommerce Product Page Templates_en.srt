@@ -1,0 +1,800 @@
+1
+00:00:07,270 --> 00:00:10,700
+In the previous lecture, we got started with new commerce development.
+
+2
+00:00:11,050 --> 00:00:16,780
+Right now we have this dilemma where we have two pages that aren't padded and have the sidebar messing
+
+3
+00:00:16,780 --> 00:00:18,220
+up the structure of the page.
+
+4
+00:00:18,640 --> 00:00:21,970
+The two pages are what will Commerce calls product pages.
+
+5
+00:00:22,480 --> 00:00:27,880
+In the resource section of this lecture, I provide a link to the template structure documentation page.
+
+6
+00:00:28,300 --> 00:00:32,670
+This page goes over how you go about overwriting the templates from commerce.
+
+7
+00:00:32,980 --> 00:00:37,060
+It's very similar to how you would go about overwriting templates and buddy press.
+
+8
+00:00:37,360 --> 00:00:42,040
+It says that templates can be found inside the WEW Commerce Templates directory.
+
+9
+00:00:42,760 --> 00:00:46,270
+Right below you can find a link to the latest template changes.
+
+10
+00:00:46,480 --> 00:00:49,000
+The latest changes were made in three point five.
+
+11
+00:00:49,280 --> 00:00:53,560
+It should be noted that not every new commerce update comes with a template change.
+
+12
+00:00:53,800 --> 00:00:58,540
+If you can't find a version that's not here, it's because there were no template changes made during
+
+13
+00:00:58,540 --> 00:00:59,080
+that time.
+
+14
+00:00:59,890 --> 00:01:01,300
+Click on one of these links.
+
+15
+00:01:01,540 --> 00:01:04,870
+You'll be taken to GitHub, where the repository is hosted.
+
+16
+00:01:05,230 --> 00:01:10,060
+This repo is the same file and folder structure we have downloaded in our WordPress site.
+
+17
+00:01:10,420 --> 00:01:15,550
+If you take a look around, you'll notice we have a plethora of templates made available to us.
+
+18
+00:01:15,940 --> 00:01:20,590
+Two things I want to highlight is that we have these folders called Emails and Global's.
+
+19
+00:01:21,070 --> 00:01:26,830
+If I open the emails folder, you'll find all the email templates that do commerce will use whenever
+
+20
+00:01:26,830 --> 00:01:32,290
+it needs to email a user about anything specific, like resetting a password or placing a new order
+
+21
+00:01:32,770 --> 00:01:36,160
+will be taking a more in-depth look at these in a future lecture.
+
+22
+00:01:36,790 --> 00:01:41,460
+The other folder Global's our templates that are used globally throughout commerce.
+
+23
+00:01:41,830 --> 00:01:43,450
+This is what will want to override.
+
+24
+00:01:43,450 --> 00:01:44,220
+In just a moment.
+
+25
+00:01:44,560 --> 00:01:46,450
+Let's tackle one thing at a time.
+
+26
+00:01:46,690 --> 00:01:50,620
+The very first thing I want to do is remove the sidebar from these two pages.
+
+27
+00:01:50,620 --> 00:01:56,440
+Since Will Commerce thinks it's necessary to take a full with page, we should just force commerce to
+
+28
+00:01:56,440 --> 00:01:59,080
+take the same amount of space as any other post.
+
+29
+00:01:59,260 --> 00:02:02,620
+But I like this for with style, just like last time.
+
+30
+00:02:02,620 --> 00:02:06,630
+We have to search through all these templates to find the correct file to modify.
+
+31
+00:02:07,000 --> 00:02:09,789
+I did this already and it's easier than you may think.
+
+32
+00:02:10,210 --> 00:02:18,370
+The two files will want to modify ah the archive dash product and single product template files.
+
+33
+00:02:21,560 --> 00:02:27,260
+If I were to open these two files, you'll see that Wuk Commerce provides helpful blog comments stating
+
+34
+00:02:27,260 --> 00:02:30,110
+that these two templates are used for displaying products.
+
+35
+00:02:30,800 --> 00:02:32,870
+This is one way to save yourself time.
+
+36
+00:02:33,200 --> 00:02:38,900
+Instead of studying HTML and comparing code, you can just read these comments where Wuhu Commerce will
+
+37
+00:02:38,900 --> 00:02:41,460
+describe what these templates do in more detail.
+
+38
+00:02:41,960 --> 00:02:48,270
+Now that we've determined which two templates to modify, let's open them up inside the editor initially.
+
+39
+00:02:48,440 --> 00:02:53,930
+The next step you may want to take is to copy this file, paste it into our theme's folder and modify
+
+40
+00:02:53,930 --> 00:02:54,490
+it from there.
+
+41
+00:02:54,800 --> 00:02:57,930
+But this would actually be the wrong action to take at this point.
+
+42
+00:02:58,370 --> 00:03:03,500
+The reason for this is because wew commerce does things slightly different than what most plugins do.
+
+43
+00:03:04,040 --> 00:03:08,810
+This approach is very flexible and easier to work with once you understand how it works.
+
+44
+00:03:09,470 --> 00:03:11,030
+So what am I talking about?
+
+45
+00:03:11,270 --> 00:03:15,530
+Well, let's examine the code from the single product template for a moment.
+
+46
+00:03:15,860 --> 00:03:21,320
+After looking around, you'll eventually find a spot in the code where it begins to load the sidebar
+
+47
+00:03:21,320 --> 00:03:23,670
+using the Wew Commerce sidebar hook.
+
+48
+00:03:24,110 --> 00:03:29,630
+This might look a little weird at first, while Commerce uses a hook to load the sidebar, but how?
+
+49
+00:03:30,320 --> 00:03:32,690
+Well, let's take it one step at a time.
+
+50
+00:03:33,020 --> 00:03:38,700
+While Commerce is calling a function called Do Action and running the Hook Loop Commerce sidebar.
+
+51
+00:03:39,110 --> 00:03:40,730
+We already know what this does.
+
+52
+00:03:41,030 --> 00:03:43,970
+Any code that hooks into this hook will be executed.
+
+53
+00:03:44,270 --> 00:03:45,620
+That includes us as well.
+
+54
+00:03:46,190 --> 00:03:50,020
+Right above this code, you'll see a block comment, which is very important.
+
+55
+00:03:50,390 --> 00:03:53,950
+It might seem like random information, but it's very useful to us.
+
+56
+00:03:54,470 --> 00:03:59,920
+The at Hooked Symbol is telling us that we do commerce hooks into this hook within itself.
+
+57
+00:04:00,380 --> 00:04:04,400
+That may seem strange, but it's completely valid to do something like that.
+
+58
+00:04:04,730 --> 00:04:08,200
+Reading further, you'll see the name of the function and the priority.
+
+59
+00:04:08,780 --> 00:04:11,780
+Let's double check this to make sure this comment is in line.
+
+60
+00:04:12,050 --> 00:04:13,480
+Feel free to follow along.
+
+61
+00:04:13,670 --> 00:04:14,990
+Just watch what I do.
+
+62
+00:04:14,990 --> 00:04:21,410
+If you can't, I'm going to copy the Hook Wou Commerce sidebar, then I'm going to right click on the
+
+63
+00:04:21,410 --> 00:04:24,470
+WEW Commerce Plugin Folder and select finding folder.
+
+64
+00:04:24,890 --> 00:04:27,740
+We only want to search through the code inside this plugin.
+
+65
+00:04:28,160 --> 00:04:29,270
+Almost immediately.
+
+66
+00:04:29,270 --> 00:04:34,910
+Visual Studio Code will show me all the locations where I can find this text within the Commerce plugin
+
+67
+00:04:34,910 --> 00:04:40,720
+folder will be returned with five results, two of which are comments which we can ignore.
+
+68
+00:04:41,390 --> 00:04:45,890
+Another two results will be inside BIDU action function right above.
+
+69
+00:04:45,890 --> 00:04:49,850
+Each of these is the name of the files where the searched text can be found.
+
+70
+00:04:50,270 --> 00:04:54,980
+The two files where this is used are the archive product and single product files.
+
+71
+00:04:55,370 --> 00:05:00,710
+Just with that information alone, we can determine that this hook is specifically for product pages
+
+72
+00:05:00,710 --> 00:05:01,100
+only.
+
+73
+00:05:01,580 --> 00:05:06,080
+What we care most about is this first result which uses the add action function.
+
+74
+00:05:06,440 --> 00:05:08,270
+Let's click that and preview the code.
+
+75
+00:05:08,900 --> 00:05:14,630
+You'll see that WOU Commerce wants to call a function called Wew Commerce get sidebar with a priority
+
+76
+00:05:14,630 --> 00:05:15,140
+of ten.
+
+77
+00:05:15,620 --> 00:05:19,610
+This is the same information that was given to us in the comment block previously.
+
+78
+00:05:20,090 --> 00:05:22,070
+Let's check out what this function does.
+
+79
+00:05:22,310 --> 00:05:24,200
+I'm going to do what I did last time.
+
+80
+00:05:24,440 --> 00:05:29,360
+I'm going to copy the name of this function and then search for it from within the WOU Commerce plugin
+
+81
+00:05:29,360 --> 00:05:29,780
+folder.
+
+82
+00:05:32,440 --> 00:05:37,160
+We don't care about most of these results, we only care about where the function is defined.
+
+83
+00:05:37,540 --> 00:05:43,120
+I'm going to double click on the result where the function is to find visual studio code will open that
+
+84
+00:05:43,120 --> 00:05:45,310
+file and take you to where that function is.
+
+85
+00:05:45,310 --> 00:05:51,310
+To find all this function does is call the function W, C get template, which will load a template,
+
+86
+00:05:51,310 --> 00:05:51,700
+file.
+
+87
+00:05:52,090 --> 00:05:56,950
+The template that will be loaded is the global Sargsyan bar file.
+
+88
+00:05:57,760 --> 00:05:59,380
+Just like Buddy Press will.
+
+89
+00:05:59,380 --> 00:06:02,950
+Commerce has a function that loads will commerce specific templates.
+
+90
+00:06:03,370 --> 00:06:06,220
+This function will search for the template into locations.
+
+91
+00:06:06,490 --> 00:06:09,130
+The first location is inside our theme folder.
+
+92
+00:06:09,460 --> 00:06:14,800
+Even though we don't have any wew commerce templates, it'll look for a folder named Wew Commerce and
+
+93
+00:06:14,800 --> 00:06:17,410
+then find the template relative to the path past.
+
+94
+00:06:17,410 --> 00:06:24,040
+And if it doesn't find it there, then it'll look for the template inside the WEW Commerce Templates
+
+95
+00:06:24,040 --> 00:06:24,810
+plugin folder.
+
+96
+00:06:25,540 --> 00:06:28,330
+Let's open this template from the Commerce Plug In folder.
+
+97
+00:06:33,860 --> 00:06:39,170
+There's quite a bit of code going on here, but it's mostly just comments we're going to focus on this
+
+98
+00:06:39,170 --> 00:06:41,450
+line here to load a sidebar.
+
+99
+00:06:41,480 --> 00:06:47,760
+All the simple it does is call the function, get sidebar and pass in the string shop if you don't remember.
+
+100
+00:06:47,930 --> 00:06:50,810
+Let me give you a brief overview of what this function does.
+
+101
+00:06:51,110 --> 00:06:56,480
+This function will look, for example, at named sidebar inside the themes folder.
+
+102
+00:06:56,840 --> 00:07:02,750
+However, if you pass in a string, it'll then look for a file named Sidebar Dasch, followed by the
+
+103
+00:07:02,750 --> 00:07:09,530
+name of the string and then end it with Pete and this example, it'll look for a template named Sidebar
+
+104
+00:07:09,530 --> 00:07:10,550
+Dash Shop.
+
+105
+00:07:12,260 --> 00:07:19,010
+This file doesn't exist in our theme, so WordPress will default to the sidebar PHP file, which is
+
+106
+00:07:19,010 --> 00:07:20,010
+what's happening here.
+
+107
+00:07:20,480 --> 00:07:25,730
+This is why the sidebar is being loaded inside this shop page, even though it doesn't really work with
+
+108
+00:07:25,730 --> 00:07:26,780
+a full with page.
+
+109
+00:07:27,470 --> 00:07:30,690
+Now that we understand what's happening, we just have to remove it.
+
+110
+00:07:31,010 --> 00:07:32,810
+There are a couple of solutions here.
+
+111
+00:07:32,990 --> 00:07:39,170
+We can copy the archive products and single product templates to our theme and remove this line of code.
+
+112
+00:07:39,170 --> 00:07:44,300
+Or we can just grab the sidebar far from the global folder and just remove it.
+
+113
+00:07:44,720 --> 00:07:46,040
+Both approaches are wrong.
+
+114
+00:07:46,820 --> 00:07:49,580
+The correct solution is to just remove the action.
+
+115
+00:07:49,910 --> 00:07:54,380
+We haven't done this before, but you're completely allowed to do so and it's easy to do.
+
+116
+00:07:54,710 --> 00:07:57,590
+I'll explain why this is the best solution in a moment.
+
+117
+00:07:57,590 --> 00:07:59,150
+But first, let's try it out.
+
+118
+00:07:59,840 --> 00:08:03,560
+I want you to open the things functions file and call the function.
+
+119
+00:08:03,560 --> 00:08:04,460
+Remove action.
+
+120
+00:08:08,580 --> 00:08:14,100
+This does the opposite of what the adaption function does, which is remove an action function from
+
+121
+00:08:14,100 --> 00:08:19,730
+running, the first parameter is the name of the action hook, which will be wew commerce sidebar.
+
+122
+00:08:20,160 --> 00:08:25,020
+The second parameter is the name of the function that we want to remove, which is the way to commerce
+
+123
+00:08:25,020 --> 00:08:26,310
+get sidebar function.
+
+124
+00:08:26,700 --> 00:08:29,760
+The last parameter is the priority, which was 10.
+
+125
+00:08:31,780 --> 00:08:36,970
+All this information can be grabbed from the comment blog that contains this information, you don't
+
+126
+00:08:36,970 --> 00:08:38,909
+have to search through the files like I did.
+
+127
+00:08:39,280 --> 00:08:41,890
+Well, Commerce does a good job of commenting everything.
+
+128
+00:08:41,890 --> 00:08:47,110
+As you can see throughout this template with this one line of code, we have removed the sidebar.
+
+129
+00:08:47,410 --> 00:08:49,990
+Let's refresh the page and see if everything worked.
+
+130
+00:08:50,380 --> 00:08:52,720
+As you can see, the sidebar is now gone.
+
+131
+00:08:53,200 --> 00:08:53,650
+All right.
+
+132
+00:08:53,740 --> 00:08:56,350
+Let's talk about the benefits of doing it like this.
+
+133
+00:08:56,950 --> 00:09:02,650
+Instead of copying the templates and just modifying them, we save ourselves the time by doing something
+
+134
+00:09:02,650 --> 00:09:03,340
+like this.
+
+135
+00:09:03,700 --> 00:09:07,720
+Another benefit is that this code is so much easier to maintain.
+
+136
+00:09:08,170 --> 00:09:12,610
+I would rather maintain one line of code as opposed to maintaining a whole template.
+
+137
+00:09:13,030 --> 00:09:19,330
+Lastly, we actually open ourselves up to more flexibility, even though we removed this function from
+
+138
+00:09:19,330 --> 00:09:19,850
+the hook.
+
+139
+00:09:20,000 --> 00:09:23,220
+Other functions will still be allowed to run, even us.
+
+140
+00:09:23,770 --> 00:09:25,470
+Let's test this out really quick.
+
+141
+00:09:25,660 --> 00:09:29,590
+I'm going to create an action hook for the Commerce sidebar.
+
+142
+00:09:29,950 --> 00:09:33,370
+I'm going to run an anonymous function just for example sake.
+
+143
+00:09:33,670 --> 00:09:36,610
+I'm going to simply echo out the word test.
+
+144
+00:09:39,020 --> 00:09:45,320
+Refresh the page and you'll now see the message being outputted, if we were to remove the do action
+
+145
+00:09:45,320 --> 00:09:50,270
+function call from the template, then we limit ourselves and other plug ins from needing to use this
+
+146
+00:09:50,270 --> 00:09:50,650
+hook.
+
+147
+00:09:51,260 --> 00:09:55,160
+This would be considered bad practice and would give more problems down the road.
+
+148
+00:09:55,550 --> 00:10:00,010
+It is so much easier and simpler to just remove the function from the hook.
+
+149
+00:10:00,410 --> 00:10:04,880
+I'm going to remove our anonymous function as we don't want to use it in production.
+
+150
+00:10:07,610 --> 00:10:13,730
+The next step is to just add some padding, which is easier and doesn't require as much research inside
+
+151
+00:10:13,730 --> 00:10:18,260
+the global folder, you'll find HTML that applies to almost all pages.
+
+152
+00:10:18,260 --> 00:10:23,260
+In Commerce, there are two templates called wrapper start and wrapper end.
+
+153
+00:10:23,660 --> 00:10:29,900
+These two templates generate code that wraps around all woohoo commerce content, specifically templates
+
+154
+00:10:29,900 --> 00:10:32,900
+that require their own templates rather than a short code.
+
+155
+00:10:33,440 --> 00:10:35,240
+Open either of these files.
+
+156
+00:10:35,360 --> 00:10:40,550
+If you take a look, you'll see that Wuhu Commerce grabs the current name of the theme activated.
+
+157
+00:10:40,910 --> 00:10:45,950
+It checks, if any of the official WordPress themes are activated and will output different types of
+
+158
+00:10:45,950 --> 00:10:47,690
+HTML depending on the theme.
+
+159
+00:10:48,140 --> 00:10:53,750
+However, if the current theme isn't an official WordPress theme, then it'll just load these default
+
+160
+00:10:53,750 --> 00:10:54,660
+div tags.
+
+161
+00:10:55,310 --> 00:10:56,600
+Here's what we're going to do.
+
+162
+00:10:56,870 --> 00:11:02,990
+In order to override existing templates, we have to create a folder named Wu Commerce inside the theme
+
+163
+00:11:02,990 --> 00:11:03,420
+folder.
+
+164
+00:11:03,830 --> 00:11:04,850
+Let's do that now.
+
+165
+00:11:07,510 --> 00:11:13,240
+Then we can just copy the templates, respectively, into this folder, I'm going to copy and paste
+
+166
+00:11:13,240 --> 00:11:19,600
+the globalist footer into the commerce folder in our theme, then I'm going to delete everything inside
+
+167
+00:11:19,600 --> 00:11:23,620
+this folder except for the wrapper start and wrapper end files.
+
+168
+00:11:29,630 --> 00:11:35,000
+Open both files, I'm going to remove the conditional statement, since we already know that this isn't
+
+169
+00:11:35,000 --> 00:11:40,850
+an official WordPress theme, I'm just going to leave the last set of opening and closing div tags in
+
+170
+00:11:40,850 --> 00:11:41,690
+both files.
+
+171
+00:11:51,540 --> 00:11:58,200
+Then I'm going to apply some classes to the first opening div tag, I want to add the content dash rap
+
+172
+00:11:58,200 --> 00:11:58,710
+class.
+
+173
+00:12:01,360 --> 00:12:06,160
+Then I'm going to apply the class container to the second main element.
+
+174
+00:12:08,600 --> 00:12:11,450
+These are the same classes we use in our other templates.
+
+175
+00:12:11,930 --> 00:12:13,750
+I'm going to refresh the page.
+
+176
+00:12:13,940 --> 00:12:16,970
+You should now see our content being patted correctly.
+
+177
+00:12:17,330 --> 00:12:18,240
+For the most part.
+
+178
+00:12:18,290 --> 00:12:23,930
+I don't mind modifying these templates since they don't have any significant code that would cause problems
+
+179
+00:12:23,930 --> 00:12:25,760
+with other plugins or our theme.
+
+180
+00:12:26,450 --> 00:12:30,680
+Before I wrap up this lecture, I want to talk about keeping up with updates.
+
+181
+00:12:31,020 --> 00:12:36,890
+If you look at the documentation page I linked earlier, you'll find a link to fixing outdated wew commerce
+
+182
+00:12:36,890 --> 00:12:37,550
+templates.
+
+183
+00:12:37,880 --> 00:12:40,430
+This page goes over what the title suggests.
+
+184
+00:12:40,580 --> 00:12:41,900
+It's very simple to do.
+
+185
+00:12:42,680 --> 00:12:48,290
+If you were to go to the admin dashboard and navigate to woo commerce system Stenness, you'll find
+
+186
+00:12:48,290 --> 00:12:52,970
+information about how well commerce is operating and if everything is working smoothly.
+
+187
+00:12:53,450 --> 00:12:57,470
+If you scroll to the very bottom, you'll come across the templates box.
+
+188
+00:12:57,800 --> 00:13:00,740
+This box tells you what templates are being overridden.
+
+189
+00:13:01,100 --> 00:13:03,950
+In our case, it would be the wrapper template files.
+
+190
+00:13:04,550 --> 00:13:08,330
+Whenever an update occurs, you will always want to check this box.
+
+191
+00:13:08,540 --> 00:13:13,250
+It'll give you a warning to let you know if the current template you have overridden is outdated.
+
+192
+00:13:13,640 --> 00:13:18,650
+If it is, then you just simply need to paste in the new version and redo the changes you made.
+
+193
+00:13:18,950 --> 00:13:21,320
+It's kind of a pain, but it's what you have to do.
+
+194
+00:13:22,010 --> 00:13:25,610
+So how does wew commerce know when a template is outdated?
+
+195
+00:13:25,970 --> 00:13:31,820
+Well, if you were to open up one of the overwritten templates, you'll find a block comic inside this
+
+196
+00:13:31,820 --> 00:13:32,480
+block comment.
+
+197
+00:13:32,540 --> 00:13:38,030
+You'll find this one piece of data that says a version followed by the version of the template will
+
+198
+00:13:38,030 --> 00:13:40,870
+commerce will check this value to see if it's outdated.
+
+199
+00:13:41,180 --> 00:13:46,160
+It's extremely important that you always leave the comments intact when overwriting them.
+
+200
+00:13:46,370 --> 00:13:49,700
+It's how you keep yourself up to date with the latest changes.
+

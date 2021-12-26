@@ -1,0 +1,320 @@
+1
+00:00:07,700 --> 00:00:13,250
+Right now, I'm looking at the list of classes we can use for the controller, we've gone over how to
+
+2
+00:00:13,250 --> 00:00:15,110
+create a regular input field.
+
+3
+00:00:15,410 --> 00:00:19,360
+Now I want to show you how to use the color picker and upload controllers.
+
+4
+00:00:19,580 --> 00:00:20,930
+Here's what we're going to do.
+
+5
+00:00:21,500 --> 00:00:27,440
+I want to allow users to be able to change the color of these, read more links inside each post excerpt.
+
+6
+00:00:27,800 --> 00:00:32,159
+Then I want to allow them to upload a PDF report so their visitors can download it.
+
+7
+00:00:32,720 --> 00:00:33,590
+Let's get started.
+
+8
+00:00:33,740 --> 00:00:36,320
+Open the miscellaneous customizer function.
+
+9
+00:00:36,590 --> 00:00:39,890
+I've minimized a lot of the code in here, so it's easier to read.
+
+10
+00:00:40,160 --> 00:00:43,040
+As usual, the first step is create the settings.
+
+11
+00:00:43,280 --> 00:00:45,290
+The first setting will be called Jiyu.
+
+12
+00:00:45,290 --> 00:00:49,790
+Read more color with the default value of hash one a, b, c nine.
+
+13
+00:00:49,800 --> 00:00:53,000
+See this as the default color value for the links.
+
+14
+00:00:59,840 --> 00:01:04,819
+The next sitting will be Jiyu or file with a default value of an empty string.
+
+15
+00:01:09,730 --> 00:01:15,670
+The next step is to create a section, however, I plan on assigning the controllers under the Mesi
+
+16
+00:01:15,670 --> 00:01:21,820
+section so we can skip on to step three will start with the color controller at the very bottom called
+
+17
+00:01:21,820 --> 00:01:23,290
+the add control method.
+
+18
+00:01:25,590 --> 00:01:30,780
+Let's go back to the list of controller classes and view the color controller, as you can see, it's
+
+19
+00:01:30,780 --> 00:01:32,500
+not really complex to use at all.
+
+20
+00:01:32,820 --> 00:01:38,550
+I'm going to copy the code inside this controller and paste it into the add control method like so.
+
+21
+00:01:40,780 --> 00:01:47,220
+Let's go through this one by one, these parameters are exactly the same as the regular customizer controller.
+
+22
+00:01:47,710 --> 00:01:52,210
+The first parameter for this class is the WP customize object itself.
+
+23
+00:01:52,630 --> 00:01:54,750
+The second parameter is the ID.
+
+24
+00:01:55,180 --> 00:01:57,070
+I'm going to set this to J.
+
+25
+00:01:57,070 --> 00:01:59,050
+You read more color input.
+
+26
+00:02:01,330 --> 00:02:05,860
+The label will be read more link color, which will also be translatable.
+
+27
+00:02:08,000 --> 00:02:13,040
+Then I'm going to set the section and settings key to their corresponding values.
+
+28
+00:02:18,390 --> 00:02:22,690
+Nothing really new so far, WordPress takes care of the rest, setting up the color picker.
+
+29
+00:02:22,950 --> 00:02:25,710
+I'm going to call the ad control method again.
+
+30
+00:02:30,270 --> 00:02:36,350
+This time, we're going to set up use the upload control class, go back to the list of classes, and
+
+31
+00:02:36,360 --> 00:02:39,090
+this time let's check out the upload control class.
+
+32
+00:02:39,480 --> 00:02:43,140
+Just like the color picker, the upload controller is also very simple.
+
+33
+00:02:43,440 --> 00:02:46,350
+I'm going to copy this code and paste it into our method.
+
+34
+00:02:48,550 --> 00:02:54,490
+The code is exactly the same as last time the WordPress team does a great job of making their customizer
+
+35
+00:02:54,490 --> 00:02:55,610
+classes consistent.
+
+36
+00:02:55,900 --> 00:02:59,740
+I'm going to set the ID to Jiyu report file input.
+
+37
+00:03:02,070 --> 00:03:05,100
+The label key will be set to file a report.
+
+38
+00:03:07,690 --> 00:03:12,340
+Then I'm going to set the section and settings key to their corresponding values.
+
+39
+00:03:18,320 --> 00:03:23,900
+Just like that, we now have the settings and controllers all set up, the next step is to have these
+
+40
+00:03:23,900 --> 00:03:25,800
+values reflected onto the theme.
+
+41
+00:03:26,180 --> 00:03:30,600
+Let's start with the read more color open the NQ function for the front end.
+
+42
+00:03:30,890 --> 00:03:34,460
+I'm going to add my code right after where we NQ the files.
+
+43
+00:03:35,120 --> 00:03:37,070
+The color we have will be dynamic.
+
+44
+00:03:37,330 --> 00:03:41,920
+Dynamic success is kind of hard to pull off because of the solutions that are available.
+
+45
+00:03:42,290 --> 00:03:44,380
+There are two ways we can go about this.
+
+46
+00:03:44,660 --> 00:03:50,930
+The first solution would be to create a file that will output the dynamic success and change the headers.
+
+47
+00:03:51,320 --> 00:03:54,290
+The second solution would be to use inline styles.
+
+48
+00:03:54,830 --> 00:03:59,210
+Both of these solutions are completely valid and I've seen developers use one or the other.
+
+49
+00:03:59,450 --> 00:04:00,760
+It is really up to you.
+
+50
+00:04:01,010 --> 00:04:05,660
+This is a really simple cyesis change, so I'm going to use inline styles.
+
+51
+00:04:05,900 --> 00:04:08,060
+It's quicker and easier to understand.
+
+52
+00:04:08,600 --> 00:04:12,140
+I'm going to call the function WP add inline style.
+
+53
+00:04:14,390 --> 00:04:20,040
+As the name suggests, this will load inline styles inside the head tag of the document.
+
+54
+00:04:20,480 --> 00:04:25,610
+The great thing about this function is that it will only load the inline styles if a particular file
+
+55
+00:04:25,610 --> 00:04:26,300
+is in cued.
+
+56
+00:04:26,960 --> 00:04:29,140
+You can specify that as the first parameter.
+
+57
+00:04:29,450 --> 00:04:34,090
+I only want to load these inline styles if the Jiyu custom file is loaded.
+
+58
+00:04:34,430 --> 00:04:37,160
+The second parameter is the CSF itself.
+
+59
+00:04:37,370 --> 00:04:38,930
+You input this as a string.
+
+60
+00:04:39,140 --> 00:04:41,570
+I'm going to paste in some simple S.O.S.
+
+61
+00:04:42,940 --> 00:04:44,950
+There's nothing really complex going on here.
+
+62
+00:04:45,280 --> 00:04:51,010
+All I'm doing is changing the color of the link and it's border using the dynamic color setting just
+
+63
+00:04:51,010 --> 00:04:53,330
+like that, the read more link will be dynamic.
+
+64
+00:04:53,590 --> 00:04:58,750
+The last thing to do is to display the link to the downloadable report opened the footer file.
+
+65
+00:04:58,990 --> 00:05:02,050
+I'm going to add this code right after the copyright text.
+
+66
+00:05:02,590 --> 00:05:04,330
+Inside a conditional statement.
+
+67
+00:05:04,420 --> 00:05:08,320
+I'm going to check if the Mod Jiyu report file has a value.
+
+68
+00:05:13,670 --> 00:05:20,270
+The upload controller will set the value to the full http url to the file itself, it will take care
+
+69
+00:05:20,270 --> 00:05:22,580
+of uploading and processing the file for you.
+
+70
+00:05:23,270 --> 00:05:28,910
+With that said, if there is a file, then I want to output a simple Ancora link with the text download
+
+71
+00:05:28,910 --> 00:05:29,350
+report.
+
+72
+00:05:29,720 --> 00:05:32,480
+Make sure to add a brake tag afterwards.
+
+73
+00:05:39,410 --> 00:05:45,130
+That basically wraps it up, let's refresh the customizer and check if everything works by default,
+
+74
+00:05:45,140 --> 00:05:49,900
+the links should still be this green blue color and the download link in the footer should not appear.
+
+75
+00:05:50,570 --> 00:05:54,650
+Change the color to any color you want and then upload a file for the report.
+
+76
+00:05:55,040 --> 00:05:58,760
+In the resource section of this lecture, I provide a link to this report.
+
+77
+00:05:59,150 --> 00:06:01,010
+Feel free to download it and use it.
+
+78
+00:06:01,280 --> 00:06:04,630
+After making your changes, you should see everything work properly.
+
+79
+00:06:09,920 --> 00:06:14,960
+That's it for the customizer, it's a lot of code to write, but the process is very straightforward.
+
+80
+00:06:15,230 --> 00:06:18,590
+I highly encourage you to play with it more to get better at using it.
+

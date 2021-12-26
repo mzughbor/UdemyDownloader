@@ -1,0 +1,396 @@
+1
+00:00:07,310 --> 00:00:13,170
+I want to improve the way the users are displayed and the information presented on a post in this lecture.
+
+2
+00:00:13,220 --> 00:00:16,900
+We'll explore how to create custom author fields and avatars.
+
+3
+00:00:17,210 --> 00:00:18,670
+Let's start with the custom fields.
+
+4
+00:00:18,680 --> 00:00:22,720
+First, I'm going to edit my admin profile to include a biography.
+
+5
+00:00:22,970 --> 00:00:24,470
+I'll keep it simple and short.
+
+6
+00:00:25,970 --> 00:00:30,920
+Let's go to the front end now and view a single post if we take a look at the author box.
+
+7
+00:00:30,950 --> 00:00:33,020
+You'll notice that it displays the authorial.
+
+8
+00:00:33,350 --> 00:00:38,210
+Wouldn't it be nice if it could also include social media information like Twitter or Facebook?
+
+9
+00:00:38,480 --> 00:00:41,380
+That's totally possible and easy to do with WordPress.
+
+10
+00:00:41,540 --> 00:00:44,300
+The first step is to add the fields on the admin side.
+
+11
+00:00:44,840 --> 00:00:49,130
+Inside the functions file, add the action hook show user profile.
+
+12
+00:00:49,490 --> 00:00:53,600
+The function I want to call is Jiyu Custom User Profile Fields'.
+
+13
+00:00:59,420 --> 00:01:04,000
+This hope will only run if a user is viewing their own profile in the admin dashboard.
+
+14
+00:01:04,340 --> 00:01:07,830
+However, I want admins to be able to view these fields as well.
+
+15
+00:01:08,120 --> 00:01:14,240
+So we have to copy this line and change the action hook name to edit user profile, which will run if
+
+16
+00:01:14,240 --> 00:01:16,130
+another user is viewing these fields.
+
+17
+00:01:18,450 --> 00:01:24,510
+We'll be calling the same function, WordPress will be able to determine which one to run depending
+
+18
+00:01:24,510 --> 00:01:31,590
+on who's viewing the profile inside the includes folder, create a folder named admin and create a file
+
+19
+00:01:31,590 --> 00:01:34,070
+named author Dash Fields dot p p.
+
+20
+00:01:36,490 --> 00:01:40,840
+Define the function inside this file and make sure to include it from the functions file.
+
+21
+00:01:47,100 --> 00:01:52,350
+This function will receive a user object that will have information about the current additive user
+
+22
+00:01:52,770 --> 00:01:53,850
+inside this function.
+
+23
+00:01:53,880 --> 00:01:56,130
+I'm going to paste in some HTML code.
+
+24
+00:01:58,870 --> 00:02:05,170
+This is just some HTML code to format the input field to match the other fields, I use the female from
+
+25
+00:02:05,170 --> 00:02:07,540
+the page and modified it to suit our needs.
+
+26
+00:02:08,199 --> 00:02:09,539
+It's nothing complex.
+
+27
+00:02:09,729 --> 00:02:12,010
+There are two things that need to be highlighted.
+
+28
+00:02:12,220 --> 00:02:16,540
+The name attribute should be unique so that we can use it to save the data later.
+
+29
+00:02:16,810 --> 00:02:18,420
+The other thing is the value.
+
+30
+00:02:18,680 --> 00:02:23,800
+All I'm doing is grabbing a user medically called Jiyu Twitter, which we'll save later.
+
+31
+00:02:24,460 --> 00:02:27,940
+This function is new to us, but it's a function that uses the metadata.
+
+32
+00:02:27,940 --> 00:02:32,500
+API posts aren't the only things that can have metadata attached to them.
+
+33
+00:02:32,830 --> 00:02:34,660
+Users can also have metadata.
+
+34
+00:02:34,930 --> 00:02:38,290
+The user meta functions work the same as the meta functions.
+
+35
+00:02:38,590 --> 00:02:41,650
+Now that we're displaying our field, it's time to save it.
+
+36
+00:02:42,250 --> 00:02:47,590
+Inside the functions file, I'm going to add a new action hook called Personal Options Update.
+
+37
+00:02:48,010 --> 00:02:50,650
+The function I want to call will be named Jiyu.
+
+38
+00:02:50,650 --> 00:02:52,750
+Save Extra Profile Fields'.
+
+39
+00:02:55,080 --> 00:03:01,530
+Just like last time, this hook will only run for the user's own profile for other users such as admins,
+
+40
+00:03:01,530 --> 00:03:05,880
+in order for them to modify this value properly, we have to use a different hook.
+
+41
+00:03:06,360 --> 00:03:09,460
+The other hook is called edit user profile update.
+
+42
+00:03:09,750 --> 00:03:12,600
+I'm just going to copy the hook above and rename it.
+
+43
+00:03:15,220 --> 00:03:20,770
+Back inside, the author Dash Fields file, I'm going to define the function here as well to keep things
+
+44
+00:03:20,770 --> 00:03:21,220
+simple.
+
+45
+00:03:23,600 --> 00:03:29,150
+This function will be passed in the user ID, which we'll use later, I'm going to check the current
+
+46
+00:03:29,150 --> 00:03:32,560
+user capability and see if they have the capability at it user.
+
+47
+00:03:32,900 --> 00:03:36,530
+If this returns false, I'm going to return the function.
+
+48
+00:03:42,420 --> 00:03:48,240
+We only want users who have this capability to be able to edit profiles if they pass this check.
+
+49
+00:03:48,270 --> 00:03:52,950
+I'm going to call the function, update user meter and update the information properly.
+
+50
+00:03:53,400 --> 00:03:58,950
+Passing the user ID set the key to Jiyu Twitter and pass in the post variable.
+
+51
+00:04:01,700 --> 00:04:07,880
+Now that the user meter is being updated properly, we can begin to display it in the author box, open
+
+52
+00:04:07,880 --> 00:04:09,950
+the single template for the theme.
+
+53
+00:04:12,360 --> 00:04:17,880
+Right at the section where we grabbed the author ID, I'm going to create a new variable named Twitter,
+
+54
+00:04:18,570 --> 00:04:24,780
+this variables value will be assigned to the value returned by the get the affirmative function will
+
+55
+00:04:24,780 --> 00:04:28,710
+pass in the name of Key, which is Jiyu, Twitter and the authorized.
+
+56
+00:04:31,480 --> 00:04:37,150
+Next, let's move on to the author box, which is placed under the post and checked to see if the variable
+
+57
+00:04:37,150 --> 00:04:41,950
+isn't empty, if it isn't empty, will echo it out with this TML.
+
+58
+00:05:02,230 --> 00:05:03,850
+Pass the video if you need to.
+
+59
+00:05:04,390 --> 00:05:09,280
+All right, now that we have that all set up, let's test the form, refresh the page.
+
+60
+00:05:09,400 --> 00:05:15,040
+You should now see the field inputs appear above your Twitter handle and then update the user.
+
+61
+00:05:21,820 --> 00:05:25,270
+Next, go to a single post that this user has created.
+
+62
+00:05:25,540 --> 00:05:29,850
+You should now see the Twitter handle appear right inside the author box like I'm seeing.
+
+63
+00:05:30,550 --> 00:05:33,110
+That's how you would go about adding and saving fields.
+
+64
+00:05:33,340 --> 00:05:33,840
+All right.
+
+65
+00:05:33,970 --> 00:05:39,010
+The next thing I want to do is add in a custom avatar for default users by default.
+
+66
+00:05:39,040 --> 00:05:45,190
+We're using the mystery man Avatar, go to the admin dashboard and navigate to settings discussion.
+
+67
+00:05:45,550 --> 00:05:49,240
+At the very bottom, you can assign a different avatar for new users.
+
+68
+00:05:49,480 --> 00:05:53,410
+However, you don't have the ability to add in your own custom ones.
+
+69
+00:05:53,980 --> 00:05:55,140
+Just like everything else.
+
+70
+00:05:55,240 --> 00:05:59,800
+You can add custom avatars with hooks inside the functions file.
+
+71
+00:05:59,800 --> 00:06:05,890
+Add the filter hook called avatar defaults and the function to call will be named Jiyu New Avatar.
+
+72
+00:06:11,990 --> 00:06:19,370
+Inside the includes folder create a file called Avatar and defined the function inside here, make sure
+
+73
+00:06:19,370 --> 00:06:20,470
+to include it as well.
+
+74
+00:06:26,530 --> 00:06:33,040
+This function we passed in an array of default avatars, you can add in your own avatar to this array
+
+75
+00:06:33,040 --> 00:06:34,820
+or remove already set ones.
+
+76
+00:06:35,320 --> 00:06:41,440
+I'm going to create a new variable named Avatar You URL, which will be a you are able to an image I've
+
+77
+00:06:41,440 --> 00:06:42,370
+uploaded online.
+
+78
+00:06:49,690 --> 00:06:55,280
+This is an avatar of Guapo, I'll provide a link to this in the resource section of this lecture.
+
+79
+00:06:56,050 --> 00:07:02,410
+Next, I'm going to add this to the array by setting the key to the URL and the value to a human readable
+
+80
+00:07:02,410 --> 00:07:02,770
+name.
+
+81
+00:07:03,160 --> 00:07:05,260
+I'm going to set this to default.
+
+82
+00:07:05,260 --> 00:07:06,380
+Udemy avatar.
+
+83
+00:07:06,820 --> 00:07:09,880
+Lastly, I'm going to return the Avatar array.
+
+84
+00:07:12,670 --> 00:07:18,640
+Just like that, we have our very own custom avatar added to the list, refresh the page and you should
+
+85
+00:07:18,640 --> 00:07:20,190
+see the avatar being loaded.
+
+86
+00:07:20,620 --> 00:07:24,960
+The admin can now set this avatar as the default avatar for new users.
+
+87
+00:07:25,270 --> 00:07:28,330
+I'm going to select this avatar and save my changes.
+
+88
+00:07:31,290 --> 00:07:34,980
+If I go back to the single post, you'll find the avatar being displayed.
+
+89
+00:07:36,870 --> 00:07:40,120
+That wraps it up for this lecture before I end it.
+
+90
+00:07:40,230 --> 00:07:46,230
+I want to talk about the email mark-up we used for the forms rather than using our own mark-up, we
+
+91
+00:07:46,230 --> 00:07:47,520
+used WordPress markup.
+
+92
+00:07:47,760 --> 00:07:51,320
+However, WordPress doesn't provide much documentation for it.
+
+93
+00:07:51,660 --> 00:07:55,230
+We're left to study the current markup and learn it through trial and error.
+
+94
+00:07:55,800 --> 00:08:01,240
+In the resource section of this lecture, I provide a link to a plugin called WordPress Admin Style.
+
+95
+00:08:01,770 --> 00:08:05,520
+This is a plugin that will show you the markup WordPress uses for reference.
+
+96
+00:08:05,790 --> 00:08:08,100
+I want you to install and activate this plugin.
+
+97
+00:08:10,920 --> 00:08:16,530
+You'll find a menu item called Admin's Style, if you click on it, you'll find this long page of the
+
+98
+00:08:16,530 --> 00:08:18,700
+various WordPress Stylings you can use.
+
+99
+00:08:18,960 --> 00:08:23,070
+This is a great plug in to have in hand when you're developing plug ins or themes.
+

@@ -1,0 +1,676 @@
+1
+00:00:07,590 --> 00:00:10,070
+We're going to load in some styles for our block.
+
+2
+00:00:10,260 --> 00:00:12,840
+I'm going to go over two approaches for this.
+
+3
+00:00:13,150 --> 00:00:15,060
+The first approach is the simplest one.
+
+4
+00:00:15,300 --> 00:00:20,210
+All you have to do is open the blocks in queue file and then in queue the styles file.
+
+5
+00:00:20,580 --> 00:00:22,910
+It would just be a regular access file.
+
+6
+00:00:23,520 --> 00:00:28,160
+You don't have to use any special tools or libraries to create the case file.
+
+7
+00:00:28,620 --> 00:00:31,340
+With that being said, I prefer another solution.
+
+8
+00:00:31,680 --> 00:00:37,390
+I tend to tackle a lot of large projects, so I usually have a set up that's a bit more complex than
+
+9
+00:00:37,390 --> 00:00:38,760
+the simple access file.
+
+10
+00:00:41,010 --> 00:00:49,070
+I like to use something called SAS or SES, SAS is a CSI says preprocessor, what does a preprocessor
+
+11
+00:00:49,350 --> 00:00:54,360
+basically you write SAS code that will then be converted into access code.
+
+12
+00:00:54,750 --> 00:00:59,340
+SAS is not supported by browsers, so the code needs to be processed beforehand.
+
+13
+00:00:59,970 --> 00:01:02,340
+SAS code is written just like access.
+
+14
+00:01:02,580 --> 00:01:05,610
+You input a selector and then modify its properties.
+
+15
+00:01:05,850 --> 00:01:12,060
+SAS adds features like variables, conditional statements, loops, vendor prefixes, etc..
+
+16
+00:01:12,450 --> 00:01:15,690
+CSC files can grow to be thousands of lines of code.
+
+17
+00:01:16,290 --> 00:01:19,430
+With SAS managing your success becomes easier.
+
+18
+00:01:19,680 --> 00:01:22,170
+You can split your code into separate files.
+
+19
+00:01:22,500 --> 00:01:25,260
+Let's say you had a variable that contained the color blue.
+
+20
+00:01:25,620 --> 00:01:30,810
+If you had multiple files that use that variable and you wanted to update the color, then you only
+
+21
+00:01:30,810 --> 00:01:35,010
+need to modify the variables, value and everything else will update accordingly.
+
+22
+00:01:35,610 --> 00:01:39,830
+If you look around, you'll find that some people refer to it as success.
+
+23
+00:01:40,310 --> 00:01:46,530
+Success is the newer version and the one will be using the SAS version is the older one, but it's still
+
+24
+00:01:46,530 --> 00:01:46,920
+used.
+
+25
+00:01:46,930 --> 00:01:49,240
+So you may come across this version as well.
+
+26
+00:01:49,770 --> 00:01:52,890
+These terms can be interchangeable, but know the difference.
+
+27
+00:01:53,490 --> 00:01:55,830
+For our purposes, it's a bit excessive.
+
+28
+00:01:55,980 --> 00:02:01,290
+However, if you're working on an ambitious or large project, then it would be beneficial to use it.
+
+29
+00:02:03,490 --> 00:02:10,330
+I won't be able to go every feature of SAS, but that's perfectly fine, SAS is written just like success.
+
+30
+00:02:10,539 --> 00:02:13,840
+If you know success, then you'll be able to pick up on it quickly.
+
+31
+00:02:14,200 --> 00:02:17,990
+If you already know SAS, then you'll learn how to add it to your workflow.
+
+32
+00:02:18,370 --> 00:02:19,040
+Let's begin.
+
+33
+00:02:19,840 --> 00:02:25,960
+First, we need to install and configure a couple of modules, all provide links in the resource section
+
+34
+00:02:25,960 --> 00:02:26,720
+of this lecture.
+
+35
+00:02:27,040 --> 00:02:28,260
+Be sure to check them out.
+
+36
+00:02:28,900 --> 00:02:31,960
+The first module will need is the raw loader module.
+
+37
+00:02:32,230 --> 00:02:36,210
+As you may know, the import statement allows us to import modules.
+
+38
+00:02:36,430 --> 00:02:40,100
+However, we're limited to importing just JavaScript files.
+
+39
+00:02:40,510 --> 00:02:47,530
+Let's say I wanted to import a case file like so this would give us an error by adding this module will
+
+40
+00:02:47,530 --> 00:02:49,440
+be able to load in any file.
+
+41
+00:02:49,810 --> 00:02:53,830
+This includes text, HTML and even access files.
+
+42
+00:02:54,160 --> 00:02:57,700
+Once this module is loaded, a line like this will work just fine.
+
+43
+00:02:58,390 --> 00:03:01,600
+The next module will need is the node SAS module.
+
+44
+00:03:01,840 --> 00:03:08,030
+SAS is written with the programming language C, however, we want to be able to use it with JavaScript.
+
+45
+00:03:08,410 --> 00:03:11,110
+This module will take care of allowing us to do so.
+
+46
+00:03:11,830 --> 00:03:14,830
+Afterwards, we'll need the SAS loader module.
+
+47
+00:03:15,160 --> 00:03:17,590
+Westpac and SAS are two different things.
+
+48
+00:03:17,890 --> 00:03:23,200
+The SAS loader module will take care of bridging these two together so that Westpac can process the
+
+49
+00:03:23,200 --> 00:03:23,800
+files.
+
+50
+00:03:24,430 --> 00:03:31,330
+Up next, we'll need the mini cyesis extract plug in module when we load says it will be a part of the
+
+51
+00:03:31,330 --> 00:03:32,680
+JavaScript code base.
+
+52
+00:03:32,950 --> 00:03:34,530
+However, we don't want that.
+
+53
+00:03:34,750 --> 00:03:37,530
+We want to put this access into its own file.
+
+54
+00:03:37,900 --> 00:03:41,140
+This module allows you to extract text from your files.
+
+55
+00:03:41,620 --> 00:03:47,200
+For example, if your file had the text hello, then you could extract that and put it into its own
+
+56
+00:03:47,200 --> 00:03:47,670
+file.
+
+57
+00:03:48,070 --> 00:03:53,140
+The way we'll use it is to extract access and place the CSA into its own file.
+
+58
+00:03:53,710 --> 00:03:56,470
+Lastly, we have the access loader module.
+
+59
+00:03:56,740 --> 00:04:02,290
+This module will take care of properly loading Cyesis files just in case the raw lunar module can't
+
+60
+00:04:02,920 --> 00:04:05,920
+quite a few modules, but they aren't hard to configure.
+
+61
+00:04:06,250 --> 00:04:11,700
+Once you've configured them, then you can forget about them and work on your project to get started.
+
+62
+00:04:11,710 --> 00:04:18,010
+We'll need to install these modules, switch to your command line and seed into the blocks directory.
+
+63
+00:04:20,660 --> 00:04:29,510
+Run the following command npm i raw loader, no Desh, SAS, SAS, Dasch Loader, CSX, that's loader
+
+64
+00:04:29,630 --> 00:04:35,450
+many dash says extract, plug, dash, dash, save, dash dev.
+
+65
+00:04:41,100 --> 00:04:46,150
+You're more than free to install multiple modules, you just chain them one after the other.
+
+66
+00:04:46,470 --> 00:04:48,920
+This may take a while for some of you, so be patient.
+
+67
+00:04:54,090 --> 00:04:59,640
+After the modules have been installed, check the package file, it should contain the dependencies
+
+68
+00:04:59,640 --> 00:05:00,580
+and their versions.
+
+69
+00:05:00,900 --> 00:05:07,710
+The next step is to configure these modules, open the web config file we created earlier right at the
+
+70
+00:05:07,710 --> 00:05:08,510
+top load.
+
+71
+00:05:08,520 --> 00:05:11,370
+The minister says extract plug in module.
+
+72
+00:05:17,310 --> 00:05:20,410
+Next, we need to create new instances of the planet.
+
+73
+00:05:20,730 --> 00:05:25,590
+I'm going to add a comment below that says, Extract access for Gutenberg Ed.
+
+74
+00:05:30,050 --> 00:05:37,250
+Create a constant named Ed success, plug in, this will be set to a new instance of excess extract
+
+75
+00:05:37,250 --> 00:05:37,700
+module.
+
+76
+00:05:42,800 --> 00:05:47,190
+The plugin requires that you pass in the path to a file that will contain the final result.
+
+77
+00:05:47,660 --> 00:05:54,380
+This will be relative to the path specified inside the output property first passed in an object inside
+
+78
+00:05:54,380 --> 00:05:59,180
+this object define a property called filename set to the value of blocks.
+
+79
+00:05:59,180 --> 00:06:01,550
+Dasch name Darzi Essense.
+
+80
+00:06:04,230 --> 00:06:09,720
+Next, we need to tell the plug in to use the loaders, loaders are responsible for connecting third
+
+81
+00:06:09,720 --> 00:06:11,230
+party modules to Web pack.
+
+82
+00:06:11,640 --> 00:06:15,750
+We have two, which are the access loader and SAS loader modules.
+
+83
+00:06:16,080 --> 00:06:19,110
+Just to save some time, I'm going to paste in the code.
+
+84
+00:06:21,570 --> 00:06:24,610
+The code I added was an object to the rules array.
+
+85
+00:06:24,960 --> 00:06:30,750
+Basically, I'm saying that if a file ends with the extension success, then it should be processed
+
+86
+00:06:30,750 --> 00:06:33,000
+by SAS and put into its own file.
+
+87
+00:06:33,450 --> 00:06:35,820
+The use property is set to an array.
+
+88
+00:06:36,330 --> 00:06:38,910
+This is how you specify multiple loaders.
+
+89
+00:06:38,910 --> 00:06:39,680
+For one rule.
+
+90
+00:06:40,350 --> 00:06:46,830
+I'm telling it to process SAS code through the SAS loader, followed by the excess loader and lastly,
+
+91
+00:06:46,830 --> 00:06:48,950
+the meniscus extract loader.
+
+92
+00:06:49,290 --> 00:06:55,440
+It's important that the excess extract loader is last because we only want to extract the excess after
+
+93
+00:06:55,440 --> 00:06:56,440
+it's been processed.
+
+94
+00:06:57,120 --> 00:06:59,970
+This will simply tell Westpac how to use the plugin.
+
+95
+00:07:00,330 --> 00:07:05,830
+We netz need to tell Westpac to use the plug in itself right under the module property.
+
+96
+00:07:06,000 --> 00:07:09,450
+Add another property called plug ins that will be set to an array.
+
+97
+00:07:12,230 --> 00:07:15,320
+Pass him the editors access plugin instant's.
+
+98
+00:07:18,030 --> 00:07:22,650
+All right, that should cover things, run the command npm, run deve.
+
+99
+00:07:26,360 --> 00:07:32,270
+Hopefully you won't receive any airs if you did everything right, if you look inside the dist folder,
+
+100
+00:07:32,300 --> 00:07:34,850
+then you may or may not see the case files.
+
+101
+00:07:35,150 --> 00:07:37,930
+This is because there's no iest being loaded.
+
+102
+00:07:38,330 --> 00:07:40,550
+Let's add some success to our blocks.
+
+103
+00:07:41,030 --> 00:07:47,330
+Open the recipe block directory, create a case file called Ed Dot success.
+
+104
+00:07:49,720 --> 00:07:55,600
+Just as a side note, Westpac won't give you any errors if you don't create these files, so don't feel
+
+105
+00:07:55,600 --> 00:07:56,660
+pressured to do so.
+
+106
+00:07:57,160 --> 00:08:00,780
+Let's focus on the ED file just to save some time.
+
+107
+00:08:00,790 --> 00:08:03,010
+I'm going to paste in this case for this.
+
+108
+00:08:05,260 --> 00:08:11,170
+Pause the video if you need to have when I have, I've provided two methods here for the blocks to assess
+
+109
+00:08:11,500 --> 00:08:14,850
+these, to do the exact same thing, but they're written differently.
+
+110
+00:08:15,190 --> 00:08:17,350
+The first approach is plain success.
+
+111
+00:08:17,560 --> 00:08:19,410
+The second approach is SAS.
+
+112
+00:08:19,960 --> 00:08:22,570
+It's written similarly to plain success.
+
+113
+00:08:22,750 --> 00:08:24,880
+However, there's one huge difference here.
+
+114
+00:08:25,210 --> 00:08:30,880
+Rather than constantly typing out WP Block Udemy recipe, we only write it once.
+
+115
+00:08:30,880 --> 00:08:32,950
+And then next, any related styles.
+
+116
+00:08:33,309 --> 00:08:36,280
+This SAS code will be converted into the code above.
+
+117
+00:08:37,030 --> 00:08:40,390
+The second approach is much more organized and less redundant.
+
+118
+00:08:40,690 --> 00:08:42,750
+You can nest as far as you want to.
+
+119
+00:08:43,150 --> 00:08:45,280
+Let's test to see if this works.
+
+120
+00:08:45,490 --> 00:08:49,080
+Open the index file for our block right at the top.
+
+121
+00:08:49,090 --> 00:08:50,740
+Import the SAS file.
+
+122
+00:08:53,100 --> 00:08:58,560
+We're not going to store the values, we just want to import it so that when people pick up on the file
+
+123
+00:08:58,560 --> 00:09:05,220
+to process and extract it, if you save the file, then Webapp should begin scanning these files, go
+
+124
+00:09:05,220 --> 00:09:09,080
+to your distribution folder and look for access files.
+
+125
+00:09:09,480 --> 00:09:11,510
+There should be one access file.
+
+126
+00:09:11,820 --> 00:09:12,390
+Open it.
+
+127
+00:09:12,510 --> 00:09:14,760
+You should see something similar to what I see.
+
+128
+00:09:15,330 --> 00:09:21,240
+If we were to compare the plane access and access code, then you'll notice that they're completely
+
+129
+00:09:21,240 --> 00:09:21,900
+identical.
+
+130
+00:09:22,260 --> 00:09:27,600
+Excessed took the time to correctly create the selections for our code even though it was nested.
+
+131
+00:09:28,260 --> 00:09:31,290
+It's a bit redundant to have both versions in our code.
+
+132
+00:09:31,290 --> 00:09:34,260
+So I'm going to comment about the plane success version.
+
+133
+00:09:36,730 --> 00:09:42,160
+After making those changes, if you look at the case file again, then you'll see that the code was
+
+134
+00:09:42,160 --> 00:09:43,820
+removed from the file completely.
+
+135
+00:09:44,200 --> 00:09:45,330
+That's fantastic.
+
+136
+00:09:45,580 --> 00:09:49,000
+The last step to all of this is to just include the files.
+
+137
+00:09:49,330 --> 00:09:52,360
+We're going to be using a different hook to include the files.
+
+138
+00:09:52,960 --> 00:09:59,620
+Gutenberg introduces two new hooks to include files we're already using, one of them inside the main
+
+139
+00:09:59,620 --> 00:10:00,590
+plug in the file.
+
+140
+00:10:00,670 --> 00:10:03,790
+We're using the NQ Block Ed assets hook.
+
+141
+00:10:04,150 --> 00:10:07,650
+This hook is triggered when the user reviews the ED on the admin side.
+
+142
+00:10:08,050 --> 00:10:11,050
+The second hook is called a Q block assets.
+
+143
+00:10:11,230 --> 00:10:12,190
+I'll add this in.
+
+144
+00:10:17,650 --> 00:10:23,980
+The name of the function will be are in Q block assets, this hook is triggered when the editor is loaded
+
+145
+00:10:23,980 --> 00:10:25,830
+or a page on the front end is viewed.
+
+146
+00:10:26,380 --> 00:10:29,900
+We essentially want our styles to be loaded in both scenarios.
+
+147
+00:10:30,250 --> 00:10:37,180
+This is the perfect hook to use for loading stylesheets inside the NQ file from the block's directory.
+
+148
+00:10:37,270 --> 00:10:38,680
+All define the function here.
+
+149
+00:10:42,850 --> 00:10:48,880
+Next call the WP register style function, passing a name and a path to the final.
+
+150
+00:10:56,080 --> 00:11:00,460
+Next, call the WP and Q style function and pass in the name.
+
+151
+00:11:03,130 --> 00:11:03,740
+That's it.
+
+152
+00:11:03,940 --> 00:11:10,350
+It's as simple as that, save your changes and refresh the editor, the file should load without a problem.
+
+153
+00:11:10,510 --> 00:11:15,530
+The Block no longer has the dots next to each list item and the spacing is more condensed.
+
+154
+00:11:15,910 --> 00:11:18,040
+This is now closer to the front end version.
+
+155
+00:11:18,670 --> 00:11:20,120
+That pretty much does it for now.
+
+156
+00:11:20,380 --> 00:11:25,840
+This example is a bit excessive for our needs, but if you're working on larger projects than SAS can
+
+157
+00:11:25,840 --> 00:11:27,780
+be a lifesaver in terms of management.
+
+158
+00:11:28,240 --> 00:11:32,040
+This is how I tackle projects and how I recommend you go about this.
+
+159
+00:11:32,680 --> 00:11:34,960
+We've barely scratched the surface of SAS.
+
+160
+00:11:35,230 --> 00:11:41,110
+This course really isn't about SAS, but I highly recommend you check out the SAS courses on Udemy.
+
+161
+00:11:41,410 --> 00:11:45,600
+It's super simple to learn, but very powerful and effective for any project.
+
+162
+00:11:46,180 --> 00:11:47,620
+I've got a challenge for you.
+
+163
+00:11:47,890 --> 00:11:51,580
+The font that's used for the ED is different than the one used on the theme.
+
+164
+00:11:51,940 --> 00:11:54,160
+The font that's being used is called Lato.
+
+165
+00:11:54,430 --> 00:12:00,150
+I want you to try and load this font for Gutenberg, then update the S.O.S to use this font.
+
+166
+00:12:00,460 --> 00:12:01,620
+It shouldn't be too hard.
+
+167
+00:12:01,840 --> 00:12:05,530
+I'll provide a link to the font in the resource section of this lecture.
+
+168
+00:12:05,890 --> 00:12:09,240
+Once you've tackled the challenge, I'll see you in the next lecture.
+
+169
+00:12:09,490 --> 00:12:10,150
+Good luck.
+

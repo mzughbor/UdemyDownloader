@@ -1,0 +1,632 @@
+1
+00:00:07,939 --> 00:00:13,970
+Right now, I'm on the documentation page for the Register NAV menu function, the first step to getting
+
+2
+00:00:13,970 --> 00:00:19,820
+menus to work is to register that just like styles and scripts, WordPress requires you to register
+
+3
+00:00:19,820 --> 00:00:23,480
+your menus before you can display that this function will help you with that.
+
+4
+00:00:24,110 --> 00:00:30,080
+As you can see, there's only two required parameters, which is the location and a short description.
+
+5
+00:00:30,440 --> 00:00:33,140
+The location can be thought of as a special ID.
+
+6
+00:00:33,470 --> 00:00:39,590
+If we scroll down further, you'll find that WordPress provides an example and this example, WordPress
+
+7
+00:00:39,590 --> 00:00:42,440
+uses an action hook called after set up theme.
+
+8
+00:00:42,950 --> 00:00:47,350
+This is the hook WordPress recommends for this function as instructed.
+
+9
+00:00:47,360 --> 00:00:50,630
+Let's open the functions file just like last time.
+
+10
+00:00:50,660 --> 00:00:54,530
+We're going to organize our code under the hooks section.
+
+11
+00:00:54,530 --> 00:00:56,960
+I'm going to call the add action function.
+
+12
+00:00:57,320 --> 00:01:02,840
+According to the documentation, the most appropriate hook we should use is called after set up theme.
+
+13
+00:01:05,170 --> 00:01:11,170
+This hook is called When our theme is loaded internally, I don't mean that the page itself is loaded,
+
+14
+00:01:11,290 --> 00:01:15,540
+but all the functions you defined inside the functions file is loaded.
+
+15
+00:01:16,120 --> 00:01:21,180
+The function that will be called is Jiyu set up within this function isn't defined.
+
+16
+00:01:21,190 --> 00:01:22,570
+So we'll have to do that now.
+
+17
+00:01:22,900 --> 00:01:26,730
+Create a file inside the includes folder called Set Up.
+
+18
+00:01:27,520 --> 00:01:29,620
+And then I want you to define the function.
+
+19
+00:01:31,900 --> 00:01:33,220
+Lastly, including.
+
+20
+00:01:38,510 --> 00:01:43,670
+The reason we aren't creating this file inside the front folder is because some of the functions will
+
+21
+00:01:43,700 --> 00:01:47,650
+be using here will be applied to both the front end and the back end.
+
+22
+00:01:48,440 --> 00:01:51,730
+Now that the function is ready, let's call the register now.
+
+23
+00:01:51,740 --> 00:01:52,490
+Menu function.
+
+24
+00:01:54,820 --> 00:02:01,000
+We need to provide this function a location and description, I'm going to call this menu primary and
+
+25
+00:02:01,000 --> 00:02:03,730
+give it a simple description of primary menu.
+
+26
+00:02:05,970 --> 00:02:11,820
+Before I continue, I'm going to wrap my description inside a function that doesn't really have a proper
+
+27
+00:02:11,820 --> 00:02:18,810
+name, but it's called By Typing to underscores this function is a special function created by WordPress.
+
+28
+00:02:18,840 --> 00:02:22,670
+It allows for text to be translated into various languages.
+
+29
+00:02:22,980 --> 00:02:27,000
+We haven't gone over translations yet, but I'll give you a quick rundown.
+
+30
+00:02:27,690 --> 00:02:33,480
+WordPress comes with various functions for translating strings, but double underscore function is just
+
+31
+00:02:33,480 --> 00:02:35,460
+one of the most commonly used ones.
+
+32
+00:02:35,820 --> 00:02:40,290
+When we start talking about translations, I'll show you the various functions available.
+
+33
+00:02:40,890 --> 00:02:43,290
+For now, let's focus on this one function.
+
+34
+00:02:43,650 --> 00:02:45,600
+This function has two parameters.
+
+35
+00:02:45,900 --> 00:02:48,990
+The first parameter is the string you would like to translate.
+
+36
+00:02:49,440 --> 00:02:52,110
+The second parameter is the text domain.
+
+37
+00:02:52,140 --> 00:02:58,530
+This translation is using earlier we talked about text domains when we created the file header.
+
+38
+00:02:58,950 --> 00:03:02,430
+The text domain is basically the name of your theme folder.
+
+39
+00:03:02,790 --> 00:03:04,920
+In our case, this would be you to me.
+
+40
+00:03:05,310 --> 00:03:08,190
+So what does the text domain actually do?
+
+41
+00:03:08,550 --> 00:03:13,140
+Well, first of all, your theme won't be the only file that has translations.
+
+42
+00:03:13,470 --> 00:03:19,710
+Users might have various plugins activating those plugins will most likely have their own translations.
+
+43
+00:03:20,100 --> 00:03:23,250
+You can think of a text domain as an ID.
+
+44
+00:03:23,580 --> 00:03:29,460
+If we pass in our text domain, WordPress will know you want to use a translation from our theme and
+
+45
+00:03:29,460 --> 00:03:32,300
+not some other plugin loaded anyway.
+
+46
+00:03:32,490 --> 00:03:37,440
+We actually have and created a translation file and we won't be doing so right now.
+
+47
+00:03:37,860 --> 00:03:43,650
+If WordPress doesn't find a translation and WordPress just won't translate the string and return the
+
+48
+00:03:43,650 --> 00:03:49,200
+original string, you don't have to translate every string, but I highly recommend it.
+
+49
+00:03:49,200 --> 00:03:52,380
+So you're plug in or theme can be used by the whitens audience?
+
+50
+00:03:52,380 --> 00:03:52,950
+Possible.
+
+51
+00:03:53,400 --> 00:03:53,850
+All right.
+
+52
+00:03:54,030 --> 00:03:54,930
+That's it for now.
+
+53
+00:03:55,170 --> 00:03:57,180
+If you didn't understand, that's fine.
+
+54
+00:03:57,450 --> 00:04:00,090
+I'll be going more in-depth in a future lecture.
+
+55
+00:04:00,690 --> 00:04:06,810
+Now that we've registered our menu, let's display it in the resources section of this lecture.
+
+56
+00:04:06,960 --> 00:04:10,560
+I have included a link to a function called WP NAV menu.
+
+57
+00:04:10,950 --> 00:04:11,970
+Let's take a look at it.
+
+58
+00:04:12,630 --> 00:04:16,649
+As you can see, WordPress has thoroughly documented this function.
+
+59
+00:04:17,040 --> 00:04:18,870
+It's very powerful and flexible.
+
+60
+00:04:19,230 --> 00:04:24,750
+We won't be going over every bit here since we don't need to use all the options available to us for
+
+61
+00:04:24,750 --> 00:04:25,290
+our theme.
+
+62
+00:04:25,980 --> 00:04:32,130
+Basically, what this function does is generate a menu for us and outputs it onto wherever we call it.
+
+63
+00:04:32,700 --> 00:04:34,320
+Let's get started with using it.
+
+64
+00:04:34,560 --> 00:04:36,390
+Open the index template.
+
+65
+00:04:36,750 --> 00:04:42,600
+I want you to search for the navigation tag with the IDE primary menu right above.
+
+66
+00:04:42,600 --> 00:04:45,270
+It should be a comment that says primary navigation.
+
+67
+00:04:45,960 --> 00:04:50,880
+Inside this element, you'll find an unordered list with a comment above it that says Main menu.
+
+68
+00:04:51,390 --> 00:04:53,790
+I want you to delete this menu like so.
+
+69
+00:05:00,620 --> 00:05:04,550
+Next, open some tags and create a conditional statement.
+
+70
+00:05:06,760 --> 00:05:12,820
+We're going to check if the current theme has a particular menu, you can do this by calling the has
+
+71
+00:05:12,820 --> 00:05:13,960
+now menu function.
+
+72
+00:05:16,250 --> 00:05:22,640
+We can then pass in the name of location, which is primary, if this menu exists, then we can continue
+
+73
+00:05:22,640 --> 00:05:25,150
+on inside this conditional statement.
+
+74
+00:05:25,280 --> 00:05:28,190
+We're going to call the WP now menu function.
+
+75
+00:05:30,540 --> 00:05:36,120
+This function can be called as is, and WordPress will just use its default settings, but we don't
+
+76
+00:05:36,120 --> 00:05:36,570
+want that.
+
+77
+00:05:36,930 --> 00:05:39,100
+We have some things we would like to specify.
+
+78
+00:05:39,540 --> 00:05:42,580
+This function only has one parameter, which is an array.
+
+79
+00:05:42,720 --> 00:05:44,790
+So let's create an array.
+
+80
+00:05:44,790 --> 00:05:48,180
+And in this array, the first item will be theme location.
+
+81
+00:05:50,480 --> 00:05:56,660
+This key's value should be the location name we use in the register nav menu function, the name of
+
+82
+00:05:56,660 --> 00:06:01,520
+the menu we registered was called Primary, so this key's value should be primary.
+
+83
+00:06:01,910 --> 00:06:03,980
+Next, let's define the container.
+
+84
+00:06:06,180 --> 00:06:12,990
+The container is simply a tag that is wrapped around the Navigations HTML WordPress will generate the
+
+85
+00:06:12,990 --> 00:06:14,570
+HTML for our menu.
+
+86
+00:06:14,790 --> 00:06:21,560
+The HTML generated is simply ULE and elai tags or simply known as an unordered list.
+
+87
+00:06:21,960 --> 00:06:28,320
+The container key simply asks if we want to wrap this unordered list with a div or nav tag.
+
+88
+00:06:29,010 --> 00:06:31,090
+Depending on your needs, you can use either.
+
+89
+00:06:31,350 --> 00:06:36,870
+However, our theme is using bootstrap and we already have our navigation wrapped with a div tech,
+
+90
+00:06:37,140 --> 00:06:38,730
+so we don't want either.
+
+91
+00:06:38,760 --> 00:06:40,230
+Let's pass in false.
+
+92
+00:06:42,550 --> 00:06:49,420
+Therefore, WordPress won't wrap our unordered list with a div or Navteq, there's another key we can
+
+93
+00:06:49,420 --> 00:06:51,640
+set, which is the menu Klasky.
+
+94
+00:06:53,950 --> 00:07:00,580
+This key allows you to access classes to the ultimate I'm assuming you may want to do this if you're
+
+95
+00:07:00,580 --> 00:07:05,710
+using your own template to add multiple classes, you just spaced the class names like.
+
+96
+00:07:05,710 --> 00:07:07,900
+So class one, class two.
+
+97
+00:07:08,380 --> 00:07:12,140
+For this thing, we don't need to use this key, so I'm going to get rid of it.
+
+98
+00:07:12,790 --> 00:07:13,580
+We're almost done.
+
+99
+00:07:13,870 --> 00:07:17,050
+The next key I want to set is the fallback CBG.
+
+100
+00:07:19,420 --> 00:07:22,850
+In some cases, your users will not have any menu setup.
+
+101
+00:07:23,260 --> 00:07:26,650
+This is usually true on a fresh installation of WordPress.
+
+102
+00:07:27,070 --> 00:07:30,810
+This key allows you to call a function to display a default menu.
+
+103
+00:07:31,240 --> 00:07:36,310
+You can set this to false if you don't want to display a default menu or HTML.
+
+104
+00:07:37,120 --> 00:07:39,460
+Lastly, we can define the depth.
+
+105
+00:07:41,820 --> 00:07:49,400
+The depth is how many submenus the user can have currently my success only allows for a depth of four.
+
+106
+00:07:49,860 --> 00:07:53,700
+If you want to have more depth, you can do so by adding additional access.
+
+107
+00:07:54,030 --> 00:07:59,180
+If you want to allow an unlimited number of submenu items, then you can set this to zero.
+
+108
+00:08:00,000 --> 00:08:00,610
+That's it.
+
+109
+00:08:00,990 --> 00:08:04,510
+Now, if we refresh the page, it won't work as expected.
+
+110
+00:08:04,770 --> 00:08:07,420
+This is because we haven't created a menu yet.
+
+111
+00:08:07,890 --> 00:08:14,250
+Let's do that now inside the WordPress dashboard, go to appearance menus and then create a menu.
+
+112
+00:08:22,860 --> 00:08:29,070
+Take quick notice of the menu settings section, you'll see that there's a some section called Display
+
+113
+00:08:29,070 --> 00:08:29,740
+Location.
+
+114
+00:08:30,210 --> 00:08:34,419
+This lists all the display locations we registered in our set up file.
+
+115
+00:08:34,799 --> 00:08:37,309
+Let's assign this menu to the primary menu.
+
+116
+00:08:37,710 --> 00:08:44,130
+I'm only going to have the about page assigned to this menu after saving the menu, go back to the front
+
+117
+00:08:44,130 --> 00:08:45,240
+end and refresh.
+
+118
+00:08:45,660 --> 00:08:49,620
+You'll notice the about menu item being generated properly.
+
+119
+00:08:50,100 --> 00:08:53,910
+You can click this if you like, and it will work, but it won't display.
+
+120
+00:08:53,910 --> 00:09:00,490
+The content will fix that very soon if you haven't already removed the static HTML for the menu.
+
+121
+00:09:01,290 --> 00:09:02,890
+Let's recap what's going on.
+
+122
+00:09:03,310 --> 00:09:09,410
+First, we tell WordPress that our theme has a location for menus by using the register, now menu function.
+
+123
+00:09:09,930 --> 00:09:16,500
+Lastly, we tell WordPress where to load the menu in our template by using the WP now menu function.
+
+124
+00:09:17,130 --> 00:09:21,630
+Something I want you to note is that you don't have to call these functions from within the hook.
+
+125
+00:09:21,990 --> 00:09:25,650
+These functions can be called directly inside the functions file.
+
+126
+00:09:26,310 --> 00:09:29,980
+However, I highly advise that you use hooks whenever possible.
+
+127
+00:09:30,300 --> 00:09:34,920
+This is so only code that should be called is called in appropriate locations.
+
+128
+00:09:35,250 --> 00:09:40,710
+If you were to stuff your functions, file with loads of code, then you make it hard to debug it since
+
+129
+00:09:40,710 --> 00:09:41,910
+so much is going on.
+
+130
+00:09:42,750 --> 00:09:47,970
+Another thing I want to note is that in the WordPress menu page, you'll see WordPress outputted the
+
+131
+00:09:47,970 --> 00:09:50,940
+phrase primary menu for the display location.
+
+132
+00:09:51,670 --> 00:09:55,320
+Earlier I told you about translations and how they're performed.
+
+133
+00:09:55,710 --> 00:10:00,450
+WordPress acknowledged that this phrase can be translated and tried to translate it.
+
+134
+00:10:00,930 --> 00:10:03,390
+Since we don't have any translation set.
+
+135
+00:10:03,480 --> 00:10:06,150
+WordPress then outputted the string as is.
+
+136
+00:10:06,450 --> 00:10:12,360
+I just wanted you to notice that before I in this lecture, I want you to be aware of how the markup
+
+137
+00:10:12,360 --> 00:10:14,270
+and accesses for my menu.
+
+138
+00:10:14,730 --> 00:10:16,790
+This is not a bootstrap menu.
+
+139
+00:10:17,100 --> 00:10:19,500
+This is a custom made access menu.
+
+140
+00:10:19,890 --> 00:10:24,540
+Despite Bootstrap coming with its own classes for menus, I decided not to use it.
+
+141
+00:10:24,960 --> 00:10:28,980
+Now, this is just a success preference and not related to WordPress.
+
+142
+00:10:29,580 --> 00:10:34,520
+But that being said, bootstrap requires that you set up a menu with certain classes.
+
+143
+00:10:34,980 --> 00:10:41,310
+Unfortunately, the WP nav menu function is pretty limited when it comes to adding classes to certain
+
+144
+00:10:41,310 --> 00:10:41,880
+menus.
+
+145
+00:10:42,240 --> 00:10:45,690
+And these cases you have to use something called a walker.
+
+146
+00:10:46,050 --> 00:10:50,100
+Walker's are a programming concept and not specific to WordPress.
+
+147
+00:10:50,100 --> 00:10:56,760
+Only walkers are a way to go through an array and if those arrays have arrays inside of them, it'll
+
+148
+00:10:56,760 --> 00:10:57,630
+go through that too.
+
+149
+00:10:58,080 --> 00:11:02,190
+It just keeps going and going until every value has been looped through.
+
+150
+00:11:02,730 --> 00:11:05,160
+Creating a walker can be fairly complex.
+
+151
+00:11:05,430 --> 00:11:11,100
+Luckily, there's a developer who has solved the problem of creating a walker with bootstrap markup
+
+152
+00:11:11,730 --> 00:11:13,290
+in the resources section.
+
+153
+00:11:13,290 --> 00:11:17,940
+On this lecture, I provide a link to the WP Bootstrap NAV Walker class.
+
+154
+00:11:19,170 --> 00:11:22,600
+I won't be going through this as it's not necessary for our theme.
+
+155
+00:11:22,890 --> 00:11:25,410
+However, it's fairly easy to implement.
+
+156
+00:11:25,740 --> 00:11:32,110
+All you have to do is include the file and then modify the WP nav menu function in the examples below.
+
+157
+00:11:32,910 --> 00:11:33,380
+All right.
+
+158
+00:11:33,540 --> 00:11:36,960
+In the next lecture, will focus on the header and footer next.
+

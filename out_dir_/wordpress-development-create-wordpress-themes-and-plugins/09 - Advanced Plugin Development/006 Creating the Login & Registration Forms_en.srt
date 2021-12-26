@@ -1,0 +1,536 @@
+1
+00:00:07,430 --> 00:00:12,770
+Depending on the complexity of your site, you may want to pop in a way for users to register and log
+
+2
+00:00:12,770 --> 00:00:14,210
+in by default.
+
+3
+00:00:14,210 --> 00:00:19,490
+WordPress comes with its own login and registration forms, but they're very simple and not appealing
+
+4
+00:00:19,490 --> 00:00:19,830
+at all.
+
+5
+00:00:20,270 --> 00:00:20,990
+That's all right.
+
+6
+00:00:21,200 --> 00:00:24,300
+WordPress can't account for every user situation out there.
+
+7
+00:00:24,980 --> 00:00:28,530
+Luckily, this problem is solved by using third party plugins.
+
+8
+00:00:28,880 --> 00:00:31,760
+There are dozens and dozens of membership plug ins out there.
+
+9
+00:00:32,000 --> 00:00:36,530
+Originally for this lecture, I was planning on recommending one and then installing it.
+
+10
+00:00:37,040 --> 00:00:40,220
+Then I would walk you through on how to set it up.
+
+11
+00:00:40,220 --> 00:00:42,500
+But there were two problems I encountered.
+
+12
+00:00:43,010 --> 00:00:46,100
+The first problem was that the plug ins were extremely bloated.
+
+13
+00:00:46,470 --> 00:00:52,280
+Now, don't get me wrong, the plug ins were already using have some bloat, but they're not so bloated
+
+14
+00:00:52,280 --> 00:00:55,960
+that they drastically slowed down the site because of features we're not using.
+
+15
+00:00:56,240 --> 00:01:01,250
+However, the membership plugins that were usable have thousands of lines of code that we weren't going
+
+16
+00:01:01,250 --> 00:01:05,069
+to use, such as payment processing, custom fields and so much more.
+
+17
+00:01:05,840 --> 00:01:11,150
+The second problem was finding plug ins that were super simple, but they weren't exactly developer
+
+18
+00:01:11,150 --> 00:01:11,600
+friendly.
+
+19
+00:01:11,930 --> 00:01:17,180
+These plug ins have their own uses and it was too much trouble to make the UI match the theme on our
+
+20
+00:01:17,180 --> 00:01:17,560
+site.
+
+21
+00:01:17,870 --> 00:01:19,750
+A lot of them were outdated as well.
+
+22
+00:01:20,330 --> 00:01:25,580
+So rather than using a third party plug in, I thought this would be a great opportunity to show you
+
+23
+00:01:25,580 --> 00:01:26,750
+how to do it yourself.
+
+24
+00:01:27,140 --> 00:01:32,390
+Before we get started, I want to take the time to let you know that membership plug ins are extremely
+
+25
+00:01:32,390 --> 00:01:33,770
+beneficial for any theme.
+
+26
+00:01:34,160 --> 00:01:39,380
+If you plan on selling your theme, then including a featured packed membership plug and wouldn't be
+
+27
+00:01:39,380 --> 00:01:39,980
+so bad.
+
+28
+00:01:40,280 --> 00:01:45,740
+I recommend it, however, for the theme we're creating, we only need something super simple.
+
+29
+00:01:48,320 --> 00:01:53,330
+All right, let's get started, some of the steps we'll be taking won't be anything we haven't done
+
+30
+00:01:53,330 --> 00:01:53,650
+before.
+
+31
+00:01:53,660 --> 00:02:00,080
+It will be using a shortcode to display the form and an AJAX request to process the information will
+
+32
+00:02:00,080 --> 00:02:06,350
+be working inside the recipe plug in rather than a custom one just to save some time inside the main
+
+33
+00:02:06,350 --> 00:02:09,199
+plug in a file called the Add Shortcode function.
+
+34
+00:02:11,300 --> 00:02:18,860
+The name of the shortcode will be recipe off form, the function to call is our recipe off form shortcode.
+
+35
+00:02:21,140 --> 00:02:29,150
+Free to file inside the includes shortcode Cerveteri called off Dasch formed to find the function here
+
+36
+00:02:29,150 --> 00:02:31,190
+and include it from the main plug and file.
+
+37
+00:02:37,880 --> 00:02:42,170
+Next, create a file named off Dasch form Dasch Templated.
+
+38
+00:02:45,760 --> 00:02:51,370
+This file will contain all the HTML for the form inside the Udemy theme folder.
+
+39
+00:02:51,400 --> 00:02:54,360
+We have a template called Off HTML.
+
+40
+00:02:54,880 --> 00:02:57,190
+I'm going to open this up inside my browser.
+
+41
+00:02:59,510 --> 00:03:05,840
+Here's what that page looks like, we're basically going to try and recreate this page, if I were to
+
+42
+00:03:05,840 --> 00:03:11,420
+open this template inside the editor and scroll down, you'll eventually find the HTML for the form.
+
+43
+00:03:18,320 --> 00:03:26,000
+To be specific, the HTML should be inside the section tag with the ID of content, you'll find div
+
+44
+00:03:26,000 --> 00:03:33,170
+tags with the classes, call one third and call to third, copy both these elements and their contents
+
+45
+00:03:33,170 --> 00:03:36,080
+and paste them into the auth form template like so.
+
+46
+00:03:38,260 --> 00:03:44,250
+After doing so, let's go back to the shortcode function, just like before, will be creating a variable,
+
+47
+00:03:44,560 --> 00:03:51,040
+I'm going to call it form HTML and its value will be the value returned by the file get contents function
+
+48
+00:03:51,040 --> 00:03:54,240
+with the template in the first parameter and true as the second.
+
+49
+00:03:54,820 --> 00:03:57,040
+Then I'll just return the HTML.
+
+50
+00:03:59,480 --> 00:04:00,850
+Let's test this out now.
+
+51
+00:04:01,190 --> 00:04:05,240
+I'm going to create a brand new page with a title, My Account.
+
+52
+00:04:07,480 --> 00:04:14,260
+The content will be the shortcode recipe off form, the template will also need to be set to full width.
+
+53
+00:04:14,650 --> 00:04:17,829
+Once you've made those changes, save the page and then view it.
+
+54
+00:04:23,150 --> 00:04:28,760
+You should more or less have what I have on my screen, we can now begin authenticating the user.
+
+55
+00:04:29,120 --> 00:04:33,150
+The very first thing we should do is make sure the form is secure for submission.
+
+56
+00:04:33,650 --> 00:04:39,020
+There are various ways you can go about this, but WordPress provides a solution called nonces.
+
+57
+00:04:39,350 --> 00:04:44,130
+In the resource section of this lecture, I provide a link for more information about this topic.
+
+58
+00:04:44,600 --> 00:04:48,230
+Let's take a look at what WordPress has to say about nonces.
+
+59
+00:04:48,800 --> 00:04:52,610
+A Norns is a number used once to help protect you.
+
+60
+00:04:52,610 --> 00:04:56,720
+URLs and forms from certain types of misuse, malicious or otherwise.
+
+61
+00:04:57,110 --> 00:05:01,490
+WordPress nonces aren't numbers, but are a hash made up of numbers and letters.
+
+62
+00:05:01,850 --> 00:05:08,730
+Nor are they used only once, but have a limited lifetime after which they expire during that time period.
+
+63
+00:05:08,750 --> 00:05:12,740
+The same Norns will be generated for a given user in a given context.
+
+64
+00:05:13,130 --> 00:05:18,800
+The Norns for that action will remain the same for that user until that Norns lifecycle has completed.
+
+65
+00:05:19,370 --> 00:05:25,310
+WordPress is security tokens are called nonces, despite the above noted differences from true nonces
+
+66
+00:05:25,460 --> 00:05:28,190
+because they serve much the same purpose as nonces.
+
+67
+00:05:28,190 --> 00:05:35,330
+Do they help protect against several types of attacks, including CSR, but do not protect against replay
+
+68
+00:05:35,330 --> 00:05:37,760
+attacks because they aren't checked for one time?
+
+69
+00:05:37,760 --> 00:05:42,740
+Use nonces should never be relied on for authentication or authorization.
+
+70
+00:05:42,740 --> 00:05:43,700
+Access control.
+
+71
+00:05:44,300 --> 00:05:45,530
+Protect your functions.
+
+72
+00:05:45,530 --> 00:05:49,880
+Using current user can always assume nonces can be compromised.
+
+73
+00:05:50,480 --> 00:05:56,990
+So as WordPress states, this helps you create a layer of security by using a token for verifying the
+
+74
+00:05:56,990 --> 00:05:57,800
+form submission.
+
+75
+00:05:57,980 --> 00:05:59,860
+But it's not completely foolproof.
+
+76
+00:06:00,290 --> 00:06:03,940
+The rest of this documentation goes over how to use nonces.
+
+77
+00:06:04,250 --> 00:06:06,950
+I suggest reading it fully after this lecture.
+
+78
+00:06:07,580 --> 00:06:09,440
+So here's what we want to do.
+
+79
+00:06:09,770 --> 00:06:12,470
+I want to load Anon's inside the template.
+
+80
+00:06:12,710 --> 00:06:14,150
+The process will be simple.
+
+81
+00:06:14,390 --> 00:06:19,760
+We'll just generate the nonce and then load it in the template using placeholders inside the template
+
+82
+00:06:19,760 --> 00:06:20,240
+file.
+
+83
+00:06:20,270 --> 00:06:24,140
+At the very top, I'm going to add a placeholder called Norns.
+
+84
+00:06:24,140 --> 00:06:25,400
+Underscore Field.
+
+85
+00:06:25,400 --> 00:06:26,000
+Underscore.
+
+86
+00:06:29,130 --> 00:06:35,670
+Then inside the shortcode function, I'm going to perform a simple string replace call like we've always
+
+87
+00:06:35,670 --> 00:06:36,000
+have.
+
+88
+00:06:42,050 --> 00:06:46,220
+For the replacement, we'll be calling a function called WP Knoxfield.
+
+89
+00:06:48,580 --> 00:06:54,640
+This will take care of generating a nonce value while also creating an input field containing this value
+
+90
+00:06:55,270 --> 00:06:58,780
+in the resource section, I provide a link to this function.
+
+91
+00:06:59,080 --> 00:07:01,620
+There are four parameters which are all optional.
+
+92
+00:07:02,020 --> 00:07:07,720
+The first one is always recommended, though the action name is a way to reference this field.
+
+93
+00:07:07,990 --> 00:07:11,050
+You should set one as you'll need to verify it later on.
+
+94
+00:07:11,380 --> 00:07:13,480
+You'll see how this works in just a moment.
+
+95
+00:07:13,750 --> 00:07:16,660
+For now, I'm going to set it to recipe off.
+
+96
+00:07:18,860 --> 00:07:26,270
+The next parameter is name for the input field by default, it's underscored WP notes, I'm going to
+
+97
+00:07:26,270 --> 00:07:27,560
+set this to the default.
+
+98
+00:07:27,890 --> 00:07:31,130
+The third parameter is whether to include a refer.
+
+99
+00:07:31,460 --> 00:07:34,720
+A refer is the Yooralla that the request was submitted on.
+
+100
+00:07:34,970 --> 00:07:39,500
+It's always good practice to make sure the form was submitted on this page and not through some other
+
+101
+00:07:39,500 --> 00:07:39,850
+site.
+
+102
+00:07:40,250 --> 00:07:42,260
+I'm going to set this as true.
+
+103
+00:07:42,680 --> 00:07:48,710
+The fourth parameter determines whether this field should be outputted or returned set is to false,
+
+104
+00:07:48,710 --> 00:07:51,050
+which will return the field rather than output it.
+
+105
+00:07:51,590 --> 00:07:57,050
+Let's verify that the fields are being generated and output it by refreshing the page and checking the
+
+106
+00:07:57,060 --> 00:07:57,830
+HTML.
+
+107
+00:08:03,000 --> 00:08:08,510
+Using the developer tools, you'll find two hidden input fields appear right before our forms.
+
+108
+00:08:08,880 --> 00:08:14,310
+Traditionally, you'll want these fields to appear inside the forum, but we won't concern ourselves
+
+109
+00:08:14,310 --> 00:08:20,970
+with that since will be using Jorquera and Ajax to submit the form, open the main file.
+
+110
+00:08:21,210 --> 00:08:27,270
+This is the same file that contains the reading code will be working inside this file for all our JavaScript
+
+111
+00:08:27,270 --> 00:08:27,760
+needs.
+
+112
+00:08:28,050 --> 00:08:33,570
+Once again, I'll be using the on method for listening to a form submission and preventing the default
+
+113
+00:08:33,570 --> 00:08:34,140
+behavior.
+
+114
+00:08:40,679 --> 00:08:44,740
+We have this div tag with an I.D. of registered Dasch status.
+
+115
+00:08:45,030 --> 00:08:50,380
+I'm going to modify its HTML contents and let the user know their account is being created.
+
+116
+00:08:50,820 --> 00:08:54,000
+Then I'll just hide the form to prevent resubmission.
+
+117
+00:09:00,490 --> 00:09:07,350
+Next, I'm going to create the form object like before the action will be recipe create accounts.
+
+118
+00:09:07,750 --> 00:09:11,080
+The other five values will just be the forms, input fields.
+
+119
+00:09:13,210 --> 00:09:19,570
+The last property I want to create will be called Underscore WP notes, it's important, you name it
+
+120
+00:09:19,570 --> 00:09:25,180
+this as WordPress will be expecting this field when verifying the nonce, the value will be grabbed
+
+121
+00:09:25,180 --> 00:09:26,710
+from the hidden input field.
+
+122
+00:09:27,070 --> 00:09:31,330
+The ID of the input field should be underscored, WP notes.
+
+123
+00:09:33,630 --> 00:09:37,260
+The last thing I want to do is make a jury post request.
+
+124
+00:09:43,970 --> 00:09:50,120
+It's the exact same way as we did it before, except I'm going to be using promises, the always method
+
+125
+00:09:50,120 --> 00:09:52,430
+behave similar to the previous way we did it.
+
+126
+00:09:52,790 --> 00:09:57,200
+It'll accept a function where the response is passed into it, just like last time.
+
+127
+00:09:57,200 --> 00:10:01,840
+We'll check the status property and display an appropriate message to the end user.
+
+128
+00:10:02,240 --> 00:10:06,890
+If the registration was a success, we'll just let the user know they can register.
+
+129
+00:10:07,190 --> 00:10:11,000
+Otherwise we'll tell them it was a failure and display the form again.
+
+130
+00:10:13,440 --> 00:10:14,320
+Nothing new here.
+
+131
+00:10:14,370 --> 00:10:15,510
+Pretty simple stuff.
+
+132
+00:10:15,780 --> 00:10:21,810
+All right, so that basically sets up the front end in the next lecture, will process the data and
+
+133
+00:10:21,810 --> 00:10:23,010
+create a new user.
+
+134
+00:10:24,480 --> 00:10:25,090
+Oh.
+

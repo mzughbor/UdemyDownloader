@@ -1,0 +1,484 @@
+1
+00:00:07,460 --> 00:00:10,560
+Essex six comes with a lot of features we like to use.
+
+2
+00:00:10,820 --> 00:00:13,880
+I'm only going to show you what you'll need right at the start.
+
+3
+00:00:14,240 --> 00:00:19,420
+There are more features than the ones I'm about to introduce, but also use those as the course progresses.
+
+4
+00:00:19,910 --> 00:00:23,890
+And this lecture, we're going to start talking about the changes to variables.
+
+5
+00:00:24,170 --> 00:00:30,410
+I'm going to be working inside the index file, make sure any code inside this file is commented out.
+
+6
+00:00:30,950 --> 00:00:35,080
+As you may know, variables are created using the VA keyword.
+
+7
+00:00:35,390 --> 00:00:39,500
+I'm going to create a variable named Foo and assign it to the string.
+
+8
+00:00:39,500 --> 00:00:39,980
+Hello.
+
+9
+00:00:42,130 --> 00:00:44,470
+Then I'm going to log this variable.
+
+10
+00:00:46,630 --> 00:00:49,790
+This is pretty basic, but it's very difficult to control.
+
+11
+00:00:50,230 --> 00:00:52,100
+This is a problem with JavaScript.
+
+12
+00:00:52,330 --> 00:00:55,400
+It's a very relaxed language and it's not strict at all.
+
+13
+00:00:55,660 --> 00:00:59,110
+You could just turn on strict mode, but that only does so much.
+
+14
+00:00:59,410 --> 00:01:04,540
+Right after we define this variable, we can change the value of it to something like the number five.
+
+15
+00:01:06,630 --> 00:01:12,330
+And this example, that's fine and all, but it becomes a problem when you're working with larger applications
+
+16
+00:01:12,750 --> 00:01:17,760
+throughout this course will be loading hundreds of JavaScript variables and you'll find yourself needing
+
+17
+00:01:17,760 --> 00:01:19,030
+more control than usual.
+
+18
+00:01:19,680 --> 00:01:23,520
+I'm going to run the command node app again next.
+
+19
+00:01:25,770 --> 00:01:31,800
+You'll see that the number five is being outputted, this is the expected behavior so far, even though
+
+20
+00:01:31,800 --> 00:01:37,140
+there are different ways to define variables, it's not like those methods are completely replacing
+
+21
+00:01:37,140 --> 00:01:38,190
+the VA keyword.
+
+22
+00:01:38,520 --> 00:01:44,700
+Using the VA keyword is still completely valid JavaScript code and will continue to be supported for
+
+23
+00:01:44,700 --> 00:01:45,390
+many years.
+
+24
+00:01:45,750 --> 00:01:47,550
+I just wanted you to be aware of that.
+
+25
+00:01:48,240 --> 00:01:48,690
+All right.
+
+26
+00:01:48,900 --> 00:01:52,290
+Let's start things off by learning about the CONSED keyboard.
+
+27
+00:01:52,560 --> 00:01:59,030
+The key consed is short for constant constants in JavaScript work the same exact way constants work.
+
+28
+00:01:59,080 --> 00:02:06,960
+And I assume for the most part you understand what constants are constants allow you to create variables
+
+29
+00:02:06,960 --> 00:02:07,890
+that never change.
+
+30
+00:02:08,220 --> 00:02:10,880
+They can never be changed after being defined.
+
+31
+00:02:11,160 --> 00:02:16,290
+If you try to change the value of a constant, then you'll be given an error and the value would still
+
+32
+00:02:16,290 --> 00:02:17,010
+stay the same.
+
+33
+00:02:17,730 --> 00:02:19,670
+Using a constant is fairly easy.
+
+34
+00:02:20,040 --> 00:02:24,180
+All you have to do is change the key word from var to const.
+
+35
+00:02:26,330 --> 00:02:29,430
+That's all you have to do, everything else is still the same.
+
+36
+00:02:29,840 --> 00:02:33,200
+You can set the constant to any kind of value you want.
+
+37
+00:02:33,440 --> 00:02:37,190
+It can be a string, no array and even an object.
+
+38
+00:02:37,520 --> 00:02:41,510
+Let's test this out by running node app index.
+
+39
+00:02:43,930 --> 00:02:49,150
+After running, this will get an error, the error is telling us that you can't change the value of
+
+40
+00:02:49,150 --> 00:02:51,230
+a constant, which is what we're doing in our code.
+
+41
+00:02:51,670 --> 00:02:55,180
+I'm going to comment out this code and then run the command again.
+
+42
+00:03:01,020 --> 00:03:06,870
+After running, it will see no errors and the concept is working as expected throughout this course,
+
+43
+00:03:06,870 --> 00:03:08,730
+you'll see me using constants a lot.
+
+44
+00:03:09,060 --> 00:03:14,520
+Actually, if you were to view any tutorials or look at other people's code, then you'll notice that
+
+45
+00:03:14,520 --> 00:03:16,370
+constants are widely adopted.
+
+46
+00:03:17,160 --> 00:03:22,830
+You'll definitely get a lot of practice using constants and you'll be fairly confident using them by
+
+47
+00:03:22,830 --> 00:03:23,850
+using constants.
+
+48
+00:03:23,850 --> 00:03:28,200
+We assure ourselves that we have more control over how our variables are set.
+
+49
+00:03:28,890 --> 00:03:31,560
+So far, we've only tested this with note.
+
+50
+00:03:31,890 --> 00:03:34,650
+Using constants on browsers is a different story.
+
+51
+00:03:34,950 --> 00:03:37,190
+I'm going to run my code through web pack.
+
+52
+00:03:39,450 --> 00:03:41,080
+You should see a success message.
+
+53
+00:03:41,370 --> 00:03:46,380
+Let's check out the page if you look at the console and you'll see the number of being outputted onto
+
+54
+00:03:46,380 --> 00:03:46,980
+the console.
+
+55
+00:03:47,580 --> 00:03:54,750
+Here's the thing, constants on its six feature Web pack and bable, help make sure your code is compatible
+
+56
+00:03:54,750 --> 00:03:56,840
+with all browsers, including older ones.
+
+57
+00:03:57,360 --> 00:04:02,250
+Most modern browsers already support S6, but older browsers don't.
+
+58
+00:04:02,700 --> 00:04:09,480
+Unfortunately, Westpac doesn't have a way to force or simulate this behavior for you, so it has no
+
+59
+00:04:09,480 --> 00:04:12,690
+choice but to convert the const keyword to VAR.
+
+60
+00:04:12,930 --> 00:04:19,620
+So you may be thinking what is the point of using S6 if it's going to be converted for backwards compatibility?
+
+61
+00:04:20,220 --> 00:04:21,899
+Well, there are two reasons.
+
+62
+00:04:22,079 --> 00:04:25,050
+The first reason is to be able to write code for the future.
+
+63
+00:04:25,410 --> 00:04:30,240
+That may seem weird, but eventually iOS six will be compatible with all browsers.
+
+64
+00:04:30,240 --> 00:04:31,260
+One hundred percent.
+
+65
+00:04:31,680 --> 00:04:33,260
+You'll want to prepare for this.
+
+66
+00:04:33,540 --> 00:04:38,120
+So when the time comes, you'll have to make very little changes to your code base.
+
+67
+00:04:38,580 --> 00:04:43,620
+If you were to continue writing code with early versions of JavaScript, you'll find yourself behind
+
+68
+00:04:43,620 --> 00:04:46,390
+the pack and spend a lot of time updating your code base.
+
+69
+00:04:46,620 --> 00:04:47,640
+You don't want that.
+
+70
+00:04:48,240 --> 00:04:53,270
+The second reason is that S6 provides a lot of security and control over your code.
+
+71
+00:04:53,670 --> 00:04:57,870
+A lot of the tools and libraries you'll be using are written in S6.
+
+72
+00:04:57,870 --> 00:05:03,060
+Whether you like it or not, this kind of forces you to write your code to be S6 ready.
+
+73
+00:05:03,480 --> 00:05:07,200
+Since you're loading so much code, you should take extra precautions.
+
+74
+00:05:07,740 --> 00:05:11,370
+You only want to allow code that should be able to modify your data.
+
+75
+00:05:11,700 --> 00:05:17,520
+If you keep using var, you'll eventually find yourself in this situation where your code may not behave
+
+76
+00:05:17,520 --> 00:05:18,750
+the way you expect it to.
+
+77
+00:05:19,470 --> 00:05:21,890
+There's a lot to be said, but I'll leave it at that.
+
+78
+00:05:22,230 --> 00:05:26,840
+Let's move on to the next way of creating variables along with constants.
+
+79
+00:05:26,850 --> 00:05:30,150
+You can also create block scope level variables.
+
+80
+00:05:30,720 --> 00:05:31,800
+That's a big phrase.
+
+81
+00:05:32,010 --> 00:05:33,870
+Let me break down what that means.
+
+82
+00:05:34,110 --> 00:05:36,570
+S6 introduces the key word.
+
+83
+00:05:36,570 --> 00:05:40,320
+Let's let is another way of creating variables.
+
+84
+00:05:40,530 --> 00:05:44,880
+I'm going to create a variable named bar and assign its value to ten.
+
+85
+00:05:47,110 --> 00:05:54,100
+Using let is as simple as changing the key word var to let just like last time, you can create any
+
+86
+00:05:54,100 --> 00:06:02,320
+kind of variable you want, you can use let four strings, numbers, arrays, objects, etc. I'm going
+
+87
+00:06:02,320 --> 00:06:06,550
+to log the bar variable and then I'm going to run this script through node.
+
+88
+00:06:08,710 --> 00:06:16,090
+As expected will see the number 10 outputted, I'm going to create a conditional statement, this conditional
+
+89
+00:06:16,090 --> 00:06:17,740
+statement will always be true.
+
+90
+00:06:18,100 --> 00:06:23,200
+Inside this conditional statement, I'm going to reassign the bar variable to five.
+
+91
+00:06:25,300 --> 00:06:26,470
+Run the command again.
+
+92
+00:06:28,880 --> 00:06:35,630
+We should get no errors and as expected, will see the number five instead of 10, what exactly does
+
+93
+00:06:35,840 --> 00:06:36,470
+that do?
+
+94
+00:06:36,770 --> 00:06:38,360
+Here's where it can come in handy.
+
+95
+00:06:38,600 --> 00:06:43,730
+I'm going to move my bar variable definition inside my conditional statement like so.
+
+96
+00:06:45,860 --> 00:06:49,070
+Let's try running the command one more time and see what we get.
+
+97
+00:06:51,500 --> 00:06:58,420
+You'll receive an error stating that BA is undefined, this can seem strange at first, but it's not.
+
+98
+00:06:58,430 --> 00:07:04,940
+Once you understand what's going on, let makes it so only code that is on the same level as where it's
+
+99
+00:07:04,940 --> 00:07:06,150
+defined, you can change it.
+
+100
+00:07:06,770 --> 00:07:13,730
+And this example, we define the bar variable inside this block statement only code inside this block
+
+101
+00:07:13,730 --> 00:07:16,760
+statement can access and change the variable bar.
+
+102
+00:07:17,270 --> 00:07:22,100
+Once this block statement is finished running, then the bar variable is destroyed.
+
+103
+00:07:22,730 --> 00:07:27,760
+This means we can't access it outside the block statement like we do in this log function.
+
+104
+00:07:28,220 --> 00:07:33,360
+Previously, everything was working fine when the variable was defined outside the block statement.
+
+105
+00:07:33,980 --> 00:07:36,840
+That's because the variable was available globally.
+
+106
+00:07:37,190 --> 00:07:39,800
+This is the power of let variables.
+
+107
+00:07:39,980 --> 00:07:43,280
+You can control how far a variable can be controlled.
+
+108
+00:07:43,580 --> 00:07:46,690
+In a way, it adds an extra layer of security.
+
+109
+00:07:47,270 --> 00:07:52,520
+I'm going to move the bar variable back to the global scope and get rid of this conditional statement.
+
+110
+00:07:54,700 --> 00:07:57,370
+Lastly, I'm going to run it through Westpac.
+
+111
+00:07:59,500 --> 00:08:05,260
+Let's review the code on the browser again, as you can see, both variables were outputted with no
+
+112
+00:08:05,260 --> 00:08:05,770
+errors.
+
+113
+00:08:06,160 --> 00:08:08,030
+That's basically it for variables.
+
+114
+00:08:08,290 --> 00:08:11,110
+This is just the basics of these two keywords.
+
+115
+00:08:11,360 --> 00:08:15,790
+You'll find that both keywords are used in a lot of design patterns for their benefits.
+
+116
+00:08:16,120 --> 00:08:18,810
+This course is not really a JavaScript course.
+
+117
+00:08:19,360 --> 00:08:24,750
+I know that may seem weird because for the past two lectures we've done nothing but use JavaScript.
+
+118
+00:08:25,060 --> 00:08:29,680
+However, I'm only introducing you to the fundamentals and basics of JavaScript.
+
+119
+00:08:30,010 --> 00:08:35,559
+JavaScript definitely has a lot to offer and I encourage you to learn more about it after you finish
+
+120
+00:08:35,559 --> 00:08:36,190
+this course.
+
+121
+00:08:36,820 --> 00:08:40,840
+In the next few lectures will finish things up with arole functions and modules.
+

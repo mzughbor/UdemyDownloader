@@ -1,0 +1,468 @@
+1
+00:00:07,540 --> 00:00:14,440
+WordPress comes bundled with various files, but the most important file is the WP config file.
+
+2
+00:00:14,800 --> 00:00:18,110
+At the heart of every WordPress site is the configuration file.
+
+3
+00:00:18,490 --> 00:00:21,670
+Let's open the WP config file.
+
+4
+00:00:21,970 --> 00:00:25,580
+It can be found in the root directory of your WordPress installation.
+
+5
+00:00:26,260 --> 00:00:32,500
+This file basically contains all your core settings, such as the database, login details, security
+
+6
+00:00:32,500 --> 00:00:34,360
+hashes, salts, etc..
+
+7
+00:00:34,900 --> 00:00:40,720
+In the resource section, I provide a link to the WP Config Codecs Documentation Page.
+
+8
+00:00:41,020 --> 00:00:46,450
+This page contains all the information that you'll need to know to make changes to the config file.
+
+9
+00:00:46,960 --> 00:00:52,870
+Unlike other core files, you're allowed to edit this file without much consequence when WordPress is
+
+10
+00:00:52,870 --> 00:00:53,320
+updated.
+
+11
+00:00:53,950 --> 00:00:57,740
+There are a lot of settings here, but we won't be going over most of them.
+
+12
+00:00:58,090 --> 00:01:03,400
+You don't need to worry about modifying this file much as the default settings are already optimized
+
+13
+00:01:03,400 --> 00:01:04,030
+for your site.
+
+14
+00:01:04,480 --> 00:01:07,100
+WordPress takes care of this automatically for you.
+
+15
+00:01:07,690 --> 00:01:10,410
+However, there is one setting we should modify.
+
+16
+00:01:10,750 --> 00:01:17,180
+Go back to the config file and search for something called WP underscore debug by default.
+
+17
+00:01:17,230 --> 00:01:19,160
+This value is set to false.
+
+18
+00:01:19,450 --> 00:01:21,160
+Let's change this to true.
+
+19
+00:01:23,570 --> 00:01:29,330
+What this will do is display any errors you receive when your coat, it will provide more information
+
+20
+00:01:29,330 --> 00:01:30,450
+to help you with debugging.
+
+21
+00:01:30,860 --> 00:01:36,860
+I highly recommend you always do this during the development phase of any plugin or theme when you're
+
+22
+00:01:36,860 --> 00:01:37,970
+ready for production.
+
+23
+00:01:38,030 --> 00:01:40,370
+Be sure to change this back to false.
+
+24
+00:01:40,670 --> 00:01:44,830
+If this value doesn't exist, then you can just add it in by default.
+
+25
+00:01:44,840 --> 00:01:46,320
+It'll always be false.
+
+26
+00:01:46,850 --> 00:01:53,720
+So during installation, this file was automatically created for you if you were to open the zip file.
+
+27
+00:01:53,750 --> 00:01:57,820
+You'll notice there never was a WP config file.
+
+28
+00:01:58,070 --> 00:02:01,640
+Instead, there's a file named WP config sample.
+
+29
+00:02:03,110 --> 00:02:04,450
+Let's open this file.
+
+30
+00:02:04,640 --> 00:02:07,280
+It can be found in our installation of WordPress.
+
+31
+00:02:07,610 --> 00:02:15,200
+This file is just a dummy file that we can rename to WP Config File and use it as the main config file
+
+32
+00:02:15,590 --> 00:02:17,720
+it's provided to us just in case.
+
+33
+00:02:17,750 --> 00:02:22,690
+WordPress is unable to generate this file for us during its user friendly installation.
+
+34
+00:02:23,540 --> 00:02:27,230
+You simply just have to change the values of these constants.
+
+35
+00:02:27,440 --> 00:02:32,590
+If you're unsure what each value means, then refer to the documentation for more information.
+
+36
+00:02:33,020 --> 00:02:36,560
+We don't have to do this since the default installation worked for us.
+
+37
+00:02:37,220 --> 00:02:40,610
+One thing I do want to know is the authentication section.
+
+38
+00:02:40,940 --> 00:02:43,370
+You can find it if you scroll down just a bit.
+
+39
+00:02:43,790 --> 00:02:48,640
+If you have to manually create this file, then this section is super important.
+
+40
+00:02:49,040 --> 00:02:53,020
+These keys are used to hash out your passwords and sensitive data.
+
+41
+00:02:53,420 --> 00:02:55,310
+You're free to come up with your own keys.
+
+42
+00:02:55,310 --> 00:02:59,650
+But if you're not confident with what you came up with, then WordPress has you covered.
+
+43
+00:03:00,350 --> 00:03:02,780
+Go back to the documentation config page.
+
+44
+00:03:03,020 --> 00:03:06,830
+On the sidebar, you'll find a section called Security Keys.
+
+45
+00:03:07,010 --> 00:03:08,230
+For me, it's No.
+
+46
+00:03:08,300 --> 00:03:14,750
+One point for you'll find a link to an online generator that will generate random hard to crack keys.
+
+47
+00:03:15,020 --> 00:03:15,890
+Let's check it out.
+
+48
+00:03:16,130 --> 00:03:16,940
+On this page.
+
+49
+00:03:17,000 --> 00:03:20,330
+You'll see that we get a set of keys that we can use in our file.
+
+50
+00:03:20,600 --> 00:03:24,800
+You can refresh the page and you will always get a set of unique random keys.
+
+51
+00:03:25,490 --> 00:03:30,380
+You can simply copy and paste this into the WP config page PDF file like.
+
+52
+00:03:30,380 --> 00:03:36,440
+So keep in mind that these are values that once you set, you shouldn't change afterwards.
+
+53
+00:03:36,770 --> 00:03:40,460
+Otherwise you can cause problems with currently active accounts.
+
+54
+00:03:40,850 --> 00:03:46,370
+Just in case you can't find this link on the Codex page, then you can check out this blog comment right
+
+55
+00:03:46,370 --> 00:03:46,820
+above.
+
+56
+00:03:47,120 --> 00:03:52,460
+Inside this block, you'll see WordPress provides a link to the online generator as well.
+
+57
+00:03:53,180 --> 00:03:57,080
+That wraps up the topic on configuring BWP config file.
+
+58
+00:03:57,500 --> 00:04:01,850
+Feel free to explore this documentation for more information on this file.
+
+59
+00:04:02,210 --> 00:04:08,930
+For our purposes, just setting up the WP debug constant to true is more than enough to get started.
+
+60
+00:04:09,740 --> 00:04:14,840
+Let's explore some of the other files and directories inside the root directory.
+
+61
+00:04:14,840 --> 00:04:16,519
+You'll find a couple of files here.
+
+62
+00:04:16,910 --> 00:04:22,750
+The files found inside the root directory determine what files should be loaded on every page request.
+
+63
+00:04:23,330 --> 00:04:31,330
+Next, we have these three folders called WP Dash Admin, WP Dash Content and WP Dash includes.
+
+64
+00:04:31,700 --> 00:04:34,430
+Let's start with a WP dash includes folder.
+
+65
+00:04:34,790 --> 00:04:39,560
+This folder contains classes and functions that help WordPress process requests.
+
+66
+00:04:39,890 --> 00:04:44,870
+It's important to understand that this is different from what you might find inside the root directory.
+
+67
+00:04:45,500 --> 00:04:49,190
+The root directory files help loads and set up WordPress.
+
+68
+00:04:49,550 --> 00:04:55,850
+The files inside the WP Dasch includes folder provide functions and classes that WordPress uses to process
+
+69
+00:04:55,850 --> 00:04:56,180
+data.
+
+70
+00:04:56,600 --> 00:05:00,770
+A lot of the files inside this folder can't do anything by themselves.
+
+71
+00:05:01,130 --> 00:05:08,960
+For example, if I were to open the WP comments post HP file, you'll find a lot of logic being implemented
+
+72
+00:05:08,960 --> 00:05:09,170
+here.
+
+73
+00:05:09,620 --> 00:05:12,470
+This file will process commands for a blog post.
+
+74
+00:05:12,650 --> 00:05:15,830
+As you can see, it doesn't bother defining functions.
+
+75
+00:05:15,950 --> 00:05:19,220
+Instead, it just loads, files and prepares variables.
+
+76
+00:05:19,880 --> 00:05:25,640
+Inside the WP dash includes folder open the admin bar PDF file.
+
+77
+00:05:26,060 --> 00:05:29,630
+Inside this file you'll find a lot of functions to find here.
+
+78
+00:05:29,960 --> 00:05:33,260
+However, you won't find any logic being executed.
+
+79
+00:05:33,710 --> 00:05:36,200
+This file doesn't do anything by itself.
+
+80
+00:05:36,380 --> 00:05:39,200
+That goes for a lot of files inside this folder.
+
+81
+00:05:39,920 --> 00:05:45,260
+Moving on, the WP dash admin folder is another default folder and WordPress.
+
+82
+00:05:45,650 --> 00:05:48,110
+This folder handles its own requests.
+
+83
+00:05:48,110 --> 00:05:55,370
+Unlike the other parts of WordPress, WordPress uses the index we file to handle a majority of requests.
+
+84
+00:05:55,940 --> 00:06:02,090
+However, if you visit the admin side of WordPress and the indexed free file doesn't handle anything.
+
+85
+00:06:02,720 --> 00:06:08,510
+Instead, WP Dash Admin is a directory that likes to be independent from the rest of the world.
+
+86
+00:06:08,510 --> 00:06:09,200
+Press corps.
+
+87
+00:06:09,680 --> 00:06:11,990
+All files here are just for the admin.
+
+88
+00:06:12,290 --> 00:06:13,430
+There's nothing much to it.
+
+89
+00:06:13,430 --> 00:06:18,230
+Honestly, the last folder is the WP dash content folder.
+
+90
+00:06:18,560 --> 00:06:22,250
+This folder will contain all plugins themes and uploads.
+
+91
+00:06:22,550 --> 00:06:22,900
+This is.
+
+92
+00:06:23,250 --> 00:06:28,650
+We will be working for the majority of this course because of that, I won't be talking too much about
+
+93
+00:06:28,650 --> 00:06:30,010
+this folder in this lecture.
+
+94
+00:06:30,780 --> 00:06:36,690
+What I will say is that WordPress will automatically add some plugins and themes, which can be a great
+
+95
+00:06:36,690 --> 00:06:39,780
+way to understand how to build your own themes and plugins.
+
+96
+00:06:40,170 --> 00:06:44,670
+You are allowed to freely modify a lot of these files without much consequence.
+
+97
+00:06:45,750 --> 00:06:52,650
+Before I end this lecture, let's configure the server and the Zamp control panel navigate to Apache
+
+98
+00:06:52,650 --> 00:06:54,720
+config INR.
+
+99
+00:06:55,410 --> 00:06:58,690
+This file contains settings for our environment.
+
+100
+00:06:59,400 --> 00:07:01,580
+There are three settings I want to change.
+
+101
+00:07:01,830 --> 00:07:04,590
+The first setting is the max execution time.
+
+102
+00:07:04,950 --> 00:07:07,170
+Search for it and set it to five hundred.
+
+103
+00:07:09,450 --> 00:07:15,660
+This will allow our scripts to run for five hundred seconds, realistically, this should never be the
+
+104
+00:07:15,660 --> 00:07:21,600
+case, but if you ever decide to do something that is resource intensive, then you can avoid timeout
+
+105
+00:07:21,600 --> 00:07:24,030
+errors by setting this value to a high number.
+
+106
+00:07:24,540 --> 00:07:27,690
+The next value to set is the post max size.
+
+107
+00:07:28,050 --> 00:07:30,240
+Search for it and set it to 50 m.
+
+108
+00:07:32,700 --> 00:07:36,900
+This will allow us to submit large requests up to 50 megabytes.
+
+109
+00:07:37,200 --> 00:07:40,010
+There will be times where we will be submitting a lot of data.
+
+110
+00:07:40,050 --> 00:07:42,800
+So setting this to a high number is beneficial to us.
+
+111
+00:07:43,440 --> 00:07:50,580
+The last value set is the upload max file size to 50 M, which will allow us to upload files up to 50
+
+112
+00:07:50,580 --> 00:07:51,190
+megabytes.
+
+113
+00:07:51,840 --> 00:07:52,820
+That's it for now.
+
+114
+00:07:53,010 --> 00:07:58,200
+By making these changes to our environment, we can now begin with developing plug ins and themes for
+
+115
+00:07:58,200 --> 00:07:58,830
+WordPress.
+
+116
+00:07:59,160 --> 00:08:02,670
+You will need to restart the server for these changes to take effect.
+
+117
+00:08:03,000 --> 00:08:05,390
+Do that before you move on to the next lecture.
+

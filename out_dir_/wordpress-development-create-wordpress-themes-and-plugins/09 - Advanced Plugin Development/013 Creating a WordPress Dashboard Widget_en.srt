@@ -1,0 +1,172 @@
+1
+00:00:07,270 --> 00:00:12,880
+Let's keep adding on to the recipe, plug in, the next thing we want to do is create one of these dashboard
+
+2
+00:00:12,880 --> 00:00:14,970
+widgets on the WordPress admin page.
+
+3
+00:00:15,310 --> 00:00:20,590
+A lot of plug ins add dashboard, which is to provide more info about the plug in itself or the data
+
+4
+00:00:20,590 --> 00:00:21,450
+it provides.
+
+5
+00:00:21,760 --> 00:00:25,990
+It's perfect for adding a little news which it feeds so users can be kept up to date.
+
+6
+00:00:25,990 --> 00:00:29,050
+With your plug in, let's create one ourselves.
+
+7
+00:00:29,260 --> 00:00:35,260
+The widget will create will provide the latest five readings inside the main plug and file out an action
+
+8
+00:00:35,260 --> 00:00:37,870
+hook called WP Dashboard Setup.
+
+9
+00:00:38,230 --> 00:00:41,590
+The function to call is our ad dashboard widgets.
+
+10
+00:00:46,930 --> 00:00:54,340
+Create a file in the admin folder named Dashboard Dash Widgets and define the function here, as always,
+
+11
+00:00:54,430 --> 00:00:57,760
+make sure to include this file from the main plug and file.
+
+12
+00:01:03,470 --> 00:01:05,820
+Creating a dashboard, which is really easy.
+
+13
+00:01:06,080 --> 00:01:11,150
+You only have to call one function, which is the WP add dashboard widget function.
+
+14
+00:01:13,530 --> 00:01:15,670
+There are three parameters we need to set.
+
+15
+00:01:16,020 --> 00:01:22,260
+First is the slug, which can be thought of as a unique ID, set this to our latest recipe rating,
+
+16
+00:01:22,260 --> 00:01:22,620
+which it.
+
+17
+00:01:25,020 --> 00:01:30,180
+The second parameter is the title of our widget, set this to latest recipe ratings.
+
+18
+00:01:32,510 --> 00:01:37,940
+The last parameter is the function to call, which will display the contents of the widget, set this
+
+19
+00:01:37,940 --> 00:01:40,520
+to our latest recipe rating display.
+
+20
+00:01:43,030 --> 00:01:45,850
+In the same file, let's define the display function.
+
+21
+00:01:48,060 --> 00:01:54,800
+We want the widget to display the five latest ratings to do this, we'll need the PDB Global Object
+
+22
+00:01:55,350 --> 00:02:01,470
+create a variable called latest ratings that will be set to the value returned by the get results method
+
+23
+00:02:01,470 --> 00:02:03,570
+of the PDB object.
+
+24
+00:02:06,230 --> 00:02:10,970
+The query will be using will simply select all the data in the recipe ratings recipe.
+
+25
+00:02:17,540 --> 00:02:23,330
+To get the latest entries, we have to set the order by for the ID column in descending order.
+
+26
+00:02:23,840 --> 00:02:27,440
+Lastly, limit the amount of results returned by five.
+
+27
+00:02:30,150 --> 00:02:36,210
+Next, echo out some yellow tags, and in between these tags will run a foreach loop that will loop
+
+28
+00:02:36,210 --> 00:02:37,980
+through the latest ratings array.
+
+29
+00:02:43,010 --> 00:02:48,800
+The get results method will return an array of results, each item in the array will be an object.
+
+30
+00:02:49,370 --> 00:02:53,750
+Now I'm going to create two variables for the title and permalink.
+
+31
+00:02:54,080 --> 00:02:59,630
+To get these values, we can use the functions, get the title and get the permalink, which will return
+
+32
+00:02:59,630 --> 00:03:02,270
+the values we need about a particular post.
+
+33
+00:03:04,680 --> 00:03:10,770
+Notice that we're using these functions inside the plug in and outside of the loop to use these functions
+
+34
+00:03:10,770 --> 00:03:11,400
+properly.
+
+35
+00:03:11,490 --> 00:03:13,650
+We have to pass in the post ID.
+
+36
+00:03:14,430 --> 00:03:19,170
+We can get the ID by accessing the recipe ID property from the rating object.
+
+37
+00:03:19,560 --> 00:03:21,480
+This is where we stored the post ID.
+
+38
+00:03:24,170 --> 00:03:27,380
+Lastly, I'm just going to paste in some HTML.
+
+39
+00:03:28,860 --> 00:03:34,800
+Nothing special going on in here, I'm just echoing out the values and displaying a message that informs
+
+40
+00:03:34,800 --> 00:03:38,550
+the user about which recipe received a rating and the rating itself.
+
+41
+00:03:39,210 --> 00:03:42,640
+Save your changes and let's view the admin dashboard again.
+
+42
+00:03:42,990 --> 00:03:47,130
+We will now see our latest recipe, which it along with the latest ratings.
+
+43
+00:03:47,430 --> 00:03:52,170
+If you don't see any ratings, then try reading a recipe and come back to this page.
+

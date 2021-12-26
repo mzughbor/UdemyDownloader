@@ -1,0 +1,247 @@
+WEBVTT
+
+00:07.340 --> 00:12.920
+The next step is to register and interview the assets, this will most likely be the last time you write
+
+00:13.490 --> 00:14.410
+code for a while.
+
+00:14.630 --> 00:19.460
+Unlike the other WordPress APIs, Gutenberg is mostly written in JavaScript.
+
+00:19.760 --> 00:22.430
+Custom blocks are also written in JavaScript.
+
+00:23.030 --> 00:25.790
+There are some exceptions, but we'll get to those later.
+
+00:26.090 --> 00:32.150
+Registering and in the files are still a process, just like anything else will be.
+
+00:32.150 --> 00:39.380
+Using hooks inside the main plug and file create an action hook called in queue block ed assets.
+
+00:44.620 --> 00:48.880
+The name of the function will be R and Q block ed assets.
+
+00:51.100 --> 00:57.820
+This function doesn't exist, so we'll need to create that next, create a file inside the Blocks Directorate
+
+00:57.820 --> 01:01.000
+called Incudes up once again.
+
+01:01.240 --> 01:07.630
+Any files related to the Gutenberg editor will be placed here after creating the file, define the function
+
+01:07.630 --> 01:09.610
+and include it from the main plug and file.
+
+01:17.250 --> 01:24.060
+The hook that we're using is specifically for the Gutenberg editor, the NQ Block editor assets hook
+
+01:24.060 --> 01:28.600
+is triggered when the Gutenberg it's initialized for any post type on the admin end.
+
+01:29.130 --> 01:35.730
+This is perfect as this will make sure only files meant for the editor will be loaded inside the function
+
+01:35.730 --> 01:41.250
+called the WP Register a script function and set the name to our blocks bundle.
+
+01:43.640 --> 01:50.180
+The second parameter will be the Eurail will use the plugins Eurail function for this, the path should
+
+01:50.180 --> 01:53.930
+be slash blocks, slash dist slash bundle.
+
+01:59.990 --> 02:06.290
+Keep in mind that we're loading the bundle file and not the files inside the after actory, the bundle
+
+02:06.290 --> 02:08.930
+file will contain the finished result of everything.
+
+02:09.770 --> 02:13.830
+Next up is an array of dependencies before we load this script.
+
+02:13.970 --> 02:15.500
+We're going to need a few things.
+
+02:15.770 --> 02:19.360
+The special thing about The Gutenberg editor is that it's modular.
+
+02:19.700 --> 02:24.800
+The Gutenberg editor is split up into various modules that are bundled together to make it function
+
+02:24.800 --> 02:25.360
+correctly.
+
+02:26.150 --> 02:31.310
+We need to make sure that certain modules are loaded first before our script so that it can function
+
+02:31.310 --> 02:31.930
+correctly.
+
+02:32.360 --> 02:36.010
+The scripts we're about to require are all registered by WordPress.
+
+02:36.620 --> 02:39.890
+The first one is WP Dashi 18 in.
+
+02:42.080 --> 02:46.320
+This script will provide us functions that we can use to translate our script.
+
+02:46.580 --> 02:49.490
+Next is the WP Dash Element script.
+
+02:51.850 --> 02:58.330
+This will provide us with the function for converting our Xcode into JavaScript functions in the previous
+
+02:58.330 --> 03:03.880
+section, we would use react, but WordPress takes the time to Wrap's and love reacts functions.
+
+03:04.240 --> 03:06.280
+I'll discuss this more in depth later.
+
+03:06.490 --> 03:09.520
+For now, just include it afterwards.
+
+03:09.520 --> 03:12.550
+We'll need the WP Dash Block's script.
+
+03:14.640 --> 03:21.870
+This script will allow us to register our block and interact with Gutenberg, then we'll need the WP
+
+03:21.870 --> 03:23.310
+dash components scripts.
+
+03:25.560 --> 03:30.150
+Gutenberg comes with some components that we can reuse in our own script.
+
+03:30.540 --> 03:33.590
+This script will allow us to access these features.
+
+03:33.870 --> 03:36.900
+It's great because then we won't have to reinvent the wheel.
+
+03:37.560 --> 03:40.650
+Up next is the WP Dash editor script.
+
+03:42.820 --> 03:47.450
+This script comes with tools and functions related specifically for the editor.
+
+03:47.890 --> 03:52.630
+These will help us create a more consistent user experience when building our blocks.
+
+03:53.200 --> 03:56.910
+Lastly, we'll need the WP Dash API script.
+
+03:57.190 --> 04:00.760
+This will allow us to interact with the WordPress rest API.
+
+04:01.180 --> 04:04.920
+We haven't discussed the rest API in depth, but we will soon.
+
+04:05.560 --> 04:10.390
+Something I want to note is that you won't be using all of these scripts right from the start, will
+
+04:10.390 --> 04:13.480
+gradually introduce each one as the course progresses.
+
+04:13.810 --> 04:18.760
+I'm just including them now so that we can focus more on the JavaScript code and not have to switch
+
+04:18.760 --> 04:20.410
+back and forth between files.
+
+04:21.160 --> 04:23.800
+The last parameter I want to set is the version.
+
+04:24.130 --> 04:27.330
+As you may know, some browsers will cache our files.
+
+04:27.460 --> 04:28.480
+We don't want this.
+
+04:28.720 --> 04:30.550
+We always want the latest version.
+
+04:30.850 --> 04:36.280
+I've already shown you how to do this in a previous lecture, but I want to show an alternative solution.
+
+04:36.910 --> 04:39.870
+I'm going to call the file some time function.
+
+04:40.240 --> 04:42.670
+This function requires the path to the file.
+
+04:42.880 --> 04:44.290
+I'll pass that in as well.
+
+04:50.030 --> 04:55.700
+The function I'm introducing here will get a philes last modification time, this function requires
+
+04:55.700 --> 04:56.870
+the full system path.
+
+04:57.170 --> 05:03.260
+I'm using the plug in dirt path function, which will return the full system path to a plug and file.
+
+05:03.680 --> 05:06.620
+Then I'm appending the rest of the path to the file.
+
+05:07.490 --> 05:11.000
+This is a really quick and easy way to get the latest version of a file.
+
+05:11.540 --> 05:19.160
+All right, let's include the file now right below this called the WP NQ Script Function and pass in
+
+05:19.160 --> 05:19.580
+the name.
+
+05:21.780 --> 05:29.050
+That should do it before we confirm everything works, open the index JS file inside the App Directorate.
+
+05:29.330 --> 05:30.250
+It should be empty.
+
+05:30.500 --> 05:33.800
+I'm going to console log a simple message.
+
+05:36.100 --> 05:42.760
+Then we'll need to compile this file inside the command line, you may have to seed into the blocks
+
+05:42.760 --> 05:47.320
+directory once you're there, run the commands npm run Dev.
+
+05:50.630 --> 05:55.940
+You should receive a success message and Web PAC should now be watching the files for any changes,
+
+05:56.180 --> 06:00.200
+then go to the admin dashboard and try viewing the Gutenberg Ed.
+
+06:02.320 --> 06:05.980
+This can be for any post type for the rest of this section.
+
+06:06.010 --> 06:08.770
+I'll be focusing on the recipe post type.
+
+06:09.100 --> 06:11.320
+The code should work for any post type, though.
+
+06:11.980 --> 06:14.500
+Open the developer tools and review the console.
+
+06:14.890 --> 06:19.750
+You should see the message appearing in the log that should confirm everything works.
+
+06:22.510 --> 06:27.800
+We've taken care of the first two steps, which was prepare the environment and include the files.
+
+06:28.060 --> 06:30.320
+The next step is to register our block.
+
+06:30.700 --> 06:33.490
+We'll take a look at how to do that in the next lecture.
+
+06:33.790 --> 06:34.660
+I'll see you there.

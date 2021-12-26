@@ -1,0 +1,92 @@
+1
+00:00:07,580 --> 00:00:10,520
+And this section will be cleaning up our theme even further.
+
+2
+00:00:10,760 --> 00:00:16,640
+I just want to adjust a couple of things and prepare everything for production that includes translations,
+
+3
+00:00:16,640 --> 00:00:18,360
+bundling, plug ins, et cetera.
+
+4
+00:00:18,650 --> 00:00:23,420
+Of course, we'll have to learn how to battle, test our theme and plug in, which is what we'll tackle
+
+5
+00:00:23,420 --> 00:00:24,560
+in this section as well.
+
+6
+00:00:25,250 --> 00:00:25,970
+Let's begin.
+
+7
+00:00:26,270 --> 00:00:30,620
+If you take a look at the homepage, you'll find all the posts we've created thus far.
+
+8
+00:00:31,010 --> 00:00:34,410
+However, each post excerpt has these dots right after it.
+
+9
+00:00:34,760 --> 00:00:36,650
+Each of these are called an ellipsis.
+
+10
+00:00:36,650 --> 00:00:41,490
+And while they may seem great, I personally don't like them inside the functions file.
+
+11
+00:00:41,540 --> 00:00:44,840
+We're going to add the filter hook called excerpt more.
+
+12
+00:00:47,500 --> 00:00:53,080
+This hook will pass and the ellipsis for filtering, however, we want to get rid of these dots, there's
+
+13
+00:00:53,080 --> 00:00:56,670
+a handy utility function that WordPress provides to return nothing.
+
+14
+00:00:57,100 --> 00:01:01,660
+Instead of defining our own function that will return nothing, I'm going to pass in the function.
+
+15
+00:01:01,660 --> 00:01:04,569
+Underscore, underscore, return, underscore, false.
+
+16
+00:01:06,960 --> 00:01:14,200
+This is a WordPress function that does exactly as it's named, it will return false open the WP Desh
+
+17
+00:01:14,220 --> 00:01:18,060
+includes function, file and search for this function.
+
+18
+00:01:22,830 --> 00:01:28,920
+Here is what WordPress is useful for, returning false two filters easily, if you scroll above, there
+
+19
+00:01:28,920 --> 00:01:33,220
+is even a function for returning true, which is also useful if you ever need it.
+
+20
+00:01:33,600 --> 00:01:38,090
+I encourage you to explore these functions if you ever need to use them in your own code.
+
+21
+00:01:38,730 --> 00:01:41,300
+Let's refresh the page and see if the dots are gone.
+
+22
+00:01:42,180 --> 00:01:42,690
+All right.
+
+23
+00:01:42,870 --> 00:01:47,670
+That's it for the excerpt in the next few lectures will continue with working on our theme.
+

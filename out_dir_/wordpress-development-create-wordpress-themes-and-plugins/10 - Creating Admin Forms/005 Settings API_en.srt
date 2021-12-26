@@ -1,0 +1,784 @@
+1
+00:00:07,720 --> 00:00:13,390
+The Settings API is an API I'm not particularly fond of, but that doesn't mean it's not used.
+
+2
+00:00:13,660 --> 00:00:19,120
+What the settings API allows you to do is create a form that will be handled by WordPress.
+
+3
+00:00:19,510 --> 00:00:23,140
+This means that you don't have to do what we did in the previous lectures.
+
+4
+00:00:23,380 --> 00:00:28,390
+You don't have to process the form yourself, manage the options or create your own UI.
+
+5
+00:00:29,050 --> 00:00:31,750
+The settings API is meant to solve all of that.
+
+6
+00:00:31,960 --> 00:00:35,920
+Now keep in mind that it's completely optional to use the settings API.
+
+7
+00:00:36,280 --> 00:00:39,250
+Creating your own UI is completely acceptable.
+
+8
+00:00:39,460 --> 00:00:41,770
+It's a common route for developers to use.
+
+9
+00:00:41,980 --> 00:00:46,230
+I highly prefer creating my own UI and processing the data myself.
+
+10
+00:00:46,750 --> 00:00:50,340
+With that being said, you may prefer to use the Settings API.
+
+11
+00:00:50,650 --> 00:00:54,760
+This lecture is meant to introduce you to the API and how it works.
+
+12
+00:00:55,000 --> 00:01:01,050
+In the resource section of this lecture, I provide a link to the Settings API Plugin Handbook chapter.
+
+13
+00:01:01,570 --> 00:01:04,569
+This page describes the Settings API in detail.
+
+14
+00:01:04,810 --> 00:01:09,030
+If you scroll down, they even talk about why you should use the settings API.
+
+15
+00:01:09,670 --> 00:01:15,340
+The benefits are that it provides visual consistency, it's future proof and it means less work.
+
+16
+00:01:15,610 --> 00:01:20,590
+It takes care of handling form, submission, security measures and data sanitisation.
+
+17
+00:01:20,950 --> 00:01:22,930
+Feel free to read over this chapter.
+
+18
+00:01:23,170 --> 00:01:25,630
+Let's get started with the Settings API.
+
+19
+00:01:26,350 --> 00:01:30,010
+The very first thing I'm going to do is open the options page.
+
+20
+00:01:30,220 --> 00:01:35,800
+I'm going to place the settings API form right below our custom one so that we can compare the item,
+
+21
+00:01:36,190 --> 00:01:40,210
+add a horizontal line separator and then create another form.
+
+22
+00:01:46,390 --> 00:01:53,050
+This form will have two attributes, which are action and method, the method will be post, the action
+
+23
+00:01:53,050 --> 00:01:54,820
+will be option stop.
+
+24
+00:01:57,300 --> 00:02:05,490
+This is the first difference right here, the custom uniform has an action of admen dash postop request
+
+25
+00:02:05,490 --> 00:02:10,940
+that will be handled and processed by you should be sent to the admin dash post file.
+
+26
+00:02:11,640 --> 00:02:15,850
+The options stop is exclusively for the settings API.
+
+27
+00:02:16,350 --> 00:02:22,170
+Keep in mind that WordPress will handle all the form submissions and data sanitisation for you, so
+
+28
+00:02:22,170 --> 00:02:28,080
+you'll have to send the data to the options PHP file if you plan on using the settings API.
+
+29
+00:02:28,890 --> 00:02:29,400
+All right.
+
+30
+00:02:29,520 --> 00:02:33,710
+Moving on inside this forum, we're going to call three functions.
+
+31
+00:02:33,960 --> 00:02:36,650
+The first function is the settings fields.
+
+32
+00:02:36,990 --> 00:02:42,300
+This function will output some hidden fields that will help with security and help WordPress identify
+
+33
+00:02:42,300 --> 00:02:44,430
+what group of options are being submitted.
+
+34
+00:02:45,120 --> 00:02:47,910
+Option groups are an important concept to remember.
+
+35
+00:02:48,180 --> 00:02:51,720
+It's really confusing to beginners, but I'll try my best to explain it.
+
+36
+00:02:52,050 --> 00:02:58,200
+If you look inside the activation file, we create a single option and assign its value to an array.
+
+37
+00:02:58,770 --> 00:03:04,830
+This array has multiple settings, but to WordPress it's all considered one single row in a database.
+
+38
+00:03:05,400 --> 00:03:11,910
+If we wanted to, we could have created two options by calling the ADD option function twice and storing
+
+39
+00:03:11,910 --> 00:03:14,730
+these value separately rather than inside of an array.
+
+40
+00:03:15,860 --> 00:03:21,600
+That's an acceptable situation to WordPress, it's what WordPress does with its own settings.
+
+41
+00:03:21,620 --> 00:03:27,590
+It's why when you open the options database table, you saw many individual values rather than arrays
+
+42
+00:03:28,160 --> 00:03:34,580
+go to the admin dashboard and under the settings menu, select any page I'm going to select general.
+
+43
+00:03:34,880 --> 00:03:37,870
+Each field in this form has its own option or database.
+
+44
+00:03:37,880 --> 00:03:42,890
+Wrote in the options table, for example, the site title has its own row.
+
+45
+00:03:43,250 --> 00:03:47,210
+The tag line also has its own row, so on and so forth.
+
+46
+00:03:47,400 --> 00:03:52,940
+It's a lot of settings, but it just means that WordPress considers each value important enough to have
+
+47
+00:03:52,940 --> 00:03:55,400
+its own row in the options database table.
+
+48
+00:03:56,060 --> 00:04:01,880
+In our case, I don't consider each plugin setting important enough to have its own row in the database.
+
+49
+00:04:02,070 --> 00:04:03,710
+I just group them all together.
+
+50
+00:04:04,100 --> 00:04:05,420
+It's easier to manage.
+
+51
+00:04:05,420 --> 00:04:10,340
+And remember, here comes the problem with creating individual rows for each setting.
+
+52
+00:04:10,730 --> 00:04:15,050
+WordPress is completely unaware of certain options are related to one another.
+
+53
+00:04:15,590 --> 00:04:16,910
+Back to the Settings page.
+
+54
+00:04:16,910 --> 00:04:21,380
+You'll notice that even though these are separate options, they're all grouped and managed together
+
+55
+00:04:21,380 --> 00:04:22,460
+in this single form.
+
+56
+00:04:22,850 --> 00:04:26,740
+In order for this to work, WordPress requires that they be grouped together.
+
+57
+00:04:27,440 --> 00:04:29,600
+This is where option groups come in to play.
+
+58
+00:04:29,900 --> 00:04:35,330
+Even though each value exists in its own row, they can be grouped together so that WordPress can keep
+
+59
+00:04:35,330 --> 00:04:36,260
+track of everything.
+
+60
+00:04:36,650 --> 00:04:41,900
+When you create an option group, you make it easier for WordPress to know which field belongs to which
+
+61
+00:04:41,900 --> 00:04:44,840
+section and which section belongs to which page.
+
+62
+00:04:45,200 --> 00:04:48,670
+You'll see how we generate sections and fields in just a second.
+
+63
+00:04:49,460 --> 00:04:51,210
+Back to the options page.
+
+64
+00:04:51,230 --> 00:04:55,400
+I'm going to pass in a custom option group called our Ops Group.
+
+65
+00:04:57,900 --> 00:05:00,210
+Any options assigned to this group will be managed.
+
+66
+00:05:00,240 --> 00:05:05,940
+Here is what I'm telling WordPress now that WordPress knows what group of options are going to be managed.
+
+67
+00:05:06,060 --> 00:05:08,460
+I can begin creating the fields themselves.
+
+68
+00:05:09,150 --> 00:05:12,690
+The next function I want to call is do setting sections.
+
+69
+00:05:14,970 --> 00:05:20,880
+This will output the actual input fields themselves, we have to tell WordPress what sections we'd like
+
+70
+00:05:20,880 --> 00:05:23,910
+to output this function, accepts the page name.
+
+71
+00:05:24,180 --> 00:05:27,990
+Since this is a custom page, we can input a custom page name.
+
+72
+00:05:28,350 --> 00:05:31,280
+The page name will be our ops sections.
+
+73
+00:05:31,560 --> 00:05:36,660
+We haven't talked about sections, but sections are a way to group individual input fields.
+
+74
+00:05:36,660 --> 00:05:42,770
+Together you can have multiple sections, so this function will get all sections that are grouped together.
+
+75
+00:05:43,110 --> 00:05:45,060
+If that seems confusing, don't worry.
+
+76
+00:05:45,150 --> 00:05:47,030
+You'll see how it works in just a moment.
+
+77
+00:05:47,820 --> 00:05:50,730
+The last function I want to call is Submit Button.
+
+78
+00:05:53,120 --> 00:05:56,630
+This will generate a submit button that is style to work with the form.
+
+79
+00:05:56,930 --> 00:05:57,870
+It's very simple.
+
+80
+00:05:58,100 --> 00:06:00,820
+Keep in mind that you don't have to call these functions.
+
+81
+00:06:01,100 --> 00:06:07,970
+We could if we wanted to create the fields and buttons ourselves, however, that would defeat the purpose
+
+82
+00:06:07,970 --> 00:06:13,170
+of using the settings API in the first place, since its job is to handle everything for us.
+
+83
+00:06:13,760 --> 00:06:15,010
+That's it for the form.
+
+84
+00:06:15,200 --> 00:06:17,030
+Let's begin registering everything.
+
+85
+00:06:17,300 --> 00:06:22,160
+The Settings API instructs us that we have to register everything from the admin in it.
+
+86
+00:06:22,160 --> 00:06:26,330
+Hook open this function now just to keep things organized.
+
+87
+00:06:26,360 --> 00:06:32,390
+I'm going to separate the registration from the rest of the code, create a new file named Settings
+
+88
+00:06:32,390 --> 00:06:37,160
+Dash API and define the function are settings API.
+
+89
+00:06:46,350 --> 00:06:51,900
+Include this file from the admin init function and then just call this function at the very end of the
+
+90
+00:06:51,900 --> 00:06:52,410
+function.
+
+91
+00:06:58,110 --> 00:07:03,900
+We can now put all our code inside the newly defined function, the first step is to register the new
+
+92
+00:07:03,900 --> 00:07:10,320
+settings, call the function register setting, pass in the option group name, which is our ops group,
+
+93
+00:07:10,320 --> 00:07:12,780
+and the actual option, which is our ops.
+
+94
+00:07:15,150 --> 00:07:20,680
+This function will tell WordPress that the our option is assigned to the group, our ops group.
+
+95
+00:07:21,420 --> 00:07:24,690
+This function needs to be called for as many options we have.
+
+96
+00:07:24,940 --> 00:07:30,780
+For example, if we have three options, we call this function three times where the second argument
+
+97
+00:07:30,780 --> 00:07:36,270
+is for each option, the group should always be the same if all the options are going to be displayed
+
+98
+00:07:36,270 --> 00:07:37,280
+on the same page.
+
+99
+00:07:37,650 --> 00:07:43,410
+For instance, if I had something like option two and option three, then I would pass that in like
+
+100
+00:07:43,410 --> 00:07:43,790
+so.
+
+101
+00:07:46,190 --> 00:07:52,630
+However, since we saved our option as an array, we only have one row in the database as a result,
+
+102
+00:07:52,670 --> 00:07:54,980
+we only have to call this function once.
+
+103
+00:07:55,730 --> 00:08:00,920
+Now that we've called this function WordPress, we'll know that the our absorptions will be handled
+
+104
+00:08:00,920 --> 00:08:02,180
+by the Settings API.
+
+105
+00:08:02,630 --> 00:08:04,700
+The next step is to create a section.
+
+106
+00:08:04,970 --> 00:08:07,970
+A section is a way to group individual fields.
+
+107
+00:08:08,240 --> 00:08:13,030
+A single page can have multiple sections and each section may have multiple fields.
+
+108
+00:08:13,280 --> 00:08:18,490
+It's just a way to keep things organized since we only have two fields in the array.
+
+109
+00:08:18,560 --> 00:08:23,150
+We only really need one section called the Function and Settings section.
+
+110
+00:08:25,610 --> 00:08:31,790
+This function has four parameters, the first parameter is a custom ID, I'm going to keep it simple
+
+111
+00:08:31,790 --> 00:08:33,559
+and name it recipe settings.
+
+112
+00:08:33,860 --> 00:08:38,030
+The second parameter is a readable name, which will be outputted onto the screen.
+
+113
+00:08:38,360 --> 00:08:40,490
+Set this to recipe's settings.
+
+114
+00:08:42,890 --> 00:08:48,170
+The third parameter is a function that will be called before the fields are displayed, set this to
+
+115
+00:08:48,170 --> 00:08:49,550
+our settings section.
+
+116
+00:08:52,280 --> 00:08:57,680
+Define this function right below an echo out the text, you can change the recipe settings here.
+
+117
+00:09:03,880 --> 00:09:09,730
+You can output whatever you want, most developers will just output some text that will help users out
+
+118
+00:09:09,730 --> 00:09:10,870
+when filling out the form.
+
+119
+00:09:11,590 --> 00:09:14,090
+The last parameter is the name of the page.
+
+120
+00:09:14,110 --> 00:09:16,210
+This will appear on in our case.
+
+121
+00:09:16,240 --> 00:09:18,250
+We named it our section.
+
+122
+00:09:20,580 --> 00:09:23,850
+Any fields assigned under this section will appear on the page.
+
+123
+00:09:23,880 --> 00:09:26,900
+This section is assigned to you in the options page.
+
+124
+00:09:26,910 --> 00:09:32,430
+We called the do setting section function, which will output any sections that are assigned to the
+
+125
+00:09:32,430 --> 00:09:34,050
+page are section.
+
+126
+00:09:34,470 --> 00:09:35,990
+This is how you connect the two.
+
+127
+00:09:36,720 --> 00:09:40,650
+Now that we have our sections, we can begin creating the input fields.
+
+128
+00:09:41,040 --> 00:09:43,950
+Creating fields is a pretty straightforward process.
+
+129
+00:09:44,220 --> 00:09:47,790
+Right after the section called the Function Add Settings Fields.
+
+130
+00:09:48,180 --> 00:09:50,450
+This function has quite a few parameters.
+
+131
+00:09:50,760 --> 00:09:53,370
+The first parameter is the ID for this field.
+
+132
+00:09:53,760 --> 00:09:59,080
+Technically, you can give this field any ID you'd like, but I'd like to assign it to the option that
+
+133
+00:09:59,080 --> 00:10:04,260
+that's relevant to this field will be related to the rating login required option.
+
+134
+00:10:06,880 --> 00:10:10,760
+The second parameter is the label text that will be displayed for this field.
+
+135
+00:10:11,140 --> 00:10:14,740
+I'm going to use the same text I used in the custom uniform.
+
+136
+00:10:22,050 --> 00:10:26,320
+The third parameter is the function that will be called for the actual input itself.
+
+137
+00:10:26,670 --> 00:10:33,240
+I like to use the same name as the ID with the addition of underscore input, underscore KVI where KB
+
+138
+00:10:33,240 --> 00:10:34,320
+stands for callback.
+
+139
+00:10:36,530 --> 00:10:38,600
+You'll see what this function does in a moment.
+
+140
+00:10:39,260 --> 00:10:42,470
+The fourth parameter is the page that this field belongs to.
+
+141
+00:10:42,830 --> 00:10:47,180
+This is the same as the name we passed in the DU setting sections function.
+
+142
+00:10:49,770 --> 00:10:54,810
+The fifth parameter is the name this section belongs to, which is the value you passed into the first
+
+143
+00:10:54,810 --> 00:10:56,940
+parameter of the ad settings section.
+
+144
+00:10:59,750 --> 00:11:05,090
+The next step is to define the function that we called in the third parameter, this function will output
+
+145
+00:11:05,090 --> 00:11:06,100
+the input field.
+
+146
+00:11:06,410 --> 00:11:09,500
+I'm going to ground the R opts option like before.
+
+147
+00:11:14,750 --> 00:11:18,740
+Then I'm going to borrow this bit of code from the custom form we created.
+
+148
+00:11:21,270 --> 00:11:28,590
+I want to change two things first, I want to create an ID, the ID should match the ID you assign in
+
+149
+00:11:28,590 --> 00:11:32,040
+the first parameter of the relative add settings, field function.
+
+150
+00:11:38,200 --> 00:11:44,160
+Next, I want to change the name attribute, it's very important that you name this attribute correctly,
+
+151
+00:11:44,500 --> 00:11:48,100
+the name will determine what option is updated in the database.
+
+152
+00:11:48,230 --> 00:11:51,100
+In our case, it would be the R ops option.
+
+153
+00:11:51,500 --> 00:11:54,190
+However, this option is not a single value.
+
+154
+00:11:54,370 --> 00:12:00,370
+If it was, then this would be perfectly acceptable to tell WordPress that we want to update a certain
+
+155
+00:12:00,370 --> 00:12:01,440
+key in the array.
+
+156
+00:12:01,450 --> 00:12:04,720
+We need to use square brackets and pass in the name of the key.
+
+157
+00:12:05,140 --> 00:12:08,260
+In this case, it would be rating login required.
+
+158
+00:12:08,810 --> 00:12:13,570
+It's very important that you name it correctly or the options will not be updated accordingly.
+
+159
+00:12:13,930 --> 00:12:15,400
+That's it for the first field.
+
+160
+00:12:15,820 --> 00:12:21,310
+I'm going to just copy everything from the first field and just update its values accordingly for the
+
+161
+00:12:21,310 --> 00:12:22,180
+second option.
+
+162
+00:12:22,480 --> 00:12:24,870
+I'm going to do the same with the function as well.
+
+163
+00:12:27,810 --> 00:12:33,270
+Your code should look similar to mine once you're finished adding the second field for the second key
+
+164
+00:12:33,270 --> 00:12:34,630
+in the props array.
+
+165
+00:12:34,740 --> 00:12:38,010
+We can now test the form, refresh the options page.
+
+166
+00:12:38,200 --> 00:12:42,300
+You should now see the form appearing right below without changing a value.
+
+167
+00:12:42,330 --> 00:12:44,550
+Try submitting the settings API form.
+
+168
+00:12:45,090 --> 00:12:49,750
+You should receive no errors and you should still have the same values in both forms.
+
+169
+00:12:50,070 --> 00:12:52,980
+Now try updating one field and save the changes.
+
+170
+00:12:53,190 --> 00:12:55,910
+You should see the change reflected in both forms.
+
+171
+00:12:56,520 --> 00:13:02,310
+These two forms do the exact same thing, but one is custom and the other is created using the settings
+
+172
+00:13:02,310 --> 00:13:02,890
+API.
+
+173
+00:13:03,300 --> 00:13:04,830
+There is no wrong answer here.
+
+174
+00:13:05,040 --> 00:13:08,430
+You'll find that plug ins and teams will use either solution.
+
+175
+00:13:08,820 --> 00:13:11,640
+Personally, I like to create my own UI.
+
+176
+00:13:12,000 --> 00:13:15,210
+I find it easier to manage, but you may not feel that way.
+
+177
+00:13:15,540 --> 00:13:21,150
+You may like to handle everything through PHP without having to worry about the success and javascript.
+
+178
+00:13:21,480 --> 00:13:22,590
+That's perfectly fine.
+
+179
+00:13:22,800 --> 00:13:24,600
+Use the solution that suits you.
+
+180
+00:13:25,260 --> 00:13:28,320
+Before I am this lecture, I want to do one more thing.
+
+181
+00:13:28,560 --> 00:13:31,230
+I want to sanitize these values myself.
+
+182
+00:13:31,230 --> 00:13:34,560
+Using the settings API doing that is very simple.
+
+183
+00:13:34,860 --> 00:13:37,080
+Go back to the Settings API file.
+
+184
+00:13:37,290 --> 00:13:41,430
+I'm going to minimize everything for a moment so that you can read the code better.
+
+185
+00:13:44,020 --> 00:13:48,140
+The Register's setting function has a third parameter, which is optional.
+
+186
+00:13:48,160 --> 00:13:49,710
+That can be taken advantage of.
+
+187
+00:13:50,080 --> 00:13:54,760
+The third parameter accepts a function that will sanitize the input when it's submitted.
+
+188
+00:13:55,180 --> 00:13:58,570
+The name of this function will be our opt sanitize.
+
+189
+00:14:01,190 --> 00:14:05,630
+To find this function at the very bottom, this function will be passed in the input.
+
+190
+00:14:08,020 --> 00:14:10,000
+This input should have two values.
+
+191
+00:14:10,210 --> 00:14:15,250
+All I'm going to do is sanitize both these values by running them through the ABS in function.
+
+192
+00:14:15,580 --> 00:14:19,090
+This will make sure the values, our numbers and our absolute.
+
+193
+00:14:21,200 --> 00:14:27,140
+Lastly, you just returned the input so that WordPress can update the option that pretty much wraps
+
+194
+00:14:27,140 --> 00:14:28,610
+it up for the Settings API.
+
+195
+00:14:28,970 --> 00:14:33,470
+We will keep working on this plugin, but I won't be using the settings API form anymore.
+
+196
+00:14:33,620 --> 00:14:36,800
+I'm just going to start out with HTML comments.
+

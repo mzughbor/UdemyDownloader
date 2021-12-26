@@ -1,0 +1,404 @@
+1
+00:00:07,440 --> 00:00:14,040
+In order to use react, we need to use something called No James, no, James is a program that allows
+
+2
+00:00:14,040 --> 00:00:16,590
+you to run JavaScript on your computer or server.
+
+3
+00:00:17,010 --> 00:00:19,410
+The official description is no.
+
+4
+00:00:19,780 --> 00:00:24,510
+James is a JavaScript runtime built on chromes, Veidt JavaScript engine.
+
+5
+00:00:24,930 --> 00:00:31,070
+No, just uses an event driven, non blocking IO model that makes it lightweight and efficient.
+
+6
+00:00:31,530 --> 00:00:33,690
+No doghouses package.
+
+7
+00:00:33,690 --> 00:00:39,330
+Eco-System NPM is the largest ecosystem of open source libraries in the world.
+
+8
+00:00:39,990 --> 00:00:45,000
+In the resource section of this lecture, I provide a link to the official Noga site.
+
+9
+00:00:45,330 --> 00:00:47,580
+I want you to download the latest version.
+
+10
+00:00:47,910 --> 00:00:50,910
+As of this course, the latest version is version 10.
+
+11
+00:00:51,270 --> 00:00:54,400
+If you see a newer version, then feel free to use that as well.
+
+12
+00:00:55,050 --> 00:01:00,330
+You'll also notice that there's an earlier version available for download, but that's only for those
+
+13
+00:01:00,330 --> 00:01:03,150
+who are unable to upgrade for one reason or another.
+
+14
+00:01:03,600 --> 00:01:09,090
+I've already installed no jobs on my computer, so I won't be going through the default installation.
+
+15
+00:01:09,510 --> 00:01:12,420
+Your installation should just be the default one.
+
+16
+00:01:12,690 --> 00:01:15,300
+You do not need to configure any of the settings.
+
+17
+00:01:15,960 --> 00:01:16,440
+All right.
+
+18
+00:01:16,470 --> 00:01:21,930
+So once you've installed no, James, let's explore what comes with it and how you can use it.
+
+19
+00:01:22,350 --> 00:01:25,560
+You'll be provided this program called No JS.
+
+20
+00:01:25,710 --> 00:01:28,740
+It should look something like this initially.
+
+21
+00:01:28,920 --> 00:01:32,340
+You may think this is a command prompt or terminal, but it isn't.
+
+22
+00:01:32,700 --> 00:01:35,460
+You can't run commands inside this program.
+
+23
+00:01:35,760 --> 00:01:40,470
+For example, if I were to run the commands else, then you'll see I get this error.
+
+24
+00:01:41,130 --> 00:01:46,350
+This program right here will allow you to run JavaScript code without having to create a file.
+
+25
+00:01:46,770 --> 00:01:51,660
+It's a great way to test things out really quick before you get into real or complex projects.
+
+26
+00:01:51,960 --> 00:01:59,010
+If I were to create a variable named Foo and assign its value to five, then I'll see this message called
+
+27
+00:01:59,010 --> 00:01:59,760
+undefined.
+
+28
+00:02:00,360 --> 00:02:06,420
+However, this variable I created is now available and I can get the value by simply typing in foo.
+
+29
+00:02:06,840 --> 00:02:10,830
+Every line of code you write here will be output it onto the console.
+
+30
+00:02:11,400 --> 00:02:15,540
+I'm going to exit out of this program as he won't be using it throughout this course.
+
+31
+00:02:15,840 --> 00:02:17,340
+I just wanted to show you this.
+
+32
+00:02:17,340 --> 00:02:20,960
+As you may want to test things out, feel free to play around with it.
+
+33
+00:02:21,600 --> 00:02:27,660
+The real power of No JS is the commands, modules and package Eco-System that comes with it.
+
+34
+00:02:28,110 --> 00:02:32,150
+I want you to open your text editor and pointed to any folder you want.
+
+35
+00:02:32,670 --> 00:02:36,630
+The great thing about no jazz is that you can use it anywhere on your system.
+
+36
+00:02:36,900 --> 00:02:39,720
+You don't have to use it in any particular folder.
+
+37
+00:02:40,530 --> 00:02:44,910
+That means you can use it in your documents, desktop or even Windows folder.
+
+38
+00:02:45,240 --> 00:02:49,500
+I'm going to keep things simple and continue working inside my HHG Docs folder.
+
+39
+00:02:49,770 --> 00:02:52,680
+I'm inside the folder called Node Dash Example.
+
+40
+00:02:53,500 --> 00:02:59,530
+Next, I'm going to create a JavaScript file called Index JS inside this file.
+
+41
+00:02:59,560 --> 00:03:02,610
+I'm simply going to console along the message.
+
+42
+00:03:02,620 --> 00:03:03,070
+Hello?
+
+43
+00:03:05,320 --> 00:03:09,040
+Then I want you to open your terminal and point it to this directory.
+
+44
+00:03:09,380 --> 00:03:10,720
+This is very important.
+
+45
+00:03:10,990 --> 00:03:15,160
+This will not work unless you're inside the same directory as your file.
+
+46
+00:03:15,460 --> 00:03:21,300
+I'm using Visual Studio Code and it automatically points to this folder whenever I open my terminal.
+
+47
+00:03:21,730 --> 00:03:26,680
+If you're not using visual studio code, then it's perfectly fine to use the command line that comes
+
+48
+00:03:26,680 --> 00:03:28,010
+with your operating system.
+
+49
+00:03:28,420 --> 00:03:35,020
+You may have to use the code and else commands to help you navigate around once you're inside this directory.
+
+50
+00:03:35,140 --> 00:03:39,250
+I then want you to run the following command node index.
+
+51
+00:03:41,610 --> 00:03:45,750
+After running this command, you'll see the message being outputted on to the console.
+
+52
+00:03:46,080 --> 00:03:47,960
+So what exactly is going on?
+
+53
+00:03:48,180 --> 00:03:50,100
+Let's take it one step at a time.
+
+54
+00:03:50,850 --> 00:03:55,830
+When you install no jass, you will be provided with a new command called node.
+
+55
+00:03:56,220 --> 00:03:59,930
+This command allows you to run a JavaScript file on your computer.
+
+56
+00:04:00,300 --> 00:04:03,710
+Actually, you don't even have to use a JavaScript file.
+
+57
+00:04:03,990 --> 00:04:07,020
+Let's just call the node command by itself.
+
+58
+00:04:07,650 --> 00:04:13,700
+What will happen is that no JS will turn your command line into a JavaScript environment on the spot.
+
+59
+00:04:14,130 --> 00:04:18,279
+So if I were to type the command ls then I'll get this error.
+
+60
+00:04:18,660 --> 00:04:21,120
+This is the same error we got last time.
+
+61
+00:04:21,480 --> 00:04:27,780
+This is basically the same as opening and using that program we used earlier to exit out of this.
+
+62
+00:04:27,790 --> 00:04:29,250
+You need to press control.
+
+63
+00:04:29,250 --> 00:04:30,480
+See on your keyboard.
+
+64
+00:04:31,170 --> 00:04:37,220
+The node command allows you to run JavaScript through the command line to take it a step further.
+
+65
+00:04:37,230 --> 00:04:43,740
+You don't have to use JavaScript inside the command line right after the node command you can pass in
+
+66
+00:04:43,740 --> 00:04:46,740
+the name of the file that contains your JavaScript code.
+
+67
+00:04:47,040 --> 00:04:50,600
+In our case, this would be the index JS file.
+
+68
+00:04:51,210 --> 00:04:57,930
+However, you don't have to pass in the file extension as node will automatically assume the file is
+
+69
+00:04:57,930 --> 00:04:58,920
+a JavaScript file.
+
+70
+00:04:59,400 --> 00:05:05,880
+Once you run, this command node will run whatever JavaScript is inside this file and this example.
+
+71
+00:05:05,880 --> 00:05:08,100
+All we did was output a simple message.
+
+72
+00:05:08,310 --> 00:05:15,540
+I'm going to move up one directory using the CD command, then I'm going to try and run the node index
+
+73
+00:05:15,540 --> 00:05:17,540
+command again right away.
+
+74
+00:05:17,580 --> 00:05:20,330
+I'll get an error saying that the file can't be found.
+
+75
+00:05:21,000 --> 00:05:23,130
+This is very important to highlight.
+
+76
+00:05:23,370 --> 00:05:27,650
+I have to be inside the same directory as this file to use this command properly.
+
+77
+00:05:27,990 --> 00:05:31,110
+Otherwise I'll just get an error if you want to.
+
+78
+00:05:31,200 --> 00:05:34,490
+You can just pass in the path and that will work as well.
+
+79
+00:05:34,860 --> 00:05:40,600
+For example, if I type in the following node will and run the file indexes.
+
+80
+00:05:41,070 --> 00:05:46,430
+However, I always recommend to just be in the same directory so you don't have to type as much.
+
+81
+00:05:46,740 --> 00:05:47,940
+It makes things easier.
+
+82
+00:05:48,240 --> 00:05:51,130
+I'm going to seed back into my directory.
+
+83
+00:05:51,750 --> 00:05:55,830
+This is just a basic example of what you can do with no JS.
+
+84
+00:05:56,160 --> 00:05:59,430
+You can run JavaScript on your computer instead of a web browser.
+
+85
+00:06:00,060 --> 00:06:06,210
+You can do so many things, such as work with the file system, create a web server or even create your
+
+86
+00:06:06,210 --> 00:06:07,020
+own commands.
+
+87
+00:06:07,350 --> 00:06:10,410
+The possibilities are endless for this course.
+
+88
+00:06:10,440 --> 00:06:12,100
+We won't be doing any of that.
+
+89
+00:06:12,810 --> 00:06:18,240
+The reason being is that we're already doing this kind of stuff in PHP, Apache and MySQL.
+
+90
+00:06:18,630 --> 00:06:22,260
+We also have WordPress that handles a lot of the logic for us.
+
+91
+00:06:22,350 --> 00:06:25,020
+So we don't need to use node for that kind of stuff.
+
+92
+00:06:25,710 --> 00:06:27,330
+So why are we using node?
+
+93
+00:06:27,570 --> 00:06:33,720
+Well, node can also help with organizing code and use advanced features that simply aren't available
+
+94
+00:06:33,720 --> 00:06:34,890
+in regular browsers.
+
+95
+00:06:35,400 --> 00:06:39,300
+These tools will also be helpful when developing blocks for Gutenberg.
+
+96
+00:06:39,960 --> 00:06:44,820
+Before we can do anything else, we need to understand how modules work and why they're needed.
+
+97
+00:06:45,480 --> 00:06:47,370
+There was one last thing I want to highlight.
+
+98
+00:06:47,610 --> 00:06:50,230
+You don't have to name your file in NextG.
+
+99
+00:06:50,250 --> 00:06:52,980
+Yes, you can name your files whatever you want.
+
+100
+00:06:53,310 --> 00:07:00,480
+You can name this Foo J.S. and run the command node foo which will run the JavaScript in that file.
+
+101
+00:07:01,110 --> 00:07:04,230
+All right, let's move onto modules in the next lecture.
+

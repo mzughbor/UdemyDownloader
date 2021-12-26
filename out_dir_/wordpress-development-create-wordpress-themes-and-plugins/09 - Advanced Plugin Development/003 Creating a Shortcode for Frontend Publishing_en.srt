@@ -1,0 +1,492 @@
+1
+00:00:07,330 --> 00:00:13,330
+It's time to create our very first shortcode, what exactly is a shortcode, a shortcode, it's just
+
+2
+00:00:13,330 --> 00:00:18,820
+a piece of text that a user can paste into their content that will transform itself into Gmail to render
+
+3
+00:00:18,820 --> 00:00:19,930
+your content differently.
+
+4
+00:00:20,620 --> 00:00:22,690
+That sounds similar to how a block works.
+
+5
+00:00:23,050 --> 00:00:29,920
+Prior to version 5.0, short codes were how you would create dynamic content, slideshows, video players,
+
+6
+00:00:29,920 --> 00:00:35,110
+call outs and just about anything else was built with short codes instead of short codes.
+
+7
+00:00:35,140 --> 00:00:39,000
+WordPress highly recommends using blocks with the introduction of Gutenberg.
+
+8
+00:00:39,640 --> 00:00:44,500
+As time goes on, blocks will be the de facto standard for creating dynamic content.
+
+9
+00:00:44,770 --> 00:00:49,720
+For now, short codes are still prevalent, and so taking the time to understand how they work will
+
+10
+00:00:49,720 --> 00:00:53,270
+help you with projects that require you to convert shortcode into blocks.
+
+11
+00:00:53,920 --> 00:00:56,170
+Luckily, shortcode aren't complicated.
+
+12
+00:00:56,470 --> 00:01:01,180
+Unlike blocks, you don't need to know any new features of IP or JavaScript.
+
+13
+00:01:01,900 --> 00:01:04,870
+The short code we're going to create will be very powerful.
+
+14
+00:01:05,200 --> 00:01:09,610
+What we want to do is provide a form that a user can use to submit a recipe.
+
+15
+00:01:10,000 --> 00:01:15,310
+In this part of the course, we'll be looking at how to create shortcode codes, make AJAX requests,
+
+16
+00:01:15,310 --> 00:01:19,010
+sanitizing HTML and creating a post dynamically.
+
+17
+00:01:19,330 --> 00:01:23,820
+It's definitely a lot to do, but I assure you I'll show you every step of the way.
+
+18
+00:01:25,850 --> 00:01:31,760
+Let's take a look at the short coats API codecs page, I provide a link to this page in the resource
+
+19
+00:01:31,760 --> 00:01:32,930
+section of this lecture.
+
+20
+00:01:33,260 --> 00:01:38,600
+Skimming through this page, you can see that the shortcode API provides a lot of power for customizing
+
+21
+00:01:38,600 --> 00:01:39,110
+our site.
+
+22
+00:01:39,620 --> 00:01:42,290
+Shortcode can be used almost like Tagg's.
+
+23
+00:01:42,590 --> 00:01:45,350
+They can have attributes and even content in between.
+
+24
+00:01:46,070 --> 00:01:51,380
+Creating a shortcode is almost similar to using hooks inside the main plugin file.
+
+25
+00:01:51,380 --> 00:01:55,850
+Under the shortcode section, we're going to call a function called Add Shortcode.
+
+26
+00:01:58,120 --> 00:02:02,980
+This function has two parameters, which is the name of the shortcode and the function to call when
+
+27
+00:02:02,980 --> 00:02:04,120
+the short code is used.
+
+28
+00:02:04,750 --> 00:02:07,500
+We're going to call this shortcode recipe creator.
+
+29
+00:02:07,900 --> 00:02:10,509
+The function we want to call is our recipe.
+
+30
+00:02:10,509 --> 00:02:11,650
+Create or shortcode.
+
+31
+00:02:13,880 --> 00:02:19,460
+Let's define this function now, create a folder called Shortcode Inside the includes folder.
+
+32
+00:02:21,520 --> 00:02:28,240
+Now create a file called creator and define the function inside here, make sure to include it from
+
+33
+00:02:28,240 --> 00:02:29,260
+the main plugin file.
+
+34
+00:02:34,130 --> 00:02:37,370
+We're going to simply return a hello world string.
+
+35
+00:02:39,550 --> 00:02:45,250
+We can now use our shortcode, let's create a page called Submit Recipe and insert the short code.
+
+36
+00:02:47,440 --> 00:02:51,120
+Inserting a shortcode into the Gutenberg Editta requires a certain block.
+
+37
+00:02:51,400 --> 00:02:55,710
+If you were to scroll down the list of blocks, you should find a category called widgets.
+
+38
+00:02:56,050 --> 00:02:58,120
+One of the blocks should be called shortcode.
+
+39
+00:02:58,390 --> 00:03:04,660
+And this block to the page, basically, it's written just like an HTML element, but with square brackets
+
+40
+00:03:04,660 --> 00:03:08,320
+instead of angle brackets, input the name recipe creator.
+
+41
+00:03:10,370 --> 00:03:12,110
+We won't be adding anything else.
+
+42
+00:03:12,260 --> 00:03:16,580
+Go ahead and publish the page, let's add the page to the main menu as well.
+
+43
+00:03:22,240 --> 00:03:26,320
+If we navigate to our page, we'll find Hello, World Outputted.
+
+44
+00:03:26,710 --> 00:03:31,000
+Now that we've confirmed the shortcode is working, we can begin creating the form.
+
+45
+00:03:31,630 --> 00:03:36,070
+Back inside, the editor create another file called creator Dast Templated.
+
+46
+00:03:39,090 --> 00:03:47,310
+Open the file inside the assets, extras creator Dasch Templated copy and paste the code from the text
+
+47
+00:03:47,310 --> 00:03:48,480
+file into the template.
+
+48
+00:03:50,620 --> 00:03:56,470
+There's nothing super special going on here, it's just a regular form using Bootstrap Mark-Up, each
+
+49
+00:03:56,470 --> 00:04:01,500
+input field has an ID attribute which will be using to grab the inputs value later on.
+
+50
+00:04:01,900 --> 00:04:03,580
+I'll provide this template for you.
+
+51
+00:04:03,580 --> 00:04:08,980
+In the resources section of this lecture, you'll notice that I haven't interviewed Bootstrap.
+
+52
+00:04:09,280 --> 00:04:12,100
+This is because our theme already uses bootstrap.
+
+53
+00:04:12,460 --> 00:04:16,890
+It's important to include bootstrap, regardless of whether the team has it or not.
+
+54
+00:04:17,079 --> 00:04:19,000
+It is overkill but necessary.
+
+55
+00:04:19,269 --> 00:04:23,860
+The only reason I'm not doing this is because this is just an example plugin for this course.
+
+56
+00:04:24,460 --> 00:04:29,260
+I'm not too worried about adding bootstrap since I already know my theme uses bootstrap.
+
+57
+00:04:29,830 --> 00:04:32,530
+Let's output this form now like before.
+
+58
+00:04:32,620 --> 00:04:38,650
+We're going to create a variable called creator of HTML and set its value to the value returned by the
+
+59
+00:04:38,650 --> 00:04:40,300
+file get contents function.
+
+60
+00:04:42,500 --> 00:04:49,640
+I'm going to pass in creator Dasch template and set its second parameter to true, then we're going
+
+61
+00:04:49,640 --> 00:04:51,620
+to simply return this variable.
+
+62
+00:04:53,830 --> 00:04:59,350
+Refresh your page and you should see the form, this form is pretty simple, we don't have any tags
+
+63
+00:04:59,350 --> 00:05:01,390
+or categories or featured images.
+
+64
+00:05:01,600 --> 00:05:04,930
+We're going to keep it to just the title and content.
+
+65
+00:05:05,530 --> 00:05:10,050
+I want users to be able to use the tiny MCE editor for editing the content.
+
+66
+00:05:10,330 --> 00:05:15,730
+It may be tempting to use the Gutenberg editor, but currently it's very difficult to load in the Gutenberg
+
+67
+00:05:15,730 --> 00:05:16,180
+editor.
+
+68
+00:05:16,540 --> 00:05:21,370
+You don't have to worry about using a different editor as WordPress will still be able to convert the
+
+69
+00:05:21,370 --> 00:05:28,870
+content into something Gutenberg compatible to load in the tiny MCE Ed WordPress provides a handy function
+
+70
+00:05:28,870 --> 00:05:30,690
+for us called WP Editor.
+
+71
+00:05:31,090 --> 00:05:32,140
+Let's use this now.
+
+72
+00:05:32,470 --> 00:05:36,970
+Right after grabbing our template called the Function WP Underscore Editor.
+
+73
+00:05:39,090 --> 00:05:45,090
+In the resource section, I provide a link to learn more about this function, this function has three
+
+74
+00:05:45,090 --> 00:05:49,700
+parameters, which is the default content, the ID and then some additional settings.
+
+75
+00:05:50,010 --> 00:05:53,630
+We want the content to be empty so will pass in an empty string.
+
+76
+00:05:54,120 --> 00:05:56,310
+The ID name is very important.
+
+77
+00:05:56,490 --> 00:06:03,240
+On the Codex page, WordPress tells us to use only lowercase letters or underscores otherwise the editor
+
+78
+00:06:03,240 --> 00:06:04,280
+won't work properly.
+
+79
+00:06:04,890 --> 00:06:09,150
+In that case, I'm going to set the ID to recipe content editor.
+
+80
+00:06:11,570 --> 00:06:14,880
+Let's refresh our page and see the results of this function.
+
+81
+00:06:15,560 --> 00:06:17,930
+Well, this isn't exactly what we wanted.
+
+82
+00:06:18,290 --> 00:06:20,960
+We got the editor, but there are two problems.
+
+83
+00:06:21,170 --> 00:06:26,600
+If you look at the HTML, it's outputted right outside the form, and it didn't replace the text area
+
+84
+00:06:26,600 --> 00:06:27,980
+filled with the same ID name.
+
+85
+00:06:28,460 --> 00:06:33,270
+This is because the WP editor function echoes out the editor right away.
+
+86
+00:06:33,680 --> 00:06:34,510
+We don't want that.
+
+87
+00:06:34,880 --> 00:06:38,540
+We want to add the editor and replace the TextField with that editor.
+
+88
+00:06:38,780 --> 00:06:40,980
+To do this, we will need to do some hacking.
+
+89
+00:06:41,720 --> 00:06:45,230
+The solution is very simple and that's by using PCP's output.
+
+90
+00:06:45,230 --> 00:06:51,440
+Buffer's PGP provides a set of function that allows us to control the output, which is what we'll need
+
+91
+00:06:51,440 --> 00:06:53,670
+to make this editor work the way we want it to.
+
+92
+00:06:54,080 --> 00:06:56,330
+You'll see how this works in just a moment.
+
+93
+00:06:57,080 --> 00:06:58,190
+First things first.
+
+94
+00:06:58,340 --> 00:07:03,590
+Let's go back to the template and replace this form group with a placeholder called Content Editor.
+
+95
+00:07:05,800 --> 00:07:11,650
+Back inside the shortcode function, we're going to create another function called our Generate Content
+
+96
+00:07:11,650 --> 00:07:12,130
+editor.
+
+97
+00:07:14,330 --> 00:07:17,880
+Inside this function, we're going to call the function of start.
+
+98
+00:07:18,290 --> 00:07:22,160
+This is a function that will grab any content that is outputted.
+
+99
+00:07:22,610 --> 00:07:27,590
+This function will prevent the content from being outputted until you tell it to or until the page is
+
+100
+00:07:27,590 --> 00:07:28,550
+finished executing.
+
+101
+00:07:28,940 --> 00:07:35,090
+So if we were to echo out Hello world, this won't be outputted until the script is finished running.
+
+102
+00:07:35,840 --> 00:07:41,270
+Because of this, we can grab the WP editor function and put it right after the output buffer.
+
+103
+00:07:43,370 --> 00:07:47,220
+It's safe to assume that the content editor won't be outputted right away.
+
+104
+00:07:47,750 --> 00:07:54,200
+Create a variable named editor content and set its value to the value returned by the Obbie get clean
+
+105
+00:07:54,200 --> 00:07:54,710
+function.
+
+106
+00:07:57,090 --> 00:08:02,120
+This function will grab any content that was outputted before this function was called and return it,
+
+107
+00:08:02,610 --> 00:08:06,330
+the last step is just to return the ED contents variable.
+
+108
+00:08:08,640 --> 00:08:14,730
+To summarize what's going on in this function, it goes something like this by calling the Obbie start
+
+109
+00:08:14,730 --> 00:08:20,580
+function, p p will create a buffer that will grab any content that has output it into a buffer.
+
+110
+00:08:21,030 --> 00:08:25,890
+There are various reasons you would want to do this, but we do it because we want to grab the editor
+
+111
+00:08:25,890 --> 00:08:29,370
+and not allow it to be outputted when we call the editor.
+
+112
+00:08:29,430 --> 00:08:31,080
+This is exactly what happens.
+
+113
+00:08:31,260 --> 00:08:35,340
+It gets stored in that buffer to grab everything inside the buffer.
+
+114
+00:08:35,340 --> 00:08:37,679
+We use the objet, get clean function.
+
+115
+00:08:38,039 --> 00:08:42,600
+Since the editor was stored in a buffer, we don't have to worry about it being outputted.
+
+116
+00:08:42,990 --> 00:08:48,540
+The Obbie get clean function will also take care of clearing the output so we don't get to editors.
+
+117
+00:08:49,140 --> 00:08:55,920
+We can now use this function, create a variable named editor HTML and set its value to the value returned
+
+118
+00:08:55,920 --> 00:08:58,590
+by the R generate content editor function.
+
+119
+00:09:00,800 --> 00:09:07,100
+Using the string replace function will replace the placeholder with the generated ed HTML.
+
+120
+00:09:11,990 --> 00:09:16,560
+Let's refresh the page and you should now see the editor placed correctly inside the form.
+
+121
+00:09:16,910 --> 00:09:20,010
+This is exactly what we wanted in the next lecture.
+
+122
+00:09:20,030 --> 00:09:22,660
+We'll take a look at how to make this forum work.
+
+123
+00:09:23,870 --> 00:09:24,450
+Oh.
+

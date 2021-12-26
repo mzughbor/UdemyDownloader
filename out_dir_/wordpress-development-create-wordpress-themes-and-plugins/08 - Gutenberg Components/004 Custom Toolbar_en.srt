@@ -1,0 +1,504 @@
+1
+00:00:07,550 --> 00:00:13,370
+In some situations, you may want to add in your own custom buttons to the toolbar, that's completely
+
+2
+00:00:13,370 --> 00:00:13,970
+possible.
+
+3
+00:00:14,240 --> 00:00:19,400
+WordPress even provides some components for making that process easier to get started.
+
+4
+00:00:19,430 --> 00:00:22,580
+Download the zip file in the resource section of this lecture.
+
+5
+00:00:23,120 --> 00:00:26,050
+Unzip the contents inside the app directory.
+
+6
+00:00:26,360 --> 00:00:29,530
+You should be provided with a folder called Night Mode Block.
+
+7
+00:00:29,840 --> 00:00:33,290
+We're going to be building a block where a user can enable Nite Mode.
+
+8
+00:00:33,620 --> 00:00:38,430
+Night Mode is a term used to describe UI that switches the contrast from light to dark.
+
+9
+00:00:38,720 --> 00:00:43,920
+This reduces eyestrain will make a button that will allow the user to toggle this feature.
+
+10
+00:00:44,150 --> 00:00:47,750
+There are several files here, but it's nothing you haven't seen before.
+
+11
+00:00:48,080 --> 00:00:49,880
+Let's start with the index file.
+
+12
+00:00:50,510 --> 00:00:53,990
+I'm importing the icon for the block and an icon for the button.
+
+13
+00:00:54,320 --> 00:00:56,020
+Let's check that out for a minute.
+
+14
+00:00:56,210 --> 00:00:58,400
+I'm viewing the icon in Illustrator.
+
+15
+00:00:58,580 --> 00:01:01,090
+If you don't have Illustrator, that's perfectly fine.
+
+16
+00:01:01,400 --> 00:01:05,590
+I've already taken the time to export it as an SVG file and export it.
+
+17
+00:01:06,170 --> 00:01:09,620
+You can find the icon inside the icon JS file.
+
+18
+00:01:09,920 --> 00:01:16,460
+All I'm doing here is exporting the SVG code as the default value, switching back to the index while
+
+19
+00:01:16,550 --> 00:01:18,520
+I'm importing a SACE file.
+
+20
+00:01:18,860 --> 00:01:24,380
+If you look inside the SAS file, you'll find that I'm just applying a dark background color and a light
+
+21
+00:01:24,380 --> 00:01:25,040
+font color.
+
+22
+00:01:25,430 --> 00:01:30,500
+Take note that this will only apply if the Class Nite mode is applied to the element.
+
+23
+00:01:31,130 --> 00:01:33,530
+All right, let's go back to the index file.
+
+24
+00:01:33,680 --> 00:01:35,060
+Everything else is the same.
+
+25
+00:01:35,420 --> 00:01:38,240
+We're grabbing some components and registering the block.
+
+26
+00:01:38,540 --> 00:01:41,870
+I'm leaving out the key words property again to save room.
+
+27
+00:01:42,260 --> 00:01:43,340
+Feel free to add it in.
+
+28
+00:01:43,340 --> 00:01:47,300
+If you like the edit function, we'll display some basic content.
+
+29
+00:01:47,600 --> 00:01:51,170
+We're not going to bother adding input fields or changeable content.
+
+30
+00:01:51,470 --> 00:01:55,430
+Everything will be static besides the toolbar right above the content.
+
+31
+00:01:55,430 --> 00:01:57,770
+I'm loading the block controls component.
+
+32
+00:01:58,280 --> 00:02:02,060
+It's currently empty but will be adding our custom toolbar soon enough.
+
+33
+00:02:02,360 --> 00:02:05,960
+The same function contains the same HTML as above.
+
+34
+00:02:06,260 --> 00:02:07,010
+That should be it.
+
+35
+00:02:07,370 --> 00:02:13,040
+Now that we have an overview of things, let's get started to create a custom toolbar.
+
+36
+00:02:13,130 --> 00:02:15,110
+We're going to need a couple of components.
+
+37
+00:02:15,500 --> 00:02:20,660
+These components are optional, but they handle a lot for us, such as formatting, positioning and
+
+38
+00:02:20,660 --> 00:02:21,140
+design.
+
+39
+00:02:21,650 --> 00:02:25,880
+All of these components will come from the WP components object.
+
+40
+00:02:25,880 --> 00:02:27,080
+So D structure that.
+
+41
+00:02:29,340 --> 00:02:32,910
+We'll need the toolbar button and tooltip components.
+
+42
+00:02:38,000 --> 00:02:40,850
+All talk about what these components do in just a moment.
+
+43
+00:02:41,120 --> 00:02:46,910
+Next, we're going to set up some attributes we only need one which will determine if the content should
+
+44
+00:02:46,910 --> 00:02:50,930
+have night mode enabled, create an attribute called night mode.
+
+45
+00:02:53,120 --> 00:02:56,810
+The type will be boolean and the default will be false.
+
+46
+00:03:01,890 --> 00:03:07,830
+We're not setting a source or selectors instance will be a simple value that makes it perfect for storing
+
+47
+00:03:07,830 --> 00:03:14,490
+it inside the comments with the attributes set, let's begin creating the toolbar inside the controls
+
+48
+00:03:14,490 --> 00:03:15,120
+component.
+
+49
+00:03:15,180 --> 00:03:17,580
+I'm going to load in the toolbar component.
+
+50
+00:03:19,900 --> 00:03:24,910
+The toolbar component will take care of adding a separator between the other toolbars that might be
+
+51
+00:03:24,910 --> 00:03:29,920
+loaded in it will properly positioning your button within the block controls component.
+
+52
+00:03:30,610 --> 00:03:33,550
+Next, we're going to load in the tooltip component.
+
+53
+00:03:35,680 --> 00:03:40,550
+This component will display a tooltip if the user hovers over the content placed inside of it.
+
+54
+00:03:40,930 --> 00:03:45,060
+We don't have to worry about the events or positioning as that's handled for us.
+
+55
+00:03:45,490 --> 00:03:48,790
+The only attribute we need to set is the text attribute.
+
+56
+00:03:49,060 --> 00:03:51,940
+Set this to Nite Mode and make it translatable.
+
+57
+00:03:54,150 --> 00:04:00,570
+Insigne of the tooltip component, add the button component, the order does matter here, if the button
+
+58
+00:04:00,570 --> 00:04:05,790
+component is placed inside the toolbar component, the mesh stylings for the button component will be
+
+59
+00:04:05,790 --> 00:04:06,360
+adjusted.
+
+60
+00:04:06,810 --> 00:04:11,250
+The adjustment will make things look consistent with the other buttons on the toolbar.
+
+61
+00:04:11,970 --> 00:04:12,420
+All right.
+
+62
+00:04:12,570 --> 00:04:14,910
+We're going to apply a few things to this button.
+
+63
+00:04:15,240 --> 00:04:17,910
+First, we have to apply a couple of classes.
+
+64
+00:04:18,180 --> 00:04:20,339
+However, we run into one problem.
+
+65
+00:04:20,670 --> 00:04:24,470
+React currently doesn't support multiple classes for a component.
+
+66
+00:04:24,810 --> 00:04:28,850
+If you scroll up, you'll see I'm loading a module called Class Names.
+
+67
+00:04:29,400 --> 00:04:32,760
+This is a third party module that we installed long ago.
+
+68
+00:04:33,180 --> 00:04:36,840
+I promised a very long time ago to explain what this is for.
+
+69
+00:04:36,840 --> 00:04:38,460
+And now I finally can.
+
+70
+00:04:38,910 --> 00:04:42,980
+This module will take care of allowing multiple classes for a component.
+
+71
+00:04:43,230 --> 00:04:46,050
+It's very easy to use on the button.
+
+72
+00:04:46,050 --> 00:04:49,050
+I'm going to apply the class name attribute.
+
+73
+00:04:51,230 --> 00:04:53,720
+The value for this will be fastenings function.
+
+74
+00:04:55,740 --> 00:04:59,160
+This will accept in the list of class names you'd like to apply.
+
+75
+00:04:59,520 --> 00:05:06,420
+I'm going to add classes which are components dash Eikon, dash button and component's dash toolbar,
+
+76
+00:05:06,420 --> 00:05:08,130
+underscore, underscore control.
+
+77
+00:05:13,450 --> 00:05:19,720
+We're going to apply one more class, which is is dash active, however, this will be inside an object.
+
+78
+00:05:21,960 --> 00:05:25,960
+If we want to have dynamic classes, then we have to format it like this.
+
+79
+00:05:26,250 --> 00:05:30,480
+The name will be the class to add and the value can either be true or false.
+
+80
+00:05:30,690 --> 00:05:33,240
+If it's true, then the class will be added.
+
+81
+00:05:33,540 --> 00:05:35,610
+If false, it won't be added.
+
+82
+00:05:35,850 --> 00:05:39,150
+Set this to prompts on attributes in night mode.
+
+83
+00:05:41,330 --> 00:05:43,630
+By default, night mode will be false.
+
+84
+00:05:43,670 --> 00:05:50,030
+So this class shouldn't be applying the IS act of class will let the user visually know the button is
+
+85
+00:05:50,030 --> 00:05:50,550
+enabled.
+
+86
+00:05:50,930 --> 00:05:56,240
+I was able to find these classes by looking at the other components and toolbars WordPress creates.
+
+87
+00:05:56,540 --> 00:05:57,770
+It's not documented.
+
+88
+00:05:57,770 --> 00:06:02,900
+So it's always good practice to dive into the code itself to better understand how things work.
+
+89
+00:06:03,570 --> 00:06:06,910
+Next, we want to change that night mode attribute.
+
+90
+00:06:06,920 --> 00:06:11,060
+If this button is clicked, we basically want to flip the current value.
+
+91
+00:06:11,450 --> 00:06:14,690
+The button component has an event called on Click.
+
+92
+00:06:16,940 --> 00:06:22,670
+This will be set to an arrow function just like before, we'll call the set attributes function and
+
+93
+00:06:22,670 --> 00:06:26,150
+set the night mode attribute to its opposite value like so.
+
+94
+00:06:33,720 --> 00:06:38,040
+Next will end the button icon variable as the content inside.
+
+95
+00:06:43,890 --> 00:06:46,440
+The width and height should be 20 pixels.
+
+96
+00:06:46,650 --> 00:06:49,800
+I've already applied that to the icon itself.
+
+97
+00:06:50,100 --> 00:06:55,660
+Now that the button is functioning, we just have to apply this to the content itself below.
+
+98
+00:06:55,830 --> 00:07:00,240
+I'm going to call the class names function instead of setting the class statically.
+
+99
+00:07:02,520 --> 00:07:07,320
+All and the content Dasch example class and make the night class dynamic.
+
+100
+00:07:12,490 --> 00:07:16,480
+The night class will take care of adding the dark background and white text.
+
+101
+00:07:16,840 --> 00:07:19,330
+This is what we named it in our SAS files.
+
+102
+00:07:19,690 --> 00:07:23,320
+This will be set to prompts Don attributes night mode.
+
+103
+00:07:24,420 --> 00:07:29,780
+I'm going to copy this code and paste it over to the save function, since it's the exact same thing.
+
+104
+00:07:31,980 --> 00:07:39,390
+The block is now finished, the last step is to import it inside the app index, just file import the
+
+105
+00:07:39,390 --> 00:07:41,070
+night mode block module.
+
+106
+00:07:45,140 --> 00:07:49,220
+Into the block's directory and run the NPM run dev command.
+
+107
+00:07:53,590 --> 00:07:55,690
+You shouldn't receive any errors so far.
+
+108
+00:07:56,050 --> 00:08:01,690
+Go ahead and create a recipe post, if you were to search for the night mode block, then you should
+
+109
+00:08:01,690 --> 00:08:05,790
+be able to find it with the Warp Who icon and the block to the editor.
+
+110
+00:08:06,370 --> 00:08:08,410
+All you should see is a simple message.
+
+111
+00:08:08,590 --> 00:08:13,750
+If you were to select it, then you should see the toolbar appear with our custom button and icon.
+
+112
+00:08:14,050 --> 00:08:16,380
+You can click it and it should toggle night mode.
+
+113
+00:08:16,690 --> 00:08:20,720
+If you hover your mouse over the button, then you should see the tool tip as well.
+
+114
+00:08:21,040 --> 00:08:21,780
+This is great.
+
+115
+00:08:21,970 --> 00:08:27,430
+We now have our own custom toolbar turn on night mode and then save the post.
+
+116
+00:08:29,790 --> 00:08:34,980
+Try viewing it on the front, end the block should have the stylings applied to it if you did everything
+
+117
+00:08:34,980 --> 00:08:35,320
+right.
+
+118
+00:08:35,640 --> 00:08:37,220
+There's not much to this, honestly.
+
+119
+00:08:37,500 --> 00:08:42,030
+You're just loading in a few components and using them to help build your custom toolbar.
+
+120
+00:08:42,690 --> 00:08:45,660
+Before I am this lecture, I do want to note one thing.
+
+121
+00:08:45,960 --> 00:08:47,520
+Tool tips are optional.
+
+122
+00:08:47,700 --> 00:08:50,400
+If you wanted to, you could remove this like so.
+
+123
+00:08:52,770 --> 00:08:58,800
+This is perfectly fine, however, I prefer to add it because it can provide more context to the user
+
+124
+00:08:58,810 --> 00:09:01,660
+just in case they don't understand what your buttons do.
+
+125
+00:09:02,070 --> 00:09:03,180
+I'll add it back in.
+
+126
+00:09:03,750 --> 00:09:08,160
+That does it for now, will continue exploring more components in the next lecture.
+

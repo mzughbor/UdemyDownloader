@@ -1,0 +1,368 @@
+1
+00:00:07,470 --> 00:00:13,260
+You can have multiple functions attached to the same hook, it's perfectly normal for several plug ins
+
+2
+00:00:13,260 --> 00:00:14,320
+to use the same hook.
+
+3
+00:00:14,670 --> 00:00:21,230
+Let's look at how you would prioritize hooks, open the hooks example, plug in we created previously.
+
+4
+00:00:21,570 --> 00:00:25,620
+I'm going to copy and paste the WP footer hook and its function.
+
+5
+00:00:30,240 --> 00:00:36,540
+Then I'm going to change the functioning, I'm going to add underscore V two, I'm also going to change
+
+6
+00:00:36,540 --> 00:00:40,110
+the text and add version two for formatting reasons.
+
+7
+00:00:40,110 --> 00:00:43,140
+I'm going to add brake tags to both these functions.
+
+8
+00:00:47,330 --> 00:00:53,210
+Before you refresh the page, which text do you think will appear first, let's find out, refresh the
+
+9
+00:00:53,210 --> 00:00:58,730
+page and you'll notice that the first version displays first and version two displays.
+
+10
+00:00:58,730 --> 00:01:05,060
+Second, if I were to move the second function above the first, then the text positions will switch.
+
+11
+00:01:07,400 --> 00:01:13,730
+I'm going to refresh the page again, as you can see here, the version to text is appearing first.
+
+12
+00:01:14,150 --> 00:01:18,280
+By default, WordPress will run functions as first come, first serve.
+
+13
+00:01:18,620 --> 00:01:23,930
+You can completely override this by using the third parameter, which determines the priority of the
+
+14
+00:01:23,930 --> 00:01:24,400
+function.
+
+15
+00:01:25,160 --> 00:01:30,770
+I'm going to switch back these functions and I will use the third parameter of the add action function.
+
+16
+00:01:31,280 --> 00:01:35,570
+These parameters value must be an integer which determines the priority.
+
+17
+00:01:36,020 --> 00:01:39,470
+The lower the number, the higher their priority and vice versa.
+
+18
+00:01:39,830 --> 00:01:43,120
+By default, all functions get the priority of ten.
+
+19
+00:01:43,820 --> 00:01:45,890
+I want this function to run first.
+
+20
+00:01:46,070 --> 00:01:48,050
+I'll set it to something like five.
+
+21
+00:01:48,290 --> 00:01:53,450
+Let's refresh the page and you will now see the version two text appearing first.
+
+22
+00:01:53,870 --> 00:01:58,040
+Just like that, you can determine the order of your functions by setting the priority.
+
+23
+00:01:58,700 --> 00:02:00,890
+Even if you're not repeating the same hook.
+
+24
+00:02:00,890 --> 00:02:05,660
+Setting a priority can be helpful if other plugins are also using the same hook.
+
+25
+00:02:06,050 --> 00:02:11,810
+If you feel that your plug in deserves to run first, then you should set the priority to a low number.
+
+26
+00:02:12,500 --> 00:02:19,400
+Now that we understand how the priority works, let's see how plugins initiate these hooks in the resource
+
+27
+00:02:19,400 --> 00:02:19,880
+section.
+
+28
+00:02:19,880 --> 00:02:22,610
+I provide a link to the function WP footer.
+
+29
+00:02:23,030 --> 00:02:28,730
+If you scroll down to the source section, you'll see that all this function does is call a function
+
+30
+00:02:28,730 --> 00:02:29,970
+called do action.
+
+31
+00:02:30,620 --> 00:02:34,280
+This function will trigger all hooks related to the string passed in.
+
+32
+00:02:34,670 --> 00:02:38,510
+In this case, the WP Footer Action Hook is started.
+
+33
+00:02:38,960 --> 00:02:41,360
+This is how all action hooks are started.
+
+34
+00:02:41,630 --> 00:02:44,240
+It really is this simple to reiterate.
+
+35
+00:02:44,240 --> 00:02:47,960
+First of all, hooks need to be registered to register a hook.
+
+36
+00:02:47,960 --> 00:02:50,240
+You need to use the function, add action.
+
+37
+00:02:50,660 --> 00:02:54,020
+The hook you want to register is defined in the first parameter.
+
+38
+00:02:54,350 --> 00:02:57,440
+Keep in mind that WordPress will accept in any name.
+
+39
+00:02:57,980 --> 00:03:02,210
+If I were to pass in FUX, then WordPress will perfectly accept this.
+
+40
+00:03:02,510 --> 00:03:05,600
+It's very important to register Hooke's when you're plug in.
+
+41
+00:03:05,600 --> 00:03:06,860
+MPM is initiated.
+
+42
+00:03:07,310 --> 00:03:12,830
+After all, hooks are registered, WordPress will run its course and when it's time to run all hooks,
+
+43
+00:03:12,830 --> 00:03:17,960
+it will use the function do action followed by the name of the hook it would like to run.
+
+44
+00:03:18,590 --> 00:03:22,610
+WordPress uses this function throughout its core and cause multiple hooks.
+
+45
+00:03:23,060 --> 00:03:27,830
+This is why we never have to worry about running them to view a list of hooks.
+
+46
+00:03:27,860 --> 00:03:30,860
+You can find those in the resource section of this lecture.
+
+47
+00:03:31,190 --> 00:03:34,940
+There are two kinds of hooks which are action hooks and filter hooks.
+
+48
+00:03:35,420 --> 00:03:39,560
+I also provide a link to what WordPress calls the plugins API.
+
+49
+00:03:39,980 --> 00:03:43,460
+Here you can find a list of functions that makes hooks all possible.
+
+50
+00:03:43,730 --> 00:03:46,430
+Of course, you're not limited to the WordPress hooks.
+
+51
+00:03:46,610 --> 00:03:48,530
+You can even create your own hooks.
+
+52
+00:03:48,770 --> 00:03:52,430
+Let's explore how that works inside the plugin file.
+
+53
+00:03:52,430 --> 00:03:57,620
+Create a new action hook for the footer and call the function JHU footer.
+
+54
+00:03:57,980 --> 00:04:00,260
+I will define the function right afterwards.
+
+55
+00:04:06,630 --> 00:04:13,860
+I'm going to comment about our previous coat next, create a second function called Jiyu Kill WPE.
+
+56
+00:04:18,470 --> 00:04:24,800
+This function will never run unless we call it however I want to call it with a custom hook inside the
+
+57
+00:04:24,800 --> 00:04:25,740
+footer function.
+
+58
+00:04:25,760 --> 00:04:28,220
+I'm going to call the do action function.
+
+59
+00:04:28,760 --> 00:04:32,120
+The hook I want to run will be called Jiyu custom footer.
+
+60
+00:04:34,430 --> 00:04:37,290
+This is a completely custom hook that I just created.
+
+61
+00:04:37,670 --> 00:04:43,100
+There isn't anything else that I need to do now, any plug ins and things can hook into this event and
+
+62
+00:04:43,100 --> 00:04:44,190
+run their own functions.
+
+63
+00:04:44,780 --> 00:04:46,220
+I want to run my function.
+
+64
+00:04:46,220 --> 00:04:49,100
+J You killed up to do this.
+
+65
+00:04:49,100 --> 00:04:54,290
+I'm going to use the function, add action, and for the first parameter, I'm going to pass in our
+
+66
+00:04:54,290 --> 00:04:56,720
+custom hook called G.U. custom footer.
+
+67
+00:04:58,910 --> 00:05:05,970
+The second parameter is the Jiyu kill WPE function inside the J, you kill WPE function.
+
+68
+00:05:05,990 --> 00:05:08,150
+I'm going to echo out some text.
+
+69
+00:05:10,630 --> 00:05:16,900
+Just like that, we created a custom hook and can now run it, let's refresh the page and we should
+
+70
+00:05:16,900 --> 00:05:19,000
+now see our message being outputted.
+
+71
+00:05:21,170 --> 00:05:26,960
+Let me break down what's going on when WordPress is initialised, it will load all the plugins at this
+
+72
+00:05:26,960 --> 00:05:29,750
+point, the template nor the content is loaded.
+
+73
+00:05:30,140 --> 00:05:32,960
+Our hooks example, plug in will register its hooks.
+
+74
+00:05:33,170 --> 00:05:39,140
+Eventually, WordPress will begin loading the template, the template, we'll call it the WP footer
+
+75
+00:05:39,140 --> 00:05:39,650
+function.
+
+76
+00:05:39,860 --> 00:05:42,770
+As we saw earlier, the WP footer function.
+
+77
+00:05:42,770 --> 00:05:49,430
+We'll call it the do action function, which will trigger the WP footer event in the code we call the
+
+78
+00:05:49,430 --> 00:05:50,810
+do action function.
+
+79
+00:05:51,140 --> 00:05:53,440
+We can then trigger our own custom event.
+
+80
+00:05:53,720 --> 00:05:58,850
+In this case, the custom event would be Jiyu custom footer from here.
+
+81
+00:05:58,970 --> 00:06:03,520
+Any functions that are registered to this event will start to run in our code.
+
+82
+00:06:03,530 --> 00:06:09,170
+We hook into this event and the function that will end up running is the Jiyu Kill WPE function.
+
+83
+00:06:09,620 --> 00:06:12,110
+This function runs and outputs the text.
+
+84
+00:06:12,320 --> 00:06:12,870
+That's it.
+
+85
+00:06:13,550 --> 00:06:15,500
+This also works for filters.
+
+86
+00:06:15,500 --> 00:06:19,190
+However, the function for running a filter is called apply filters.
+
+87
+00:06:19,580 --> 00:06:24,530
+There are a couple of other functions, but we won't be going over them as they aren't used as much.
+
+88
+00:06:24,920 --> 00:06:30,080
+Now that you understand how the plugins API works, it's time to get started with plugin development.
+
+89
+00:06:30,350 --> 00:06:32,720
+If you feel a little lost, that's OK.
+
+90
+00:06:33,080 --> 00:06:37,040
+We'll be using the plugins API plenty once again.
+
+91
+00:06:37,280 --> 00:06:41,480
+Despite its name, the plugins API can also be used in theme's.
+
+92
+00:06:41,630 --> 00:06:43,640
+It's not exclusive to plugins.
+

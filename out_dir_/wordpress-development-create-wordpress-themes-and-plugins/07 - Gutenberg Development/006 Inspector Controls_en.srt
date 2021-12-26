@@ -1,0 +1,944 @@
+1
+00:00:07,230 --> 00:00:12,990
+The next step to building our block is to create the inspector controls what our inspector controls.
+
+2
+00:00:13,260 --> 00:00:16,379
+The inspector controls are the settings that appear on the sidebar.
+
+3
+00:00:16,680 --> 00:00:19,350
+Let's select the recipe block for a moment.
+
+4
+00:00:19,620 --> 00:00:23,010
+If you look at the sidebar, you'll see the custom class field.
+
+5
+00:00:23,550 --> 00:00:26,420
+All fields that appear here are inspector controls.
+
+6
+00:00:26,700 --> 00:00:29,010
+Let's see how WordPress uses this.
+
+7
+00:00:29,190 --> 00:00:31,680
+I'm going to add the paragraph block.
+
+8
+00:00:33,830 --> 00:00:38,920
+The paragraph block is simple, but if you look at the sidebar, then you'll see that it's very flexible.
+
+9
+00:00:39,260 --> 00:00:44,060
+We can change the size of the text, the background color and even change the alignment.
+
+10
+00:00:44,600 --> 00:00:46,630
+It's a very clean and simple design.
+
+11
+00:00:46,940 --> 00:00:53,240
+We can create our own custom controls or use the ones that come bundled by default for our recipe block.
+
+12
+00:00:53,240 --> 00:00:59,180
+We won't eat anything super complex, but we will go over how to use these components later in the course.
+
+13
+00:00:59,750 --> 00:01:05,390
+Let's get started back inside the scripts we're going to need to load in a component at the very top
+
+14
+00:01:05,390 --> 00:01:05,990
+destruct.
+
+15
+00:01:05,990 --> 00:01:10,400
+The Inspector controls property from the WP editor object.
+
+16
+00:01:14,740 --> 00:01:22,030
+This is a component, just like any other component, we can use its name back inside the edit function,
+
+17
+00:01:22,030 --> 00:01:24,090
+we'll want to return this component.
+
+18
+00:01:24,580 --> 00:01:29,230
+That may seem strange, but just keep following along and it'll make sense soon enough.
+
+19
+00:01:29,800 --> 00:01:31,000
+Here's the problem, though.
+
+20
+00:01:31,270 --> 00:01:33,900
+We are already returning some code.
+
+21
+00:01:34,240 --> 00:01:38,050
+We need to be able to return the inspector controls component.
+
+22
+00:01:38,380 --> 00:01:41,620
+Luckily, there's a way to return multiple components.
+
+23
+00:01:41,860 --> 00:01:45,550
+Instead of just returning the block, we're going to return an array.
+
+24
+00:01:48,750 --> 00:01:54,990
+This is a little trick with react, as I mentioned previously, you can't have multiple root elements.
+
+25
+00:01:55,230 --> 00:01:57,680
+This will cause react to give you errors.
+
+26
+00:01:57,960 --> 00:02:04,770
+However, you can return array of six components, allowing you to have multiple root elements right
+
+27
+00:02:04,770 --> 00:02:05,820
+before our block.
+
+28
+00:02:05,850 --> 00:02:08,669
+I'm going to use the inspector controls component.
+
+29
+00:02:12,620 --> 00:02:16,280
+I'm going to input the text hello in between these two tanks.
+
+30
+00:02:18,620 --> 00:02:23,960
+You'll notice that I'm not wrapping this around with a pair of parentheses, if we're returning an array
+
+31
+00:02:23,960 --> 00:02:26,810
+of components, then we can admit the parentheses.
+
+32
+00:02:27,170 --> 00:02:29,870
+I'm going to remove the parentheses from our block.
+
+33
+00:02:30,470 --> 00:02:32,120
+I'll break this down in a moment.
+
+34
+00:02:32,120 --> 00:02:33,650
+But let's see if this works.
+
+35
+00:02:33,890 --> 00:02:39,080
+CD into the blocks directory and run the NPM run dev command.
+
+36
+00:02:43,160 --> 00:02:49,360
+Next, go to the recipe post we created previously, you should see everything working normally.
+
+37
+00:02:49,580 --> 00:02:53,060
+If you look inside the console, then you should see no errors.
+
+38
+00:02:53,300 --> 00:02:56,480
+I'm going to select the recipe block we have here.
+
+39
+00:02:56,630 --> 00:02:58,480
+It should work without any errors.
+
+40
+00:02:59,000 --> 00:03:02,930
+If you look inside the inspector controls, you'll see the hello message.
+
+41
+00:03:02,930 --> 00:03:03,590
+We input it.
+
+42
+00:03:05,970 --> 00:03:11,450
+Let's break down what's going on back inside the scripts, we're returning an array of components.
+
+43
+00:03:12,090 --> 00:03:16,230
+This will tell WordPress that you have multiple components for it to use.
+
+44
+00:03:16,440 --> 00:03:20,520
+It will scan the array and look for a component named inspector controls.
+
+45
+00:03:20,760 --> 00:03:24,880
+If it finds this component than anything inside, it will be rendered on the sidebar.
+
+46
+00:03:25,450 --> 00:03:29,280
+Anything else will be rendered as the block on the content portion itself.
+
+47
+00:03:29,580 --> 00:03:33,740
+With that said, you don't have to arrange this in any particular order.
+
+48
+00:03:34,050 --> 00:03:37,740
+You can put the block itself as the first item in the array.
+
+49
+00:03:37,950 --> 00:03:39,090
+Whatever you prefer.
+
+50
+00:03:39,660 --> 00:03:45,420
+In order to use the inspector controls, you have to grab it from the WP or enter object like we're
+
+51
+00:03:45,420 --> 00:03:46,140
+doing above.
+
+52
+00:03:46,560 --> 00:03:49,740
+WordPress provides this component for you out of the box.
+
+53
+00:03:50,070 --> 00:03:55,320
+It will take care of placing your content in the correct area and we'll make sure it only displays if
+
+54
+00:03:55,320 --> 00:03:56,730
+the user selects your block.
+
+55
+00:03:57,480 --> 00:04:00,990
+Right now, if we look at our UI, it's not really appealing.
+
+56
+00:04:01,290 --> 00:04:07,530
+If you look below the title and icon, you'll see that the CIA says class field is under the advanced
+
+57
+00:04:07,530 --> 00:04:08,030
+box.
+
+58
+00:04:08,370 --> 00:04:09,840
+This is what's called a panel.
+
+59
+00:04:10,290 --> 00:04:13,620
+Panels are talkable, making them great for organization.
+
+60
+00:04:14,220 --> 00:04:17,510
+WordPress allows us to create our own panels easily.
+
+61
+00:04:17,820 --> 00:04:19,200
+Let's look at how that's done.
+
+62
+00:04:19,500 --> 00:04:21,959
+I want you to open the Gutenberg handbook.
+
+63
+00:04:22,170 --> 00:04:25,260
+You should have bookmarked it earlier on the sidebar.
+
+64
+00:04:25,260 --> 00:04:27,030
+Click on the components link.
+
+65
+00:04:27,330 --> 00:04:29,940
+WordPress states the following about this section.
+
+66
+00:04:30,600 --> 00:04:36,690
+This package is includes a library of generic WordPress components to be used for creating common UI
+
+67
+00:04:36,690 --> 00:04:40,230
+elements shared between screens and features of the WordPress dashboard.
+
+68
+00:04:40,950 --> 00:04:44,580
+The components found here can be used to create our own UI.
+
+69
+00:04:45,000 --> 00:04:49,560
+Under this section, you'll find loads of components we can use in our plugin.
+
+70
+00:04:49,950 --> 00:04:55,350
+One important thing I want to know is that some of the components here are not exclusive to the Gutenberg
+
+71
+00:04:55,350 --> 00:04:55,790
+editor.
+
+72
+00:04:56,220 --> 00:05:00,990
+A lot of these are generic components that can be used outside of Gutenberg if you wish.
+
+73
+00:05:02,860 --> 00:05:09,070
+Components that are placed inside the components section are general components, these components can
+
+74
+00:05:09,070 --> 00:05:14,710
+be used anywhere in the Gutenberg, what they can be inside the sidebar or in the top bar.
+
+75
+00:05:15,100 --> 00:05:20,800
+This isn't completely confirmed, but there's a possibility that the whole WordPress admin dashboard
+
+76
+00:05:20,800 --> 00:05:23,020
+will be converted into a react app.
+
+77
+00:05:23,620 --> 00:05:29,290
+To prepare for that, WordPress has gone ahead and prepared some generic components like the ones you'll
+
+78
+00:05:29,290 --> 00:05:30,490
+find in this section.
+
+79
+00:05:32,760 --> 00:05:36,930
+If you scroll down just a little further, click on the panel component.
+
+80
+00:05:37,380 --> 00:05:42,570
+This page will go over on how to use the panel components, feel free to read up on it.
+
+81
+00:05:42,570 --> 00:05:44,060
+To learn more about panels.
+
+82
+00:05:44,310 --> 00:05:50,730
+Let's begin using the components listed here to use a component from the components section.
+
+83
+00:05:50,880 --> 00:05:56,250
+We'll have to access them from the WP components object just like last time.
+
+84
+00:05:56,250 --> 00:06:01,370
+I want to d structure the WP components object to make our code readable.
+
+85
+00:06:01,770 --> 00:06:06,930
+I'm going to grab two things, which are the panel body and panel RO components.
+
+86
+00:06:09,300 --> 00:06:15,210
+The panel bonding component will take care of creating the Tokugawa panel you see in the sidebar, the
+
+87
+00:06:15,210 --> 00:06:19,780
+panel RO component will take care of spacing the content within the body of the panel.
+
+88
+00:06:20,280 --> 00:06:25,300
+This component is optional, but the spacing will help with organization and readability.
+
+89
+00:06:25,980 --> 00:06:31,800
+Now that we're importing these components, let's go back down to the inspector controls component and
+
+90
+00:06:31,800 --> 00:06:33,060
+add these in like cell.
+
+91
+00:06:37,960 --> 00:06:44,000
+The panel body component has an attribute called title, which we can use to assign a title to the panel.
+
+92
+00:06:44,440 --> 00:06:48,270
+I'm going to set this to basics and make it translatable as well.
+
+93
+00:06:51,910 --> 00:06:57,610
+Save your changes and refresh the page, if you select the recipe block, then you'll see the panel
+
+94
+00:06:57,610 --> 00:06:58,040
+appear.
+
+95
+00:06:58,450 --> 00:07:00,330
+It should have the title basics.
+
+96
+00:07:00,670 --> 00:07:02,410
+You can even toggle this panel.
+
+97
+00:07:02,740 --> 00:07:03,420
+This is great.
+
+98
+00:07:04,120 --> 00:07:06,030
+We did very little to make this work.
+
+99
+00:07:06,280 --> 00:07:12,220
+Now that we have a panel, let's add the input field so that the user can manipulate the block back
+
+100
+00:07:12,220 --> 00:07:13,220
+inside the editor.
+
+101
+00:07:13,270 --> 00:07:18,220
+I'm going to change the text inside the panel row and add a paragraph tag.
+
+102
+00:07:18,580 --> 00:07:22,380
+The text inside will be configure the contents of the block here.
+
+103
+00:07:22,690 --> 00:07:24,550
+It will also be translatable.
+
+104
+00:07:29,480 --> 00:07:35,210
+Below the panel row component, we're going to add our tech fields, you may be wondering why aren't
+
+105
+00:07:35,210 --> 00:07:38,270
+we going to add the fields inside the Panero component?
+
+106
+00:07:38,480 --> 00:07:40,250
+Well, to better explain why.
+
+107
+00:07:40,370 --> 00:07:44,100
+First, we have to understand how farm fields work in Gutenberg.
+
+108
+00:07:44,660 --> 00:07:47,030
+There are two ways to create form fields.
+
+109
+00:07:47,300 --> 00:07:51,500
+We can create them manually, like we would for any typical HTML form.
+
+110
+00:07:51,860 --> 00:07:55,240
+Alternatively, we can let WordPress create the fields.
+
+111
+00:07:55,460 --> 00:07:56,870
+There's no wrong answer here.
+
+112
+00:07:57,050 --> 00:07:59,860
+However, one way is easier than the other.
+
+113
+00:08:00,170 --> 00:08:04,760
+It may not look like it, but WordPress handles a lot for us behind the scenes.
+
+114
+00:08:05,420 --> 00:08:08,980
+To better understand this, let's look at one of the fields we'll be using.
+
+115
+00:08:09,380 --> 00:08:15,290
+Go back to the handbook and under the components section, click the text control component.
+
+116
+00:08:18,510 --> 00:08:25,230
+One of the components we'll be using is called text control, the text control component is pretty straightforward.
+
+117
+00:08:25,590 --> 00:08:28,190
+You just added in and define a few properties.
+
+118
+00:08:28,680 --> 00:08:30,030
+Let's dive even deeper.
+
+119
+00:08:30,190 --> 00:08:34,260
+I want you to open the GitHub repository just like last time.
+
+120
+00:08:34,260 --> 00:08:38,669
+You'll be able to find the component section inside the package directory.
+
+121
+00:08:39,090 --> 00:08:42,360
+All components can be found inside the source directory.
+
+122
+00:08:42,659 --> 00:08:45,720
+Let's quickly open the text control directory.
+
+123
+00:08:47,860 --> 00:08:54,280
+Most components start at the end next door file, you may see more files and other components, but
+
+124
+00:08:54,280 --> 00:08:58,640
+that's usually the case for more complex things inside this file.
+
+125
+00:08:58,660 --> 00:09:03,760
+There are quite a few things going on, but I want our main focus to be on the input field.
+
+126
+00:09:04,300 --> 00:09:08,960
+As you can see, all WordPress is doing is creating a regular input element.
+
+127
+00:09:09,490 --> 00:09:14,190
+This may not seem like much, but all of this here provides a better user experience.
+
+128
+00:09:14,440 --> 00:09:19,920
+Let's use this component to see what exactly is generated back inside the editor.
+
+129
+00:09:19,960 --> 00:09:23,020
+We're going to need to grab the text control component.
+
+130
+00:09:23,380 --> 00:09:30,070
+Since this is inside the components folder, it's safe to assume it's inside the WP components object.
+
+131
+00:09:30,460 --> 00:09:37,090
+If you're not sure where something is, then feel free to along the WP object or read the documentation
+
+132
+00:09:37,720 --> 00:09:41,800
+inside structuring of the WP components object.
+
+133
+00:09:41,950 --> 00:09:44,080
+Grab the text control component.
+
+134
+00:09:46,220 --> 00:09:51,350
+Inside the inspector control component, we're going to add the text control component.
+
+135
+00:09:53,490 --> 00:09:55,990
+There are a couple of required attributes.
+
+136
+00:09:56,220 --> 00:10:01,620
+The first is the label attribute, set this to ingredients and make it translatable.
+
+137
+00:10:06,790 --> 00:10:12,340
+Then we're going to set the help attribute this is optional, but if you have it, then WordPress will
+
+138
+00:10:12,340 --> 00:10:16,590
+and text below the field with additional instructions on how to use this field.
+
+139
+00:10:17,110 --> 00:10:22,690
+The value for this will be, example, tomatoes, lettuce, olive oil, etc..
+
+140
+00:10:27,680 --> 00:10:33,810
+Up next is the value attribute, this will be the value of the field, this should be dynamic.
+
+141
+00:10:33,950 --> 00:10:35,890
+But we're going to make it static for now.
+
+142
+00:10:36,200 --> 00:10:40,370
+We haven't talked about attributes yet, so we're going to set this to test.
+
+143
+00:10:42,580 --> 00:10:48,640
+Lastly, we have the on change attribute, you may be used to listening for events in JavaScript, but
+
+144
+00:10:48,640 --> 00:10:50,250
+this is already JavaScript.
+
+145
+00:10:50,440 --> 00:10:55,810
+So if that's the case, then Java Sex provides a way to listen for events by using attributes.
+
+146
+00:10:56,110 --> 00:10:59,980
+Most events start with the word on, followed by the name of the event.
+
+147
+00:11:00,530 --> 00:11:03,640
+In this case, it would be when the input field is updated.
+
+148
+00:11:03,880 --> 00:11:06,740
+If it is, then the value inside will be triggered.
+
+149
+00:11:07,090 --> 00:11:10,320
+Ninety nine percent of the time you'll want to run a function.
+
+150
+00:11:10,750 --> 00:11:14,260
+I'm going to pass an arrow function that will accept in a value.
+
+151
+00:11:18,960 --> 00:11:25,200
+The value will be referred to as new value, then I'm going to console log the value.
+
+152
+00:11:27,320 --> 00:11:33,590
+The new value variable will be whatever the user input it, I know what may not make complete sense,
+
+153
+00:11:33,590 --> 00:11:37,830
+but react gives us the opportunity to work with the new value before we save it.
+
+154
+00:11:38,300 --> 00:11:40,370
+We won't be saving it in this lecture.
+
+155
+00:11:40,580 --> 00:11:43,080
+We just want to log it to see if it works.
+
+156
+00:11:43,700 --> 00:11:46,560
+Save your changes and refresh the Gutenberg editor.
+
+157
+00:11:46,910 --> 00:11:48,500
+Everything should be working fine.
+
+158
+00:11:48,770 --> 00:11:50,870
+Make sure your console is opened.
+
+159
+00:11:51,140 --> 00:11:52,640
+Select the recipe block.
+
+160
+00:11:52,970 --> 00:11:57,650
+You should see the input field appear before we go over what's generated.
+
+161
+00:11:57,680 --> 00:12:00,560
+Let's see if the on change function is working.
+
+162
+00:12:00,740 --> 00:12:02,210
+Input anything you like.
+
+163
+00:12:02,450 --> 00:12:05,300
+You should see the value appear inside the console.
+
+164
+00:12:07,470 --> 00:12:12,070
+All right, now that we've confirmed that the function is working, let's see what's generated.
+
+165
+00:12:12,690 --> 00:12:14,810
+I want you to inspect the input field.
+
+166
+00:12:15,150 --> 00:12:16,140
+First things first.
+
+167
+00:12:16,260 --> 00:12:21,860
+The panel RO component we use created this div tag with the class component panel room.
+
+168
+00:12:22,320 --> 00:12:26,820
+If you look inside this, you'll see the paragraph tag we created earlier.
+
+169
+00:12:27,420 --> 00:12:28,490
+Right below this.
+
+170
+00:12:28,500 --> 00:12:33,420
+We should have the input field created by using the text control component.
+
+171
+00:12:33,600 --> 00:12:36,210
+WordPress generated some extra HTML.
+
+172
+00:12:36,540 --> 00:12:41,940
+The input itself will be inside the div tag with the class component based control.
+
+173
+00:12:42,660 --> 00:12:46,110
+All these elements and classes bring structure to our input.
+
+174
+00:12:46,410 --> 00:12:50,360
+If you look at the input field, you'll see that it matches in design as well.
+
+175
+00:12:50,670 --> 00:12:55,230
+We could have created this ourselves, but why do that when WordPress takes care of it?
+
+176
+00:12:55,230 --> 00:12:59,360
+For us, this makes our code look cleaner and easier to manage.
+
+177
+00:12:59,940 --> 00:13:02,790
+Another thing worth mentioning is the accessibility.
+
+178
+00:13:03,180 --> 00:13:06,710
+The Gutenberg project has put emphasis on accessibility.
+
+179
+00:13:07,140 --> 00:13:11,010
+If you look at the input field, you'll find an attribute called Ariah.
+
+180
+00:13:11,400 --> 00:13:15,000
+These attributes help people with disabilities use your component.
+
+181
+00:13:15,630 --> 00:13:20,100
+Accessibility is something that shouldn't be overlooked in a future lecture.
+
+182
+00:13:20,190 --> 00:13:25,710
+I go over accessibility a little more in depth, but for now we'll let WordPress handle it.
+
+183
+00:13:26,010 --> 00:13:31,470
+Hopefully I convinced you to use the components WordPress provides rather than creating this on your
+
+184
+00:13:31,470 --> 00:13:31,740
+own.
+
+185
+00:13:32,550 --> 00:13:36,150
+Let's go back to the editor and create fields for the other options.
+
+186
+00:13:36,420 --> 00:13:39,330
+I'm going to copy and paste this to more times.
+
+187
+00:13:39,630 --> 00:13:42,900
+I'll update each one for the cooking time and utensils.
+
+188
+00:13:54,480 --> 00:13:57,130
+Pause the video so you can have what I have.
+
+189
+00:13:57,400 --> 00:14:04,110
+We're going to need two more fields for the cooking experience and meal type options rather than using
+
+190
+00:14:04,110 --> 00:14:05,080
+an input field.
+
+191
+00:14:05,140 --> 00:14:07,400
+We're going to use a dropdown field.
+
+192
+00:14:08,010 --> 00:14:09,630
+Let's go back to the handbook.
+
+193
+00:14:09,870 --> 00:14:14,220
+The name of the component will be using this time is called Select Control.
+
+194
+00:14:16,340 --> 00:14:22,160
+Here is what WordPress has to say, select control component is used to generate select input.
+
+195
+00:14:22,190 --> 00:14:27,680
+Fields, just by reading that, we know that this is indeed the component we want to use.
+
+196
+00:14:27,980 --> 00:14:29,260
+Just to double check.
+
+197
+00:14:29,390 --> 00:14:33,130
+Let's view the next James file in the GitHub repository.
+
+198
+00:14:33,500 --> 00:14:40,610
+You can find this inside the packages components source slash select control directory.
+
+199
+00:14:42,820 --> 00:14:48,340
+If you look inside the code, you'll find the element generated is a select element with the options
+
+200
+00:14:48,340 --> 00:14:48,820
+inside.
+
+201
+00:14:49,630 --> 00:14:56,140
+All right, let's begin back inside the scripts we need to restructure the select control component
+
+202
+00:14:56,140 --> 00:14:58,690
+from the WP components object.
+
+203
+00:15:02,000 --> 00:15:06,860
+Then under the input text fields, use the select control component.
+
+204
+00:15:10,740 --> 00:15:16,650
+The label will be cooking experience, and the help attribute will be how skilled should the reader
+
+205
+00:15:16,650 --> 00:15:16,950
+be?
+
+206
+00:15:17,280 --> 00:15:18,840
+Both will be translatable.
+
+207
+00:15:27,290 --> 00:15:31,950
+Next is the value attribute, just like last time, will make this static.
+
+208
+00:15:32,120 --> 00:15:33,980
+I'm going to set it to beginner.
+
+209
+00:15:36,300 --> 00:15:41,730
+Next, we have the options attribute, this will be set to an array of all the values.
+
+210
+00:15:41,910 --> 00:15:43,710
+Each value should be an object.
+
+211
+00:15:43,920 --> 00:15:47,790
+Each object will need two properties called value and label.
+
+212
+00:15:55,090 --> 00:15:57,400
+I'm going to set both to beginner.
+
+213
+00:15:59,600 --> 00:16:03,800
+I'm going to add two more objects with the values intermediate and expert.
+
+214
+00:16:08,750 --> 00:16:12,570
+This array will be used to generate the options for the select field.
+
+215
+00:16:12,980 --> 00:16:18,620
+The value will be used for the value attribute and the label should be human readable text.
+
+216
+00:16:19,010 --> 00:16:23,570
+The very last attribute will need to set is the on change attribute.
+
+217
+00:16:25,690 --> 00:16:29,470
+Once again, this will be an arrow function where we'll long the new value.
+
+218
+00:16:35,390 --> 00:16:41,630
+I'm now going to do the same for the meal type option, this time the values for the options will be
+
+219
+00:16:41,630 --> 00:16:43,220
+breakfast, lunch and dinner.
+
+220
+00:16:53,480 --> 00:16:59,450
+Pause the video if you need to have what I have, save your changes and refresh the page one last time.
+
+221
+00:16:59,810 --> 00:17:04,900
+If you select the recipe block, then you'll find the select fields appear.
+
+222
+00:17:05,300 --> 00:17:07,940
+These will not work, but that's to be expected.
+
+223
+00:17:08,569 --> 00:17:12,440
+If you were to change the value, then you'll see that the value is long.
+
+224
+00:17:12,680 --> 00:17:16,150
+However, the value inside the dropdown does not change.
+
+225
+00:17:16,400 --> 00:17:21,329
+This is because the value is static will be making this dynamic in a future lecture.
+
+226
+00:17:21,829 --> 00:17:24,170
+If you have what I have, then congrats.
+
+227
+00:17:24,200 --> 00:17:24,950
+We're finished.
+
+228
+00:17:25,160 --> 00:17:29,020
+We went through a lot just to get this far, but it was well worth it.
+
+229
+00:17:29,330 --> 00:17:32,000
+We have a consistent and clean you want.
+
+230
+00:17:32,390 --> 00:17:36,800
+Feel free to explore the options and values documented in the documentation.
+
+231
+00:17:37,310 --> 00:17:40,700
+Check out the code, change the values, create more fields.
+
+232
+00:17:40,940 --> 00:17:43,370
+Better yet, check out the other components.
+
+233
+00:17:43,580 --> 00:17:49,370
+We'll be going over the other components, but feed into your curiosity and explore the other components
+
+234
+00:17:49,370 --> 00:17:50,390
+before continuing.
+
+235
+00:17:50,720 --> 00:17:53,660
+Once you're ready, I'll see you in the next lecture.
+
+236
+00:17:55,310 --> 00:17:55,920
+Oh.
+

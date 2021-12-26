@@ -1,0 +1,552 @@
+1
+00:00:07,260 --> 00:00:12,540
+We're going to start things off by creating a theme, as I stated previously, this course does not
+
+2
+00:00:12,540 --> 00:00:16,820
+focus on most of the HTML access and JavaScript provided to you.
+
+3
+00:00:17,100 --> 00:00:21,150
+This is because WordPress is very flexible when it comes to developing themes.
+
+4
+00:00:21,630 --> 00:00:24,540
+With that said, I already have a static template ready.
+
+5
+00:00:24,780 --> 00:00:28,460
+You can download this template in the resource section of this lecture.
+
+6
+00:00:28,770 --> 00:00:31,580
+This template was built with version four of Bootstrap.
+
+7
+00:00:32,130 --> 00:00:35,280
+I've done nothing to this template that makes it WordPress ready.
+
+8
+00:00:35,610 --> 00:00:40,380
+I will walk you through every step to convert it from a static template into a WordPress theme.
+
+9
+00:00:41,010 --> 00:00:43,710
+If you have a template ready, then feel free to use it.
+
+10
+00:00:44,010 --> 00:00:48,090
+You don't have to make any access or HTML changes at this moment.
+
+11
+00:00:48,450 --> 00:00:50,070
+Any kind of template will work.
+
+12
+00:00:50,310 --> 00:00:55,110
+If you're new to WordPress development, then I recommend you use the template I provide.
+
+13
+00:00:55,770 --> 00:00:57,570
+Let's take a look at some of the pages.
+
+14
+00:00:57,750 --> 00:00:59,370
+Let's you the home page.
+
+15
+00:00:59,550 --> 00:01:01,920
+As you can see, everything is pretty standard.
+
+16
+00:01:02,040 --> 00:01:06,090
+We have a header puter sidebar and a list of posts.
+
+17
+00:01:06,360 --> 00:01:12,210
+Everything that you see here will be turned into a fully functional theme while the design is simple
+
+18
+00:01:12,210 --> 00:01:12,810
+and clean.
+
+19
+00:01:12,930 --> 00:01:14,040
+Don't let that fool you.
+
+20
+00:01:14,340 --> 00:01:16,620
+We're going to make this thing very flexible.
+
+21
+00:01:17,160 --> 00:01:23,040
+Now that we have an idea of what we're going to create, it's time to start coding, open the text editor
+
+22
+00:01:23,040 --> 00:01:27,570
+of your choice and point it to the WordPress directory we installed in the previous lecture.
+
+23
+00:01:28,230 --> 00:01:33,840
+Inside the WordPress installation navigate to WP dash content slash themes.
+
+24
+00:01:34,110 --> 00:01:38,100
+This is where WordPress will search for theme files from the start.
+
+25
+00:01:38,280 --> 00:01:41,550
+WordPress has already pre-package some themes for you.
+
+26
+00:01:42,240 --> 00:01:45,600
+We want to keep our theme separated from the rest of the themes.
+
+27
+00:01:45,600 --> 00:01:48,120
+So create a new folder called Udemy.
+
+28
+00:01:50,330 --> 00:01:53,210
+It's required that you create a folder for your theme.
+
+29
+00:01:53,690 --> 00:01:56,160
+This is so themes don't conflict with each other.
+
+30
+00:01:56,480 --> 00:01:59,730
+It's also great for organization inside this folder.
+
+31
+00:01:59,750 --> 00:02:01,910
+We will have to create two files.
+
+32
+00:02:02,210 --> 00:02:06,500
+The first file is styled that success and the second file is indexed.
+
+33
+00:02:09,680 --> 00:02:16,850
+These are the only two files required by WordPress to create a theme, the style access file is where
+
+34
+00:02:16,850 --> 00:02:19,100
+we will place or file header information.
+
+35
+00:02:19,490 --> 00:02:25,520
+A file header is just a comment block placed at the very top of the style that Keith's file that describes
+
+36
+00:02:25,520 --> 00:02:25,980
+our theme.
+
+37
+00:02:26,510 --> 00:02:30,940
+Let's open this file and create a file header in the resource section.
+
+38
+00:02:30,950 --> 00:02:34,190
+I provide a link to more information about the file header.
+
+39
+00:02:34,880 --> 00:02:40,220
+The file header is a blocked comment placed at the top of the file that has meta information about a
+
+40
+00:02:40,220 --> 00:02:40,890
+theme or plug.
+
+41
+00:02:41,450 --> 00:02:44,770
+I'll explain more in just a moment, but let's see this in action.
+
+42
+00:02:45,140 --> 00:02:51,710
+Scroll down to the theme file, header, example, section copy and paste this into the style that CSFs
+
+43
+00:02:51,710 --> 00:02:52,040
+file.
+
+44
+00:02:54,280 --> 00:02:59,590
+I'm going to remove most of this info except the theme name change this value to you.
+
+45
+00:02:59,590 --> 00:02:59,920
+To me.
+
+46
+00:03:02,090 --> 00:03:08,960
+That's it, this is the absolute minimum requirements for a theme, go to your WordPress admin dashboard
+
+47
+00:03:08,960 --> 00:03:14,240
+and navigate to appearance themes and empty blog with the theme name, you should appear.
+
+48
+00:03:14,750 --> 00:03:17,960
+You can actually activate this theme and start using it.
+
+49
+00:03:18,260 --> 00:03:21,560
+If you did everything right, then you should receive no errors.
+
+50
+00:03:22,070 --> 00:03:24,080
+Let's go to the front end of the site.
+
+51
+00:03:24,320 --> 00:03:25,940
+You will see an empty page.
+
+52
+00:03:25,940 --> 00:03:29,920
+However, WordPress throws no errors because we did everything required.
+
+53
+00:03:30,320 --> 00:03:35,900
+If you take a look at the source code, then you will find that WordPress added absolutely nothing because
+
+54
+00:03:35,900 --> 00:03:36,980
+that's our team's job.
+
+55
+00:03:37,430 --> 00:03:41,160
+As you can see, WordPress gives you complete control over your theme.
+
+56
+00:03:41,870 --> 00:03:43,370
+Let me prove this even further.
+
+57
+00:03:43,580 --> 00:03:46,960
+Open the index top file and add the text.
+
+58
+00:03:46,970 --> 00:03:47,810
+Hello, world.
+
+59
+00:03:50,230 --> 00:03:56,350
+Refresh the front page and you will now see it outputted WordPress is very smart and will automatically
+
+60
+00:03:56,350 --> 00:03:59,230
+load this file without us having to write any logic.
+
+61
+00:03:59,620 --> 00:04:04,340
+The index top file can be thought of as the default template for WordPress.
+
+62
+00:04:04,810 --> 00:04:08,240
+There are various templates we can create, but we'll cover that later.
+
+63
+00:04:08,800 --> 00:04:11,590
+I'm going to temporarily switch back to the theme.
+
+64
+00:04:11,590 --> 00:04:12,610
+Twenty seventeen.
+
+65
+00:04:14,970 --> 00:04:18,510
+Then I'm going to delete the index file.
+
+66
+00:04:25,490 --> 00:04:31,630
+I'm going to refresh the admin things page and you'll notice that the broken theme section appears below.
+
+67
+00:04:32,060 --> 00:04:35,930
+It's telling us that the index template file is missing.
+
+68
+00:04:36,350 --> 00:04:41,000
+WordPress is capable of finding out this information, even though this team is inactive.
+
+69
+00:04:41,480 --> 00:04:48,600
+The absolute minimum requirement for creating a WordPress theme is the style that iest index files and
+
+70
+00:04:48,600 --> 00:04:50,890
+the file header with just the name of a theme.
+
+71
+00:04:51,620 --> 00:04:57,560
+I'm going to create the index file again so we don't see this broken theme section.
+
+72
+00:05:00,070 --> 00:05:03,550
+Let's go back to the file header in the style that file.
+
+73
+00:05:03,940 --> 00:05:05,680
+Let me go over what's going on.
+
+74
+00:05:05,980 --> 00:05:12,790
+When WordPress retrieves a list of themes in your WordPress installation, it'll go to the WP dash content
+
+75
+00:05:12,790 --> 00:05:14,020
+slash themes folder.
+
+76
+00:05:14,410 --> 00:05:19,720
+Each theme should have its own folder, and WordPress will go through each one and look for a file name
+
+77
+00:05:19,720 --> 00:05:21,130
+style that counts.
+
+78
+00:05:21,730 --> 00:05:27,160
+If this file is available, then WordPress will scan the contents of this file and look for something
+
+79
+00:05:27,160 --> 00:05:28,210
+called a file header.
+
+80
+00:05:28,570 --> 00:05:34,620
+If a file header is available, WordPress will then extract each piece of information from that header.
+
+81
+00:05:35,110 --> 00:05:38,590
+The format is the name followed by a colon and then the value.
+
+82
+00:05:39,040 --> 00:05:44,590
+The data inside this comment is what WordPress calls meta information for theme's.
+
+83
+00:05:44,590 --> 00:05:46,680
+The only thing you need is the theme name.
+
+84
+00:05:47,170 --> 00:05:50,570
+I'm going to rehab the meta information we previously removed.
+
+85
+00:05:50,980 --> 00:05:52,660
+Let's go over this one by one.
+
+86
+00:05:53,410 --> 00:05:57,840
+The thing, Urai is a link to where users can view where your theme can be found.
+
+87
+00:05:57,850 --> 00:06:03,630
+Officially, I'm going to remove this piece of information, feel free to keep or remove it as well.
+
+88
+00:06:04,120 --> 00:06:07,000
+The author is the name of the creator of this theme.
+
+89
+00:06:07,390 --> 00:06:11,550
+This can be your own personal name, or if you're on a team, then the name of your team.
+
+90
+00:06:11,860 --> 00:06:14,890
+I'm going to set this to Jack, the author.
+
+91
+00:06:14,890 --> 00:06:19,600
+Uteri is the URL to your own personal site or your URL to your team's site.
+
+92
+00:06:19,960 --> 00:06:24,850
+I'm going to set this to https coingate you to me dot com.
+
+93
+00:06:27,100 --> 00:06:33,250
+The description is a brief summary about your theme, let's get this to a simple bootstrap WordPress
+
+94
+00:06:33,250 --> 00:06:33,520
+theme.
+
+95
+00:06:39,650 --> 00:06:45,410
+The version is the current version of this theme, since this is a brand new theme, will be setting
+
+96
+00:06:45,410 --> 00:06:46,670
+this to one point zero.
+
+97
+00:06:47,060 --> 00:06:49,580
+You can use whatever version schematic you want.
+
+98
+00:06:50,090 --> 00:06:54,060
+WordPress doesn't force you to stick any specific version schematic.
+
+99
+00:06:54,620 --> 00:06:58,550
+The license is simply the name of the license you'll be using.
+
+100
+00:06:59,000 --> 00:07:03,830
+I'm going to leave this as is for now, will be going over licenses later in this course.
+
+101
+00:07:04,490 --> 00:07:09,590
+The license uteri is the URL to where the user can find more information about the themes.
+
+102
+00:07:09,590 --> 00:07:15,310
+License the tags is the comma separated list of words that describe your theme.
+
+103
+00:07:15,860 --> 00:07:21,280
+This piece of information is used by WordPress as theme repository to help users find your theme.
+
+104
+00:07:21,770 --> 00:07:27,590
+If you plan on uploading your theme to WordPress dog, then setting this piece of information is important.
+
+105
+00:07:27,950 --> 00:07:32,210
+I don't plan on uploading this to the repository so we can remove this.
+
+106
+00:07:32,900 --> 00:07:36,020
+The last property we can set is the text domain.
+
+107
+00:07:36,410 --> 00:07:40,370
+The text domain is very important when it comes to translating our theme.
+
+108
+00:07:40,880 --> 00:07:45,410
+You can think of the text domain as a unique idea for our translations.
+
+109
+00:07:45,800 --> 00:07:50,030
+It's common practice to set the text domain to the same name as your folder.
+
+110
+00:07:50,480 --> 00:07:52,620
+In our case, we're going to send it to you.
+
+111
+00:07:52,750 --> 00:07:59,600
+Me, I promise you will be going more over what the text domain does and its role in WordPress development
+
+112
+00:07:59,600 --> 00:08:00,580
+later in the course.
+
+113
+00:08:00,980 --> 00:08:07,430
+For now, just know that if you want to make your themes or plugins translate ready, then set the text
+
+114
+00:08:07,430 --> 00:08:10,400
+domain to something unique right below.
+
+115
+00:08:10,430 --> 00:08:12,110
+There's this small bit of text.
+
+116
+00:08:12,320 --> 00:08:14,570
+You do not have to add this bit of information.
+
+117
+00:08:14,960 --> 00:08:20,900
+Authors usually use this space to add in more info about the theme, such as license info or developer
+
+118
+00:08:20,900 --> 00:08:21,290
+notes.
+
+119
+00:08:21,710 --> 00:08:26,210
+WordPress will not bother scanning this part of the file, so you do not have to worry about it.
+
+120
+00:08:26,600 --> 00:08:28,120
+I'm going to remove this bit.
+
+121
+00:08:30,630 --> 00:08:36,450
+Let's go back to the Themes admin page and refresh the page, you can click on the theme and you will
+
+122
+00:08:36,450 --> 00:08:38,610
+now see some of our information displayed.
+
+123
+00:08:39,179 --> 00:08:42,570
+As you can tell, so far, WordPress handles a lot for us.
+
+124
+00:08:42,870 --> 00:08:48,750
+If you'd like to know more about file headers, then I highly suggest you read the Codex page I provided
+
+125
+00:08:48,750 --> 00:08:49,140
+earlier.
+
+126
+00:08:49,830 --> 00:08:52,680
+This page details what metadata you can create.
+
+127
+00:08:53,100 --> 00:08:56,780
+You'll notice that it provides information about creating plug ins.
+
+128
+00:08:57,180 --> 00:09:01,600
+I want you to ignore this for now, as will be developing plug ins in a future section.
+
+129
+00:09:02,370 --> 00:09:05,360
+There's one last thing I want to do before I in this election.
+
+130
+00:09:05,790 --> 00:09:11,230
+While not required, WordPress will search for a file called Screenshot Dot PNG.
+
+131
+00:09:11,760 --> 00:09:17,400
+This file is basically a screenshot of your theme that will be displayed on the admin side of WordPress
+
+132
+00:09:17,820 --> 00:09:19,200
+and the resource section.
+
+133
+00:09:19,230 --> 00:09:21,900
+I provide a screenshot you can use for our theme.
+
+134
+00:09:22,410 --> 00:09:25,440
+Upload it to the Yuta missing directory we just created.
+
+135
+00:09:32,230 --> 00:09:37,750
+You can now refresh the themes admin page and you will now see our screenshot being displayed.
+
+136
+00:09:38,260 --> 00:09:40,840
+You can create your own screenshot if you like.
+
+137
+00:09:41,230 --> 00:09:45,360
+The recommended size for a screenshot is 880 by 660.
+
+138
+00:09:45,670 --> 00:09:48,940
+However, you should double the size for retina devices.
+

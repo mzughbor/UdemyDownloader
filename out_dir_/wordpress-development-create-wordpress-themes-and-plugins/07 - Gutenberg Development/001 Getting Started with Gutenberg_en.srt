@@ -1,0 +1,696 @@
+1
+00:00:07,040 --> 00:00:10,480
+It's time to get started with Guttenberg at this point.
+
+2
+00:00:10,550 --> 00:00:16,580
+You should be comfortable with Noad react and Westpac will be using these technologies to help us with
+
+3
+00:00:16,580 --> 00:00:17,800
+Gutenberg development.
+
+4
+00:00:18,080 --> 00:00:22,650
+If you're not comfortable with these concepts, then I recommend you check out the previous section.
+
+5
+00:00:23,270 --> 00:00:25,770
+Right now I'm looking at the Gutenberg editor.
+
+6
+00:00:26,060 --> 00:00:27,730
+Everything here is extendible.
+
+7
+00:00:27,980 --> 00:00:31,310
+There are two main areas you'll usually want to extend.
+
+8
+00:00:31,640 --> 00:00:34,010
+The first area is the content itself.
+
+9
+00:00:34,220 --> 00:00:37,640
+The content is made up of something WordPress calls Bloks.
+
+10
+00:00:37,880 --> 00:00:41,390
+It may not look like it, but every section here is a block.
+
+11
+00:00:41,660 --> 00:00:43,880
+Each block comes with its own settings.
+
+12
+00:00:44,090 --> 00:00:46,760
+I can even freely move them around if I wish.
+
+13
+00:00:47,360 --> 00:00:50,500
+WordPress provides a way to create your own blocks.
+
+14
+00:00:50,720 --> 00:00:53,220
+We'll take a look at how to do that in this section.
+
+15
+00:00:53,870 --> 00:00:56,660
+The other area you can extend is the sidebar.
+
+16
+00:00:56,930 --> 00:01:02,200
+The sidebar contains information such as the category tags, status, etc..
+
+17
+00:01:02,570 --> 00:01:04,950
+We'll be looking at how to extend this as well.
+
+18
+00:01:05,390 --> 00:01:11,480
+Every area is extendible, but these are the two main areas you'll find yourself wanting to extend often.
+
+19
+00:01:12,690 --> 00:01:14,160
+Here is what we're going to do.
+
+20
+00:01:14,460 --> 00:01:20,700
+Earlier, we created a recipe, custom post type, we're going to create a blog that allows users to
+
+21
+00:01:20,700 --> 00:01:22,530
+input information about a recipe.
+
+22
+00:01:22,920 --> 00:01:29,070
+This will include information such as ingredients, cooking time, utensils, cooking experience and
+
+23
+00:01:29,070 --> 00:01:29,760
+a meal type.
+
+24
+00:01:30,360 --> 00:01:34,120
+The overall process for creating a block will look like the following.
+
+25
+00:01:34,530 --> 00:01:37,050
+First, you have to prepare your environment.
+
+26
+00:01:37,440 --> 00:01:40,860
+This step is optional, but this is how I prefer to do things.
+
+27
+00:01:40,860 --> 00:01:43,560
+And so I will teach you how to prepare your environment.
+
+28
+00:01:43,980 --> 00:01:47,310
+This is basically setting up web pack, react and bable.
+
+29
+00:01:47,820 --> 00:01:50,220
+Next you have to load in those files.
+
+30
+00:01:50,400 --> 00:01:54,810
+Gutenberg comes with a few hooks for making sure your access files are loaded.
+
+31
+00:01:55,110 --> 00:01:58,200
+Then you have to register your block once again.
+
+32
+00:01:58,290 --> 00:02:00,470
+WordPress makes this process easy.
+
+33
+00:02:00,780 --> 00:02:03,700
+All you have to do is call a few functions and you're set.
+
+34
+00:02:04,500 --> 00:02:08,620
+Once you've taken care of that, you will need to create the settings for your block.
+
+35
+00:02:08,970 --> 00:02:12,550
+This includes stuff like the title icon and form fields.
+
+36
+00:02:12,840 --> 00:02:16,740
+Lastly, you will need to tell Gutenberg how it should display your block.
+
+37
+00:02:18,260 --> 00:02:23,390
+Now that we have an overview of things, let's start with the first step that would be preparing the
+
+38
+00:02:23,390 --> 00:02:29,180
+environment inside the recipe, plug and directory, create a folder called Bloks.
+
+39
+00:02:31,440 --> 00:02:37,170
+We will be placing all our code related to blogs and the Gutenberg editor here, you don't have to name
+
+40
+00:02:37,170 --> 00:02:39,390
+your files or folders, anything special.
+
+41
+00:02:39,600 --> 00:02:41,340
+You can name this, whatever you want.
+
+42
+00:02:41,730 --> 00:02:47,600
+I also want to highlight that we're not placing this folder inside the includes or assets folder.
+
+43
+00:02:48,060 --> 00:02:53,280
+This directory will contain a mixture of JavaScript, Cius and Code.
+
+44
+00:02:53,970 --> 00:02:56,460
+Gutenberg is mostly written with JavaScript.
+
+45
+00:02:56,790 --> 00:03:01,980
+This is why we're not placing it inside the includes directory as the code will be vastly different.
+
+46
+00:03:02,310 --> 00:03:08,190
+However, a lot of the logic inside these files do affect how WordPress functions rather than the user
+
+47
+00:03:08,190 --> 00:03:08,960
+experience.
+
+48
+00:03:09,270 --> 00:03:12,900
+That is also why we're not placing this inside the assets folder.
+
+49
+00:03:13,590 --> 00:03:16,110
+This is how I prefer to structure my plugin.
+
+50
+00:03:16,410 --> 00:03:19,470
+If you prefer to do something else, then that's completely fine.
+
+51
+00:03:19,800 --> 00:03:25,710
+In the resource section of this lecture, I provide a zip file that contains some starter files, download
+
+52
+00:03:25,710 --> 00:03:29,850
+it and unzip the contents into the blocks folder which just created.
+
+53
+00:03:32,050 --> 00:03:37,600
+This is basically the same setup we had in the previous section with some additional features, let's
+
+54
+00:03:37,600 --> 00:03:40,980
+go through this one by one, open the package file.
+
+55
+00:03:41,260 --> 00:03:43,240
+We're going to start with the dependencies.
+
+56
+00:03:43,870 --> 00:03:49,570
+The first module is the Bable core module, which will allow us to write the latest features of JavaScript
+
+57
+00:03:49,960 --> 00:03:50,830
+right after this.
+
+58
+00:03:50,840 --> 00:03:55,180
+We're loading the Bable plug ins, transform react module.
+
+59
+00:03:55,510 --> 00:04:00,730
+That's quite a long name, which can make it seem intimidating, but it performs one simple task.
+
+60
+00:04:00,940 --> 00:04:02,980
+It allows you to rename a function.
+
+61
+00:04:03,730 --> 00:04:07,810
+The function it'll change is the react create element function.
+
+62
+00:04:08,260 --> 00:04:12,460
+Previously you learned that this function will create an HTML element.
+
+63
+00:04:12,820 --> 00:04:17,250
+As you can imagine, it's a pretty common function to use no matter what you're building.
+
+64
+00:04:17,620 --> 00:04:22,210
+The problem with this is that react can change how this function works in the future.
+
+65
+00:04:22,990 --> 00:04:26,050
+WordPress prides itself on being backwards compatible.
+
+66
+00:04:26,380 --> 00:04:30,370
+If this function changes, then all plugins will have to update as well.
+
+67
+00:04:30,700 --> 00:04:35,980
+While the most popular plugins will keep up, the lesser used plugins will quickly become outdated.
+
+68
+00:04:36,280 --> 00:04:42,070
+To resolve this, WordPress Wrap's The react create element function with its own function.
+
+69
+00:04:42,400 --> 00:04:47,980
+Even if the react version changes, WordPress will make the adjustments required internally for you.
+
+70
+00:04:48,670 --> 00:04:53,920
+Since that's the case, we want to be able to tell people to use the WordPress version of this function.
+
+71
+00:04:54,310 --> 00:04:55,870
+This is what that plugin does.
+
+72
+00:04:56,140 --> 00:04:58,780
+You'll see how that's configured in just a moment.
+
+73
+00:04:59,380 --> 00:05:07,450
+Then we have the Bable loader module for Web pack right after this is the at WordPress Bable preset
+
+74
+00:05:07,450 --> 00:05:08,350
+default module.
+
+75
+00:05:08,680 --> 00:05:13,390
+This is a new module I'm introducing in the resource section of this lecture.
+
+76
+00:05:13,390 --> 00:05:15,070
+I provide a link to this module.
+
+77
+00:05:15,340 --> 00:05:19,330
+As we discussed before, Bable can be used with various presets.
+
+78
+00:05:19,600 --> 00:05:23,200
+These presets determine what features of JavaScript you can write.
+
+79
+00:05:23,530 --> 00:05:27,940
+It helps people convert your code into code that most browsers can understand.
+
+80
+00:05:28,720 --> 00:05:32,470
+Previously, we use the Bable preset EMV module.
+
+81
+00:05:32,770 --> 00:05:37,630
+However, we're going to need some additional features that aren't available under this module.
+
+82
+00:05:38,020 --> 00:05:41,580
+This will force us to install additional modules and go over them.
+
+83
+00:05:41,920 --> 00:05:46,780
+Luckily, the WordPress development team created their own preset that has us covered.
+
+84
+00:05:47,110 --> 00:05:49,540
+Now we don't have to configure Babille as much.
+
+85
+00:05:50,080 --> 00:05:51,550
+Let's keep moving forward.
+
+86
+00:05:51,880 --> 00:05:55,600
+Afterwards were loading in a module called Cross Environment.
+
+87
+00:05:55,870 --> 00:06:00,280
+As you may know, there are various operating systems with their own set of commands.
+
+88
+00:06:00,670 --> 00:06:04,630
+Windows is particularly known to be quite troublesome in this area.
+
+89
+00:06:05,020 --> 00:06:10,540
+The cross environment module will make sure that certain settings and commands will work across all
+
+90
+00:06:10,540 --> 00:06:11,800
+operating systems.
+
+91
+00:06:12,310 --> 00:06:14,750
+It's a great module for keeping things consistent.
+
+92
+00:06:15,100 --> 00:06:21,820
+Lastly, we're loading in the Web pack and pack CLIA modules, which we went over in the previous section.
+
+93
+00:06:22,600 --> 00:06:24,820
+These dependencies will start us off.
+
+94
+00:06:25,090 --> 00:06:30,310
+There's quite a few more modules I want to introduce, but we'll look at those as the course progresses.
+
+95
+00:06:30,610 --> 00:06:34,810
+Something I want to highlight is that you don't have to be an expert on these modules.
+
+96
+00:06:35,080 --> 00:06:39,610
+All of these modules are configurable, but a lot of the defaults work just fine.
+
+97
+00:06:40,270 --> 00:06:45,190
+If we were building a server, then we might want to configure this further, but we're just building
+
+98
+00:06:45,190 --> 00:06:45,790
+blocks.
+
+99
+00:06:46,090 --> 00:06:48,970
+All that's important is that you have an overview of things.
+
+100
+00:06:49,240 --> 00:06:51,160
+All right, let's keep moving forward.
+
+101
+00:06:51,850 --> 00:06:56,780
+If you look inside the scripts property, you'll find that the commands are slightly different.
+
+102
+00:06:57,070 --> 00:07:00,150
+First up is the cross dash end of command.
+
+103
+00:07:00,430 --> 00:07:05,850
+This will assure that the commands we execute are cross compatible with multiple operating systems.
+
+104
+00:07:06,490 --> 00:07:10,600
+This is related to the cross environment module we talked about earlier.
+
+105
+00:07:10,990 --> 00:07:16,690
+It's important that the cross dash end of command is entered first so that all the other commands and
+
+106
+00:07:16,690 --> 00:07:20,050
+options that follow after it will work next.
+
+107
+00:07:20,080 --> 00:07:23,530
+We're setting the Babel environment variable to default.
+
+108
+00:07:23,890 --> 00:07:26,920
+This will just make sure the default settings are used in Babel.
+
+109
+00:07:27,220 --> 00:07:31,930
+Afterwards, we're calling the Web pat command and setting the watch option.
+
+110
+00:07:32,530 --> 00:07:33,940
+In the previous section.
+
+111
+00:07:33,940 --> 00:07:38,170
+We had to continuously run the commands any time we updated a file.
+
+112
+00:07:38,500 --> 00:07:43,060
+The watch option will force Web pack to continuously watch for changes.
+
+113
+00:07:43,390 --> 00:07:46,840
+This should save us some time that should do it for this file.
+
+114
+00:07:47,500 --> 00:07:52,780
+Let's move onto the web pack dot config JS file at the very top.
+
+115
+00:07:52,810 --> 00:07:55,930
+We're loading the path and web pack modules.
+
+116
+00:07:56,290 --> 00:08:01,060
+Then we immediately export an object that contains our settings for web pack.
+
+117
+00:08:01,450 --> 00:08:03,340
+A lot of this is the same as before.
+
+118
+00:08:03,340 --> 00:08:05,890
+From the entry to the output properties.
+
+119
+00:08:06,520 --> 00:08:08,290
+There are three things different here.
+
+120
+00:08:08,590 --> 00:08:10,480
+First is the watch property.
+
+121
+00:08:10,780 --> 00:08:14,860
+This will force Web pack to continuously watch the file for changes.
+
+122
+00:08:15,160 --> 00:08:18,610
+We're already doing this in our command, so this is a bit redundant.
+
+123
+00:08:18,910 --> 00:08:21,820
+I just wanted to show you the two ways of going about this.
+
+124
+00:08:22,000 --> 00:08:23,220
+It's all preference.
+
+125
+00:08:23,800 --> 00:08:30,610
+Next, we have the dev tool property web pack will take the time to generate source maps for our JavaScript
+
+126
+00:08:30,610 --> 00:08:31,150
+files.
+
+127
+00:08:31,540 --> 00:08:36,860
+The purpose of a source map is to convert compressed and modified code back into its original state.
+
+128
+00:08:37,360 --> 00:08:41,000
+There's very little impact on performance, but build times do increase.
+
+129
+00:08:41,650 --> 00:08:47,000
+There are various values you can use, but I prefer to use the cheap eval source map.
+
+130
+00:08:47,380 --> 00:08:51,860
+This results in a very fast build time, but the source map isn't that great.
+
+131
+00:08:52,270 --> 00:08:55,190
+That's perfectly fine since we won't be using a source map.
+
+132
+00:08:55,420 --> 00:08:57,410
+We want something fast and cheap.
+
+133
+00:08:58,150 --> 00:09:01,380
+The last change is in the rules for the Bable loader.
+
+134
+00:09:01,750 --> 00:09:04,290
+I'm adding a new property called Exclude.
+
+135
+00:09:04,660 --> 00:09:08,810
+This will make sure Bable doesn't run any files, any particular directory.
+
+136
+00:09:09,160 --> 00:09:14,170
+In this case, we don't want Bable to process any files inside the node.
+
+137
+00:09:14,170 --> 00:09:15,940
+Underscore Module's directory.
+
+138
+00:09:16,670 --> 00:09:19,960
+We didn't do this before because the previous examples were simple.
+
+139
+00:09:20,300 --> 00:09:25,710
+However, things are going to get a little more complicated from here on out and so I want to make sure
+
+140
+00:09:25,710 --> 00:09:27,680
+of this directory doesn't get affected.
+
+141
+00:09:28,470 --> 00:09:29,870
+That'll do it for this file.
+
+142
+00:09:30,190 --> 00:09:34,290
+The last file I want to go over is the Dot Bable Arcy file.
+
+143
+00:09:34,690 --> 00:09:35,980
+Not much going on here.
+
+144
+00:09:36,220 --> 00:09:40,380
+I'm just using the WordPress default preset we installed earlier.
+
+145
+00:09:40,810 --> 00:09:46,750
+We don't have to worry about adding the react preset as the WordPress default preset already covers
+
+146
+00:09:46,750 --> 00:09:47,450
+that for us.
+
+147
+00:09:48,160 --> 00:09:51,310
+The second property we're using here is called plug ins.
+
+148
+00:09:51,610 --> 00:09:53,830
+Plug ins work exactly as you think.
+
+149
+00:09:54,160 --> 00:09:57,480
+They allow third party modules to extend Bable directly.
+
+150
+00:09:57,970 --> 00:10:03,220
+All we're doing here is telling people to use the transform react plugin.
+
+151
+00:10:03,760 --> 00:10:07,510
+We're also configuring the plug and bypassing in an additional object.
+
+152
+00:10:07,900 --> 00:10:15,610
+We're setting the pragma property to WP elements, create element that is word précis version of the
+
+153
+00:10:15,610 --> 00:10:17,830
+react create element of function.
+
+154
+00:10:18,250 --> 00:10:24,210
+We're essentially telling people to use the WP version when transforming elements to JavaScript.
+
+155
+00:10:24,970 --> 00:10:26,040
+That's basically it.
+
+156
+00:10:26,440 --> 00:10:32,080
+Once again, you don't have to be an expert on every module, but it's good to have a general overview
+
+157
+00:10:32,080 --> 00:10:32,650
+of things.
+
+158
+00:10:32,980 --> 00:10:35,470
+The great thing about this is that it's reusable.
+
+159
+00:10:35,740 --> 00:10:39,460
+You can copy this from project to project and things will just work.
+
+160
+00:10:40,120 --> 00:10:43,090
+Now that we have things set up, let's install and check.
+
+161
+00:10:43,090 --> 00:10:50,200
+If everything works inside your command line, you may need to seed into this directory to run the installation.
+
+162
+00:10:50,530 --> 00:10:57,220
+I'm going to input seed WP dash content plugins, recipe blocks.
+
+163
+00:10:59,600 --> 00:11:06,600
+Then I'm going to run the commands NPM install to install the modules inside the dependencies object.
+
+164
+00:11:06,890 --> 00:11:09,350
+This may take a while for some of you, so be patient.
+
+165
+00:11:14,430 --> 00:11:18,150
+Lastly, let's run the commands npm run deve.
+
+166
+00:11:23,040 --> 00:11:28,770
+This should have Westpac processed the code, you shouldn't be able to run any additional commands since
+
+167
+00:11:28,770 --> 00:11:35,310
+Westpac is continuously watching our files for any changes inside the Blocks directory, there should
+
+168
+00:11:35,310 --> 00:11:37,950
+be a new directory created called DIST.
+
+169
+00:11:38,670 --> 00:11:44,420
+This will contain the bundle JS file that should confirm everything is working as expected.
+
+170
+00:11:44,880 --> 00:11:46,230
+That does it for this lecture.
+
+171
+00:11:46,500 --> 00:11:48,310
+We've prepared our environment.
+
+172
+00:11:48,630 --> 00:11:51,900
+The next step is to begin interviewing and registering everything.
+
+173
+00:11:52,200 --> 00:11:53,880
+We'll do that in the next lecture.
+
+174
+00:11:54,120 --> 00:11:54,990
+I'll see you there.
+

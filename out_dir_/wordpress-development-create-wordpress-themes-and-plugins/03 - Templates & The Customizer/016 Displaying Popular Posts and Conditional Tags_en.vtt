@@ -1,0 +1,331 @@
+WEBVTT
+
+00:07.890 --> 00:13.620
+One section we haven't gotten around to is this breaking news, which is keeping track of popular posts
+
+00:13.620 --> 00:16.600
+can be tedious and it's not exactly built into WordPress.
+
+00:17.010 --> 00:20.320
+Luckily, there is a plugin out there that will help us out with that.
+
+00:20.820 --> 00:24.960
+I want you to go to the admin dashboard and add a new plug in the plug.
+
+00:24.960 --> 00:27.090
+And I want to install is called WordPress.
+
+00:27.090 --> 00:30.840
+Popular posts install and activate the one by Hektor.
+
+00:31.230 --> 00:36.180
+This plugin will automatically help us keep track of what posts are popular by Vieux.
+
+00:39.690 --> 00:46.530
+Under settings, you'll find a menu item called WordPress Popular posts here you can control what posts
+
+00:46.530 --> 00:48.720
+are popular and additional settings.
+
+00:49.140 --> 00:51.380
+We don't need to make any changes at this moment.
+
+00:51.630 --> 00:53.940
+Right now, none of the posts are popular.
+
+00:54.510 --> 00:58.650
+I'm going to open the homepage within a new tab and view at least three posts.
+
+00:58.900 --> 01:00.330
+I want you to do the same.
+
+01:02.660 --> 01:07.850
+Refresh the admin page after you've done so, and you'll now see those three posts being displayed as
+
+01:07.850 --> 01:08.780
+popular posts.
+
+01:09.140 --> 01:09.700
+This is great.
+
+01:09.710 --> 01:12.850
+So far there are now two things we need to do.
+
+01:13.130 --> 01:18.410
+We need to display the popular posts and then we need to let the user control whether or not they want
+
+01:18.410 --> 01:20.330
+to display it while we're at it.
+
+01:20.450 --> 01:23.770
+We will also make the text breaking news changeable.
+
+01:24.350 --> 01:30.530
+First, let's display these posts inside the WordPress Popular Posts admin page.
+
+01:30.530 --> 01:32.750
+I'm going to click on the Parameters tab.
+
+01:33.110 --> 01:37.070
+This plugin allows you to display the popular posts two ways.
+
+01:37.310 --> 01:40.790
+One way is through a shortcode and the other is through a template tag.
+
+01:41.330 --> 01:43.070
+I want to use the template tag.
+
+01:43.370 --> 01:46.670
+You'll find a list of parameters we can set to modify the output.
+
+01:46.970 --> 01:48.410
+We'll be using these shortly.
+
+01:48.980 --> 01:50.990
+Inside the index template.
+
+01:50.990 --> 01:54.650
+I want you to perform a conditional check around the popular post widget.
+
+02:03.270 --> 02:09.780
+I want to check for two things I want to check of the page being displayed is not a single post and
+
+02:09.780 --> 02:11.730
+is the home page using the functions?
+
+02:11.730 --> 02:14.730
+Exclamation point is single and is home.
+
+02:17.010 --> 02:22.680
+These two functions are at work, press calls, conditional tags, conditional tags or a way to check
+
+02:22.680 --> 02:27.870
+what kind of page is being displayed in the resource section, I provide a link to learn more about
+
+02:27.870 --> 02:28.900
+conditional tags.
+
+02:29.160 --> 02:31.440
+Here is what WordPress has to say about it.
+
+02:32.100 --> 02:37.500
+Conditional tags can be used in your template files to alter the display of content depending on the
+
+02:37.500 --> 02:39.630
+conditions that the current page matches.
+
+02:40.080 --> 02:44.040
+They tell WordPress what code to display under specific conditions.
+
+02:44.340 --> 02:49.020
+Conditional tags usually work with P, if else, conditional statements.
+
+02:49.710 --> 02:53.190
+The code begins by checking to see if a statement is true or false.
+
+02:53.430 --> 02:57.210
+If the statement is found to be true, the first set of code is executed.
+
+02:57.570 --> 03:03.570
+If it's false, the first set of code is skipped and the second set of code after the else is executed
+
+03:03.570 --> 03:04.020
+and set.
+
+03:04.770 --> 03:09.900
+You can read up on this page to learn about the many conditional tags there are, but for now, the
+
+03:09.900 --> 03:12.240
+ones we're using will suffice throughout.
+
+03:12.240 --> 03:16.210
+This course will be using conditional tags to help us change the final result.
+
+03:16.770 --> 03:17.190
+All right.
+
+03:17.400 --> 03:22.500
+Now that we know that this is indeed the home page, we can begin displaying the breaking news widget.
+
+03:22.860 --> 03:28.110
+I'm also going to check if the WP get most popular function exists.
+
+03:34.240 --> 03:38.230
+We can now call a function called WP get most popular.
+
+03:40.520 --> 03:46.240
+This function has a one parameter and that is an array of settings we can set back on the admin side,
+
+03:46.250 --> 03:52.100
+you'll find that the plug in WordPress popular posts gives plenty of examples on how to use these settings.
+
+03:52.520 --> 03:56.300
+There are only three that I want to use and those can be found at the very bottom.
+
+03:57.050 --> 04:00.530
+These last three keys determine how the posts are outputting.
+
+04:00.890 --> 04:03.980
+The first key we should set is the WP start.
+
+04:11.320 --> 04:17.090
+This will be the HTML that will be outputted at the very beginning, we have the static version of widget
+
+04:17.110 --> 04:17.470
+here.
+
+04:17.830 --> 04:22.960
+I'm going to copy everything from the beginning all the way up to the opening tag with the class of
+
+04:22.960 --> 04:24.170
+slider dash wrap.
+
+04:24.730 --> 04:26.800
+I'm going to paste this in as the value.
+
+04:29.140 --> 04:34.780
+The next key I want to set is the WP, and this should have all the closing tags.
+
+04:39.150 --> 04:44.580
+The only thing we have left are these three links, we only need one, so I'm just going to cut one
+
+04:44.580 --> 04:45.700
+and get rid of the rest.
+
+04:46.230 --> 04:49.260
+The last key to set is the post HTML.
+
+04:49.710 --> 04:53.250
+This key value will be the HTML we just cut previously.
+
+04:59.850 --> 05:05.910
+Now we have to replace the static parts of this HTML into something like the function will be able to
+
+05:05.910 --> 05:06.990
+read and replace.
+
+05:07.680 --> 05:12.450
+If you look at the documentation, you'll find that the developer provides you with what values can
+
+05:12.450 --> 05:13.830
+be inserted and replaced.
+
+05:14.220 --> 05:19.650
+The only ones we're concerned with are the normal and text underscore title content tags.
+
+05:20.070 --> 05:25.770
+We just replace the static content with these content tags, make sure to surround them with one pair
+
+05:25.770 --> 05:28.770
+of curly brackets so that the plugin will be able to replace the.
+
+05:34.260 --> 05:39.870
+Let's refresh the page and you'll see the three posts we previously viewed being displayed as popular
+
+05:39.870 --> 05:44.790
+posts, the last thing we need to do is to make it optional to display this widget or not.
+
+05:45.540 --> 05:50.430
+Inside the miscellaneous customizer, I'm going to create two new settings.
+
+05:50.760 --> 05:56.580
+The first setting is called Jiyu Shohet or popular post widget, which will have a default value of
+
+05:56.580 --> 05:57.110
+false.
+
+05:57.510 --> 06:00.060
+I don't want this widget to be turned on by default.
+
+06:08.580 --> 06:14.280
+The second setting will be Jiyu popular posts, which at title, which will have a default title of
+
+06:14.280 --> 06:15.210
+breaking news.
+
+06:22.610 --> 06:24.810
+The next step is to create a controller.
+
+06:25.040 --> 06:30.980
+I'm going to assign these two controllers to the MEAC section, the first controller will be a checkbox
+
+06:30.980 --> 06:34.520
+with an ID of Jiyu show header, popular posts.
+
+06:34.520 --> 06:35.390
+Which widget input?
+
+06:48.120 --> 06:54.600
+The second controller will just be a text input field with an ID of Jiyu, popular posts, widget title
+
+06:54.600 --> 06:55.020
+input.
+
+07:03.660 --> 07:09.480
+There's nothing new here after creating these two settings and it's comptrollers, it's time to update
+
+07:09.480 --> 07:11.340
+the theme to reflect those changes.
+
+07:11.970 --> 07:15.510
+Back inside the conditional statement, I'm going to add one more check.
+
+07:15.810 --> 07:21.810
+This will be checking if the theme mod Jiyu show had popular post widget is turned on.
+
+07:24.760 --> 07:31.750
+The last thing I'm going to do is change the breaking news static text into its theme, Monju popular
+
+07:31.750 --> 07:32.920
+post widget title.
+
+07:36.940 --> 07:43.240
+Save your changes and let's check out the customizer, the checkbox should be unchecked, and so therefore
+
+07:43.240 --> 07:45.850
+the popular post widget should not be showing.
+
+07:46.330 --> 07:49.810
+Try turning it on and then change the text to popular posts.
+
+07:50.200 --> 07:54.970
+After confirming if everything worked on the preview, then save your changes and double check on the
+
+07:54.970 --> 07:55.400
+front end.
+
+07:56.080 --> 07:56.980
+That's it for now.
+
+07:57.100 --> 08:02.190
+You'll notice that I spent an awful lot of time talking about other plugins and how to integrate them.
+
+08:02.470 --> 08:05.430
+I'm going to show you something in the resources section.
+
+08:05.440 --> 08:09.610
+I provide a link to the theme for a site under WordPress.
+
+08:09.610 --> 08:10.630
+Popular themes.
+
+08:10.630 --> 08:14.600
+You'll notice a lot of themes are killing it and making massive amounts of sales.
+
+08:14.860 --> 08:19.870
+I'm going to click on Aveda and you'll notice that this item highlights it's compatible with various
+
+08:19.870 --> 08:22.240
+plugins and even comes bundled with some.
+
+08:22.660 --> 08:27.670
+It's extremely common to bundle your themes with plugins that help it with certain tasks and functions.
+
+08:28.030 --> 08:33.430
+Of course, you'll be put in a situation where you'll have to make your own custom solution and we'll
+
+08:33.430 --> 08:35.750
+definitely learn how to make plug in soon.
+
+08:36.190 --> 08:41.830
+For now, don't worry, bundling plug ins doesn't make you a bad developer, just a more efficient one.

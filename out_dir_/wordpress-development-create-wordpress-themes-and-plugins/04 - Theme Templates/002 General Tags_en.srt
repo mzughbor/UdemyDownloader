@@ -1,0 +1,604 @@
+1
+00:00:07,660 --> 00:00:13,240
+Currently, I'm on the list of template tags available on WordPress, all template tags are stored in
+
+2
+00:00:13,240 --> 00:00:16,059
+nine files and those list of files can be found here.
+
+3
+00:00:16,540 --> 00:00:20,610
+You basically find them inside the WP dash includes directory.
+
+4
+00:00:20,920 --> 00:00:24,460
+We're going to work our way down this list to start things off.
+
+5
+00:00:24,460 --> 00:00:26,470
+We'll explore the general tags.
+
+6
+00:00:28,100 --> 00:00:34,160
+As you may expect, general tags are tags that don't necessarily fit in any other category that are
+
+7
+00:00:34,160 --> 00:00:35,330
+more general purpose.
+
+8
+00:00:35,330 --> 00:00:38,360
+And so you'll find a lot of functions for various scenarios.
+
+9
+00:00:38,750 --> 00:00:45,500
+The kind of functions you can expect to find are includes login functions, blog info, archive calendar.
+
+10
+00:00:46,730 --> 00:00:49,360
+The first set of tanks are include tags.
+
+11
+00:00:49,610 --> 00:00:54,030
+These are functions that take care of loading a template file inside another template file.
+
+12
+00:00:54,380 --> 00:00:58,190
+We've actually explored every single one of these functions in the past two sections.
+
+13
+00:00:58,190 --> 00:01:00,650
+So you already know what to expect out of these.
+
+14
+00:01:02,650 --> 00:01:07,870
+Before we move forward, I want to highlight that the comments template function isn't listed here,
+
+15
+00:01:07,870 --> 00:01:13,410
+despite being a general tag in the resource section of this lecture, I provide a link to this function.
+
+16
+00:01:13,720 --> 00:01:19,300
+If you were to scroll down to the source section, you'll see that the function is defined inside the
+
+17
+00:01:19,300 --> 00:01:21,750
+comment template file.
+
+18
+00:01:22,420 --> 00:01:28,330
+Just be aware that some tags aren't defined in the same files as the other tags, despite it not being
+
+19
+00:01:28,330 --> 00:01:29,440
+defined in those files.
+
+20
+00:01:29,470 --> 00:01:30,970
+This is a template tag.
+
+21
+00:01:33,180 --> 00:01:38,880
+The next set of template tags are log-in tags, we haven't gone over authentication in this course,
+
+22
+00:01:38,880 --> 00:01:39,930
+but we will soon.
+
+23
+00:01:40,260 --> 00:01:41,970
+This is just a general overview.
+
+24
+00:01:42,300 --> 00:01:49,290
+The first function is the WP log in out function that will output a link to the login or long out pages.
+
+25
+00:01:49,290 --> 00:01:51,420
+Depending on if the user is authenticated.
+
+26
+00:01:52,020 --> 00:01:56,430
+The next two functions will provide the URL to the log and or log out you or else.
+
+27
+00:01:56,790 --> 00:02:01,980
+This is just in case you don't want to use the function above and have more control over your links.
+
+28
+00:02:02,430 --> 00:02:09,780
+Then we have the login form function which will just output a simple login form followed by the lost
+
+29
+00:02:09,780 --> 00:02:14,310
+password you URL and register functions which will output links to those pages.
+
+30
+00:02:14,760 --> 00:02:21,600
+Lastly, we have the is user logged in function which will return true or false if the user is logged
+
+31
+00:02:21,600 --> 00:02:21,810
+in.
+
+32
+00:02:24,170 --> 00:02:30,110
+Let's play around with some of these tanks right now, I'm inside the experimental template, inside
+
+33
+00:02:30,110 --> 00:02:36,200
+the content area, I'm going to echo out the value returned by the function WP login URL.
+
+34
+00:02:38,450 --> 00:02:41,030
+Let's go to our browser and refresh the page.
+
+35
+00:02:41,060 --> 00:02:46,670
+As expected, we get the URL to the login page, something worth noting is that this function doesn't
+
+36
+00:02:46,670 --> 00:02:48,260
+check if we're logged in or not.
+
+37
+00:02:48,650 --> 00:02:55,070
+Right now I'm logged in, so I shouldn't be able to view this URL if we want to let WordPress handle
+
+38
+00:02:55,070 --> 00:03:00,290
+this and we can go back to the editor and change the function to WP login out.
+
+39
+00:03:02,320 --> 00:03:08,080
+This function doesn't need to be echoed out so we can remove the echo statement, save your changes
+
+40
+00:03:08,080 --> 00:03:13,450
+and refresh the page, this function will take care of outputting the link while also surrounding it
+
+41
+00:03:13,450 --> 00:03:14,680
+with HTML tags.
+
+42
+00:03:14,950 --> 00:03:17,200
+A lot of this is very straightforward stuff.
+
+43
+00:03:20,150 --> 00:03:25,910
+The next function is the blog info function, this function will return information about your site.
+
+44
+00:03:26,330 --> 00:03:31,540
+There are two versions which are the blog info and get blog info functions.
+
+45
+00:03:31,850 --> 00:03:35,380
+Something worth highlighting is that you can only retrieve one value.
+
+46
+00:03:35,990 --> 00:03:39,080
+The value return depends on what you passed into the function.
+
+47
+00:03:39,500 --> 00:03:42,560
+Here are some examples of what you can pass into the function.
+
+48
+00:03:42,860 --> 00:03:45,470
+You can pass him the same values to both functions.
+
+49
+00:03:45,830 --> 00:03:52,550
+The only difference is that the log info function will echo out the value and the get blog info function
+
+50
+00:03:52,550 --> 00:03:53,840
+will return the value.
+
+51
+00:03:55,780 --> 00:04:02,140
+Right now, I'm on the documentation page for the blog info function, if you scroll down to the possible
+
+52
+00:04:02,140 --> 00:04:06,300
+value section, then you'll find all the values you can get from this function.
+
+53
+00:04:06,670 --> 00:04:12,550
+As you can see, we can grab information such as the name, your URL, character set, etc..
+
+54
+00:04:13,210 --> 00:04:15,580
+There is one thing I want to highlight about this function.
+
+55
+00:04:15,730 --> 00:04:18,720
+If you scroll up, you'll find the changelog section.
+
+56
+00:04:19,000 --> 00:04:22,600
+This function was introduced in WordPress version zero point seven one.
+
+57
+00:04:22,960 --> 00:04:24,700
+It's been around for quite some time.
+
+58
+00:04:25,060 --> 00:04:29,950
+When it was first introduced, there weren't a lot of ways to get certain values from the database.
+
+59
+00:04:30,520 --> 00:04:36,070
+However, five major versions later, WordPress has introduced a plethora of functions.
+
+60
+00:04:36,340 --> 00:04:41,770
+Scrolling back down, you'll see that WordPress recommends alternative functions to grab certain values.
+
+61
+00:04:42,040 --> 00:04:44,860
+For example, the URL description states.
+
+62
+00:04:44,860 --> 00:04:49,060
+The following displays the site address set in settings general.
+
+63
+00:04:49,330 --> 00:04:53,140
+This data is retrieved from the home record in the WP.
+
+64
+00:04:53,140 --> 00:04:54,520
+Underscore Options Table.
+
+65
+00:04:54,820 --> 00:04:57,550
+Consider echoing home your URL function and set.
+
+66
+00:04:58,270 --> 00:05:00,130
+There is no right or wrong answer here.
+
+67
+00:05:00,220 --> 00:05:01,990
+It really boils down to preference.
+
+68
+00:05:02,230 --> 00:05:07,930
+Whenever you use the log info function, always check the documentation for alternative solutions.
+
+69
+00:05:09,390 --> 00:05:16,380
+The next set of tags are archived tags, archive tags are specifically for archive templates like categories,
+
+70
+00:05:16,380 --> 00:05:17,910
+tags and taxonomies.
+
+71
+00:05:18,210 --> 00:05:23,130
+Apart from that, they can also be used outside of the loop, which can save you code in space.
+
+72
+00:05:23,700 --> 00:05:28,980
+Despite their appearance, archive templates are one of the most complicated pieces of pages WordPress
+
+73
+00:05:28,980 --> 00:05:29,400
+has.
+
+74
+00:05:29,700 --> 00:05:36,990
+This is because you can archive a post by category, date, tag, taxonomy, etc. There's just so much
+
+75
+00:05:36,990 --> 00:05:40,350
+information attached to a post because of this archive.
+
+76
+00:05:40,350 --> 00:05:42,630
+Tags are just as weird and complex.
+
+77
+00:05:44,640 --> 00:05:50,520
+I'm back inside the experimental template, I'm going to comment about any code we have here, then
+
+78
+00:05:50,520 --> 00:05:53,040
+I'm going to call the function single post title.
+
+79
+00:05:54,940 --> 00:06:00,700
+As you would expect, this will output the title of the current post, on top of that, you'll notice
+
+80
+00:06:00,700 --> 00:06:02,070
+we're not inside a loop.
+
+81
+00:06:02,380 --> 00:06:04,450
+Let's refresh the page and see what we get.
+
+82
+00:06:04,750 --> 00:06:06,960
+The title of the post now appears here.
+
+83
+00:06:07,360 --> 00:06:07,950
+That's great.
+
+84
+00:06:08,350 --> 00:06:13,330
+I won't be able to show you all the archive template tags, but I do want to show you one thing.
+
+85
+00:06:13,840 --> 00:06:16,570
+I'm going to open the category template for a moment.
+
+86
+00:06:16,750 --> 00:06:22,840
+Inside the page title section, you'll find that we're using the template tags, the archive title and
+
+87
+00:06:22,870 --> 00:06:24,190
+the archive description.
+
+88
+00:06:24,550 --> 00:06:29,890
+WordPress provides another function for displaying the category title, which is single cat title.
+
+89
+00:06:33,940 --> 00:06:37,660
+Once you have that set, go back to your browser and view a category page.
+
+90
+00:06:40,020 --> 00:06:46,200
+A small change has occurred, the text category does not appear before the name of the category, other
+
+91
+00:06:46,200 --> 00:06:47,880
+than that everything else is the same.
+
+92
+00:06:48,240 --> 00:06:51,060
+So at this point, you may be thinking, what's the point?
+
+93
+00:06:51,390 --> 00:06:53,760
+What makes one function better than the other?
+
+94
+00:06:54,360 --> 00:06:58,830
+Well, let's peek at the documentation for a second and the resource section.
+
+95
+00:06:58,830 --> 00:07:02,580
+On this lecture, I provide a link to the the archive title function.
+
+96
+00:07:02,880 --> 00:07:08,730
+If you scroll down to the source code section, then you'll see that this function calls the get the
+
+97
+00:07:08,730 --> 00:07:10,230
+archive title function.
+
+98
+00:07:10,890 --> 00:07:16,380
+Before we check out this function, I want you to take note of the changelog section, which says this
+
+99
+00:07:16,380 --> 00:07:19,070
+was introduced in version four point one of WordPress.
+
+100
+00:07:19,470 --> 00:07:22,410
+This is important to note and you'll see why in a moment.
+
+101
+00:07:22,770 --> 00:07:28,350
+Scrolling down further, you'll find a section called Related Uses, which provides information about
+
+102
+00:07:28,350 --> 00:07:30,180
+the functions used by this function.
+
+103
+00:07:31,080 --> 00:07:35,700
+I'm going to click on the link for the get the archive title function this time.
+
+104
+00:07:35,700 --> 00:07:39,320
+If you look at the source code, you'll see that there is way more going on.
+
+105
+00:07:39,690 --> 00:07:44,660
+This function will check if the current page is a category tag and date archive.
+
+106
+00:07:45,270 --> 00:07:50,850
+Taking a closer look, the single cat title function is called When the page is a category archive.
+
+107
+00:07:51,190 --> 00:07:55,700
+That's very strange, but let's keep going down the rabbit hole to understand what's going on.
+
+108
+00:07:56,490 --> 00:08:00,870
+Scrolling down to the related uses section, there should be a link for this function.
+
+109
+00:08:01,230 --> 00:08:01,820
+Click on it.
+
+110
+00:08:02,130 --> 00:08:04,080
+Two things worth noting on this page.
+
+111
+00:08:04,260 --> 00:08:05,610
+First up is the function.
+
+112
+00:08:05,820 --> 00:08:10,830
+If you call this function, then you'll see that it's just passing off the data onto another function
+
+113
+00:08:10,830 --> 00:08:12,400
+called single term title.
+
+114
+00:08:13,080 --> 00:08:18,390
+That's strange because that's also a template tag listed on the general template text file.
+
+115
+00:08:19,000 --> 00:08:24,210
+Anyway, let's go to the related uses section once more and click the link to this function.
+
+116
+00:08:24,660 --> 00:08:28,560
+Now, this is the function that actually takes care of grabbing the data we want.
+
+117
+00:08:29,400 --> 00:08:34,340
+WordPress goes through a lot of hurdles just to display a simple title, and that's what I want to highlight.
+
+118
+00:08:34,740 --> 00:08:38,549
+On one hand, archives are very broad and therefore they're complex.
+
+119
+00:08:38,789 --> 00:08:42,870
+A lot of checks have to be performed in order to grab the correct piece of information.
+
+120
+00:08:43,440 --> 00:08:44,410
+On the other hand.
+
+121
+00:08:44,580 --> 00:08:48,510
+This also shows that WordPress is not as organized as one may think.
+
+122
+00:08:48,870 --> 00:08:52,140
+WordPress receives criticism for gluing code together.
+
+123
+00:08:52,530 --> 00:08:53,740
+That's partially true.
+
+124
+00:08:54,030 --> 00:09:00,090
+The reason we have the archive title function is because developers still had to add this logic to their
+
+125
+00:09:00,090 --> 00:09:00,640
+templates.
+
+126
+00:09:01,320 --> 00:09:03,730
+This made the code look sloppy and unorganized.
+
+127
+00:09:03,960 --> 00:09:09,420
+That's why the archive title function was introduced recently, despite all these functions being around
+
+128
+00:09:09,420 --> 00:09:09,960
+for a while.
+
+129
+00:09:10,530 --> 00:09:14,660
+Luckily, the team behind WordPress is working really hard to clean things up.
+
+130
+00:09:15,030 --> 00:09:18,060
+It's starting to become clear which functions should be used.
+
+131
+00:09:18,600 --> 00:09:21,570
+This is why we use the archive title function.
+
+132
+00:09:21,720 --> 00:09:26,250
+It's because it takes care of checking for everything rather than us doing all the work.
+
+133
+00:09:26,580 --> 00:09:30,980
+That was a lot to dig through, but hopefully you understand what's going on behind the scenes.
+
+134
+00:09:31,500 --> 00:09:36,900
+If you were to go back to the list of template tags and clicked on the single tag title function, you'll
+
+135
+00:09:36,900 --> 00:09:40,800
+see that this function does the exact same thing as single cat title.
+
+136
+00:09:41,160 --> 00:09:46,650
+In my opinion, it's better to use the archive title function so you don't have to memorize various
+
+137
+00:09:46,650 --> 00:09:47,220
+functions.
+
+138
+00:09:47,730 --> 00:09:51,300
+I'm going to go back to my category template and reverse the changes.
+
+139
+00:09:53,300 --> 00:09:59,510
+The next set of template tags are the calendar tags, calendar tags aren't used much, so I won't be
+
+140
+00:09:59,510 --> 00:10:00,730
+diving too much into them.
+
+141
+00:10:01,220 --> 00:10:06,440
+The most commonly used template tag is the get calendar function, which will output a calendar in a
+
+142
+00:10:06,440 --> 00:10:07,190
+table format.
+
+143
+00:10:07,880 --> 00:10:13,010
+Lastly, we have these other tags which don't necessarily belong to a specific category.
+
+144
+00:10:13,430 --> 00:10:16,700
+None of these are worth going over, but you're more than free to check them out.
+
+145
+00:10:16,700 --> 00:10:23,330
+And the documentation, strangely enough, the WP and Q script function is also listed as a template
+
+146
+00:10:23,330 --> 00:10:23,720
+tag.
+
+147
+00:10:24,380 --> 00:10:26,310
+You already know what this function does.
+
+148
+00:10:26,330 --> 00:10:28,150
+So no need to recap on this.
+
+149
+00:10:28,490 --> 00:10:28,990
+All right.
+
+150
+00:10:29,150 --> 00:10:30,910
+That does it for the general tags.
+
+151
+00:10:31,100 --> 00:10:34,670
+I highly recommend you explore these tags once you finish the course.
+

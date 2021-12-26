@@ -1,0 +1,772 @@
+1
+00:00:08,170 --> 00:00:13,030
+In this lecture, we're going to explore some more templates to get a better feel on how well Commerce
+
+2
+00:00:13,030 --> 00:00:13,940
+manages things.
+
+3
+00:00:14,230 --> 00:00:16,800
+Right now I'm looking at the cart page.
+
+4
+00:00:17,020 --> 00:00:18,720
+I've added one item to the cart.
+
+5
+00:00:19,030 --> 00:00:20,710
+There is one noticeable problem.
+
+6
+00:00:20,890 --> 00:00:25,090
+The checkout button is being spaced improperly, unlike last time.
+
+7
+00:00:25,090 --> 00:00:30,790
+We can't really change this through code, but it's more of a success and a female problem.
+
+8
+00:00:30,800 --> 00:00:33,330
+So we'll have to adjust the templates themselves.
+
+9
+00:00:33,640 --> 00:00:34,630
+It's rather simple.
+
+10
+00:00:34,840 --> 00:00:40,420
+Unlike the product page, the cart is just made up of template parts, so we don't have to worry about
+
+11
+00:00:40,420 --> 00:00:42,370
+every single little thing like last time.
+
+12
+00:00:42,970 --> 00:00:46,700
+All car related, simpler parts are placed inside the cart folder.
+
+13
+00:00:47,020 --> 00:00:51,790
+I'm going to copy this folder from the plug and into our theme's woohoo commis folder like so.
+
+14
+00:00:58,890 --> 00:01:05,040
+I'm going to delete all the files except for the proceed to checkout button template file.
+
+15
+00:01:07,410 --> 00:01:12,010
+This is the file that will require some modifications to come to this conclusion.
+
+16
+00:01:12,060 --> 00:01:13,250
+I just did the usual.
+
+17
+00:01:13,410 --> 00:01:19,540
+I studied the code and searched through every file until I was able to determine which files to modify.
+
+18
+00:01:20,070 --> 00:01:21,030
+It's pretty simple.
+
+19
+00:01:21,030 --> 00:01:24,230
+If you open up the template, it's just this button by itself.
+
+20
+00:01:24,810 --> 00:01:28,890
+I'm going to modify the class and replace it with the following values.
+
+21
+00:01:29,220 --> 00:01:34,950
+BTN, BTN, Dash blog, BTM Dash LGBT and Dash Primary.
+
+22
+00:01:37,360 --> 00:01:39,520
+This will make the button spaced out evenly.
+
+23
+00:01:39,850 --> 00:01:42,680
+The button won't be purple anymore, but that's fine with me.
+
+24
+00:01:43,330 --> 00:01:44,830
+That's it for the cart template.
+
+25
+00:01:45,040 --> 00:01:49,240
+Even though the cart template has so much more, it's basically repeating the same thing.
+
+26
+00:01:49,690 --> 00:01:51,700
+I'll talk more about that in just a moment.
+
+27
+00:01:51,940 --> 00:01:53,620
+Let's explore some more templates.
+
+28
+00:01:54,190 --> 00:01:57,490
+There's a possibility you may want to change the email templates.
+
+29
+00:01:57,790 --> 00:01:58,000
+Woohoo!
+
+30
+00:01:58,000 --> 00:02:03,520
+Commerce will send out an email whenever an action occurs, such as a password reset or a new order
+
+31
+00:02:03,520 --> 00:02:04,330
+has been placed.
+
+32
+00:02:04,660 --> 00:02:10,720
+If you were to go to the admin dashboard and navigate to woo commerce settings emails, you'll find
+
+33
+00:02:10,720 --> 00:02:12,340
+all the templates that are sent out.
+
+34
+00:02:15,490 --> 00:02:20,590
+Below, you'll see some settings, if you were to click on a certain email, you'll be taken to a page
+
+35
+00:02:20,590 --> 00:02:22,570
+where you can configure the settings even more.
+
+36
+00:02:22,960 --> 00:02:25,720
+What you can't do is modify the HTML.
+
+37
+00:02:26,110 --> 00:02:30,610
+If you want to modify the HTML, then you'll have to override the email templates.
+
+38
+00:02:30,880 --> 00:02:33,310
+You can find those inside the email folder.
+
+39
+00:02:36,000 --> 00:02:41,010
+Just like last time, you would simply copy and paste it from the plugin folder to your theme's folder
+
+40
+00:02:41,010 --> 00:02:42,450
+in the respective location.
+
+41
+00:02:42,980 --> 00:02:46,230
+I'm not going to do this as I'm fine with the email templates.
+
+42
+00:02:46,440 --> 00:02:51,510
+However, testing out email templates is a problem, especially with our development environment.
+
+43
+00:02:51,990 --> 00:02:57,180
+In order to view an email template, you will have to receive an email, which usually isn't possible
+
+44
+00:02:57,180 --> 00:02:58,320
+on a local environment.
+
+45
+00:02:58,680 --> 00:03:03,560
+Of course, you can set up an SMTP server, but that's beyond the scope of this course.
+
+46
+00:03:03,870 --> 00:03:05,430
+It's also a bit complicated.
+
+47
+00:03:05,720 --> 00:03:10,870
+The next best thing is to test it out on a live host, but that can cost money and it takes too long.
+
+48
+00:03:11,490 --> 00:03:14,280
+Luckily, someone made a very simple solution.
+
+49
+00:03:14,550 --> 00:03:20,700
+Go to the admin dashboard and navigate two plug ins, add new search for the plug and commerce email
+
+50
+00:03:20,700 --> 00:03:24,060
+test by race or web install and activate this plug in.
+
+51
+00:03:30,480 --> 00:03:36,630
+Before we can test this plugin, you may need to create an order, simply go to woo commerce orders,
+
+52
+00:03:36,630 --> 00:03:38,860
+add new and just fill in some dummy data.
+
+53
+00:03:39,210 --> 00:03:44,520
+I'm going to pause the video and add an order really quick once you filled in some data submitted.
+
+54
+00:03:45,690 --> 00:03:51,660
+Now we can test the email templates under the commerce menu, the plugin we just installed will generate
+
+55
+00:03:51,660 --> 00:03:53,790
+a new submenu called Email Test.
+
+56
+00:03:54,300 --> 00:03:55,990
+Let's check this menu item out.
+
+57
+00:03:56,310 --> 00:03:58,790
+You'll be taken to a very simple interface.
+
+58
+00:03:59,010 --> 00:04:02,010
+I'm going to select the order we just created and save it.
+
+59
+00:04:02,340 --> 00:04:05,730
+Then I'm going to click on the completed order button below.
+
+60
+00:04:08,400 --> 00:04:12,450
+Here is what one of the templates would look like if a user opens it in their inbox.
+
+61
+00:04:12,690 --> 00:04:17,440
+This is a great way to test your templates on a local server without the need for a life server.
+
+62
+00:04:17,730 --> 00:04:19,910
+I'm going to do something you should never do.
+
+63
+00:04:20,550 --> 00:04:23,960
+I'm going to open this template from the commerce plugin folder.
+
+64
+00:04:24,240 --> 00:04:25,860
+The completed order template.
+
+65
+00:04:25,860 --> 00:04:29,190
+Is the customer complete in order to file?
+
+66
+00:04:31,540 --> 00:04:33,590
+I'm going to make a simple modification.
+
+67
+00:04:33,820 --> 00:04:40,150
+I'm going to output the text test, you never want to modify a template inside the Woog Commerce plug
+
+68
+00:04:40,150 --> 00:04:43,540
+in as any changes you can make can be overridden after an update.
+
+69
+00:04:44,050 --> 00:04:46,150
+However, this is just for an example.
+
+70
+00:04:46,390 --> 00:04:49,480
+After making this change, I'm going to refresh the page.
+
+71
+00:04:49,660 --> 00:04:51,550
+The text should now be outputted.
+
+72
+00:04:52,210 --> 00:04:54,070
+I'm going to remove my changes.
+
+73
+00:04:56,200 --> 00:05:00,970
+So that's how you would go about making changes to the email templates in how to test them?
+
+74
+00:05:01,570 --> 00:05:03,720
+All right, let's move on to something else.
+
+75
+00:05:03,880 --> 00:05:09,220
+In some situations, you won't be able to make changes to the template themselves, even if it may seem
+
+76
+00:05:09,220 --> 00:05:09,590
+like it.
+
+77
+00:05:09,970 --> 00:05:15,400
+For example, if I were to go to my car and press checkout, I'll be taken to this form to fill out
+
+78
+00:05:15,400 --> 00:05:16,920
+my billing and shipping details.
+
+79
+00:05:17,410 --> 00:05:19,600
+A lot of the HTML here is broken.
+
+80
+00:05:19,840 --> 00:05:24,190
+In addition to this, you may want to have extra fields or remove some fields.
+
+81
+00:05:24,490 --> 00:05:28,690
+You will not be able to modify these fields through a template you'll have to use.
+
+82
+00:05:28,690 --> 00:05:31,050
+Hooks will tackle both problems.
+
+83
+00:05:31,270 --> 00:05:34,090
+First, let's fix the formatting issue we have here.
+
+84
+00:05:34,780 --> 00:05:36,880
+I'm going to inspect the form.
+
+85
+00:05:37,150 --> 00:05:43,780
+Inside this form there is one div tag with the class call to set inside this div tag.
+
+86
+00:05:43,780 --> 00:05:46,450
+We have two more additional tags with the classes.
+
+87
+00:05:46,450 --> 00:05:47,170
+Call one.
+
+88
+00:05:47,560 --> 00:05:52,810
+The reason the fields are getting squished together is because these two div tags have the call.
+
+89
+00:05:52,810 --> 00:05:58,450
+One class, the call one class is a bootstrap class that will make an element have a certain width.
+
+90
+00:05:59,020 --> 00:06:04,510
+If we were to look to the right, you'll see that both bootstrap and newcomer's trying to apply styling
+
+91
+00:06:04,570 --> 00:06:05,740
+that conflict with each other.
+
+92
+00:06:06,310 --> 00:06:11,500
+What do Commerce is attempting to do is make two columns that are about 50 percent in width.
+
+93
+00:06:12,190 --> 00:06:15,040
+Now, the question is, how do we go about attempting this?
+
+94
+00:06:15,220 --> 00:06:20,860
+Well, instead of letting commerce set the width, we'll let bootstrap do that will have to change the
+
+95
+00:06:20,860 --> 00:06:21,850
+classes used.
+
+96
+00:06:21,850 --> 00:06:25,480
+In order to do that, we'll need to modify the template ourselves.
+
+97
+00:06:25,750 --> 00:06:28,870
+We already know what classes and HTML to look for.
+
+98
+00:06:29,050 --> 00:06:32,170
+The next step is to find the template with the same HTML.
+
+99
+00:06:32,770 --> 00:06:38,800
+I've already gone ahead and found the template we'll need to make changes to open the checkout form.
+
+100
+00:06:38,800 --> 00:06:40,600
+Check out template.
+
+101
+00:06:43,120 --> 00:06:47,450
+You'll find the div tags with the call one classes and the form wrapped around it.
+
+102
+00:06:47,830 --> 00:06:49,870
+This is the template we want to modify.
+
+103
+00:06:50,260 --> 00:06:55,930
+I'm going to copy this file and paste it over to our theme, make sure it's placed inside the checkout
+
+104
+00:06:55,930 --> 00:06:56,530
+directory.
+
+105
+00:07:03,110 --> 00:07:05,420
+Now we'll just have to make a few adjustments.
+
+106
+00:07:05,660 --> 00:07:11,510
+First, we're going to end the row class to the div tag with the ID of customer details.
+
+107
+00:07:14,130 --> 00:07:20,010
+Then we're going to change the two inner div tag classes from call one to call six.
+
+108
+00:07:22,740 --> 00:07:28,290
+The row class I'm adding here will help bootstrap, make sure the two columns fit nicely side by side
+
+109
+00:07:28,290 --> 00:07:31,770
+on multiple resolutions, go ahead and refresh the page.
+
+110
+00:07:32,010 --> 00:07:33,240
+Everything should look nicer.
+
+111
+00:07:33,240 --> 00:07:36,960
+Now, the next step is to fix the stylings for the input fields.
+
+112
+00:07:37,560 --> 00:07:43,320
+Unfortunately, if you look at the template, you'll notice the individual fields aren't directly generated
+
+113
+00:07:43,320 --> 00:07:43,590
+here.
+
+114
+00:07:43,950 --> 00:07:47,700
+Instead, they're created dynamically through functions and hooks.
+
+115
+00:07:48,060 --> 00:07:52,150
+Therefore, we'll need to dive into some code to accomplish this.
+
+116
+00:07:52,800 --> 00:07:57,480
+There's already a plugin that does this already, but it's always good to understand how these things
+
+117
+00:07:57,480 --> 00:08:00,570
+work under the hood before you can fully appreciate a plugin.
+
+118
+00:08:01,050 --> 00:08:05,420
+First, we'll need to study the HTML to find the correct template to modify.
+
+119
+00:08:05,790 --> 00:08:07,320
+I've already done this for you.
+
+120
+00:08:07,600 --> 00:08:12,660
+The template can be found inside the checkout's form billing free file.
+
+121
+00:08:13,320 --> 00:08:17,550
+All the billing form fields can be found inside the div tag with the class woohoo!
+
+122
+00:08:17,550 --> 00:08:19,740
+Commerce billing fields, field wrapper.
+
+123
+00:08:20,160 --> 00:08:22,890
+Inside this element we have a loop being performed.
+
+124
+00:08:23,220 --> 00:08:25,170
+Let's break this down line by line.
+
+125
+00:08:25,500 --> 00:08:28,950
+The first line here is creating a variable called Fields'.
+
+126
+00:08:29,220 --> 00:08:31,830
+Its value is the value returned by the function.
+
+127
+00:08:31,830 --> 00:08:33,270
+Get check outfields.
+
+128
+00:08:33,780 --> 00:08:37,799
+This function will return all the fields required for the user to check out.
+
+129
+00:08:38,190 --> 00:08:44,159
+This will allow for a third party plugins to add additional fields if need be right after this.
+
+130
+00:08:44,190 --> 00:08:47,220
+Each field is loop through using a foreach loop.
+
+131
+00:08:47,790 --> 00:08:52,230
+What we want to focus on is the call to the function wou commerce forum fields.
+
+132
+00:08:52,560 --> 00:08:56,340
+This function is what we'll take care of generating the input field itself.
+
+133
+00:08:56,670 --> 00:08:59,250
+We can even check the documentation for this function.
+
+134
+00:08:59,520 --> 00:09:03,240
+In the resource section of this lecture, I provide a link to this function.
+
+135
+00:09:03,750 --> 00:09:04,860
+Here's what it says.
+
+136
+00:09:05,160 --> 00:09:07,830
+Outputs a checkout address form field.
+
+137
+00:09:08,310 --> 00:09:12,510
+A simple to understand function, but not much documentation is provided.
+
+138
+00:09:12,870 --> 00:09:13,620
+That's fine.
+
+139
+00:09:13,650 --> 00:09:16,440
+We can just inspect the code on this page.
+
+140
+00:09:16,440 --> 00:09:19,110
+You can click this link to where the function is located at.
+
+141
+00:09:19,350 --> 00:09:20,140
+Let's go there.
+
+142
+00:09:20,880 --> 00:09:25,710
+There's quite a bit of code going on here, but we don't need to examine much of it to understand what's
+
+143
+00:09:25,710 --> 00:09:26,310
+going on.
+
+144
+00:09:26,700 --> 00:09:30,540
+Right away you'll notice a variable called defaults is being created.
+
+145
+00:09:30,810 --> 00:09:34,200
+It'll contain default values for the field if they weren't created.
+
+146
+00:09:34,590 --> 00:09:37,980
+Three of these default settings have the key word class in them.
+
+147
+00:09:38,250 --> 00:09:41,700
+We can assume that these have to do with where the classes will be applied.
+
+148
+00:09:42,360 --> 00:09:47,520
+I've already dug into the code and can confirm they do indeed get applied as classes to elements.
+
+149
+00:09:47,790 --> 00:09:51,960
+The Klasky gets applied to the element that is wrapped around each input field.
+
+150
+00:09:52,260 --> 00:09:55,500
+The label Klasky is the class applied to the label.
+
+151
+00:09:55,830 --> 00:10:00,000
+The input class key is the class that gets applied to the input field itself.
+
+152
+00:10:00,780 --> 00:10:02,910
+These are the keys that will want to modify.
+
+153
+00:10:03,180 --> 00:10:05,940
+Now we have to figure out how to pass in the values.
+
+154
+00:10:06,180 --> 00:10:12,360
+Taking a closer look, we can see that the default array gets merged with another variable called ARGs.
+
+155
+00:10:12,630 --> 00:10:16,740
+ARGs is the variable that's passed into the function as the second parameter.
+
+156
+00:10:17,040 --> 00:10:22,290
+We just need to modify the second parameter of this function back inside the template.
+
+157
+00:10:22,290 --> 00:10:26,400
+The field variable is what's passed as the second argument to the function.
+
+158
+00:10:26,730 --> 00:10:28,860
+We'll just need to modify this variable.
+
+159
+00:10:29,190 --> 00:10:34,020
+Before we do that, we should copy this template over to our theme since will be making changes.
+
+160
+00:10:34,380 --> 00:10:37,590
+Copy this file over to our theme in the respective directory.
+
+161
+00:10:40,290 --> 00:10:46,730
+Next, let's modifying the Klasky and set it to an array, the value should be an array of classes.
+
+162
+00:10:46,950 --> 00:10:50,130
+We only need to add one class, which is form group.
+
+163
+00:10:56,640 --> 00:10:59,170
+The next key to set is the input class.
+
+164
+00:10:59,430 --> 00:11:01,430
+This will also be an array of classes.
+
+165
+00:11:01,680 --> 00:11:04,560
+The only class will pass in is form control.
+
+166
+00:11:07,340 --> 00:11:13,370
+You may be curious as to how I got these classes, these are bootstrap classes, bootstrap structures,
+
+167
+00:11:13,370 --> 00:11:15,710
+its form in a similar way to commerce.
+
+168
+00:11:16,010 --> 00:11:18,890
+You create a tag that wraps around the input field.
+
+169
+00:11:19,220 --> 00:11:24,590
+The element that gets wrapped around the input field needs to have the class form group apply to it.
+
+170
+00:11:25,010 --> 00:11:28,870
+The input field itself should have deform control class applied to it.
+
+171
+00:11:29,180 --> 00:11:33,340
+You can read up on the bootstrap documentation for more info on these classes.
+
+172
+00:11:33,950 --> 00:11:35,850
+That's all the changes will need to make.
+
+173
+00:11:35,990 --> 00:11:38,270
+Let's refresh the page and see what we get.
+
+174
+00:11:38,690 --> 00:11:41,240
+The input field should now look better than before.
+
+175
+00:11:45,530 --> 00:11:51,950
+So we've basically gone over the many ways to modify a template you could use either hooks or modify
+
+176
+00:11:51,960 --> 00:11:57,680
+the template itself by copying it over from the plug into your theme folder before in this lecture,
+
+177
+00:11:57,800 --> 00:11:59,840
+I want to provide one extra tip.
+
+178
+00:12:00,170 --> 00:12:02,900
+Sometimes you want to display products your own way.
+
+179
+00:12:03,230 --> 00:12:08,210
+In most cases, you'll want to add more options to the way products or sorted and filtered.
+
+180
+00:12:08,840 --> 00:12:14,630
+In cases like these, you'll most likely want to remove the default sorting option provided by commerce.
+
+181
+00:12:14,960 --> 00:12:17,480
+Go to the shop page to see what that looks like.
+
+182
+00:12:18,430 --> 00:12:23,170
+There are dozens of plug ins that will remove this dropdown for you, but let's do it manually.
+
+183
+00:12:23,770 --> 00:12:26,590
+Removing this isn't anything we haven't done before.
+
+184
+00:12:26,860 --> 00:12:32,320
+We already know that this page is generated using the archive product template.
+
+185
+00:12:32,620 --> 00:12:34,390
+I'm going to open up this template.
+
+186
+00:12:36,680 --> 00:12:42,380
+Inside this template, you'll eventually find a call to the do action function called Wuhu Commerce
+
+187
+00:12:42,380 --> 00:12:47,780
+before shop loop right above you'll find this comment for the functions while commerce calls.
+
+188
+00:12:48,350 --> 00:12:51,880
+We already went over how you would go about verifying all of this.
+
+189
+00:12:52,130 --> 00:12:56,400
+So we'll just take the comments word for it inside the functions file.
+
+190
+00:12:56,420 --> 00:13:02,150
+I'm going to call the remove action function and just pass in the info accordingly, using the info
+
+191
+00:13:02,150 --> 00:13:04,340
+from the commerce comment like so.
+
+192
+00:13:13,320 --> 00:13:19,260
+Refresh the page to check just like that, the sorting is gone, nothing really new here, but I just
+
+193
+00:13:19,260 --> 00:13:23,070
+wanted to show you this as it's something I find myself doing often.
+

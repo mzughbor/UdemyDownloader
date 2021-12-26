@@ -1,0 +1,428 @@
+1
+00:00:07,270 --> 00:00:13,090
+So far, we've talked about adding settings to the customizer, but what if we wanted to make some changes
+
+2
+00:00:13,090 --> 00:00:16,900
+to the default customizer that's completely possible and allowed.
+
+3
+00:00:17,170 --> 00:00:21,640
+If you believe you know a better way, the customizer should be displayed for your theme, then you're
+
+4
+00:00:21,640 --> 00:00:23,060
+completely allowed to do that.
+
+5
+00:00:23,350 --> 00:00:25,660
+Let's explore some ways to customize this.
+
+6
+00:00:26,230 --> 00:00:31,570
+The first thing I want to do is group my sections into something called panels, panels or a way to
+
+7
+00:00:31,570 --> 00:00:32,500
+group sections.
+
+8
+00:00:32,680 --> 00:00:38,170
+If the theme customizer had a hierarchy, it would be panels, sections, comptrollers.
+
+9
+00:00:38,560 --> 00:00:40,570
+Creating a panel is pretty straightforward.
+
+10
+00:00:42,700 --> 00:00:47,140
+Inside the main customizer file, I'm going to call the ad panel method.
+
+11
+00:00:49,180 --> 00:00:54,750
+I'm calling this method inside this function instead of a separate file, because it encompasses everything,
+
+12
+00:00:55,090 --> 00:00:58,060
+however, you're free to organize this however you like.
+
+13
+00:00:58,360 --> 00:01:02,530
+This method has two parameters, which is the idea and an array of settings.
+
+14
+00:01:02,770 --> 00:01:04,900
+I'm going to set the ID to you to meet.
+
+15
+00:01:07,090 --> 00:01:12,580
+The array will have three keys, the first key is the title, which should be human readable.
+
+16
+00:01:12,800 --> 00:01:15,940
+I'm going to set this to you, to me and make it translatable.
+
+17
+00:01:18,100 --> 00:01:23,830
+The next key is description, which will be Udemy themed settings, it's important that you add some
+
+18
+00:01:23,830 --> 00:01:26,230
+P tags as it'll format it properly.
+
+19
+00:01:28,520 --> 00:01:34,370
+The last key is priority, which will determine the location, the higher the number, the lower placement
+
+20
+00:01:34,370 --> 00:01:34,910
+it gets.
+
+21
+00:01:35,120 --> 00:01:37,100
+I'm going to set this to 160.
+
+22
+00:01:39,360 --> 00:01:46,350
+This will add a panel to the customizer now we can add the sections to this panel to add a section to
+
+23
+00:01:46,350 --> 00:01:52,950
+a panel, you have to specify it inside the ad section method, open both customizer files for the social
+
+24
+00:01:52,950 --> 00:01:59,370
+and miscellaneous settings, look for the ad section method calls and add a new key called panel and
+
+25
+00:01:59,370 --> 00:02:01,680
+pass it in the panel ID, we said earlier.
+
+26
+00:02:07,470 --> 00:02:12,630
+Refresh the page and you should now see the panel udemy, and if you click on it, you'll find both
+
+27
+00:02:12,630 --> 00:02:14,920
+sections appearing under it, which is what we wanted.
+
+28
+00:02:15,600 --> 00:02:19,590
+Now let's talk about customizing existing controllers and sections.
+
+29
+00:02:19,930 --> 00:02:22,300
+There is this section called Site Identity.
+
+30
+00:02:22,620 --> 00:02:25,440
+Let's say I wanted to change the title to General.
+
+31
+00:02:25,680 --> 00:02:29,760
+To do that, you need to grab the section or controller and modify IT settings.
+
+32
+00:02:30,300 --> 00:02:36,840
+Before we can do that, we have to know the ID of what we want to grab inside the main customized file.
+
+33
+00:02:36,870 --> 00:02:40,590
+I'm going to vade, dump everything and format it with pre-tax.
+
+34
+00:02:45,870 --> 00:02:51,840
+Refresh the page and you should see this huge object outputted, you'll find a lot of information related
+
+35
+00:02:51,840 --> 00:02:57,000
+to the customizer, including all the sections, controllers and panels I'm going to skip to.
+
+36
+00:02:57,000 --> 00:02:58,910
+These sections are right here.
+
+37
+00:02:58,920 --> 00:03:00,960
+You'll find all the sections to find.
+
+38
+00:03:00,960 --> 00:03:06,900
+So far as you can see, you'll find all the keys similar to the ones you can set when using the ADD
+
+39
+00:03:06,900 --> 00:03:07,660
+section method.
+
+40
+00:03:08,280 --> 00:03:13,060
+I'm going to look for the section with the title site Identity after finding it.
+
+41
+00:03:13,110 --> 00:03:18,230
+I now see the ID is titled Tag Line Back inside the customizer file.
+
+42
+00:03:18,240 --> 00:03:20,520
+I'm going to call the get section method.
+
+43
+00:03:25,220 --> 00:03:31,250
+This method will grab a section and all its settings you have to pass in the ID, which would be title
+
+44
+00:03:31,250 --> 00:03:36,920
+tag line, as we saw earlier from here, I can then modify any property I want.
+
+45
+00:03:37,190 --> 00:03:41,890
+Previously, when using the ad section method, we use an array for the settings.
+
+46
+00:03:42,140 --> 00:03:47,510
+However, after a section is added, the settings will be converted into an object with properties and
+
+47
+00:03:47,510 --> 00:03:48,020
+methods.
+
+48
+00:03:48,320 --> 00:03:52,490
+Because of that, we have to change the settings as if they were properties.
+
+49
+00:03:52,790 --> 00:03:55,690
+Despite the conversion, the names are usually the same.
+
+50
+00:03:56,030 --> 00:03:59,450
+In this case, we can set the title to General like so.
+
+51
+00:04:01,830 --> 00:04:08,160
+This is how you would modify any section, panel or controller for controllers, you use the get control
+
+52
+00:04:08,160 --> 00:04:12,720
+method for panels, it's get panel for settings, it's jet setting.
+
+53
+00:04:13,020 --> 00:04:19,019
+If you're unsure about a name or an idea or a particular value, it's always good practice to dump the
+
+54
+00:04:19,019 --> 00:04:21,079
+customized object like we did here.
+
+55
+00:04:21,480 --> 00:04:23,550
+I'm going to comment out this bit of code.
+
+56
+00:04:25,900 --> 00:04:31,890
+All right, the last thing I want to do is customize the user experience, whenever we update a setting,
+
+57
+00:04:31,900 --> 00:04:36,520
+you'll notice the page refreshes, which is pretty decent, but the loading time is something that's
+
+58
+00:04:36,520 --> 00:04:37,530
+not really desired.
+
+59
+00:04:37,870 --> 00:04:41,970
+In this case, we will want to make some settings, not refresh the page.
+
+60
+00:04:42,190 --> 00:04:46,910
+Rather, we can use JavaScript to update the settings to accomplish this.
+
+61
+00:04:46,960 --> 00:04:52,630
+We'll have to make some minor tweaks to the settings we defined earlier, opened the Mesi function and
+
+62
+00:04:52,630 --> 00:04:55,100
+search for the card and search button settings.
+
+63
+00:04:55,420 --> 00:05:00,130
+I'm going to define a new key called transport and set it to post message.
+
+64
+00:05:04,870 --> 00:05:11,260
+There are two possible values for this key by default, it's refresh, which will instruct WordPress
+
+65
+00:05:11,260 --> 00:05:17,860
+to refresh the page whenever this value is updated by setting it to post message, you're telling WordPress
+
+66
+00:05:17,860 --> 00:05:21,690
+that you will use custom JavaScript code to reflect the changes on the page.
+
+67
+00:05:22,270 --> 00:05:27,910
+Open the file assets, jazz themed customized JS file.
+
+68
+00:05:28,300 --> 00:05:32,860
+I created this file for you already and all it is is an empty query.
+
+69
+00:05:32,860 --> 00:05:36,060
+Initialize your function will be updating this very soon.
+
+70
+00:05:36,280 --> 00:05:42,120
+I only want to load this file if the customizer is loaded, otherwise it would just be a wasted download.
+
+71
+00:05:42,700 --> 00:05:48,520
+To do that, we have to add a new action inside the functions file called Customize Preview.
+
+72
+00:05:48,520 --> 00:05:53,200
+In it, the function to call is Jiyu customize preview init.
+
+73
+00:05:57,800 --> 00:06:03,620
+I'm going to create a file inside the customizer folder called NQ and define the function here.
+
+74
+00:06:08,220 --> 00:06:13,690
+Lastly, I'm going to include it, this hook will only run if the customizer is loaded.
+
+75
+00:06:13,890 --> 00:06:17,040
+Its purpose is for loading stylesheets and scrips only.
+
+76
+00:06:17,340 --> 00:06:20,640
+I'm going to call the WP NQ script function.
+
+77
+00:06:24,110 --> 00:06:27,170
+The ID will be Jiyu theme customizer.
+
+78
+00:06:29,370 --> 00:06:31,710
+Passing the euro like we did previously.
+
+79
+00:06:38,160 --> 00:06:41,110
+The value for the dependencies is very important here.
+
+80
+00:06:41,340 --> 00:06:45,960
+We require two things, which is Jake Query and the customized dash preview.
+
+81
+00:06:48,280 --> 00:06:53,200
+The customized preview file has some helper functions and methods for working with the customizer,
+
+82
+00:06:53,560 --> 00:06:55,530
+you'll see what those are in just a moment.
+
+83
+00:06:56,050 --> 00:06:58,000
+The version will be false.
+
+84
+00:06:58,000 --> 00:07:00,940
+And I want to load this in the footer just like that.
+
+85
+00:07:00,940 --> 00:07:02,550
+Our file should now be loaded.
+
+86
+00:07:02,830 --> 00:07:05,890
+Let's go back to the JS file to make the finishing changes.
+
+87
+00:07:08,720 --> 00:07:14,870
+Since the customized JavaScript file is being loaded, we're provided with an object called WP, which
+
+88
+00:07:14,870 --> 00:07:17,960
+contains all the methods and properties related to WordPress.
+
+89
+00:07:18,350 --> 00:07:23,330
+One of these methods is called Customize, which allows you to get the value of a particular setting.
+
+90
+00:07:23,780 --> 00:07:27,200
+In this case, it would be Jiyu header show search.
+
+91
+00:07:29,410 --> 00:07:34,810
+The second parameter for this method is a callback function for using the value the callback function
+
+92
+00:07:34,810 --> 00:07:36,460
+is provided the current value.
+
+93
+00:07:38,690 --> 00:07:44,930
+I'm going to bind this value so that we can keep an eye out for any changes this method takes in another
+
+94
+00:07:44,930 --> 00:07:49,850
+callback function that's passed in the new value, we will refer to it as New Val.
+
+95
+00:07:52,440 --> 00:07:58,380
+Since this is a check box, we can simply check to see if there's any value set, if there is, then
+
+96
+00:07:58,380 --> 00:08:01,740
+we want to show the search button, otherwise hide it.
+
+97
+00:08:02,130 --> 00:08:05,460
+The idea of the search button is top dash search.
+
+98
+00:08:05,730 --> 00:08:09,990
+We can use the show and hide Jake wery methods, respectively.
+
+99
+00:08:17,680 --> 00:08:19,880
+I'm going to do the same for the cart button.
+
+100
+00:08:20,140 --> 00:08:23,650
+It's the same bit of code, we're just replacing the IDs.
+
+101
+00:08:27,330 --> 00:08:29,580
+Let's refresh the customizer one more time.
+
+102
+00:08:29,880 --> 00:08:35,460
+One thing I should note is that sometimes your code may not be loaded as some browsers will cache files.
+
+103
+00:08:35,460 --> 00:08:37,380
+So be sure to clear your cache.
+
+104
+00:08:37,380 --> 00:08:42,570
+If that's the case, test out the code and you shouldn't see the buttons disappearing depending on if
+
+105
+00:08:42,570 --> 00:08:43,650
+the boxes are checked.
+
+106
+00:08:44,039 --> 00:08:46,230
+You should not have any page refresh.
+
+107
+00:08:46,650 --> 00:08:51,330
+All this is being done with JavaScript code, which makes for a smoother user experience.
+

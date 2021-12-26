@@ -1,0 +1,608 @@
+1
+00:00:07,480 --> 00:00:13,240
+We're going to begin creating the UI for our block WordPress provides two different places for your
+
+2
+00:00:13,240 --> 00:00:15,760
+UI, which are both important right now.
+
+3
+00:00:15,790 --> 00:00:20,170
+The setting that displays our content is the same function right above it.
+
+4
+00:00:20,290 --> 00:00:23,050
+I'm going to create an arrow function called EDIT.
+
+5
+00:00:25,320 --> 00:00:31,020
+These two functions will display our content, but in different locations, the edit function will display
+
+6
+00:00:31,020 --> 00:00:36,430
+the content on the Gutenberg editor, the same function will display the content on the front end.
+
+7
+00:00:36,780 --> 00:00:38,760
+You can consider this the final result.
+
+8
+00:00:39,450 --> 00:00:43,430
+The edit function is where you'll be placing the UI for editing the block.
+
+9
+00:00:43,710 --> 00:00:46,000
+This includes buttons or input fields.
+
+10
+00:00:46,320 --> 00:00:49,720
+You can also use this function to add content on the sidebar.
+
+11
+00:00:50,160 --> 00:00:56,340
+Basically, anything related to the editor should be placed here, just like the same function you're
+
+12
+00:00:56,340 --> 00:00:58,580
+required to return ASX.
+
+13
+00:00:58,860 --> 00:01:03,900
+I'm going to copy the return statement from the same function and paste it into the edit function.
+
+14
+00:01:06,080 --> 00:01:07,380
+This is only temporary.
+
+15
+00:01:07,730 --> 00:01:13,280
+Soon enough, you'll be able to see the difference between these two functions before we get into coding
+
+16
+00:01:13,280 --> 00:01:17,120
+the content for our block, let's accept in the prompts object.
+
+17
+00:01:19,330 --> 00:01:25,900
+Both functions except in the props object, so be sure you're accepting that in in the previous section
+
+18
+00:01:25,930 --> 00:01:29,910
+we went over react and the props object as a refresher.
+
+19
+00:01:30,040 --> 00:01:34,840
+The props object contains the properties and attributes passed down to your component.
+
+20
+00:01:37,190 --> 00:01:41,970
+The great thing about Gutenberg is that most of the technical details are taken care of for us.
+
+21
+00:01:42,350 --> 00:01:45,650
+We don't have to worry about the code that makes Gutenberg function.
+
+22
+00:01:45,950 --> 00:01:48,710
+A general high level overview will suffice.
+
+23
+00:01:49,010 --> 00:01:51,260
+Gutenberg is a react application.
+
+24
+00:01:51,770 --> 00:01:54,860
+Most react applications are structured as components.
+
+25
+00:01:55,100 --> 00:01:58,170
+When we went over components, we only made one component.
+
+26
+00:01:58,430 --> 00:02:01,850
+However, you can have as many as you like in an application.
+
+27
+00:02:02,210 --> 00:02:07,520
+The way most developers go about it is by building one component and that component will load in more
+
+28
+00:02:07,520 --> 00:02:08,199
+components.
+
+29
+00:02:08,720 --> 00:02:12,050
+The component at the top level is considered the parent component.
+
+30
+00:02:12,440 --> 00:02:15,410
+Any components loaded below it are child components.
+
+31
+00:02:15,740 --> 00:02:20,180
+The data for the whole application is usually stored at the parent component level.
+
+32
+00:02:20,600 --> 00:02:24,830
+The parent component will then pass down the data to the children components.
+
+33
+00:02:25,370 --> 00:02:29,290
+Children components can then pass that data down to their children components.
+
+34
+00:02:29,630 --> 00:02:32,350
+There's no limit to how far data can be passed down.
+
+35
+00:02:32,720 --> 00:02:35,870
+Let's say that the data was updated in a child component.
+
+36
+00:02:36,260 --> 00:02:40,150
+The parent component will not be automatically notified about the update.
+
+37
+00:02:40,730 --> 00:02:43,640
+Instead, it's the job of the child component.
+
+38
+00:02:43,640 --> 00:02:46,510
+To tell the parent component about the data change.
+
+39
+00:02:46,850 --> 00:02:51,440
+You have to do this manually, but it's not hard at all, as you'll see soon enough.
+
+40
+00:02:51,800 --> 00:02:57,680
+Now, you may be thinking what if the data that's used on level two is also used on level one?
+
+41
+00:02:58,070 --> 00:03:04,120
+Well, once the parents component is updated, it'll send the data back down through all its child components.
+
+42
+00:03:04,430 --> 00:03:08,970
+This process repeats until all components are up to date with the latest changes.
+
+43
+00:03:09,320 --> 00:03:12,440
+This way, you don't have to send the data to all components.
+
+44
+00:03:12,740 --> 00:03:16,940
+You just have to send it to the parent component and everything else will follow suit.
+
+45
+00:03:19,340 --> 00:03:22,520
+The props object will contain the data for our block.
+
+46
+00:03:22,910 --> 00:03:28,040
+Not only does it contain the data, but it contains functions that you can use to send the data back
+
+47
+00:03:28,040 --> 00:03:29,090
+to the parent component.
+
+48
+00:03:29,540 --> 00:03:31,760
+Let's check out the value of this object.
+
+49
+00:03:32,000 --> 00:03:35,630
+I'm going to console log the props object.
+
+50
+00:03:37,920 --> 00:03:45,510
+Then inside the command line CD into the blocks directory and run the NPM run deve command afterwards.
+
+51
+00:03:49,990 --> 00:03:55,660
+You shouldn't receive any errors at this point once the file has been compiled, let's create a new
+
+52
+00:03:55,660 --> 00:03:56,590
+recipe post.
+
+53
+00:03:56,860 --> 00:04:00,480
+Be sure you have the developer tools open before you input anything.
+
+54
+00:04:00,790 --> 00:04:02,800
+I'm going to add my own recipe block.
+
+55
+00:04:05,200 --> 00:04:10,120
+All right, the block should be displaying without a problem, if you look at the log, you'll see an
+
+56
+00:04:10,120 --> 00:04:11,520
+object being outputted.
+
+57
+00:04:11,740 --> 00:04:13,390
+This is the props object.
+
+58
+00:04:13,600 --> 00:04:18,190
+If you look inside, you'll find things like attributes and the class name.
+
+59
+00:04:18,519 --> 00:04:21,310
+There is one property I want you to pay attention to.
+
+60
+00:04:22,120 --> 00:04:27,460
+The IS selected property is used to determine whether the user is focused on the block or not.
+
+61
+00:04:27,820 --> 00:04:30,370
+If they are, then the block tab will be in.
+
+62
+00:04:30,370 --> 00:04:31,720
+Focus on the sidebar.
+
+63
+00:04:32,050 --> 00:04:38,140
+I'm going to click outside of my block, which will make the editor lose focus of the Block immediately
+
+64
+00:04:38,140 --> 00:04:39,310
+after clicking away.
+
+65
+00:04:39,340 --> 00:04:40,660
+A new object is logged.
+
+66
+00:04:40,960 --> 00:04:43,140
+If you look inside, it's mostly the same.
+
+67
+00:04:43,510 --> 00:04:50,290
+However, the IS selected property is now set to force after it was set to false, everything in the
+
+68
+00:04:50,290 --> 00:04:51,900
+application changed as well.
+
+69
+00:04:52,510 --> 00:04:55,830
+The block tab on the sidebar is no longer focused.
+
+70
+00:04:56,140 --> 00:04:59,860
+The great thing about Gutenberg is that a lot of this is taken care of for you.
+
+71
+00:05:00,220 --> 00:05:04,230
+The WordPress development team have already taken care of the difficult parts.
+
+72
+00:05:04,510 --> 00:05:06,880
+This allows us to focus more on our blog.
+
+73
+00:05:07,660 --> 00:05:12,850
+Now that we understand what the props object is, let's begin creating the content.
+
+74
+00:05:13,240 --> 00:05:18,730
+We'll be learning more about the props object throughout this course, inside the edit function.
+
+75
+00:05:18,730 --> 00:05:22,360
+I'm going to remove the logging of the props object.
+
+76
+00:05:22,930 --> 00:05:29,710
+I'm also going to remove the code for the return statement and said, I'm going to add a pair of parentheses.
+
+77
+00:05:29,980 --> 00:05:32,890
+If you're writing one line of code, then you can commit these.
+
+78
+00:05:33,070 --> 00:05:37,990
+But if you want to have multiline JSM, then you're required to add these in.
+
+79
+00:05:38,710 --> 00:05:43,960
+As a reminder, the block we're going to create will display more information about a recipe.
+
+80
+00:05:44,380 --> 00:05:47,890
+This includes things like ingredients, cooking time, etc..
+
+81
+00:05:48,280 --> 00:05:53,260
+To start things off, I'm going to create a div tag with the attribute class name.
+
+82
+00:05:55,520 --> 00:05:57,930
+Well, remember that we're writing JavaScript code.
+
+83
+00:05:58,220 --> 00:06:05,870
+The key word class is taken, so jousts uses the class name attribute to assign an element access class.
+
+84
+00:06:06,320 --> 00:06:08,990
+The value for this will be a pair of curly brackets.
+
+85
+00:06:09,320 --> 00:06:12,890
+This is how you inject JavaScript code inside OSX.
+
+86
+00:06:13,220 --> 00:06:15,320
+We're going to make this value dynamic.
+
+87
+00:06:15,710 --> 00:06:20,960
+If the value for an attribute is dynamic, then you don't have to worry about wrapping this in quotes.
+
+88
+00:06:21,140 --> 00:06:22,250
+It will be done for you.
+
+89
+00:06:22,250 --> 00:06:23,390
+Once it's processed.
+
+90
+00:06:23,600 --> 00:06:26,270
+The value will be prompts class name.
+
+91
+00:06:28,560 --> 00:06:34,020
+The class name property will automatically be generated for your block, you will see the value for
+
+92
+00:06:34,020 --> 00:06:35,170
+this once we're finished.
+
+93
+00:06:35,430 --> 00:06:40,950
+I've already gone ahead and prepared the GML for this block inside the assets folder.
+
+94
+00:06:40,980 --> 00:06:49,140
+You'll find a folder called Extra's Open the recipe dash block, dash templates, copy everything and
+
+95
+00:06:49,140 --> 00:06:50,670
+pasted into the div tag.
+
+96
+00:06:55,020 --> 00:06:57,100
+There's nothing super special going on here.
+
+97
+00:06:57,390 --> 00:07:01,760
+We have an unknown wordlist with the class list Unstyled applied to it.
+
+98
+00:07:02,160 --> 00:07:07,980
+Something I want to know is that the list Unstyled class is only available within our theme styles.
+
+99
+00:07:08,250 --> 00:07:10,850
+We haven't include any styles for the Gutenberg.
+
+100
+00:07:10,970 --> 00:07:17,010
+Ed, I want you to keep this in mind as what we see on the Gutenberg editor will be slightly different
+
+101
+00:07:17,010 --> 00:07:18,510
+than what we'll see on the front end.
+
+102
+00:07:18,930 --> 00:07:22,580
+In reality, you will always want both styles to look the same.
+
+103
+00:07:22,920 --> 00:07:26,370
+This way the user won't get surprised when they view their post.
+
+104
+00:07:26,880 --> 00:07:31,260
+Usually what they see on the admin is what they expect to see on the front end.
+
+105
+00:07:31,560 --> 00:07:37,020
+Inside this list, we have a general overview of the recipe inside the strong tangs.
+
+106
+00:07:37,030 --> 00:07:40,230
+I'm going to wrap the text with the double underscore function.
+
+107
+00:07:40,470 --> 00:07:41,790
+I want you to do the same.
+
+108
+00:08:03,710 --> 00:08:07,320
+This text will never change, so we'll want to make it translatable.
+
+109
+00:08:07,610 --> 00:08:14,630
+We also have this text with uppercase letters that end with each page is short for Placeholder, will
+
+110
+00:08:14,630 --> 00:08:16,760
+be replacing this with dynamic values.
+
+111
+00:08:16,790 --> 00:08:20,630
+But for now, we'll leave this as is save your changes.
+
+112
+00:08:20,870 --> 00:08:24,600
+Web should be able to process the changes without any error.
+
+113
+00:08:25,010 --> 00:08:26,660
+Let's view what we have so far.
+
+114
+00:08:26,930 --> 00:08:29,410
+I want you to create a new recipe post.
+
+115
+00:08:29,690 --> 00:08:32,030
+Make sure your developer tools are opened.
+
+116
+00:08:32,299 --> 00:08:35,750
+I'm going to give my post a title and add the recipe block.
+
+117
+00:08:38,059 --> 00:08:43,850
+You shouldn't receive any errors related to our block, the block should output the unordered list with
+
+118
+00:08:43,850 --> 00:08:45,160
+our text translated.
+
+119
+00:08:45,170 --> 00:08:47,060
+I want you to publish this post.
+
+120
+00:08:49,390 --> 00:08:54,730
+Before we preview this, I want you to check out something, I'm going to inspect this element in my
+
+121
+00:08:54,730 --> 00:08:55,720
+developer tools.
+
+122
+00:08:57,990 --> 00:09:01,380
+You'll see our block is being displayed the same way we've written it.
+
+123
+00:09:01,770 --> 00:09:06,920
+One thing I want you to focus on is the class apply to the div tag for this tag.
+
+124
+00:09:06,930 --> 00:09:10,620
+We've used the class name property from the props object.
+
+125
+00:09:11,010 --> 00:09:14,070
+WordPress will provide you with a class for the block generated.
+
+126
+00:09:14,430 --> 00:09:19,620
+You're free to use your own classes, but it's better to use the one provided for consistency reasons.
+
+127
+00:09:20,130 --> 00:09:24,240
+All class names start with WP Dash, Block, Dash.
+
+128
+00:09:24,510 --> 00:09:26,550
+It's followed up with the name of the block.
+
+129
+00:09:26,760 --> 00:09:29,660
+In our case, this would be Udemy dash recipe.
+
+130
+00:09:30,000 --> 00:09:33,670
+The forward slash in the name was converted into a dash.
+
+131
+00:09:33,990 --> 00:09:36,660
+All right, let's view what we get on the front end.
+
+132
+00:09:39,040 --> 00:09:45,100
+What will be rendered on the front end is the hello world message, this is to be expected, as I stated
+
+133
+00:09:45,100 --> 00:09:49,690
+previously, the edit function is for content that gets rendered on the ED.
+
+134
+00:09:49,990 --> 00:09:53,680
+The same function is for content that gets rendered on the front end.
+
+135
+00:09:53,680 --> 00:09:57,610
+As the final result, providing the edit function is optional.
+
+136
+00:09:58,300 --> 00:10:04,000
+If you don't have an edit function available, then WordPress will just use the same function for both
+
+137
+00:10:04,000 --> 00:10:04,560
+sides.
+
+138
+00:10:04,900 --> 00:10:06,790
+Let's inspect the element for this.
+
+139
+00:10:07,390 --> 00:10:11,390
+Will see the paragraph tag being outputted with the class apply.
+
+140
+00:10:11,830 --> 00:10:13,510
+This is a pleasant surprise.
+
+141
+00:10:13,750 --> 00:10:18,660
+WordPress has taken the time to apply the class even though we didn't apply it in our code.
+
+142
+00:10:18,970 --> 00:10:23,410
+You don't have to apply the class name properly as WordPress will do it for you.
+
+143
+00:10:23,770 --> 00:10:26,370
+This only applies to the same function.
+
+144
+00:10:26,950 --> 00:10:30,510
+The edit function will not have the class applied to it automatically.
+
+145
+00:10:30,850 --> 00:10:33,790
+There's a reason for this, but we'll cover that soon enough.
+
+146
+00:10:34,060 --> 00:10:34,660
+For now.
+
+147
+00:10:34,750 --> 00:10:40,570
+Just know that if you want to use the class on the editor, then you'll need to apply it manually while
+
+148
+00:10:40,570 --> 00:10:42,990
+the front end will have it apply to automatically.
+
+149
+00:10:43,630 --> 00:10:44,140
+All right.
+
+150
+00:10:44,320 --> 00:10:45,430
+That should do it for now.
+
+151
+00:10:45,580 --> 00:10:50,770
+In the next lecture, we'll take a look at how to allow the user to modify these values.
+
+152
+00:10:52,610 --> 00:10:53,180
+Oh.
+

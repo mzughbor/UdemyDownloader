@@ -38,18 +38,18 @@ retry = 3
 cookies = ""
 downloader = None
 logger = None
-dl_assets = True
+dl_assets = False
 skip_lectures = False
-dl_captions = True  #3
+dl_captions = False
 caption_locale = "en" #4 ---
-quality = 720  #5  ---
+quality = None #720  #5  --- dropdown menu
 bearer_token = None
 portal_name = None
 course_name = None
-keep_vtt = True #6
-skip_hls = False #7
-concurrent_downloads = 10 #8
-disable_ipv6 = False #9
+keep_vtt = False
+skip_hls = False
+concurrent_downloads = 10
+disable_ipv6 = False
 save_to_file = None
 load_from_file = None
 course_url = None
@@ -59,12 +59,18 @@ keys = {}
 Gui_url = tkinter.StringVar(root)
 access_token = tkinter.StringVar(root)
 skip_lectures_chbox = StringVar()
+dl_assets_chbox = StringVar()
+dl_captions_chbox = StringVar()
+keep_vtt_chbox = StringVar()
+skip_hls_chbox = StringVar()
+concurrent_downloads_chbox = StringVar()
+disable_ipv6_chbox = StringVar()
 
 def main_func(name):
     """
     @author mZughbor
     """
-    global skip_lectures_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
     frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
@@ -76,16 +82,15 @@ def main_func(name):
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     # Label(root, text='Hello Heroz !').grid(row=0, column=0)
-    Label(frame_zero, text='You can download non Drm videos from Udemy.com').grid(row=0, column=0, pady=0)
-    Label(frame_zero, text='website from this little program!').grid(row=1, column=0, pady=0)
+    Label(frame_zero, text='You can download - Drm videos from Udemy.com website and all ').grid(row=0, column=0, pady=0)
+    Label(frame_zero, text='other associated assets from this little program!').grid(row=1, column=0, pady=0)
+    Label(frame_zero, text='You must Fill all this fields correctly then click download button.').grid(row=2, column=0, pady=4)
     Label(frame, text='Please Enter Your URl Course !').grid(row=3, column=0, pady=2)
     Entry(frame, textvariable=Gui_url, width=45, border=3, borderwidth=4, fg='red').grid(row=4, column=0, pady=1)
     Label(frame, text='Please Enter Your Access Token !').grid(row=5, column=0, pady=2)
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
 
-    dl_assets = IntVar()
-    dl_captions = IntVar()
     keep_vtt = IntVar()
     skip_hls = IntVar()
     concurrent_downloads = IntVar()
@@ -98,12 +103,19 @@ def main_func(name):
 
     sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
     sk.deselect()
-    dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets)
-    dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions)
-    kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt)
-    skhls = Checkbutton(frame_cheakBoxs, text="HLS  streams will be  skipped", variable=skip_hls)
-    conds = Checkbutton(frame_cheakBoxs, text=" --  CONCURRENT_DOWNLOADS", variable=concurrent_downloads)
-    disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6)
+    dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets_chbox,  onvalue=1, offvalue=0)
+    dla.deselect()
+    dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions_chbox,  onvalue=1, offvalue=0)
+    dlc.deselect()
+    kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt_chbox,  onvalue=1, offvalue=0)
+    kvt.deselect()
+    skhls = Checkbutton(frame_cheakBoxs, text="HLS  streams will be  skipped", variable=skip_hls_chbox,  onvalue=1, offvalue=0)
+    skhls.deselect()
+    conds = Checkbutton(frame_cheakBoxs, text=" --  CONCURRENT_DOWNLOADS", variable=concurrent_downloads_chbox,  onvalue=1, offvalue=0)
+    conds.deselect()
+    disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6_chbox,  onvalue=1, offvalue=0)
+    disipv6.deselect()
+
     # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
 
     sk.grid(row=11, column=0, padx=0)
@@ -147,17 +159,31 @@ def my_program():
     """
     @author mZughbor
     """
-    global skip_lectures_chbox, Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # status = Label(root, text='Status bar : ' + status_list[1], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
-    print("your URL Course is ...", Gui_url.get())
-    print("your access token is : ", access_token.get())
-    print('MM2', skip_lectures_chbox.get())
+    print("Your URL Course is: ", Gui_url.get())
+    print("Your access token is: ", access_token.get())
+    print('This option for lecture skipping:', skip_lectures_chbox.get())
+    print('This option for lecture downloading assets:',  dl_assets_chbox.get())
+    print('This option for lecture caption downloading:',  dl_captions_chbox.get())
+    print('This option for keeping .VTT caption files:',  keep_vtt_chbox.get())
+    print('This option for Skipping parsing HLS Streams: ',  skip_hls_chbox.get())
+    print('This option for Specifying max number of concurrent downloads: ',  concurrent_downloads_chbox.get())
+    print('This option for disabling ipv6 in aria2:',  disable_ipv6_chbox.get())
 
     # Label(root, fg='red', text=skip_lectures.get()).grid(row=17, column=0, pady=5)
     course_url = Gui_url.get()
     bearer_token = access_token.get()
     skip_lectures = int(skip_lectures_chbox.get())
+    dl_assets = int(dl_assets_chbox.get())
+    dl_captions = int(dl_captions_chbox.get())
+    keep_vtt = int(keep_vtt_chbox.get())
+    skip_hls = int(skip_hls_chbox.get())
+    # concurrent_downloads = int(concurrent_downloads_chbox.get())
+    concurrent_downloads = 10
+    disable_ipv6 = int(disable_ipv6_chbox.get())
+
     # pre run parses arguments, sets up logging, and creates directories
     pre_run()
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)

@@ -1,0 +1,564 @@
+1
+00:00:07,620 --> 00:00:13,590
+It's time to learn about Westpac loaders and bable, it is completely possible to use the latest tools
+
+2
+00:00:13,590 --> 00:00:17,740
+on libraries without note and Westpac, there is a problem with this.
+
+3
+00:00:17,910 --> 00:00:22,620
+The first is that you'll end up writing more code than usual to accomplish a lot of the things you'd
+
+4
+00:00:22,620 --> 00:00:23,190
+like to do.
+
+5
+00:00:23,640 --> 00:00:28,140
+In truth, we're already writing a lot of code just to accomplish these tasks.
+
+6
+00:00:28,320 --> 00:00:30,840
+However, this is just for setting things up.
+
+7
+00:00:31,500 --> 00:00:35,960
+Once you have everything set up, you don't have to worry about viewing this code for quite a while.
+
+8
+00:00:36,330 --> 00:00:41,460
+On the other hand, if you were to try to do these things without these tools, you'll find that you'll
+
+9
+00:00:41,460 --> 00:00:44,140
+constantly have to update multiple files.
+
+10
+00:00:44,550 --> 00:00:46,530
+This becomes very hard to manage.
+
+11
+00:00:46,770 --> 00:00:48,000
+It's just not worth it.
+
+12
+00:00:48,000 --> 00:00:53,880
+In the end, I highly encourage you to keep pushing through on learning these tools as they will speed
+
+13
+00:00:53,880 --> 00:00:54,620
+up development.
+
+14
+00:00:55,080 --> 00:00:59,880
+We're almost close to finishing up the basics before we can learn how to integrate all of this with
+
+15
+00:00:59,880 --> 00:01:00,540
+WordPress.
+
+16
+00:01:01,230 --> 00:01:03,380
+The next tool we need to learn is Bable.
+
+17
+00:01:03,610 --> 00:01:09,810
+Babel takes JavaScript to the next level and the resource section of this lecture, I provide a link
+
+18
+00:01:09,810 --> 00:01:11,190
+to the official Bable site.
+
+19
+00:01:11,640 --> 00:01:17,670
+What Bable will do is allow you to write JavaScript that is not implemented in both browsers and note
+
+20
+00:01:18,210 --> 00:01:23,110
+it will then convert that code into code that the browser or node can understand.
+
+21
+00:01:23,610 --> 00:01:27,890
+This may seem strange because Web pack seems to do something similar to this.
+
+22
+00:01:28,320 --> 00:01:35,310
+That's true, but web pack doesn't cover every single feature will need web pack just covers the basics.
+
+23
+00:01:35,520 --> 00:01:38,940
+By using Bable, we are rest assured that we cover everything.
+
+24
+00:01:39,360 --> 00:01:44,190
+It's important to note that Bable and Web pack are two completely different tools.
+
+25
+00:01:44,520 --> 00:01:47,130
+You can use Bable without Watpac and vice versa.
+
+26
+00:01:47,430 --> 00:01:51,740
+However, these two work very well together and using them both is very easy.
+
+27
+00:01:53,840 --> 00:02:00,200
+In order to use Bable, we have to load three different modules, Bable is a very modular tool, meaning
+
+28
+00:02:00,200 --> 00:02:04,670
+that the code is split up into different modules so you can pick what you want to use and leave the
+
+29
+00:02:04,670 --> 00:02:05,340
+rest behind.
+
+30
+00:02:05,780 --> 00:02:09,470
+Usually you'll end up using a minimum of three bable modules.
+
+31
+00:02:09,949 --> 00:02:12,620
+The first module is the Bable Dash core.
+
+32
+00:02:12,860 --> 00:02:14,530
+This is the heart of Bable.
+
+33
+00:02:14,900 --> 00:02:19,550
+This module has the core functionality in order to make everything bable related work.
+
+34
+00:02:20,240 --> 00:02:25,310
+This module will take care of reading your code and then transforming it into code that the browser
+
+35
+00:02:25,310 --> 00:02:26,070
+can understand.
+
+36
+00:02:26,720 --> 00:02:29,910
+The second module is the Bable Dash loader module.
+
+37
+00:02:30,200 --> 00:02:34,130
+This module makes it easy to connect web pack and bable together.
+
+38
+00:02:34,520 --> 00:02:36,500
+It handles a lot of the work for you.
+
+39
+00:02:36,980 --> 00:02:42,260
+All you have to do is load and then configure it inside the config file and everything else will be
+
+40
+00:02:42,260 --> 00:02:42,740
+connected.
+
+41
+00:02:43,400 --> 00:02:46,430
+The last module will vary depending on what you want.
+
+42
+00:02:46,940 --> 00:02:52,670
+Basically the bable dash core module is just a way for you to read and parse JavaScript code.
+
+43
+00:02:53,060 --> 00:02:56,690
+However, it doesn't handle what should and shouldn't be converted.
+
+44
+00:02:57,380 --> 00:03:00,480
+S6 isn't the latest version of JavaScript.
+
+45
+00:03:00,710 --> 00:03:03,050
+There's also S7 and escaped.
+
+46
+00:03:03,440 --> 00:03:06,380
+The latest versions are barely supported in browsers.
+
+47
+00:03:06,380 --> 00:03:11,140
+Or note, iOS six is considered to be the next standard in web development.
+
+48
+00:03:11,540 --> 00:03:16,150
+With that being said, if you wish, you can use E seven or eight.
+
+49
+00:03:16,460 --> 00:03:20,450
+However, for this course we will only be using S6 code.
+
+50
+00:03:22,570 --> 00:03:27,800
+There are various models with their own set of rules for converting code, if you were to go to the
+
+51
+00:03:27,800 --> 00:03:32,360
+Babel site under Dock's, you'll find a link to the official plug ins you can use.
+
+52
+00:03:32,770 --> 00:03:36,450
+There are two types of plug ins, experimental and official.
+
+53
+00:03:36,820 --> 00:03:42,130
+We won't bother with using experimental plugins as we don't need to go that far under, the official
+
+54
+00:03:42,130 --> 00:03:42,400
+said.
+
+55
+00:03:42,410 --> 00:03:44,450
+You'll find a list of modules to use.
+
+56
+00:03:44,680 --> 00:03:46,270
+So which one do we use?
+
+57
+00:03:46,600 --> 00:03:49,200
+Well, it really depends on what you want to use.
+
+58
+00:03:49,540 --> 00:03:55,980
+However, for most cases, the bable dash preset dash in the module is the recommended one.
+
+59
+00:03:56,260 --> 00:04:01,480
+It's usually reviewed by the team of people and is considered the most stable and usable module out
+
+60
+00:04:01,480 --> 00:04:01,970
+of them all.
+
+61
+00:04:02,710 --> 00:04:04,770
+Let's get started with all these modules.
+
+62
+00:04:05,050 --> 00:04:07,300
+I'm going to enter the following commands.
+
+63
+00:04:07,690 --> 00:04:17,320
+NPM install dash dash save dash dev bable dash core bable dash loader bable dash preset dash N.V..
+
+64
+00:04:21,829 --> 00:04:22,890
+This may take a while.
+
+65
+00:04:23,090 --> 00:04:24,790
+Pause the video if you need to wait.
+
+66
+00:04:27,160 --> 00:04:32,230
+You may get a couple of warnings, and that's perfectly fine, a good way to confirm if a module was
+
+67
+00:04:32,230 --> 00:04:34,250
+installed is by looking at the package.
+
+68
+00:04:34,490 --> 00:04:41,830
+Jason File Noad will usually add your modules to the dependency list if the module was installed successfully.
+
+69
+00:04:42,250 --> 00:04:45,370
+It's a good indicator of determining if your modules are good to go.
+
+70
+00:04:46,090 --> 00:04:46,560
+All right.
+
+71
+00:04:46,660 --> 00:04:48,690
+We can now use Bable as a loader.
+
+72
+00:04:48,970 --> 00:04:50,590
+What exactly are loaders?
+
+73
+00:04:50,890 --> 00:04:53,170
+Web pack has a feature called Loaders.
+
+74
+00:04:53,470 --> 00:04:56,700
+Loaders are a way to extend the way Watpac functions.
+
+75
+00:04:56,920 --> 00:05:03,370
+It's the same idea for using WordPress hooks you are allowed to load in certain code that will modify
+
+76
+00:05:03,370 --> 00:05:05,020
+the final result in some fashion.
+
+77
+00:05:05,440 --> 00:05:11,260
+The Bable dash loader module we installed earlier makes it easy to integrate Bable with Web pack.
+
+78
+00:05:11,680 --> 00:05:17,200
+All we have to do is update our config file to use this module inside the config file.
+
+79
+00:05:17,200 --> 00:05:19,600
+Create a new property called module.
+
+80
+00:05:21,780 --> 00:05:25,350
+Since we're using a third party module, we need to set this property.
+
+81
+00:05:25,680 --> 00:05:30,020
+This property allows you to modify how third party modules are used with Westpac.
+
+82
+00:05:30,310 --> 00:05:33,150
+Keep in mind that Bable is technically a module.
+
+83
+00:05:33,150 --> 00:05:37,020
+So if we want to load the Bable module, we have to set up this property.
+
+84
+00:05:37,410 --> 00:05:39,600
+Westpac will take care of loading it for you.
+
+85
+00:05:40,210 --> 00:05:44,130
+All we have to specify is what modules should be loaded with Westpac.
+
+86
+00:05:44,490 --> 00:05:49,860
+The value of this property will be an object which will contain even more properties about how modules
+
+87
+00:05:49,860 --> 00:05:50,820
+work with Westpac.
+
+88
+00:05:51,210 --> 00:05:54,580
+The only property I want to set is the rules property.
+
+89
+00:05:54,990 --> 00:05:58,170
+This will be an array of modules we want to use with Westpac.
+
+90
+00:05:58,680 --> 00:06:02,250
+To load a module, you have to create an object like sell.
+
+91
+00:06:02,670 --> 00:06:05,520
+Each object in this array will represent a module.
+
+92
+00:06:05,850 --> 00:06:09,270
+We only have one module, which is the Bable dash loader.
+
+93
+00:06:09,660 --> 00:06:15,900
+We installed three modules, but the Bable loader module is the module that allows us to connect Bable
+
+94
+00:06:15,900 --> 00:06:16,680
+with Westpac.
+
+95
+00:06:17,100 --> 00:06:22,080
+To specify a module, you need to set the use properly to Bable Dash loader.
+
+96
+00:06:24,530 --> 00:06:30,620
+This will tell Westpac to look for a module called Bable, the ash loader, the Bable dash loader will
+
+97
+00:06:30,620 --> 00:06:33,720
+take care of the rest with connecting the other two modules together.
+
+98
+00:06:34,460 --> 00:06:40,100
+There is one last thing I want to do before finished with configuring Watpac, I want to set a property
+
+99
+00:06:40,100 --> 00:06:41,090
+called Test.
+
+100
+00:06:41,390 --> 00:06:43,940
+Watpac is not just for JavaScript.
+
+101
+00:06:44,330 --> 00:06:47,660
+Watpac will also apply to images and stylesheets.
+
+102
+00:06:47,960 --> 00:06:52,040
+Since we're using Bable, Bable will be applied to images and stylesheets.
+
+103
+00:06:52,430 --> 00:06:59,060
+However, Bable does not process or work with images and stylesheets will get errors on top of that
+
+104
+00:06:59,240 --> 00:07:03,140
+web page can also be applied to other extensions and file types.
+
+105
+00:07:03,140 --> 00:07:04,520
+If it's configured to do so.
+
+106
+00:07:05,180 --> 00:07:11,750
+We only want people to work on JavaScript files to make sure Bable will only work with JavaScript files.
+
+107
+00:07:11,780 --> 00:07:13,370
+Then we'll have to set this property.
+
+108
+00:07:13,850 --> 00:07:16,910
+The value of this property will be a regular expression.
+
+109
+00:07:17,300 --> 00:07:19,460
+The regular expression will be forward.
+
+110
+00:07:19,460 --> 00:07:21,260
+Slash backslash dot.
+
+111
+00:07:21,270 --> 00:07:23,450
+Just percent forward slash.
+
+112
+00:07:25,770 --> 00:07:30,780
+If you're unfamiliar with regular expressions, then I highly recommend you take the time to study the
+
+113
+00:07:31,260 --> 00:07:36,390
+regular expressions are kind of beyond the scope of this course as they're complicated to explain.
+
+114
+00:07:36,930 --> 00:07:41,220
+All this will do is make Web pack, use bable for JavaScript files only.
+
+115
+00:07:41,850 --> 00:07:42,270
+All right.
+
+116
+00:07:42,420 --> 00:07:42,970
+That's it.
+
+117
+00:07:43,350 --> 00:07:46,400
+There was one last thing we need to do before everything will work.
+
+118
+00:07:46,440 --> 00:07:50,370
+We need to create a file named Dot Bable RC.
+
+119
+00:07:52,740 --> 00:07:59,190
+It's very important that you name it this there is no file extension, it's just Bable Arcy.
+
+120
+00:07:59,790 --> 00:08:02,880
+Inside this file, you can configure how works.
+
+121
+00:08:03,120 --> 00:08:08,250
+You have to create an object and the property you want to set is the Presets property.
+
+122
+00:08:08,700 --> 00:08:14,190
+You simply pass in an array of modules that contain rules on how to modify the output of JavaScript.
+
+123
+00:08:14,670 --> 00:08:19,620
+To put it simply, you pass in the bable, dash, preset, dash and module.
+
+124
+00:08:22,070 --> 00:08:28,640
+Babel will look at this array and will load the modules inside this array, the Babel dash precent Dash
+
+125
+00:08:28,940 --> 00:08:33,919
+V is a module that will look at your code and tell people how it should convert that code into something
+
+126
+00:08:33,919 --> 00:08:35,360
+that browsers can understand.
+
+127
+00:08:36,080 --> 00:08:39,530
+It's important that you make one distinction between these two files.
+
+128
+00:08:39,860 --> 00:08:44,169
+The web config files allows you to control how Web pack works.
+
+129
+00:08:44,570 --> 00:08:49,800
+The module property allows you to make the bridge between Web pack and a third party module.
+
+130
+00:08:50,180 --> 00:08:53,210
+However, it does not completely control that module.
+
+131
+00:08:53,690 --> 00:08:58,670
+Bable needs its own configuration file so you can specify exactly how it'll work.
+
+132
+00:08:59,210 --> 00:09:00,400
+All right, that's it.
+
+133
+00:09:00,680 --> 00:09:02,060
+Let's test things out.
+
+134
+00:09:02,280 --> 00:09:05,750
+I'm going to run the NPM run start command.
+
+135
+00:09:07,940 --> 00:09:14,360
+You should receive no errors, let's view the HTML file again and see if we still see the message being
+
+136
+00:09:14,360 --> 00:09:14,870
+outputted.
+
+137
+00:09:17,390 --> 00:09:22,430
+We can also view the bundle James file, and you'll find it's exactly the same as before.
+
+138
+00:09:22,910 --> 00:09:27,410
+The reason for this is because we aren't using any advanced features of JavaScript yet.
+
+139
+00:09:27,860 --> 00:09:29,870
+This will lead us into the next lecture.
+
+140
+00:09:30,200 --> 00:09:33,920
+We're going to begin using some of the new features that JavaScript has to offer.
+
+141
+00:09:34,220 --> 00:09:35,900
+I'll see you in the next lecture.
+

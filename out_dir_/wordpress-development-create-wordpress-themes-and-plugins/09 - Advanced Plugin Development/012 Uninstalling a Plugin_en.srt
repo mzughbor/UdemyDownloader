@@ -1,0 +1,240 @@
+1
+00:00:07,880 --> 00:00:13,920
+We have a fully functional plug in the code is clean, organized and secure for WordPress.
+
+2
+00:00:14,210 --> 00:00:18,320
+However, there may be people out there who disagree for one reason or another.
+
+3
+00:00:18,650 --> 00:00:20,330
+They may have found another plug.
+
+4
+00:00:20,330 --> 00:00:22,670
+And that's even better in such cases.
+
+5
+00:00:22,670 --> 00:00:29,010
+They will uninstall our plug in our plug and does a pretty good job of cleaning itself up when deactivated.
+
+6
+00:00:29,090 --> 00:00:31,040
+But what about for an installation?
+
+7
+00:00:31,430 --> 00:00:35,210
+This is a common problem among thousands of plug ins available to you.
+
+8
+00:00:35,570 --> 00:00:41,630
+They spend so much time adding to your database and system during activation, but rarely do any cleanup
+
+9
+00:00:41,630 --> 00:00:42,920
+during an installation.
+
+10
+00:00:43,550 --> 00:00:45,830
+We don't want to be one of those developers.
+
+11
+00:00:46,010 --> 00:00:47,990
+We want to clean up after ourselves.
+
+12
+00:00:47,990 --> 00:00:49,010
+Once we get the boot.
+
+13
+00:00:49,400 --> 00:00:51,340
+WordPress makes it easy for us.
+
+14
+00:00:51,590 --> 00:00:54,970
+There are two ways to clean up, but one is better than the other.
+
+15
+00:00:55,310 --> 00:00:57,140
+The first way is to use a hook.
+
+16
+00:00:57,410 --> 00:01:01,150
+There's a special hook called When WordPress uninstall a plug plugin.
+
+17
+00:01:01,640 --> 00:01:06,610
+However, despite its availability, WordPress highly recommends we don't use it.
+
+18
+00:01:06,950 --> 00:01:13,490
+Instead, they recommend the second way, which is to create a file named Uninstall that handles the
+
+19
+00:01:13,490 --> 00:01:13,940
+cleanup.
+
+20
+00:01:14,660 --> 00:01:18,290
+Let's create that file now inside the recipe, plug and folder.
+
+21
+00:01:20,690 --> 00:01:26,870
+Any code placed here will run when a user clicks uninstall for our plugin, there's one precaution we
+
+22
+00:01:26,870 --> 00:01:32,200
+must take before running any code, and that is to check if this file was executed by WordPress.
+
+23
+00:01:32,660 --> 00:01:38,480
+You can do this by simply checking if a constant named WP uninstall plugin is defined.
+
+24
+00:01:38,810 --> 00:01:41,920
+If it isn't, then it will simply exit out of this script.
+
+25
+00:01:44,690 --> 00:01:49,610
+The only thing we want to do is delete any tables we created during activation.
+
+26
+00:01:50,030 --> 00:01:53,060
+We're going to use the PDB object again.
+
+27
+00:01:53,450 --> 00:01:58,940
+We're going to call the query method and use the following query drop table if exists.
+
+28
+00:01:58,940 --> 00:02:02,630
+WP DB Prefix recipe underscore ratings.
+
+29
+00:02:08,479 --> 00:02:14,630
+Before we test this plugin, I want you back up the plugin, open the plugins folder in your file Explorer,
+
+30
+00:02:14,630 --> 00:02:17,510
+and let's zip up this folder before doing anything else.
+
+31
+00:02:18,960 --> 00:02:25,200
+Let's try testing this out now, open Heidi Eskil, and check your database for the recipe ratings table.
+
+32
+00:02:27,490 --> 00:02:33,100
+Then let's go to the plugins page and deactivate the plugin, click, delete, and you will be asked
+
+33
+00:02:33,100 --> 00:02:36,780
+if you're sure you want to delete this plugin and its data select.
+
+34
+00:02:36,790 --> 00:02:37,330
+Yes.
+
+35
+00:02:37,330 --> 00:02:39,790
+And our plugin will disappear from WordPress.
+
+36
+00:02:42,900 --> 00:02:48,750
+If I look at my folders, then you'll see that the recipe folder is gone, if I refresh the database,
+
+37
+00:02:48,750 --> 00:02:51,910
+then you'll find the recipe ratings table is also gone.
+
+38
+00:02:52,530 --> 00:02:55,140
+We've successfully cleaned up after ourselves.
+
+39
+00:02:55,320 --> 00:03:00,670
+Before we end this lecture, let's add our plug and back by using the zip file we created earlier.
+
+40
+00:03:00,990 --> 00:03:02,800
+Make sure to activate it as well.
+
+41
+00:03:03,540 --> 00:03:09,540
+A question I get asked a lot is if we should also delete the content for the post type metadata and
+
+42
+00:03:09,540 --> 00:03:10,410
+taxonomies.
+
+43
+00:03:10,710 --> 00:03:12,620
+The answer is it depends.
+
+44
+00:03:12,930 --> 00:03:18,240
+There are plug ins out there that will delete unused data, so I prefer to let those plug ins handle
+
+45
+00:03:18,240 --> 00:03:18,360
+it.
+
+46
+00:03:19,110 --> 00:03:24,000
+The reason we're not doing it ourselves is because there's a possibility that the data may still be
+
+47
+00:03:24,000 --> 00:03:24,550
+in use.
+
+48
+00:03:24,930 --> 00:03:30,600
+Keep in mind that our plug in makes certain content accessible and manageable through our own interface.
+
+49
+00:03:31,140 --> 00:03:36,420
+However, there are other plug ins that can also access our data using the WordPress API.
+
+50
+00:03:36,990 --> 00:03:42,990
+The recipe table we deleted was a custom table, so it's highly unlikely a plugin will know how to work
+
+51
+00:03:42,990 --> 00:03:44,970
+with it, let alone know its existence.
+
+52
+00:03:45,330 --> 00:03:46,590
+The table was outside.
+
+53
+00:03:46,590 --> 00:03:48,510
+The scope of WordPress is API.
+
+54
+00:03:48,840 --> 00:03:50,610
+Therefore we should clean it up.
+
+55
+00:03:51,210 --> 00:03:57,060
+Custom post type data and metadata are things within WordPress is scope, so it's perfectly fine to
+
+56
+00:03:57,060 --> 00:03:58,190
+leave that data there.
+
+57
+00:03:58,590 --> 00:04:01,350
+We can leave it to other plugins to clean that up.
+
+58
+00:04:01,350 --> 00:04:02,580
+If the user needs that.
+
+59
+00:04:02,910 --> 00:04:04,950
+At the end of the day, it's up to you.
+
+60
+00:04:05,220 --> 00:04:09,330
+If you want to delete the custom post type data, then that's perfectly fine.
+

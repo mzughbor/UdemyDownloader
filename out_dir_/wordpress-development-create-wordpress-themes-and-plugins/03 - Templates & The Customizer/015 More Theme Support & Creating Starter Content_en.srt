@@ -1,0 +1,604 @@
+1
+00:00:07,760 --> 00:00:12,760
+Right now, I'm in the setup function, I want to start filling in some gaps and adding some features,
+
+2
+00:00:12,770 --> 00:00:16,120
+so that's what we'll do here in the resources section.
+
+3
+00:00:16,129 --> 00:00:18,950
+I provide a link to the ad theme support function.
+
+4
+00:00:19,310 --> 00:00:22,430
+WordPress provides so many features here that we should use.
+
+5
+00:00:22,730 --> 00:00:25,550
+The first one, we should add, is the feed length feature.
+
+6
+00:00:26,150 --> 00:00:31,420
+WordPress will generate RSS feeds for us and always make sure it's updated with the latest posts.
+
+7
+00:00:31,820 --> 00:00:36,080
+If you're unfamiliar with RSS feeds, you'll see what those look like in just a moment.
+
+8
+00:00:36,350 --> 00:00:43,170
+Inside the setup function, let's use the add theme support function and pass an automatic dash feed
+
+9
+00:00:43,190 --> 00:00:46,940
+dash links which will instruct WordPress to set up some RSS feeds.
+
+10
+00:00:48,180 --> 00:00:53,220
+Refresh the site and you'll notice nothing's really changed, but under the hood, there is one small
+
+11
+00:00:53,220 --> 00:00:54,450
+change, right?
+
+12
+00:00:54,450 --> 00:00:56,160
+Click and view the page source.
+
+13
+00:00:56,400 --> 00:01:02,580
+WordPress will generate these two tags inside the head tag that links to RSS XML feeds.
+
+14
+00:01:02,970 --> 00:01:06,330
+Let's click on this link and you'll be taken to this XML document.
+
+15
+00:01:07,050 --> 00:01:10,820
+The purpose of this document is for RSS readers to scan this document.
+
+16
+00:01:11,280 --> 00:01:13,860
+This document contains data about your post.
+
+17
+00:01:14,160 --> 00:01:19,710
+RSS feeds provide a way for users to know when new content is available on your site without having
+
+18
+00:01:19,710 --> 00:01:20,250
+to visit it.
+
+19
+00:01:20,670 --> 00:01:26,250
+RSS has been in decline for some time, but there's still a wealthy amount of people still using this
+
+20
+00:01:26,250 --> 00:01:26,880
+technology.
+
+21
+00:01:27,690 --> 00:01:29,700
+Whether or not you want to add it is up to you.
+
+22
+00:01:30,030 --> 00:01:32,690
+For the most part, it's fast and easy to use.
+
+23
+00:01:33,030 --> 00:01:36,420
+The next thing I want to add support for it is HTML5.
+
+24
+00:01:36,630 --> 00:01:41,670
+It can be done by simply calling the same function again and passing in HTML five.
+
+25
+00:01:44,020 --> 00:01:49,720
+If you can remember, WordPress will automatically generate HTML markup for the search form if we didn't
+
+26
+00:01:49,720 --> 00:01:50,660
+have a template for it.
+
+27
+00:01:51,130 --> 00:01:54,550
+This isn't the only time WordPress generates markup for us.
+
+28
+00:01:54,910 --> 00:01:59,950
+By default, WordPress will make the HTML generated HTML compatible.
+
+29
+00:02:00,310 --> 00:02:07,450
+However, if your theme takes advantage of HTML five tags, then you'll want to enable this HTML5 feature
+
+30
+00:02:07,450 --> 00:02:09,860
+to ensure all markup is up to standards.
+
+31
+00:02:10,240 --> 00:02:14,680
+If you look at the documentation, you'll notice that the second parameter is an array.
+
+32
+00:02:15,100 --> 00:02:18,060
+Every feature can take advantage of the second parameter.
+
+33
+00:02:18,280 --> 00:02:19,090
+It varies.
+
+34
+00:02:19,270 --> 00:02:25,240
+In the case of HTML five, you can specify which markup will have HTML five applied to it.
+
+35
+00:02:25,690 --> 00:02:31,570
+Even though this parameter is optional, WordPress still wants an array of HTML five elements you'd
+
+36
+00:02:31,570 --> 00:02:32,370
+like to support.
+
+37
+00:02:32,740 --> 00:02:37,000
+I'm going to copy and paste the array from the example into our code like so.
+
+38
+00:02:39,310 --> 00:02:42,530
+The next thing we want to add support for is starter content.
+
+39
+00:02:42,850 --> 00:02:45,810
+This is a brand new feature and WordPress four point seven.
+
+40
+00:02:46,180 --> 00:02:50,170
+The purpose of this feature is a way for developers to add dummy content.
+
+41
+00:02:50,170 --> 00:02:52,530
+When the user is viewing the theme in the customizer.
+
+42
+00:02:53,170 --> 00:02:58,810
+This dummy content will only be available when the current WordPress installation is fresh, meaning
+
+43
+00:02:58,810 --> 00:03:04,890
+that the user just created the WordPress site and hasn't created any posts, pages or menus.
+
+44
+00:03:05,260 --> 00:03:10,690
+If you take a look at the ad themes support function developer page, you'll notice there's almost no
+
+45
+00:03:10,690 --> 00:03:12,130
+information about this feature.
+
+46
+00:03:12,790 --> 00:03:19,180
+Since it's new, it's lacking in documentation on WordPress, a site instead there is a blog post about
+
+47
+00:03:19,180 --> 00:03:19,300
+it.
+
+48
+00:03:19,570 --> 00:03:23,390
+I'll provide a link to the blog post in the resource section of this lecture.
+
+49
+00:03:23,630 --> 00:03:25,460
+Here's what the team has to say about it.
+
+50
+00:03:26,200 --> 00:03:30,820
+One of the hardest things for people setting up sites with WordPress for the first time is understanding
+
+51
+00:03:30,820 --> 00:03:35,740
+what the jobs are and how a given theme can work for you, especially when there's no content there
+
+52
+00:03:35,740 --> 00:03:36,610
+to visualize.
+
+53
+00:03:37,030 --> 00:03:43,060
+There are also significant gaps between local themed previews, screenshots and previews.
+
+54
+00:03:43,330 --> 00:03:48,910
+Even when there are easy to use site customization tools, it is difficult to figure out where to start
+
+55
+00:03:48,940 --> 00:03:53,160
+and what things are going to be like to help users along that path.
+
+56
+00:03:53,170 --> 00:03:57,610
+Four point seven introduces the concept of starter content themes.
+
+57
+00:03:57,610 --> 00:04:03,220
+Specific functions of content help showcase a theme to users and serve as a starting point for further
+
+58
+00:04:03,220 --> 00:04:04,260
+set up of new sites.
+
+59
+00:04:04,870 --> 00:04:10,330
+Let's learn how to use it, call the function, add theme support and pass in starter Dasch content.
+
+60
+00:04:12,510 --> 00:04:17,430
+For the second parameter, you'll need to pass in an array of dummy content to save time.
+
+61
+00:04:17,459 --> 00:04:21,500
+I'm going to copy and some code and I'll be going over how all this works.
+
+62
+00:04:21,750 --> 00:04:23,100
+Try and follow along.
+
+63
+00:04:25,050 --> 00:04:31,200
+Unlike the other features, this feature in particular requires that you actually set up the dummy content
+
+64
+00:04:31,530 --> 00:04:34,950
+in this array, you'll find six keys which are all required.
+
+65
+00:04:35,280 --> 00:04:39,610
+I'm going to minimize these for a second so you can get a better overview of what's going on.
+
+66
+00:04:40,320 --> 00:04:43,710
+Each of these keys are assigned arrays with their own settings.
+
+67
+00:04:43,890 --> 00:04:45,360
+The first is widgets.
+
+68
+00:04:45,600 --> 00:04:51,030
+As you may have thought, the widgets array determines what widgets will be displayed in these sidebars
+
+69
+00:04:51,030 --> 00:04:51,740
+we created.
+
+70
+00:04:52,140 --> 00:04:56,160
+We currently have one sidebar and that is the juice side bar.
+
+71
+00:04:56,580 --> 00:05:00,950
+You set this as a key and its value will be an array of widgets inside the sidebar.
+
+72
+00:05:01,560 --> 00:05:06,660
+If you look at the blog post, then you'll see that the developers know what kind of predefined widgets
+
+73
+00:05:06,660 --> 00:05:07,460
+you can pass in.
+
+74
+00:05:07,920 --> 00:05:11,730
+I'm going to pass him three widgets called text business info.
+
+75
+00:05:11,730 --> 00:05:18,000
+Search and text about WordPress will automatically generate these widgets with the data they have in
+
+76
+00:05:18,000 --> 00:05:18,600
+their system.
+
+77
+00:05:18,900 --> 00:05:23,280
+Since this is just dummy content, I'm not so worried about what's inside the widgets.
+
+78
+00:05:23,280 --> 00:05:27,660
+As long as something is displayed, the next key is attachments.
+
+79
+00:05:27,900 --> 00:05:34,140
+We haven't talked too much about attachments, but attachments is the post type WordPress uses to associate
+
+80
+00:05:34,140 --> 00:05:35,180
+files and images.
+
+81
+00:05:35,550 --> 00:05:41,070
+If you were to go to the admin dashboard and click on media, you'll be taken to all the attachments
+
+82
+00:05:41,070 --> 00:05:42,060
+we have on our site.
+
+83
+00:05:42,390 --> 00:05:43,710
+It's mostly images.
+
+84
+00:05:45,870 --> 00:05:51,720
+The attachments key allows you to simulate attachments without having to actually upload anything into
+
+85
+00:05:51,720 --> 00:05:52,630
+the media library.
+
+86
+00:05:53,070 --> 00:05:56,520
+This will be an array which will accept an array of images or files.
+
+87
+00:05:57,060 --> 00:05:59,330
+The key will be considered the ID.
+
+88
+00:05:59,730 --> 00:06:05,730
+We only have one image, which is the image dash about inside this array is more information about this
+
+89
+00:06:05,730 --> 00:06:06,530
+file image.
+
+90
+00:06:06,840 --> 00:06:11,710
+There are two required fields which are the human readable name and the location of the file.
+
+91
+00:06:12,240 --> 00:06:14,660
+The location is relative to the current theme.
+
+92
+00:06:15,000 --> 00:06:20,960
+If I were to open the assets images about directory, you'll find the image right here.
+
+93
+00:06:21,600 --> 00:06:23,210
+The next key is posts.
+
+94
+00:06:23,520 --> 00:06:26,040
+This will allow you to define some dummy posts.
+
+95
+00:06:26,280 --> 00:06:30,790
+You'll notice I'm just creating the same kind of posts just under different names.
+
+96
+00:06:31,200 --> 00:06:36,270
+One thing you'll notice is that for the thumbnail key, for each of these posts, I'm using these curly
+
+97
+00:06:36,270 --> 00:06:36,820
+brackets.
+
+98
+00:06:37,320 --> 00:06:42,350
+This will tell WordPress to look for any attachments with the ID of Image Dasch about.
+
+99
+00:06:42,690 --> 00:06:45,510
+This is the same idea we used in the attachments array.
+
+100
+00:06:45,870 --> 00:06:48,440
+WordPress will be able to make the connection for you.
+
+101
+00:06:49,080 --> 00:06:50,880
+The next key is the options.
+
+102
+00:06:50,880 --> 00:06:52,380
+Keep the options.
+
+103
+00:06:52,380 --> 00:06:56,720
+Key allows you to modify the values in the WP Options Database table.
+
+104
+00:06:57,000 --> 00:06:59,310
+Let's open the WP Options Table.
+
+105
+00:06:59,610 --> 00:07:01,770
+I'm going to be viewing the data in Heidi.
+
+106
+00:07:01,770 --> 00:07:02,520
+Yes, you will.
+
+107
+00:07:02,790 --> 00:07:04,770
+If you prefer my admin.
+
+108
+00:07:04,800 --> 00:07:05,370
+That's fine.
+
+109
+00:07:05,970 --> 00:07:09,240
+WordPress stores all its information inside this table.
+
+110
+00:07:09,600 --> 00:07:13,470
+Plugins and themes will also store their data here and this array.
+
+111
+00:07:13,470 --> 00:07:18,840
+The key will correspond to the option underscore name field and the value will correspond to the option
+
+112
+00:07:18,840 --> 00:07:20,160
+underscore value field.
+
+113
+00:07:20,520 --> 00:07:22,770
+I'm overriding three options here.
+
+114
+00:07:23,100 --> 00:07:29,430
+The show on front field determines whether the front page will be a page we created or a list of blog
+
+115
+00:07:29,430 --> 00:07:29,850
+posts.
+
+116
+00:07:30,120 --> 00:07:36,780
+I set this to page the page on front is the option for determining what page from our list of pages
+
+117
+00:07:36,780 --> 00:07:37,950
+will be the front page.
+
+118
+00:07:37,950 --> 00:07:42,510
+Since we set show on front to page, this key is required.
+
+119
+00:07:42,900 --> 00:07:48,240
+Once again, I'm using the curly bracket style to tell WordPress that the value will be a post.
+
+120
+00:07:48,480 --> 00:07:53,360
+In our case, it will be the home page we created earlier in the posts array.
+
+121
+00:07:53,880 --> 00:07:55,440
+We do the same for the page.
+
+122
+00:07:55,440 --> 00:08:00,960
+For Perski, the key theme models is where we can override our own theme settings.
+
+123
+00:08:01,290 --> 00:08:04,290
+These are the same settings we created in the customizer.
+
+124
+00:08:04,620 --> 00:08:07,230
+The key and values are pretty self-explanatory.
+
+125
+00:08:07,590 --> 00:08:12,330
+The key is the idea of the setting and its value would be the value for that setting.
+
+126
+00:08:13,020 --> 00:08:17,340
+The Laskey should be now menus, which allows us to generate menus.
+
+127
+00:08:17,610 --> 00:08:20,850
+We have two menus which are primary and secondary.
+
+128
+00:08:21,180 --> 00:08:24,090
+These are the same menus we registered in our theme.
+
+129
+00:08:24,510 --> 00:08:28,200
+Each of these have arrays for additional settings about these menus.
+
+130
+00:08:28,560 --> 00:08:31,050
+First is the name which I make translatable.
+
+131
+00:08:31,260 --> 00:08:37,230
+The items are the actual links you'll notice on using page underscore and link underscore.
+
+132
+00:08:37,559 --> 00:08:43,470
+WordPress will read these values and if it starts with page underscore, WordPress will automatically
+
+133
+00:08:43,470 --> 00:08:47,520
+look at the posts key and see if we have any pages with the same name.
+
+134
+00:08:47,880 --> 00:08:49,830
+So Page underscore about.
+
+135
+00:08:49,830 --> 00:08:51,630
+We'll look for the about page.
+
+136
+00:08:52,110 --> 00:08:55,230
+The link underscore is internal WordPress links.
+
+137
+00:08:55,440 --> 00:08:58,650
+WordPress will generate its own links, which we can take advantage of.
+
+138
+00:08:58,950 --> 00:09:01,980
+The link underscore home is the link to the home page.
+
+139
+00:09:02,580 --> 00:09:09,240
+I also leave this note here that says Note that the core home page is actually a link in case a static
+
+140
+00:09:09,240 --> 00:09:10,500
+front page is not used.
+
+141
+00:09:11,190 --> 00:09:12,840
+That wraps up this theme feature.
+
+142
+00:09:13,110 --> 00:09:18,480
+We can't actually test it right away because our WordPress installation is already beyond the point
+
+143
+00:09:18,480 --> 00:09:19,260
+of a starter site.
+
+144
+00:09:19,590 --> 00:09:25,500
+However, we can temporarily restart it without having to do a fresh install or clean all our posts
+
+145
+00:09:25,500 --> 00:09:32,400
+and settings inside the WP Underscore Options table, there is a value named fresh underscore site.
+
+146
+00:09:32,730 --> 00:09:34,170
+Set this value to one.
+
+147
+00:09:36,350 --> 00:09:42,110
+This will automatically trick WordPress into thinking that this site is a new site, after doing that,
+
+148
+00:09:42,230 --> 00:09:47,690
+go to the customizer and you'll notice our site is completely different than what we see on the homepage.
+
+149
+00:09:48,320 --> 00:09:51,790
+Keep in mind that this data will only apply to the customizer.
+
+150
+00:09:52,010 --> 00:09:56,590
+It's a way of previewing our site without actually having to force apply these changes.
+
+151
+00:09:56,900 --> 00:10:02,390
+I'm going to set the fresh underscore site to zero as we're done with the starter content feature.
+

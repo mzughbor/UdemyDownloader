@@ -1,0 +1,304 @@
+1
+00:00:07,580 --> 00:00:13,100
+Right now, I'm on a website for the WordPress plugin Beeby Press, this plug in is one of the most
+
+2
+00:00:13,100 --> 00:00:14,370
+advanced plugins out there.
+
+3
+00:00:14,600 --> 00:00:17,780
+It allows you to turn your WordPress site into a forum.
+
+4
+00:00:18,110 --> 00:00:23,150
+One of the most prominent features of Beeby press is that developers can write plugins to extend this
+
+5
+00:00:23,150 --> 00:00:23,540
+plugin.
+
+6
+00:00:23,960 --> 00:00:24,920
+Here's the thing, though.
+
+7
+00:00:25,130 --> 00:00:28,340
+Beeby Press doesn't implement its own plugin API.
+
+8
+00:00:28,910 --> 00:00:34,670
+Beeby Press takes advantage of WordPress plugin API and just adds its own action filter hooks.
+
+9
+00:00:35,030 --> 00:00:38,930
+Writing a plugin for BBY press is the same as writing a plugin for WordPress.
+
+10
+00:00:39,260 --> 00:00:46,580
+As we discussed previously, Beeby Press just uses the do action and apply filters functions for creating
+
+11
+00:00:46,580 --> 00:00:47,790
+its own custom hooks.
+
+12
+00:00:48,560 --> 00:00:52,400
+Let's say that we publish our plugin and it has now become insanely popular.
+
+13
+00:00:52,700 --> 00:00:56,700
+It's become so popular that we're getting requests for new features daily.
+
+14
+00:00:57,080 --> 00:01:01,580
+Unfortunately, some of these requests deviate from the main purpose of the plugin.
+
+15
+00:01:02,150 --> 00:01:07,400
+We don't want to deviate from the main purpose, nor do we want to limit the functionality of the plugin.
+
+16
+00:01:07,700 --> 00:01:09,160
+So how do we solve this?
+
+17
+00:01:09,440 --> 00:01:15,350
+We can use the plugin API to allow developers to further extend our plugin with more plug ins.
+
+18
+00:01:15,890 --> 00:01:20,390
+In the resource section of this lecture, I provide a link to the plugin API.
+
+19
+00:01:20,870 --> 00:01:24,770
+WordPress provides a handful of functions to use the plugin API.
+
+20
+00:01:25,190 --> 00:01:28,640
+Actually, we've already been using them from the very beginning.
+
+21
+00:01:29,000 --> 00:01:33,650
+The add action and add filter are functions we've used plenty of times.
+
+22
+00:01:34,040 --> 00:01:38,930
+You already know how to use these functions, but let's take a look at how you would go about using
+
+23
+00:01:38,930 --> 00:01:39,960
+them in a different way.
+
+24
+00:01:40,610 --> 00:01:46,580
+I want to let developers extend the rating function, so let's open up the rating function file now.
+
+25
+00:01:46,910 --> 00:01:49,210
+Right before the JSON is outputted.
+
+26
+00:01:49,220 --> 00:01:51,590
+Let's call a function called Do Action.
+
+27
+00:01:53,770 --> 00:01:59,260
+This function takes in the name of the action we want to trigger, this can be a custom defined one
+
+28
+00:01:59,260 --> 00:02:01,000
+or one available in WordPress.
+
+29
+00:02:01,330 --> 00:02:04,270
+Let's integrate custom one and name it recipe rated.
+
+30
+00:02:04,840 --> 00:02:06,870
+The second parameter is optional.
+
+31
+00:02:07,090 --> 00:02:11,560
+It's a list of parameters that will be sent to any function that hooks into this hook.
+
+32
+00:02:11,920 --> 00:02:17,290
+I'm going to pass in an array with the host ID rating and the IP of the user.
+
+33
+00:02:23,270 --> 00:02:29,840
+That's it, we don't have to do anything else now, any plugin developer can use the add action function
+
+34
+00:02:29,840 --> 00:02:31,430
+and hook into this action hook.
+
+35
+00:02:31,850 --> 00:02:37,160
+Even if this hook isn't used by functions, WordPress will not throw errors and will run as usual.
+
+36
+00:02:37,580 --> 00:02:41,250
+Just be sure to let other developers know that this action is available.
+
+37
+00:02:41,960 --> 00:02:44,510
+Let's test this out by developing another plugin.
+
+38
+00:02:44,840 --> 00:02:50,510
+This plugin will email us whenever a user writes a recipe, we're going to take advantage of the hook
+
+39
+00:02:50,510 --> 00:02:57,500
+we created earlier to do this inside the plugin folder and create a file called Email Dash Recipe Dot.
+
+40
+00:03:00,690 --> 00:03:06,570
+This will contain our new plugin, I'm not going to bother creating a folder or try and organize this
+
+41
+00:03:06,570 --> 00:03:08,940
+plugin because this plugin will be very simple.
+
+42
+00:03:09,180 --> 00:03:11,230
+It'll only be a few lines of code.
+
+43
+00:03:11,610 --> 00:03:17,940
+I'm going to set the name of this plugin to recipe e-mail rating and set the description to this plugin.
+
+44
+00:03:17,940 --> 00:03:19,470
+Extends the recipe plugin.
+
+45
+00:03:23,540 --> 00:03:28,160
+Let's call the add action function and use the custom recipe rated hook.
+
+46
+00:03:30,390 --> 00:03:36,840
+Previously, we've always passed in a string name of the function we wanted to call this time will pass
+
+47
+00:03:36,840 --> 00:03:38,130
+in an anonymous function.
+
+48
+00:03:38,670 --> 00:03:42,390
+Anonymous functions are special to P and not WordPress.
+
+49
+00:03:42,660 --> 00:03:46,220
+They're only available in five point three or above.
+
+50
+00:03:46,470 --> 00:03:50,790
+So I can't recommend that you use anonymous functions in production plugins.
+
+51
+00:03:50,790 --> 00:03:56,520
+If you plan on supporting versions earlier than five point three, our anonymous function will accept
+
+52
+00:03:56,570 --> 00:03:58,620
+an array with the details about the rating.
+
+53
+00:03:59,070 --> 00:04:03,300
+We want our new plugin to email the author of this recipe about the new rating.
+
+54
+00:04:03,840 --> 00:04:07,590
+Let's get the info about the post by using the get post function.
+
+55
+00:04:09,650 --> 00:04:16,339
+You pass this function, the ID of the posts, the function will return data about the post, I'm going
+
+56
+00:04:16,339 --> 00:04:18,959
+to create a variable named user email.
+
+57
+00:04:19,220 --> 00:04:23,720
+We can now grab the author email by using the get the author meta function.
+
+58
+00:04:27,970 --> 00:04:29,830
+This function has two parameters.
+
+59
+00:04:30,040 --> 00:04:32,330
+The first is the field we want to grab.
+
+60
+00:04:32,650 --> 00:04:34,210
+This would be the user email.
+
+61
+00:04:34,480 --> 00:04:37,240
+The second parameter is the ID of the author.
+
+62
+00:04:38,540 --> 00:04:45,650
+Our post data will contain a field named Post Arthur, which contains the author, it now we can compose
+
+63
+00:04:45,650 --> 00:04:47,320
+the subject and message.
+
+64
+00:04:47,630 --> 00:04:50,830
+The subject will be your recipe has received a new rating.
+
+65
+00:04:51,140 --> 00:04:57,500
+The message will be your recipe, followed by the title of the Post has received a new rating of and
+
+66
+00:04:57,500 --> 00:04:58,700
+then we pass in the rating.
+
+67
+00:05:07,000 --> 00:05:12,990
+The last thing we need to do is send this as an email, WordPress provides a function called WP e-mail.
+
+68
+00:05:13,330 --> 00:05:16,570
+Why use this function instead of e-mail function?
+
+69
+00:05:17,020 --> 00:05:22,510
+Well, this function is pluggable, meaning other plugins can take advantage of modifying the email
+
+70
+00:05:22,510 --> 00:05:23,250
+and its info.
+
+71
+00:05:23,560 --> 00:05:26,640
+The parameters are the same as BP's mail function.
+
+72
+00:05:26,920 --> 00:05:29,290
+The first parameter is the recipient's email.
+
+73
+00:05:29,530 --> 00:05:33,880
+The second and third parameters are the subject and message respectively.
+
+74
+00:05:36,060 --> 00:05:37,480
+Our plugin is now ready.
+
+75
+00:05:37,770 --> 00:05:44,160
+You should keep in mind that this won't work on most local servers, sending emails require SMTP, so
+
+76
+00:05:44,160 --> 00:05:46,620
+you will need to test this on a live site.
+

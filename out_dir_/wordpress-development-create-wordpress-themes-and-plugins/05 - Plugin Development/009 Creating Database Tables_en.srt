@@ -1,0 +1,456 @@
+1
+00:00:07,530 --> 00:00:14,340
+We've been using various APIs, such as the metadata API to work with the database up until now by using
+
+2
+00:00:14,340 --> 00:00:17,980
+these APIs, we've avoided directly querying the database.
+
+3
+00:00:18,310 --> 00:00:23,580
+However, we're coming to the point where we can't justify using APIs for certain tasks.
+
+4
+00:00:23,910 --> 00:00:26,010
+We need full control over the database.
+
+5
+00:00:26,010 --> 00:00:29,450
+And in these next few lectures, you'll see how to do just that.
+
+6
+00:00:30,180 --> 00:00:35,340
+One of the benefits of using APIs is that we didn't have to create tables or insert data.
+
+7
+00:00:35,820 --> 00:00:39,880
+While these APIs are useful, they don't provide us with everything we need.
+
+8
+00:00:40,350 --> 00:00:44,130
+Sometimes you will have to create complex custom queries.
+
+9
+00:00:44,460 --> 00:00:46,920
+Other times you'll have to create tables.
+
+10
+00:00:47,190 --> 00:00:50,520
+In this lecture, we're going to create a database table.
+
+11
+00:00:51,120 --> 00:00:53,970
+This table will contain ratings for our recipes.
+
+12
+00:00:54,270 --> 00:00:59,280
+First, we're going to create it through an interface and then learn how to create it with code.
+
+13
+00:00:59,850 --> 00:01:01,920
+I'm using Heidi Vizquel for this.
+
+14
+00:01:02,070 --> 00:01:05,370
+It's a really great program for communicating with SQL databases.
+
+15
+00:01:05,640 --> 00:01:10,080
+If you're comfortable with my admin, then by all means, go ahead and use it.
+
+16
+00:01:10,410 --> 00:01:13,230
+If this is your first time using Heidi, yes, you will.
+
+17
+00:01:13,380 --> 00:01:16,290
+Then I'll show you how to connect to your database quickly.
+
+18
+00:01:17,130 --> 00:01:22,350
+For the hostname IP, it should be one two seven zero zero one.
+
+19
+00:01:22,770 --> 00:01:25,890
+The username should be root and the password should be empty.
+
+20
+00:01:26,280 --> 00:01:29,550
+The rest of the settings are just fine, as is next.
+
+21
+00:01:29,550 --> 00:01:36,030
+You should just click open and you should see all your databases go to the database that contains your
+
+22
+00:01:36,030 --> 00:01:37,230
+WordPress installation.
+
+23
+00:01:37,590 --> 00:01:39,660
+You should see about eleven tables.
+
+24
+00:01:39,960 --> 00:01:45,150
+You may see more because plug ins can and are allowed to create more database tables.
+
+25
+00:01:45,750 --> 00:01:50,490
+Before we create our own table, let's check out how WordPress creates tables.
+
+26
+00:01:50,670 --> 00:01:53,910
+Open the WP underscore posts tables.
+
+27
+00:01:54,300 --> 00:01:56,790
+WordPress is database design is very good.
+
+28
+00:01:57,150 --> 00:02:02,310
+WordPress tries its best to implement the best database practices and it shows here.
+
+29
+00:02:03,000 --> 00:02:09,389
+One thing you'll notice is that for their IDs is that they use the big integer type to allow for stealing
+
+30
+00:02:09,389 --> 00:02:10,710
+and large amounts of data.
+
+31
+00:02:11,160 --> 00:02:15,030
+It's always good practice to follow how WordPress designs their database.
+
+32
+00:02:15,360 --> 00:02:20,700
+This way you can remove any confusion if someone else takes a look at your own custom tables.
+
+33
+00:02:21,480 --> 00:02:25,500
+You'll also notice that every table starts with WP underscore.
+
+34
+00:02:25,860 --> 00:02:27,870
+This is very important to note down.
+
+35
+00:02:28,290 --> 00:02:33,930
+The goal right now is to create a table with Heidi Skills Help and you'll see why in a second.
+
+36
+00:02:34,320 --> 00:02:39,120
+To create a table, you'll have to click the database and select create new table.
+
+37
+00:02:39,810 --> 00:02:42,420
+From here we can begin defining the table.
+
+38
+00:02:42,660 --> 00:02:48,930
+I'm going to call a table WP underscore recipe, underscore ratings and it should have four columns.
+
+39
+00:02:49,230 --> 00:02:52,350
+I'm going to prefilled these and then go over what you should set.
+
+40
+00:03:06,990 --> 00:03:10,410
+Paused the video for a second and fill up the form just as I did.
+
+41
+00:03:11,010 --> 00:03:16,710
+We have four fields named Idy recipe ID rating and user IP.
+
+42
+00:03:17,100 --> 00:03:22,980
+The ID will be unique and we'll be setting it as our primary key to create a primary key.
+
+43
+00:03:23,200 --> 00:03:26,760
+You just right click and select create new index primary.
+
+44
+00:03:27,180 --> 00:03:28,920
+The type should be big int.
+
+45
+00:03:29,250 --> 00:03:33,390
+We use big events as this is what WordPress uses for their own ID's.
+
+46
+00:03:33,780 --> 00:03:37,380
+The link should be 20 with auto increment as the default.
+
+47
+00:03:38,220 --> 00:03:41,200
+The recipe ID will contain the idea of the post.
+
+48
+00:03:41,640 --> 00:03:45,090
+This will also be the type big event with a length of twenty.
+
+49
+00:03:45,600 --> 00:03:49,490
+The rating will contain the user rating along with their user IP.
+
+50
+00:03:50,190 --> 00:03:53,800
+Let's create our table now and you should receive no error so far.
+
+51
+00:03:54,300 --> 00:03:54,720
+Great.
+
+52
+00:03:55,080 --> 00:04:00,060
+The reason I had you create this table through high school is because Heidi will generate the query
+
+53
+00:04:00,060 --> 00:04:01,470
+for us in two locations.
+
+54
+00:04:01,830 --> 00:04:06,030
+If you look at the bottom, you'll notice all these SQL queries being executed.
+
+55
+00:04:06,420 --> 00:04:08,240
+It even has the create query.
+
+56
+00:04:08,550 --> 00:04:11,280
+However, it's all compressed into this one line.
+
+57
+00:04:11,850 --> 00:04:17,910
+There is actually a more cleaner and formatted version which is available under this create code tab.
+
+58
+00:04:18,390 --> 00:04:20,640
+Copy this and make sure you have it in hand.
+
+59
+00:04:20,640 --> 00:04:26,670
+When we create this table via code, I want to create this through our plug in and not through Hidesign.
+
+60
+00:04:26,700 --> 00:04:30,320
+Well, let's open the activation file and get started.
+
+61
+00:04:30,780 --> 00:04:35,160
+The first thing I want to do is include the global variable WP DB.
+
+62
+00:04:35,610 --> 00:04:40,360
+This variable contains an object with methods and properties for interacting with the database.
+
+63
+00:04:40,800 --> 00:04:45,470
+This object is created by WordPress for you and is already connected to the database.
+
+64
+00:04:46,230 --> 00:04:52,000
+I'm going to create a variable named CREATE Sequel and this will contain a string with our sequel.
+
+65
+00:04:52,380 --> 00:04:56,220
+Let's copy and paste the query from Heidi Eskil into this string like.
+
+66
+00:04:56,220 --> 00:05:01,380
+So I'm going to format this a bit by indenting some stuff just to make it look a little bit cleaner
+
+67
+00:05:01,380 --> 00:05:02,040
+and readable.
+
+68
+00:05:04,620 --> 00:05:09,310
+We need to modify this query a bit to be compatible and consistent with our database.
+
+69
+00:05:09,660 --> 00:05:11,250
+First is the prefix.
+
+70
+00:05:11,700 --> 00:05:16,070
+Not all installations of WordPress will be prefixed with WP underscore.
+
+71
+00:05:16,620 --> 00:05:21,930
+So I want you to remove this bit and instead we're going to appoint a dynamic prefix.
+
+72
+00:05:22,620 --> 00:05:29,640
+The WP DB object contains a property named prefix, and this property simply contains the prefix of
+
+73
+00:05:29,640 --> 00:05:31,200
+the current WordPress installation.
+
+74
+00:05:33,440 --> 00:05:39,830
+Next up is making the charoset dynamic, the W PDV object has a method called get care set.
+
+75
+00:05:39,830 --> 00:05:45,220
+Koelie, as it sounds, this will get the colation of the currently installed database.
+
+76
+00:05:45,560 --> 00:05:48,170
+I'm going to modify this end of the query a little bit.
+
+77
+00:05:51,170 --> 00:05:54,700
+We don't have to make any further modifications to our secret.
+
+78
+00:05:55,070 --> 00:05:57,140
+All we have to do now is execute it.
+
+79
+00:05:57,740 --> 00:06:03,040
+You may be thinking that there's a method in the PDB object for doing this, but there isn't.
+
+80
+00:06:03,380 --> 00:06:07,650
+Strangely enough, WordPress doesn't include a create table method.
+
+81
+00:06:07,970 --> 00:06:10,290
+Instead, we have to use a different function.
+
+82
+00:06:10,910 --> 00:06:14,210
+I'm going to require a file called slash.
+
+83
+00:06:14,210 --> 00:06:18,170
+WP admin slash includes slash upgrades.
+
+84
+00:06:21,260 --> 00:06:28,580
+I also appended this to a constant named ABB's path, this consent is created by WordPress and points
+
+85
+00:06:28,580 --> 00:06:30,720
+to the installation of our WordPress site.
+
+86
+00:06:31,490 --> 00:06:35,420
+We have to include this file so we can use a function called DB Delta.
+
+87
+00:06:37,640 --> 00:06:45,110
+This file usually isn't loaded, so we have to load it, the Delta function is used for executing queries
+
+88
+00:06:45,110 --> 00:06:47,960
+that modify the database and the resource section.
+
+89
+00:06:47,960 --> 00:06:49,760
+I provide a link to this function.
+
+90
+00:06:50,180 --> 00:06:54,950
+If you take a look at the source code, you'll find all this code that will assist us with creating
+
+91
+00:06:54,950 --> 00:06:55,650
+a database.
+
+92
+00:06:55,970 --> 00:06:58,580
+Here is what WordPress has to say about this function.
+
+93
+00:06:59,300 --> 00:07:04,160
+Useful for creating new tables and updating existing tables to a new structure.
+
+94
+00:07:04,820 --> 00:07:07,220
+I'm going to pass this function for our query.
+
+95
+00:07:09,110 --> 00:07:10,400
+That's it, we're done.
+
+96
+00:07:10,790 --> 00:07:15,380
+I'm going to go back to high school and I'm going to drop the newly created table.
+
+97
+00:07:17,620 --> 00:07:23,770
+Dropping a table is just another way of saying building it back inside WordPress, let's deactivate
+
+98
+00:07:23,770 --> 00:07:25,420
+our plugin and then reactivate it.
+
+99
+00:07:28,690 --> 00:07:30,370
+You should not get any errors.
+
+100
+00:07:30,700 --> 00:07:33,580
+Go back to high school and refresh the database.
+
+101
+00:07:33,760 --> 00:07:37,250
+You should see the recipe ratings table pop up again.
+
+102
+00:07:37,750 --> 00:07:43,340
+I know this can seem a bit confusing, but working with the database is actually easier than this.
+
+103
+00:07:43,720 --> 00:07:48,220
+Ninety five percent of the time, you won't have to worry about requiring certain files.
+
+104
+00:07:48,640 --> 00:07:53,140
+Creating, updating and deleting tables requires the upgrade file.
+
+105
+00:07:53,890 --> 00:07:57,180
+The reason this file is required is because of security reasons.
+
+106
+00:07:57,430 --> 00:08:03,550
+It's not normal to load function specifically made for updating, creating and deleting tables on every
+
+107
+00:08:03,550 --> 00:08:04,420
+page request.
+
+108
+00:08:04,810 --> 00:08:10,390
+If this function was loaded everywhere, then it would cause some serious security issues for Web developers
+
+109
+00:08:10,390 --> 00:08:10,960
+and owners.
+
+110
+00:08:11,620 --> 00:08:17,170
+WordPress provides a lot of methods for executing queries and takes care of sanitizing your queries
+
+111
+00:08:17,170 --> 00:08:17,580
+for you.
+
+112
+00:08:18,100 --> 00:08:22,180
+So I promise creating a query like this is a one time thing.
+
+113
+00:08:22,690 --> 00:08:28,120
+If you're interested in learning more about this process than I provide a link to a WordPress developer
+
+114
+00:08:28,120 --> 00:08:30,190
+page that provides details about this.
+

@@ -1,0 +1,384 @@
+1
+00:00:07,660 --> 00:00:13,630
+Now it's time to format the search form, unlike the other widgets, WordPress makes it easy to apply
+
+2
+00:00:13,630 --> 00:00:20,050
+styles and formatting to the search for you may be wondering why the search form is a more unique widget
+
+3
+00:00:20,050 --> 00:00:26,140
+than the other default WordPress widgets, the default WordPress widgets just provide links to other
+
+4
+00:00:26,140 --> 00:00:27,050
+parts of your site.
+
+5
+00:00:27,520 --> 00:00:32,770
+However, search forms are more complex and vary from site to site when it comes to design.
+
+6
+00:00:33,250 --> 00:00:36,550
+Search forms can also appear in various parts of your site.
+
+7
+00:00:37,040 --> 00:00:39,200
+This makes it a reusable component.
+
+8
+00:00:39,460 --> 00:00:46,210
+With that said, WordPress recognizes that the search form should be stylized by the theme and not WordPress
+
+9
+00:00:46,210 --> 00:00:46,770
+itself.
+
+10
+00:00:47,170 --> 00:00:53,230
+If you don't have any styles or formats available, then WordPress automatically generates the HTML
+
+11
+00:00:53,230 --> 00:00:54,250
+for the search widget.
+
+12
+00:00:54,760 --> 00:00:58,490
+So how does WordPress know if we have a search form template?
+
+13
+00:00:59,110 --> 00:00:59,890
+It's simple.
+
+14
+00:01:00,130 --> 00:01:03,430
+We just need to create a template called search form.
+
+15
+00:01:04,780 --> 00:01:06,460
+Let's create this file now.
+
+16
+00:01:08,580 --> 00:01:16,010
+Inside this template, out the following e-mail, you can find the text inside the slash assets, slash
+
+17
+00:01:16,020 --> 00:01:23,880
+extra slash search form, dot text file, it will contain all the HTML and code you'll need.
+
+18
+00:01:24,510 --> 00:01:24,930
+All right.
+
+19
+00:01:25,170 --> 00:01:28,380
+Let's go over what's in this HTML one by one.
+
+20
+00:01:29,100 --> 00:01:33,010
+The very first thing we do is generate a unique ID for the input fields.
+
+21
+00:01:33,420 --> 00:01:35,880
+This isn't required, but it's good practice.
+
+22
+00:01:36,150 --> 00:01:43,710
+The unique ID function helps us generate a unique ID we can pass in a string to prepend to the ID.
+
+23
+00:01:44,280 --> 00:01:50,100
+Then we use the escape attribute function which will make sure the string is safe for use.
+
+24
+00:01:50,100 --> 00:01:56,210
+Inside an attribute, WordPress provides a set of functions for making sure your data is safe for output.
+
+25
+00:01:56,610 --> 00:01:59,470
+One of these is called the escape attribute function.
+
+26
+00:01:59,940 --> 00:02:04,260
+This will make sure the value can be used inside an HTML attribute.
+
+27
+00:02:04,740 --> 00:02:08,830
+I'll talk more about the various sanitation functions in a future lecture.
+
+28
+00:02:09,150 --> 00:02:11,039
+For now, let's keep moving forward.
+
+29
+00:02:11,950 --> 00:02:18,600
+Even though creating an I.D. isn't required, I consider it an important step, templates are reusable.
+
+30
+00:02:18,910 --> 00:02:21,940
+The search form template is no exception to this.
+
+31
+00:02:22,360 --> 00:02:26,260
+This template can be used multiple times throughout any other template.
+
+32
+00:02:26,770 --> 00:02:32,080
+Since there is a possibility of having multiple search form templates, then we want to make sure the
+
+33
+00:02:32,080 --> 00:02:34,710
+input has a unique ID each time.
+
+34
+00:02:35,140 --> 00:02:38,120
+This makes it easier to differentiate between forms.
+
+35
+00:02:38,740 --> 00:02:40,980
+Let's look at the rest of this HTML.
+
+36
+00:02:41,410 --> 00:02:43,660
+First, we need a form tag.
+
+37
+00:02:43,930 --> 00:02:48,220
+We must set the class method and action attributes.
+
+38
+00:02:48,610 --> 00:02:52,020
+The class should be set to search Dasch form.
+
+39
+00:02:52,540 --> 00:02:57,080
+This allows for any plugins to add any JavaScript into this form if needed.
+
+40
+00:02:57,580 --> 00:03:00,550
+You can also add additional classes if you want to.
+
+41
+00:03:00,940 --> 00:03:06,510
+The method should always be set to get as that's what's recommended by WordPress.
+
+42
+00:03:07,180 --> 00:03:10,710
+The action attribute should be the euro to the home page.
+
+43
+00:03:11,050 --> 00:03:14,450
+I'm introducing a new function here called Home You URL.
+
+44
+00:03:14,980 --> 00:03:17,260
+This is a function provided by WordPress.
+
+45
+00:03:17,710 --> 00:03:20,950
+We simply pass in a forward slash to instruct it.
+
+46
+00:03:20,950 --> 00:03:23,190
+We just want the route home URL.
+
+47
+00:03:23,980 --> 00:03:30,790
+We're also using the escape URL function to make sure that the euro return is safe and is just a euro.
+
+48
+00:03:31,300 --> 00:03:36,040
+Like the other functions, this function is defined and provided by WordPress.
+
+49
+00:03:36,460 --> 00:03:39,790
+You do not need to do anything to make sure it's available to you.
+
+50
+00:03:40,690 --> 00:03:43,330
+Next, we have to set up the input tag.
+
+51
+00:03:43,630 --> 00:03:45,460
+The name should always be.
+
+52
+00:03:45,460 --> 00:03:50,050
+S WordPress uses this name for something called the Loop.
+
+53
+00:03:50,410 --> 00:03:54,250
+The loop is something we'll go over in a future lecture for now.
+
+54
+00:03:54,250 --> 00:03:59,530
+Just now you should always set the name attribute to S next.
+
+55
+00:03:59,650 --> 00:04:04,080
+The field's value will be set to the value returned by the search query function.
+
+56
+00:04:04,570 --> 00:04:08,110
+This function simply outputs the search, query the user input it.
+
+57
+00:04:08,500 --> 00:04:11,890
+If there is no search query, it'll just output an empty string.
+
+58
+00:04:12,130 --> 00:04:15,040
+So you may be wondering where I'm getting all this info.
+
+59
+00:04:15,400 --> 00:04:21,910
+Well, there's a function called get search form which will look for a file named search form P P and
+
+60
+00:04:21,910 --> 00:04:22,630
+then output it.
+
+61
+00:04:23,140 --> 00:04:27,040
+Otherwise this function will generate some default HTML for you.
+
+62
+00:04:27,460 --> 00:04:30,070
+This function is used from within the search widget.
+
+63
+00:04:30,490 --> 00:04:31,930
+In the resource section.
+
+64
+00:04:31,930 --> 00:04:34,450
+I provide a link to learn more about this function.
+
+65
+00:04:34,810 --> 00:04:38,470
+You'll notice that we're in the developer site of WordPress.
+
+66
+00:04:38,740 --> 00:04:44,410
+Something I absolutely love about this site of WordPress is that if you were to search for a function
+
+67
+00:04:44,410 --> 00:04:47,550
+and scroll down, you'll find a section called Source.
+
+68
+00:04:48,160 --> 00:04:51,940
+This part of the page will actually show you the source code and WordPress.
+
+69
+00:04:52,450 --> 00:04:53,980
+Let's examine the source code.
+
+70
+00:04:54,250 --> 00:04:57,550
+A lot of this is mostly unimportant to us for the time being.
+
+71
+00:04:58,030 --> 00:05:01,930
+Further down, you'll find a part of the code that generates HTML.
+
+72
+00:05:02,350 --> 00:05:03,640
+There are two versions.
+
+73
+00:05:03,880 --> 00:05:08,440
+One version is for HTML five and another is for HTML.
+
+74
+00:05:09,100 --> 00:05:14,020
+Currently our theme is meant for modern sites and so we're using the HTML5 version.
+
+75
+00:05:14,410 --> 00:05:17,260
+What I did was started with this form as a base.
+
+76
+00:05:17,560 --> 00:05:21,190
+Then I modified it a bit to match the design of my theme.
+
+77
+00:05:21,700 --> 00:05:23,860
+You are allowed to do the same if you wish.
+
+78
+00:05:24,520 --> 00:05:30,880
+There are only four important things we need to set and that is the method action, the inputs name
+
+79
+00:05:30,880 --> 00:05:32,260
+and the current search value.
+
+80
+00:05:32,680 --> 00:05:37,990
+You do not need to have every class or HTML as the one WordPress generates.
+
+81
+00:05:38,410 --> 00:05:42,220
+The point of making your own template is to customize it to your needs.
+
+82
+00:05:42,610 --> 00:05:47,680
+Besides the four things I pointed out earlier, everything else is completely up to you.
+
+83
+00:05:48,430 --> 00:05:49,030
+That's it.
+
+84
+00:05:49,330 --> 00:05:53,320
+Let's refresh the page and see if the form is formatted correctly.
+
+85
+00:05:53,740 --> 00:05:57,070
+This looks so much better because it fits with the rest of the theme.
+
+86
+00:05:57,580 --> 00:06:03,610
+We haven't created a search template yet, so we can't actually see the results generated by the search.
+
+87
+00:06:04,000 --> 00:06:05,890
+We'll be doing that in a future lecture.
+
+88
+00:06:06,580 --> 00:06:12,460
+One last thing I want to note is that inside the form we're using a function called Underscore E, which
+
+89
+00:06:12,460 --> 00:06:14,620
+is similar to the double underscore function.
+
+90
+00:06:15,190 --> 00:06:21,220
+The difference between these two functions is that the underscore E function will echo out the translated
+
+91
+00:06:21,220 --> 00:06:22,990
+shrink rather than returning it.
+
+92
+00:06:23,770 --> 00:06:26,910
+That covers how to create a search form template.
+
+93
+00:06:27,310 --> 00:06:30,970
+Keep in mind that creating this template is completely optional.
+
+94
+00:06:31,330 --> 00:06:34,420
+You can just let WordPress handle it and that would be just fine.
+
+95
+00:06:35,020 --> 00:06:35,560
+All right.
+
+96
+00:06:35,590 --> 00:06:37,210
+I'll see you in the next lecture.
+

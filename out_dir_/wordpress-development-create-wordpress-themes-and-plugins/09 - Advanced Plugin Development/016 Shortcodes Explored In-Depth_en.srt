@@ -1,0 +1,340 @@
+1
+00:00:07,680 --> 00:00:11,960
+So before we move on to the next section, I want to talk more about shortcuts.
+
+2
+00:00:12,240 --> 00:00:17,500
+We've used shortcuts to display forms, but I haven't really gone beyond that in this lecture.
+
+3
+00:00:17,520 --> 00:00:20,320
+We'll explore more about what you can do with shortcuts.
+
+4
+00:00:20,910 --> 00:00:22,470
+We're going to keep things simple.
+
+5
+00:00:22,830 --> 00:00:28,320
+I want to create a button where the user will be taken to a Twitter page inside the main plug and file
+
+6
+00:00:28,320 --> 00:00:29,450
+at a new shortcode.
+
+7
+00:00:29,610 --> 00:00:31,530
+I'm going to call it Twitter follow.
+
+8
+00:00:34,510 --> 00:00:40,030
+I'm not going to bother names facing it, since this will be a rather generic shortcode, the function
+
+9
+00:00:40,030 --> 00:00:41,950
+to call will be named after Twitter.
+
+10
+00:00:41,950 --> 00:00:42,970
+Follow shortcode.
+
+11
+00:00:45,240 --> 00:00:51,780
+Inside the shortcode folder, create a file named Twitter Dasch, follow up and define the function
+
+12
+00:00:51,780 --> 00:00:52,100
+here.
+
+13
+00:00:52,440 --> 00:00:53,850
+LASLEY Include it.
+
+14
+00:00:57,820 --> 00:01:03,850
+Basically, a short code is very simple, you just have to return a string and that's what will be outputted
+
+15
+00:01:03,850 --> 00:01:09,490
+onto the screen, we can take this a step further by allowing the user to add attributes and content,
+
+16
+00:01:09,490 --> 00:01:11,600
+just like a regular HTML tag.
+
+17
+00:01:12,280 --> 00:01:13,650
+Let's set things up first.
+
+18
+00:01:13,810 --> 00:01:15,730
+I'm going to paste in the following code.
+
+19
+00:01:17,310 --> 00:01:19,030
+There's nothing special going on here.
+
+20
+00:01:19,230 --> 00:01:23,640
+I'm just returning a link with some classes applied to it to make it look nice.
+
+21
+00:01:23,940 --> 00:01:26,270
+I also have this nice little Twitter icon.
+
+22
+00:01:26,610 --> 00:01:27,990
+This is completely static.
+
+23
+00:01:27,990 --> 00:01:29,580
+And we'll take the user to Twitter.
+
+24
+00:01:30,190 --> 00:01:33,390
+I'm going to create a brand new page and use this shortcode.
+
+25
+00:01:33,570 --> 00:01:34,900
+I want you to do the same.
+
+26
+00:01:35,100 --> 00:01:36,780
+Make sure you publish the page.
+
+27
+00:01:41,480 --> 00:01:45,920
+All right, so I'm on the page, and as you can see, the shortcode is working as intended.
+
+28
+00:01:46,290 --> 00:01:48,170
+This is nothing we haven't done before.
+
+29
+00:01:48,500 --> 00:01:52,950
+The real power of shortcode comes from allowing users to customize its behavior.
+
+30
+00:01:53,690 --> 00:01:54,640
+Let's start with that.
+
+31
+00:01:54,650 --> 00:02:00,680
+You use just like regular HTML, short codes can have attributes and they are written in the same fashion.
+
+32
+00:02:01,130 --> 00:02:06,500
+Back inside the edit page, I'm going to add an attribute called Handle with a value of Udemy.
+
+33
+00:02:08,960 --> 00:02:14,780
+You can name your attributes, whatever you want, but WordPress does have a few rules in the resource
+
+34
+00:02:14,780 --> 00:02:18,450
+section of this lecture, I provide a link to the shortcode API.
+
+35
+00:02:18,980 --> 00:02:23,770
+This page gives really great explanations about how to use the shortcode API.
+
+36
+00:02:24,470 --> 00:02:28,790
+If you scroll down a bit, you'll find that WordPress says important tip.
+
+37
+00:02:29,030 --> 00:02:32,440
+Don't use Cammo case or uppercase for your attribute names.
+
+38
+00:02:32,990 --> 00:02:36,670
+We're going to keep things simple and just use all lowercase letters.
+
+39
+00:02:36,920 --> 00:02:40,880
+Now that we're specifying an attribute, we can use it inside the code.
+
+40
+00:02:41,240 --> 00:02:42,460
+Back inside the function.
+
+41
+00:02:42,470 --> 00:02:46,090
+You can accept all the attributes by adding the parameter acts.
+
+42
+00:02:46,520 --> 00:02:51,830
+This will be an array with all the attributes where the key is the name of the attribute and the value
+
+43
+00:02:51,830 --> 00:02:55,290
+is the value itself before we use any attributes.
+
+44
+00:02:55,310 --> 00:02:59,030
+It's always good practice to make sure each one has the default value.
+
+45
+00:02:59,240 --> 00:03:03,200
+I'm going to reassign my attributes to the function shortcode atts.
+
+46
+00:03:05,710 --> 00:03:11,500
+This is a special function meant especially for sugarcoats, it will take in an array of attributes
+
+47
+00:03:11,500 --> 00:03:13,750
+and make sure all default values are set.
+
+48
+00:03:14,530 --> 00:03:17,510
+The first parameter is an array of default attributes.
+
+49
+00:03:18,250 --> 00:03:24,040
+I only have one attribute, which is handle, and I'm going to give this a default value of you to me.
+
+50
+00:03:26,460 --> 00:03:30,010
+The second parameter to this function is the attributes itself.
+
+51
+00:03:30,690 --> 00:03:36,910
+So what this will do is set a default value for the handle attribute if the user didn't input this attribute.
+
+52
+00:03:37,260 --> 00:03:38,450
+We can now use this.
+
+53
+00:03:38,670 --> 00:03:43,920
+I'm going to replace the static link with the handle name and use the attribute handle instead.
+
+54
+00:03:46,700 --> 00:03:51,830
+Just like that, the handle name will be dynamic, I'm going to refresh the page and the links should
+
+55
+00:03:51,830 --> 00:03:52,510
+be updated.
+
+56
+00:03:52,850 --> 00:03:55,180
+So that's one way to extend shortcode.
+
+57
+00:03:55,610 --> 00:03:59,240
+The next thing you can do with short codes is use enclosed sort codes.
+
+58
+00:04:00,020 --> 00:04:03,940
+If you look at the short code on the edit page, you'll notice it's by itself.
+
+59
+00:04:04,220 --> 00:04:09,020
+However, just like HTML tags, we can add an enclosed version like some.
+
+60
+00:04:11,440 --> 00:04:17,380
+It's just the shortcode itself, but this time you're adding any forwards to let WordPress know where
+
+61
+00:04:17,380 --> 00:04:22,340
+it ends, anything placed in between these two shortcode will be passed into our function.
+
+62
+00:04:22,690 --> 00:04:24,970
+I'm going to set this to follow us.
+
+63
+00:04:27,570 --> 00:04:34,050
+Let's go back to the function and accept this new data inside the parameters, I can add a second parameter
+
+64
+00:04:34,050 --> 00:04:35,120
+called content.
+
+65
+00:04:35,490 --> 00:04:38,540
+This will contain the text inside an enclosed shortcode.
+
+66
+00:04:38,940 --> 00:04:42,610
+Keep in mind that enclosed short codes are optional for users.
+
+67
+00:04:42,960 --> 00:04:46,200
+I'm going to set this to a default value, which will be known.
+
+68
+00:04:46,830 --> 00:04:50,970
+Then I'm going to replace this text with the content variable like so.
+
+69
+00:04:53,500 --> 00:04:58,240
+I'm going to refresh the page, and as you can see, the text inside the button was replaced.
+
+70
+00:04:58,600 --> 00:05:04,480
+Short codes are very simple to use as a user and developer, they do make our code look cleaner and
+
+71
+00:05:04,480 --> 00:05:05,140
+more readable.
+
+72
+00:05:05,500 --> 00:05:07,360
+There is one last thing I want to show you.
+
+73
+00:05:08,050 --> 00:05:13,770
+The content placed inside the enclosed short codes can also contain HTML and even short codes.
+
+74
+00:05:14,110 --> 00:05:17,260
+However, short codes cannot be processed by short codes.
+
+75
+00:05:17,260 --> 00:05:22,630
+Naturally, if you would like to process short codes inside a short code, then you'll need to do one
+
+76
+00:05:22,630 --> 00:05:25,440
+simple thing back inside the function.
+
+77
+00:05:25,450 --> 00:05:29,950
+I'm going to remove the content variable with a function called do shortcode.
+
+78
+00:05:32,500 --> 00:05:38,690
+This function does, as its name suggests, it will take in a string and process the code inside, it'll
+
+79
+00:05:38,710 --> 00:05:40,730
+process short codes if there are any.
+
+80
+00:05:41,500 --> 00:05:44,580
+Just like that, our short code now supports shortcuts.
+
+81
+00:05:44,890 --> 00:05:50,560
+This is optional to do because I usually recommend it if you have a short code that's very complex and
+
+82
+00:05:50,560 --> 00:05:51,860
+you want it to be flexible.
+
+83
+00:05:52,570 --> 00:05:53,050
+All right.
+
+84
+00:05:53,140 --> 00:05:54,910
+That's basically it for shortcuts.
+
+85
+00:05:55,090 --> 00:06:00,040
+You can read the documentation to learn more cool tips and tricks for using shortcuts.
+

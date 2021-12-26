@@ -1,0 +1,424 @@
+1
+00:00:07,510 --> 00:00:12,440
+WordPress provides a couple of components for creating the most common types of input fields.
+
+2
+00:00:12,790 --> 00:00:18,430
+We've already gone over how to use the text control, select control and form toggle components.
+
+3
+00:00:18,790 --> 00:00:22,930
+You may already have found out that most components contain similar attributes.
+
+4
+00:00:23,410 --> 00:00:27,250
+In this lecture, we'll be going over the other inspector control fields.
+
+5
+00:00:27,250 --> 00:00:31,300
+WordPress has to offer will be skipping the ones we've already gone over.
+
+6
+00:00:31,570 --> 00:00:37,570
+In the resource section of this lecture, I provide a zip file with the code, download the file and
+
+7
+00:00:37,570 --> 00:00:40,960
+unzip the contents into the Blocks app directory.
+
+8
+00:00:41,350 --> 00:00:47,620
+Once you have that set up, open the index, not just file inside just to keep things from getting too
+
+9
+00:00:47,620 --> 00:00:48,280
+repetitive.
+
+10
+00:00:48,280 --> 00:00:49,990
+I've provided the complete code.
+
+11
+00:00:50,620 --> 00:00:58,360
+The very first thing I'm doing here is D structuring bwp objects from the WP components object.
+
+12
+00:00:58,360 --> 00:00:59,980
+We're grabbing a lot of things.
+
+13
+00:01:00,220 --> 00:01:03,280
+Most of these will just create different input fields.
+
+14
+00:01:03,640 --> 00:01:08,890
+Moving right along, I'm using the register block type function and passing in the usual settings.
+
+15
+00:01:09,130 --> 00:01:13,900
+A lot of this should be familiar to you inside the attributes object.
+
+16
+00:01:13,990 --> 00:01:19,090
+I'm introducing a new type here called Number, which is for storing numeric values.
+
+17
+00:01:21,280 --> 00:01:27,310
+Afterwards, I'm using the inspector controls component and loading the different components at this
+
+18
+00:01:27,310 --> 00:01:31,020
+point, you should be able to understand what most of these attributes do.
+
+19
+00:01:31,810 --> 00:01:37,570
+The last thing that's going on here is I'm displaying an unordered list with all the input fields and
+
+20
+00:01:37,570 --> 00:01:38,810
+their respective values.
+
+21
+00:01:39,220 --> 00:01:42,610
+The block is the same in both the edit and save functions.
+
+22
+00:01:43,000 --> 00:01:44,850
+All right, let's test things out.
+
+23
+00:01:45,280 --> 00:01:47,620
+You will need to import this block.
+
+24
+00:01:47,620 --> 00:01:53,740
+So open the app index JS file and import the inspector controls block.
+
+25
+00:01:55,930 --> 00:02:00,640
+CD into the blocks directory and run the NPM Run Dev Command.
+
+26
+00:02:02,970 --> 00:02:09,120
+There shouldn't be any errors so far once that's finished compiling, go ahead and create a new recipe
+
+27
+00:02:09,120 --> 00:02:10,320
+post with this blank.
+
+28
+00:02:12,610 --> 00:02:18,460
+With the bloc selected, you should see the unordered list and the sidebar should contain all the inspector
+
+29
+00:02:18,460 --> 00:02:19,550
+control components.
+
+30
+00:02:19,960 --> 00:02:24,780
+There are more components than this, but I'm skipping over those since we've gone over how to use them.
+
+31
+00:02:25,510 --> 00:02:31,270
+The first component is the text area control component all loaded in here so that you can see it side
+
+32
+00:02:31,270 --> 00:02:31,930
+by side.
+
+33
+00:02:32,260 --> 00:02:37,840
+The label and help attributes will display text in different areas for different purposes.
+
+34
+00:02:38,260 --> 00:02:42,130
+They work similar to the other input components we've dealt with so far.
+
+35
+00:02:42,820 --> 00:02:49,060
+The value attribute will be the value to use from the attributes object and the on change attribute
+
+36
+00:02:49,060 --> 00:02:51,040
+is an event that gets triggered on input.
+
+37
+00:02:51,430 --> 00:02:53,280
+Very straightforward stuff so far.
+
+38
+00:02:53,590 --> 00:02:58,510
+If I were to input some gibberish, then you should see the block on the left update as well.
+
+39
+00:02:59,200 --> 00:03:04,500
+The next component is the checkbox control component, which will generate a checkbox element.
+
+40
+00:03:04,870 --> 00:03:07,540
+We have one new attribute here called Heading.
+
+41
+00:03:07,930 --> 00:03:10,690
+The heading will be the text above the checkbox.
+
+42
+00:03:10,930 --> 00:03:16,920
+The label will appear to the right of the checkbox and the help attribute will appear below the checkbox.
+
+43
+00:03:17,530 --> 00:03:20,010
+These are optional, so use them as you see fit.
+
+44
+00:03:20,410 --> 00:03:25,750
+Then we have the checked attribute, which needs to be a true or false boolean value.
+
+45
+00:03:26,170 --> 00:03:28,420
+If true, then the box will be ticked.
+
+46
+00:03:28,840 --> 00:03:34,930
+Lastly, we have the en change attribute which will be triggered whenever the user ticks or until the
+
+47
+00:03:34,930 --> 00:03:37,180
+checkbox, just like before.
+
+48
+00:03:37,300 --> 00:03:42,240
+We're updating the attribute with the new value, which will either be true or false.
+
+49
+00:03:42,700 --> 00:03:47,440
+If I were to check the box, then you'll see true or false appear in the block.
+
+50
+00:03:47,710 --> 00:03:53,280
+Something I want to know is that I'm using the two string function to convert a boolean value to a string.
+
+51
+00:03:54,010 --> 00:03:57,930
+If I didn't use this function, then you wouldn't see anything appear in the block.
+
+52
+00:03:58,210 --> 00:04:00,400
+It's not common to do something like this.
+
+53
+00:04:00,550 --> 00:04:04,630
+I only did it to provide another visual cue when that checkboxes ticked.
+
+54
+00:04:05,290 --> 00:04:10,390
+Afterwards, we have the radio control component, which will render a radio input field.
+
+55
+00:04:10,840 --> 00:04:15,130
+The label attribute will display text above the radio input fields.
+
+56
+00:04:15,460 --> 00:04:20,860
+The selected attribute will allow you to set a value and determine what radio button is preselected.
+
+57
+00:04:21,490 --> 00:04:25,790
+Then we have the options attribute, which is used to render all the options available.
+
+58
+00:04:26,230 --> 00:04:30,660
+Keep in mind that radio input fields can only have one value per group.
+
+59
+00:04:31,180 --> 00:04:34,540
+This attribute expects you to pass in an array of objects.
+
+60
+00:04:34,960 --> 00:04:39,760
+Each object should contain two properties, which are the label and value.
+
+61
+00:04:40,330 --> 00:04:44,320
+In this example, I have two options which are Foo and BA respectively.
+
+62
+00:04:44,650 --> 00:04:46,720
+Inside my attributes object.
+
+63
+00:04:46,720 --> 00:04:52,190
+I set the default value to Foo so the FOO radio button should be checked by default.
+
+64
+00:04:52,900 --> 00:04:57,170
+Lastly, we have the en change attribute for handling the change.
+
+65
+00:04:57,190 --> 00:04:58,150
+Same as before.
+
+66
+00:04:58,780 --> 00:05:01,600
+Up next, we have the range control component.
+
+67
+00:05:01,990 --> 00:05:05,320
+This component is a little more complex than the other components.
+
+68
+00:05:05,530 --> 00:05:10,120
+It will create this liner that will allow users to adjust a numeric value.
+
+69
+00:05:10,570 --> 00:05:14,020
+Alternatively, they can just input their preferred value.
+
+70
+00:05:14,680 --> 00:05:19,600
+The first two attributes are the before icon and after icon attributes.
+
+71
+00:05:19,900 --> 00:05:23,530
+These icons will appear before and after the slider you see here.
+
+72
+00:05:23,890 --> 00:05:29,020
+I'm using the dash icon set, but you can provide your own custom icon like before.
+
+73
+00:05:29,590 --> 00:05:34,900
+If you were to go down that path, then I recommend placing the SPG in a separate file like we've been
+
+74
+00:05:34,900 --> 00:05:36,250
+doing this entire course.
+
+75
+00:05:36,730 --> 00:05:40,960
+We can also set them in and max attributes which will let you limit the value.
+
+76
+00:05:41,380 --> 00:05:48,100
+Lastly, we have the value and on change attributes which will do the same as the rest that should about
+
+77
+00:05:48,100 --> 00:05:48,630
+cover it.
+
+78
+00:05:48,730 --> 00:05:52,750
+Let's try testing this out, publish the post and view it on the front end.
+
+79
+00:05:55,100 --> 00:06:01,090
+You should see the unordered list with their respective values now before I end this lecture.
+
+80
+00:06:01,160 --> 00:06:05,650
+I do want to note that you aren't limited to using the controllers inside the sidebar.
+
+81
+00:06:05,960 --> 00:06:07,490
+You can place them in your block.
+
+82
+00:06:07,700 --> 00:06:14,090
+In fact, let's try that out, go back to the script and begin the process of copying all the input
+
+83
+00:06:14,090 --> 00:06:20,090
+controllers into the block, only replace them inside the edit function and overwrite the unordered
+
+84
+00:06:20,090 --> 00:06:20,560
+list.
+
+85
+00:06:20,900 --> 00:06:25,970
+Something worth noting is that you don't have to add the panel components since Blotz don't support
+
+86
+00:06:25,970 --> 00:06:29,510
+panels, only move the input controllers themselves.
+
+87
+00:06:33,950 --> 00:06:39,800
+What you should have is the input controller surrounded by the div tag, basically everything is the
+
+88
+00:06:39,800 --> 00:06:41,360
+same except for the panels.
+
+89
+00:06:41,600 --> 00:06:44,020
+Save your changes and try refreshing the editor.
+
+90
+00:06:44,330 --> 00:06:45,760
+You may have to add the block.
+
+91
+00:06:45,770 --> 00:06:47,660
+And again, since we've made changes.
+
+92
+00:06:48,870 --> 00:06:54,450
+As you can see, everything works just fine, you can modify the values inside the block and it should
+
+93
+00:06:54,450 --> 00:06:55,990
+reciprocate on the sidebar.
+
+94
+00:06:56,310 --> 00:06:59,790
+You can even update the post and the block should work on the front end.
+
+95
+00:07:00,390 --> 00:07:04,200
+Whether you want to use the controllers on the sidebar or block is up to you.
+
+96
+00:07:04,620 --> 00:07:09,830
+Once again, this is a user experience design decision, which is beyond the scope of this course.
+
+97
+00:07:10,350 --> 00:07:16,230
+I just wanted to show you that it is possible to use these components outside of the sidebar and directly
+
+98
+00:07:16,230 --> 00:07:16,920
+in your block.
+
+99
+00:07:17,340 --> 00:07:20,580
+Gutenberg is very flexible and consistent across the board.
+
+100
+00:07:21,000 --> 00:07:26,550
+Now, obviously, the block we have isn't practical, but you may end up having a use case for this
+
+101
+00:07:26,550 --> 00:07:29,970
+sort of behavior that about does it for these components.
+
+102
+00:07:30,120 --> 00:07:35,550
+You can find all of these inside the components directory of Gutenberg except for the color palette
+
+103
+00:07:35,550 --> 00:07:37,990
+component, which is inside the ED directory.
+
+104
+00:07:38,610 --> 00:07:44,060
+I encourage you to play around with these components, change their values, see what works even better.
+
+105
+00:07:44,070 --> 00:07:45,540
+Try breaking a component.
+
+106
+00:07:45,720 --> 00:07:46,890
+It's how you'll learn.
+

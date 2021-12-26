@@ -1,0 +1,436 @@
+1
+00:00:07,330 --> 00:00:13,720
+Well, commerce is the best e-commerce WordPress plugin around it can be intimidating at first for developers,
+
+2
+00:00:13,720 --> 00:00:16,030
+but it's one of the easiest plug ins to work with.
+
+3
+00:00:16,270 --> 00:00:20,200
+Unlike other plugins, WordPress is well documented, encoded.
+
+4
+00:00:20,530 --> 00:00:21,700
+Unlike Buddy Press.
+
+5
+00:00:21,700 --> 00:00:24,630
+We can find a lot of the answers to our questions online.
+
+6
+00:00:25,030 --> 00:00:29,700
+If your theme supports commerce, then you would be adding a whole lot of value to your theme.
+
+7
+00:00:30,340 --> 00:00:34,450
+It's almost the standard today to support commerce and to come bundled with it.
+
+8
+00:00:34,750 --> 00:00:38,020
+If you're not familiar with commerce, then let's take a quick tour.
+
+9
+00:00:38,470 --> 00:00:44,230
+While Commerce allows you to convert your site into a store to sell physical and or digital products,
+
+10
+00:00:44,530 --> 00:00:49,510
+it has over twenty one million downloads and powers, over twenty eight percent of all stores.
+
+11
+00:00:49,990 --> 00:00:53,430
+You'll even find a list of partners and supporters of all commerce.
+
+12
+00:00:54,070 --> 00:00:58,030
+This is one of the reasons why commerce is well documented and supported.
+
+13
+00:00:58,390 --> 00:01:04,360
+A lot of companies and individuals rely on this software to work with so many people relying on such
+
+14
+00:01:04,360 --> 00:01:06,070
+a software for generating revenue.
+
+15
+00:01:06,070 --> 00:01:08,860
+You can imagine the amount of work needed to extend it.
+
+16
+00:01:09,400 --> 00:01:12,820
+This course isn't about teaching you how to use new commerce.
+
+17
+00:01:13,180 --> 00:01:17,800
+There are a lot of courses out there that teach you that what you'll be learning here is how to use
+
+18
+00:01:17,800 --> 00:01:19,570
+it in theme and plug in development.
+
+19
+00:01:20,230 --> 00:01:21,160
+Let's get started.
+
+20
+00:01:21,340 --> 00:01:27,130
+The very first step is to install and activate it, go to the admin dashboard and navigate to plug ins,
+
+21
+00:01:27,130 --> 00:01:29,050
+add new search for the plug in.
+
+22
+00:01:29,050 --> 00:01:31,450
+Will Commerce install and activate it?
+
+23
+00:01:41,960 --> 00:01:45,480
+This plugin is very big, so it might take some time to install it.
+
+24
+00:01:45,890 --> 00:01:50,840
+Currently, this plugin is on version three, which is very new and has a lot of breaking changes.
+
+25
+00:01:51,140 --> 00:01:54,140
+But all the code we write will be compatible with this version.
+
+26
+00:01:54,980 --> 00:01:57,690
+After activation, you'll be taken to a set of wizard.
+
+27
+00:01:58,010 --> 00:02:00,860
+I want you to go through it with all the default settings.
+
+28
+00:02:02,900 --> 00:02:06,890
+I didn't really bother going through the settings as I just use the defaults.
+
+29
+00:02:07,130 --> 00:02:08,090
+Nothing special.
+
+30
+00:02:08,389 --> 00:02:12,270
+After going through the wizard, newcomers will also generate some pages.
+
+31
+00:02:12,650 --> 00:02:13,910
+This is very important.
+
+32
+00:02:14,210 --> 00:02:19,760
+Just like Buddy Press will, commerce needs to generate some pages to display the content it generates
+
+33
+00:02:19,760 --> 00:02:20,810
+and manages for you.
+
+34
+00:02:21,200 --> 00:02:27,510
+So be sure to generate all the pages it needs or else this won't work for things like the payment gateway.
+
+35
+00:02:27,560 --> 00:02:29,070
+I'm going to use PayPal.
+
+36
+00:02:29,330 --> 00:02:30,980
+It doesn't really matter at this point.
+
+37
+00:02:31,190 --> 00:02:34,420
+You can always configure this later to your preferred payment method.
+
+38
+00:02:34,970 --> 00:02:39,680
+After going through the walkthrough, you can begin with preparing our theme for compatibility with
+
+39
+00:02:39,710 --> 00:02:40,280
+EU commerce.
+
+40
+00:02:40,770 --> 00:02:45,860
+You'll notice we have a couple of messages here warning us about extra steps we need to take before
+
+41
+00:02:45,860 --> 00:02:47,500
+we can fully use will commerce.
+
+42
+00:02:48,080 --> 00:02:53,320
+You may end up getting a message telling you that the current theme does not declare who commerce support.
+
+43
+00:02:53,990 --> 00:02:55,810
+You may even be recommending the theme.
+
+44
+00:02:56,090 --> 00:02:59,740
+Since we're developing our own theme, we won't take interest in the theme.
+
+45
+00:03:00,110 --> 00:03:04,060
+It should be noted that most themes are compatible with commerce by default.
+
+46
+00:03:04,460 --> 00:03:09,800
+Keep in mind that Woog Commerce is a WordPress plugin and uses the same functions and hooks as any other
+
+47
+00:03:09,800 --> 00:03:10,220
+plugin.
+
+48
+00:03:10,790 --> 00:03:15,590
+So even if we don't make any changes to our theme, world commerce will work as usual.
+
+49
+00:03:15,950 --> 00:03:20,950
+If we want to override some of commerce behavior, then we'll need to declare support for it.
+
+50
+00:03:21,320 --> 00:03:22,340
+That's simple to do.
+
+51
+00:03:22,970 --> 00:03:28,670
+All we have to do is call the ad team support function inside the after setup theme hook.
+
+52
+00:03:29,000 --> 00:03:29,960
+Let's do that now.
+
+53
+00:03:30,200 --> 00:03:34,640
+Open the setup file and call that function right after the other support functions.
+
+54
+00:03:35,030 --> 00:03:36,380
+Passan Woohoo commerce.
+
+55
+00:03:38,750 --> 00:03:44,900
+All this does is tell you commerce, that this thing fully supports its features and design after writing
+
+56
+00:03:44,900 --> 00:03:48,860
+it, we can now begin with development to make things easier.
+
+57
+00:03:48,980 --> 00:03:55,450
+I'm going to modify the menu to include the cart checkout and shop pages that do commerce generated.
+
+58
+00:03:55,910 --> 00:03:57,350
+Make sure to save the menu.
+
+59
+00:04:04,050 --> 00:04:07,120
+The very last thing I want to do is import some dummy data.
+
+60
+00:04:07,440 --> 00:04:12,900
+Luckily for us, do commerce already provides us with some dummy data we can use to test our theme with
+
+61
+00:04:13,080 --> 00:04:13,650
+commerce.
+
+62
+00:04:13,980 --> 00:04:15,540
+Go to Tool's import.
+
+63
+00:04:16,110 --> 00:04:21,120
+The Will Commerce plug in provides to importers one for products and one for rates.
+
+64
+00:04:21,390 --> 00:04:23,790
+We won't be dealing with taxes in this course.
+
+65
+00:04:23,940 --> 00:04:28,920
+We only need to import some products, run the new commerce product importer.
+
+66
+00:04:29,400 --> 00:04:33,120
+From here you can import a CSV file with your products.
+
+67
+00:04:33,360 --> 00:04:37,980
+You'll be asked to upload a file, go to the WEW Commerce plugin folder.
+
+68
+00:04:38,310 --> 00:04:41,220
+Inside you'll find a folder called Sample Data.
+
+69
+00:04:43,520 --> 00:04:48,920
+This will contain quite a few files, but we're only interested in the sample underscore products,
+
+70
+00:04:49,140 --> 00:04:51,380
+CSC file, upload this file.
+
+71
+00:04:52,190 --> 00:04:55,130
+After uploading it, you'll be asked to map the values.
+
+72
+00:04:55,370 --> 00:05:00,860
+Mapping is the process of making sure the values inside the file are correctly inputted into the correct
+
+73
+00:05:00,860 --> 00:05:01,910
+database columns.
+
+74
+00:05:02,210 --> 00:05:07,860
+If the file that's exported uses the same version as the commerce version, the file is being imported
+
+75
+00:05:07,860 --> 00:05:10,040
+in, then you won't have to worry about mapping.
+
+76
+00:05:10,340 --> 00:05:11,900
+The value should match up fine.
+
+77
+00:05:12,620 --> 00:05:17,300
+This is usually for product files that were exported with earlier versions of commerce.
+
+78
+00:05:17,570 --> 00:05:23,240
+The mapping may not correctly match with the current database design, since we're using a sample product
+
+79
+00:05:23,240 --> 00:05:24,510
+file from commerce.
+
+80
+00:05:24,650 --> 00:05:29,750
+We don't have to worry about this since it's maintained by the commerce team, they'll usually make
+
+81
+00:05:29,750 --> 00:05:32,320
+sure the file matches the current commerce version.
+
+82
+00:05:32,690 --> 00:05:35,210
+We don't just leave everything as is and continue.
+
+83
+00:05:35,540 --> 00:05:36,580
+This may take a while.
+
+84
+00:05:36,680 --> 00:05:37,750
+Just be patient.
+
+85
+00:05:46,180 --> 00:05:51,580
+You should see a success message and be taken to the list of products, if not, then you can click
+
+86
+00:05:51,580 --> 00:05:53,740
+on the products menu on the sidebar.
+
+87
+00:05:54,130 --> 00:05:58,630
+We now have a couple of Dommy products imported, which is nice with that finished.
+
+88
+00:05:58,650 --> 00:06:00,250
+Let's take a look at what we have.
+
+89
+00:06:00,490 --> 00:06:03,580
+Go to the front end of the site and view the shop page.
+
+90
+00:06:03,820 --> 00:06:06,440
+You'll see some products imported, which is what we want.
+
+91
+00:06:06,910 --> 00:06:11,220
+You'll notice that the page really isn't that well spaced and our footer is broken.
+
+92
+00:06:11,500 --> 00:06:17,020
+This is because of the success it makes the product page for width, which pushes the sidebar to the
+
+93
+00:06:17,020 --> 00:06:17,410
+footer.
+
+94
+00:06:17,980 --> 00:06:20,980
+This only happens on the shop and single product pages.
+
+95
+00:06:21,220 --> 00:06:25,300
+If you were to view the checkout and cart pages, you'll notice everything looks fine.
+
+96
+00:06:25,630 --> 00:06:27,040
+So what is going on here?
+
+97
+00:06:27,340 --> 00:06:30,460
+Well, let's take a look at the cart page and try editing it.
+
+98
+00:06:30,790 --> 00:06:36,370
+You'll notice that this is just normal page with a short code inserted that displays the cart's contents.
+
+99
+00:06:36,670 --> 00:06:38,950
+You can modify this page any way you like.
+
+100
+00:06:39,550 --> 00:06:42,270
+I'm going to make it full width and press update.
+
+101
+00:06:42,520 --> 00:06:45,040
+I'm going to do the same for the checkout page.
+
+102
+00:06:49,160 --> 00:06:55,010
+These two pages can be fully controlled like this, however, if you were to edit the shop page, you'll
+
+103
+00:06:55,010 --> 00:06:57,780
+notice you can't edit the page the same way as before.
+
+104
+00:06:58,010 --> 00:06:59,150
+There is no shortcode.
+
+105
+00:07:00,980 --> 00:07:06,830
+The reason for this is because the shop page generates more dynamic content than the other pages, because
+
+106
+00:07:06,830 --> 00:07:10,130
+of this, it needs more flexibility than a simple shortcode.
+
+107
+00:07:10,520 --> 00:07:14,560
+This is why we get different markup than the other pages in the next lecture.
+
+108
+00:07:14,600 --> 00:07:18,110
+We'll tackle this problem and make everything fit well with our theme.
+
+109
+00:07:19,280 --> 00:07:19,830
+Oh.
+

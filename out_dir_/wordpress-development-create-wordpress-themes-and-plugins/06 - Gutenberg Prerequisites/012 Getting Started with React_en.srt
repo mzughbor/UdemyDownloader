@@ -1,0 +1,696 @@
+1
+00:00:07,240 --> 00:00:13,720
+We are now going to talk about React React is a JavaScript library that allows you to build complex
+
+2
+00:00:13,720 --> 00:00:14,830
+user interfaces.
+
+3
+00:00:15,170 --> 00:00:19,810
+It's mostly used to build a single page applications, which is something we'll cover later in this
+
+4
+00:00:19,810 --> 00:00:20,250
+course.
+
+5
+00:00:20,860 --> 00:00:24,930
+Truthfully, Riak is a massive library with various features.
+
+6
+00:00:25,150 --> 00:00:27,480
+It's something that deserves a course of its own.
+
+7
+00:00:27,910 --> 00:00:30,350
+I won't be able to cover every little thing.
+
+8
+00:00:30,790 --> 00:00:34,150
+I highly recommend checking out, of course, dedicated to react on you.
+
+9
+00:00:34,150 --> 00:00:39,620
+Give me the purpose of these next few lectures is to give you a light introduction to this library.
+
+10
+00:00:40,360 --> 00:00:45,070
+Luckily, you don't need to know every little feature to develop plug ins for Gutenberg.
+
+11
+00:00:45,400 --> 00:00:50,830
+The team behind Gutenberg have already taken care of the heavy lifting, just like everything else in
+
+12
+00:00:50,830 --> 00:00:51,450
+WordPress.
+
+13
+00:00:51,460 --> 00:00:53,740
+You just call a few functions and you're set.
+
+14
+00:00:54,400 --> 00:00:58,730
+You don't even need to know react to get started with Gutenberg development.
+
+15
+00:00:59,020 --> 00:01:03,310
+However, I believe having an overview of things will make you a better developer.
+
+16
+00:01:03,640 --> 00:01:07,870
+Everything I show you here will be enough to make you comfortable with Gutenberg development.
+
+17
+00:01:10,090 --> 00:01:15,640
+Right now, I'm on the official react site, everything you want to know about react can be found here
+
+18
+00:01:15,820 --> 00:01:18,700
+right on the homepage page, you'll find a link to a tutorial.
+
+19
+00:01:19,000 --> 00:01:24,730
+I recommend checking out this tutorial once you finish this section in the resource section of this
+
+20
+00:01:24,730 --> 00:01:29,970
+lecture, I provide a zip file with some starter files and download it and unzip the contents.
+
+21
+00:01:30,220 --> 00:01:31,560
+Let's review the files.
+
+22
+00:01:31,840 --> 00:01:35,330
+First up is the Web page config file.
+
+23
+00:01:35,830 --> 00:01:38,370
+This is pretty much the same thing we had before.
+
+24
+00:01:38,830 --> 00:01:45,160
+We will be working inside the app directory and the final results will be saved inside the disk directory.
+
+25
+00:01:45,550 --> 00:01:47,950
+Lastly, I'm loading the Bable module.
+
+26
+00:01:48,220 --> 00:01:50,500
+Next, let's open the package file.
+
+27
+00:01:51,040 --> 00:01:55,930
+Everything is the same except for three things inside the dependencies object.
+
+28
+00:01:55,960 --> 00:02:01,180
+I'm loading three modules called React, React, Dom Bable precent react.
+
+29
+00:02:01,750 --> 00:02:05,020
+The react module is the core of react itself.
+
+30
+00:02:05,380 --> 00:02:07,750
+React is split into multiple modules.
+
+31
+00:02:08,050 --> 00:02:11,050
+This way we're not forced to use everything at once.
+
+32
+00:02:11,500 --> 00:02:15,550
+This is basically the only required module if you ever use react.
+
+33
+00:02:15,850 --> 00:02:22,390
+The React Dom module is responsible for displaying your HTML and working with the HTML document.
+
+34
+00:02:22,870 --> 00:02:29,530
+This used to be a part of the core, but since reacts inception, the library has grown to accommodate
+
+35
+00:02:29,530 --> 00:02:30,700
+various scenarios.
+
+36
+00:02:31,060 --> 00:02:35,080
+You can use Riak for creating mobile and desktop applications.
+
+37
+00:02:35,680 --> 00:02:40,000
+In these cases, it may not be necessary to use the React Dom module.
+
+38
+00:02:40,480 --> 00:02:46,930
+For this course we will be interacting with the female document, so we'll need this module, the bable
+
+39
+00:02:46,930 --> 00:02:48,490
+preset react module.
+
+40
+00:02:48,490 --> 00:02:52,120
+We'll make sure any react related code also gets processed.
+
+41
+00:02:52,420 --> 00:02:58,690
+We'll need to add this to the Bable RC file, open this file and add the react preset.
+
+42
+00:03:02,680 --> 00:03:07,340
+You can also set bable dash precent, dash envy to envy.
+
+43
+00:03:07,660 --> 00:03:09,940
+This is the shorthand version of that model.
+
+44
+00:03:10,510 --> 00:03:11,470
+That's basically it.
+
+45
+00:03:11,740 --> 00:03:17,170
+We don't have to worry about configuring Watpac since Bable will take care of loading the modules required
+
+46
+00:03:17,170 --> 00:03:17,820
+for react.
+
+47
+00:03:18,220 --> 00:03:22,000
+We don't need to install any special modules for those libraries.
+
+48
+00:03:22,480 --> 00:03:28,780
+All right, let's open the command line and run the command NPM install this will install the modules
+
+49
+00:03:28,780 --> 00:03:30,270
+inside the package file.
+
+50
+00:03:30,730 --> 00:03:34,780
+Make sure your command line is pointed to your directory before running the command.
+
+51
+00:03:38,910 --> 00:03:45,430
+Hopefully everything was installed successfully for you next, let's open the index HTML file.
+
+52
+00:03:45,720 --> 00:03:47,250
+This file is pretty basic.
+
+53
+00:03:47,460 --> 00:03:52,520
+I'm loading a script file named Bundle G.S., which currently doesn't exist.
+
+54
+00:03:52,830 --> 00:03:53,960
+That's perfectly fine.
+
+55
+00:03:54,060 --> 00:03:55,130
+We'll be adding it later.
+
+56
+00:03:55,710 --> 00:03:58,350
+Right now, I want to focus on one thing.
+
+57
+00:03:58,710 --> 00:04:03,690
+For this example, I want to display a list of people inside the body tag.
+
+58
+00:04:03,690 --> 00:04:07,410
+I'm going to create a div tag with the ID people.
+
+59
+00:04:09,540 --> 00:04:13,830
+Then I'm going to create a list of people I'll do this quickly.
+
+60
+00:04:22,170 --> 00:04:26,050
+So I have a couple of div tags with the class person.
+
+61
+00:04:26,430 --> 00:04:28,500
+Each person has a name and age.
+
+62
+00:04:28,680 --> 00:04:29,940
+It's pretty straightforward.
+
+63
+00:04:30,300 --> 00:04:34,360
+The problem with this is that we're constantly rewriting the same thing.
+
+64
+00:04:34,890 --> 00:04:36,630
+Right now we have two people.
+
+65
+00:04:36,630 --> 00:04:40,760
+But can you imagine how much code this would be with 50 or 100 people?
+
+66
+00:04:41,100 --> 00:04:42,690
+It would be disastrous.
+
+67
+00:04:42,960 --> 00:04:47,880
+Since the HTML is all the same, we can use something react calls component's.
+
+68
+00:04:50,130 --> 00:04:52,900
+Components are reusable HTML elements.
+
+69
+00:04:53,250 --> 00:04:57,130
+That's an oversimplification, but just keep going with me here.
+
+70
+00:04:57,480 --> 00:05:01,640
+If you were to look at any Web page, then you can break it down into components.
+
+71
+00:05:01,980 --> 00:05:06,790
+The header content sidebar and footer can be broken down into components.
+
+72
+00:05:07,380 --> 00:05:10,080
+The advantages of using components are pretty clear.
+
+73
+00:05:10,360 --> 00:05:13,530
+You can reuse them, which can make your code look a whole lot cleaner.
+
+74
+00:05:15,700 --> 00:05:22,810
+To get started, open the app directory, you'll find a file called Index Dot James currently attempting
+
+75
+00:05:23,140 --> 00:05:24,830
+to create a component.
+
+76
+00:05:24,910 --> 00:05:27,820
+The first thing we need to do is import react.
+
+77
+00:05:30,020 --> 00:05:35,930
+We can name this import whatever we want, but once again, it's common practice to name it after the
+
+78
+00:05:35,930 --> 00:05:41,450
+module name, the module is available inside the node underscore modules directory.
+
+79
+00:05:41,870 --> 00:05:46,190
+This is why we don't have to pass in a forward slash web.
+
+80
+00:05:46,190 --> 00:05:49,970
+Pack and node are more than capable of finding the package for you.
+
+81
+00:05:50,720 --> 00:05:53,600
+We're going to create a function called person.
+
+82
+00:05:55,810 --> 00:05:59,980
+When it comes to components, you must name your components with uppercase letters.
+
+83
+00:06:00,370 --> 00:06:05,300
+I'll explain why in just a moment, but let's keep moving forward inside this function.
+
+84
+00:06:05,320 --> 00:06:07,750
+I'm going to return some HTML.
+
+85
+00:06:08,170 --> 00:06:11,710
+I'll grab the HTML from the document like so.
+
+86
+00:06:25,280 --> 00:06:27,360
+All right, let's stop here for a moment.
+
+87
+00:06:27,560 --> 00:06:31,160
+You'll notice that I'm not surrounding the HTML with quotes.
+
+88
+00:06:31,490 --> 00:06:33,650
+This is what's called Jason X.
+
+89
+00:06:33,860 --> 00:06:36,840
+Jason X stands for JavaScript XML.
+
+90
+00:06:37,250 --> 00:06:41,250
+It's a way to allow you to write HTML in JavaScript files.
+
+91
+00:06:41,570 --> 00:06:45,080
+You have to surround your HTML with a pair of parentheses, though.
+
+92
+00:06:45,770 --> 00:06:50,070
+If you put your HTML on one line, then the parentheses are optional.
+
+93
+00:06:50,510 --> 00:06:54,030
+Since we have multiline HTML, then it's required.
+
+94
+00:06:54,470 --> 00:06:58,460
+Another thing I want to note is that I've completely emptied out the development.
+
+95
+00:06:58,460 --> 00:07:02,570
+Since we'll be loading this through without this function is pretty straightforward.
+
+96
+00:07:02,900 --> 00:07:06,050
+If it's called, then it'll return the ASX.
+
+97
+00:07:06,440 --> 00:07:08,380
+The ASX isn't ready though.
+
+98
+00:07:08,660 --> 00:07:13,600
+One of the drawbacks of using ASX is that some attributes may not work as expected.
+
+99
+00:07:14,000 --> 00:07:18,480
+For example, the Klasky or it can't be used in HCM.
+
+100
+00:07:18,830 --> 00:07:22,590
+The class attribute is used to assign classes to an element.
+
+101
+00:07:22,940 --> 00:07:27,710
+However, in JavaScript, the class keyword is used to create objects.
+
+102
+00:07:28,220 --> 00:07:30,830
+This is a conflicting problem to get around.
+
+103
+00:07:30,830 --> 00:07:34,970
+This REAC provides an alternative instead of class.
+
+104
+00:07:34,970 --> 00:07:36,800
+Change this to class name.
+
+105
+00:07:38,900 --> 00:07:44,900
+This will do what the class attribute does, this doesn't apply to all attributes, I'll be sure to
+
+106
+00:07:44,900 --> 00:07:48,020
+let you know which attributes work differently throughout this course.
+
+107
+00:07:48,470 --> 00:07:54,710
+This is also why we uppercase the functioning lowercase letters indicate that the element is a regular
+
+108
+00:07:54,710 --> 00:07:59,280
+HTML element, while an uppercase letter indicates that the element is a component.
+
+109
+00:07:59,870 --> 00:08:02,090
+This is common practice among developers.
+
+110
+00:08:02,300 --> 00:08:07,210
+Moving on, I now want to call this function so I can display the inside it.
+
+111
+00:08:07,670 --> 00:08:11,240
+To do that, we'll need to import the React Dom module.
+
+112
+00:08:17,020 --> 00:08:23,530
+Remember, the React Dom module will take care of working with the HTML document, so will need in order
+
+113
+00:08:23,530 --> 00:08:29,560
+for this to work below the function, I'm going to call the render function from the react object.
+
+114
+00:08:31,740 --> 00:08:37,620
+This function will take care of displaying your Jair sex on the browser, it requires two parameters.
+
+115
+00:08:37,919 --> 00:08:41,640
+The first parameter is the component that will display the sex.
+
+116
+00:08:41,970 --> 00:08:46,950
+You may be tempted to call this function like so, but that's the incorrect way of using it.
+
+117
+00:08:47,700 --> 00:08:53,330
+This function wants to render an element so will have to pass in the component like an element.
+
+118
+00:08:53,700 --> 00:08:59,430
+I'm going to create a self-closing tag with the person component as the element name.
+
+119
+00:09:01,520 --> 00:09:07,280
+The second parameter requires the name of the element on the page that will contain the rendered X.
+
+120
+00:09:07,640 --> 00:09:11,020
+I'm going to use the div tag with the ID people.
+
+121
+00:09:11,420 --> 00:09:14,930
+I'll just use some old fashioned JavaScript to select this element.
+
+122
+00:09:17,280 --> 00:09:18,010
+That should do it.
+
+123
+00:09:18,210 --> 00:09:20,340
+Let's run the command npm start.
+
+124
+00:09:24,280 --> 00:09:30,640
+After running this command, open your browser to view the page, you should see the person being displayed
+
+125
+00:09:30,640 --> 00:09:34,250
+without a problem, check the console for any errors as well.
+
+126
+00:09:34,540 --> 00:09:35,450
+There shouldn't be any.
+
+127
+00:09:36,100 --> 00:09:40,350
+Just like that, we've created our very first react application.
+
+128
+00:09:40,600 --> 00:09:41,670
+It wasn't too hard.
+
+129
+00:09:42,010 --> 00:09:44,680
+Let's review what we did inside the file.
+
+130
+00:09:44,710 --> 00:09:47,410
+The very first thing we did was import some modules.
+
+131
+00:09:47,650 --> 00:09:51,400
+Something you'll notice is that we didn't bother using the react module.
+
+132
+00:09:51,580 --> 00:09:53,710
+However, that's entirely not true.
+
+133
+00:09:54,280 --> 00:09:56,060
+Even though it's not written anywhere.
+
+134
+00:09:56,080 --> 00:09:57,790
+It does get used in our code.
+
+135
+00:09:58,030 --> 00:10:00,100
+I'm going to paste in some code really quick.
+
+136
+00:10:02,080 --> 00:10:09,690
+Inside the person function, I've commented out the ASX instead I'm using react to create the elements.
+
+137
+00:10:10,030 --> 00:10:11,290
+You don't have to do this.
+
+138
+00:10:11,300 --> 00:10:12,070
+Just watch.
+
+139
+00:10:12,380 --> 00:10:14,170
+I'll explain more in just a moment.
+
+140
+00:10:14,230 --> 00:10:17,590
+But let's see if this works inside the command line.
+
+141
+00:10:17,590 --> 00:10:19,930
+Input the commands npm start.
+
+142
+00:10:22,250 --> 00:10:28,940
+Then I'll refresh the page and also the name outputted once again, it may seem like there are two ways
+
+143
+00:10:28,940 --> 00:10:32,480
+to generate HTML, but it's actually all the same thing.
+
+144
+00:10:32,930 --> 00:10:40,220
+JSM is first and foremost JavaScript, even though it looks like HTML, this code will be interpreted
+
+145
+00:10:40,220 --> 00:10:41,120
+as JavaScript.
+
+146
+00:10:41,720 --> 00:10:44,390
+Bable will convert this into the code below.
+
+147
+00:10:44,780 --> 00:10:47,870
+Riak has a function called create element.
+
+148
+00:10:48,200 --> 00:10:51,380
+As the name suggests, this will create an element.
+
+149
+00:10:51,710 --> 00:10:53,820
+There are three required parameters.
+
+150
+00:10:54,050 --> 00:10:57,890
+The first is the name of the element I passed in the div tag.
+
+151
+00:10:58,100 --> 00:11:00,440
+Then you need to pass in the attributes.
+
+152
+00:11:00,860 --> 00:11:05,090
+If your element doesn't have any attributes, then you can set this to null.
+
+153
+00:11:05,420 --> 00:11:09,230
+And this example I'm setting the class name property to person.
+
+154
+00:11:09,980 --> 00:11:16,520
+Lastly, you need to pass in the content I'm actually passing in another create element function.
+
+155
+00:11:16,910 --> 00:11:19,750
+You have to do this if you want to have nested elements.
+
+156
+00:11:20,000 --> 00:11:24,330
+This time I'm creating an H1 tag with the text Jack.
+
+157
+00:11:24,980 --> 00:11:27,500
+Other than that, the rest of our code is the same.
+
+158
+00:11:27,840 --> 00:11:34,640
+Just as JavaScript it looks like HTML, but it will eventually be converted to the code I have here.
+
+159
+00:11:35,000 --> 00:11:37,870
+You can already see the benefits of using X.
+
+160
+00:11:38,060 --> 00:11:40,410
+It makes our code look readable and manageable.
+
+161
+00:11:41,060 --> 00:11:42,860
+This is why I am teaching you react.
+
+162
+00:11:43,070 --> 00:11:48,250
+When we start working with Gutenberg, you have the option of using JSM or these functions.
+
+163
+00:11:48,560 --> 00:11:49,270
+Right now.
+
+164
+00:11:49,310 --> 00:11:54,980
+Our example is pretty simple, but can you imagine the code would have to write for 10 elements.
+
+165
+00:11:55,490 --> 00:11:59,450
+Writing it like this is not wrong, but you do make it harder for yourself.
+
+166
+00:11:59,780 --> 00:12:04,580
+I highly encourage you to use sex when creating plugins for Gutenberg.
+
+167
+00:12:04,970 --> 00:12:08,580
+I'm going to comment this out and then uncommon my ex.
+
+168
+00:12:11,010 --> 00:12:17,070
+Moving on, this function will only create the person element, the next step is to render it on the
+
+169
+00:12:17,070 --> 00:12:17,560
+page.
+
+170
+00:12:17,880 --> 00:12:24,390
+To do that, we use the render function, we pass this in SJS, and then we tell it where to display
+
+171
+00:12:24,390 --> 00:12:25,040
+that element.
+
+172
+00:12:25,350 --> 00:12:26,490
+That's all there is to it.
+
+173
+00:12:26,880 --> 00:12:30,260
+I recommend you play around with this a little bit in the next lecture.
+
+174
+00:12:30,300 --> 00:12:34,580
+I'll go over a couple more things before we move onto Gutenberg Development.
+

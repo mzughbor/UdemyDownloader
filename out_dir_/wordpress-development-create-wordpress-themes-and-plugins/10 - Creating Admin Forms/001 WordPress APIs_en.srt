@@ -1,0 +1,288 @@
+1
+00:00:08,039 --> 00:00:14,220
+Throughout this course, I've introduced you to various APIs and concepts related to WordPress, everything
+
+2
+00:00:14,220 --> 00:00:17,620
+we've dealt with so far can be put under the word press corps API.
+
+3
+00:00:18,300 --> 00:00:23,690
+The word press corps APIs is the general term for all the APIs WordPress encompasses.
+
+4
+00:00:24,300 --> 00:00:27,120
+First, let's understand what an API is.
+
+5
+00:00:27,450 --> 00:00:33,840
+An API is basically a set of functions, variables and classes provided by a system for you to use to
+
+6
+00:00:33,840 --> 00:00:35,180
+interact with that system.
+
+7
+00:00:35,460 --> 00:00:37,890
+In our case, WordPress is that system.
+
+8
+00:00:38,160 --> 00:00:40,470
+We've already been using some of those APIs.
+
+9
+00:00:40,470 --> 00:00:46,320
+When we created our theme and plugin, we didn't have to create many of the queries ourselves or have
+
+10
+00:00:46,320 --> 00:00:47,970
+to process a lot of the data.
+
+11
+00:00:48,240 --> 00:00:50,580
+A lot of it was taken care of by WordPress.
+
+12
+00:00:50,880 --> 00:00:53,820
+We used a list of functions provided by WordPress.
+
+13
+00:00:54,390 --> 00:00:57,840
+This reduced the time required to develop a theme and plug in.
+
+14
+00:00:59,910 --> 00:01:05,790
+In the resource section, I provided a link to all WordPress APIs available to us, as you can see,
+
+15
+00:01:05,940 --> 00:01:08,310
+WordPress has quite a few APIs.
+
+16
+00:01:08,550 --> 00:01:12,360
+I want to make one very important point about these APIs.
+
+17
+00:01:12,600 --> 00:01:16,020
+All these APIs are available in both plugins and Vimes.
+
+18
+00:01:16,230 --> 00:01:18,870
+So let's say we use the database API.
+
+19
+00:01:19,200 --> 00:01:23,130
+You can use these functions when you're developing either a plugin or a theme.
+
+20
+00:01:23,820 --> 00:01:27,090
+We won't be able to go over every API in this course.
+
+21
+00:01:27,090 --> 00:01:29,790
+But let me give you a brief overview of each one.
+
+22
+00:01:30,180 --> 00:01:33,030
+We've already talked about most of these APIs already.
+
+23
+00:01:33,360 --> 00:01:37,500
+We've talked about the Dashboard Widgets API and Database API.
+
+24
+00:01:38,040 --> 00:01:41,490
+The file header API is one we haven't talked about yet.
+
+25
+00:01:41,850 --> 00:01:46,230
+This API allows you to read files and search for a file header information.
+
+26
+00:01:46,560 --> 00:01:51,960
+If you can recall, file headers are blocked comments that help WordPress to take plug ins and themes.
+
+27
+00:01:52,320 --> 00:01:58,080
+If we were to open the main plug and file, you'll find the file header we created at the very top.
+
+28
+00:01:58,740 --> 00:02:02,700
+These set of functions are what WordPress uses to read this information.
+
+29
+00:02:03,060 --> 00:02:07,740
+You're more than free to use these functions if you ever need to read file header information.
+
+30
+00:02:08,100 --> 00:02:09,630
+We won't be going over these.
+
+31
+00:02:09,630 --> 00:02:14,340
+But it's always nice to know that WordPress allows you to use the same functions it uses.
+
+32
+00:02:15,030 --> 00:02:17,820
+The next API is the File System API.
+
+33
+00:02:18,210 --> 00:02:19,230
+This is an API.
+
+34
+00:02:19,230 --> 00:02:20,760
+We haven't gone over either.
+
+35
+00:02:21,120 --> 00:02:24,330
+This API is what WordPress uses to update itself.
+
+36
+00:02:24,660 --> 00:02:30,750
+Traditionally, to transfer files, you would create a form with an upload input and process the files
+
+37
+00:02:30,750 --> 00:02:31,680
+after submission.
+
+38
+00:02:32,250 --> 00:02:38,250
+However, this API goes beyond that by allowing you to securely connect with an external server and
+
+39
+00:02:38,250 --> 00:02:42,090
+securely transfer files between your server and the external server.
+
+40
+00:02:42,600 --> 00:02:47,250
+We won't be going over how this works because it's very uncommon to use this API.
+
+41
+00:02:47,550 --> 00:02:52,650
+However, you're more than free to read up on this API to learn more after you're finished with this
+
+42
+00:02:52,650 --> 00:02:53,130
+course.
+
+43
+00:02:53,760 --> 00:02:55,530
+Let's keep going down the list.
+
+44
+00:02:55,710 --> 00:02:59,760
+We've already gone over the API and metadata API.
+
+45
+00:03:00,150 --> 00:03:06,510
+The options API is what we'll be covering in the next few lectures as well as the Settings API, so
+
+46
+00:03:06,510 --> 00:03:08,280
+I'll skip going over those for now.
+
+47
+00:03:08,940 --> 00:03:14,130
+The plugin API is the hooks, actions and filters we discussed quite some time ago.
+
+48
+00:03:14,490 --> 00:03:20,700
+The Quick Tags API allows you to add buttons to the editor, but we won't be using it as there are other
+
+49
+00:03:20,700 --> 00:03:22,470
+and better ways to accomplish this.
+
+50
+00:03:22,710 --> 00:03:23,940
+It's also outdated.
+
+51
+00:03:23,940 --> 00:03:25,650
+With the introduction of Gutenberg.
+
+52
+00:03:26,010 --> 00:03:30,300
+We've also gone over the Rewrite API and Shortcode API.
+
+53
+00:03:30,660 --> 00:03:36,480
+You'll notice there are two APIs here which are the modification API and Customization API.
+
+54
+00:03:36,930 --> 00:03:41,130
+The customization API is specifically for the WordPress customizer.
+
+55
+00:03:41,610 --> 00:03:46,890
+The modification API is for theme modification settings which are saved in the database.
+
+56
+00:03:47,280 --> 00:03:53,940
+These two APIs are connected together, but despite that, WordPress addresses that the two can be separated.
+
+57
+00:03:54,180 --> 00:03:58,710
+You don't have to use Customizer API to use the modifications API.
+
+58
+00:03:58,980 --> 00:04:02,100
+You can add and remove modifications wherever you want.
+
+59
+00:04:02,790 --> 00:04:06,330
+The next APIs are the Transients and Widgets API.
+
+60
+00:04:06,690 --> 00:04:08,880
+We've already discussed how to use these.
+
+61
+00:04:09,150 --> 00:04:13,050
+The very last API is XML, AAPC, WordPress API.
+
+62
+00:04:13,470 --> 00:04:16,050
+This API is a very special case use.
+
+63
+00:04:16,260 --> 00:04:22,170
+It gives developers who make mobile apps, desktop apps and other services the ability to talk to your
+
+64
+00:04:22,170 --> 00:04:22,920
+WordPress site.
+
+65
+00:04:23,460 --> 00:04:28,590
+WordPress provides developers a way to write applications that can do many of the things that you can
+
+66
+00:04:28,590 --> 00:04:31,190
+do when launched into WordPress via the Web interface.
+
+67
+00:04:31,560 --> 00:04:39,600
+These tasks include publish a post, edit a post, delete a post, upload a new file, get a list of
+
+68
+00:04:39,600 --> 00:04:41,580
+comments, edit comments.
+
+69
+00:04:42,150 --> 00:04:47,130
+We won't be going over this API as this kind of stuff goes beyond the scope of this course.
+
+70
+00:04:47,520 --> 00:04:50,040
+That pretty much sums up all the APIs.
+
+71
+00:04:50,220 --> 00:04:55,530
+In the next few lectures, we'll work on improving the recipe plugin before we get into the more advanced
+
+72
+00:04:55,530 --> 00:04:56,190
+topics.
+

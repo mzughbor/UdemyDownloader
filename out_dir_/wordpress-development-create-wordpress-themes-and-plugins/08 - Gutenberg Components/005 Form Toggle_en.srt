@@ -1,0 +1,292 @@
+1
+00:00:07,790 --> 00:00:13,640
+We're going to continue working with the night mode block currently the only way to turn on night mode
+
+2
+00:00:13,640 --> 00:00:14,620
+is through the toolbar.
+
+3
+00:00:14,870 --> 00:00:18,830
+That's perfectly fine, but you may want to provide this option in the sidebar.
+
+4
+00:00:19,160 --> 00:00:23,240
+Determining where an option is placed is a user experience design decision.
+
+5
+00:00:23,510 --> 00:00:26,090
+Therefore, that's beyond the scope of the course.
+
+6
+00:00:26,510 --> 00:00:27,860
+It's a case by case thing.
+
+7
+00:00:27,860 --> 00:00:30,670
+And so I'll leave it up to you where you think it should be placed.
+
+8
+00:00:30,950 --> 00:00:35,170
+For now, let's just say that we wanted this option to be present in the sidebar.
+
+9
+00:00:35,570 --> 00:00:41,810
+It's completely possible and allowed to have the same option available in multiple locations to get
+
+10
+00:00:41,810 --> 00:00:42,350
+started.
+
+11
+00:00:42,470 --> 00:00:44,420
+We're going to need to tell WordPress.
+
+12
+00:00:44,420 --> 00:00:48,050
+We'd like to add in some content to the sidebar when the block is selected.
+
+13
+00:00:48,530 --> 00:00:52,270
+We already know how to do this with the inspector controls component.
+
+14
+00:00:52,610 --> 00:00:59,630
+Let's load that in, open the index JS file for the night mode, blank at the top, the structure the
+
+15
+00:00:59,630 --> 00:01:03,650
+inspector controls component from the WP editor object.
+
+16
+00:01:06,340 --> 00:01:12,820
+We're also going to need some generic components from the WP components Object D structure, the panel
+
+17
+00:01:12,820 --> 00:01:16,000
+body panel RO and form TORGAU components.
+
+18
+00:01:18,140 --> 00:01:21,560
+I'm introducing a new component here called Form Toggle.
+
+19
+00:01:21,890 --> 00:01:25,850
+This is a custom form that will allow the user to toggle the value.
+
+20
+00:01:26,180 --> 00:01:27,290
+You'll see how it works.
+
+21
+00:01:27,320 --> 00:01:30,920
+Soon enough, the next step would be to create the attribute.
+
+22
+00:01:31,100 --> 00:01:34,760
+However, it doesn't make sense to have two values for night mode.
+
+23
+00:01:35,030 --> 00:01:37,570
+We'll just use the same attribute for the button.
+
+24
+00:01:38,240 --> 00:01:44,270
+Let's just head on over to the edit function since will be using the inspector controls component then
+
+25
+00:01:44,270 --> 00:01:46,790
+will need to return array instead of the block.
+
+26
+00:01:49,390 --> 00:01:55,630
+Right above the block, I'm going to use the inspector controls panel body and panel road components.
+
+27
+00:02:02,740 --> 00:02:08,770
+A lot of this should be familiar to you, I'm sitting the title to night mode and making it translatable.
+
+28
+00:02:09,190 --> 00:02:13,600
+We're going to use the panel RO component as the form toggle component.
+
+29
+00:02:13,630 --> 00:02:19,900
+We're about to use requires the formatting provided by this component inside the panel RO component
+
+30
+00:02:19,900 --> 00:02:21,730
+and the form toggle component.
+
+31
+00:02:24,050 --> 00:02:26,570
+First, let's assign the ID attribute.
+
+32
+00:02:26,780 --> 00:02:32,390
+I'm going to set this to you to meet Nash recipe Dash nine, dash moad dash toggle.
+
+33
+00:02:34,570 --> 00:02:40,010
+Then we'll need to set the check to attribute this needs to be either true or false.
+
+34
+00:02:40,210 --> 00:02:42,690
+We'll set this to the night mode, actually.
+
+35
+00:02:45,080 --> 00:02:51,250
+Next, we'll need to set the on change attribute, what will happen if the user clicks on this field?
+
+36
+00:02:51,530 --> 00:02:54,070
+We want to update the night mode attribute.
+
+37
+00:02:54,410 --> 00:02:58,190
+This will be the exact same code we use for the button in the toolbar.
+
+38
+00:02:58,490 --> 00:02:59,570
+Here's the problem, though.
+
+39
+00:03:00,080 --> 00:03:02,890
+We're rewriting the logic in two different places.
+
+40
+00:03:03,080 --> 00:03:09,800
+It would be better to make this into a reusable function above the return statement, create a constant
+
+41
+00:03:09,800 --> 00:03:11,240
+named Toggle Nite mode.
+
+42
+00:03:13,440 --> 00:03:16,110
+Cut and paste the function from the unclick event.
+
+43
+00:03:22,760 --> 00:03:29,630
+Now that we have a reusable function, let's set the on change and on events to the toggle night mode
+
+44
+00:03:29,630 --> 00:03:30,110
+function.
+
+45
+00:03:32,290 --> 00:03:37,660
+Before we declare this complete, the form torgau component will not generate a label, so we'll need
+
+46
+00:03:37,660 --> 00:03:41,620
+to do that ourselves right above the component and the label tag.
+
+47
+00:03:43,880 --> 00:03:48,500
+The text inside should be set to night mode that will also be translate ready.
+
+48
+00:03:51,960 --> 00:03:58,200
+I'm also going to set the four attribute, however, for is a reserved keyword in JavaScript, so we'll
+
+49
+00:03:58,200 --> 00:04:01,300
+need to use the HTML four attribute instead.
+
+50
+00:04:01,830 --> 00:04:03,720
+This is one of those react quirks.
+
+51
+00:04:03,990 --> 00:04:07,110
+The value for this should be the idea of the input field.
+
+52
+00:04:07,410 --> 00:04:10,530
+In this case, it would be Udemy dash recipe.
+
+53
+00:04:10,530 --> 00:04:12,780
+Dash nine dash mode dash toggle.
+
+54
+00:04:14,990 --> 00:04:22,280
+We're finished, save your changes and CD into the bloc's directory, run the NPM run dev command.
+
+55
+00:04:24,510 --> 00:04:26,650
+You shouldn't receive any errors so far.
+
+56
+00:04:26,940 --> 00:04:32,760
+Go ahead and try creating a new recipe post, you should be able to add the night mode block without
+
+57
+00:04:32,760 --> 00:04:35,010
+a problem with the block selected.
+
+58
+00:04:35,100 --> 00:04:39,660
+You should see the button appear in the toolbar and the form toggle field in the sidebar.
+
+59
+00:04:40,230 --> 00:04:41,410
+This is fantastic.
+
+60
+00:04:41,580 --> 00:04:45,480
+If you were to click on the toggle, then you'll see that night mode is enabled.
+
+61
+00:04:45,750 --> 00:04:47,610
+The button will also be turned on.
+
+62
+00:04:47,970 --> 00:04:50,190
+You can click in anywhere you want.
+
+63
+00:04:50,280 --> 00:04:51,810
+Everything should stay in sync.
+
+64
+00:04:52,080 --> 00:04:54,920
+WordPress will be able to manage everything for you.
+
+65
+00:04:55,230 --> 00:04:58,250
+All you have to do is take the time to tie everything up.
+
+66
+00:04:58,920 --> 00:05:02,800
+Once again, it's up to you to decide where these options should be placed.
+
+67
+00:05:03,000 --> 00:05:05,580
+My advice would be to not clutter the toolbar.
+
+68
+00:05:05,850 --> 00:05:08,610
+You want everything to be intuitive as possible.
+
+69
+00:05:09,150 --> 00:05:09,690
+All right.
+
+70
+00:05:09,780 --> 00:05:10,710
+That does it for now.
+
+71
+00:05:10,830 --> 00:05:16,050
+In the next couple of lectures, I'll introduce you to some of the other components for creating input
+
+72
+00:05:16,050 --> 00:05:16,650
+fields.
+
+73
+00:05:18,280 --> 00:05:18,850
+Oh.
+

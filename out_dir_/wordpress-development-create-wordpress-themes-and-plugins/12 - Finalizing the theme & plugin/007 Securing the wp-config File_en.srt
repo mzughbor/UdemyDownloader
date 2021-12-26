@@ -1,0 +1,128 @@
+1
+00:00:07,600 --> 00:00:13,450
+I said it once and I'll say it again, the WP dash config file is one of the most important files in
+
+2
+00:00:13,450 --> 00:00:14,770
+your WordPress installation.
+
+3
+00:00:15,280 --> 00:00:17,500
+You should take every step to securing.
+
+4
+00:00:17,770 --> 00:00:21,130
+One simple step is by moving the file up one directory.
+
+5
+00:00:21,430 --> 00:00:28,280
+Most production servers will store WordPress inside folders called Public Underscore HTML, w, WW,
+
+6
+00:00:28,300 --> 00:00:28,990
+or Web.
+
+7
+00:00:29,260 --> 00:00:30,880
+It varies from host to host.
+
+8
+00:00:31,150 --> 00:00:35,020
+By moving it up one directory, you could prevent access to it from the web.
+
+9
+00:00:35,020 --> 00:00:37,260
+In general, moving the file is easy.
+
+10
+00:00:37,720 --> 00:00:42,670
+Open your WordPress site and cut it from the directory, then move it up one folder like so.
+
+11
+00:00:45,510 --> 00:00:48,280
+Refresh your site and everything should work like normal.
+
+12
+00:00:48,510 --> 00:00:52,260
+So what's going on and how does WordPress know where to find the file?
+
+13
+00:00:52,890 --> 00:00:55,410
+Let's take a look at how WordPress loads the file.
+
+14
+00:00:55,740 --> 00:00:57,390
+Open the access file.
+
+15
+00:00:57,630 --> 00:01:00,810
+This file runs before any code is executed.
+
+16
+00:01:01,140 --> 00:01:06,510
+This file will check to make sure the request being made isn't specific to a certain file or folder.
+
+17
+00:01:06,810 --> 00:01:10,730
+If it isn't, it'll pass the request onto the next page.
+
+18
+00:01:10,770 --> 00:01:12,460
+You file open this file.
+
+19
+00:01:12,480 --> 00:01:20,520
+Now this file will load the WP Dash blog dash header file that will then load the WP dash load file
+
+20
+00:01:20,910 --> 00:01:25,990
+the WP dash load file is the file that loads the WP dash config file.
+
+21
+00:01:26,370 --> 00:01:29,850
+However, it does some conditional checks before doing so.
+
+22
+00:01:30,180 --> 00:01:35,070
+It will first check to see if the file exists inside the root installation of WordPress.
+
+23
+00:01:35,550 --> 00:01:37,650
+If it does, then it'll load the file.
+
+24
+00:01:37,860 --> 00:01:40,210
+If it doesn't, it'll move on to the next check.
+
+25
+00:01:40,590 --> 00:01:44,250
+This statement will check to see if the file exists up one directory.
+
+26
+00:01:44,460 --> 00:01:47,040
+If it does, then it'll load the config file.
+
+27
+00:01:47,250 --> 00:01:52,380
+However, if it can't find the config file, it'll then boot up the setup page so that it can generate
+
+28
+00:01:52,380 --> 00:01:53,280
+the file for you.
+
+29
+00:01:53,910 --> 00:01:59,190
+By moving the config code, you make it just a little harder for hackers to do anything malicious.
+
+30
+00:01:59,460 --> 00:02:03,330
+Before I am this lecture, I'm going to move the config file back.
+
+31
+00:02:03,330 --> 00:02:08,190
+Since we're working on a local server, I'm not really concerned about where this file is placed.
+
+32
+00:02:09,169 --> 00:02:09,750
+Oh.
+

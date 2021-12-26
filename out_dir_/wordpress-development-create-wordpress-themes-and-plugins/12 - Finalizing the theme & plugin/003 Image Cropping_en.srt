@@ -1,0 +1,352 @@
+1
+00:00:07,250 --> 00:00:13,280
+In this lecture will be exploring image cropping and image sciences, WordPress makes it easy to crop
+
+2
+00:00:13,280 --> 00:00:17,620
+images without having to download or use any external third party libraries.
+
+3
+00:00:17,930 --> 00:00:22,670
+If we take a look at our posts on the homepage, you'll see our images fitting nice and tight.
+
+4
+00:00:22,970 --> 00:00:26,990
+However, just like Buddy Press, the images may be bigger than they should be.
+
+5
+00:00:27,620 --> 00:00:30,440
+Inspect the element and check the sizes of the images.
+
+6
+00:00:32,720 --> 00:00:38,090
+Inside this little preview box, you'll see the science that's on the page and the natural size of the
+
+7
+00:00:38,090 --> 00:00:44,420
+image, we want the natural size and size on the page to be as close as they can be to save on bandwidth.
+
+8
+00:00:44,780 --> 00:00:48,110
+To do this, we have to register the image size we desire.
+
+9
+00:00:48,650 --> 00:00:54,050
+In the resource section of this lecture, I provide a link to a function called Add Image Signs.
+
+10
+00:00:54,410 --> 00:00:59,660
+This function allows you to add a custom image size that WordPress will use whenever a new image is
+
+11
+00:00:59,660 --> 00:01:01,220
+uploaded by default.
+
+12
+00:01:01,340 --> 00:01:07,190
+WordPress has some built in image sizes, such as the thumbnail size, which is a size we've used before.
+
+13
+00:01:07,850 --> 00:01:09,550
+Inside the setup function.
+
+14
+00:01:09,590 --> 00:01:11,120
+We're going to call this function.
+
+15
+00:01:11,360 --> 00:01:15,110
+I'm going to add this code right after the themes support functions.
+
+16
+00:01:15,350 --> 00:01:16,850
+Let's call this function now.
+
+17
+00:01:16,850 --> 00:01:20,660
+And the first parameter is the name of this size any name will do.
+
+18
+00:01:20,840 --> 00:01:22,700
+I'm going to set this to J.
+
+19
+00:01:22,700 --> 00:01:23,960
+You dash post.
+
+20
+00:01:23,960 --> 00:01:24,860
+Dash image.
+
+21
+00:01:27,260 --> 00:01:31,110
+The second and third parameters are the width and height, respectively.
+
+22
+00:01:31,580 --> 00:01:34,570
+These are values you'll have to test out through trial and error.
+
+23
+00:01:34,940 --> 00:01:37,730
+The sizes I like are 860 by five.
+
+24
+00:01:37,730 --> 00:01:38,510
+Seventy five.
+
+25
+00:01:41,020 --> 00:01:47,440
+The last parameter is whether we want a soft crop or a hard crop, if you're unfamiliar with soft or
+
+26
+00:01:47,440 --> 00:01:51,800
+hard cropping, then check out the link I have in the resource section of this lecture.
+
+27
+00:01:52,180 --> 00:01:56,130
+This is a very long article that goes over image cropping and WordPress.
+
+28
+00:01:56,410 --> 00:02:01,120
+It's definitely worth reading, but I'm going to give you a quick rundown on what you need to know.
+
+29
+00:02:01,450 --> 00:02:05,440
+If you scroll down a bit, you'll come across these two images from the author.
+
+30
+00:02:05,740 --> 00:02:08,979
+These two images are full sized and not cropped at all.
+
+31
+00:02:09,639 --> 00:02:15,520
+By default, WordPress will set the fourth parameter to false meaning that images are soft cropped.
+
+32
+00:02:16,000 --> 00:02:19,660
+If you scroll down further, you'll come across the images resize.
+
+33
+00:02:19,810 --> 00:02:25,120
+As you can see, the images are not exactly the desired size the author wanted them to be.
+
+34
+00:02:25,570 --> 00:02:28,690
+The size the author put down is two hundred by two hundred.
+
+35
+00:02:28,690 --> 00:02:32,100
+So technically these images should be squares, but they're not.
+
+36
+00:02:32,680 --> 00:02:35,440
+This is what WordPress calls soft cropping.
+
+37
+00:02:35,770 --> 00:02:38,290
+WordPress will resize an image to the dimensions.
+
+38
+00:02:38,290 --> 00:02:44,950
+You specify, however, if the ratio of the images cannot be kept intact, it will then resize the image
+
+39
+00:02:44,950 --> 00:02:50,590
+to as close as to the dimensions you inputted without having to crop any piece of the image or distorting
+
+40
+00:02:50,590 --> 00:02:50,740
+it.
+
+41
+00:02:51,400 --> 00:02:53,170
+The next type of cropping is hard.
+
+42
+00:02:53,170 --> 00:02:57,780
+Croppy, harder cropping will resize an image to the exact dimensions you input it.
+
+43
+00:02:58,150 --> 00:03:03,460
+However, if an image begins to look distorted, it'll cropped the image to prevent any distortion.
+
+44
+00:03:03,820 --> 00:03:06,310
+So you're only getting a piece of that image.
+
+45
+00:03:06,550 --> 00:03:08,890
+If you scroll down, you'll see how that's done.
+
+46
+00:03:09,250 --> 00:03:10,330
+You just pass in.
+
+47
+00:03:10,330 --> 00:03:13,450
+True, and WordPress will cropped the image from the center.
+
+48
+00:03:14,170 --> 00:03:18,970
+If you're not looking for a centering position, you can configure the fourth parameter as an array
+
+49
+00:03:18,970 --> 00:03:21,520
+and specify where you'd like the cropping to begin.
+
+50
+00:03:22,000 --> 00:03:26,770
+If you scroll down the examples, you'll see the many ways images can be hard cropped.
+
+51
+00:03:27,070 --> 00:03:29,830
+So that's basically this article in a nutshell.
+
+52
+00:03:30,190 --> 00:03:34,210
+After this lecture is over, I highly encourage you to give it a good read.
+
+53
+00:03:34,900 --> 00:03:35,380
+All right.
+
+54
+00:03:35,500 --> 00:03:39,850
+So I'm going to set my fourth parameter to false as I want solved cropping.
+
+55
+00:03:40,180 --> 00:03:46,450
+I prefer my whole image viewable without any cropping the size maybe off than what I desired, but I'm
+
+56
+00:03:46,450 --> 00:03:47,140
+fine with that.
+
+57
+00:03:47,470 --> 00:03:50,740
+Usually the size difference is only by a few pixels.
+
+58
+00:03:51,040 --> 00:03:56,410
+I'd rather have an image off by a few pixels than have an image off by a hundred or even a thousand
+
+59
+00:03:56,410 --> 00:03:56,980
+pixels.
+
+60
+00:03:57,700 --> 00:04:01,900
+Now that our image size is registered, we can begin to use it in our own theme.
+
+61
+00:04:02,260 --> 00:04:05,200
+Open the content dash excerpt template.
+
+62
+00:04:05,200 --> 00:04:05,890
+Part file.
+
+63
+00:04:08,280 --> 00:04:14,370
+Look for where we outputted the featured image previously, we set this to for I'm going to replace
+
+64
+00:04:14,370 --> 00:04:19,500
+this with our custom image size and set this to Jiyu dash post dash image.
+
+65
+00:04:22,270 --> 00:04:24,400
+Refresh the home page and expect the element.
+
+66
+00:04:28,130 --> 00:04:32,700
+The signs may or may not be exactly the sizes we specified, but it's pretty close.
+
+67
+00:04:33,320 --> 00:04:38,780
+I'm going to open the single Templar file and do the same since the width of the post is the same as
+
+68
+00:04:38,780 --> 00:04:39,520
+the home page.
+
+69
+00:04:39,950 --> 00:04:43,220
+Look for where we outputted the thumbnail and use the custom size.
+
+70
+00:04:51,180 --> 00:04:54,820
+Having your own image size is great, but this will not always work.
+
+71
+00:04:55,110 --> 00:04:59,520
+Some users who install theme may be installing it on an existing WordPress site.
+
+72
+00:04:59,910 --> 00:05:03,390
+If they have existing images, they may not all be resized.
+
+73
+00:05:03,660 --> 00:05:06,620
+Only new images are resized and some old ones.
+
+74
+00:05:06,810 --> 00:05:12,000
+In this case, we have to force all images to be resized to prevent any problems.
+
+75
+00:05:12,570 --> 00:05:18,000
+Luckily, there's a plug and that does this go to the admin dashboard and navigate to plugins, add
+
+76
+00:05:18,000 --> 00:05:18,350
+new.
+
+77
+00:05:18,720 --> 00:05:24,270
+Then I want you to look for the plug and regenerate thumbnails, install and activate this plugin.
+
+78
+00:05:28,970 --> 00:05:35,180
+After installing this plugin, go to Tool's region thumbnails, the plugin will go through all the images
+
+79
+00:05:35,180 --> 00:05:40,220
+uploaded through WordPress and resize them all for you using the default settings and your own custom
+
+80
+00:05:40,220 --> 00:05:40,820
+sizes.
+
+81
+00:05:41,300 --> 00:05:46,850
+If a plugin also registers a size, it'll also resize the images according to that size.
+
+82
+00:05:47,090 --> 00:05:49,010
+All you have to do is click this button.
+
+83
+00:05:49,400 --> 00:05:52,500
+This may take a while, especially if you have a lot of images.
+
+84
+00:05:52,670 --> 00:05:53,710
+Just be patient.
+
+85
+00:06:04,240 --> 00:06:09,640
+After all the images have been resized, we are assured that our image size has been applied to all
+
+86
+00:06:09,640 --> 00:06:10,690
+images on the site.
+
+87
+00:06:11,170 --> 00:06:16,570
+This is a plug and we are going to recommend to the user when they install our theme will be going over
+
+88
+00:06:16,570 --> 00:06:21,220
+a how to bundle all the plug ins we installed so far with our theme in a future lecture.
+

@@ -1,0 +1,772 @@
+1
+00:00:08,100 --> 00:00:14,250
+I'm currently on the WP query Coatex page, I'll provide a link to this in the resource section of this
+
+2
+00:00:14,250 --> 00:00:14,680
+lecture.
+
+3
+00:00:15,060 --> 00:00:17,730
+Here's what WordPress has to say about this class.
+
+4
+00:00:18,360 --> 00:00:21,340
+WP query is a class defined in WP.
+
+5
+00:00:21,450 --> 00:00:28,260
+Dash includes a query that deals with the intricacies of a Post's request to a WordPress blog.
+
+6
+00:00:28,770 --> 00:00:37,050
+The WP Dash blog dash header gives the WP query object information defining the current request and
+
+7
+00:00:37,050 --> 00:00:42,660
+then query determines what type of query it's dealing with and fetches the request and posts.
+
+8
+00:00:43,110 --> 00:00:47,550
+It retains a lot of information on the request, which can be pulled at a later date.
+
+9
+00:00:48,390 --> 00:00:54,180
+This class, which we will go over soon, is probably one of the most famous and most used classes by
+
+10
+00:00:54,180 --> 00:00:55,290
+WordPress developers.
+
+11
+00:00:55,650 --> 00:00:58,770
+It's used because it's so simple to get started with.
+
+12
+00:00:59,040 --> 00:01:02,160
+It provides a lot of options and it's documented quite heavily.
+
+13
+00:01:02,850 --> 00:01:06,330
+This class lets you interact with the database by grabbing posts.
+
+14
+00:01:06,540 --> 00:01:10,440
+It seems simple, but posts are very complex and they're designed.
+
+15
+00:01:10,890 --> 00:01:14,150
+This class is meant to help you get past that complexity.
+
+16
+00:01:14,850 --> 00:01:20,190
+You may have noticed that WordPress provides a plethora of functions for interacting with the database
+
+17
+00:01:20,550 --> 00:01:23,220
+where you're allowed to write custom SQL queries.
+
+18
+00:01:23,220 --> 00:01:25,710
+But that's only when we need complete control.
+
+19
+00:01:26,370 --> 00:01:31,680
+At this point, we don't need to use custom queries, but I promise you we will go over how to do that
+
+20
+00:01:31,680 --> 00:01:32,680
+in a future lecture.
+
+21
+00:01:33,090 --> 00:01:38,670
+For now, the functions and classes provided are tailored solutions for the most common problems we
+
+22
+00:01:38,670 --> 00:01:39,000
+have.
+
+23
+00:01:39,720 --> 00:01:46,700
+The WP query class is the exact solution WordPress uses to query for posts that are loaded in our templates.
+
+24
+00:01:47,130 --> 00:01:51,180
+You'll notice soon enough that the methods are similar to the functions we've used so far.
+
+25
+00:01:51,840 --> 00:01:58,110
+Before we begin, I want to point out that there's a documentation page for the WP query class on the
+
+26
+00:01:58,110 --> 00:01:58,880
+developer site.
+
+27
+00:01:59,550 --> 00:02:02,650
+I'll provide a link to it in the resource section of this lecture.
+
+28
+00:02:02,880 --> 00:02:07,500
+This page is the more updated version and will soon take over the Codex version.
+
+29
+00:02:07,860 --> 00:02:12,240
+I showed you the Codex one because it had a better description of the class itself.
+
+30
+00:02:12,870 --> 00:02:15,690
+From now on will be referring to the developer page.
+
+31
+00:02:15,690 --> 00:02:20,410
+For any information on the web query class back to our project.
+
+32
+00:02:20,460 --> 00:02:21,930
+Let me show you how this works.
+
+33
+00:02:22,120 --> 00:02:28,920
+I'm going to insert this code inside the div tag with the class related posts to get started with the
+
+34
+00:02:28,920 --> 00:02:32,790
+WP query class, you need to make a new instance of this class.
+
+35
+00:02:33,150 --> 00:02:39,120
+I'm going to create a variable named RPG query where RPG is short for related posts.
+
+36
+00:02:41,390 --> 00:02:47,810
+I'm going to create a new instance of a query class, and this class has one argument which is completely
+
+37
+00:02:47,810 --> 00:02:48,320
+optional.
+
+38
+00:02:50,470 --> 00:02:55,390
+The argument is an array of keys and values that specify what kind of posts we want.
+
+39
+00:02:56,110 --> 00:03:01,090
+If you look at the documentation, you'll notice there are literally dozens of keys we can set.
+
+40
+00:03:01,480 --> 00:03:03,890
+Each key already has a default value.
+
+41
+00:03:04,270 --> 00:03:07,390
+You do not need to feel pressured to define every single one.
+
+42
+00:03:08,170 --> 00:03:14,110
+By default, WordPress will set its parameters to look for posts that have been published recently for
+
+43
+00:03:14,110 --> 00:03:14,780
+the most part.
+
+44
+00:03:14,830 --> 00:03:17,920
+That's fine, but we would like to make a few adjustments to that.
+
+45
+00:03:18,670 --> 00:03:23,200
+First, I want to shorten how many results are returned by default.
+
+46
+00:03:23,260 --> 00:03:28,780
+WordPress will use the setting in reading settings in an earlier lecture we set this to for.
+
+47
+00:03:29,050 --> 00:03:31,920
+However, I only want two results return.
+
+48
+00:03:31,930 --> 00:03:36,940
+So we have to set a key called posts underscore per underscore page.
+
+49
+00:03:39,280 --> 00:03:46,330
+This value controls how many posts a query can return per page by setting this value to two, we assure
+
+50
+00:03:46,330 --> 00:03:49,030
+ourselves only two posts will show up from this.
+
+51
+00:03:49,750 --> 00:03:55,440
+Next, we want to make sure that the post we're currently viewing does not show up on this list of posts.
+
+52
+00:03:55,860 --> 00:04:00,820
+In this case, we can set the post underscore, underscore, not underscore in.
+
+53
+00:04:03,310 --> 00:04:08,770
+I'm not sure if you can see this clearly, but there are two underscores after the word post, it's
+
+54
+00:04:08,770 --> 00:04:10,990
+very important your key matches mine.
+
+55
+00:04:11,800 --> 00:04:14,560
+This key accepts an array of post IDs.
+
+56
+00:04:14,830 --> 00:04:19,029
+So the question is, how do we get the I.D. for the current post?
+
+57
+00:04:19,630 --> 00:04:25,090
+WordPress provides a global variable named Post, which we can access directly in the loop.
+
+58
+00:04:25,540 --> 00:04:30,120
+And the resource section of this lecture, I provide a link to learn more about this variable.
+
+59
+00:04:30,430 --> 00:04:31,980
+Here's what WordPress has to say.
+
+60
+00:04:32,260 --> 00:04:35,110
+Contains data from the current post in the loop.
+
+61
+00:04:35,800 --> 00:04:39,580
+This variable is an object that contains properties about the current post.
+
+62
+00:04:40,120 --> 00:04:42,000
+One of these values is the ID.
+
+63
+00:04:42,400 --> 00:04:43,780
+It's pretty simple to use.
+
+64
+00:04:44,020 --> 00:04:48,550
+You just pass him the post variable and grab the property ID like so.
+
+65
+00:04:50,750 --> 00:04:57,200
+The post variable is always available to us in the loop, the very last thing we need to do is make
+
+66
+00:04:57,200 --> 00:05:00,870
+sure that the posts displayed are similar to the one the user is reading.
+
+67
+00:05:01,310 --> 00:05:04,990
+There are dozens of ways to go about this, but let's keep it really simple.
+
+68
+00:05:05,480 --> 00:05:09,240
+I'm going to assume that posts in the same category should be similar.
+
+69
+00:05:09,740 --> 00:05:15,200
+So let's make it so that the posts that appear here are in the same category as the one the user is
+
+70
+00:05:15,200 --> 00:05:15,980
+currently reading.
+
+71
+00:05:16,760 --> 00:05:23,180
+First, we need to grab the categories assigned to this post, create a variable named categories and
+
+72
+00:05:23,180 --> 00:05:25,280
+set its value returned by the function.
+
+73
+00:05:25,280 --> 00:05:26,540
+Get the category.
+
+74
+00:05:28,740 --> 00:05:34,590
+Despite its name, the function will return multiple categories in an array form, if you're unsure
+
+75
+00:05:34,590 --> 00:05:39,960
+about what values a function returns, then it's always good practice to actually just print out the
+
+76
+00:05:39,960 --> 00:05:41,590
+data so you can view what's in it.
+
+77
+00:05:42,000 --> 00:05:47,760
+I'm going to use the print R function, which is a function that will output array and object data.
+
+78
+00:05:51,300 --> 00:05:57,870
+Refresh the page and you will see the object being outputted like so now we have a good idea about what
+
+79
+00:05:57,870 --> 00:05:59,320
+kind of data is returned.
+
+80
+00:05:59,640 --> 00:06:04,140
+I'm going to remove this print statement and move onto the query object.
+
+81
+00:06:06,430 --> 00:06:10,240
+To choose a specific category, we must define the cat key.
+
+82
+00:06:10,720 --> 00:06:16,690
+This key value will only be an integer, which represents the idea of the category, even though we
+
+83
+00:06:16,690 --> 00:06:18,310
+may have multiple categories.
+
+84
+00:06:18,430 --> 00:06:22,560
+I'm just going to concern myself with the very first category in the array.
+
+85
+00:06:23,290 --> 00:06:27,940
+I'm going to use a ternary operator to check if the categories array is empty.
+
+86
+00:06:30,130 --> 00:06:36,490
+If this returns false, then I'm going to grab the first category in the array, we next need to grab
+
+87
+00:06:36,490 --> 00:06:42,160
+the idea of that category that it is assigned under the property term ID.
+
+88
+00:06:44,480 --> 00:06:49,830
+However, if the array is empty, then I'm going to set the value to not that's it.
+
+89
+00:06:50,150 --> 00:06:54,640
+Let me quickly go over what's going on to query the database for posts.
+
+90
+00:06:54,650 --> 00:07:00,290
+We create a new instance of the WP query object by passing in this array.
+
+91
+00:07:00,320 --> 00:07:03,590
+We can specify what kind of posts we'd like to grab.
+
+92
+00:07:03,920 --> 00:07:09,740
+The posts per page key allows us to define how many posts we'd like per page.
+
+93
+00:07:10,190 --> 00:07:15,250
+The posts not in key allows us to define what posts should not be returned.
+
+94
+00:07:15,740 --> 00:07:19,580
+In our case, the current post being viewed should not be returned.
+
+95
+00:07:20,150 --> 00:07:25,490
+The cat key allows us to define if the posts should be in a specific category.
+
+96
+00:07:26,210 --> 00:07:32,210
+By doing all this, WordPress will then generate a custom sequel query and then execute that query and
+
+97
+00:07:32,210 --> 00:07:33,590
+return an array of posts.
+
+98
+00:07:34,340 --> 00:07:36,920
+All we have to do now is display the results.
+
+99
+00:07:37,160 --> 00:07:39,590
+We actually already know how to do this.
+
+100
+00:07:39,830 --> 00:07:46,130
+Inside a conditional statement we can call a method from the RPE query object, which is half posts.
+
+101
+00:07:48,250 --> 00:07:53,950
+You'll notice that this method is the exact same method used in our main loop, what we have here is
+
+102
+00:07:53,950 --> 00:07:55,580
+called a secondary loop.
+
+103
+00:07:55,870 --> 00:07:56,980
+I promise you that.
+
+104
+00:07:56,980 --> 00:07:59,100
+I will explain what this is in just a moment.
+
+105
+00:07:59,290 --> 00:08:01,080
+For now, just keep following along.
+
+106
+00:08:01,690 --> 00:08:07,300
+If this custom query does have posts, then we can use a while loop like so.
+
+107
+00:08:09,530 --> 00:08:13,220
+Then we can grab the current post using the post method.
+
+108
+00:08:15,510 --> 00:08:21,800
+Just like last time, I'm going to grab the static HTML and just replace it with its template tag equivalents,
+
+109
+00:08:22,200 --> 00:08:28,200
+you don't have to use the RPE query variable anymore, as WordPress assumes all post data comes from
+
+110
+00:08:28,200 --> 00:08:28,300
+it.
+
+111
+00:08:29,010 --> 00:08:35,070
+For example, if I use the title function, WordPress will grab the title from whatever the current
+
+112
+00:08:35,070 --> 00:08:35,730
+loop it's in.
+
+113
+00:08:36,210 --> 00:08:40,200
+Since it's in our custom loop, it'll grab the title from the custom loop.
+
+114
+00:08:40,530 --> 00:08:44,200
+It will not grab the title from the main loop that encompasses everything.
+
+115
+00:08:44,610 --> 00:08:45,800
+I hope that makes sense.
+
+116
+00:08:45,990 --> 00:08:48,960
+If not, I'll go more into detail in just a moment.
+
+117
+00:08:49,260 --> 00:08:52,850
+For now, I encourage you to pause the video and try it yourself.
+
+118
+00:08:54,650 --> 00:08:58,580
+All right, if you couldn't get it, that's fine, let's go over it together.
+
+119
+00:08:58,850 --> 00:09:02,330
+First, I'm going to move the static post into this loop.
+
+120
+00:09:02,720 --> 00:09:06,670
+The static post is this div tag with the class and post.
+
+121
+00:09:06,950 --> 00:09:09,290
+Make sure to delete any other static copy.
+
+122
+00:09:19,490 --> 00:09:25,640
+Then we have to grab the featured image of this post inside a conditional statement, we can use the
+
+123
+00:09:25,670 --> 00:09:27,650
+has post thumbnail function.
+
+124
+00:09:35,720 --> 00:09:39,770
+I'm going to place the image and its link inside this conditional statement.
+
+125
+00:09:42,230 --> 00:09:47,340
+Then we can replace these values with the appropriate template tags for the thumbnail.
+
+126
+00:09:47,390 --> 00:09:49,640
+I'm going to set the size to thumbnail.
+
+127
+00:09:49,970 --> 00:09:53,200
+Unlike last time, we don't need the full size image.
+
+128
+00:09:53,480 --> 00:09:58,130
+By default, the thumbnail size is 150 by 150, which is good enough.
+
+129
+00:10:00,500 --> 00:10:02,190
+This isn't anything new so far.
+
+130
+00:10:02,600 --> 00:10:08,900
+Continuing on, we use the functions, the permalink, the title, get the date comments number and
+
+131
+00:10:08,900 --> 00:10:09,620
+the excerpt.
+
+132
+00:10:22,640 --> 00:10:27,020
+Really simple stuff here, the very last thing we need to do is reset everything.
+
+133
+00:10:27,440 --> 00:10:32,390
+Earlier, I talked about main and secondary loops in the resource section.
+
+134
+00:10:32,400 --> 00:10:36,000
+I provide a link to the function WP reset post data.
+
+135
+00:10:36,260 --> 00:10:39,260
+It's very important what WordPress has to say here.
+
+136
+00:10:39,980 --> 00:10:44,600
+Use this function to restore the Global Post variable of the main query loop.
+
+137
+00:10:44,600 --> 00:10:51,530
+After a secondary query loop using new WP query, it restores the post variable to the current post.
+
+138
+00:10:51,530 --> 00:10:58,430
+In the main query, differences between the main query loop and secondary query loops are the main loop
+
+139
+00:10:58,430 --> 00:11:05,060
+is based on the URL request and it's processed before templates are loaded, secondary loops or queries
+
+140
+00:11:05,060 --> 00:11:07,520
+in theme, template or plug in files.
+
+141
+00:11:09,880 --> 00:11:16,270
+As I stated in an earlier lecture, WordPress will scan the URL and determine how many and what posts
+
+142
+00:11:16,270 --> 00:11:22,940
+to display for the page, WordPress will automatically generate a query using the WP query class.
+
+143
+00:11:23,230 --> 00:11:25,120
+This is what's called the main loop.
+
+144
+00:11:25,330 --> 00:11:26,880
+Every page you visit has won.
+
+145
+00:11:27,520 --> 00:11:32,410
+The WordPress team understands that sometimes you'll want to make your own loop and queries.
+
+146
+00:11:32,800 --> 00:11:36,430
+Therefore, you can also use this class to generate your own queries.
+
+147
+00:11:36,760 --> 00:11:39,790
+These custom loops are called secondary query loops.
+
+148
+00:11:41,780 --> 00:11:47,660
+To prove this further, let's take a look at the post function, I provide a link to this in the resource
+
+149
+00:11:47,660 --> 00:11:48,740
+section of this lecture.
+
+150
+00:11:49,160 --> 00:11:52,880
+If you look at the source code, you'll see that it's just two lines of code.
+
+151
+00:11:53,060 --> 00:11:59,320
+All that it's doing is grabbing the global WP query variable and then calling the method the post.
+
+152
+00:11:59,630 --> 00:12:02,150
+This is similar to what we did in our own code.
+
+153
+00:12:02,420 --> 00:12:07,070
+WordPress is using the exact same class we are using, which is WP query.
+
+154
+00:12:07,550 --> 00:12:11,260
+The query that WordPress generates is called the main query.
+
+155
+00:12:11,660 --> 00:12:17,620
+This query gets stored in the WP query variable, which is accessible to both you and WordPress.
+
+156
+00:12:17,960 --> 00:12:22,860
+If you wanted to, you could just use this code rather than calling the post function.
+
+157
+00:12:23,090 --> 00:12:27,560
+However, I think calling this function makes our code cleaner and much more readable.
+
+158
+00:12:28,100 --> 00:12:31,850
+Inside the single template, we essentially have two loops.
+
+159
+00:12:32,120 --> 00:12:37,460
+With this in mind, we run into one huge problem and that is how does WordPress know when you're finished
+
+160
+00:12:37,460 --> 00:12:44,270
+running your secondary loop, you do that by calling the WP reset post data function right after the
+
+161
+00:12:44,270 --> 00:12:45,170
+secondary loop.
+
+162
+00:12:47,300 --> 00:12:54,310
+If anything, this is the most important part when creating secondary loops by not calling this function,
+
+163
+00:12:54,410 --> 00:12:55,820
+you will confuse WordPress.
+
+164
+00:12:56,150 --> 00:13:00,280
+What will end up happening is that the data inside the loop will become unpredictable.
+
+165
+00:13:00,620 --> 00:13:04,160
+So make sure you call this function that is the last step.
+
+166
+00:13:04,490 --> 00:13:08,720
+Refresh the page and you should now see our related posts being displayed.
+
+167
+00:13:09,410 --> 00:13:15,200
+So far this has been the most complex task we've done, but it's very important that you understand
+
+168
+00:13:15,200 --> 00:13:15,870
+what's going on.
+
+169
+00:13:16,220 --> 00:13:19,940
+This will not be the last time we'll use the WP query class.
+
+170
+00:13:20,300 --> 00:13:24,980
+The WP query class is one of the most used classes provided by WordPress.
+
+171
+00:13:26,270 --> 00:13:32,960
+Before I in this lecture, let's take a look at some of the cases where using the query class is beneficial
+
+172
+00:13:32,960 --> 00:13:39,440
+over other available functions to add a list of related posts under the current post, for example,
+
+173
+00:13:39,560 --> 00:13:47,030
+a list of all posts in the same category to create two loops on the same page, for example, and IQ
+
+174
+00:13:47,030 --> 00:13:54,200
+page with the question titles at the top and the content beneath to create a custom list of recent posts
+
+175
+00:13:54,200 --> 00:13:56,090
+in the sidebar or footer of your site.
+
+176
+00:13:56,420 --> 00:14:02,300
+When the recent posts which it doesn't do what you need, or you'd rather code it yourself to create
+
+177
+00:14:02,300 --> 00:14:09,080
+custom queries for taxonomy using more than one taxonomy to define what's displayed, to query post
+
+178
+00:14:09,080 --> 00:14:13,180
+types which aren't outputted by the default query such as attachments.
+
+179
+00:14:13,490 --> 00:14:18,620
+These are just some of the common scenarios where the WP query class can be used.
+
+180
+00:14:18,920 --> 00:14:25,400
+Now let's take a look at some situations where it wouldn't be appropriate to use the WP underscore query
+
+181
+00:14:25,400 --> 00:14:31,640
+class if all you want to do is change the way posts are being displayed for a particular content type
+
+182
+00:14:31,640 --> 00:14:32,400
+or archive.
+
+183
+00:14:32,630 --> 00:14:34,640
+Don't use WP underscore query.
+
+184
+00:14:34,940 --> 00:14:41,600
+Instead, simply create a template file for that archive or content type and modify the loop in that
+
+185
+00:14:41,600 --> 00:14:42,350
+template file.
+
+186
+00:14:43,190 --> 00:14:48,920
+If you want to display a few more or less posts than would normally be shown on an archive, don't use
+
+187
+00:14:48,920 --> 00:14:52,190
+WP underscore query to create a whole new query.
+
+188
+00:14:52,610 --> 00:14:59,390
+Instead, use pre underscore get underscore posts to modify the main query along with a conditional
+
+189
+00:14:59,390 --> 00:15:02,170
+tag to single out where exactly you want to do it.
+
+190
+00:15:02,480 --> 00:15:05,240
+Beware of running too many queries on a page.
+
+191
+00:15:05,510 --> 00:15:08,990
+You could theoretically create a page with hundreds of custom queries.
+
+192
+00:15:09,110 --> 00:15:13,970
+But just think of the server load and you need more than four or five queries on a page.
+
+193
+00:15:14,150 --> 00:15:16,910
+You might want to consider creating extra pages.
+

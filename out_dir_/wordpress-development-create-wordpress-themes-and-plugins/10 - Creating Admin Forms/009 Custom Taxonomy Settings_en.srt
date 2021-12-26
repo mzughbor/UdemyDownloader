@@ -1,0 +1,484 @@
+1
+00:00:07,580 --> 00:00:13,610
+I want to display my custom taxonomy on the front end before I do that, I want to add some settings
+
+2
+00:00:13,610 --> 00:00:14,650
+from my taxonomy.
+
+3
+00:00:15,020 --> 00:00:20,540
+If you were to go to the Origin edit page, you'll find a list of origins and a forum for creating a
+
+4
+00:00:20,540 --> 00:00:20,980
+new one.
+
+5
+00:00:21,320 --> 00:00:24,430
+This form is pretty basic, but I'd like to add on to it.
+
+6
+00:00:24,710 --> 00:00:28,190
+I want to add a new URL for more information about an origin.
+
+7
+00:00:28,610 --> 00:00:31,390
+To pull this off, we'll have to do a couple of things.
+
+8
+00:00:31,610 --> 00:00:36,020
+The first step is to add the form fields inside the main plug and file.
+
+9
+00:00:36,080 --> 00:00:38,900
+Add the action hook called add form fields.
+
+10
+00:00:42,690 --> 00:00:48,270
+This is a dynamic cook right before the hook name, you have to append the name of the taxonomy, which
+
+11
+00:00:48,270 --> 00:00:48,960
+is Origin.
+
+12
+00:00:51,480 --> 00:00:57,210
+This is how WordPress knows which taxonomy this hoax should run under the function I want to call,
+
+13
+00:00:57,300 --> 00:00:59,910
+we named our origin and form fields.
+
+14
+00:01:02,240 --> 00:01:10,520
+Next, create a file inside the includes admin folder named Origin Dash Fields, not define the function
+
+15
+00:01:10,520 --> 00:01:13,940
+inside this file and make sure to include it from the main plugin file.
+
+16
+00:01:18,830 --> 00:01:21,890
+I'm going to paste in some HTML into this function.
+
+17
+00:01:23,560 --> 00:01:30,280
+Let's break this down, the HTML here is the same HTML you'll find if you were to inspect the element
+
+18
+00:01:30,280 --> 00:01:34,020
+on the form, nothing really special here except for two things.
+
+19
+00:01:34,240 --> 00:01:36,480
+The first thing is the name of the input field.
+
+20
+00:01:36,700 --> 00:01:37,780
+It should be unique.
+
+21
+00:01:37,930 --> 00:01:41,070
+I said this to our more info you URL.
+
+22
+00:01:41,470 --> 00:01:46,490
+The next thing is the paragraph tag, which contains a short description about the input field.
+
+23
+00:01:46,900 --> 00:01:51,970
+This is completely optional to add, but it's useful to give your users more information about this
+
+24
+00:01:51,970 --> 00:01:52,380
+field.
+
+25
+00:01:53,110 --> 00:01:55,740
+That's all there is to creating the input fields.
+
+26
+00:01:55,990 --> 00:02:00,550
+You don't have to worry about adding form tags as this will already be wrapped in one.
+
+27
+00:02:01,210 --> 00:02:03,220
+The next step is to save the value.
+
+28
+00:02:03,520 --> 00:02:08,259
+Back inside the main plugin file, add a new action hook called Create Underscore.
+
+29
+00:02:12,050 --> 00:02:18,530
+This action hook is also dynamic, it is followed by the name of the taxonomy, which is origin, the
+
+30
+00:02:18,530 --> 00:02:22,070
+function I want to call will be named are Save Origin Medha.
+
+31
+00:02:24,480 --> 00:02:31,740
+I'm going to create a new file inside the process folder called Save Dasch Origin, with the function
+
+32
+00:02:31,740 --> 00:02:35,490
+defined inside, this function will be passed in the term ID.
+
+33
+00:02:39,660 --> 00:02:42,810
+Lastly, make sure to include it from the main plug and file.
+
+34
+00:02:47,120 --> 00:02:52,520
+Inside this function, I'm going to check if the field is set, if it isn't, then I'm just going to
+
+35
+00:02:52,520 --> 00:02:53,480
+return the function.
+
+36
+00:02:59,760 --> 00:03:06,990
+Just like post terms can have metadata to clarify, the origin is a taxonomy, but each individual origin
+
+37
+00:03:06,990 --> 00:03:07,890
+is called a term.
+
+38
+00:03:08,250 --> 00:03:10,020
+This goes for any taxonomy.
+
+39
+00:03:10,290 --> 00:03:16,560
+The individual categories or tags for a post is called a term so you can have term metadata.
+
+40
+00:03:16,830 --> 00:03:19,200
+The metadata API can be used for this.
+
+41
+00:03:19,770 --> 00:03:26,040
+WordPress provides a set of functions to save term metadata, which work the exact same way as the post
+
+42
+00:03:26,040 --> 00:03:27,140
+metadata functions.
+
+43
+00:03:27,480 --> 00:03:29,580
+The name of the functions are just different.
+
+44
+00:03:29,910 --> 00:03:32,910
+I want you to call the update term meta function.
+
+45
+00:03:33,210 --> 00:03:35,870
+The first parameter is the ID of the term.
+
+46
+00:03:36,180 --> 00:03:41,700
+The second is the name, which will be more info you URL and the last parameter is the oral.
+
+47
+00:03:47,270 --> 00:03:52,870
+I'm going to wrap the value with the function escape you URL roar, which will make sure this is a safe
+
+48
+00:03:52,890 --> 00:03:53,390
+URL.
+
+49
+00:03:56,060 --> 00:04:01,670
+This will take care of creating the term, it's important to note that taxonomies will have two different
+
+50
+00:04:01,670 --> 00:04:08,540
+forms of form for creating the taxonomy and another for editing a taxonomy to save some time.
+
+51
+00:04:08,570 --> 00:04:14,270
+I'm going to go back to the main plugin file and copy this action and replace the second one from create
+
+52
+00:04:14,270 --> 00:04:17,360
+underscore origin to edited underscore origin.
+
+53
+00:04:19,649 --> 00:04:24,750
+The edited version will be used when a user updates the user out, the function will be the same.
+
+54
+00:04:25,740 --> 00:04:31,200
+We're almost done, the last thing I want to do is create the forum field for the edit form page.
+
+55
+00:04:31,500 --> 00:04:34,620
+The HTML will be different, but the idea is the same.
+
+56
+00:04:34,920 --> 00:04:40,290
+I'm going to add a new action hook called edit form fields, where the beginning of the hook is the
+
+57
+00:04:40,290 --> 00:04:42,690
+name of the taxonomy, which will be origin.
+
+58
+00:04:43,110 --> 00:04:47,220
+The function I want to call will be named after Origin edit form fields.
+
+59
+00:04:50,320 --> 00:04:54,460
+I'm going to define this function inside the origin dash fields file.
+
+60
+00:04:59,090 --> 00:05:04,640
+A couple of things will be different from the new form, this function will be passed in an object called
+
+61
+00:05:04,640 --> 00:05:09,930
+term that will contain information about the current term to grab the metadata.
+
+62
+00:05:09,980 --> 00:05:12,500
+I'm going to create a variable named U.
+
+63
+00:05:12,500 --> 00:05:15,650
+RL and its value will be the value returned by the function.
+
+64
+00:05:15,650 --> 00:05:16,640
+Get Turmeda.
+
+65
+00:05:19,080 --> 00:05:26,310
+The term object has a property named term ID that will pass in as the first parameter, the next parameter
+
+66
+00:05:26,310 --> 00:05:31,050
+is the name, which is more info you URL and the last parameter will be set to true.
+
+67
+00:05:33,790 --> 00:05:39,310
+Now that I have my you IRL, I can display the form with it, I'm going to paste in some HTML, which
+
+68
+00:05:39,310 --> 00:05:41,470
+is a tad different than the function above.
+
+69
+00:05:43,710 --> 00:05:50,040
+I know it seems weird, but the HMO tends to be different for both fields, the edit form field uses
+
+70
+00:05:50,040 --> 00:05:51,640
+tables to format the form.
+
+71
+00:05:52,050 --> 00:05:57,750
+What's most important is the input field for the value I'm echoing out there you out.
+
+72
+00:05:58,410 --> 00:06:01,150
+This will take care of the form and saving the data.
+
+73
+00:06:01,380 --> 00:06:05,720
+I'm going to test this, refresh the page and you should see the field appearing.
+
+74
+00:06:06,000 --> 00:06:08,310
+I want you to create a new origin.
+
+75
+00:06:13,310 --> 00:06:15,530
+You can paste in any you URL you want.
+
+76
+00:06:15,770 --> 00:06:21,950
+I'm just going to paste in a Eurail to the France Wikipedia page, you'll now see the term up here to
+
+77
+00:06:21,950 --> 00:06:22,400
+the right.
+
+78
+00:06:22,640 --> 00:06:26,010
+Click on it and check to see if the edit form is working as well.
+
+79
+00:06:26,390 --> 00:06:31,490
+You don't have to change any values, but if you press update, then you should still see everything
+
+80
+00:06:31,490 --> 00:06:32,050
+intact.
+
+81
+00:06:32,450 --> 00:06:39,020
+The next step is to make the origin appear on the front end, along with the more info you orell open
+
+82
+00:06:39,020 --> 00:06:40,670
+the filter content file.
+
+83
+00:06:43,110 --> 00:06:47,430
+This is the file that contains the function to modify the output onto the front end.
+
+84
+00:06:47,880 --> 00:06:50,340
+I'm also going to open the template for this.
+
+85
+00:06:50,490 --> 00:06:53,220
+I'm going to make one modification to the template.
+
+86
+00:06:55,340 --> 00:07:01,250
+I want you to add another list item that has three placeholders for the name, the actual value itself,
+
+87
+00:07:01,250 --> 00:07:03,950
+and then a placeholder for the more info you, Earl.
+
+88
+00:07:05,360 --> 00:07:11,800
+Inside the filter function, we will replace the text holder with Origin for the actual value itself,
+
+89
+00:07:11,810 --> 00:07:14,610
+we're only interested in the first origin itself.
+
+90
+00:07:14,900 --> 00:07:20,450
+I'm going to create a variable named Origin, which will contain the value returned by the function.
+
+91
+00:07:20,450 --> 00:07:22,460
+WP get post terms.
+
+92
+00:07:25,130 --> 00:07:30,950
+This function will get all the terms associated with this post, the first parameter is the ID of the
+
+93
+00:07:30,950 --> 00:07:31,450
+post.
+
+94
+00:07:31,670 --> 00:07:34,790
+The second parameter is the taxonomy, which is origin.
+
+95
+00:07:37,360 --> 00:07:39,880
+This function will return an array of terms.
+
+96
+00:07:40,030 --> 00:07:46,810
+I'm going to create another variable named more info you Earl, I'm going to use the ternary operator
+
+97
+00:07:46,810 --> 00:07:48,810
+to assign the value for this variable.
+
+98
+00:07:49,090 --> 00:07:52,720
+I'm going to check if the first item in the origin array is set.
+
+99
+00:07:52,720 --> 00:07:55,680
+So we know we have at least one item in the original rate.
+
+100
+00:07:57,210 --> 00:08:03,630
+If there is a value, I'm going to get the more info you are all metadata using the get term meta function,
+
+101
+00:08:03,900 --> 00:08:06,570
+otherwise I'm going to set this as an empty string.
+
+102
+00:08:12,100 --> 00:08:16,750
+Now that we have our values prepared, let's display them for the origin itself.
+
+103
+00:08:16,780 --> 00:08:19,300
+I'm going to use the ternary operator again.
+
+104
+00:08:19,870 --> 00:08:24,570
+If the first item in the array is set, I'm going to output the name of that term.
+
+105
+00:08:24,940 --> 00:08:27,100
+Each item in the array is an object.
+
+106
+00:08:27,730 --> 00:08:33,610
+In the resource section of this lecture, I provide a link to the function WP get post terms.
+
+107
+00:08:33,909 --> 00:08:39,900
+If you scroll down to the return value section, you'll find the properties for each object in the array.
+
+108
+00:08:40,360 --> 00:08:43,059
+One of these is the name, which is what we're using here.
+
+109
+00:08:43,450 --> 00:08:48,310
+However, if the first term is indeed empty, we're going to use the phrase none.
+
+110
+00:08:59,140 --> 00:09:05,020
+The very last step to all of this is to display the more info you, Earl, I'm going to use a conditional
+
+111
+00:09:05,020 --> 00:09:08,620
+statement to check if the more info you call variable is empty.
+
+112
+00:09:08,950 --> 00:09:12,870
+If it isn't, I'm going to replace the placeholder with a clickable link.
+
+113
+00:09:13,210 --> 00:09:16,420
+Otherwise, I'm just going to replace it with an empty string.
+
+114
+00:09:18,120 --> 00:09:19,510
+Let's test this out now.
+
+115
+00:09:19,890 --> 00:09:26,340
+I want you to view a recipe without making any changes to it, you should see the origin list item with
+
+116
+00:09:26,340 --> 00:09:27,420
+none next to it.
+
+117
+00:09:27,420 --> 00:09:32,240
+And no, you are well appearing after you've confirmed that you can now edit this recipe.
+
+118
+00:09:32,550 --> 00:09:38,250
+I want you to assign the origin we created earlier, save your changes and view the recipe again.
+
+119
+00:09:43,640 --> 00:09:47,640
+You should now see the origin appear along with the more info you, Earl.
+
+120
+00:09:48,290 --> 00:09:49,920
+That wraps it up for this lecture.
+
+121
+00:09:50,090 --> 00:09:54,050
+We've learned how to make taxonomies and settings for our taxonomies.
+

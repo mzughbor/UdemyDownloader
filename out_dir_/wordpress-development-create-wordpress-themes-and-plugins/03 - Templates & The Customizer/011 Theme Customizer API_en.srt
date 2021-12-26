@@ -1,0 +1,700 @@
+1
+00:00:07,420 --> 00:00:13,690
+We are now going to take a look at the theme customizer API, the theme customizer is WordPress is UI
+
+2
+00:00:13,690 --> 00:00:15,000
+for customizing the theme.
+
+3
+00:00:15,400 --> 00:00:17,320
+This is enabled by default for you.
+
+4
+00:00:17,320 --> 00:00:23,890
+Already you can view the customizer by going into the admin dashboard and navigating to appearance customize
+
+5
+00:00:24,460 --> 00:00:25,390
+on the sidebar.
+
+6
+00:00:25,480 --> 00:00:30,360
+You'll find a few options for changing the theme and you'll see our theme being displayed on the right.
+
+7
+00:00:30,760 --> 00:00:32,049
+Let's see how this works.
+
+8
+00:00:32,200 --> 00:00:35,590
+Click on site identity and try changing the site title.
+
+9
+00:00:37,920 --> 00:00:43,800
+Right after making these modifications, WordPress will actually update the preview, what WordPress
+
+10
+00:00:43,800 --> 00:00:46,620
+is doing is loading the site inside an iFrame.
+
+11
+00:00:47,070 --> 00:00:52,140
+Every time a change happens, WordPress will refresh the iFrame with the modified data.
+
+12
+00:00:52,560 --> 00:00:56,870
+Keep in mind that this doesn't take an official effect until you click save.
+
+13
+00:00:57,540 --> 00:01:03,150
+What makes this customizer even more powerful is that developers are provided an API to add in their
+
+14
+00:01:03,150 --> 00:01:04,420
+own options and settings.
+
+15
+00:01:04,739 --> 00:01:06,480
+So here's what we're going to do.
+
+16
+00:01:06,870 --> 00:01:11,180
+We're going to create some settings to add social links in the header and footer.
+
+17
+00:01:11,580 --> 00:01:17,700
+We're going to make everything here dynamic, open the functions, file and add an action, hook.
+
+18
+00:01:17,970 --> 00:01:21,390
+The action we want to hook into is called Customize Register.
+
+19
+00:01:23,560 --> 00:01:29,470
+This is the hook WordPress, cause when it starts to set up the theme customizer, the function to call
+
+20
+00:01:29,470 --> 00:01:31,990
+will be called Jiyu Customized Register.
+
+21
+00:01:34,340 --> 00:01:41,240
+Create a file called Theme Dasch Customizer inside the includes folder and define the function here.
+
+22
+00:01:49,750 --> 00:01:52,690
+Lastly, include this file from the functions file.
+
+23
+00:01:57,730 --> 00:02:03,820
+This function will be passed in one variable named WP Customize, this is an object with methods and
+
+24
+00:02:03,820 --> 00:02:06,280
+properties for modifying within customizer.
+
+25
+00:02:06,910 --> 00:02:11,650
+This object is an instance of the WP Customize Manager class.
+
+26
+00:02:12,010 --> 00:02:14,870
+I'll provide a link to this class in the resource section.
+
+27
+00:02:15,580 --> 00:02:21,280
+This class controls how the customizer works, and most of its functionality will be going over how
+
+28
+00:02:21,280 --> 00:02:24,950
+this works shortly before we begin working on the customizer.
+
+29
+00:02:25,000 --> 00:02:29,770
+There are three important concepts you need to know if you don't understand right away.
+
+30
+00:02:29,770 --> 00:02:31,750
+After I explain it, then that's fine.
+
+31
+00:02:32,110 --> 00:02:33,720
+I'll be showing you how it works.
+
+32
+00:02:36,090 --> 00:02:41,580
+There are three steps you'll usually take when working with the customizer directly, the first step
+
+33
+00:02:41,580 --> 00:02:42,570
+is adding a setting.
+
+34
+00:02:42,930 --> 00:02:47,850
+The setting is just a value that you save in the database and can be modified through the customizer.
+
+35
+00:02:48,150 --> 00:02:50,200
+You can then use this value in your theme.
+
+36
+00:02:50,910 --> 00:02:53,130
+The second step is creating a section.
+
+37
+00:02:53,400 --> 00:02:56,480
+A section is a way to group a bunch of fields together.
+
+38
+00:02:56,880 --> 00:03:02,280
+If you look at the customizer, you'll notice that things are grouped together instead of just displaying
+
+39
+00:03:02,280 --> 00:03:03,330
+every option together.
+
+40
+00:03:03,720 --> 00:03:06,570
+This makes it easier to control and navigate around.
+
+41
+00:03:07,230 --> 00:03:09,510
+The third step is creating a controller.
+
+42
+00:03:09,840 --> 00:03:16,290
+A controller is just an input field, checkbox, color picker or uploader that allows you to change
+
+43
+00:03:16,290 --> 00:03:18,390
+the setting you made in step one directly.
+
+44
+00:03:20,710 --> 00:03:25,510
+Let's get started with the customizer, the object passed in has a couple of methods.
+
+45
+00:03:25,810 --> 00:03:30,280
+The method for adding a new setting is called add setting, and it's called like so.
+
+46
+00:03:32,620 --> 00:03:34,570
+This method has two parameters.
+
+47
+00:03:34,720 --> 00:03:37,760
+The first is the ID like anything else.
+
+48
+00:03:37,810 --> 00:03:41,680
+The idea is something that should be unique so we can refer to it later.
+
+49
+00:03:42,090 --> 00:03:45,160
+I'm going to set this to Jiyu Facebook handle.
+
+50
+00:03:47,420 --> 00:03:53,250
+The next parameter is an array of settings, I'm going to provide a link in the resource section of
+
+51
+00:03:53,250 --> 00:03:55,650
+the lecture for more information about this method.
+
+52
+00:03:56,030 --> 00:03:59,030
+If you scroll down a bit, you'll see a few settings you can set.
+
+53
+00:03:59,420 --> 00:04:03,350
+Most of them are optional except one setting, which is the default key.
+
+54
+00:04:03,740 --> 00:04:05,750
+I'm going to set this as an empty string.
+
+55
+00:04:10,940 --> 00:04:15,980
+That's all you need to do, one thing I should mention is this setting called transport.
+
+56
+00:04:16,310 --> 00:04:20,360
+This controls how the value is reflected on the main theme during preview mode.
+
+57
+00:04:20,750 --> 00:04:22,910
+By default, it's set to refresh.
+
+58
+00:04:23,180 --> 00:04:28,550
+This means that when this value is changed, then the page will refresh and show that value.
+
+59
+00:04:29,180 --> 00:04:34,750
+If you want to control how this value is reflected on the theme, you will need to set this to post
+
+60
+00:04:34,780 --> 00:04:35,360
+message.
+
+61
+00:04:35,690 --> 00:04:41,300
+However, refresh will work in 90 percent of the time, so will leave this value as is.
+
+62
+00:04:42,080 --> 00:04:47,720
+This value will now be saved in the database and it can now be manipulated through controllers and be
+
+63
+00:04:47,720 --> 00:04:48,900
+displayed on our theme.
+
+64
+00:04:49,640 --> 00:04:53,300
+We now have to create a section to create a section.
+
+65
+00:04:53,300 --> 00:04:55,520
+We have to call the ad section method.
+
+66
+00:04:57,770 --> 00:05:00,630
+The first parameter is the ID for this section.
+
+67
+00:05:01,040 --> 00:05:04,100
+I'm going to set this to Jiyu social section.
+
+68
+00:05:06,380 --> 00:05:12,590
+The second parameter is an array of settings, the title will be translatable and I'll set it to you,
+
+69
+00:05:12,590 --> 00:05:13,910
+to me social settings.
+
+70
+00:05:19,520 --> 00:05:25,260
+Next is the priority, the lower the number, the higher placement it will receive and vice versa.
+
+71
+00:05:25,460 --> 00:05:27,170
+I'm going to set this to 30.
+
+72
+00:05:29,340 --> 00:05:32,970
+There's one last method I want to call, which is the ad control method.
+
+73
+00:05:35,220 --> 00:05:41,400
+This will create an input field and added to a particular section of our choosing, this method is a
+
+74
+00:05:41,400 --> 00:05:44,100
+bit tricky because there are two ways you can set this up.
+
+75
+00:05:44,790 --> 00:05:48,630
+The first way is to pass in the settings and have more control over it.
+
+76
+00:05:48,960 --> 00:05:52,420
+However, this tends to be confusing if you don't know what you're doing.
+
+77
+00:05:52,950 --> 00:05:59,250
+The second route is to pass in an object that will help you create the field you'd like to create will
+
+78
+00:05:59,250 --> 00:06:04,340
+be going with the second route because it's really easy to get started in the resource section.
+
+79
+00:06:04,350 --> 00:06:06,810
+I provide a link to the add control method.
+
+80
+00:06:07,200 --> 00:06:09,600
+Scroll down to the classes section.
+
+81
+00:06:10,020 --> 00:06:14,610
+This section provides a couple of classes that can be passed and that will assist us with filling in
+
+82
+00:06:14,610 --> 00:06:15,180
+the blanks.
+
+83
+00:06:15,940 --> 00:06:23,580
+The WP customized control class will help you create fields such as text fields, radio buttons, checkboxes
+
+84
+00:06:23,580 --> 00:06:24,450
+and drop downs.
+
+85
+00:06:24,810 --> 00:06:27,780
+The color control will create a color picker for you.
+
+86
+00:06:28,140 --> 00:06:31,680
+The upload control will create a field for uploading files.
+
+87
+00:06:32,100 --> 00:06:37,830
+The image control also does something similar to the upload control, except you can only upload images.
+
+88
+00:06:38,040 --> 00:06:43,620
+These other two are unimportant to us as WordPress uses these internally for its own purpose.
+
+89
+00:06:43,920 --> 00:06:47,190
+So we won't be messing with them at all throughout this lecture.
+
+90
+00:06:47,850 --> 00:06:49,040
+For our purposes.
+
+91
+00:06:49,080 --> 00:06:54,170
+The first class is perfect for us since we want to create a TextField for the users handle.
+
+92
+00:06:54,600 --> 00:06:59,730
+I'm going to click this and you'll see that WordPress provides an example on how this works.
+
+93
+00:07:00,030 --> 00:07:03,150
+I'm going to copy and paste this and go over what's going on.
+
+94
+00:07:07,190 --> 00:07:12,710
+The first parameter is the customizer object itself, the controller needs to know more about what's
+
+95
+00:07:12,710 --> 00:07:15,650
+happening in the customizer so that it can fill in the blanks for you.
+
+96
+00:07:16,400 --> 00:07:19,410
+The second parameter is the ID for this controller.
+
+97
+00:07:19,820 --> 00:07:23,630
+I'm going to set this as use social Facebook input.
+
+98
+00:07:25,840 --> 00:07:31,750
+The last parameter is an array of additional settings, we will only concern ourselves with these four
+
+99
+00:07:31,750 --> 00:07:32,280
+keys.
+
+100
+00:07:32,620 --> 00:07:35,820
+The label is just text to describe the field.
+
+101
+00:07:36,130 --> 00:07:38,310
+This should be a translatable string.
+
+102
+00:07:38,680 --> 00:07:41,110
+I'm going to set this as Facebook handle.
+
+103
+00:07:43,350 --> 00:07:50,760
+The U.S. is where it'll appear, we created our own section called Giuse Social Section will assign
+
+104
+00:07:50,760 --> 00:07:52,350
+this control under that section.
+
+105
+00:07:54,620 --> 00:07:58,520
+The next key is settings, which is what setting will this field modify?
+
+106
+00:07:58,910 --> 00:08:00,710
+We created this in step one.
+
+107
+00:08:01,190 --> 00:08:04,130
+The value for this will be Jiyu Facebook handle.
+
+108
+00:08:06,280 --> 00:08:11,170
+The last key is type, which is what kind of field this will be by default.
+
+109
+00:08:11,210 --> 00:08:19,150
+It'll be text, there's also radio, text area, etc. You can find all the types of fields in the documentation.
+
+110
+00:08:19,690 --> 00:08:21,280
+For now, the default is fine.
+
+111
+00:08:21,590 --> 00:08:23,970
+I'm actually just going to remove this key.
+
+112
+00:08:24,340 --> 00:08:26,350
+We are now finished with the customizer.
+
+113
+00:08:26,590 --> 00:08:31,870
+Let's refresh the customizer and you will now see this new section called Udemy Social Settings.
+
+114
+00:08:32,440 --> 00:08:34,990
+After clicking it, you'll now see the controller.
+
+115
+00:08:35,230 --> 00:08:38,110
+I'm going to input Udemy and save the setting.
+
+116
+00:08:38,440 --> 00:08:43,630
+However, nothing in the preview will change because we haven't told WordPress where we'd like to use
+
+117
+00:08:43,630 --> 00:08:44,140
+this setting.
+
+118
+00:08:44,650 --> 00:08:47,680
+Let's review what we did in our customize function first.
+
+119
+00:08:48,400 --> 00:08:52,930
+The first step was to create the setting, which is the value that's stored in the database.
+
+120
+00:08:53,290 --> 00:08:57,150
+The second step is to create a section that will group various controllers.
+
+121
+00:08:57,460 --> 00:09:02,920
+The third step was to create a controller that is assigned under a section and controls one setting.
+
+122
+00:09:03,700 --> 00:09:08,800
+A lot of people get confused with the difference between the ad setting and add control methods.
+
+123
+00:09:09,100 --> 00:09:11,530
+The setting will create the database value.
+
+124
+00:09:11,830 --> 00:09:14,440
+The method will not create an input field.
+
+125
+00:09:14,650 --> 00:09:19,660
+It will just tell WordPress about the setting and tell it to create a setting in the database.
+
+126
+00:09:20,380 --> 00:09:23,560
+The control method will not create a database value.
+
+127
+00:09:23,920 --> 00:09:26,500
+Instead, it will create an input field.
+
+128
+00:09:26,860 --> 00:09:32,230
+The controller will take care of modifying and updating the database value whenever the input field
+
+129
+00:09:32,230 --> 00:09:32,830
+is updated.
+
+130
+00:09:33,250 --> 00:09:33,780
+All right.
+
+131
+00:09:33,940 --> 00:09:37,030
+Now that we've cleared that up, let's start making our theme.
+
+132
+00:09:37,030 --> 00:09:40,810
+Recognize the changes inside the header template.
+
+133
+00:09:40,810 --> 00:09:46,150
+Let's locate a list of social icons in the header inside a conditional statement.
+
+134
+00:09:46,240 --> 00:09:48,910
+I'm going to call the function, get the mod.
+
+135
+00:09:53,370 --> 00:09:59,520
+This function will grab a setting you pass in if there is no value or the value does not exist, then
+
+136
+00:09:59,520 --> 00:10:00,810
+this will return false.
+
+137
+00:10:01,200 --> 00:10:04,230
+I'm going to pass in Jiyu Facebook handle.
+
+138
+00:10:06,440 --> 00:10:12,650
+This is the setting we created earlier, if there is a value, then we'll output this one list item,
+
+139
+00:10:12,650 --> 00:10:14,120
+which is the Facebook link.
+
+140
+00:10:14,490 --> 00:10:18,080
+I'm going to move the static link inside the conditional statement.
+
+141
+00:10:22,250 --> 00:10:28,250
+Then I'm going to replace the Eurail for this with the Facebook Eurorail, followed by the value returned
+
+142
+00:10:28,250 --> 00:10:34,160
+by the theme mod function, we will have to echo out the value since the function will only return it.
+
+143
+00:10:39,350 --> 00:10:39,930
+That's it.
+
+144
+00:10:40,310 --> 00:10:43,690
+Let's go back to the customizer and you will now see Airlink appearing.
+
+145
+00:10:44,030 --> 00:10:49,650
+If I were to empty out this textfield, you'll notice the iFrame refresh and the link disappear.
+
+146
+00:10:50,010 --> 00:10:51,750
+This is exactly what we want.
+
+147
+00:10:52,250 --> 00:10:55,280
+The only thing left to tackle is the rest of these icons.
+
+148
+00:10:55,400 --> 00:10:57,260
+I want you to try this on your own.
+
+149
+00:10:57,560 --> 00:10:59,860
+Actually, before I let you off.
+
+150
+00:10:59,870 --> 00:11:01,700
+There's one thing we should do together.
+
+151
+00:11:02,330 --> 00:11:06,110
+Create a folder inside the includes folder named Customizer.
+
+152
+00:11:08,380 --> 00:11:12,950
+Then create a file named Social P inside this file.
+
+153
+00:11:13,030 --> 00:11:16,750
+Create a function named J use social customizer section.
+
+154
+00:11:20,440 --> 00:11:23,810
+This function will accept BWP customized object.
+
+155
+00:11:24,310 --> 00:11:28,750
+I'm going to cut and paste the contents from the main customizer function into this function.
+
+156
+00:11:31,000 --> 00:11:36,520
+Then I'm going to call this function from the main customizer and pass in the customize object.
+
+157
+00:11:40,700 --> 00:11:44,900
+The last step is to just include this social customizer file.
+
+158
+00:11:50,160 --> 00:11:56,250
+By doing this, we make things a lot cleaner and easier to manage, these social icons aren't the only
+
+159
+00:11:56,250 --> 00:12:01,800
+things we'll be using the customizer for this year is just preference and not required by WordPress
+
+160
+00:12:01,800 --> 00:12:02,300
+itself.
+
+161
+00:12:02,610 --> 00:12:04,820
+I just like to stay organized and clean.
+
+162
+00:12:05,520 --> 00:12:07,680
+I want you to create the new settings.
+
+163
+00:12:07,680 --> 00:12:11,580
+Now all you'll be doing is creating new settings and controllers.
+
+164
+00:12:11,850 --> 00:12:14,490
+You only need one section which we already defined.
+
+165
+00:12:14,940 --> 00:12:18,840
+Once you have those ready, then you can modify the theme itself to include the links.
+
+166
+00:12:21,160 --> 00:12:21,970
+Welcome back.
+
+167
+00:12:22,150 --> 00:12:25,990
+If you weren't able to do it, then no worries, I have you covered.
+
+168
+00:12:26,260 --> 00:12:29,190
+As you can see here, I already have everything set up.
+
+169
+00:12:29,410 --> 00:12:35,200
+I'm going to provide these social customizer function in the resource section so that you can download
+
+170
+00:12:35,200 --> 00:12:36,880
+it and compare it to your own function.
+
+171
+00:12:37,600 --> 00:12:42,940
+I also made modifications to the header and footer to include these settings onto the theme.
+
+172
+00:12:43,450 --> 00:12:48,660
+I won't be providing these as these are just really simple and aren't as difficult to replicate.
+
+173
+00:12:49,120 --> 00:12:53,740
+If you don't know how to do this, then you really need to rewash this lecture because there's nothing
+
+174
+00:12:53,740 --> 00:12:55,450
+advanced going on in these templates.
+
+175
+00:12:55,930 --> 00:12:57,700
+I'll see you in the next lecture.
+

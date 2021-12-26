@@ -1,0 +1,856 @@
+1
+00:00:07,170 --> 00:00:13,530
+Here's what I want to do now, I want to add some profile tabs so other users can view any recipes a
+
+2
+00:00:13,530 --> 00:00:16,740
+user has submitted, this will take some time to do so.
+
+3
+00:00:16,740 --> 00:00:23,250
+Bear with me here in the resource section of this lecture, I provide a link to the BP core new NAV
+
+4
+00:00:23,250 --> 00:00:24,090
+item function.
+
+5
+00:00:24,570 --> 00:00:27,210
+This function will add a tab to the profile page.
+
+6
+00:00:27,600 --> 00:00:32,000
+This function can be found by going to documentation developer resources.
+
+7
+00:00:32,460 --> 00:00:35,970
+This page gives more of a technical overview for Buddy Press.
+
+8
+00:00:36,300 --> 00:00:41,280
+You'll find a list of functions on the sidebar, one of them being the function I just showed you.
+
+9
+00:00:41,880 --> 00:00:46,990
+Unfortunately, this example usage doesn't really explain everything to get started using it.
+
+10
+00:00:47,340 --> 00:00:51,900
+Don't worry, though, I'll explain the extra steps you need to take in order to use this function,
+
+11
+00:00:52,440 --> 00:00:56,130
+open the function, smile and use an action hook called BP.
+
+12
+00:00:56,130 --> 00:00:57,000
+Set up NAV.
+
+13
+00:01:01,270 --> 00:01:07,150
+This hook isn't documented by Buddy Press on their site, but this is the hook you need to use to begin
+
+14
+00:01:07,150 --> 00:01:13,330
+setting up navigation items on the profile page, the function I want to call will be named Jiyu Buddy
+
+15
+00:01:13,330 --> 00:01:14,860
+Press Profile Tabs.
+
+16
+00:01:17,460 --> 00:01:19,960
+As you may know, I like to stay organized.
+
+17
+00:01:20,160 --> 00:01:24,690
+I'm going to create a folder inside the includes folder called Buddy Press.
+
+18
+00:01:25,140 --> 00:01:31,410
+This folder will include all functions and code related to extending and modifying Buddy Press inside
+
+19
+00:01:31,410 --> 00:01:32,090
+this folder.
+
+20
+00:01:32,130 --> 00:01:39,250
+I'm going to create a file named Profile Dash Tabs, but I'm going to define the function here.
+
+21
+00:01:39,660 --> 00:01:42,810
+Lastly, I'm going to include it from the functions file.
+
+22
+00:01:49,120 --> 00:01:55,390
+Inside this function, we're going to need the global BP variable, this global variable is defined
+
+23
+00:01:55,390 --> 00:01:57,300
+and provided to you by buddy press.
+
+24
+00:01:57,670 --> 00:02:01,760
+The function we're about to call needs this variable so that it can function correctly.
+
+25
+00:02:02,470 --> 00:02:06,460
+Next, let's call the function BP core, new NAV item.
+
+26
+00:02:08,680 --> 00:02:14,390
+It has one parameter, which is an array of settings, the first setting is the name which will set
+
+27
+00:02:14,390 --> 00:02:15,400
+to recipe's.
+
+28
+00:02:15,700 --> 00:02:19,810
+This will appear as the tab name, make sure it's translatable as well.
+
+29
+00:02:22,360 --> 00:02:26,880
+The next setting is the slug, which is what will be appended to the member, you are out.
+
+30
+00:02:27,250 --> 00:02:28,980
+You'll see what this looks like in a minute.
+
+31
+00:02:29,170 --> 00:02:31,150
+I'm going to set it to recipe's.
+
+32
+00:02:33,720 --> 00:02:38,280
+The next setting is the position I'm going to set this to 100.
+
+33
+00:02:40,560 --> 00:02:45,780
+This will determine the spot, it appears in the menu, the lower the number, the chances are it'll
+
+34
+00:02:45,780 --> 00:02:47,410
+appear first inside the menu.
+
+35
+00:02:47,760 --> 00:02:49,430
+I want this to appear last.
+
+36
+00:02:49,440 --> 00:02:51,390
+So I'm setting this to a high number.
+
+37
+00:02:52,080 --> 00:02:54,450
+The next setting is the screen function.
+
+38
+00:02:54,720 --> 00:02:59,430
+You can pass in the name of the function that will take care of displaying the content to the user when
+
+39
+00:02:59,430 --> 00:03:00,480
+this page is loaded.
+
+40
+00:03:00,870 --> 00:03:04,470
+I'm going to set this to Jiyu recent recipes tab.
+
+41
+00:03:06,990 --> 00:03:10,050
+Up next is the show for displayed user setting.
+
+42
+00:03:12,410 --> 00:03:18,350
+This option will determine if the menu and page will appear, if the page belongs to the current logged
+
+43
+00:03:18,350 --> 00:03:22,770
+in user, if a user is logged in and they're viewing someone else's profile.
+
+44
+00:03:22,910 --> 00:03:27,150
+Should they be able to view this page or is it just for the page owner's eyes?
+
+45
+00:03:27,770 --> 00:03:29,630
+I'm going to set this to true.
+
+46
+00:03:29,900 --> 00:03:32,720
+This will mean everyone will be able to see this page.
+
+47
+00:03:33,020 --> 00:03:39,230
+The next setting is the item seaside setting, which is just the ID attribute you can use to style this
+
+48
+00:03:39,230 --> 00:03:39,890
+menu item.
+
+49
+00:03:40,310 --> 00:03:43,670
+I'm going to set this to J you user recipes.
+
+50
+00:03:46,310 --> 00:03:51,290
+The very last setting is the default sub now slug that will set to recipe's.
+
+51
+00:03:53,660 --> 00:04:00,530
+This is for the submenu navigation, there are usually two navigation menus for profiles, if you were
+
+52
+00:04:00,530 --> 00:04:03,650
+to look at the profile page, you'll see this main menu.
+
+53
+00:04:03,650 --> 00:04:07,880
+And under it is another menu, which is relative to the active main menu item.
+
+54
+00:04:08,330 --> 00:04:14,070
+If I were to change the item in the primary menu, you'll notice the sub navigation changes accordingly.
+
+55
+00:04:14,480 --> 00:04:21,410
+You'll also notice our recipes menu item up here and now I don't plan on having a sub navigation menu,
+
+56
+00:04:21,500 --> 00:04:25,760
+so I've decided to set the sub menu to the same name as the primary menu.
+
+57
+00:04:26,150 --> 00:04:31,160
+Buddy Press will be able to determine that there's no need for a sub menu and that it doesn't have to
+
+58
+00:04:31,160 --> 00:04:31,850
+worry about it.
+
+59
+00:04:32,480 --> 00:04:37,610
+Before we move forward with displaying the content, I want to perform one check before we run this
+
+60
+00:04:37,610 --> 00:04:38,300
+bit of code.
+
+61
+00:04:38,750 --> 00:04:43,800
+The content I want to display will only display submitted recipe posts by the user.
+
+62
+00:04:44,210 --> 00:04:49,580
+However, there is a chance that the admin will not even have this plugin installed or activated.
+
+63
+00:04:49,910 --> 00:04:53,090
+If that's the case, I don't want to display this menu item.
+
+64
+00:04:53,810 --> 00:04:55,880
+There are three solutions we can use.
+
+65
+00:04:56,150 --> 00:05:00,520
+The first solution is to use the function exists function like we've always done.
+
+66
+00:05:00,950 --> 00:05:05,070
+However, I want to take it a step further and check if the plugin is activated.
+
+67
+00:05:05,510 --> 00:05:10,840
+The second solution would be to move all the buddy press code into the recipe plug in itself.
+
+68
+00:05:11,270 --> 00:05:16,700
+While this might seem like a great solution and completely acceptable by Buddy Press, it does cause
+
+69
+00:05:16,700 --> 00:05:20,190
+a problem with having the recipe plug and be usable with any theme.
+
+70
+00:05:20,810 --> 00:05:24,480
+Keep in mind that plug ins should be compatible with most things by default.
+
+71
+00:05:24,860 --> 00:05:29,270
+I only want this functionality to be available with my Udemy theme and nothing else.
+
+72
+00:05:29,640 --> 00:05:32,270
+That's why we're doing all this in the theme itself.
+
+73
+00:05:32,570 --> 00:05:35,860
+The third solution would be to check if the plugin is activated.
+
+74
+00:05:36,170 --> 00:05:37,790
+This is very simple to do.
+
+75
+00:05:38,000 --> 00:05:39,890
+This is the solution will be using.
+
+76
+00:05:40,460 --> 00:05:45,470
+First, I'm going to create a new file inside the includes folder called Utility.
+
+77
+00:05:48,870 --> 00:05:55,080
+This file will contain all our utility functions, utility functions are just normal page functions
+
+78
+00:05:55,080 --> 00:06:00,870
+that really can't do anything by themselves but make it easier to process data, make sure to include
+
+79
+00:06:00,870 --> 00:06:02,910
+this file from the main functions file.
+
+80
+00:06:07,200 --> 00:06:12,750
+Before we define a function, I want to make sure if it's been defined beforehand, I'm going to check
+
+81
+00:06:12,750 --> 00:06:16,740
+if a function called Jiyu plug in activated check exists.
+
+82
+00:06:18,970 --> 00:06:24,820
+If it doesn't will define it ourselves, this function will accept the plug in filename, which will
+
+83
+00:06:24,820 --> 00:06:26,530
+be required to use this function.
+
+84
+00:06:27,040 --> 00:06:30,550
+Inside this function, we need to require the file.
+
+85
+00:06:30,590 --> 00:06:35,350
+WP dash admin includes plug in PHP.
+
+86
+00:06:41,000 --> 00:06:43,890
+The function I want to use is not loaded on every page.
+
+87
+00:06:44,450 --> 00:06:47,080
+We'll need to include it ourselves just in case.
+
+88
+00:06:47,750 --> 00:06:52,760
+Then I'm going to return the value returned by the ears, plug an active function.
+
+89
+00:06:55,130 --> 00:06:57,200
+Will pass him the plug and file name.
+
+90
+00:06:57,560 --> 00:07:02,560
+This is a WordPress function that will check if the plug and we passed in is activated and installed.
+
+91
+00:07:02,930 --> 00:07:08,180
+You can think of the function we just made as a sugar function because it's just a shorthand way of
+
+92
+00:07:08,180 --> 00:07:10,620
+writing these two lines of code into one line.
+
+93
+00:07:11,480 --> 00:07:16,230
+It's also common practice to check if certain utility functions have already been defined.
+
+94
+00:07:16,670 --> 00:07:20,870
+I've been in situations where I've developed multiple plug ins for the same site.
+
+95
+00:07:21,320 --> 00:07:24,020
+This has resulted in me reusing functions.
+
+96
+00:07:24,380 --> 00:07:29,330
+Checking if a function has already been defined is a good way to prevent collisions with your own code.
+
+97
+00:07:29,960 --> 00:07:34,660
+With the function defined, let's use it inside the profile taps file.
+
+98
+00:07:34,670 --> 00:07:38,930
+Let's use a conditional statement and call the utility function we just created.
+
+99
+00:07:45,780 --> 00:07:52,260
+The plug in filename is the file path relative to the plug ins directory, in our case it would be recipe
+
+100
+00:07:52,260 --> 00:07:56,000
+and then the main plug and file, which is the index top file.
+
+101
+00:07:56,340 --> 00:08:02,280
+If this function returns false, we're going to simply return the function, preventing it from executing
+
+102
+00:08:02,280 --> 00:08:03,330
+the rest of this code.
+
+103
+00:08:04,980 --> 00:08:09,220
+Now that we've got that established, we can begin to display the actual content.
+
+104
+00:08:09,600 --> 00:08:11,760
+I'm going to create a brand new file.
+
+105
+00:08:11,760 --> 00:08:17,580
+Inside the includes a buddy press directory called Profile Dash Postop BHP.
+
+106
+00:08:20,190 --> 00:08:26,100
+Define the screen function we passed into the town function, which should be Jiyu recent recipes tab
+
+107
+00:08:26,580 --> 00:08:29,610
+LASLEY include this file from the functions file.
+
+108
+00:08:34,150 --> 00:08:39,880
+Inside this function, we have to do three things we are allowed to just start outputting content,
+
+109
+00:08:39,940 --> 00:08:42,429
+but that's not really the correct way to do things.
+
+110
+00:08:42,820 --> 00:08:45,820
+But press is a plug in that is easily extendable.
+
+111
+00:08:46,120 --> 00:08:51,880
+If you looked through any of the templates, you'll notice there were a lot of due action and apply
+
+112
+00:08:51,880 --> 00:08:54,140
+filters function spread throughout the code.
+
+113
+00:08:54,610 --> 00:08:59,830
+This means that Buddy Press even allows other developers to extend it like we're doing right now.
+
+114
+00:09:00,610 --> 00:09:03,000
+Creating TAB pages is no different.
+
+115
+00:09:03,340 --> 00:09:08,400
+We should allow developers to extend this tab page just like any other body press page.
+
+116
+00:09:08,800 --> 00:09:10,810
+Luckily, it's pretty easy to do.
+
+117
+00:09:11,120 --> 00:09:14,530
+I want to call the function BP core load template.
+
+118
+00:09:16,860 --> 00:09:22,170
+This function will load a core template from Buddy Press with Fall-back support, the template that's
+
+119
+00:09:22,170 --> 00:09:24,480
+loaded depends on the string you pass in.
+
+120
+00:09:25,170 --> 00:09:27,830
+Before I pass in a string, I want to filter it.
+
+121
+00:09:28,080 --> 00:09:31,710
+We have to use the apply filters function the filter hook.
+
+122
+00:09:31,710 --> 00:09:34,560
+I want to call SBP core template plug in.
+
+123
+00:09:37,040 --> 00:09:42,860
+This is a buddy press hug that other developers can use to modify the path of a template, specifically,
+
+124
+00:09:42,980 --> 00:09:45,710
+this will modify the path to the plugin template.
+
+125
+00:09:46,340 --> 00:09:49,610
+The plugin template is a very special template in Buddy Press.
+
+126
+00:09:49,820 --> 00:09:55,060
+Its purpose is specifically for plugins plug ins, get a template to load their content.
+
+127
+00:09:55,370 --> 00:09:59,800
+The path to this template is members single slash plugins.
+
+128
+00:10:00,200 --> 00:10:03,670
+Let's take a look at this template inside the buddy press plug in.
+
+129
+00:10:03,680 --> 00:10:05,330
+Let's open this template file.
+
+130
+00:10:12,180 --> 00:10:18,330
+Here is what Buddy Press says about this plug in inside this blog, comic third party plug ins should
+
+131
+00:10:18,330 --> 00:10:23,100
+use this template to easily add template support to their plug ins for the members component.
+
+132
+00:10:23,850 --> 00:10:26,490
+This is the template that will load our plug ins content.
+
+133
+00:10:26,880 --> 00:10:31,470
+I'm fine with the way it is, so I'm going to leave this template as is now.
+
+134
+00:10:31,470 --> 00:10:35,260
+The question is, how do we load our content inside this template?
+
+135
+00:10:35,610 --> 00:10:41,780
+Well, if you scroll down this template, you'll find two calls to the BP nouveaux member hook function.
+
+136
+00:10:42,420 --> 00:10:46,660
+We won't go down the rabbit hole for this function because there's quite a bit going on with it.
+
+137
+00:10:46,920 --> 00:10:48,600
+I'll just explain what they do.
+
+138
+00:10:48,960 --> 00:10:55,650
+You pass in a value and it'll prepend the text BP underscore, template, underscore, then it'll call
+
+139
+00:10:55,650 --> 00:10:59,040
+the do action function and trigger a hook for you to use.
+
+140
+00:10:59,550 --> 00:11:05,610
+The first example will trigger the BP template title hook and the second example will trigger the BP
+
+141
+00:11:05,610 --> 00:11:06,950
+template content hook.
+
+142
+00:11:07,500 --> 00:11:09,650
+You can use these hooks to load your content.
+
+143
+00:11:09,930 --> 00:11:14,460
+It's important to understand that this template is meant for plugins other than Buddy Press.
+
+144
+00:11:14,850 --> 00:11:17,880
+Buddy Press does not use this page for its own pages.
+
+145
+00:11:18,150 --> 00:11:22,370
+Because of this, we're expected to use these hooks ourselves to load our content.
+
+146
+00:11:23,040 --> 00:11:28,590
+Normally we would open the functions, file and hook into these two hooks, but these two hooks are
+
+147
+00:11:28,590 --> 00:11:30,090
+available on those templates.
+
+148
+00:11:30,690 --> 00:11:35,580
+This is a problem as we could potentially divide or display information that we don't want to.
+
+149
+00:11:35,970 --> 00:11:39,040
+We only want our code to apply to the recipe page.
+
+150
+00:11:39,450 --> 00:11:45,930
+Luckily, we don't have to use the add action function in just the functions file back inside the tab
+
+151
+00:11:45,930 --> 00:11:46,520
+function.
+
+152
+00:11:46,530 --> 00:11:50,460
+I'm going to call the add action function twice for both hooks.
+
+153
+00:11:50,760 --> 00:11:57,660
+I'm going to pass in the two hooks and call the functions Jiyu Buddy Press recent post title and Jiyu
+
+154
+00:11:57,660 --> 00:12:00,000
+Buddy Press post content respectively.
+
+155
+00:12:07,560 --> 00:12:12,720
+Since the screen function will only run if the tab has clicked and loaded, we can safely assume these
+
+156
+00:12:12,720 --> 00:12:18,450
+two hooks will only be added and called at this point to this code will be placed right before we load
+
+157
+00:12:18,450 --> 00:12:19,020
+the template.
+
+158
+00:12:19,020 --> 00:12:24,870
+Since the template is the one calling these two hooks right below this code, I'm going to define both
+
+159
+00:12:24,870 --> 00:12:25,530
+functions.
+
+160
+00:12:25,800 --> 00:12:30,510
+The title function will just have a div tag with the class text center.
+
+161
+00:12:30,960 --> 00:12:33,150
+My text will be my recipe's.
+
+162
+00:12:40,030 --> 00:12:45,700
+The content function will have a list of the recipes the user has submitted, the first thing I want
+
+163
+00:12:45,700 --> 00:12:52,660
+to do is grab the ID of the current profile, create a variable called profile user ID and assign its
+
+164
+00:12:52,660 --> 00:12:54,210
+value returned by the function.
+
+165
+00:12:54,220 --> 00:12:59,290
+BP displayed user ID, which will grab the ID of the current user profile.
+
+166
+00:13:01,950 --> 00:13:07,510
+I'm going to make a conditional statement to make sure this I.D. is not empty, if it is empty.
+
+167
+00:13:07,560 --> 00:13:10,980
+We'll simply return the function and not display anything at all.
+
+168
+00:13:14,830 --> 00:13:20,830
+Now that we have an I.D., I'm going to create a new variable named Post, which will be a custom query.
+
+169
+00:13:21,340 --> 00:13:23,560
+There are only three things I want to set.
+
+170
+00:13:23,920 --> 00:13:27,550
+The first is the author, which will be set to the user ID.
+
+171
+00:13:32,760 --> 00:13:39,420
+We only want to grab posts based on the profile being viewed, then I want to set the posts per page
+
+172
+00:13:39,420 --> 00:13:40,440
+setting to 10.
+
+173
+00:13:42,880 --> 00:13:47,660
+I only want the ten most recent posts, since this is a custom post type.
+
+174
+00:13:47,710 --> 00:13:52,510
+We have to set the post type two recipe so that it'll only grou recipe posts.
+
+175
+00:13:55,180 --> 00:14:00,190
+Then, just like any other loop, I'm going to begin the process of looping through all of this.
+
+176
+00:14:08,450 --> 00:14:09,560
+Nothing new so far.
+
+177
+00:14:09,680 --> 00:14:11,790
+I only want to output the excerpt.
+
+178
+00:14:12,080 --> 00:14:14,660
+Luckily, we don't have to rewrite the code for that.
+
+179
+00:14:14,870 --> 00:14:18,130
+If you can recall, we already have a template for excerpts.
+
+180
+00:14:18,380 --> 00:14:26,390
+I'm going to call the git template part function and pass in Parshall's Post content dash excerpt,
+
+181
+00:14:26,570 --> 00:14:30,050
+which will use the template part we use in the index template.
+
+182
+00:14:32,750 --> 00:14:38,210
+Lastly, I'm just going to reset the data using the WP reset post data function.
+
+183
+00:14:44,420 --> 00:14:49,790
+Let's check out the recipe tab now, everything is coming out great except that the images are a bit
+
+184
+00:14:49,790 --> 00:14:50,350
+too big.
+
+185
+00:14:50,780 --> 00:14:52,870
+We really don't need all this space.
+
+186
+00:14:53,060 --> 00:14:55,060
+I'm going to adjust my tent a little bit.
+
+187
+00:14:55,340 --> 00:14:58,700
+I'm going to wrap my loop with two sets of div tags.
+
+188
+00:14:58,940 --> 00:15:05,540
+I'll apply the ID post to the first div with the classes row, justify content and center.
+
+189
+00:15:17,600 --> 00:15:21,930
+The second div tag will how the class is COLB MDH.
+
+190
+00:15:23,550 --> 00:15:29,700
+The classes I'm currently applying are bootstrap classes, I recommend you check out the bootstrap documentation
+
+191
+00:15:29,700 --> 00:15:31,340
+to learn more about these classes.
+
+192
+00:15:31,620 --> 00:15:36,810
+All they do is center the content for us, refresh the page and you should see everything looking a
+
+193
+00:15:36,810 --> 00:15:37,360
+bit better.
+
+194
+00:15:37,830 --> 00:15:43,530
+The classes I just used are bootstrap classes and are not specific to WordPress or Buddy Press in any
+
+195
+00:15:43,530 --> 00:15:43,880
+way.
+
+196
+00:15:44,730 --> 00:15:46,250
+Let me go over what happened.
+
+197
+00:15:46,440 --> 00:15:50,700
+The first thing we did was tell Buddy Press about a new menu item we'd like to add.
+
+198
+00:15:51,060 --> 00:15:56,490
+If a user clicks on this menu item, then the screen function will be called the screen function does
+
+199
+00:15:56,490 --> 00:15:57,300
+a few things.
+
+200
+00:15:57,750 --> 00:16:00,140
+What we want to do is display our content.
+
+201
+00:16:00,390 --> 00:16:02,520
+There are a couple of ways to go about this.
+
+202
+00:16:02,790 --> 00:16:09,010
+We could, if we wanted to, just output HTML directly from the function, that's perfectly fine.
+
+203
+00:16:09,270 --> 00:16:14,790
+However, it's always good practice to make the page matched the site and allow other plugins to extend
+
+204
+00:16:14,790 --> 00:16:20,520
+the page if they need to buddy press provide a template for plugins to use so that plug ins don't have
+
+205
+00:16:20,520 --> 00:16:24,120
+to worry about a lot of the markup or calling any required functions.
+
+206
+00:16:24,570 --> 00:16:29,400
+A special thing about this template is that there are action hooks called at certain points to allow
+
+207
+00:16:29,400 --> 00:16:31,040
+developers to display content.
+
+208
+00:16:31,740 --> 00:16:33,360
+That's exactly what we do here.
+
+209
+00:16:33,540 --> 00:16:36,210
+We use those action hooks specifically.
+
+210
+00:16:36,330 --> 00:16:39,630
+We hook into the title and content action hooks.
+
+211
+00:16:39,960 --> 00:16:43,740
+The functions that are called will output a title and the content respectively.
+
+212
+00:16:44,070 --> 00:16:47,850
+It's a lot of work, but well worth the effort that should do it for now.
+
+213
+00:16:48,000 --> 00:16:50,040
+Let's continue on to the next lecture.
+
+214
+00:16:51,580 --> 00:16:52,130
+Oh.
+

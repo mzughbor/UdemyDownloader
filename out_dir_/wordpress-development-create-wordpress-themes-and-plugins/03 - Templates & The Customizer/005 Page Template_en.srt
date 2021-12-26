@@ -1,0 +1,468 @@
+1
+00:00:07,410 --> 00:00:12,000
+The single template is finished, the header and footer are something we need to work on, but we'll
+
+2
+00:00:12,000 --> 00:00:12,830
+get to those later.
+
+3
+00:00:13,200 --> 00:00:16,590
+Right now, I want to focus on creating more templates.
+
+4
+00:00:17,130 --> 00:00:22,950
+As I stated before, the index template is the default template WordPress will load if any other template
+
+5
+00:00:22,950 --> 00:00:23,690
+is unavailable.
+
+6
+00:00:24,210 --> 00:00:28,440
+Let's examine the order of WordPress will use to determine what file to load.
+
+7
+00:00:29,430 --> 00:00:33,100
+WordPress will begin by looking for a custom template file.
+
+8
+00:00:33,570 --> 00:00:38,820
+You are free to create custom template files with custom names, but that's something we'll explore
+
+9
+00:00:38,820 --> 00:00:39,710
+in the future lecture.
+
+10
+00:00:40,260 --> 00:00:45,870
+If it doesn't find a custom template, then it'll begin searching for a template called Page, followed
+
+11
+00:00:45,870 --> 00:00:47,590
+by the slug of the page.
+
+12
+00:00:48,060 --> 00:00:52,170
+You can also use the ID, but that comes secondary to the slug.
+
+13
+00:00:53,100 --> 00:00:59,850
+Lastly, it'll search for the page singular and indexed template files in that order for this lecture
+
+14
+00:00:59,850 --> 00:01:03,210
+will be creating the page template.
+
+15
+00:01:05,440 --> 00:01:09,450
+To understand why we're going to create this template, let's view our site.
+
+16
+00:01:09,910 --> 00:01:16,070
+If I were to view the About US page, you'll notice that we have the same problem as single posts.
+
+17
+00:01:16,510 --> 00:01:20,210
+It's not exactly displayed how we would like it to be displayed.
+
+18
+00:01:20,920 --> 00:01:25,990
+Let's start creating the page template now from the template hierarchy page.
+
+19
+00:01:25,990 --> 00:01:28,690
+We have to name this file page dot BHP.
+
+20
+00:01:29,080 --> 00:01:31,090
+So let's create that file now.
+
+21
+00:01:33,360 --> 00:01:37,630
+I'm going to copy and paste the single template into the page template.
+
+22
+00:01:38,040 --> 00:01:40,040
+We're going to strip this down massively.
+
+23
+00:01:40,290 --> 00:01:46,830
+I'm going to remove the metadata tags, remove any links related to other posts and the post author
+
+24
+00:01:46,830 --> 00:01:47,340
+box.
+
+25
+00:02:03,660 --> 00:02:07,810
+What you'll end up having is the title content and the comments template.
+
+26
+00:02:08,190 --> 00:02:10,770
+Let's see what WordPress recommends for this template.
+
+27
+00:02:11,100 --> 00:02:15,060
+I'm in the theme development Codex page and I'm on the page.
+
+28
+00:02:15,730 --> 00:02:17,850
+P.S. I'll provide a link to that.
+
+29
+00:02:17,850 --> 00:02:23,340
+In the resource section of this lecture, WordPress recommends we display the title and content.
+
+30
+00:02:23,640 --> 00:02:24,780
+We're already doing that.
+
+31
+00:02:24,790 --> 00:02:26,660
+So let's move onto the next point.
+
+32
+00:02:26,970 --> 00:02:33,450
+Actually, we're already doing most of these, but bullet point five, number five recommends we add
+
+33
+00:02:33,450 --> 00:02:34,380
+an edit link.
+
+34
+00:02:34,500 --> 00:02:38,810
+But like last time, WordPress already provides this in the top bar.
+
+35
+00:02:39,090 --> 00:02:41,720
+So we've covered all bases we'd like to cover.
+
+36
+00:02:42,480 --> 00:02:47,350
+Let's open the HTML page template and see if we're missing anything from the original design.
+
+37
+00:02:47,820 --> 00:02:52,440
+If you take a look, you'll notice that there's one huge difference between this template and the page
+
+38
+00:02:52,440 --> 00:02:53,360
+we currently have.
+
+39
+00:02:53,760 --> 00:02:59,580
+That would be this big strip that contains the title will have to make a couple of modifications to
+
+40
+00:02:59,580 --> 00:03:00,450
+achieve this goal.
+
+41
+00:03:00,630 --> 00:03:02,010
+Switch back to the editor.
+
+42
+00:03:02,370 --> 00:03:06,870
+First, I'm going to remove this conditional statement that checks if there are posts.
+
+43
+00:03:13,470 --> 00:03:18,780
+The reason I'm removing it is because WordPress already checks if this page is actually available,
+
+44
+00:03:19,140 --> 00:03:23,940
+if a page does not exist, then WordPress will load the fall for templates.
+
+45
+00:03:23,940 --> 00:03:26,320
+So there's no need to make this check ourselves.
+
+46
+00:03:27,030 --> 00:03:32,130
+Next, I'm going to remove the title from its original position since it'll be called elsewhere.
+
+47
+00:03:34,300 --> 00:03:40,820
+Then I'm going to open the static HTML page template and look for that bar that displays the title.
+
+48
+00:03:41,230 --> 00:03:45,780
+It'll be these section tags surrounded by the page title comments.
+
+49
+00:03:46,150 --> 00:03:48,030
+I'm going to copy this in place.
+
+50
+00:03:48,040 --> 00:03:50,290
+This right after the header page like so.
+
+51
+00:03:57,050 --> 00:04:03,060
+You'll notice right away we have a situation, our page titled HTML is outside of the loop.
+
+52
+00:04:03,410 --> 00:04:05,120
+There are two solutions for this.
+
+53
+00:04:05,420 --> 00:04:11,590
+We can either move the loop to encompass all this or we can repeat the loop in this situation.
+
+54
+00:04:11,600 --> 00:04:14,940
+I want to reuse the loop rather than move all the HTML.
+
+55
+00:04:15,260 --> 00:04:18,950
+So just like last time, I'm going to call another loop like this.
+
+56
+00:04:27,000 --> 00:04:32,700
+Then I'm going to move this section inside the loop and replace the title with the template, tag the
+
+57
+00:04:32,700 --> 00:04:33,120
+title.
+
+58
+00:04:39,440 --> 00:04:42,290
+I'm going to remove the title from Downbelow.
+
+59
+00:04:44,540 --> 00:04:50,510
+Next, we need to reset this loop, we've experienced multiple loops before, but those were two different
+
+60
+00:04:50,510 --> 00:04:50,960
+loops.
+
+61
+00:04:51,590 --> 00:04:56,510
+When you reuse the same loop, you need to reset the loop just like you would if you're using a different
+
+62
+00:04:56,510 --> 00:04:56,830
+loop.
+
+63
+00:04:57,170 --> 00:05:00,410
+The function we have to call is called Rewind Post's.
+
+64
+00:05:02,620 --> 00:05:06,440
+In the resource section of this lecture, I provide a link to this function.
+
+65
+00:05:06,820 --> 00:05:13,720
+This is what WordPress says, rewind the loop posts in order to reuse the same query in different locations
+
+66
+00:05:13,720 --> 00:05:14,350
+on a page.
+
+67
+00:05:15,040 --> 00:05:17,320
+This is definitely the function we need.
+
+68
+00:05:18,100 --> 00:05:20,700
+The very last thing we need to do is add a subtitle.
+
+69
+00:05:21,010 --> 00:05:24,540
+However, there is no subtitle feature available in WordPress.
+
+70
+00:05:25,120 --> 00:05:26,920
+This leaves us with two options.
+
+71
+00:05:27,160 --> 00:05:30,130
+We either created ourselves or use a plugin.
+
+72
+00:05:30,580 --> 00:05:32,520
+We will be going with the second option.
+
+73
+00:05:32,800 --> 00:05:36,190
+A lot of developers will want to go with creating their own plugin.
+
+74
+00:05:36,190 --> 00:05:41,590
+But for something as simple as this, it would be best to just go with a third party solution and the
+
+75
+00:05:41,590 --> 00:05:46,750
+resource section of this lecture, I provide a link to a plugin called WP subtitle.
+
+76
+00:05:47,110 --> 00:05:51,040
+This plugin is super fast and simple to use in the description.
+
+77
+00:05:51,040 --> 00:05:55,540
+You'll notice the developer provides info on how to add this plug into your theme.
+
+78
+00:05:55,960 --> 00:05:58,150
+It's as simple as one line of code.
+
+79
+00:05:58,960 --> 00:06:02,950
+I'm going to go to the admin dashboard and navigate to plug ins, add new.
+
+80
+00:06:03,460 --> 00:06:09,700
+I'm going to search for a plugin called WP subtitle, then I'm going to install and activate it.
+
+81
+00:06:15,260 --> 00:06:21,710
+Once activated, you can now edit the about us page and you will see this newly created field called
+
+82
+00:06:21,710 --> 00:06:25,640
+subtitle, add a subtitle quickly and then say your changes.
+
+83
+00:06:27,890 --> 00:06:33,830
+To see the subtitle on the page, all we have to do is just copy and paste this one line of code onto
+
+84
+00:06:33,830 --> 00:06:35,030
+where we want it to appear.
+
+85
+00:06:35,510 --> 00:06:38,060
+I'm going to paste it into the tax.
+
+86
+00:06:40,290 --> 00:06:46,380
+Refresh the page and you should now see the subtitle up here before we declare this template finished,
+
+87
+00:06:46,380 --> 00:06:47,760
+we have to do one more thing.
+
+88
+00:06:48,180 --> 00:06:54,950
+If I deactivate this plugin, then we will throw an error because the subtitle function is undefined.
+
+89
+00:06:55,590 --> 00:07:00,870
+I'm going to wrap this function in a conditional statement and use the function function exists and
+
+90
+00:07:00,870 --> 00:07:01,950
+pass in the function.
+
+91
+00:07:01,950 --> 00:07:03,270
+Name the subtitle.
+
+92
+00:07:12,320 --> 00:07:19,520
+This P function does add its name suggests if this function exists and we know that the WP subtitle
+
+93
+00:07:19,520 --> 00:07:24,630
+plugin is activated and this page may have a subtitle will then display it like so.
+
+94
+00:07:25,460 --> 00:07:25,900
+All right.
+
+95
+00:07:26,120 --> 00:07:28,310
+So that's one way to go about this.
+
+96
+00:07:28,310 --> 00:07:30,410
+But we can make this even more cleaner.
+
+97
+00:07:30,710 --> 00:07:33,170
+I haven't been completely honest with you.
+
+98
+00:07:33,450 --> 00:07:37,970
+You don't have to create a loop like this to get the title outside of the post.
+
+99
+00:07:38,240 --> 00:07:40,690
+There's actually a template tag that does this.
+
+100
+00:07:41,180 --> 00:07:44,440
+I'm going to copy my HTML and paste it right above.
+
+101
+00:07:44,840 --> 00:07:49,220
+Then I'm going to replace the title function with single post title.
+
+102
+00:07:49,700 --> 00:07:55,340
+Since we have this function ready, then we can just remove the loop and the function rewind posts like
+
+103
+00:07:55,340 --> 00:07:55,700
+so.
+
+104
+00:08:03,240 --> 00:08:09,600
+This is much cleaner code wise, so if this function was available, why did I teach you how to recreate
+
+105
+00:08:09,600 --> 00:08:10,050
+the loop?
+
+106
+00:08:10,410 --> 00:08:13,890
+In some situations you may need to create two loops.
+
+107
+00:08:14,130 --> 00:08:17,440
+I just wanted to show you an alternative solution to this problem.
+
+108
+00:08:17,880 --> 00:08:19,620
+Neither of these solutions are wrong.
+
+109
+00:08:19,650 --> 00:08:20,840
+It's just what you prefer.
+
+110
+00:08:21,540 --> 00:08:25,000
+If I refresh the page, then you should see both titles appear.
+
+111
+00:08:25,380 --> 00:08:31,230
+The subtitle also appears because the developer of the plugin has made it so that their template tag
+
+112
+00:08:31,230 --> 00:08:33,730
+function works in and outside of a loop.
+
+113
+00:08:34,230 --> 00:08:38,880
+I'm actually going to delete the Loopt solution and just keep this simpler version.
+
+114
+00:08:39,390 --> 00:08:42,320
+Like I said before, neither is the wrong solution.
+
+115
+00:08:42,330 --> 00:08:43,980
+It's just what you like best.
+
+116
+00:08:44,760 --> 00:08:46,190
+That wraps it up for this template.
+
+117
+00:08:46,350 --> 00:08:48,900
+Let's move on to creating more templates.
+

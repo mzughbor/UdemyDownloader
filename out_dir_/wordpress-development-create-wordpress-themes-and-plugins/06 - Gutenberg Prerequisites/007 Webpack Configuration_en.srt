@@ -1,0 +1,496 @@
+1
+00:00:07,320 --> 00:00:13,620
+Now that we have Westpac installed, let's begin configuring it, it's pretty simple, you need to create
+
+2
+00:00:13,620 --> 00:00:17,160
+a file named Westpac dot config James.
+
+3
+00:00:19,400 --> 00:00:23,640
+When we run Westpac, Westpac will look for this file and use it.
+
+4
+00:00:24,020 --> 00:00:28,740
+This file will contain the settings for Westpac and you can modify how it behaves through it.
+
+5
+00:00:29,390 --> 00:00:34,180
+I'm going to create a variable named config, which will be set to an empty object.
+
+6
+00:00:34,580 --> 00:00:36,290
+Then I'm going to export it.
+
+7
+00:00:38,360 --> 00:00:43,900
+There are two properties required, if we don't define anything, then Westpac will throw an error.
+
+8
+00:00:44,450 --> 00:00:46,300
+The first property is entry.
+
+9
+00:00:46,520 --> 00:00:51,980
+I'm going to set this to dot slash app slash index dot James.
+
+10
+00:00:54,290 --> 00:00:58,250
+This folder and file doesn't exist, so will create those two now.
+
+11
+00:01:00,830 --> 00:01:04,040
+Inside the index file, I'm going to log a message.
+
+12
+00:01:06,140 --> 00:01:09,470
+It's important to note that you can name this file whatever you want.
+
+13
+00:01:09,860 --> 00:01:13,120
+All right, let's go back to the Web config file.
+
+14
+00:01:13,340 --> 00:01:19,190
+The next property we have to set is the output property, which contains the settings to where the final
+
+15
+00:01:19,190 --> 00:01:20,240
+file will be saved.
+
+16
+00:01:20,810 --> 00:01:22,130
+This will be an object.
+
+17
+00:01:22,130 --> 00:01:27,140
+And there are two properties we have to set, which are the path and file name properties.
+
+18
+00:01:29,490 --> 00:01:36,000
+The filename property can be set to whatever you want if you view the documentation or really any tutorials,
+
+19
+00:01:36,000 --> 00:01:38,040
+most developers name this bundle.
+
+20
+00:01:38,280 --> 00:01:41,070
+James will follow this naming convention.
+
+21
+00:01:43,300 --> 00:01:49,750
+The path property is a bit tricky, this will be the name of the directory where the bundle dodgiest
+
+22
+00:01:49,750 --> 00:01:50,810
+file will be saved.
+
+23
+00:01:51,130 --> 00:01:54,600
+However, you must input a full system path.
+
+24
+00:01:54,910 --> 00:01:58,250
+You can't just put a relative path as you'll receive an error.
+
+25
+00:01:58,750 --> 00:02:03,860
+Luckily, Node provides some functions for helping us generate a full system path.
+
+26
+00:02:04,240 --> 00:02:07,350
+We don't have to guess and input some random directory.
+
+27
+00:02:07,930 --> 00:02:13,960
+I'm going to create a new variable at the top called Path and set its value to the module path.
+
+28
+00:02:16,120 --> 00:02:21,970
+The path module is a default node module that helps you with generating paths in your system.
+
+29
+00:02:22,750 --> 00:02:26,350
+This module will return an object with a couple of methods we can use.
+
+30
+00:02:26,800 --> 00:02:30,220
+I'm going to use this object and call the resolve method.
+
+31
+00:02:32,440 --> 00:02:35,740
+This method will return a string of an absolute directory.
+
+32
+00:02:36,250 --> 00:02:39,100
+The great thing about this module is that it's cross compatible.
+
+33
+00:02:39,610 --> 00:02:45,070
+This code will work on any operating system such as Windows, OSX and Linux.
+
+34
+00:02:45,370 --> 00:02:48,340
+This method has an unlimited number of parameters.
+
+35
+00:02:48,670 --> 00:02:52,010
+You just pass in the name of the directories you'd like to have.
+
+36
+00:02:52,660 --> 00:02:56,520
+I'm going to pass in the constant underscore underscored donate.
+
+37
+00:02:58,840 --> 00:03:05,230
+This is a constant created by node for you automatically it contains the path to the current file it's
+
+38
+00:03:05,230 --> 00:03:08,770
+being used in, I'm going to then pass in dist.
+
+39
+00:03:09,160 --> 00:03:11,120
+This can be named whatever you want.
+
+40
+00:03:11,680 --> 00:03:17,110
+This will return a path to our current directory and point to a folder called Disked, which is short
+
+41
+00:03:17,110 --> 00:03:18,010
+for distribution.
+
+42
+00:03:18,430 --> 00:03:22,780
+In a lot of tutorials and examples, you'll find that most developers will name at this.
+
+43
+00:03:23,140 --> 00:03:26,720
+Some developers will also name it build, which is perfectly fine.
+
+44
+00:03:27,040 --> 00:03:28,090
+It's all preference.
+
+45
+00:03:28,780 --> 00:03:35,830
+In the end, Web page will look at this and create a file named Bundle that contains all our JavaScript
+
+46
+00:03:35,830 --> 00:03:39,540
+code and save it in our current directory inside a folder named Dist.
+
+47
+00:03:40,270 --> 00:03:43,360
+This is the minimum requirements for configuring web pack.
+
+48
+00:03:43,690 --> 00:03:46,810
+There are more settings we can set, but we'll get to those later.
+
+49
+00:03:47,140 --> 00:03:50,440
+In order for this to work, we need to install another module.
+
+50
+00:03:50,830 --> 00:03:54,550
+The web pack module is what takes care of processing everything.
+
+51
+00:03:55,180 --> 00:03:58,900
+In order for web pack to process everything, we need to write the code for it.
+
+52
+00:03:59,290 --> 00:04:00,700
+We've only configured it.
+
+53
+00:04:01,000 --> 00:04:04,180
+Fortunately, there is a tool that takes care of that for us.
+
+54
+00:04:04,450 --> 00:04:08,740
+In the resource section of this lecture, I provide a link to the official web page.
+
+55
+00:04:08,860 --> 00:04:15,850
+Seelie Node allows you to create your own custom commands and there are modules that take advantage
+
+56
+00:04:15,850 --> 00:04:18,279
+of that feature web pack being one of them.
+
+57
+00:04:18,700 --> 00:04:23,590
+With this tool, we can allow Web pack to take care of making it process the code itself.
+
+58
+00:04:24,410 --> 00:04:32,510
+Back inside the command line, input the commands, npm iWeb pack, dash, Seelie, Dash, dash, save,
+
+59
+00:04:32,510 --> 00:04:33,290
+dash dev.
+
+60
+00:04:35,520 --> 00:04:41,670
+I'm introducing a new subcommander here called I, which is short for insult, there's no difference
+
+61
+00:04:41,670 --> 00:04:42,410
+between the two.
+
+62
+00:04:42,630 --> 00:04:44,910
+The eye is just the shorthand version.
+
+63
+00:04:45,360 --> 00:04:46,330
+Run this command.
+
+64
+00:04:46,470 --> 00:04:48,020
+It may take a while to install.
+
+65
+00:04:48,030 --> 00:04:48,900
+So be patient.
+
+66
+00:04:51,380 --> 00:04:59,470
+The last step is to have NPM run the command, open the package, Jason, file under the scripts property,
+
+67
+00:04:59,510 --> 00:05:03,830
+we can have NPM run the commands for us rather than typing in ourselves.
+
+68
+00:05:04,130 --> 00:05:06,470
+Create a new property called START.
+
+69
+00:05:06,860 --> 00:05:11,120
+You can name this whatever you want, but I recommend keeping it short and concise.
+
+70
+00:05:11,480 --> 00:05:14,010
+The value for this will be the command you want to run.
+
+71
+00:05:14,270 --> 00:05:17,060
+I'm going to input the following web pack.
+
+72
+00:05:17,060 --> 00:05:21,070
+Dash, dash config, web pack config JS.
+
+73
+00:05:23,380 --> 00:05:29,890
+The Westpac command was provided to us when we installed Westpac CLIA module, this command requires
+
+74
+00:05:29,890 --> 00:05:31,600
+us to set the option config.
+
+75
+00:05:31,990 --> 00:05:36,490
+This option will tell Westpac what file contains our configuration settings.
+
+76
+00:05:36,820 --> 00:05:38,940
+Then you simply pass in the filename.
+
+77
+00:05:39,160 --> 00:05:42,470
+In our case, this would be Westpac config.
+
+78
+00:05:42,580 --> 00:05:44,680
+Yes, that's all we need to do.
+
+79
+00:05:44,920 --> 00:05:50,050
+Now we can run this commands inside the command line input npm run start.
+
+80
+00:05:50,380 --> 00:05:56,230
+This will tell NPM to run the command inside the scripts property called Start.
+
+81
+00:05:56,950 --> 00:06:00,280
+After running this command, you'll see a couple of stuff being outputted.
+
+82
+00:06:00,730 --> 00:06:03,910
+You'll be provided with the amount of time it took to run this command.
+
+83
+00:06:04,210 --> 00:06:05,950
+It's fairly fast for me.
+
+84
+00:06:05,960 --> 00:06:07,090
+It took under a second.
+
+85
+00:06:07,750 --> 00:06:12,440
+You'll also be provided with the name of the file that contains all your code and the files that are
+
+86
+00:06:12,460 --> 00:06:18,500
+saved inside this file where you only have one file and that's the index JS file.
+
+87
+00:06:19,300 --> 00:06:22,480
+One thing I want you to notice is the size of both files.
+
+88
+00:06:22,810 --> 00:06:25,270
+The index file is only a few bytes.
+
+89
+00:06:25,430 --> 00:06:32,440
+However, the bundle dogs file is way larger than the index, while the jump in size is massive.
+
+90
+00:06:32,680 --> 00:06:33,940
+So why is this?
+
+91
+00:06:34,480 --> 00:06:38,380
+Well, let's check out the Bundle JS file for more answers.
+
+92
+00:06:38,620 --> 00:06:44,740
+After running this command, Westpac should create a directory called this with the bundle dodgiest
+
+93
+00:06:44,740 --> 00:06:45,870
+file saved inside.
+
+94
+00:06:46,390 --> 00:06:47,530
+Let's open this file.
+
+95
+00:06:47,680 --> 00:06:48,940
+It's safe to do so.
+
+96
+00:06:49,720 --> 00:06:51,820
+Westpac generates a lot of code.
+
+97
+00:06:52,120 --> 00:06:53,440
+There's a lot going on here.
+
+98
+00:06:53,650 --> 00:06:57,220
+It can be very intimidating, but it's nothing you have to worry about.
+
+99
+00:06:57,580 --> 00:07:02,290
+Westpac is just making sure the code works without a problem in future.
+
+100
+00:07:02,290 --> 00:07:05,470
+Lectures will definitely benefit from this optimization.
+
+101
+00:07:05,800 --> 00:07:10,000
+If you scroll around, you'll eventually find the message that we logged in our file.
+
+102
+00:07:10,600 --> 00:07:15,670
+At first glance, this seems excessive just for one line of code and you're completely right.
+
+103
+00:07:16,090 --> 00:07:19,900
+If you're using Westpac for small projects, then you really don't need it.
+
+104
+00:07:20,380 --> 00:07:24,040
+Westpac is for larger projects like single page apps.
+
+105
+00:07:24,220 --> 00:07:29,680
+I promise we'll use Westpac in a larger project, but for now, we'll keep it to this simple example.
+
+106
+00:07:30,160 --> 00:07:31,510
+Let's check if this works.
+
+107
+00:07:32,110 --> 00:07:35,710
+The file that Westpac generates is meant to be used on the front end.
+
+108
+00:07:36,100 --> 00:07:43,690
+I'm going to create a file called Indexed HTML and inside this HTML file, I'm just going to load the
+
+109
+00:07:43,690 --> 00:07:45,190
+bundle JS file.
+
+110
+00:07:46,770 --> 00:07:50,940
+Then I'm going to simply open up the index HTML file.
+
+111
+00:07:53,300 --> 00:08:00,170
+This is just a simple HTML file, so we don't need any servers or backend logic to help us open up the
+
+112
+00:08:00,170 --> 00:08:03,530
+console and you'll see the message hello, being outputted.
+
+113
+00:08:04,220 --> 00:08:10,330
+The real power of web comes into play when we start using multiple modules before I am this lecture,
+
+114
+00:08:10,370 --> 00:08:11,660
+let's go back to the terminal.
+
+115
+00:08:12,020 --> 00:08:17,870
+If you were to look at the message outputted, you'll see that Watpac tells us we should set the mode.
+
+116
+00:08:18,260 --> 00:08:21,920
+Let's add this to the config file and set it to development.
+
+117
+00:08:26,790 --> 00:08:31,240
+There are two possible values for this, which are production and development.
+
+118
+00:08:31,590 --> 00:08:34,350
+I believe it's obvious which setting you should use.
+
+119
+00:08:34,620 --> 00:08:40,650
+Since we're on our local machines, then this should be set to development once you upload your code
+
+120
+00:08:40,650 --> 00:08:41,580
+to a live server.
+
+121
+00:08:41,669 --> 00:08:46,860
+Be sure to set this to production when PAC uses this to optimize the code.
+
+122
+00:08:46,860 --> 00:08:52,380
+Depending on where the code will be used, the development mode will output more messages to help you
+
+123
+00:08:52,380 --> 00:08:53,380
+debug your script.
+
+124
+00:08:53,760 --> 00:08:56,850
+Now that we've set that, let's move on to the next lecture.
+

@@ -1,0 +1,560 @@
+1
+00:00:07,590 --> 00:00:13,650
+Welcome to another sidebar in this sidebar, I want to take the time to talk about the rest and spread
+
+2
+00:00:13,650 --> 00:00:14,460
+operators.
+
+3
+00:00:14,730 --> 00:00:17,160
+These are two new features in Essex.
+
+4
+00:00:17,370 --> 00:00:19,600
+You'll see them used often in Gothenburg.
+
+5
+00:00:20,190 --> 00:00:24,600
+We're going to step away from our project for a moment to focus solely on these concepts.
+
+6
+00:00:24,840 --> 00:00:30,720
+I'm in a different directorate with a file called Index J.S. In the resource section of this lecture,
+
+7
+00:00:30,720 --> 00:00:35,210
+I provide a zip file with this code, download it and unzip the contents.
+
+8
+00:00:35,730 --> 00:00:38,010
+The index file is pretty straightforward.
+
+9
+00:00:38,280 --> 00:00:43,020
+I'm creating a function called ADD where it will console log.
+
+10
+00:00:43,020 --> 00:00:48,080
+Any numbers passed in the ad function doesn't accept in any parameters.
+
+11
+00:00:48,300 --> 00:00:50,940
+Instead, it'll use the arguments object.
+
+12
+00:00:51,240 --> 00:00:56,910
+The arguments object will contain all the values passed in, including the ones that weren't specified
+
+13
+00:00:56,910 --> 00:00:57,920
+in the parameters.
+
+14
+00:00:58,560 --> 00:01:03,010
+We're using this by looping through all the values passed in and adding them all together.
+
+15
+00:01:03,420 --> 00:01:05,160
+This makes our function flexible.
+
+16
+00:01:05,459 --> 00:01:10,260
+If you look below, we can choose not to provide any parameters or up to three.
+
+17
+00:01:10,470 --> 00:01:11,400
+It's limitless.
+
+18
+00:01:11,970 --> 00:01:17,640
+The first call should result in zero, the second call should result in one and the last call should
+
+19
+00:01:17,640 --> 00:01:18,770
+result in six.
+
+20
+00:01:19,080 --> 00:01:25,980
+Let's test this out inside your command line code into the directory and run the command node index.
+
+21
+00:01:28,280 --> 00:01:35,220
+As expected, we get the numbers zero one and six outputted, we can clean this function up even further.
+
+22
+00:01:35,510 --> 00:01:39,420
+At first glance, the arguments object can be used like an array.
+
+23
+00:01:39,710 --> 00:01:41,990
+However, that's not completely the case.
+
+24
+00:01:42,510 --> 00:01:46,340
+I'm going to remove a lot of this code except for the console statement.
+
+25
+00:01:46,730 --> 00:01:49,100
+Then I'll paste in some code really quickly.
+
+26
+00:01:51,670 --> 00:01:58,300
+All right, this time I'm using the reduced function to loop through the array of values this will accept
+
+27
+00:01:58,300 --> 00:02:03,670
+in an anonymous function, what we passed in the values that are being looped through the purpose of
+
+28
+00:02:03,670 --> 00:02:07,920
+this function is to loop through all the values and then return one single value.
+
+29
+00:02:08,350 --> 00:02:10,250
+The function has two parameters.
+
+30
+00:02:10,479 --> 00:02:11,820
+The first is the total.
+
+31
+00:02:12,190 --> 00:02:14,770
+The second is the current number in the iteration.
+
+32
+00:02:15,100 --> 00:02:18,400
+In this example, we're simply adding no to the total.
+
+33
+00:02:18,790 --> 00:02:22,990
+After every number has been loop through, the total will be returned.
+
+34
+00:02:23,620 --> 00:02:24,670
+Let's try this out.
+
+35
+00:02:24,880 --> 00:02:27,100
+Input the command node index.
+
+36
+00:02:29,380 --> 00:02:35,890
+This time will receive an error, we get this error because the reduced function doesn't exist, the
+
+37
+00:02:35,890 --> 00:02:39,030
+reduced function is only available for a raise.
+
+38
+00:02:39,280 --> 00:02:42,670
+The arguments value we have here is not a true Arae.
+
+39
+00:02:43,030 --> 00:02:48,310
+We can access the values like a raise, but a lot of the functions that come with the raise are unavailable.
+
+40
+00:02:48,880 --> 00:02:52,900
+It's not the end of the world because there are different ways to loop through values.
+
+41
+00:02:53,050 --> 00:02:55,910
+But it would be nice if we could use the array functions.
+
+42
+00:02:56,230 --> 00:02:59,250
+This is where the rest operator comes into play.
+
+43
+00:02:59,920 --> 00:03:01,630
+What is the rest operator?
+
+44
+00:03:01,780 --> 00:03:07,060
+The rest operator allows you to create a variable that will be an array inside your function.
+
+45
+00:03:07,360 --> 00:03:11,590
+Inside the functions parameters create a parameter called numbers.
+
+46
+00:03:12,190 --> 00:03:16,780
+We want this variable to maintain all the values a user passes on to the function.
+
+47
+00:03:17,170 --> 00:03:21,580
+To do that, we'll need to add three dots right before the variable name like.
+
+48
+00:03:21,590 --> 00:03:24,520
+So now we can replace the arguments.
+
+49
+00:03:24,520 --> 00:03:25,840
+Key word with the numbers.
+
+50
+00:03:25,840 --> 00:03:26,980
+Variable like some.
+
+51
+00:03:29,220 --> 00:03:32,980
+This function will work, but there is one change we'll have to make below.
+
+52
+00:03:33,360 --> 00:03:36,560
+We can't call this function with no values like we're doing here.
+
+53
+00:03:36,870 --> 00:03:42,100
+We'll have to remove this first call as it will throw an error once you have it removed.
+
+54
+00:03:42,180 --> 00:03:44,970
+Go ahead and run the node index command.
+
+55
+00:03:47,250 --> 00:03:52,800
+You should see the numbers appear like before, this is great, our function is now cleaner and easier
+
+56
+00:03:52,800 --> 00:03:53,290
+to read.
+
+57
+00:03:53,670 --> 00:03:58,830
+Now, let's say you wanted to have some fixed parameters while also allowing this to be limitless.
+
+58
+00:03:59,130 --> 00:04:00,510
+That's totally possible.
+
+59
+00:04:00,840 --> 00:04:04,950
+Inside the parameters, I'm going to create a parameter called message.
+
+60
+00:04:07,140 --> 00:04:13,590
+When using the rest operator, it must be the last one in the set of parameters, all your fixed parameters
+
+61
+00:04:13,590 --> 00:04:14,550
+must come first.
+
+62
+00:04:14,730 --> 00:04:20,250
+In this example, I'm saying that the first value passed in should be set to message while all other
+
+63
+00:04:20,250 --> 00:04:22,530
+values will be for the numbers parameters.
+
+64
+00:04:23,160 --> 00:04:26,640
+I'm going to log the message variable before the numbers.
+
+65
+00:04:28,910 --> 00:04:33,350
+We're going to need to update our first call again this time I'm going to pass in.
+
+66
+00:04:33,350 --> 00:04:33,860
+Hello.
+
+67
+00:04:36,060 --> 00:04:37,630
+What do you think the result will be?
+
+68
+00:04:37,920 --> 00:04:39,570
+Take a moment to think about this.
+
+69
+00:04:39,840 --> 00:04:41,130
+All right, let's see.
+
+70
+00:04:41,430 --> 00:04:43,920
+Input the command node index.
+
+71
+00:04:46,200 --> 00:04:52,830
+What we'll end up seeing is, hello, one one five four, the first call it used Helo as the message
+
+72
+00:04:52,830 --> 00:04:58,850
+and one as the number two at the second call used one as the message and added two and three together.
+
+73
+00:04:59,520 --> 00:05:04,860
+So that's the rest operator and allows you to create a parameter in your function that will take in
+
+74
+00:05:04,860 --> 00:05:08,470
+an unlimited number of values in your function and assign it as an array.
+
+75
+00:05:09,000 --> 00:05:11,130
+Let's look at the Sprent operator now.
+
+76
+00:05:11,430 --> 00:05:14,850
+I'm going to comment about this code we have as we no longer need it.
+
+77
+00:05:17,130 --> 00:05:20,400
+Next, I'm going to paste in some code just to save some time.
+
+78
+00:05:22,280 --> 00:05:27,620
+All right, all I'm doing here is creating to erase in the first rate, I have two numbers, which are
+
+79
+00:05:27,620 --> 00:05:28,610
+two and three.
+
+80
+00:05:29,000 --> 00:05:32,720
+The second array contains the numbers, one, four and five.
+
+81
+00:05:33,020 --> 00:05:36,650
+I want to put the numbers in array one into Array two.
+
+82
+00:05:36,950 --> 00:05:39,440
+This way will only have to deal with one array.
+
+83
+00:05:40,100 --> 00:05:43,900
+You may come across these situations where you'll want to merge arrays together.
+
+84
+00:05:44,300 --> 00:05:49,760
+Traditionally, you would loop through the array and then push the values into the array with the sprint
+
+85
+00:05:49,760 --> 00:05:50,360
+operator.
+
+86
+00:05:50,360 --> 00:05:51,860
+You no longer have to do that.
+
+87
+00:05:52,430 --> 00:05:56,480
+Inside the second array, I'm adding the first array with the spread operator.
+
+88
+00:05:56,870 --> 00:05:57,980
+Just like last time.
+
+89
+00:05:57,980 --> 00:05:59,360
+I'm using three dots.
+
+90
+00:05:59,630 --> 00:06:02,570
+The spread operator merges two arrays together.
+
+91
+00:06:03,110 --> 00:06:07,940
+The array that has the spread operator applied to it will be the one that gets merged into the other
+
+92
+00:06:07,940 --> 00:06:08,340
+array.
+
+93
+00:06:08,750 --> 00:06:12,950
+In this example, Array one is merged with array to array.
+
+94
+00:06:12,950 --> 00:06:15,690
+Two will be the array with all the values combined.
+
+95
+00:06:16,400 --> 00:06:19,190
+Let's see if this is true inside the command line.
+
+96
+00:06:19,190 --> 00:06:21,380
+Run the command node index.
+
+97
+00:06:23,630 --> 00:06:29,870
+Both arrays are logged, Array one contains the numbers two and three, array two contains the numbers
+
+98
+00:06:29,870 --> 00:06:33,420
+it originally had while also containing the numbers two and three.
+
+99
+00:06:33,980 --> 00:06:39,040
+The great thing about the spread operator is that you can specify where you want to place your numbers.
+
+100
+00:06:39,380 --> 00:06:43,210
+You could place the numbers in the beginning, end or anywhere in between.
+
+101
+00:06:43,880 --> 00:06:48,930
+At this point, you may be thinking, aren't the spread and rest operators the same thing?
+
+102
+00:06:49,250 --> 00:06:52,730
+Well, they're definitely written the same, but they're completely different.
+
+103
+00:06:53,000 --> 00:06:58,760
+If you use the three dots inside a function's parameter, then it's called a rest operator.
+
+104
+00:06:59,060 --> 00:07:03,100
+The rest operator will combine all values together into an array.
+
+105
+00:07:03,740 --> 00:07:07,550
+The sprint operator does the opposite, which is spread the values out.
+
+106
+00:07:07,940 --> 00:07:13,070
+Any time you use the three dots outside of a function's parameters, it will be considered the spread
+
+107
+00:07:13,070 --> 00:07:13,750
+operator.
+
+108
+00:07:14,210 --> 00:07:18,440
+Now that we understand that, the next question is how does this apply to our code?
+
+109
+00:07:19,280 --> 00:07:22,040
+Well, let's look at Gutenberg code for a moment.
+
+110
+00:07:22,280 --> 00:07:27,050
+I want you to go into the text control component directory for a moment.
+
+111
+00:07:27,290 --> 00:07:29,390
+Open the index file.
+
+112
+00:07:31,580 --> 00:07:37,860
+There are two places where the rest and spread operators are used inside the parameter of the function.
+
+113
+00:07:37,880 --> 00:07:41,480
+You'll see the prompts variable uses a rest operator.
+
+114
+00:07:41,990 --> 00:07:47,210
+The prompts variable will contain all the attributes that are passed onto the component that aren't
+
+115
+00:07:47,210 --> 00:07:48,170
+already defined.
+
+116
+00:07:48,920 --> 00:07:51,950
+This would basically be any custom attributes we set.
+
+117
+00:07:52,280 --> 00:07:53,450
+We are allowed to do that.
+
+118
+00:07:53,780 --> 00:07:57,650
+We're not forced into just using the attributes this component uses.
+
+119
+00:07:57,810 --> 00:08:00,860
+If we want to add any extra attributes, then we can.
+
+120
+00:08:01,550 --> 00:08:07,490
+Then if you look inside the input element, you'll see that the spread operator is used to spread all
+
+121
+00:08:07,490 --> 00:08:08,300
+the attributes.
+
+122
+00:08:08,660 --> 00:08:11,300
+This is how WordPress handles custom attributes.
+
+123
+00:08:11,600 --> 00:08:12,630
+Let's try this one out.
+
+124
+00:08:12,890 --> 00:08:16,790
+If you have two positive videos, you can switch back to the main project.
+
+125
+00:08:18,650 --> 00:08:24,350
+Right now, I'm looking at the first text control component, which is used for our ingredients, I'm
+
+126
+00:08:24,350 --> 00:08:27,710
+going to add an attribute called FUX set to hello.
+
+127
+00:08:29,770 --> 00:08:33,400
+I'll add another attribute called Hello Set to Fu.
+
+128
+00:08:35,600 --> 00:08:41,120
+Lastly, CD into the blocks directory and run the NPM Run Dev Command.
+
+129
+00:08:45,700 --> 00:08:51,070
+If we did everything right, then we should be able to see these two attributes appear inside our input
+
+130
+00:08:51,070 --> 00:08:54,100
+field, go ahead and refresh the recipe post.
+
+131
+00:08:56,310 --> 00:09:00,840
+Select the recipe block and inspect the ingredients input field.
+
+132
+00:09:03,120 --> 00:09:08,520
+Just like that, our custom attributes are appearing without a problem, they don't really do anything,
+
+133
+00:09:08,520 --> 00:09:11,340
+but it's nice to know we can add them if we ever need to.
+
+134
+00:09:11,700 --> 00:09:16,830
+I'm going to undo these changes as they aren't practical components in Gothenburg.
+
+135
+00:09:16,830 --> 00:09:22,800
+Our flexible most components allow you to create custom attributes if you ever need that kind of power,
+
+136
+00:09:23,190 --> 00:09:24,210
+just to be sure.
+
+137
+00:09:24,240 --> 00:09:26,580
+I encourage you to check out the code yourself.
+
+138
+00:09:26,850 --> 00:09:29,270
+You'll see a formatted in the same way I showed you.
+
+139
+00:09:29,580 --> 00:09:32,430
+Don't ever be afraid to mess around with your code either.
+
+140
+00:09:32,700 --> 00:09:36,060
+It's how you'll learn and become comfortable with the tools provided.
+

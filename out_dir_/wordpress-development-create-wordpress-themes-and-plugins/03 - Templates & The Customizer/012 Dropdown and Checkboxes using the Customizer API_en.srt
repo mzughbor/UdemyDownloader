@@ -1,0 +1,456 @@
+1
+00:00:07,300 --> 00:00:12,910
+And this lecture, we're going to continue working with the word press customizer API, there are five
+
+2
+00:00:12,910 --> 00:00:15,310
+fields will be creating that will do the following.
+
+3
+00:00:15,820 --> 00:00:19,070
+The first two fields is for these two button icons on the menu.
+
+4
+00:00:19,360 --> 00:00:22,630
+We'll let the user decide if they want these buttons to be available.
+
+5
+00:00:22,900 --> 00:00:26,290
+The next option is the text for this copyright message on the footer.
+
+6
+00:00:26,500 --> 00:00:32,259
+The last two options will allow users to select the pages for the terms of service and privacy policy
+
+7
+00:00:32,259 --> 00:00:32,680
+links.
+
+8
+00:00:33,190 --> 00:00:38,140
+Before we get started with the customizer, I'm going to make the search form in the header functional.
+
+9
+00:00:38,470 --> 00:00:44,560
+I'm going to open the header and search form templates, look for the search form inside the header
+
+10
+00:00:44,560 --> 00:00:45,010
+template.
+
+11
+00:00:45,580 --> 00:00:50,950
+You'll notice right away these forms are completely different in appearance and markup, so I won't
+
+12
+00:00:50,950 --> 00:00:52,990
+be using the function for grabbing this template.
+
+13
+00:00:53,590 --> 00:00:58,140
+Instead, I'm just going to copy and paste some of the parts into this template.
+
+14
+00:00:58,480 --> 00:01:01,720
+There are only three things we really need to make dynamic.
+
+15
+00:01:01,990 --> 00:01:06,340
+That would be the action for the form, the value for the input.
+
+16
+00:01:06,340 --> 00:01:09,010
+And lastly, make this text translatable.
+
+17
+00:01:17,340 --> 00:01:23,250
+All right, let's get started with the customizer, I'm going to make a file inside the customizer folder
+
+18
+00:01:23,250 --> 00:01:27,600
+and name it MEAC, which is short for miscellaneous.
+
+19
+00:01:29,780 --> 00:01:37,520
+The final function named J, you might see customizer section, this function will accept the WP customizer
+
+20
+00:01:37,520 --> 00:01:38,000
+object.
+
+21
+00:01:40,240 --> 00:01:43,450
+From the functions file, I'm going to include this file.
+
+22
+00:01:50,330 --> 00:01:54,140
+The very last step is to call this function from the main customizer function.
+
+23
+00:01:59,300 --> 00:02:04,190
+I know that was a lot to do, but trust me, you should always do this as it'll help you keep things
+
+24
+00:02:04,190 --> 00:02:04,850
+organized.
+
+25
+00:02:05,000 --> 00:02:09,889
+I've been in that situation where I would stuff my code in the least amount of files possible, and
+
+26
+00:02:09,889 --> 00:02:16,040
+it was always a pain to maintain, just like last time will be using the three step process to create
+
+27
+00:02:16,040 --> 00:02:16,960
+these new settings.
+
+28
+00:02:17,330 --> 00:02:21,590
+The first step is to create the database values using the ADD setting method.
+
+29
+00:02:22,040 --> 00:02:27,530
+The ID for the first setting will be Jiyu header show search and the default value will be yes.
+
+30
+00:02:33,840 --> 00:02:39,000
+I'm going to copy and paste this for more times and update the names for each of these.
+
+31
+00:02:40,890 --> 00:02:47,040
+Feel free to pause the video so that you can have what I have, I have the Jiyu header shoket setting
+
+32
+00:02:47,040 --> 00:02:53,640
+where the default value is also, yes, the Jiyu footer copyright text will have its default value to
+
+33
+00:02:53,640 --> 00:02:55,260
+the original copyright text.
+
+34
+00:02:55,560 --> 00:03:01,080
+The Jiyu footer to page and Jiyu footer privacy page will both be set to zero.
+
+35
+00:03:01,500 --> 00:03:03,670
+These will be assigned to pages later on.
+
+36
+00:03:04,350 --> 00:03:05,940
+That right there is step one.
+
+37
+00:03:06,240 --> 00:03:08,540
+We have all our database settings ready.
+
+38
+00:03:08,860 --> 00:03:15,600
+The next step is to create a section that will hold all our controllers call the ad section method and
+
+39
+00:03:15,600 --> 00:03:18,960
+given the idea of Jiyu Mrs. Section.
+
+40
+00:03:23,320 --> 00:03:27,940
+The title will be Udemy Amici Settings with a priority of 30.
+
+41
+00:03:33,550 --> 00:03:39,280
+The last step is to create the controllers for each setting, the first controller will be a standard
+
+42
+00:03:39,280 --> 00:03:44,730
+HTML input field, so we'll be using the WP customized control class to help us out.
+
+43
+00:03:46,350 --> 00:03:51,270
+As usual, I'm going to pass in the normal stuff, there are a couple of things I should highlight.
+
+44
+00:03:51,510 --> 00:03:54,930
+The Idy will be Jiyu heter show search input.
+
+45
+00:03:55,260 --> 00:04:00,750
+I will make sure this is assigned to the miscellaneous section and make its settings correspond to the
+
+46
+00:04:00,750 --> 00:04:02,940
+correct settings value we created earlier.
+
+47
+00:04:03,540 --> 00:04:07,500
+Instead of a text input field, I want to create a checkbox.
+
+48
+00:04:07,740 --> 00:04:10,080
+I will set the type to checkbox.
+
+49
+00:04:12,240 --> 00:04:18,120
+The values we use for the checkbook can be set by adding the key choices, this key value will be an
+
+50
+00:04:18,120 --> 00:04:20,140
+array of possible values available.
+
+51
+00:04:20,519 --> 00:04:23,100
+We only have one value, and that is yes.
+
+52
+00:04:25,240 --> 00:04:31,180
+The name of the key is the actual value that will be compared to check if the setting matches the checkbox,
+
+53
+00:04:31,720 --> 00:04:37,780
+the value of the item is human readable text next to the checkbox so the user knows what the checkbox
+
+54
+00:04:37,780 --> 00:04:38,260
+is for.
+
+55
+00:04:38,770 --> 00:04:43,630
+Let's refresh the customizer and we should now see our section and the checkbox being displayed.
+
+56
+00:04:43,990 --> 00:04:49,330
+As you can see, the checkbox is already checked because the default value for this setting is yes,
+
+57
+00:04:49,630 --> 00:04:53,050
+I want you to do the same for the card button while you're at it.
+
+58
+00:04:53,050 --> 00:04:55,650
+Try creating the copyright text controller.
+
+59
+00:04:55,810 --> 00:04:58,390
+It's just a text field, nothing complex.
+
+60
+00:04:58,660 --> 00:05:00,190
+Pause the video and try it out.
+
+61
+00:05:01,560 --> 00:05:04,290
+If you didn't get it, that's fine, it's really simple.
+
+62
+00:05:04,440 --> 00:05:08,760
+I'm going to copy and paste the previous controller twice and change a few things.
+
+63
+00:05:08,970 --> 00:05:10,860
+I want you to update the ID.
+
+64
+00:05:14,490 --> 00:05:19,230
+Then I want you to change the label and these settings key for the card button.
+
+65
+00:05:23,860 --> 00:05:30,730
+For the copyright text, I'm going to remove the choices and type keys by default, the type will always
+
+66
+00:05:30,730 --> 00:05:32,680
+be text like last time.
+
+67
+00:05:32,680 --> 00:05:36,580
+You'll only need to change the ID label and these settings key.
+
+68
+00:05:43,260 --> 00:05:48,450
+That should do it for the two buttons and copyright text, the only fields we have to create are the
+
+69
+00:05:48,450 --> 00:05:49,710
+fields for the pages.
+
+70
+00:05:50,040 --> 00:05:56,100
+I'm going to paste this one more time and remove the choices he and update the idee label and settings
+
+71
+00:05:56,100 --> 00:05:57,120
+keys appropriately.
+
+72
+00:06:05,950 --> 00:06:10,150
+This time, I'm going to change the type to drop down Dasch pages.
+
+73
+00:06:10,780 --> 00:06:12,190
+This is a special type.
+
+74
+00:06:12,190 --> 00:06:18,280
+We can set WordPress or generate a drop down menu and set the options to all the pages that are published.
+
+75
+00:06:18,640 --> 00:06:22,610
+The value of each option will be the page ID, which we can use later.
+
+76
+00:06:22,990 --> 00:06:29,050
+This is exactly what we want since the terms of service and privacy policy will be separate pages.
+
+77
+00:06:29,440 --> 00:06:34,930
+If you don't have a page in mind, then you should set the settings value to zero so WordPress won't
+
+78
+00:06:34,930 --> 00:06:36,230
+set up page by accident.
+
+79
+00:06:36,970 --> 00:06:39,520
+This controller is for the terms of service.
+
+80
+00:06:39,670 --> 00:06:45,230
+I'm going to copy this and set the idee settings and label for the privacy policy.
+
+81
+00:06:45,250 --> 00:06:45,550
+Now.
+
+82
+00:06:51,390 --> 00:06:56,880
+Just like that, we should have five controllers in the miscellaneous section, refresh the customizer
+
+83
+00:06:56,880 --> 00:07:01,790
+and you should see something similar to what I have, because this is a testing environment.
+
+84
+00:07:01,800 --> 00:07:06,000
+I'm going to set the two page dropdown controllers to some random pages.
+
+85
+00:07:06,360 --> 00:07:10,050
+I'm also going to update the copyright text to something simple.
+
+86
+00:07:12,420 --> 00:07:17,370
+Make sure to save the changes, the last thing we need to do is make these changes, reflect on the
+
+87
+00:07:17,370 --> 00:07:22,270
+theme, open the header template and look for the search and cart buttons.
+
+88
+00:07:22,560 --> 00:07:25,710
+I'm going to surround these in conditional statements like so.
+
+89
+00:07:44,630 --> 00:07:50,420
+The condition will check if the values for both these mods are set to, yes, make sure to update the
+
+90
+00:07:50,420 --> 00:07:56,060
+values in both these functions to the appropriate setting test to customize your really quick and see
+
+91
+00:07:56,060 --> 00:07:57,380
+if everything works correctly.
+
+92
+00:07:57,770 --> 00:08:02,200
+The buttons should appear and disappear depending on if the box is checked or not.
+
+93
+00:08:02,780 --> 00:08:06,570
+I'm going to close the header template and open the footer template.
+
+94
+00:08:06,860 --> 00:08:09,310
+Let's get to work for the copyright text.
+
+95
+00:08:09,320 --> 00:08:11,480
+I'm just going to echo out the setting.
+
+96
+00:08:19,330 --> 00:08:24,270
+Next, I'm going to wrap the links in conditional statements and check of the settings have a value.
+
+97
+00:08:24,670 --> 00:08:28,160
+Keep in mind, by default, these settings values are zero.
+
+98
+00:08:28,630 --> 00:08:30,900
+This is also equivalent to false.
+
+99
+00:08:30,910 --> 00:08:34,150
+So we don't need to perform any checks besides what's returned.
+
+100
+00:08:47,170 --> 00:08:49,960
+Replaced links and use the permalink function.
+
+101
+00:08:56,640 --> 00:08:59,130
+Template tags can we use outside the loop?
+
+102
+00:08:59,310 --> 00:09:05,490
+However, there is one condition you must pass in the ID of the Post or page you like to retrieve information
+
+103
+00:09:05,490 --> 00:09:09,140
+from most template tags have this as their first parameter.
+
+104
+00:09:09,750 --> 00:09:10,710
+Let's do that now.
+
+105
+00:09:10,860 --> 00:09:15,120
+Call the get the mod and get the appropriate setting for each link.
+
+106
+00:09:17,380 --> 00:09:22,090
+If you don't pass in an ID and you're using this function outside of the loop, then you'll receive
+
+107
+00:09:22,090 --> 00:09:22,420
+an error.
+
+108
+00:09:23,020 --> 00:09:25,690
+Let's check out the site now, save any changes.
+
+109
+00:09:25,690 --> 00:09:27,790
+You made an X out of the customizer.
+
+110
+00:09:28,030 --> 00:09:30,910
+Make sure the links in the footer work after confirming.
+
+111
+00:09:30,910 --> 00:09:32,290
+So then you're all done.
+
+112
+00:09:32,590 --> 00:09:34,720
+Let's take a moment to explore our theme.
+
+113
+00:09:34,960 --> 00:09:39,280
+When we first started, we had a bunch of links and styles and the content was broken.
+
+114
+00:09:39,520 --> 00:09:41,770
+Now we have a fully functioning theme.
+

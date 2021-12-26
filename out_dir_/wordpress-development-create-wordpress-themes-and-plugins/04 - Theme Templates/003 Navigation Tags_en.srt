@@ -1,0 +1,68 @@
+1
+00:00:07,580 --> 00:00:10,850
+When it comes to navigation tags, there's not much to go over.
+
+2
+00:00:11,120 --> 00:00:15,380
+If you look at the list of functions, you'll see that there are only two functions.
+
+3
+00:00:15,650 --> 00:00:19,570
+We've already gone over the first function and the second one is not that important.
+
+4
+00:00:19,910 --> 00:00:21,620
+There is one thing I didn't mention, though.
+
+5
+00:00:22,190 --> 00:00:24,680
+Let's go ahead and click on the WP now.
+
+6
+00:00:24,680 --> 00:00:30,410
+Menu function on the sidebar, you'll find a link to the section menu item CSS classes.
+
+7
+00:00:30,710 --> 00:00:36,500
+Upon clicking this link, you'll be provided a list of classes that WordPress will apply to the navigation
+
+8
+00:00:36,500 --> 00:00:37,340
+menu generated.
+
+9
+00:00:37,910 --> 00:00:41,780
+If you're creating your own walker, then these classes won't be applied.
+
+10
+00:00:42,110 --> 00:00:43,940
+You'll have to apply them manually.
+
+11
+00:00:44,270 --> 00:00:47,840
+WordPress also doesn't load any styles for these classes.
+
+12
+00:00:48,050 --> 00:00:50,580
+It's up to you to take advantage of them in your theme.
+
+13
+00:00:51,200 --> 00:00:54,590
+Currently, the theme we have isn't using any of these classes.
+
+14
+00:00:54,860 --> 00:00:56,030
+That's perfectly fine.
+
+15
+00:00:56,270 --> 00:00:57,970
+We don't need them anyway.
+
+16
+00:00:58,010 --> 00:00:59,320
+That's all I wanted to show you.
+
+17
+00:00:59,450 --> 00:01:01,520
+Let's move on to the next set of tanks.
+

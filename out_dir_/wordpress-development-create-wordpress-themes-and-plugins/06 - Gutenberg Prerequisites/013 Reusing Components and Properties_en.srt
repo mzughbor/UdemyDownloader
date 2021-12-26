@@ -1,0 +1,260 @@
+1
+00:00:07,380 --> 00:00:13,260
+In this lecture, I want to explore how you would go about reusing components right now, we're only
+
+2
+00:00:13,260 --> 00:00:14,510
+displaying one person.
+
+3
+00:00:14,880 --> 00:00:16,379
+The process is quite simple.
+
+4
+00:00:16,650 --> 00:00:21,600
+First, we're going to create some JSM that will contain the overall application.
+
+5
+00:00:21,960 --> 00:00:26,880
+Then we'll simply call the person element multiple times inside that element.
+
+6
+00:00:27,270 --> 00:00:28,350
+Let me show you what I mean.
+
+7
+00:00:29,010 --> 00:00:30,330
+Right below the function.
+
+8
+00:00:30,360 --> 00:00:33,570
+I'm going to create a constant named app.
+
+9
+00:00:35,880 --> 00:00:42,690
+The value for this will be ESX, it'll be multiline, so I'm going to add in my parentheses inside this,
+
+10
+00:00:42,690 --> 00:00:45,510
+I'm going to call the person component twice.
+
+11
+00:00:50,510 --> 00:00:56,420
+Once again, you can't call this as a function, it must be called as an element, then I'm going to
+
+12
+00:00:56,420 --> 00:01:01,160
+replace the person component inside the render function with the app variable.
+
+13
+00:01:03,620 --> 00:01:09,110
+At this point, you may be thinking, what is the difference between storing Jessica inside a variable
+
+14
+00:01:09,110 --> 00:01:10,190
+and inside a function?
+
+15
+00:01:10,670 --> 00:01:15,860
+Well, I'll show you in just a moment, but just keep going with me here inside the command line.
+
+16
+00:01:15,860 --> 00:01:18,020
+Run the command npm start.
+
+17
+00:01:20,340 --> 00:01:25,560
+Right after running this command, you'll receive an error, the error is telling us we can't have two
+
+18
+00:01:25,560 --> 00:01:26,940
+elements on the same level.
+
+19
+00:01:27,330 --> 00:01:29,430
+This is another rule with ASX.
+
+20
+00:01:29,670 --> 00:01:36,000
+You can have as many elements as you'd like, but you can only have one root element to fix this.
+
+21
+00:01:36,030 --> 00:01:39,540
+We'll have to wrap our person components with some div tags.
+
+22
+00:01:44,730 --> 00:01:46,440
+Let's try running the command again.
+
+23
+00:01:50,680 --> 00:01:55,930
+Everything should run smoothly this time, this is a common pitfall beginner developers fall into,
+
+24
+00:01:56,290 --> 00:01:59,070
+always make sure you only have one route element.
+
+25
+00:01:59,470 --> 00:02:03,730
+There are ways to get around this rule, but we'll explore that later in this course.
+
+26
+00:02:04,210 --> 00:02:06,070
+Go to your browser and view the page.
+
+27
+00:02:06,310 --> 00:02:09,280
+You should see two people being displayed on the page.
+
+28
+00:02:09,580 --> 00:02:10,250
+This is great.
+
+29
+00:02:10,600 --> 00:02:12,670
+We now have a reusable component.
+
+30
+00:02:13,390 --> 00:02:17,080
+The next step is to make the data dynamic back inside our script.
+
+31
+00:02:17,110 --> 00:02:20,490
+You'll see that we're using the person to function as an element.
+
+32
+00:02:20,980 --> 00:02:25,970
+We just can't pass it in data since we're not calling this function in the traditional manner.
+
+33
+00:02:26,440 --> 00:02:28,360
+So how do we pass in data?
+
+34
+00:02:28,990 --> 00:02:31,270
+React has something called properties?
+
+35
+00:02:31,480 --> 00:02:33,820
+Properties are exactly what they sound like.
+
+36
+00:02:34,210 --> 00:02:41,380
+They're the data or attributes attached to an element which we're allowed to create custom attributes
+
+37
+00:02:41,380 --> 00:02:45,310
+that will hold our data inside the person elements.
+
+38
+00:02:45,310 --> 00:02:49,150
+I'm going to create two attributes called name and age.
+
+39
+00:02:54,160 --> 00:03:00,190
+This is how you can pass values onto the component function above the ground, these values will have
+
+40
+00:03:00,190 --> 00:03:02,020
+to update the person function.
+
+41
+00:03:02,380 --> 00:03:06,730
+All attributes and values are stored inside an object called properties.
+
+42
+00:03:07,030 --> 00:03:10,210
+It's common practice to call this props, but you can name it.
+
+43
+00:03:10,210 --> 00:03:13,690
+Whatever you want for now will stick with this naming convention.
+
+44
+00:03:14,350 --> 00:03:18,480
+This object will contain all the values we passed in as attributes.
+
+45
+00:03:18,790 --> 00:03:22,000
+I'm going to replace the name with a pair of curly brackets.
+
+46
+00:03:22,420 --> 00:03:24,220
+This is important to note down.
+
+47
+00:03:24,580 --> 00:03:30,430
+If you want to have dynamic JavaScript in your ESX, then you need to surround it with curly brackets
+
+48
+00:03:31,150 --> 00:03:32,760
+inside these curly brackets.
+
+49
+00:03:32,770 --> 00:03:36,640
+I'm going to use the props object and access the attribute name.
+
+50
+00:03:39,110 --> 00:03:41,850
+The name of the attribute will be the name of the property.
+
+51
+00:03:42,140 --> 00:03:44,020
+I will now do this for the H.
+
+52
+00:03:46,280 --> 00:03:49,640
+Just like that, we're now accessing the data dynamically.
+
+53
+00:03:50,000 --> 00:03:52,670
+Let's see if this works inside the command line.
+
+54
+00:03:52,670 --> 00:03:54,830
+Run the command npm start.
+
+55
+00:03:57,100 --> 00:03:59,360
+You shouldn't receive any errors at this point.
+
+56
+00:03:59,590 --> 00:04:04,840
+Go ahead and refresh the page, the list of people should be displaying just like that.
+
+57
+00:04:04,870 --> 00:04:07,890
+We've created our first complete application.
+
+58
+00:04:08,320 --> 00:04:11,200
+Admittedly, it isn't anything spectacular.
+
+59
+00:04:11,390 --> 00:04:14,890
+However, this should be enough to get you comfortable with Gutenberg.
+
+60
+00:04:15,430 --> 00:04:20,200
+The Gutenberg development team have already taken care of the more difficult parts of the editor.
+
+61
+00:04:20,740 --> 00:04:24,280
+All you have to do is load in the right files and use the right functions.
+
+62
+00:04:24,640 --> 00:04:28,810
+I also want to remind you that you don't have to be a master of react.
+
+63
+00:04:29,470 --> 00:04:34,020
+The only things you really need to know are JSM components and properties.
+
+64
+00:04:34,420 --> 00:04:38,140
+If you have a basic understanding of those things, then you should be fine.
+
+65
+00:04:38,500 --> 00:04:43,750
+I'll be sure to point out any other react features I may have missed if they arise in the next section.
+

@@ -1,0 +1,696 @@
+1
+00:00:07,390 --> 00:00:13,660
+The loop is ready and all we have to do now is make each part of the post dynamic in the resource section
+
+2
+00:00:13,660 --> 00:00:18,400
+of this lecture, I provide a link to a page in the handbook called Template Tags.
+
+3
+00:00:18,820 --> 00:00:23,100
+Template tags are functions that display information onto the page.
+
+4
+00:00:23,470 --> 00:00:26,290
+There are hundreds of them and each are simple to use.
+
+5
+00:00:26,920 --> 00:00:30,720
+The purpose of a template tag is to make your code readable and simpler.
+
+6
+00:00:31,210 --> 00:00:35,890
+Usually you would have to query the database and grab this information manually.
+
+7
+00:00:36,250 --> 00:00:39,940
+Template tag save you time by doing all the work behind the scenes.
+
+8
+00:00:40,330 --> 00:00:45,610
+All you have to do is call the function associated with the data you'd like to grab on.
+
+9
+00:00:45,610 --> 00:00:49,690
+This page is a long list of functions that return information about the blog.
+
+10
+00:00:50,050 --> 00:00:53,550
+A majority of these functions can be used anywhere in your template.
+
+11
+00:00:53,890 --> 00:00:56,700
+You are not required to use them inside the loop.
+
+12
+00:00:56,830 --> 00:01:00,880
+However, there are benefits to running some of these functions inside a loop.
+
+13
+00:01:01,150 --> 00:01:03,300
+You'll see how that works in just a moment.
+
+14
+00:01:03,940 --> 00:01:07,540
+Let's scroll down to the post tags section of this page.
+
+15
+00:01:07,810 --> 00:01:11,890
+You'll see we have quite a few functions that we can use inside the loop.
+
+16
+00:01:12,290 --> 00:01:14,560
+Let's use one of these template tags now.
+
+17
+00:01:14,890 --> 00:01:21,610
+The first one will be using is the post thumbnail function, open the content excerpt template and look
+
+18
+00:01:21,610 --> 00:01:24,460
+for the image tag that contains the featured image.
+
+19
+00:01:25,060 --> 00:01:27,550
+Let's remove this and instead call this function.
+
+20
+00:01:33,470 --> 00:01:39,620
+Keep in mind that this template is being loaded inside the loop, the function will generate the HTML
+
+21
+00:01:39,620 --> 00:01:41,100
+for our image and output.
+
+22
+00:01:41,600 --> 00:01:47,210
+The benefit of using a template tag inside the loop is that template tag functions will automatically
+
+23
+00:01:47,210 --> 00:01:48,900
+detect that it's inside a loop.
+
+24
+00:01:49,370 --> 00:01:55,250
+This function and any other function we use inside the loop will automatically know which post to grab
+
+25
+00:01:55,250 --> 00:01:59,750
+the information from this function has a couple of parameters we can set.
+
+26
+00:02:00,290 --> 00:02:02,630
+The first parameter is the size of the image.
+
+27
+00:02:02,960 --> 00:02:08,330
+You can pass in a number if you believe you know a good size or you can take advantage of WordPress
+
+28
+00:02:08,389 --> 00:02:11,720
+post thumbnail size feature and the resource section.
+
+29
+00:02:11,720 --> 00:02:14,210
+I provide a link to the Post thumbnail page.
+
+30
+00:02:14,930 --> 00:02:20,690
+WordPress describes in detail about post thumbnails, but we won't concern ourselves with the whole
+
+31
+00:02:20,690 --> 00:02:21,010
+thing.
+
+32
+00:02:21,500 --> 00:02:27,410
+Scroll down to where it talks about the size is available from what WordPress says, there are four
+
+33
+00:02:27,410 --> 00:02:29,450
+size aliases we can use.
+
+34
+00:02:29,840 --> 00:02:35,600
+Thumbnail, medium, large and full for can be thought of as the original size.
+
+35
+00:02:35,810 --> 00:02:38,090
+Let's pass in full to the function.
+
+36
+00:02:40,290 --> 00:02:46,830
+The second parameter is an array of attributes that WordPress will add to the HTML generated, you can
+
+37
+00:02:46,830 --> 00:02:48,600
+set any attribute you'd like.
+
+38
+00:02:48,930 --> 00:02:50,480
+There are no restrictions.
+
+39
+00:02:50,820 --> 00:02:54,620
+The only attribute I want to override is the class attribute.
+
+40
+00:02:54,900 --> 00:03:00,470
+One class I'd like to use is the image underscore Faid class, which will give the image a nice effect.
+
+41
+00:03:01,170 --> 00:03:05,550
+Let's use the key called class and set its value to image underscore fait.
+
+42
+00:03:07,810 --> 00:03:11,950
+That's all we need to do, refresh the page and check out the post thumbnail.
+
+43
+00:03:14,140 --> 00:03:16,060
+This is exactly what we want.
+
+44
+00:03:16,450 --> 00:03:18,660
+You should see something similar to what I see.
+
+45
+00:03:19,090 --> 00:03:25,630
+You may have different images as fake press generated most of these posts and grabs random images from
+
+46
+00:03:25,630 --> 00:03:26,110
+the Internet.
+
+47
+00:03:26,500 --> 00:03:29,900
+Some posts will not have images, and that's perfectly fine.
+
+48
+00:03:30,550 --> 00:03:34,440
+We need to do one more thing before we move onto the other parts of the template.
+
+49
+00:03:34,870 --> 00:03:39,610
+Not every post that is displayed will automatically have an image associated with it.
+
+50
+00:03:40,000 --> 00:03:43,050
+We can't assume every post will have a post image.
+
+51
+00:03:43,060 --> 00:03:49,990
+So what we're going to do is wrap the div tag with the class entry dash image with the conditional statement.
+
+52
+00:03:59,780 --> 00:04:04,100
+Inside this conditional statement will use the has post thumbnail function.
+
+53
+00:04:06,280 --> 00:04:11,860
+As the name suggests, this will simply check to see if the current post in the loop has a thumbnail.
+
+54
+00:04:12,160 --> 00:04:14,470
+If it's true, then we'll display the image.
+
+55
+00:04:14,890 --> 00:04:19,450
+What I love about these functions is that they can automatically detect that we're in a loop.
+
+56
+00:04:19,450 --> 00:04:23,420
+And we'll check each post individually before we continue on.
+
+57
+00:04:23,530 --> 00:04:26,140
+I want to briefly talk about thumbnail sizes.
+
+58
+00:04:26,470 --> 00:04:32,440
+If you were to go to the admin dashboard and navigate to settings media, you'll find settings to change
+
+59
+00:04:32,440 --> 00:04:34,210
+the size of certain thumbnails.
+
+60
+00:04:34,540 --> 00:04:36,670
+Feel free to adjust these as you like.
+
+61
+00:04:37,060 --> 00:04:40,020
+We also have the power to abdominal sizes.
+
+62
+00:04:40,330 --> 00:04:42,810
+This is something we'll explore in a future lecture.
+
+63
+00:04:43,060 --> 00:04:46,660
+Let's finish up the loop here by making the rest of the post dynamic.
+
+64
+00:04:46,930 --> 00:04:52,120
+Most of the functions I'm going to introduce here can be found on the Template Tags Handbook page.
+
+65
+00:04:52,690 --> 00:04:55,200
+We're going to start from the top and work our way down.
+
+66
+00:04:55,630 --> 00:04:58,720
+First up is the title inside the div tag.
+
+67
+00:04:58,720 --> 00:05:01,420
+With the class entry title, you'll find the title.
+
+68
+00:05:01,780 --> 00:05:05,680
+We're going to replace this static text by calling the function the title.
+
+69
+00:05:07,770 --> 00:05:11,170
+You'll notice that there's also a function called get the title.
+
+70
+00:05:11,580 --> 00:05:14,470
+This is a common naming convention for template tags.
+
+71
+00:05:14,820 --> 00:05:20,190
+The main difference between these two types of functions is that the GET version will return the value
+
+72
+00:05:20,190 --> 00:05:23,220
+while the non get version will echo out the value.
+
+73
+00:05:23,610 --> 00:05:25,460
+The value itself is always the same.
+
+74
+00:05:26,250 --> 00:05:31,290
+Some template tags also come with the option of passing in HTML to format the content.
+
+75
+00:05:31,860 --> 00:05:37,320
+This function has two parameters, which is the HTML that will be placed before and after the title.
+
+76
+00:05:37,860 --> 00:05:42,510
+For example, I can pass in opening and closing H2 tags like so.
+
+77
+00:05:44,720 --> 00:05:51,440
+As a result, there are two ways to go about this you can just output the HTML, tag yourself or pass
+
+78
+00:05:51,440 --> 00:05:52,320
+it into the function.
+
+79
+00:05:52,820 --> 00:05:59,000
+The benefit of passing in your HTML is that you give developers the opportunity to modify the HTML.
+
+80
+00:05:59,510 --> 00:06:02,310
+This right here depends on the design of your theme.
+
+81
+00:06:02,690 --> 00:06:07,370
+I'm going to remove these because I prefer not to have developers form this title.
+
+82
+00:06:08,240 --> 00:06:13,370
+Not all template tags have these options, but it's definitely something you should consider if the
+
+83
+00:06:13,370 --> 00:06:14,360
+option is available.
+
+84
+00:06:14,900 --> 00:06:16,250
+All right, let's move on.
+
+85
+00:06:16,880 --> 00:06:19,300
+Next up is the permalink function.
+
+86
+00:06:19,670 --> 00:06:23,330
+I'm going to replace the link for the title with this function.
+
+87
+00:06:25,570 --> 00:06:29,500
+This function will simply echo out the Eurail to the post itself.
+
+88
+00:06:29,890 --> 00:06:35,440
+Keep in mind that I'm getting all these from the template tags, Codex Page, all these functions are
+
+89
+00:06:35,440 --> 00:06:37,700
+available to us and you can use them freely.
+
+90
+00:06:38,140 --> 00:06:43,360
+We will actually have to use this function multiple times as there are multiple locations.
+
+91
+00:06:43,360 --> 00:06:44,540
+A link is being used.
+
+92
+00:06:45,010 --> 00:06:47,650
+Make sure you update all links as I have.
+
+93
+00:06:56,520 --> 00:07:02,460
+Next up is the date we'll be using the function, get the date and will be echoing out the value.
+
+94
+00:07:04,660 --> 00:07:11,020
+There is a the date function, but this function actually comes with a problem, if there are posts
+
+95
+00:07:11,020 --> 00:07:15,820
+with the same date, then this function will end up acting funny and displayed the same date.
+
+96
+00:07:15,820 --> 00:07:18,550
+Even after the date between posts has changed.
+
+97
+00:07:19,270 --> 00:07:23,610
+In the resource section of this lecture, I provide a link to the date function.
+
+98
+00:07:23,980 --> 00:07:30,610
+Here is what WordPress sets special note when there are multiple posts on a page published under the
+
+99
+00:07:30,610 --> 00:07:37,540
+same day, the date only displays the date for the first post to repeat the date for posts published
+
+100
+00:07:37,540 --> 00:07:42,550
+under the same day, you should use the template, tag the time or get the date.
+
+101
+00:07:43,300 --> 00:07:48,870
+WordPress itself recommends that you use the get the date function rather than the date function.
+
+102
+00:07:49,360 --> 00:07:54,070
+The format for the date is determined by the administrator in the admin dashboard.
+
+103
+00:07:54,070 --> 00:07:56,130
+Navigate to settings general.
+
+104
+00:07:56,410 --> 00:07:58,920
+Here we can modify the output of the date.
+
+105
+00:07:59,650 --> 00:08:02,790
+We can also modify the format through the function itself.
+
+106
+00:08:03,160 --> 00:08:09,160
+This function can optionally accept one parameter, which is a format and the resource section of this
+
+107
+00:08:09,160 --> 00:08:09,610
+lecture.
+
+108
+00:08:09,610 --> 00:08:13,450
+I provide a link to formatting the date and time in WordPress.
+
+109
+00:08:14,170 --> 00:08:17,970
+You can pass in any of the following and WordPress will change the output.
+
+110
+00:08:18,490 --> 00:08:23,830
+I'm not going to change the format as I like to let my users determine their own preferred format.
+
+111
+00:08:24,250 --> 00:08:28,930
+If you don't specify a format, then WordPress will use the format in the settings.
+
+112
+00:08:29,620 --> 00:08:30,430
+Let's keep going.
+
+113
+00:08:30,670 --> 00:08:33,940
+Use the author function to output the name of the author.
+
+114
+00:08:36,240 --> 00:08:37,169
+So far, so good.
+
+115
+00:08:37,380 --> 00:08:40,179
+Up next is setting up the euro to the author.
+
+116
+00:08:40,559 --> 00:08:47,400
+This one's going to be a bit tricky as we have to use two functions to obtain this value will be echoing
+
+117
+00:08:47,400 --> 00:08:49,590
+out the value returned by the function.
+
+118
+00:08:49,590 --> 00:08:51,570
+Get author pursuable.
+
+119
+00:08:53,770 --> 00:08:56,980
+This function will return the Eurail to the author's profile.
+
+120
+00:08:57,370 --> 00:09:02,370
+However, unlike the other functions, this function isn't aware of being in a loop.
+
+121
+00:09:03,100 --> 00:09:06,800
+All the other functions will automatically use the ID in the loop.
+
+122
+00:09:07,300 --> 00:09:10,750
+This function requires that we pass in the ID of the author.
+
+123
+00:09:11,140 --> 00:09:16,960
+So to do this, we have to use the function, get the author meta, which will retrieve information
+
+124
+00:09:16,960 --> 00:09:17,710
+about the author.
+
+125
+00:09:20,020 --> 00:09:22,670
+This function is aware that it's inside the loop.
+
+126
+00:09:23,410 --> 00:09:28,570
+This function can return a number of values, but we're interested in the idea of the author.
+
+127
+00:09:28,840 --> 00:09:35,530
+So I'll just pass in ID in the resource section of this lecture, I provide a link to the author Medda
+
+128
+00:09:35,530 --> 00:09:36,010
+function.
+
+129
+00:09:36,370 --> 00:09:40,520
+The page displays all the possible values you can retrieve using this function.
+
+130
+00:09:40,960 --> 00:09:44,530
+This bit of code here will grab the permalink to the author's posts.
+
+131
+00:09:45,160 --> 00:09:51,280
+The very last thing we want to do is the call the category function which will return and unordered
+
+132
+00:09:51,280 --> 00:09:53,770
+list of links of categories for each post.
+
+133
+00:09:55,950 --> 00:10:03,120
+However, we do not want that we want the categories to be separated by spaces, luckily we can pass
+
+134
+00:10:03,120 --> 00:10:05,310
+in a string that will act as a separator.
+
+135
+00:10:05,670 --> 00:10:08,660
+So I will pass in a string of an empty space.
+
+136
+00:10:09,450 --> 00:10:11,070
+Next up is the comments.
+
+137
+00:10:11,070 --> 00:10:11,940
+No function.
+
+138
+00:10:12,330 --> 00:10:14,910
+Replace this static text with the function.
+
+139
+00:10:17,180 --> 00:10:20,560
+This function will output the number of comments a post has.
+
+140
+00:10:20,900 --> 00:10:23,700
+There are three parameters which are all optional.
+
+141
+00:10:24,080 --> 00:10:26,740
+The first parameter is the text to display.
+
+142
+00:10:26,750 --> 00:10:30,260
+If there are no comments, I'm going to pass in the string zero.
+
+143
+00:10:30,830 --> 00:10:36,020
+If I were to admit this value, then WordPress will automatically display no comments.
+
+144
+00:10:36,020 --> 00:10:42,590
+If there are zero comments in the post by passing in the string zero WordPress will just output the
+
+145
+00:10:42,590 --> 00:10:43,460
+string itself.
+
+146
+00:10:43,970 --> 00:10:50,030
+The second parameter is the text to display if there is one comment and the third parameter is the text
+
+147
+00:10:50,030 --> 00:10:50,750
+to display.
+
+148
+00:10:50,750 --> 00:10:55,960
+If there was more than one comment, I won't be setting these since I like the default values anyway,
+
+149
+00:10:56,060 --> 00:10:58,970
+the last thing we have to do is update the excerpt.
+
+150
+00:10:59,180 --> 00:11:05,600
+I'm going to replace the paragraph tags and call the function the excerpt, which is a shortened version
+
+151
+00:11:05,600 --> 00:11:06,890
+of the original post.
+
+152
+00:11:09,090 --> 00:11:14,160
+It's a really great way to give readers a preview of what's in the Post itself, as you can already
+
+153
+00:11:14,160 --> 00:11:18,210
+tell, we're just calling a bunch of functions that WordPress will take care of.
+
+154
+00:11:18,210 --> 00:11:24,660
+Replacing WordPress takes care of everything from pagination to querying the database to looping through
+
+155
+00:11:24,660 --> 00:11:25,130
+everything.
+
+156
+00:11:25,530 --> 00:11:29,030
+All we have to do is instruct it where we want to place the data.
+
+157
+00:11:29,700 --> 00:11:33,840
+Let's refresh the page and see our dynamic posts as expected.
+
+158
+00:11:33,840 --> 00:11:34,770
+Everything works.
+
+159
+00:11:39,240 --> 00:11:43,130
+Before I end this lecture, I want to talk a little more about template tags.
+
+160
+00:11:43,510 --> 00:11:46,500
+Let's go back to the page with the list of template tags.
+
+161
+00:11:46,860 --> 00:11:49,890
+People often get confused what a template tag is.
+
+162
+00:11:50,340 --> 00:11:55,010
+Template tags is just a fancy phrase for a plain regular function.
+
+163
+00:11:55,740 --> 00:11:59,880
+The point of a template tag is to remove a lot of the logic from your template.
+
+164
+00:12:00,270 --> 00:12:07,260
+Your template should mostly be HTML with some PHP code outputting the data template tags or functions
+
+165
+00:12:07,260 --> 00:12:10,560
+that handle all the logic for retrieving or processing data.
+
+166
+00:12:11,280 --> 00:12:16,440
+If we take a look at this list of functions, you'll see that the first few items are the get header,
+
+167
+00:12:16,590 --> 00:12:19,170
+get footer and get sidebar functions.
+
+168
+00:12:19,500 --> 00:12:25,110
+You should be familiar with these functions so far, even though these functions don't query the database,
+
+169
+00:12:25,110 --> 00:12:28,840
+they do take care of loading certain templates and performing checks.
+
+170
+00:12:29,490 --> 00:12:33,570
+There are so many template tags here that it's a bit difficult to explore them all.
+
+171
+00:12:33,960 --> 00:12:39,120
+The best way to learn about a template tag is through practical use and understanding how to use them.
+
+172
+00:12:39,600 --> 00:12:44,370
+Throughout this course, we'll be exploring how to use a lot of these template tags anyway.
+
+173
+00:12:44,430 --> 00:12:45,690
+That wraps it up for now.
+
+174
+00:12:45,910 --> 00:12:47,610
+I'll see you in the next lecher.
+

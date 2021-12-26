@@ -1,0 +1,532 @@
+1
+00:00:07,160 --> 00:00:12,740
+In this lecture, we're going to tackle two things first, we're going to make the options we created
+
+2
+00:00:12,740 --> 00:00:14,520
+in this section work as intended.
+
+3
+00:00:14,870 --> 00:00:19,620
+The second task is to use the media uploader to set the featured image for a recipe.
+
+4
+00:00:20,330 --> 00:00:26,930
+The first option we have is whether it's required for users to log in to raid a recipe in the rate recipe
+
+5
+00:00:26,930 --> 00:00:27,560
+function.
+
+6
+00:00:27,590 --> 00:00:30,110
+I'm going to grab the ah ops option.
+
+7
+00:00:34,140 --> 00:00:39,780
+Then I'm going to check for two things, I'm going to check if the user is not logged in using the is
+
+8
+00:00:39,780 --> 00:00:45,480
+user logged in function, and then I'm going to compare the rating long required option two to.
+
+9
+00:00:49,830 --> 00:00:55,380
+If both statements return true, then we will want to kill the script because the user is indeed required
+
+10
+00:00:55,380 --> 00:01:01,110
+to log in to read a recipe, I'll have to move the output variable above so that this will work.
+
+11
+00:01:02,600 --> 00:01:09,050
+Next, I'm going to update the shortcode function if the user is not logged in and we require the user
+
+12
+00:01:09,050 --> 00:01:12,960
+to be logged in to create a recipe that will display a message to them.
+
+13
+00:01:13,400 --> 00:01:18,460
+Once again, grab the R opt option and make the same conditional statement.
+
+14
+00:01:18,470 --> 00:01:19,130
+Check again.
+
+15
+00:01:25,350 --> 00:01:32,250
+Make sure to update the condition, to use the recipe submission login required instead, if both statements
+
+16
+00:01:32,250 --> 00:01:32,640
+return.
+
+17
+00:01:32,640 --> 00:01:33,090
+True.
+
+18
+00:01:33,180 --> 00:01:34,920
+I'm going to output the message.
+
+19
+00:01:34,920 --> 00:01:37,620
+You must be logged in to submit a recipe.
+
+20
+00:01:40,320 --> 00:01:47,340
+Let's test this out really quick logout and then visit the submit recipe page, previously I saved my
+
+21
+00:01:47,340 --> 00:01:50,640
+option to require users to log in to submit a recipe.
+
+22
+00:01:51,060 --> 00:01:54,870
+Therefore, I should see this message telling me I need to be logged in.
+
+23
+00:01:55,560 --> 00:01:59,520
+Now, I want you to log in and try seeing if you can view the form again.
+
+24
+00:02:01,140 --> 00:02:06,630
+If you can, then that's great now that we've made the two options work, let's move on to the next
+
+25
+00:02:06,630 --> 00:02:07,110
+problem.
+
+26
+00:02:07,380 --> 00:02:11,590
+I want users to be able to upload an image and set a featured image.
+
+27
+00:02:11,940 --> 00:02:14,720
+There are two ways we can go about accomplishing this.
+
+28
+00:02:14,970 --> 00:02:20,790
+We can create and upload a button and then process that upload or we can just use the upload or WordPress
+
+29
+00:02:20,790 --> 00:02:22,170
+provides for us already.
+
+30
+00:02:22,860 --> 00:02:25,820
+Try creating a new recipe on the sidebar.
+
+31
+00:02:25,890 --> 00:02:28,800
+We have the option of setting a featured image.
+
+32
+00:02:29,070 --> 00:02:29,870
+Click the button.
+
+33
+00:02:30,300 --> 00:02:34,640
+This model will pop up displaying all the images you previously uploaded.
+
+34
+00:02:34,860 --> 00:02:37,350
+You even have the option of uploading a new one.
+
+35
+00:02:37,650 --> 00:02:39,930
+This is what's called the media uploader.
+
+36
+00:02:40,170 --> 00:02:42,480
+We can use this in our plugins and things.
+
+37
+00:02:42,660 --> 00:02:44,230
+Let's learn how to do so.
+
+38
+00:02:44,940 --> 00:02:50,880
+First, we need to include the files that will take care of styling and managing the model inside the
+
+39
+00:02:50,880 --> 00:02:52,340
+front and Q file.
+
+40
+00:02:52,410 --> 00:02:56,430
+We're going to use a special function called WPE and Comedia.
+
+41
+00:02:58,730 --> 00:03:02,150
+This will link you all files related to the media uploader.
+
+42
+00:03:02,540 --> 00:03:10,010
+Now we can use the media uploader in our page, open the recipe creator shortcode template right before
+
+43
+00:03:10,010 --> 00:03:10,790
+the submit button.
+
+44
+00:03:10,820 --> 00:03:12,890
+I'm going to paste in some HTML.
+
+45
+00:03:15,170 --> 00:03:20,560
+Nothing too special about this TML pause the video if you need to have what I have.
+
+46
+00:03:21,230 --> 00:03:23,260
+Here's what's going on in the HTML.
+
+47
+00:03:23,480 --> 00:03:25,670
+First we have this label with a link.
+
+48
+00:03:26,030 --> 00:03:30,920
+We will make it so that if the user clicks this link, then the media uploader will pop up.
+
+49
+00:03:31,190 --> 00:03:35,800
+Then we have an image tag which will allow the user to preview their selection.
+
+50
+00:03:36,140 --> 00:03:39,150
+The most important tag is the hidden input field.
+
+51
+00:03:39,530 --> 00:03:45,140
+This will be sent to the process function and it's WordPress needs in order to know what image the user
+
+52
+00:03:45,140 --> 00:03:45,730
+selected.
+
+53
+00:03:46,190 --> 00:03:48,910
+All you need to send is the ID of the image.
+
+54
+00:03:49,490 --> 00:03:51,800
+Let's make this part of the form functional.
+
+55
+00:03:51,920 --> 00:03:54,110
+Open the main JS file.
+
+56
+00:03:54,380 --> 00:04:00,800
+This is the same file with the login and authentication JS code right above the submit code will add
+
+57
+00:04:00,800 --> 00:04:05,990
+the code to make the media upload or work create a variable named featured frame.
+
+58
+00:04:06,320 --> 00:04:11,120
+This variable will be assigned to the value returned by the WP media method.
+
+59
+00:04:13,480 --> 00:04:19,630
+This method was loaded by WordPress, when you include the required files to learn more about this method,
+
+60
+00:04:19,750 --> 00:04:22,870
+I provide a link in the resource section of this lecture.
+
+61
+00:04:23,170 --> 00:04:25,960
+Here you'll find a long example on how to use this.
+
+62
+00:04:26,200 --> 00:04:30,040
+You can click this link for more information about the WP object.
+
+63
+00:04:30,430 --> 00:04:34,700
+Here you'll find information about the JavaScript utility's WordPress has to offer.
+
+64
+00:04:35,050 --> 00:04:36,580
+Let's go back to our file.
+
+65
+00:04:37,270 --> 00:04:42,610
+This method will return a media object which you can use later to open the media uploader.
+
+66
+00:04:43,030 --> 00:04:47,050
+This method has one parameter, which is an object of properties you can set.
+
+67
+00:04:47,530 --> 00:04:49,030
+The first is the title.
+
+68
+00:04:49,210 --> 00:04:52,480
+I'm going to set this to select or upload media.
+
+69
+00:04:55,020 --> 00:04:57,550
+The second property is the button property.
+
+70
+00:04:57,870 --> 00:05:03,250
+This property expects another object of properties which you can set inside this object.
+
+71
+00:05:03,270 --> 00:05:06,930
+I'm going to set the tax property to use this media.
+
+72
+00:05:09,560 --> 00:05:14,480
+The last property I want to set is the multiple property, which will be set to force.
+
+73
+00:05:16,860 --> 00:05:22,830
+This will make it so that users can only select one image instead of multiple images, we only have
+
+74
+00:05:22,830 --> 00:05:26,520
+one feature to image, so we will only want one selected image.
+
+75
+00:05:26,850 --> 00:05:30,690
+This code will initialize the media uploader, but it will not display it.
+
+76
+00:05:31,440 --> 00:05:37,530
+We only want the media uploader to display if the user clicks on the upload link to do this, we'll
+
+77
+00:05:37,530 --> 00:05:40,410
+listen for a click using the query on method.
+
+78
+00:05:40,830 --> 00:05:46,080
+The ID of the button is recipe dash img dash upload dash btm.
+
+79
+00:05:49,340 --> 00:05:55,430
+As usual, we will prevent the normal behavior from happening to open the media uploader, you simply
+
+80
+00:05:55,430 --> 00:05:56,980
+need to call the open method.
+
+81
+00:05:57,380 --> 00:06:02,900
+This method only becomes available after you initialize the media uploader, which is what we did above.
+
+82
+00:06:03,500 --> 00:06:07,760
+The very last thing we want to do is update the preview and input field.
+
+83
+00:06:07,760 --> 00:06:13,210
+When the user selects an image, the featured frame object provides a few events.
+
+84
+00:06:13,220 --> 00:06:18,020
+One of these events is the select event that will be triggered when a user selects an image.
+
+85
+00:06:18,260 --> 00:06:21,170
+We'll use the on method and listen for this event.
+
+86
+00:06:23,810 --> 00:06:30,140
+Inside the function, we're going to create a variable called attachment, this variables value will
+
+87
+00:06:30,140 --> 00:06:33,030
+be set to an object returned by a chain of methods.
+
+88
+00:06:33,410 --> 00:06:38,470
+Hopefully you'll be able to follow along because we have to use a number of methods to accomplish this.
+
+89
+00:06:38,990 --> 00:06:41,890
+So first up is the featured frame object.
+
+90
+00:06:42,260 --> 00:06:46,390
+We're going to get the current state of the media uploader by calling the state method.
+
+91
+00:06:46,760 --> 00:06:51,080
+Then we have to use the get method to retrieve a value from the current state.
+
+92
+00:06:51,560 --> 00:06:54,500
+The value we want to get is the selection property.
+
+93
+00:06:56,940 --> 00:07:03,240
+This will return the currently selected item in the media uploader, then we're going to call the first
+
+94
+00:07:03,240 --> 00:07:06,360
+method, which will return the first item in the array returned.
+
+95
+00:07:06,720 --> 00:07:12,720
+Even though we have multiple set to false, the media uploader will still return an array of selected
+
+96
+00:07:12,720 --> 00:07:13,330
+objects.
+
+97
+00:07:13,680 --> 00:07:16,410
+Finally, the value return will be a stream.
+
+98
+00:07:16,800 --> 00:07:19,580
+Therefore, we need to convert it into an object.
+
+99
+00:07:19,830 --> 00:07:22,800
+We'll use the method to Jason to accomplish this.
+
+100
+00:07:25,210 --> 00:07:28,020
+That was a lot, but hopefully you get the gist of it.
+
+101
+00:07:28,270 --> 00:07:32,430
+The attachment will now be an object with properties about the image selected.
+
+102
+00:07:32,770 --> 00:07:34,800
+We only care about two properties.
+
+103
+00:07:35,230 --> 00:07:42,910
+I'm going to set the source attribute of the recipe dash img dash preview tag to the attachment URL
+
+104
+00:07:42,910 --> 00:07:43,460
+property.
+
+105
+00:07:43,840 --> 00:07:47,410
+This is the full URL to the full sized image.
+
+106
+00:07:49,960 --> 00:07:56,810
+Next, I want to set the value of the our input, image and input to the attachment ID property.
+
+107
+00:07:57,310 --> 00:08:02,530
+This is the ID in the database and it's the ID that will need to assign the image to this post.
+
+108
+00:08:05,240 --> 00:08:11,090
+The very last step is to send it when the form is submitted, I'm going to create a new property called
+
+109
+00:08:11,090 --> 00:08:14,930
+Attachment ID and said its value to the input field like so.
+
+110
+00:08:18,900 --> 00:08:21,010
+Our JavaScript file is now complete.
+
+111
+00:08:21,420 --> 00:08:28,980
+The next step is to process it through, open the submit dash user dash recipe, dot file.
+
+112
+00:08:31,290 --> 00:08:36,730
+This is the file we made to process new recipes on the front end, right before we kill the script,
+
+113
+00:08:36,900 --> 00:08:43,080
+create a new conditional statement that will check if the attachment ID post key is set and if it is
+
+114
+00:08:43,080 --> 00:08:43,620
+an empty.
+
+115
+00:08:51,470 --> 00:09:01,100
+Then we need to include BWP, dash admen, includes image file processing images, is not done on every
+
+116
+00:09:01,100 --> 00:09:05,420
+request, so it's unnecessary for WordPress to automatically load this file.
+
+117
+00:09:05,990 --> 00:09:10,630
+Since that is the case, we need to load it ourselves by loading this file.
+
+118
+00:09:10,730 --> 00:09:14,300
+We now have access to a function called set post thumbnail.
+
+119
+00:09:14,720 --> 00:09:17,260
+This function will assign the image to the post.
+
+120
+00:09:17,570 --> 00:09:22,220
+All it requires is the post ID and then the attachment ID itself.
+
+121
+00:09:22,490 --> 00:09:28,010
+I'm going to wrap the ID of the attachment with the ABS in function just for good security measure.
+
+122
+00:09:30,630 --> 00:09:36,270
+This would be a good time to talk about data validation, we've been using many functions to sanitize
+
+123
+00:09:36,270 --> 00:09:38,910
+our data, but we haven't explored all of them yet.
+
+124
+00:09:39,300 --> 00:09:44,810
+In the resources section of this lecture, I provide a link to the data validation Codex page.
+
+125
+00:09:45,360 --> 00:09:51,300
+This page contains a list of all the functions provided by WordPress that you can use to sanitize data.
+
+126
+00:09:51,780 --> 00:09:56,300
+Feel free to bookmark it, as it's quite useful to have what you want to sanitize data.
+
+127
+00:09:56,880 --> 00:09:57,650
+That's about it.
+
+128
+00:09:57,930 --> 00:10:00,170
+Let's test this out and see if it works.
+
+129
+00:10:00,420 --> 00:10:04,050
+I want you to create a new recipe and fill in all these fields.
+
+130
+00:10:09,670 --> 00:10:14,950
+When you select an image, you should be able to see the preview right under the label, submit your
+
+131
+00:10:14,950 --> 00:10:17,290
+recipe and you should see a success message.
+
+132
+00:10:19,930 --> 00:10:25,930
+Just to confirm if everything worked, let's go to the admin dashboard and view the list of recipe posts,
+
+133
+00:10:26,260 --> 00:10:31,540
+you should be able to see our brand new recipe created along with the featured image assigned to it.
+

@@ -1,0 +1,836 @@
+1
+00:00:08,020 --> 00:00:14,020
+Right now, the recipe post type we have is pretty standard, just like any other post, I can create
+
+2
+00:00:14,020 --> 00:00:17,340
+content, add tags and even add a featured image.
+
+3
+00:00:17,620 --> 00:00:22,360
+I want to give the user the ability to write a recipe on a scale of one to five.
+
+4
+00:00:22,750 --> 00:00:26,730
+To do this will have to use something called the metadata API.
+
+5
+00:00:27,400 --> 00:00:32,060
+Usually you would try to create a database table and have it storing the data.
+
+6
+00:00:32,259 --> 00:00:36,690
+However, WordPress allows us to use something called the metadata API.
+
+7
+00:00:37,270 --> 00:00:38,330
+What is metadata?
+
+8
+00:00:38,500 --> 00:00:45,730
+Well, metadata is basically just pieces of information related to a post page or user on its own.
+
+9
+00:00:45,730 --> 00:00:47,020
+It's not very useful.
+
+10
+00:00:47,350 --> 00:00:54,610
+Metadata has to be connected to something, will use metadata to add and store all the additional information
+
+11
+00:00:54,610 --> 00:00:55,840
+will need for recipes.
+
+12
+00:00:56,440 --> 00:01:03,310
+By using the metadata API, we free ourselves of having to create a table and managing it in the database.
+
+13
+00:01:05,129 --> 00:01:11,310
+And the resource section, I provided a link to the metadata API Codex page, as you can see, there
+
+14
+00:01:11,340 --> 00:01:15,280
+are only four functions that you can use, but they're very powerful.
+
+15
+00:01:15,810 --> 00:01:17,780
+We won't be using these functions.
+
+16
+00:01:17,790 --> 00:01:21,180
+And here's what click on the add metadata function.
+
+17
+00:01:21,510 --> 00:01:28,320
+WordPress provides a note that says this is a generic low level function and should not be used directly
+
+18
+00:01:28,320 --> 00:01:29,520
+by plugins or themes.
+
+19
+00:01:29,730 --> 00:01:34,470
+Instead, use the corresponding meta functions for the object type you're working with.
+
+20
+00:01:35,040 --> 00:01:38,220
+As WordPress recommends, we shouldn't use these functions.
+
+21
+00:01:38,230 --> 00:01:43,320
+Instead, we're going to use meta functions specifically made for custom post types.
+
+22
+00:01:43,920 --> 00:01:46,970
+Now that we have an overview of things, let's get started.
+
+23
+00:01:47,280 --> 00:01:51,350
+I'm going to go to my WordPress admin dashboard and create a new recipe.
+
+24
+00:01:51,720 --> 00:01:56,370
+I'm going to fill in some of these fields really quick, feel free to follow along and fill in these
+
+25
+00:01:56,370 --> 00:01:58,040
+fields with whatever values you like.
+
+26
+00:01:58,440 --> 00:02:00,750
+We're not really worried about the values right now.
+
+27
+00:02:01,320 --> 00:02:05,070
+I'm going to make a recipe for a cake for the content area.
+
+28
+00:02:05,070 --> 00:02:07,620
+I'm going to use something called lorem ipsum.
+
+29
+00:02:07,980 --> 00:02:11,880
+Lorem ipsum is a really handy tool that will help you generate content.
+
+30
+00:02:12,240 --> 00:02:16,230
+I'm going to set this to two paragraphs and generate some content.
+
+31
+00:02:16,800 --> 00:02:19,080
+Copy and paste this into the text editor.
+
+32
+00:02:21,320 --> 00:02:26,870
+This tool is really great because you won't have to type in gibberish or write actual content, it'll
+
+33
+00:02:26,870 --> 00:02:28,680
+generate dummy content for you.
+
+34
+00:02:29,120 --> 00:02:32,460
+I'll provide a link to it in the resource section of this lecture.
+
+35
+00:02:33,080 --> 00:02:36,080
+Next, I'm going to add some tags and categories.
+
+36
+00:02:36,240 --> 00:02:38,680
+These can be completely random as well.
+
+37
+00:02:41,120 --> 00:02:42,870
+Don't submit this post just yet.
+
+38
+00:02:43,220 --> 00:02:49,130
+The next step is to save the metadata along with this post, once we have that code written out, will
+
+39
+00:02:49,130 --> 00:02:52,590
+submit those posts inside the index file.
+
+40
+00:02:52,730 --> 00:02:55,190
+Let's add the action hook save post.
+
+41
+00:02:58,130 --> 00:03:00,510
+This hook is triggered when a post is saved.
+
+42
+00:03:00,830 --> 00:03:07,370
+Of course, we only want to use this hook if the post is a recipe post and the resource section of this
+
+43
+00:03:07,370 --> 00:03:10,520
+lecture, I provide a link to the save post hook.
+
+44
+00:03:11,180 --> 00:03:17,150
+WordPress talks more about this hook, but we want to concern ourselves with this custom post type example.
+
+45
+00:03:17,480 --> 00:03:22,820
+WordPress provides an example for how we should go about making sure we only save data for a specific
+
+46
+00:03:22,820 --> 00:03:26,210
+post type rather than a generic post or random post type.
+
+47
+00:03:26,720 --> 00:03:33,380
+However, if you scroll down even further, you'll find this note that says, as of WP three point seven
+
+48
+00:03:33,380 --> 00:03:39,590
+and alternative action has been introduced, which is called for specific post types save underscore,
+
+49
+00:03:39,590 --> 00:03:44,930
+post, underscore, post type hooking to this action, you wouldn't have to check on the post type in
+
+50
+00:03:44,930 --> 00:03:51,770
+the sample above to make sure we only process recipe posts will add underscore a recipe to the hook
+
+51
+00:03:51,770 --> 00:03:51,960
+name.
+
+52
+00:03:52,400 --> 00:03:54,530
+This is what's called a dynamic hook.
+
+53
+00:03:54,800 --> 00:03:57,500
+Some hooks can be triggered for specific post types.
+
+54
+00:03:57,770 --> 00:03:59,570
+WordPress handles this for you.
+
+55
+00:03:59,810 --> 00:04:04,370
+All you have to do is call the hook and then replace the dynamic part with your post type.
+
+56
+00:04:04,820 --> 00:04:09,070
+Be sure to check the documentation to determine whether or not a hook is dynamic.
+
+57
+00:04:09,710 --> 00:04:13,300
+Just like that, this hook will only be triggered for recipe posts.
+
+58
+00:04:13,580 --> 00:04:17,420
+The function we want to call is our save post admin.
+
+59
+00:04:19,680 --> 00:04:24,750
+For this part of the lecture, we're going to use the two extra parameters that are optional for the
+
+60
+00:04:24,750 --> 00:04:26,030
+ADD action function.
+
+61
+00:04:26,610 --> 00:04:28,780
+The third parameter is priority.
+
+62
+00:04:29,160 --> 00:04:32,220
+There is a possibility that other plug ins might use this hook.
+
+63
+00:04:32,660 --> 00:04:35,860
+The order of execution is determined by this third parameter.
+
+64
+00:04:36,180 --> 00:04:40,590
+If this is set to one, then this function will fire first before all others.
+
+65
+00:04:40,860 --> 00:04:44,100
+If set to a high number, then our function will fire last.
+
+66
+00:04:44,380 --> 00:04:46,070
+The default priority is ten.
+
+67
+00:04:46,410 --> 00:04:48,180
+We're going to leave this at 10.
+
+68
+00:04:48,600 --> 00:04:51,210
+The fourth parameter is what we really want to set.
+
+69
+00:04:51,630 --> 00:04:55,710
+This parameter allows us to define how many arguments are set to the function.
+
+70
+00:04:56,340 --> 00:04:57,700
+What does this actually mean?
+
+71
+00:04:57,960 --> 00:05:02,940
+Well, action hooks can provide our functions with extra information about the action currently happening.
+
+72
+00:05:03,300 --> 00:05:07,620
+Not every action provides this, but the safe posthole does.
+
+73
+00:05:08,010 --> 00:05:10,500
+By default, this value is always one.
+
+74
+00:05:10,810 --> 00:05:14,390
+However, the safe posthole provides three arguments.
+
+75
+00:05:14,550 --> 00:05:16,080
+So set this to three.
+
+76
+00:05:16,470 --> 00:05:22,110
+The only way to find out if an action hook provides extra arguments is by checking the WordPress documentation.
+
+77
+00:05:22,770 --> 00:05:26,760
+At this point, I want you to create a folder called Process.
+
+78
+00:05:27,060 --> 00:05:31,190
+I like to create a folder for functions and classes that process data.
+
+79
+00:05:31,500 --> 00:05:36,610
+This folder will contain all files related to updating, deleting and creating data.
+
+80
+00:05:36,990 --> 00:05:39,770
+Once again, this is not required by WordPress.
+
+81
+00:05:39,990 --> 00:05:47,190
+This is just the way I prefer to keep things organized, create a file called Save Dasch Postop and
+
+82
+00:05:47,190 --> 00:05:48,270
+define the function here.
+
+83
+00:05:50,580 --> 00:05:53,130
+Make sure to include it from the index file.
+
+84
+00:05:56,890 --> 00:06:03,490
+This function will be provided three arguments, the first is the post ID, the second is the Post,
+
+85
+00:06:03,490 --> 00:06:05,680
+which contains info about the post itself.
+
+86
+00:06:05,950 --> 00:06:07,420
+The third is update.
+
+87
+00:06:07,750 --> 00:06:09,880
+This variable is a boolean value.
+
+88
+00:06:10,030 --> 00:06:15,710
+It will let you know whether this is a new post or an old one being updated inside the function.
+
+89
+00:06:15,730 --> 00:06:18,770
+I'm going to create an array called recipe data.
+
+90
+00:06:19,060 --> 00:06:20,740
+This will be set to the function.
+
+91
+00:06:20,740 --> 00:06:21,760
+Get Postmedia.
+
+92
+00:06:24,110 --> 00:06:31,270
+When it comes to metadata, you will perform four types of operations, you can either add, get update
+
+93
+00:06:31,280 --> 00:06:32,390
+or delete data.
+
+94
+00:06:32,780 --> 00:06:38,450
+The reason we're grabbing data is because this function will be called whether a new post is being created
+
+95
+00:06:38,450 --> 00:06:40,400
+or a current one is being updated.
+
+96
+00:06:40,860 --> 00:06:44,700
+And in this case, we're trying to grab metadata for a new post.
+
+97
+00:06:44,870 --> 00:06:49,850
+However, since the post doesn't exist, then there shouldn't be any metadata for it.
+
+98
+00:06:50,180 --> 00:06:51,260
+That's perfectly fine.
+
+99
+00:06:51,530 --> 00:06:55,560
+If no metadata is found, then this function will return an empty value.
+
+100
+00:06:56,240 --> 00:06:59,780
+We'll use that to determine whether we should create it or update it.
+
+101
+00:07:00,170 --> 00:07:02,290
+This function has three parameters.
+
+102
+00:07:02,540 --> 00:07:05,000
+The first parameter is the ID for the post.
+
+103
+00:07:05,210 --> 00:07:08,210
+I'm going to pass in the post ID variable.
+
+104
+00:07:08,750 --> 00:07:10,810
+Then we have to set the key.
+
+105
+00:07:11,180 --> 00:07:17,390
+As you can imagine, a post can have multiple pieces of metadata attached to it from various plugins.
+
+106
+00:07:17,810 --> 00:07:19,280
+Because this is the case.
+
+107
+00:07:19,310 --> 00:07:25,190
+WordPress allows you to give your metadata a unique key or name to identify it easily.
+
+108
+00:07:25,790 --> 00:07:30,460
+You can name your key whatever you want, but you usually want to keep it relative.
+
+109
+00:07:30,770 --> 00:07:34,320
+We'll be calling our metadata recipe underscored data.
+
+110
+00:07:35,150 --> 00:07:39,900
+Lastly, we have to determine if we want an array returned or a single value.
+
+111
+00:07:40,370 --> 00:07:43,100
+This third parameter can be true or false.
+
+112
+00:07:43,310 --> 00:07:48,680
+If you set this to true, then WordPress will return a single value by default.
+
+113
+00:07:48,680 --> 00:07:54,590
+Metadata is stored in an array because multiple pieces of metadata can be attached to a post.
+
+114
+00:07:55,220 --> 00:07:59,780
+If you just want the value without the array, then you should pass in an array.
+
+115
+00:08:00,140 --> 00:08:04,340
+However, keep in mind that you're not limited to just storing single values.
+
+116
+00:08:04,550 --> 00:08:10,030
+If you don't want to create multiple metadata for a post, then you can store the data in an array.
+
+117
+00:08:10,400 --> 00:08:14,080
+If you set this to true, WordPress will return that array.
+
+118
+00:08:14,660 --> 00:08:19,750
+If you set this to false, then WordPress will return an array within an array.
+
+119
+00:08:20,180 --> 00:08:23,870
+It can be confusing, I know, but just go with me on this one.
+
+120
+00:08:24,230 --> 00:08:27,950
+Ninety nine percent of the time you'll want this value to be true.
+
+121
+00:08:28,580 --> 00:08:29,420
+Just like that.
+
+122
+00:08:29,420 --> 00:08:30,980
+We now have the metadata.
+
+123
+00:08:31,220 --> 00:08:37,400
+I'm going to make one simple check by reassigning this variable using a ternary operator.
+
+124
+00:08:37,400 --> 00:08:39,860
+I'm going to check at the variable is empty.
+
+125
+00:08:42,100 --> 00:08:48,100
+If it is, then we know that this is a new post, if that's the case, I'm going to set this variable
+
+126
+00:08:48,100 --> 00:08:51,340
+to be an empty array, otherwise I'll just let it be.
+
+127
+00:08:53,490 --> 00:08:59,990
+All right, the recipe data variable is ready after this, I'm going to start setting some keys.
+
+128
+00:09:00,210 --> 00:09:03,640
+The goal is to store data related to reading the recipe.
+
+129
+00:09:03,960 --> 00:09:05,960
+There are two things we'll need to store.
+
+130
+00:09:06,210 --> 00:09:09,860
+We'll need the rating and how many times a recipe has been rated.
+
+131
+00:09:10,440 --> 00:09:15,600
+I'm going to create a key called rating and set its value to a ternary operator.
+
+132
+00:09:19,650 --> 00:09:23,280
+The condition will be checking if the rating key is already set.
+
+133
+00:09:25,620 --> 00:09:31,550
+If it is, then I'm going to set it to itself while wrapping the function with the ABS into function,
+
+134
+00:09:31,890 --> 00:09:33,810
+otherwise the default will be zero.
+
+135
+00:09:36,020 --> 00:09:42,260
+I'm introducing the function abs and which is used for sanitizing the value and the resource section,
+
+136
+00:09:42,270 --> 00:09:47,280
+I provide a link to the WordPress data sanitation and Escaping User Data page.
+
+137
+00:09:47,660 --> 00:09:50,330
+This is a very important page you should read up on.
+
+138
+00:09:50,930 --> 00:09:54,980
+This page goes over the various functions for sanitising user input.
+
+139
+00:09:55,340 --> 00:09:58,270
+A lot of great examples and explanations are detailed here.
+
+140
+00:09:58,610 --> 00:10:02,670
+We will be using these functions throughout the course to sanitize user input.
+
+141
+00:10:02,990 --> 00:10:06,230
+For now, we're only going to use the ABS in function.
+
+142
+00:10:06,950 --> 00:10:08,540
+There's something I want to show you.
+
+143
+00:10:08,810 --> 00:10:11,660
+Go back to your editor and navigate to the directory.
+
+144
+00:10:11,660 --> 00:10:16,240
+Slash WP dash include slash formatting, PHP.
+
+145
+00:10:19,980 --> 00:10:25,680
+This file contains a list of the sanitisation functions for WordPress, I highly recommend you look
+
+146
+00:10:25,680 --> 00:10:28,590
+into this file to understand how most of these functions work.
+
+147
+00:10:28,980 --> 00:10:34,200
+You can even borrow some of these functions for your own non WordPress projects if you ever had trouble
+
+148
+00:10:34,200 --> 00:10:35,340
+with sanitizing data.
+
+149
+00:10:35,820 --> 00:10:38,230
+Let's go back to the save post function.
+
+150
+00:10:38,820 --> 00:10:42,180
+I'm going to create another key called rating count.
+
+151
+00:10:42,510 --> 00:10:46,080
+This will have the same values as the rating key like so.
+
+152
+00:10:53,640 --> 00:10:59,040
+You should have something similar to what I have at this point, the last and final step is to attach
+
+153
+00:10:59,040 --> 00:11:00,240
+the data to the post.
+
+154
+00:11:00,540 --> 00:11:03,830
+WordPress provides a function called Update Post Meta.
+
+155
+00:11:04,260 --> 00:11:08,870
+There's another function called add post meta, but we're not going to use it.
+
+156
+00:11:09,240 --> 00:11:13,440
+The update version will actually check if this data already exists.
+
+157
+00:11:13,650 --> 00:11:16,020
+If it doesn't, then it'll create it for us.
+
+158
+00:11:16,320 --> 00:11:19,680
+It's a kill two birds with one stone kind of scenario.
+
+159
+00:11:20,340 --> 00:11:24,060
+I'll provide a link to this function in the resource section of this lecture.
+
+160
+00:11:24,390 --> 00:11:26,340
+We're going to pass him three things.
+
+161
+00:11:26,550 --> 00:11:28,410
+First is the post ID.
+
+162
+00:11:28,800 --> 00:11:33,900
+Even though this is a new post, WordPress will be smart enough to provide us with a post ID that will
+
+163
+00:11:33,900 --> 00:11:34,460
+be used.
+
+164
+00:11:34,710 --> 00:11:37,890
+So let's pass them the post ID variable.
+
+165
+00:11:38,430 --> 00:11:40,650
+Next is the name for the metadata.
+
+166
+00:11:40,980 --> 00:11:43,580
+There can be multiple metadata for one post.
+
+167
+00:11:43,830 --> 00:11:46,310
+It's important that we pass in a unique key.
+
+168
+00:11:46,620 --> 00:11:48,690
+I'm going to name it recipe data.
+
+169
+00:11:50,940 --> 00:11:54,000
+Lastly, we pass on the value for our Medidata.
+
+170
+00:11:56,190 --> 00:12:00,480
+It's that simple, let's resubmit the data and the post will now be saved.
+
+171
+00:12:02,810 --> 00:12:09,170
+The Post should save successfully without any error, however, how do we know if the metadata was St..
+
+172
+00:12:10,240 --> 00:12:16,930
+We'll have to check the database to make sure open Heidi and connect to your database metadata is stored
+
+173
+00:12:16,930 --> 00:12:19,770
+in a few tables for our particular case.
+
+174
+00:12:19,870 --> 00:12:22,800
+This would be WP underscore Postmedia.
+
+175
+00:12:23,140 --> 00:12:24,880
+Before we verify the data.
+
+176
+00:12:25,000 --> 00:12:28,680
+I want you to notice that this pattern is repeated for a lot of tables.
+
+177
+00:12:29,050 --> 00:12:34,030
+The actual content for the post is stored inside the WP posts table.
+
+178
+00:12:34,510 --> 00:12:38,410
+To find the metadata, you need to add the word meta to the table name.
+
+179
+00:12:39,040 --> 00:12:43,800
+This is true for the comments and comments matter, terms and terms matter.
+
+180
+00:12:43,810 --> 00:12:47,170
+And lastly, the users and users meta tables.
+
+181
+00:12:47,500 --> 00:12:51,910
+Metadata can be applied to almost anything, including your own custom tables.
+
+182
+00:12:52,150 --> 00:12:57,650
+If you ever do decide to go that far, then I recommend you follow WordPress this database design.
+
+183
+00:12:58,240 --> 00:13:02,190
+Anyway, let's move forward inside the post table.
+
+184
+00:13:02,230 --> 00:13:04,930
+I'm going to look for my newly created post.
+
+185
+00:13:05,170 --> 00:13:07,640
+It should be the very last row in the database.
+
+186
+00:13:07,960 --> 00:13:11,590
+The reason I'm looking for the post first is because we need the ID.
+
+187
+00:13:12,160 --> 00:13:17,080
+Now that we have the ID, let's look for the metadata in the post metastable.
+
+188
+00:13:17,410 --> 00:13:24,400
+The Post ID column will determine which metadata is connected to which post searching through this you
+
+189
+00:13:24,400 --> 00:13:28,510
+should eventually find the metadata related to our newly created post.
+
+190
+00:13:29,200 --> 00:13:33,700
+WordPress takes the time to add in its own metadata and that's perfectly fine.
+
+191
+00:13:34,090 --> 00:13:40,060
+If you look long enough, you'll eventually find the metadata with our keep the key name is under the
+
+192
+00:13:40,060 --> 00:13:41,140
+menarche column.
+
+193
+00:13:41,380 --> 00:13:45,190
+The Menagh value column contains the actual key itself.
+
+194
+00:13:45,910 --> 00:13:47,980
+The value here is a bit strange.
+
+195
+00:13:48,190 --> 00:13:52,090
+WordPress does something called serialisation for our values.
+
+196
+00:13:52,300 --> 00:13:58,600
+Serialisation is the process of converting a P object or array into a string that can be stored in a
+
+197
+00:13:58,600 --> 00:13:59,230
+database.
+
+198
+00:13:59,590 --> 00:14:02,800
+Objects and arrays can't be stored in a database.
+
+199
+00:14:02,980 --> 00:14:05,080
+They have to be turned into string's.
+
+200
+00:14:05,500 --> 00:14:06,720
+That's what's going on here.
+
+201
+00:14:06,940 --> 00:14:11,650
+If you look around, you'll see that some values aren't serialized and others are.
+
+202
+00:14:11,980 --> 00:14:15,520
+If you're storing single values, then they won't be serialized.
+
+203
+00:14:15,700 --> 00:14:17,230
+Only objects and arrays are.
+
+204
+00:14:17,560 --> 00:14:21,790
+We don't have to worry about this process as WordPress handles it for us.
+
+205
+00:14:22,330 --> 00:14:25,230
+If you're using the meta functions, then you should be fine.
+
+206
+00:14:25,510 --> 00:14:30,690
+However, if you make Roskill queries, then you don't need to take care of this process yourself.
+
+207
+00:14:31,330 --> 00:14:31,840
+All right.
+
+208
+00:14:31,990 --> 00:14:33,130
+That should wrap things up.
+
+209
+00:14:33,400 --> 00:14:38,980
+We've confirmed that the metadata has been saved and we can finally move on to displaying the rating.
+

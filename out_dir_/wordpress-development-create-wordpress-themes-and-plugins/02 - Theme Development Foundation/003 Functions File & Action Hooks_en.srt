@@ -1,0 +1,692 @@
+1
+00:00:07,160 --> 00:00:13,100
+Right now, all we have is empty white space as our theme, it's not very flexible, nor does it look
+
+2
+00:00:13,100 --> 00:00:13,580
+appealing.
+
+3
+00:00:13,970 --> 00:00:14,810
+Let's change that.
+
+4
+00:00:15,410 --> 00:00:22,040
+Earlier, I asked you to download the static version of our theme, open up that zip file inside the
+
+5
+00:00:22,040 --> 00:00:24,070
+unity theme folder we created.
+
+6
+00:00:24,080 --> 00:00:26,840
+Let's create a sub folder called Assets.
+
+7
+00:00:29,060 --> 00:00:32,119
+Unzip the contents of the static template into this folder.
+
+8
+00:00:32,570 --> 00:00:38,440
+I'm also going to add the HTML in there as well so we can use it for reference throughout this course.
+
+9
+00:00:39,350 --> 00:00:43,950
+It's important to note that WordPress doesn't require you to have this folder structure.
+
+10
+00:00:44,390 --> 00:00:50,210
+The only files WordPress requires are the index top end style that counts files.
+
+11
+00:00:50,570 --> 00:00:52,940
+The folder structure is completely up to you.
+
+12
+00:00:53,660 --> 00:00:56,270
+I want my theme to look like the static version.
+
+13
+00:00:56,690 --> 00:01:03,740
+The first step is to have WordPress load the HTML, open the index, the HTML file inside the assets
+
+14
+00:01:03,740 --> 00:01:04,050
+folder.
+
+15
+00:01:04,670 --> 00:01:08,300
+Copy and paste the contents into the index top template.
+
+16
+00:01:10,550 --> 00:01:16,310
+Obviously, this won't work, but it's a good starting point if you refresh the homepage, you'll notice
+
+17
+00:01:16,310 --> 00:01:17,710
+that the site is pretty broken.
+
+18
+00:01:18,080 --> 00:01:23,750
+If you press F 12 on your keyboard, then you'll open up the developer tools for either Google Chrome
+
+19
+00:01:23,750 --> 00:01:24,760
+or Firefox.
+
+20
+00:01:25,130 --> 00:01:30,080
+You can then click on the console tab and you'll see that we're getting all these 404 errors.
+
+21
+00:01:30,710 --> 00:01:33,970
+If you're unfamiliar with the developer tools, then don't worry.
+
+22
+00:01:34,370 --> 00:01:39,570
+Throughout this course, I'll be going over how the developer tools can help us develop better things.
+
+23
+00:01:39,950 --> 00:01:41,520
+Let me give you a brief overview.
+
+24
+00:01:42,140 --> 00:01:46,150
+The developer tools are a way for you to analyze and modify your site.
+
+25
+00:01:46,550 --> 00:01:52,550
+It can be intimidating to beginners, but it's actually quite simple to use once you know how to navigate
+
+26
+00:01:52,550 --> 00:01:53,320
+your way around.
+
+27
+00:01:53,750 --> 00:01:54,760
+Let's take it slow.
+
+28
+00:01:55,100 --> 00:02:01,520
+The only thing you should know about the developer tools is the console tap the console will output
+
+29
+00:02:01,520 --> 00:02:02,770
+messages about your site.
+
+30
+00:02:03,140 --> 00:02:07,280
+It's mostly used for errors, but you can use it for other things if you wish.
+
+31
+00:02:07,700 --> 00:02:11,720
+Earlier I stated that this course doesn't really focus on JavaScript.
+
+32
+00:02:12,020 --> 00:02:14,900
+I assume you already know JavaScript henceforth.
+
+33
+00:02:14,900 --> 00:02:17,390
+I assume you already know about the console tab.
+
+34
+00:02:17,990 --> 00:02:24,050
+Taking another look at the console, we have all these 404 errors, meaning that a lot of the files
+
+35
+00:02:24,050 --> 00:02:25,680
+we want to load can't be found.
+
+36
+00:02:26,150 --> 00:02:29,410
+This is because the parts that are inputted are incorrect.
+
+37
+00:02:29,930 --> 00:02:32,140
+Technically, these parts are correct.
+
+38
+00:02:32,150 --> 00:02:39,140
+If you were to try to open the HTML file by itself, we could edit the index template and fix the links
+
+39
+00:02:39,140 --> 00:02:41,240
+to point to the new path for our theme.
+
+40
+00:02:41,240 --> 00:02:43,520
+But that is inefficient and not recommended.
+
+41
+00:02:45,750 --> 00:02:52,170
+We run into a couple of problems, such as users being able to actually change the default WordPress
+
+42
+00:02:52,170 --> 00:02:56,130
+folder structure to suit their needs, rendering our fixed links useless.
+
+43
+00:02:56,730 --> 00:03:04,350
+We would also have to check if SSL is enabled, forcing us to check if the protocol is a or HTP.
+
+44
+00:03:05,070 --> 00:03:10,930
+Lastly, you'll end up loading all stylesheets and scripts on every page, even if we don't need them.
+
+45
+00:03:11,640 --> 00:03:16,170
+There are just too many disadvantages to hard coding the Urals into the template.
+
+46
+00:03:18,430 --> 00:03:24,610
+If you wanted to, you can create the logic for this, but you don't have to because WordPress actually
+
+47
+00:03:24,610 --> 00:03:29,360
+handles this logic for us, it's something WordPress calls action hooks.
+
+48
+00:03:29,680 --> 00:03:31,730
+I'll explain what those are in just a moment.
+
+49
+00:03:32,380 --> 00:03:36,550
+Back inside the theme folder, create a new file called Functions.
+
+50
+00:03:39,720 --> 00:03:45,360
+This file is completely optional, but if you have it, then WordPress will automatically load this
+
+51
+00:03:45,360 --> 00:03:48,000
+file and execute any code within this file.
+
+52
+00:03:48,480 --> 00:03:50,790
+You don't have to do anything to set it up.
+
+53
+00:03:51,300 --> 00:03:55,860
+Be sure that you name this functions and not function.
+
+54
+00:03:57,120 --> 00:04:01,140
+I've had students in the past forget the S causing their code not to work.
+
+55
+00:04:01,860 --> 00:04:05,070
+The functions file can be thought of as your theme's logic.
+
+56
+00:04:05,400 --> 00:04:11,580
+If you would like to query the database at stylesheets process forms, check if the user is logged in,
+
+57
+00:04:11,730 --> 00:04:14,030
+then this is the file you'll want to edit.
+
+58
+00:04:14,730 --> 00:04:18,750
+I personally don't like to stuff my functions file with all my logic.
+
+59
+00:04:19,050 --> 00:04:22,790
+I like to have structure and separate everything into its own file.
+
+60
+00:04:23,130 --> 00:04:24,750
+So let's add some comments.
+
+61
+00:04:25,500 --> 00:04:30,590
+Will first create a section for variables or functions that must be available throughout our theme.
+
+62
+00:04:31,050 --> 00:04:33,830
+The second section will be for including any files.
+
+63
+00:04:34,260 --> 00:04:36,930
+The third section will be for any filters and action.
+
+64
+00:04:36,930 --> 00:04:39,270
+Hooks will discuss hooks very soon.
+
+65
+00:04:39,610 --> 00:04:42,870
+Lastly, will create a section for shortcuts.
+
+66
+00:04:43,530 --> 00:04:46,970
+Keep in mind, you don't have to structure your file like this.
+
+67
+00:04:47,190 --> 00:04:50,250
+This is just how I do it and how I recommend you do it.
+
+68
+00:04:50,910 --> 00:04:52,860
+Just to make sure everything is working.
+
+69
+00:04:52,860 --> 00:04:55,530
+Let's echo out a hello world message.
+
+70
+00:04:57,600 --> 00:05:03,330
+If you refresh the page, then you should see the message outputted onto the home page, something I
+
+71
+00:05:03,330 --> 00:05:07,860
+want you to notice is that the Hello World message is outputted before the template.
+
+72
+00:05:08,370 --> 00:05:12,440
+We can now confirm that the functions file is loaded before the template.
+
+73
+00:05:12,930 --> 00:05:17,920
+Let's remove this because it's not good practice to echo out anything inside the functions file.
+
+74
+00:05:18,660 --> 00:05:20,820
+We can now begin using action hooks.
+
+75
+00:05:21,090 --> 00:05:22,220
+What are action hooks?
+
+76
+00:05:22,500 --> 00:05:24,930
+So a lot can happen throughout WordPress.
+
+77
+00:05:25,140 --> 00:05:30,720
+Typically you may want to use conditional statements to check when a certain action or event happens.
+
+78
+00:05:31,050 --> 00:05:33,000
+However, this isn't very efficient.
+
+79
+00:05:33,270 --> 00:05:36,270
+What will happen is that you will have a lot of nested code.
+
+80
+00:05:36,630 --> 00:05:40,110
+Instead, WordPress introduces something called Hooks.
+
+81
+00:05:40,620 --> 00:05:45,550
+A hook is a way for you to listen to an event and execute code when that event happens.
+
+82
+00:05:45,930 --> 00:05:50,750
+This is what WordPress calls the plugins API and events can be anything.
+
+83
+00:05:51,090 --> 00:05:53,730
+There are literally over a hundred different hooks.
+
+84
+00:05:54,060 --> 00:05:59,790
+There's a hook for the footer when an admin form is submitted, AJAX submissions and so much more.
+
+85
+00:06:00,120 --> 00:06:03,870
+We won't be going over all of them because it would just be too overwhelming.
+
+86
+00:06:04,230 --> 00:06:06,510
+If you don't understand, then don't worry.
+
+87
+00:06:06,780 --> 00:06:08,720
+You'll see how it works in just a moment.
+
+88
+00:06:09,270 --> 00:06:13,080
+We will definitely be going over some of the most commonly used ones, though.
+
+89
+00:06:13,440 --> 00:06:17,570
+In the resource section of this lecture, you'll find a link to the Hooke's API.
+
+90
+00:06:17,910 --> 00:06:18,930
+Let's check this out.
+
+91
+00:06:19,560 --> 00:06:24,660
+You'll notice there's a list for two kinds of Hooke's action hooks and filter hooks.
+
+92
+00:06:25,080 --> 00:06:27,540
+We'll be going over both throughout this course.
+
+93
+00:06:27,750 --> 00:06:30,810
+Let's take a look at the list of action hooks available.
+
+94
+00:06:31,350 --> 00:06:32,700
+Scroll around this page.
+
+95
+00:06:32,880 --> 00:06:35,220
+You'll see all the hooks available to us.
+
+96
+00:06:35,520 --> 00:06:41,130
+I know we haven't gone over how to use hooks yet, but just from looking at this list, do you think
+
+97
+00:06:41,130 --> 00:06:45,090
+you can spot the hook we need in order to add scripts and styles to our theme?
+
+98
+00:06:45,810 --> 00:06:49,350
+Most people would say WP head, but this is incorrect.
+
+99
+00:06:49,620 --> 00:06:53,790
+The correct hook is the one above it, which is WP and Q scripts.
+
+100
+00:06:54,060 --> 00:06:56,370
+Click on it and let's take a look at this hook.
+
+101
+00:06:56,640 --> 00:06:58,950
+This is what WordPress has to say about it.
+
+102
+00:06:59,640 --> 00:07:05,910
+WP and Q Scripts is the proper hook to use when in items that are meant to appear on the front end,
+
+103
+00:07:06,360 --> 00:07:10,590
+despite the name it is used for in cueing both scripts and styles.
+
+104
+00:07:10,950 --> 00:07:16,230
+Just by reading that, you know it is indeed the correct hook to use when adding scripts and styles.
+
+105
+00:07:16,560 --> 00:07:22,590
+So let's get started with using action hooks, open the functions file and under the hooks section,
+
+106
+00:07:22,590 --> 00:07:29,190
+add the following code, add action WP and queue script Jiyu underscore NQ.
+
+107
+00:07:35,080 --> 00:07:41,440
+The add action function is a function that WordPress automatically defines and loads for you, you don't
+
+108
+00:07:41,440 --> 00:07:43,920
+need to do anything to make sure it's available to you.
+
+109
+00:07:44,440 --> 00:07:48,510
+This function has four parameters, but only the first two are required.
+
+110
+00:07:49,150 --> 00:07:52,620
+The first parameter is the name of the hook you want to access.
+
+111
+00:07:52,930 --> 00:07:57,130
+In our case, we want to access the WP and Qs scripts.
+
+112
+00:07:57,130 --> 00:08:00,100
+Look, make sure you input this as a string.
+
+113
+00:08:00,490 --> 00:08:03,670
+The second parameter is the name of the function you want to call.
+
+114
+00:08:03,670 --> 00:08:08,510
+When this hook is triggered, the other two parameters will be discussing in another lecture.
+
+115
+00:08:08,890 --> 00:08:10,840
+For now, we only need the first two.
+
+116
+00:08:11,590 --> 00:08:15,460
+Currently we don't have this function defined, so we'll get an error.
+
+117
+00:08:15,760 --> 00:08:17,110
+Let's fix that quickly.
+
+118
+00:08:17,440 --> 00:08:22,540
+As I stated before, I don't like to add all my logic and code in one file.
+
+119
+00:08:23,050 --> 00:08:26,020
+So let's create a folder called Includes.
+
+120
+00:08:26,380 --> 00:08:29,590
+Within this folder, create another folder called Front.
+
+121
+00:08:31,860 --> 00:08:37,950
+The front folder will contain any code in logic pertaining to the front end of our site within this
+
+122
+00:08:37,950 --> 00:08:40,650
+folder, create a file called Incudes.
+
+123
+00:08:41,970 --> 00:08:44,760
+Let's define the function we called from the action hook.
+
+124
+00:08:47,140 --> 00:08:47,510
+Great.
+
+125
+00:08:47,680 --> 00:08:54,280
+We're almost done now, we need to include this file, so let's go back to the functions file and under
+
+126
+00:08:54,280 --> 00:08:57,400
+the include section include the Q file.
+
+127
+00:08:57,940 --> 00:09:04,030
+I'm going to use the get theme file path function to make sure we always get the correct path to this
+
+128
+00:09:04,030 --> 00:09:04,380
+file.
+
+129
+00:09:11,260 --> 00:09:14,590
+The get themed file path function does a couple of things.
+
+130
+00:09:14,960 --> 00:09:19,790
+First, it'll provide the absolute path to the current activated theme on the site.
+
+131
+00:09:20,290 --> 00:09:24,210
+Usually you can just pass in path without any functions.
+
+132
+00:09:24,250 --> 00:09:29,050
+But I have come across situations where P and WordPress were unable to find the file.
+
+133
+00:09:29,740 --> 00:09:32,790
+I always recommend providing the full sys path.
+
+134
+00:09:33,160 --> 00:09:35,060
+This function will take care of that for you.
+
+135
+00:09:35,470 --> 00:09:38,170
+The function has one parameter which is optional.
+
+136
+00:09:38,560 --> 00:09:41,890
+You can provide a file relative to your theme's path.
+
+137
+00:09:42,250 --> 00:09:43,510
+That's what we're doing here.
+
+138
+00:09:44,230 --> 00:09:46,540
+Just like the add action function.
+
+139
+00:09:46,690 --> 00:09:50,620
+You do not need to do anything to make sure this function is available to you.
+
+140
+00:09:51,010 --> 00:09:54,070
+It is already loaded and created for you beforehand.
+
+141
+00:09:54,400 --> 00:09:56,200
+WordPress takes care of that for you.
+
+142
+00:09:56,620 --> 00:10:00,130
+I'll be using this function wherever we include files.
+
+143
+00:10:00,700 --> 00:10:05,560
+If we did everything correctly, then we should be able to refresh the page without any errors.
+
+144
+00:10:05,890 --> 00:10:09,740
+Since we have no errors, then that means we did everything correctly.
+
+145
+00:10:10,240 --> 00:10:12,550
+Let's go over how this works internally.
+
+146
+00:10:12,910 --> 00:10:16,570
+When a user makes a request, WordPress will begin loading its files.
+
+147
+00:10:16,780 --> 00:10:21,010
+Then it'll connect to the database and start deciding what needs to be loaded.
+
+148
+00:10:21,340 --> 00:10:23,860
+Your theme and plugins are loaded afterwards.
+
+149
+00:10:24,160 --> 00:10:30,730
+Once your theme is loaded, WordPress will look for a file named functions, not inside your theme folder.
+
+150
+00:10:31,300 --> 00:10:36,100
+Once this file is loaded, all code inside will begin execution line by line.
+
+151
+00:10:36,340 --> 00:10:42,370
+We use a function called an action that is supplied by WordPress, which tells WordPress, Hey, I'd
+
+152
+00:10:42,370 --> 00:10:45,130
+like to execute some code if a certain event happens.
+
+153
+00:10:45,400 --> 00:10:52,900
+In our case, we want to call the function Jiyu underscore and Q If the WP and Q Scripts event is fired,
+
+154
+00:10:53,290 --> 00:10:54,040
+that's about it.
+
+155
+00:10:54,670 --> 00:10:59,430
+There's a lot more going on, but I won't be going over the smaller details in this lecture.
+
+156
+00:10:59,560 --> 00:11:03,240
+The reason being is that it would be too overwhelming at the moment.
+
+157
+00:11:03,520 --> 00:11:08,980
+I've had students in the past asking me to explain Hooke's more in detail, but that's not necessary
+
+158
+00:11:08,980 --> 00:11:09,580
+at this point.
+
+159
+00:11:10,120 --> 00:11:14,860
+I promise I will go over how the Hooke's API works more in-depth in a future lecture.
+
+160
+00:11:15,220 --> 00:11:20,980
+For now, just understand that the ADD Action function will tell WordPress that you want to run a function
+
+161
+00:11:20,980 --> 00:11:22,090
+when an event happens.
+
+162
+00:11:22,630 --> 00:11:25,060
+If you don't fully understand, don't worry.
+
+163
+00:11:25,390 --> 00:11:31,030
+This is a function that we use often and I assure you that the more you use it, the better you'll get
+
+164
+00:11:31,030 --> 00:11:31,510
+used to it.
+
+165
+00:11:32,110 --> 00:11:36,820
+This won't technically work yet because we haven't told WordPress where to load these files.
+
+166
+00:11:37,120 --> 00:11:38,810
+We'll get to that in the next election.
+
+167
+00:11:39,490 --> 00:11:45,910
+One last thing before I wrap up this lecture, you'll notice that I named my Q function Jiyu underscore
+
+168
+00:11:45,910 --> 00:11:49,240
+and Q I prefixed the function with some initials.
+
+169
+00:11:49,480 --> 00:11:54,370
+It's common practice to prefix your classes and functions with the initials of your theme or name.
+
+170
+00:11:54,820 --> 00:11:59,950
+Throughout this course I'll be prefixing Jiyu underscore for every function we define.
+
+171
+00:12:00,370 --> 00:12:02,380
+The initials are for the name Udemy.
+
+172
+00:12:02,950 --> 00:12:07,480
+We do this because we don't want to run into any naming conflicts with other plugins.
+
+173
+00:12:07,810 --> 00:12:12,400
+In the next lecture, we'll take a look at adding styles to our pages through this hook.
+
