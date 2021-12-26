@@ -48,7 +48,8 @@ logger = None
 dl_assets = False
 skip_lectures = False
 dl_captions = False
-caption_locale = "en" #4 ---
+caption_locale = "en"
+print("first time to see the caption_locale value :"+caption_locale)
 quality = None #720  #5  --- dropdown menu
 bearer_token = None
 portal_name = None
@@ -73,8 +74,31 @@ skip_hls_chbox = StringVar()
 concurrent_downloads_chbox = StringVar()
 disable_ipv6_chbox = StringVar()
 caption_locale_radio_Buttons = IntVar()
-caption_locale_radio_Buttons.set('1')
+caption_locale_radio_Buttons.set(0)
 
+
+def caption_locale_clicked(value):
+    global caption_locale
+    lug_list = ['en', 'es', 'it', 'pl', 'all']
+    myLable0 = Label(frame_cheakBoxs, text=value)
+    print(lug_list[value])
+    caption_locale = lug_list[value]
+    myLable0.grid(row=16, column=0, padx=0)
+
+
+Radiobutton(frame_cheakBoxs, text='english', fg='blue', variable=caption_locale_radio_Buttons, value=0,
+            command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=11, column=2, padx=0)
+Radiobutton(frame_cheakBoxs, text='española', fg='blue', variable=caption_locale_radio_Buttons, value=1,
+            command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=12, column=2, padx=0)
+Radiobutton(frame_cheakBoxs, text='italiano', fg='blue', variable=caption_locale_radio_Buttons, value=2,
+            command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=13, column=2, padx=0)
+Radiobutton(frame_cheakBoxs, text='polish ', fg='blue', variable=caption_locale_radio_Buttons, value=3,
+            command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=14, column=2, padx=0)
+Radiobutton(frame_cheakBoxs, text='all languages', fg='blue', variable=caption_locale_radio_Buttons, value=4,
+            command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
+
+
+# myLable0 = Label(frame_cheakBoxs, text=caption_locale_radio_Buttons.get())
 
 def main_func(name):
     """
@@ -112,17 +136,6 @@ def main_func(name):
     conds.deselect()
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6_chbox,  onvalue=1, offvalue=0)
     disipv6.deselect()
-
-    def caption_locale_clicked(value):
-        myLable0 = Label(frame_cheakBoxs, text=value)
-        myLable0.grid(row=16, column=0, padx=0)
-
-    Radiobutton(frame_cheakBoxs, text='english', fg='blue', variable=caption_locale_radio_Buttons, value=1, command=lambda : caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=11, column=2, padx=0)
-    Radiobutton(frame_cheakBoxs, text='espanol', fg='blue', variable=caption_locale_radio_Buttons, value=2, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=12, column=2, padx=0)
-    Radiobutton(frame_cheakBoxs, text='italiano', fg='blue', variable=caption_locale_radio_Buttons, value=3, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=13, column=2, padx=0)
-    Radiobutton(frame_cheakBoxs, text='Polish ', fg='blue', variable=caption_locale_radio_Buttons, value=4, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=14, column=2, padx=0)
-    Radiobutton(frame_cheakBoxs, text='all', fg='blue', variable=caption_locale_radio_Buttons, value=5, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
-    myLable0 = Label(frame_cheakBoxs, text=caption_locale_radio_Buttons.get())
 
     # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
     sk.grid(row=11, column=0, padx=0)
@@ -174,6 +187,7 @@ def my_program():
     print('This option for lecture skipping:', skip_lectures_chbox.get())
     print('This option for lecture downloading assets:',  dl_assets_chbox.get())
     print('This option for lecture caption downloading:',  dl_captions_chbox.get())
+    print("This option for Specifying caption locale value :" + caption_locale)
     print('This option for keeping .VTT caption files:',  keep_vtt_chbox.get())
     print('This option for Skipping parsing HLS Streams: ',  skip_hls_chbox.get())
     print('This option for Specifying max number of concurrent downloads: ',  concurrent_downloads_chbox.get())
