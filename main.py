@@ -992,8 +992,9 @@ class Session(object):
 
     def _get(self, url):
         # mzughbor
+        # num of retrying
         alert_nan_trager = 0
-        for i in range(3):
+        for i in range(5):
             # number of god_damn try's
             session = self._session.get(url, headers=self._headers)
             if session.ok or session.status_code in [502, 503]:
@@ -1511,7 +1512,7 @@ def parse_new(_udemy):
         )
 
         for lecture in chapter.get("lectures"):
-            print("MSMz", chapter.get("lectures")[0]['lecture_index'])
+            #print("MSMz", chapter.get("lectures")[0]['lecture_index'])
             lecture_title = lecture.get("lecture_title")
             lecture_index = lecture.get("lecture_index")
             lecture_extension = lecture.get("extension")
