@@ -49,7 +49,7 @@ dl_assets = False
 skip_lectures = False
 dl_captions = False
 caption_locale = "en"
-print("first time to see the caption_locale value :"+caption_locale)
+print("caption_locale value :"+caption_locale)
 quality = None #720  #5  --- dropdown menu
 bearer_token = None
 portal_name = None
@@ -87,13 +87,12 @@ def slide(var):
     tryVar = int(horizontal.get())
     print(tryVar)
 
+
 def caption_locale_clicked(value):
     global caption_locale
     lug_list = ['en', 'es', 'it', 'pl', 'all']
-    #myLable0 = Label(frame_cheakBoxs, text=value)
     print(lug_list[value])
     caption_locale = lug_list[value]
-    #myLable0.grid(row=16, column=0, padx=0)
 
 
 Radiobutton(frame_cheakBoxs, text='english', fg='blue', variable=caption_locale_radio_Buttons, value=0,
@@ -108,8 +107,6 @@ Radiobutton(frame_cheakBoxs, text='all ', fg='blue', variable=caption_locale_rad
             command=lambda: caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
 
 
-# myLable0 = Label(frame_cheakBoxs, text=caption_locale_radio_Buttons.get())
-
 def main_func(name):
     """
     @author mZughbor
@@ -119,7 +116,6 @@ def main_func(name):
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
-    # Label(root, text='Hello Heroz !').grid(row=0, column=0)
     Label(frame_zero, text='You can download - Drm videos from Udemy.com website and all ').grid(row=0, column=0, pady=0)
     Label(frame_zero, text='other associated assets from this little program!').grid(row=1, column=0, pady=0)
     Label(frame_zero, text='You must Fill all this fields correctly then click download button.').grid(row=2, column=0, pady=4)
@@ -128,10 +124,7 @@ def main_func(name):
     Label(frame, text='Please Enter Your Access Token !').grid(row=5, column=0, pady=2)
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
-    #save_to_file = IntVar()
-    # def testcheakboxs():
-    #    print('MM1', skip_lectures)
-    #Button(frame, text=' Test CheakBoxs... ', border=3, padx=30, pady=5, command=testcheakboxs, bg='blue', fg='red').grid(row=22, column=0, pady=10) # command=testcheakboxs,
+
     sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
     sk.deselect()
     dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets_chbox,  onvalue=1, offvalue=0)
@@ -147,7 +140,6 @@ def main_func(name):
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6_chbox,  onvalue=1, offvalue=0)
     disipv6.deselect()
 
-    # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
     sk.grid(row=11, column=0, padx=0)
     dla.grid(row=11, column=1, padx=0)
     dlc.grid(row=12, column=0, padx=0)
@@ -155,11 +147,9 @@ def main_func(name):
     skhls.grid(row=13, column=0, padx=0)
     conds.grid(row=13, column=1, padx=0)
     disipv6.grid(row=14, column=0, padx=0)
-    # savfile.grid(row=12, column=1, padx=0)
-
+    # slider
     horizontal = Scale(frame_cheakBoxs, from_=0, to=10, orient=HORIZONTAL, command=slide)
-    horizontal.grid(row=17, column=0, padx=0, pady=0, sticky=W+E, columnspan=2) #  columnspan=3,
-    # slider_tryVar = Label(frame_cheakBoxs, text=horizontal.get()).grid(row=18, column=0, padx=0)
+    horizontal.grid(row=17, column=0, padx=0, pady=0, sticky=W+E, columnspan=2)
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
     Button(frame, text=' Exit Program... ', border=3, padx=30, pady=5, command=root.quit, bg='black', fg='red').grid(row=10, column=0, pady=10) # command=testcheakboxs,
