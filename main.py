@@ -77,11 +77,13 @@ caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
 tryVar = 2
 
-slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts 2 ').grid(row=15, column=0, pady=10, columnspan=3, sticky=W) #
+slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)
+Label(frame_cheakBoxs, text='Default Values is 2 to change it use slider below ').grid(row=16, column=0, padx=0, pady=0, columnspan=2, sticky=W)
+
 
 def slide(var):
     global tryVar, slider_tryVar
-    slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts '+str(horizontal.get())).grid(row=15, column=0, pady=10, columnspan=3, sticky=W) #
+    slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts ').grid(row=15, column=0, pady=5, columnspan=2, sticky=W) # +str(horizontal.get())
     tryVar = int(horizontal.get())
     print(tryVar)
 
@@ -156,7 +158,7 @@ def main_func(name):
     # savfile.grid(row=12, column=1, padx=0)
 
     horizontal = Scale(frame_cheakBoxs, from_=0, to=10, orient=HORIZONTAL, command=slide)
-    horizontal.grid(row=16, column=0, padx=0, pady=0, sticky=W) #  columnspan=3,
+    horizontal.grid(row=17, column=0, padx=0, pady=0, sticky=W+E, columnspan=2) #  columnspan=3,
     # slider_tryVar = Label(frame_cheakBoxs, text=horizontal.get()).grid(row=18, column=0, padx=0)
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
