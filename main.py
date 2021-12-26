@@ -33,6 +33,13 @@ root = Tk()
 root.title('Udemy Downloader 0.1 V')
 root.resizable(False, False)
 # status_list = ['Ready to Start', 'Downloading now...', 'Success', 'Failed']
+frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
+frame_zero.grid(row=0, column=0, padx=5, pady=15)
+frame = LabelFrame(root, padx=20, pady=25)  # for inner  text='Just 2 Steps to Start !',
+frame.grid(row=1, column=0, padx=10, pady=5)
+frame_cheakBoxs = LabelFrame(root, text='Advanced Usage !', padx=0, pady=15)  # for inner  text='Just 2 Steps to Start !',
+frame_cheakBoxs.grid(row=2, column=0, padx=10, pady=15)
+
 
 retry = 3
 cookies = ""
@@ -65,6 +72,9 @@ keep_vtt_chbox = StringVar()
 skip_hls_chbox = StringVar()
 concurrent_downloads_chbox = StringVar()
 disable_ipv6_chbox = StringVar()
+caption_locale_radio_Buttons = IntVar()
+caption_locale_radio_Buttons.set('1')
+
 
 def main_func(name):
     """
@@ -73,12 +83,6 @@ def main_func(name):
     global disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
-    frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
-    frame_zero.grid(row=0, column=0, padx=5, pady=15)
-    frame = LabelFrame(root, padx=20, pady=25)  # for inner  text='Just 2 Steps to Start !',
-    frame.grid(row=1, column=0, padx=10, pady=5)
-    frame_cheakBoxs = LabelFrame(root, text='Advanced Usage !', padx=0, pady=15)  # for inner  text='Just 2 Steps to Start !',
-    frame_cheakBoxs.grid(row=2, column=0, padx=10, pady=15)
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     # Label(root, text='Hello Heroz !').grid(row=0, column=0)
@@ -90,19 +94,15 @@ def main_func(name):
     Label(frame, text='Please Enter Your Access Token !').grid(row=5, column=0, pady=2)
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
-
-
     #save_to_file = IntVar()
-
     # def testcheakboxs():
     #    print('MM1', skip_lectures)
     #Button(frame, text=' Test CheakBoxs... ', border=3, padx=30, pady=5, command=testcheakboxs, bg='blue', fg='red').grid(row=22, column=0, pady=10) # command=testcheakboxs,
-
     sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
     sk.deselect()
     dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets_chbox,  onvalue=1, offvalue=0)
     dla.deselect()
-    dlc = Checkbutton(frame_cheakBoxs, text="Captions will be downloaded", variable=dl_captions_chbox,  onvalue=1, offvalue=0)
+    dlc = Checkbutton(frame_cheakBoxs, fg='blue', text="Captions will be downloaded", variable=dl_captions_chbox,  onvalue=1, offvalue=0)
     dlc.deselect()
     kvt = Checkbutton(frame_cheakBoxs, text="--keep.vtt files won't be removed", variable=keep_vtt_chbox,  onvalue=1, offvalue=0)
     kvt.deselect()
@@ -113,8 +113,19 @@ def main_func(name):
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6_chbox,  onvalue=1, offvalue=0)
     disipv6.deselect()
 
-    # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
+    def caption_locale_clicked(value):
+        myLable0 = Label(frame_cheakBoxs, text=value)
+        myLable0.grid(row=16, column=0, padx=0)
 
+    Radiobutton(frame_cheakBoxs, text='english', fg='blue', variable=caption_locale_radio_Buttons, value=1, command=lambda : caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=11, column=2, padx=0)
+    Radiobutton(frame_cheakBoxs, text='espanol', fg='blue', variable=caption_locale_radio_Buttons, value=2, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=12, column=2, padx=0)
+    Radiobutton(frame_cheakBoxs, text='italiano', fg='blue', variable=caption_locale_radio_Buttons, value=3, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=13, column=2, padx=0)
+    Radiobutton(frame_cheakBoxs, text='Polish ', fg='blue', variable=caption_locale_radio_Buttons, value=4, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=14, column=2, padx=0)
+    Radiobutton(frame_cheakBoxs, text='all', fg='blue', variable=caption_locale_radio_Buttons, value=5, command=lambda :caption_locale_clicked(caption_locale_radio_Buttons.get())).grid(row=15, column=2, padx=0)
+    myLable0 = Label(frame_cheakBoxs, text=caption_locale_radio_Buttons.get())
+    myLable0.grid(row=16, column=0, padx=0)
+
+    # savfile = Checkbutton(frame_cheakBoxs, text="Download Assets", variable=save_to_file)
     sk.grid(row=11, column=0, padx=0)
     dla.grid(row=11, column=1, padx=0)
     dlc.grid(row=12, column=0, padx=0)
