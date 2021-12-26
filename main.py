@@ -91,10 +91,7 @@ def main_func(name):
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
 
-    keep_vtt = IntVar()
-    skip_hls = IntVar()
-    concurrent_downloads = IntVar()
-    disable_ipv6 = IntVar()
+
     #save_to_file = IntVar()
 
     # def testcheakboxs():

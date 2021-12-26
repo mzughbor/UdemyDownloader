@@ -1,6 +1,0 @@
-
-002 Gutenberg-Examples
-https://github.com/WordPress/gutenberg-examples
-
-003 Rich-Text
-https://github.com/WordPress/gutenberg/tree/master/packages/block-editor/src/components/rich-text
