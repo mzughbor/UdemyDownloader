@@ -54,7 +54,7 @@ portal_name = None
 course_name = None
 keep_vtt = False
 skip_hls = False
-concurrent_downloads = 10 # here ...
+concurrent_downloads = 10
 disable_ipv6 = False
 save_to_file = None
 load_from_file = None
@@ -69,7 +69,6 @@ dl_assets_chbox = StringVar()
 dl_captions_chbox = StringVar()
 keep_vtt_chbox = StringVar()
 skip_hls_chbox = StringVar()
-concurrent_downloads_chbox = StringVar()
 disable_ipv6_chbox = StringVar()
 caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
@@ -77,15 +76,24 @@ dropdown_clicked = StringVar()
 dropdown_clicked.set('720')
 tryVar = 2
 # before Slider typo ...
-Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)
-Label(frame_cheakBoxs, text='Default Values is 2 to change it use slider below ').grid(row=16, column=0, padx=0, pady=0, columnspan=2, sticky=W)
+Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=21, column=0, pady=5, columnspan=2, sticky=W)  # +str(horizontal.get())
+Label(frame_cheakBoxs, text='Default Values is 2 to change it use slider below ').grid(row=22, column=0, padx=0, pady=0, columnspan=2, sticky=W)
 
 
 def slide(var):
-    global tryVar, slider_tryVar
-    slider_tryVar = Label(frame_cheakBoxs, text='This option for defining number of retrying attempts ').grid(row=15, column=0, pady=5, columnspan=2, sticky=W) # +str(horizontal.get())
+    global tryVar
     tryVar = int(horizontal.get())
-    print(tryVar)
+    #print(tryVar)
+
+
+Label(frame_cheakBoxs, text='This option for defining number of maximum concurrent downloads').grid(row=15, column=0, pady=5, columnspan=2, sticky=W)  # +str(horizontal.get())
+Label(frame_cheakBoxs, text='for segments (HLS and DASH, must be a number 1-30)').grid(row=16, column=0, pady=5,  sticky=W, columnspan=2)
+
+
+def slider_concurrent_downloads(var):
+    global concurrent_downloads_var
+    concurrent_downloads_var = int(horizontal_concurrent_downloads.get())
+    #print(concurrent_downloads_var)
 
 
 def caption_locale_clicked(value):
@@ -111,7 +119,7 @@ def main_func(name):
     """
     @author mZughbor
     """
-    global horizontal, slider_tryVar, disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global horizontal, horizontal_concurrent_downloads, disable_ipv6_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
     root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
     # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
@@ -125,9 +133,9 @@ def main_func(name):
     Label(root, fg='red', text=Gui_url.get()).grid(row=11, column=0, pady=5)
     Entry(frame,  textvariable=access_token, width=45, border=3, borderwidth=4, fg='red').grid(row=6, column=0, pady=6)
 
-    sk = Checkbutton(frame_cheakBoxs, text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
+    sk = Checkbutton(frame_cheakBoxs, fg='red', text="Skip  Downloading  Lectures ", variable=skip_lectures_chbox, onvalue=1, offvalue=0)
     sk.deselect()
-    dla = Checkbutton(frame_cheakBoxs, text="lecture assets will be downloaded", variable=dl_assets_chbox,  onvalue=1, offvalue=0)
+    dla = Checkbutton(frame_cheakBoxs, fg='green', text="lecture assets will be downloaded", variable=dl_assets_chbox,  onvalue=1, offvalue=0)
     dla.deselect()
     dlc = Checkbutton(frame_cheakBoxs, fg='blue', text="Captions will be downloaded", variable=dl_captions_chbox,  onvalue=1, offvalue=0)
     dlc.deselect()
@@ -135,8 +143,8 @@ def main_func(name):
     kvt.deselect()
     skhls = Checkbutton(frame_cheakBoxs, text="HLS  streams will be  skipped", variable=skip_hls_chbox,  onvalue=1, offvalue=0)
     skhls.deselect()
-    conds = Checkbutton(frame_cheakBoxs, text=" --  CONCURRENT_DOWNLOADS", variable=concurrent_downloads_chbox,  onvalue=1, offvalue=0)
-    conds.deselect()
+    #conds = Checkbutton(frame_cheakBoxs, text=" --  CONCURRENT_DOWNLOADS", variable=concurrent_downloads_chbox,  onvalue=1, offvalue=0)
+    #conds.deselect()
     disipv6 = Checkbutton(frame_cheakBoxs, text=" ipv6 will be  disabled in aria2", variable=disable_ipv6_chbox,  onvalue=1, offvalue=0)
     disipv6.deselect()
 
@@ -145,16 +153,19 @@ def main_func(name):
     dlc.grid(row=12, column=0, padx=0)
     kvt.grid(row=12, column=1, padx=0)
     skhls.grid(row=13, column=0, padx=0)
-    conds.grid(row=13, column=1, padx=0)
+    #conds.grid(row=15, column=1, padx=0)
     disipv6.grid(row=14, column=0, padx=0)
     # slider
     horizontal = Scale(frame_cheakBoxs, from_=0, to=10, orient=HORIZONTAL, command=slide)
-    horizontal.grid(row=17, column=0, padx=0, pady=0, sticky=W+E, columnspan=2)
+    horizontal.grid(row=23, column=0, padx=0, pady=0, sticky=W+E, columnspan=2)
     # DropDown menu for quality video downloads
     drop = OptionMenu(frame_cheakBoxs, dropdown_clicked, "1080", "720", "480", "360", "144")
-    drop.grid(row=14, column=1, padx=0, sticky=E)
-    Label(frame_cheakBoxs, text='   - Choose Video quality !').grid(row=14, column=1, pady=0, sticky=W)
-
+    drop.config(bg='magenta')
+    drop.grid(row=14, column=1, padx=0, sticky=E+W)
+    Label(frame_cheakBoxs, fg='magenta', text=' Choose Video quality !').grid(row=13, column=1, pady=0, sticky=W)
+    # slider_concurrent_downloads
+    horizontal_concurrent_downloads = Scale(frame_cheakBoxs, from_=1, to=30, orient=HORIZONTAL, command=slider_concurrent_downloads)
+    horizontal_concurrent_downloads.grid(row=17, column=0, padx=0, pady=0, sticky=E+W, columnspan=2)
 
 
     Button(frame, text='Start Download', border=3, borderwidth=3, padx=30, pady=5, command=my_program, bg='green', fg='yellow').grid(row=7, column=0, pady=10)
@@ -188,7 +199,7 @@ def my_program():
     """
     @author mZughbor
     """
-    global disable_ipv6_chbox, concurrent_downloads_chbox, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
+    global disable_ipv6_chbox, concurrent_downloads_var, skip_hls_chbox, keep_vtt_chbox, dl_captions_chbox, skip_lectures_chbox, dl_assets_chbox,  Gui_url, dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, course_url, info, logger, keys
     # status = Label(root, text='Status bar : ' + status_list[1], bd=1, relief=SUNKEN, anchor=W)
     # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     print("Your URL Course is: ", Gui_url.get())
@@ -199,7 +210,7 @@ def my_program():
     print("This option for Specifying caption locale value :" + caption_locale)
     print('This option for keeping .VTT caption files:',  keep_vtt_chbox.get())
     print('This option for Skipping parsing HLS Streams: ',  skip_hls_chbox.get())
-    print('This option for Specifying max number of concurrent downloads: ',  concurrent_downloads_chbox.get())
+    print('This option for Specifying max number of concurrent downloads: ',  concurrent_downloads_var)
     print('This option for disabling ipv6 in aria2:',  disable_ipv6_chbox.get())
     print(type(dropdown_clicked.get()))
     print('This is new quality selection : '+str(quality))
@@ -212,8 +223,7 @@ def my_program():
     dl_captions = int(dl_captions_chbox.get())
     keep_vtt = int(keep_vtt_chbox.get())
     skip_hls = int(skip_hls_chbox.get())
-    # concurrent_downloads = int(concurrent_downloads_chbox.get())
-    concurrent_downloads = 10
+    concurrent_downloads = int(concurrent_downloads_var)
     disable_ipv6 = int(disable_ipv6_chbox.get())
 
     # pre run parses arguments, sets up logging, and creates directories
