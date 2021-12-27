@@ -33,7 +33,7 @@ root = Tk()
 root.title('Udemy Downloader app 2022')
 root.resizable(False, False)
 # status_list = ['Ready to Start', 'Downloading now...', 'Success', 'Failed']
-frame_zero = LabelFrame(root, text='Hello Heroz !', padx=10, pady=5)
+frame_zero = LabelFrame(root, text='Hello Ahmed !', padx=10, pady=5)
 frame_zero.grid(row=0, column=0, padx=5, pady=15)
 frame = LabelFrame(root, padx=20, pady=25)  # for inner  text='Just 2 Steps to Start !',
 frame.grid(row=1, column=0, padx=10, pady=5)
