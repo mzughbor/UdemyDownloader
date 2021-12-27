@@ -123,12 +123,12 @@ def main_func(name):
     try:
         m = os.getcwd()
         root.iconbitmap(m + '\\udemy_logo_icon.ico')
+        # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
+        # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
+        # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
+        # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     except Exception as e:
         print(e)
-    # root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\118b9de91bb582612e4e8aaa3a6b1fbe.ico')
-    #root.iconbitmap(r'C:\Users\hp\PycharmProjects\UdemyDownloader\udemy_logo_icon_144775.ico')
-    # status = Label(root, text='Status bar : ' + status_list[0], bd=1, relief=SUNKEN, anchor=W)
-    # status.grid(row=13, column=0, columnspan=2, sticky=W+E)
     Label(frame_zero, text='You can download - Drm videos from Udemy.com website and all ').grid(row=0, column=0, pady=0)
     Label(frame_zero, text='other associated assets from this little program!').grid(row=1, column=0, pady=0)
     Label(frame_zero, text='You must Fill all this fields correctly then click download button.').grid(row=2, column=0, pady=4)
@@ -236,7 +236,6 @@ def my_program():
     # Label(root, fg='blue', text=access_token.get()).grid(row=12, column=0, pady=5)
     # run main program
     main()
-
 
 # this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
 def pre_run():
@@ -438,6 +437,7 @@ def pre_run():
             cookies = cookies.rstrip()
     else:
         logger.warning("No cookies.txt file was found, you won't be able to download subscription courses! You can ignore ignore this if you don't plan to download a course included in a subscription plan.")
+
 
 
 class Udemy:

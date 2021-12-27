@@ -1,254 +1,3 @@
-import argparse
-import glob
-import json
-import os
-import re
-import subprocess
-import sys
-import time
-import cloudscraper
-import m3u8
-import requests
-import yt_dlp
-import logging
-from constants import *
-from coloredlogs import ColoredFormatter
-from pathlib import Path
-from html.parser import HTMLParser as compat_HTMLParser
-from dotenv import load_dotenv
-from requests.exceptions import ConnectionError as conn_error
-from tqdm import tqdm
-from utils import extract_kid
-from vtt_to_srt import convert
-from _version import __version__
-from bs4 import BeautifulSoup
-from pathvalidate import sanitize_filename
-
-retry = 3
-cookies = ""
-downloader = None
-logger = None
-dl_assets = True ###
-skip_lectures = False ###
-dl_captions = True  ###
-caption_locale = "en"
-quality = 720  ###
-bearer_token = None
-portal_name = None
-course_name = None
-keep_vtt = True ###
-skip_hls = False
-concurrent_downloads = 10
-disable_ipv6 = False
-save_to_file = None
-load_from_file = None
-course_url = 'https://www.udemy.com/course/wordpress-development-create-wordpress-themes-and-plugins/'
-info = None
-keys = {}
-
-
-# this is the first function that is called, we parse the arguments, setup the logger, and ensure that required directories exist
-def pre_run():
-    global dl_assets, skip_lectures, dl_captions, caption_locale, quality, bearer_token, portal_name, course_name, keep_vtt, skip_hls, concurrent_downloads, disable_ipv6, load_from_file, save_to_file, bearer_token, course_url, info, logger, keys
-
-    # make sure the directory exists
-    if not os.path.exists(DOWNLOAD_DIR):
-        os.makedirs(DOWNLOAD_DIR)
-
-    # make sure the logs directory exists
-    if not os.path.exists(LOG_DIR_PATH):
-        os.makedirs(LOG_DIR_PATH, exist_ok=True)
-
-    # setup a logger
-    logger = logging.getLogger(__name__)
-    logging.root.setLevel(LOG_LEVEL)
-
-    # create a colored formatter for the console
-    console_formatter = ColoredFormatter(LOG_FORMAT, datefmt=LOG_DATE_FORMAT)
-    # create a regular non-colored formatter for the log file
-    file_formatter = logging.Formatter(LOG_FORMAT, datefmt=LOG_DATE_FORMAT)
-
-    # create a handler for console logging
-    stream = logging.StreamHandler()
-    stream.setLevel(LOG_LEVEL)
-    stream.setFormatter(console_formatter)
-
-    # create a handler for file logging
-    file_handler = logging.FileHandler(LOG_FILE_PATH)
-    file_handler.setFormatter(file_formatter)
-
-    # construct the logger
-    logger = logging.getLogger("udemy-downloader")
-    logger.setLevel(LOG_LEVEL)
-    logger.addHandler(stream)
-    logger.addHandler(file_handler)
-
-    parser = argparse.ArgumentParser(description='Udemy Downloader')
-    parser.add_argument("-c",
-                        "--course-url",
-                        dest="course_url",
-                        type=str,
-                        help="The URL of the course to download"
-                        ) # required=True
-    parser.add_argument(
-        "-b",
-        "--bearer",
-        dest="bearer_token",
-        type=str,
-        help="The Bearer token to use",
-    )
-    parser.add_argument(
-        "-q",
-        "--quality",
-        dest="quality",
-        type=int,
-        help="Download specific video quality. If the requested quality isn't available, the closest quality will be used. If not specified, the best quality will be downloaded for each lecture",
-    )
-    parser.add_argument(
-        "-l",
-        "--lang",
-        dest="lang",
-        type=str,
-        help="The language to download for captions, specify 'all' to download all captions (Default is 'en')",
-    )
-    parser.add_argument(
-        "-cd",
-        "--concurrent-downloads",
-        dest="concurrent_downloads",
-        type=int,
-        help="The number of maximum concurrent downloads for segments (HLS and DASH, must be a number 1-30)",
-    )
-    parser.add_argument(
-        "--disable-ipv6",
-        dest="disable_ipv6",
-        action="store_true",
-        help="If specified, ipv6 will be disabled in aria2",
-    )
-    parser.add_argument(
-        "--skip-lectures",
-        dest="skip_lectures",
-        action="store_true",
-        help="If specified, lectures won't be downloaded",
-    )
-    parser.add_argument(
-        "--download-assets",
-        dest="download_assets",
-        action="store_true",
-        help="If specified, lecture assets will be downloaded",
-    )
-    parser.add_argument(
-        "--download-captions",
-        dest="download_captions",
-        action="store_true",
-        help="If specified, captions will be downloaded",
-    )
-    parser.add_argument(
-        "--keep-vtt",
-        dest="keep_vtt",
-        action="store_true",
-        help="If specified, .vtt files won't be removed",
-    )
-    parser.add_argument(
-        "--skip-hls",
-        dest="skip_hls",
-        action="store_true",
-        help="If specified, hls streams will be skipped (faster fetching) (hls streams usually contain 1080p quality for non-drm lectures)",
-    )
-    parser.add_argument(
-        "--info",
-        dest="info",
-        action="store_true",
-        help="If specified, only course information will be printed, nothing will be downloaded",
-    )
-
-    parser.add_argument(
-        "--save-to-file",
-        dest="save_to_file",
-        action="store_true",
-        help="If specified, course content will be saved to a file that can be loaded later with --load-from-file, this can reduce processing time (Note that asset links expire after a certain amount of time)",
-    )
-    parser.add_argument(
-        "--load-from-file",
-        dest="load_from_file",
-        action="store_true",
-        help="If specified, course content will be loaded from a previously saved file with --save-to-file, this can reduce processing time (Note that asset links expire after a certain amount of time)",
-    )
-    parser.add_argument(
-        "--log-level",
-        dest="log_level",
-        type=str,
-        help="Logging level: one of DEBUG, INFO, ERROR, WARNING, CRITICAL (Default is INFO)",
-    )
-    parser.add_argument("-v", "--version", action="version",
-                        version='You are running version {version}'.format(version=__version__))
-
-    args = parser.parse_args()
-    if args.download_assets:
-        dl_assets = True
-    if args.lang:
-        caption_locale = args.lang
-    if args.download_captions:
-        dl_captions = True
-    if args.skip_lectures:
-        skip_lectures = True
-    if args.quality:
-        quality = args.quality
-    if args.keep_vtt:
-        keep_vtt = args.keep_vtt
-    if args.skip_hls:
-        skip_hls = args.skip_hls
-    if args.concurrent_downloads:
-        concurrent_downloads = args.concurrent_downloads
-
-        if concurrent_downloads <= 0:
-            # if the user gave a number that is less than or equal to 0, set cc to default of 10
-            concurrent_downloads = 10
-        elif concurrent_downloads > 30:
-            # if the user gave a number thats greater than 30, set cc to the max of 30
-            concurrent_downloads = 30
-    if args.disable_ipv6:
-        disable_ipv6 = args.disable_ipv6
-    if args.load_from_file:
-        load_from_file = args.load_from_file
-    if args.save_to_file:
-        save_to_file = args.save_to_file
-    if args.bearer_token:
-        bearer_token = args.bearer_token
-    if args.course_url:
-        course_url = args.course_url
-    if args.info:
-        info = args.info
-    if args.log_level:
-        if args.log_level.upper() == "DEBUG":
-            logger.setLevel(logging.DEBUG)
-        elif args.log_level.upper() == "INFO":
-            logger.setLevel(logging.INFO)
-        elif args.log_level.upper() == "ERROR":
-            logger.setLevel(logging.ERROR)
-        elif args.log_level.upper() == "WARNING":
-            logger.setLevel(logging.WARNING)
-        elif args.log_level.upper() == "CRITICAL":
-            logger.setLevel(logging.CRITICAL)
-        else:
-            logger.warning("Invalid log level: %s; Using INFO", args.log_level)
-            logger.setLevel(logging.INFO)
-
-    Path(DOWNLOAD_DIR).mkdir(parents=True, exist_ok=True)
-    Path(SAVED_DIR).mkdir(parents=True, exist_ok=True)
-
-    # Get the keys
-    with open(KEY_FILE_PATH, encoding="utf8", mode='r') as keyfile:
-        keys = json.loads(keyfile.read())
-
-    # Read cookies from file
-    if os.path.exists(COOKIE_FILE_PATH):
-        with open(COOKIE_FILE_PATH, encoding="utf8", mode='r') as cookiefile:
-            cookies = cookiefile.read()
-            cookies = cookies.rstrip()
-    else:
-        logger.warning("No cookies.txt file was found, you won't be able to download subscription courses! You can ignore ignore this if you don't plan to download a course included in a subscription plan.")
-
-
 class Udemy:
     def __init__(self, bearer_token):
         self.session = None
@@ -269,6 +18,8 @@ class Udemy:
         else:
             logger.fatal(
                 "Login Failure! You are probably missing an access token!")
+            alerts_showerror("Please Fill Your access token! You are probably missing an access token! ")
+
             sys.exit(1)
 
     def _extract_supplementary_assets(self, supp_assets, lecture_counter):
@@ -835,6 +586,8 @@ class Udemy:
 
 
 class Session(object):
+    # mZughbor
+    global tryVar
     def __init__(self):
         self._headers = HEADERS
         self._session = requests.sessions.Session()
@@ -847,15 +600,34 @@ class Session(object):
             "Cookie"] = cookies
 
     def _get(self, url):
-        for i in range(10):
+        # mzughbor
+        # num of retrying
+        alert_nan_trager = 0
+        for i in range(tryVar):
+            # number of god_damn try's
             session = self._session.get(url, headers=self._headers)
             if session.ok or session.status_code in [502, 503]:
                 return session
+            # mzughbor
+            alert_nan_trager = alert_nan_trager + 1
+            # print(alert_nan_trager, 'FF')
             if not session.ok:
                 logger.error('Failed request '+url)
                 logger.error(
                     f"{session.status_code} {session.reason}, retrying (attempt {i} )...")
-                time.sleep(0.8)
+                # global ii
+                # ii= i
+                # print(ii)
+            time.sleep(0.8)
+        # mzughbor
+        # print(alert_nan_trager, 'SS')
+        if alert_nan_trager > 0:
+            if str(session.status_code) == "404":
+                alerts_showerror("Please Fill The URL of Your Selected Course Correctly! You Probably Need to Check it Again!  We tried " + str(alert_nan_trager) + " Times to Fitch Your Course And It's Failed Cause Wrong URL Given !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
+            elif str(session.status_code) == "403":
+                alerts_showerror("Please Fill Your Access Token Field Right !!\nYou Probably Need to Check it Again!  We Tried " + str(alert_nan_trager) + " Times and it's Failed Cause Wrong Access Token Given !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
+        # else:
+        #    alerts_showerror("Please Fill The URL && The Access Token Field Correctly! You Probably Need to Check them Again!  We tried " + str(alert_nan_trager) + " Times And It's Failed Cause Wrong URL Given & Access Token Field !!\n\nYou Can Define Number of Retrying Attempts from Starter Screen")
 
     def _post(self, url, data, redirect=True):
         session = self._session.post(url,
@@ -1073,6 +845,7 @@ def decrypt(kid, in_filepath, out_filepath):
         logger.info("> Decryption complete")
     except KeyError:
         raise KeyError("Key not found")
+        # alerts_showerror()
 
 
 def handle_segments(url, format_id, video_title,
@@ -1348,6 +1121,7 @@ def parse_new(_udemy):
         )
 
         for lecture in chapter.get("lectures"):
+            #print("MSMz", chapter.get("lectures")[0]['lecture_index'])
             lecture_title = lecture.get("lecture_title")
             lecture_index = lecture.get("lecture_index")
             lecture_extension = lecture.get("extension")
@@ -1360,9 +1134,14 @@ def parse_new(_udemy):
             lecture_path = os.path.join(
                 chapter_dir,
                 lecture_file_name)
-
+            # m_zughbor
+            trigger_last_lec = 0
             logger.info(
                 f"  > Processing lecture {lecture_index} of {total_lectures}")
+            # m_zughbor
+            if lecture_index == total_lectures:
+                trigger_last_lec = 1
+
             if not skip_lectures:
                 # Check if the lecture is already downloaded
                 if os.path.isfile(lecture_path):
@@ -1464,6 +1243,9 @@ def parse_new(_udemy):
                     lang = subtitle.get("language")
                     if lang == caption_locale or caption_locale == "all":
                         process_caption(subtitle, lecture_title, chapter_dir)
+        # m_zughbor
+        if trigger_last_lec == 1:
+            alerts_showinfo('Your Downloading Course is Done!')
 
 
 def _print_course_info(course_data):
@@ -1533,329 +1315,3 @@ def _print_course_info(course_data):
 
         if chapter_index != chapter_count:
             logger.info("\n\n")
-
-
-def main():
-    global bearer_token
-    aria_ret_val = check_for_aria()
-    if not aria_ret_val:
-        logger.fatal("> Aria2c is missing from your system or path!")
-        sys.exit(1)
-
-    ffmpeg_ret_val = check_for_ffmpeg()
-    if not ffmpeg_ret_val:
-        logger.fatal("> FFMPEG is missing from your system or path!")
-        sys.exit(1)
-
-    mp4decrypt_ret_val = check_for_mp4decrypt()
-    if not mp4decrypt_ret_val:
-        logger.fatal(
-            "> MP4Decrypt is missing from your system or path! (This is part of Bento4 tools)"
-        )
-        sys.exit(1)
-
-    if load_from_file:
-        logger.info(
-            "> 'load_from_file' was specified, data will be loaded from json files instead of fetched"
-        )
-    if save_to_file:
-        logger.info(
-            "> 'save_to_file' was specified, data will be saved to json files")
-
-    if not os.path.isfile(KEY_FILE_PATH):
-        logger.warniing(
-            "> Keyfile not found! You won't be able to decrypt videos!")
-
-    load_dotenv()
-    if bearer_token:
-        bearer_token = bearer_token
-    else:
-        bearer_token = os.getenv("UDEMY_BEARER")
-
-    udemy = Udemy(bearer_token)
-
-    logger.info("> Fetching course information, this may take a minute...")
-    if not load_from_file:
-        course_id, course_info = udemy._extract_course_info(course_url)
-        logger.info("> Course information retrieved!")
-        if course_info and isinstance(course_info, dict):
-            title = sanitize_filename(course_info.get("title"))
-            course_title = course_info.get("published_title")
-            portal_name = course_info.get("portal_name")
-
-    logger.info("> Fetching course content, this may take a minute...")
-    if load_from_file:
-        course_json = json.loads(
-            open(os.path.join(os.getcwd(), "saved", "course_content.json"),
-                 encoding="utf8", mode='r').read())
-        title = course_json.get("title")
-        course_title = course_json.get("published_title")
-        portal_name = course_json.get("portal_name")
-    else:
-        course_json = udemy._extract_course_json(course_url, course_id,
-                                                 portal_name)
-    if save_to_file:
-        with open(os.path.join(os.getcwd(), "saved", "course_content.json"),
-                  encoding="utf8", mode='w') as f:
-            f.write(json.dumps(course_json))
-            f.close()
-
-    logger.info("> Course content retrieved!")
-    course = course_json.get("results")
-    resource = course_json.get("detail")
-
-    if load_from_file:
-        _udemy = json.loads(
-            open(os.path.join(os.getcwd(), "saved", "_udemy.json"), encoding="utf8", mode='r').read())
-        if info:
-            _print_course_info(_udemy)
-        else:
-            parse_new(_udemy)
-    else:
-        _udemy = {}
-        _udemy["bearer_token"] = bearer_token
-        _udemy["course_id"] = course_id
-        _udemy["title"] = title
-        _udemy["course_title"] = course_title
-        _udemy["chapters"] = []
-        counter = -1
-
-        if resource:
-            logger.info("> Trying to logout")
-            udemy.session.terminate()
-            logger.info("> Logged out.")
-
-        if course:
-            logger.info("> Processing course data, this may take a minute. ")
-            lecture_counter = 0
-            for entry in course:
-                clazz = entry.get("_class")
-                asset = entry.get("asset")
-                supp_assets = entry.get("supplementary_assets")
-
-                if clazz == "chapter":
-                    lecture_counter = 0
-                    lectures = []
-                    chapter_index = entry.get("object_index")
-                    chapter_title = "{0:02d} - ".format(chapter_index) + sanitize_filename(
-                        entry.get("title"))
-
-                    if chapter_title not in _udemy["chapters"]:
-                        _udemy["chapters"].append({
-                            "chapter_title": chapter_title,
-                            "chapter_id": entry.get("id"),
-                            "chapter_index": chapter_index,
-                            "lectures": []
-                        })
-                        counter += 1
-                elif clazz == "lecture":
-                    lecture_counter += 1
-                    lecture_id = entry.get("id")
-                    if len(_udemy["chapters"]) == 0:
-                        lectures = []
-                        chapter_index = entry.get("object_index")
-                        chapter_title = "{0:02d} - ".format(
-                            chapter_index) + sanitize_filename(entry.get("title"))
-                        if chapter_title not in _udemy["chapters"]:
-                            _udemy["chapters"].append({
-                                "chapter_title": chapter_title,
-                                "chapter_id": lecture_id,
-                                "chapter_index": chapter_index,
-                                "lectures": []
-                            })
-                            counter += 1
-
-                    if lecture_id:
-                        logger.info(
-                            f"Processing {course.index(entry)} of {len(course)}"
-                        )
-                        retVal = []
-
-                        if isinstance(asset, dict):
-                            asset_type = (asset.get("asset_type").lower()
-                                          or asset.get("assetType").lower)
-                            if asset_type == "article":
-                                if isinstance(supp_assets,
-                                              list) and len(supp_assets) > 0:
-                                    retVal = udemy._extract_supplementary_assets(
-                                        supp_assets, lecture_counter)
-                            elif asset_type == "video":
-                                if isinstance(supp_assets,
-                                              list) and len(supp_assets) > 0:
-                                    retVal = udemy._extract_supplementary_assets(
-                                        supp_assets, lecture_counter)
-                            elif asset_type == "e-book":
-                                retVal = udemy._extract_ebook(
-                                    asset, lecture_counter)
-                            elif asset_type == "file":
-                                retVal = udemy._extract_file(
-                                    asset, lecture_counter)
-                            elif asset_type == "presentation":
-                                retVal = udemy._extract_ppt(
-                                    asset, lecture_counter)
-                            elif asset_type == "audio":
-                                retVal = udemy._extract_audio(
-                                    asset, lecture_counter)
-
-                        lecture_index = entry.get("object_index")
-                        lecture_title = "{0:03d} ".format(
-                            lecture_counter) + sanitize_filename(entry.get("title"))
-
-                        if asset.get("stream_urls") != None:
-                            # not encrypted
-                            data = asset.get("stream_urls")
-                            if data and isinstance(data, dict):
-                                sources = data.get("Video")
-                                tracks = asset.get("captions")
-                                #duration = asset.get("time_estimation")
-                                sources = udemy._extract_sources(
-                                    sources, skip_hls)
-                                subtitles = udemy._extract_subtitles(tracks)
-                                sources_count = len(sources)
-                                subtitle_count = len(subtitles)
-                                lectures.append({
-                                    "index": lecture_counter,
-                                    "lecture_index": lecture_index,
-                                    "lecture_id": lecture_id,
-                                    "lecture_title": lecture_title,
-                                    # "duration": duration,
-                                    "assets": retVal,
-                                    "assets_count": len(retVal),
-                                    "sources": sources,
-                                    "subtitles": subtitles,
-                                    "subtitle_count": subtitle_count,
-                                    "sources_count": sources_count,
-                                    "is_encrypted": False,
-                                    "asset_id": asset.get("id")
-                                })
-                            else:
-                                logger.debug(
-                                    f"Reached an area with no media sources: {asset}")
-                                lectures.append({
-                                    "index":
-                                    lecture_counter,
-                                    "lecture_index":
-                                    lecture_index,
-                                    "lectures_id":
-                                    lecture_id,
-                                    "lecture_title":
-                                    lecture_title,
-                                    "html_content":
-                                    asset.get("body"),
-                                    "extension":
-                                    "html",
-                                    "assets":
-                                    retVal,
-                                    "assets_count":
-                                    len(retVal),
-                                    "subtitle_count":
-                                    0,
-                                    "sources_count":
-                                    0,
-                                    "is_encrypted":
-                                    False,
-                                    "asset_id":
-                                    asset.get("id")
-                                })
-                        else:
-                            # encrypted
-                            data = asset.get("media_sources")
-                            if data and isinstance(data, list):
-                                sources = udemy._extract_media_sources(data)
-                                tracks = asset.get("captions")
-                                # duration = asset.get("time_estimation")
-                                subtitles = udemy._extract_subtitles(tracks)
-                                sources_count = len(sources)
-                                subtitle_count = len(subtitles)
-                                lectures.append({
-                                    "index": lecture_counter,
-                                    "lecture_index": lecture_index,
-                                    "lectures_id": lecture_id,
-                                    "lecture_title": lecture_title,
-                                    # "duration": duration,
-                                    "assets": retVal,
-                                    "assets_count": len(retVal),
-                                    "video_sources": sources,
-                                    "subtitles": subtitles,
-                                    "subtitle_count": subtitle_count,
-                                    "sources_count": sources_count,
-                                    "is_encrypted": True,
-                                    "asset_id": asset.get("id")
-                                })
-                            else:
-                                logger.debug(
-                                    f"Reached an area with no media sources: {asset}")
-                                lectures.append({
-                                    "index":
-                                    lecture_counter,
-                                    "lecture_index":
-                                    lecture_index,
-                                    "lectures_id":
-                                    lecture_id,
-                                    "lecture_title":
-                                    lecture_title,
-                                    "html_content":
-                                    asset.get("body"),
-                                    "extension":
-                                    "html",
-                                    "assets":
-                                    retVal,
-                                    "assets_count":
-                                    len(retVal),
-                                    "subtitle_count":
-                                    0,
-                                    "sources_count":
-                                    0,
-                                    "is_encrypted":
-                                    False,
-                                    "asset_id":
-                                    asset.get("id")
-                                })
-                    _udemy["chapters"][counter]["lectures"] = lectures
-                    _udemy["chapters"][counter]["lecture_count"] = len(
-                        lectures)
-                elif clazz == "quiz":
-                    lecture_id = entry.get("id")
-                    if len(_udemy["chapters"]) == 0:
-                        lectures = []
-                        chapter_index = entry.get("object_index")
-                        chapter_title = "{0:02d} - ".format(
-                            chapter_index) + sanitize_filename(entry.get("title"))
-                        if chapter_title not in _udemy["chapters"]:
-                            lecture_counter = 0
-                            _udemy["chapters"].append({
-                                "chapter_title": chapter_title,
-                                "chapter_id": lecture_id,
-                                "chapter_index": chapter_index,
-                                "lectures": [],
-                            })
-                            counter += 1
-
-                    _udemy["chapters"][counter]["lectures"] = lectures
-                    _udemy["chapters"][counter]["lectures_count"] = len(
-                        lectures)
-
-            _udemy["total_chapters"] = len(_udemy["chapters"])
-            _udemy["total_lectures"] = sum([
-                entry.get("lecture_count", 0) for entry in _udemy["chapters"]
-                if entry
-            ])
-
-        if save_to_file:
-            with open(os.path.join(os.getcwd(), "saved", "_udemy.json"),
-                      encoding="utf8", mode='w') as f:
-                f.write(json.dumps(_udemy))
-                f.close()
-            logger.info("> Saved parsed data to json")
-
-        if info:
-            _print_course_info(_udemy)
-        else:
-            parse_new(_udemy)
-
-
-if __name__ == "__main__":
-    # pre run parses arguments, sets up logging, and creates directories
-    pre_run()
-    # run main program
-    main()
