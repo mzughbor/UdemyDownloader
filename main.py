@@ -5,6 +5,7 @@ from tkinter import messagebox
 import argparse
 import glob
 import json
+
 import os
 import re
 import subprocess
@@ -74,6 +75,7 @@ caption_locale_radio_Buttons = IntVar()
 caption_locale_radio_Buttons.set(0)
 dropdown_clicked = StringVar()
 dropdown_clicked.set('720')
+concurrent_downloads_var = 10
 tryVar = 2
 # before Slider typo ...
 Label(frame_cheakBoxs, text='This option for defining number of retrying attempts').grid(row=21, column=0, pady=5, columnspan=2, sticky=W)  # +str(horizontal.get())
